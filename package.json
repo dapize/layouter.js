@@ -1,0 +1,29 @@
+{
+  "name": "layouter",
+  "version": "1.0.0",
+  "description": "Un setteador de estilos on the fly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gulp deploy",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dapize/layouter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dapize/layouter/issues"
+  },
+  "homepage": "https://github.com/dapize/layouter#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-terser": "^1.2.0",
+    "jest": "^25.1.0",
+    "jsdoc": "^3.6.3"
+  }
+}

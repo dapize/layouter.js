@@ -1,0 +1,68 @@
+// INIT
+const config = {
+  prex: 'lh', 
+  bp: {
+    xs: {
+      width: 320,
+      cols: 15
+    },
+    sm: {
+      width: 768,
+      cols: 31
+    },
+    md: {
+      width: 1024,
+      cols: 31
+    },
+    lg: {
+      width: 1280,
+      cols: 31
+    }
+  }
+};
+const layout = new Layouter(config);
+
+
+// USAGE
+const myDiv = document.querySelector('div'); // <div cols="13-15 10-31@sm 15-27@md">...</div>
+layout.process(myDiv);
+
+/**
+ 
+  // CREANDO EL NOMBRE DE CLASE
+ 
+  .lh-38-73@xs-sm-md {
+    width: 86.6667%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .lh-38-73@xs-sm-md {
+      width: 32.2580%;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .lh-38-73@xs-sm-md {
+      width: 55.5555%;
+    }
+  }
+
+
+
+  // RESULTADO
+
+  <div cols="lh-38-73@xs-sm-md">...</div>
+
+  
+
+  // EXPLICACIÓN
+  ¿Porqué 'lh-38-73@-sm-md'?
+
+  - 'lh' es el prefijo determinado, este parametro de configuración es opcional. por defecto es 'ly' (layouter)
+  - '38-73@-sm-md' 
+      
+      38 es la suma de 13 + 10 + 15 , que son las columnas determinadas a tomar de un máximo. 
+      73 es la suma de 15 + 31 + 27, que son las columnas máximas desde donde tomar.
+      xs-sm-md es la concatenación de sus breakpoints, si un breakpoint no se determina se infiere que es 'xs'
+
+ */
