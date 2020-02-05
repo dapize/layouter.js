@@ -1,30 +1,45 @@
-const gulp = require('gulp');
+const { src, dest, watch} = require('gulp');
 const browserSync = require('browser-sync').create();
-const terser = require('gulp-terser');
+const fs = require('fs');
+
 
 // Static server
-gulp.task('browser-sync', function() {
-  browserSync.init({
+const serve = function () {
+   browserSync.init({
     server: {
       baseDir: "./"
     }
   });
-});
 
-gulp.tasks('build', function () {
-  return gulp
-    .src('./src/layouter.js')
-    .pipe(terser({
-      keep_fnames: true,
-      mangle: false,
-      output: {
-        comments: false
-      }
-    }))
-    .pipe(gulp.dest('./build'));
-});
+  return watch(['./src/layouter.js', './main.js', './index.html'], function(cb) {
+    build();
+    cb();
+  });
+};
 
-gulp.task('default', ['browser-sync'])
+const build = function () {
+  if (!fs.existsSync('./dist')) fs.mkdirSync('./dist');
+  return fs.readFile('./src/layouter.js', 'utf8', (err, contents) => {
+    const layouterCode = `(function (root) {
+  'use strict';
+  ${contents}
+
+  // Export Layouter
+  if (typeof module === "object" && module.exports) {
+    module.exports = Layouter;
+  } else {
+    root.Layouter = Layouter;
+  }
+})(this);`
+    fs.writeFile('./dist/layouter.js', layouterCode, (err) => {
+      if (err) throw err;
+      console.log('Archivo compilado!');
+      browserSync.reload();
+    });
+  });
+};
+
 
 exports.build = build;
+exports.serve = serve;
 

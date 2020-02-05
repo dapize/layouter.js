@@ -1,7 +1,7 @@
 // INIT
 const config = {
-  prex: 'lh', 
-  bp: {
+  prefix: 'lh', 
+  breakPoints: {
     xs: {
       width: 320,
       cols: 15
