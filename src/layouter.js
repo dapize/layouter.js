@@ -89,7 +89,7 @@ const utils = {
   },
 
   /**
-   * Tabla de propiedades CSS funciladas a los métodos
+   * Tabla de propiedades CSS fucionadas a métodos de configuración
    */
   propsCss: {
     cols: 'width',
@@ -105,6 +105,28 @@ const utils = {
     marl: 'margin-left',
     flex: 'display: flex; justify-content: $jc; align-items: $ai',
     alg: 'text-align'
+  },
+
+  /**
+   * Equivalencias de las propiedades y valores de flexbox
+   */
+  flexpv: {
+    jc: 'justify-content',
+    ai: 'align-items',
+    c: 'center',
+    fs: 'flex-start',
+    fe: 'flex-end',
+    sb: 'space-between',
+    sa: 'space-around',
+    fw: 'flex-wrap',
+    nw: 'nowrap',
+    w: 'wrap',
+    wr: 'wrap-reverse',
+    fd: 'flex-direction',
+    r: 'row',
+    rr: 'row-reverse',
+    co: 'column',
+    cr: 'column-reverse'
   },
   
   /**
@@ -124,6 +146,7 @@ const utils = {
     Object.keys(bps).forEach(function (bp) {
       nameClass = prefix + type + '-' + bps[bp].name;
       nameClass = nameClass.replace('/', '\\/');
+
       rule = '@media screen and ';
       if (bp.indexOf('-') === -1) { // no tiene unti
         if (sizes[bp]) {
@@ -139,6 +162,7 @@ const utils = {
         bp2 = bpSplited[1];
         rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
       }
+
       if (!direct) rule += '{.' + nameClass.replace('@', '\\@') + '{' + prop + ':' + bps[bp].value + '}}';
       direct = false;
       styles[nameClass] = rule;
@@ -207,10 +231,12 @@ const utils = {
     if (!params.hasOwnProperty(type)) return console.log("Don't exists " + type + "dings determined");
 
     const bpCals = {};
-    let paramProcessed, numbersPures, propValue;
+    let paramProcessed, numbersPures, propValue, bps;
     params[type].forEach(function (param) {
+
       paramProcessed = utils.prepareParam(param);
       numbersPures = paramProcessed.numbers;
+      bps = paramProcessed.breakPoints;
 
       // processing number values
       propValue = numbersPures
@@ -219,11 +245,15 @@ const utils = {
           return _this.processedNumber(n);
         })
         .join(' ');
+      if (bpCals.hasOwnProperty(bps)) {
+        bpCals[bps].value += ';' + propValue
+      } else {
+        bpCals[bps] = {
+          name: param,
+          value: propValue
+        };
+      }
       
-      bpCals[paramProcessed.breakPoints] = {
-        name: param,
-        value: propValue
-      };
     });
 
     // Creating, inserting, and adding classNames of rules in Node.
@@ -353,7 +383,7 @@ lProto.setCols = function (Node) {
 
 /**
  * Setea los paddings necesarios para un Nodo.
- * @param {String} Node 
+ * @param {String} Node Nodo vivo del DOM a asignarle el CSS
  */
 lProto.setPads = function (Node) {
   utils.padsAndMargs(Node, 'pad', this);
@@ -361,8 +391,61 @@ lProto.setPads = function (Node) {
 
 /**
  * Setea los margins necesarios para un Nodo.
- * @param {String} Node 
+ * @param {String} Node Nodo vivo del DOM a asignarle el CSS
  */
 lProto.setMars = function (Node) {
   utils.padsAndMargs(Node, 'mar', this);
+};
+
+/**
+ * Setea la propiedad Flex y las reglas designadas
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ */
+lProto.setFlex = function (Node) {
+  const params = this.getParameters(Node);
+  if (!params.hasOwnProperty('flex')) return console.log("Don't exists flex determinated.");
+  let bpNameS, bpCals = {};
+
+  // Getting numbers
+  let selectorName, paramPrepared, flexSplited, prop, val, propVal;
+  params.flex.forEach(function (param) {
+    selectorName = param;
+
+    paramPrepared = utils.prepareParam(param);
+    bpNameS = paramPrepared.breakPoints;
+    param = paramPrepared.numbers;
+
+    flexSplited = param.split(':');
+    prop = flexSplited[0];
+    val = flexSplited[1];
+    propVal = utils.flexpv[prop] + ':' + utils.flexpv[val]
+
+    if (bpCals.hasOwnProperty(bpNameS)) {
+      bpCals[bpNameS].value += ';' + propVal
+    } else {
+      bpCals[bpNameS] = {
+        name: selectorName,
+        value: propVal
+      };
+    }
+    /*
+    bpCals[bpNameS] = {
+      name: selectorName,
+      value: utils.flexpv[prop] + ':' + utils.flexpv[val]
+    };
+    */
+  });
+
+  console.log(bpCals);
+
+  // Creating, inserting, and adding classNames of rules in Node.
+  /*
+  utils.settingCss({
+    type: 'cols',
+    bps: bpCals,
+    selectors: params.cols,
+    instance: this,
+    node: Node
+  });
+  */
 };
