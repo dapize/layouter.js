@@ -190,12 +190,12 @@ const utils = {
   settingCss: function (data) {
     // creating the styles
     const objStyles = this.createStyles(data.type, data.bps, data.instance);
-  
+
     // Inserting CSS rules
-    utils.insertRules(objStyles, data.instance);
+    this.insertRules(objStyles, data.instance);
   
     // Adding classes
-    utils.adClasses(data.selectors, data.node, data.instance.prefix + data.type)
+    this.adClasses(data.selectors, data.node, data.instance.prefix + data.type)
   },
   
   /**
@@ -230,7 +230,7 @@ const utils = {
     this.settingCss({
       type: type,
       bps: bpCals,
-      selectors: params.pad,
+      selectors: params[type],
       instance: instance,
       node: Node
     });
