@@ -22,12 +22,57 @@ const utils = {
   },
 
   /**
+   * Prepara el parametro de un método especificado. (EJM: cols, pad, etc)
+   * @param {String} param Parametro de configuración sobre el método.
+   */
+  prepareParam: function (param) {
+    let bp;
+    const haveBp = this.haveBreakPoint(param);
+    if (haveBp) {
+      const bpSplited = param.split('@');
+      param = bpSplited[0];
+      bp = bpSplited[1];
+    } else {
+      bp = 'xs';
+    }
+    return {
+      widthBp: haveBp,
+      numbers: param,
+      breakPoints: bp
+    }
+  },
+
+  /**
+   * Convierte un string a un número
+   * @param {String} n El string que se vá a convertir a número
+   * @returns {Number}
+   */
+  stringToNumber: function (n) {
+    return typeof n === 'string' ? parseFloat(n) : n;
+  },
+
+  /**
    * Calcula el porcentaje de un número :V
    * @param {Number} n1 Numero de donde se sacará el porcentaje
    * @param {Number} n2 Número de valor máximo
    */
   calPercentage: function (n1, n2) {
     return (n1 * 100) / n2 + '%'
+  },
+
+  /**
+   * Procesa un número, si es porcentual, lo calcula, sino, lo devuelve tal cual
+   * @param {String} n Número a procesar
+   */
+  processedNumber: function (n) {
+    let nProcessed;
+    if (n.indexOf('/') !== -1) {
+      nProcessed = n.split('/');
+      nProcessed = this.calPercentage(this.stringToNumber(nProcessed[0]), this.stringToNumber(nProcessed[1]))
+    } else {
+      nProcessed = n + 'px';
+    }
+    return nProcessed;
   },
 
   /**
@@ -78,12 +123,13 @@ const utils = {
     let bpSplited, bp1, bp2, direct = false, nameClass;
     Object.keys(bps).forEach(function (bp) {
       nameClass = prefix + type + '-' + bps[bp].name;
+      nameClass = nameClass.replace('/', '\\/');
       rule = '@media screen and ';
       if (bp.indexOf('-') === -1) { // no tiene unti
         if (sizes[bp]) {
           rule += '(min-width: ' + sizes[bp] + 'px)';
         } else {
-          rule = '.' + nameClass + '{' + prop + ':' + bps[bp].size + '}';
+          rule = '.' + nameClass + '{' + prop + ':' + bps[bp].value + '}';
           direct = true;
         }
       } else { 
@@ -93,7 +139,7 @@ const utils = {
         bp2 = bpSplited[1];
         rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
       }
-      if (!direct) rule += '{.' + nameClass.replace('@', '\\@') + '{' + prop + ':' + bps[bp].size + '}}';
+      if (!direct) rule += '{.' + nameClass.replace('@', '\\@') + '{' + prop + ':' + bps[bp].value + '}}';
       direct = false;
       styles[nameClass] = rule;
     });
@@ -120,7 +166,9 @@ const utils = {
     const vaultStyles = instance.styles;
     const prefix = instance.prefix;
     Object.keys(objStyles).forEach(function (className) {
-      if (!vaultStyles.hasOwnProperty(prefix + className)) nodeScope.insertRule(objStyles[className], nodeScope.rules.length);
+      if (!vaultStyles.hasOwnProperty(prefix + className)) {
+        nodeScope.insertRule(objStyles[className], nodeScope.rules.length);
+      }
     });
   },
 
@@ -132,6 +180,59 @@ const utils = {
   adClasses: function (classesNames, Node, prefix) {
     classesNames.forEach(function (name) {
       Node.classList.add(prefix + '-' + name);
+    });
+  },
+
+  /**
+   * Crea e inserta los estilos calculandolos, y tambien adiciona las clases respectivas al nodo
+   * @param {Object} data Lista de data para el procesamiento del CSS
+   */
+  settingCss: function (data) {
+    // creating the styles
+    const objStyles = this.createStyles(data.type, data.bps, data.instance);
+  
+    // Inserting CSS rules
+    utils.insertRules(objStyles, data.instance);
+  
+    // Adding classes
+    utils.adClasses(data.selectors, data.node, data.instance.prefix + data.type)
+  },
+  
+  /**
+   * Setea los paddings y margenes
+   */
+  padsAndMargs: function (Node, type, instance) {
+    const params = instance.getParameters(Node);
+    const _this = this;
+    if (!params.hasOwnProperty(type)) return console.log("Don't exists " + type + "dings determined");
+
+    const bpCals = {};
+    let paramProcessed, numbersPures, propValue;
+    params[type].forEach(function (param) {
+      paramProcessed = utils.prepareParam(param);
+      numbersPures = paramProcessed.numbers;
+
+      // processing number values
+      propValue = numbersPures
+        .split('-')
+        .map(function (n) {
+          return _this.processedNumber(n);
+        })
+        .join(' ');
+      
+      bpCals[paramProcessed.breakPoints] = {
+        name: param,
+        value: propValue
+      };
+    });
+
+    // Creating, inserting, and adding classNames of rules in Node.
+    this.settingCss({
+      type: type,
+      bps: bpCals,
+      selectors: params.pad,
+      instance: instance,
+      node: Node
     });
   }
 
@@ -206,59 +307,62 @@ lProto.getParameters = function (Node) {
  * @param {Object} Node Nodo a donde asignar los estilos
  */
 lProto.setCols = function (Node) {
-  let sucess = false;
   const _this = this;
   const params = this.getParameters(Node);
   if (!params.hasOwnProperty('cols')) return console.log("Don't exists columns determined");
-  let cols, bp, bpSplited, bpCals = {};
+  let cols, bp, bpCals = {};
 
   // Getting numbers
-  let paramPure;
+  let selectorName, propValue, paramPrepared;
   params.cols.forEach(function (param) {
-    paramPure = param;
-    if (utils.haveBreakPoint(param)) {
-      bpSplited = param.split('@');
-      param = bpSplited[0];
-      bp = bpSplited[1];
+    selectorName = param;
+
+    paramPrepared = utils.prepareParam(param);
+    bp = paramPrepared.breakPoints;
+    param = paramPrepared.numbers;
+
+    if (param.indexOf('/') !== -1) {
+      cols = param.split('/');
     } else {
-      bp = 'xs';
-    }
-    if (param.indexOf('-') !== -1) {
-      cols = param.split('-');
-    } else {
-      if (bpSplited) {
+      if (paramPrepared.widthBp) {
         if (bp.indexOf('-') === -1) {
           cols = [param, _this.cols[bp]];
         } else {
-          sucess = false;
           utils.regError('SyntaxError', "You can't determine a 'until breakpoint' when use the explicit columns max");
         }
       } else {
         cols = [param, _this.cols.xs];
       }
     }
+    propValue = utils.calPercentage(cols[0], cols[1]);
+
     bpCals[bp] = {
-      name: paramPure,
-      size: utils.calPercentage(cols[0], cols[1])
+      name: selectorName,
+      value: propValue
     };
-    bpSplited = false;
   });
-
-  // creating the styles
-  const objStyles = utils.createStyles('cols', bpCals, this);
-
-  // Inserting CSS rules
-  utils.insertRules(objStyles, this);
-
-  // Adding classes
-  utils.adClasses(params.cols, Node, this.prefix + 'cols')
-
-  return sucess;
+  // Creating, inserting, and adding classNames of rules in Node.
+  utils.settingCss({
+    type: 'cols',
+    bps: bpCals,
+    selectors: params.cols,
+    instance: this,
+    node: Node
+  });
 };
 
+/**
+ * Setea los paddings necesarios para un Nodo.
+ * @param {String} Node 
+ */
 lProto.setPads = function (Node) {
-  const params = this.getParameters(Node);
-  if (!params.hasOwnProperty('pad')) return console.log("Don't exists paddings determined");
+  utils.padsAndMargs(Node, 'pad', this);
+};
 
-  
+/**
+ * Setea los margins necesarios para un Nodo.
+ * @param {String} Node 
+ */
+lProto.setMars = function (Node) {
+  utils.padsAndMargs(Node, 'mar', this);
 };

@@ -20,13 +20,20 @@
       }
     }
   };
-  const lyt = new Layouter(configs);
-  console.log('lyt.breakPoints: ', lyt.breakPoints);
-  console.log('lyt.sizes:', lyt.sizes);
-  console.log('lyt.cols: ', lyt.cols);
+  const layout = new Layouter(configs);
+  //console.log('layout.breakPoints: ', layout.breakPoints);
+  //console.log('layout.sizes:', layout.sizes);
+  //console.log('layout.cols: ', layout.cols);
 
   const myDiv = document.querySelector('div');
-  console.log('lyt.getParameters', lyt.getParameters(myDiv));
+  //console.log('layout.getParameters', layout.getParameters(myDiv));
 
-  lyt.setCols(myDiv);
+  // Columns
+  layout.setCols(myDiv);
+
+  // Paddings
+  layout.setPads(myDiv);
+
+  // Margins
+  layout.setMars(myDiv);
 }());
