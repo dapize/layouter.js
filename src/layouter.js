@@ -62,29 +62,77 @@ const utils = {
     alg: 'text-align'
   },
   
-  createStyles: function (prop, bps, sizes) { // utils.createStyles('width', {});
-    const styles = [];
-    let rule = '@media screen and ';
-    let bpSplited, bp1, bp2 = false;
+  /**
+   * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
+   * @param {String} prop Nombre de regla css
+   * @param {Object} bps Breakpoints obtenidos
+   * @param {Object} sizes Medidas de ancho de los breakpoints
+   * @returns {Array} Lista de reglas CSS listas para usar.
+   */
+  createStyles: function (type, bps, instance) {
+    const sizes = instance.sizes;
+    const prefix = instance.prefix;
+    const prop = utils.propsCss[type];
+    const styles = {};
+    let rule;
+    let bpSplited, bp1, bp2, direct = false, nameClass;
     Object.keys(bps).forEach(function (bp) {
-      if (bp.indexOf('-') === -1) { // no tiene until
+      nameClass = prefix + type + '-' + bps[bp].name;
+      rule = '@media screen and ';
+      if (bp.indexOf('-') === -1) { // no tiene unti
+        if (sizes[bp]) {
+          rule += '(min-width: ' + sizes[bp] + 'px)';
+        } else {
+          rule = '.' + nameClass + '{' + prop + ':' + bps[bp].size + '}';
+          direct = true;
+        }
+      } else { 
         bpSplited = bp.split('-');
         bp1 = bpSplited[0];
+        if (bp1) rule += '(min-width: ' + sizes[bp1] + 'px) and ';
         bp2 = bpSplited[1];
-      } else { // si tiene until
-        bp1 = bp;
+        rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
       }
-      if (sizes[bp1]) {
-        rule += '(min-width: ' + sizes[bp1] + 'px)';
-        if (bp2) rule += ' and (max-width: ' + (sizes[bp1] - 1) + 'px)';
-        rule += '{' + prop + ':' + bps[bp] + '}';
-        styles.push(rule);
-        rule = '@media screen and ';
-      } else {
-        styles.push(prop + ':' + bps[bp]);
-      }
+      if (!direct) rule += '{.' + nameClass.replace('@', '\\@') + '{' + prop + ':' + bps[bp].size + '}}';
+      direct = false;
+      styles[nameClass] = rule;
     });
-    console.log(styles);
+    return styles;
+  },
+
+  /**
+   * Crea el scope de la hoja de estilos que se usará para designar los estilos que se crean al vuelo.
+   */
+  createScopeStyles: function () {
+    const stylesScope = document.createElement('style');
+    stylesScope.appendChild(document.createTextNode(''));
+    document.body.appendChild(stylesScope);
+    stylesScope.id = 'scope-layouter'
+    return stylesScope.sheet;
+  },
+
+  /**
+   * Agrega las reglas CSS para darle estilos a los nodos
+   * @param {Array} rules Lista de reglas CSS a agregar
+   */
+  insertRules: function (objStyles, instance) {
+    const nodeScope = instance.scope;
+    const vaultStyles = instance.styles;
+    const prefix = instance.prefix;
+    Object.keys(objStyles).forEach(function (className) {
+      if (!vaultStyles.hasOwnProperty(prefix + className)) nodeScope.insertRule(objStyles[className], nodeScope.rules.length);
+    });
+  },
+
+  /**
+   * Asignador de nombre de clases a un nodo.
+   * @param {Object} Node Nodo a donde agregar las clases
+   * @param {Array} classesNames Lista de nombres de las clases
+   */
+  adClasses: function (classesNames, Node, prefix) {
+    classesNames.forEach(function (name) {
+      Node.classList.add(prefix + '-' + name);
+    });
   }
 
 }
@@ -99,13 +147,15 @@ function Layouter (config) {
   if (!config.hasOwnProperty('breakPoints')) return console.log('falta configuración');
 
   // configs
-  this.prefix = config.prefix | 'ly';
+  this.prefix = config.prefix ? config.prefix + '-' : ''
 
   // init setterss
   const bps = config.breakPoints;
   this.breakPoints = Object.keys(bps);
   this.sizes = utils.getNums(bps, 'width');
   this.cols = utils.getNums(bps, 'cols');
+  this.scope = utils.createScopeStyles();
+  this.styles = {};
 };
 
 const lProto = Layouter.prototype;
@@ -118,7 +168,7 @@ Object.defineProperty(lProto, 'parameters', {
   get: function () {
     return {
       cols: this.setCols,
-      pad: this.setPad,
+      pad: this.setPads,
       padt: this.setPadt,
       padr: this.setPadr,
       padb: this.setPadb,
@@ -163,7 +213,9 @@ lProto.setCols = function (Node) {
   let cols, bp, bpSplited, bpCals = {};
 
   // Getting numbers
+  let paramPure;
   params.cols.forEach(function (param) {
+    paramPure = param;
     if (utils.haveBreakPoint(param)) {
       bpSplited = param.split('@');
       param = bpSplited[0];
@@ -179,18 +231,34 @@ lProto.setCols = function (Node) {
           cols = [param, _this.cols[bp]];
         } else {
           sucess = false;
-          utils.regError('Syntax error', "You can't determine a 'until breakpoint' when use the explicit columns max");
+          utils.regError('SyntaxError', "You can't determine a 'until breakpoint' when use the explicit columns max");
         }
       } else {
         cols = [param, _this.cols.xs];
       }
     }
-    bpCals[bp] = utils.calPercentage(cols[0], cols[1]);
+    bpCals[bp] = {
+      name: paramPure,
+      size: utils.calPercentage(cols[0], cols[1])
+    };
     bpSplited = false;
   });
 
   // creating the styles
-  utils.createStyles(utils.propsCss.cols, bpCals, this.sizes);
+  const objStyles = utils.createStyles('cols', bpCals, this);
+
+  // Inserting CSS rules
+  utils.insertRules(objStyles, this);
+
+  // Adding classes
+  utils.adClasses(params.cols, Node, this.prefix + 'cols')
 
   return sucess;
+};
+
+lProto.setPads = function (Node) {
+  const params = this.getParameters(Node);
+  if (!params.hasOwnProperty('pad')) return console.log("Don't exists paddings determined");
+
+  
 };

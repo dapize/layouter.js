@@ -1,6 +1,5 @@
 (function () {
   const configs = {
-    prefix: 'lh', 
     breakPoints: {
       xs: {
         width: 320,
