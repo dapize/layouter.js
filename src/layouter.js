@@ -103,7 +103,7 @@ const utils = {
     marr: 'margin-right',
     marb: 'margin-bottom',
     marl: 'margin-left',
-    flex: 'display: flex; justify-content: $jc; align-items: $ai',
+    flex: 'display: flex;',
     alg: 'text-align'
   },
 
@@ -141,18 +141,20 @@ const utils = {
     const prefix = instance.prefix;
     const prop = utils.propsCss[type];
     const styles = {};
-    let rule;
-    let bpSplited, bp1, bp2, direct = false, nameClass;
+    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal;
     Object.keys(bps).forEach(function (bp) {
+      // preparing the className
       nameClass = prefix + type + '-' + bps[bp].name;
-      nameClass = nameClass.replace('/', '\\/');
+      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:');
+      // Property and value
+      propAndVal = prop + ((prop.indexOf(':') === -1) ? ':' : '') + bps[bp].value;
 
       rule = '@media screen and ';
       if (bp.indexOf('-') === -1) { // no tiene unti
         if (sizes[bp]) {
           rule += '(min-width: ' + sizes[bp] + 'px)';
         } else {
-          rule = '.' + nameClass + '{' + prop + ':' + bps[bp].value + '}';
+          rule = '.' + nameClass + '{' + propAndVal + '}';
           direct = true;
         }
       } else { 
@@ -163,7 +165,7 @@ const utils = {
         rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
       }
 
-      if (!direct) rule += '{.' + nameClass.replace('@', '\\@') + '{' + prop + ':' + bps[bp].value + '}}';
+      if (!direct) rule += '{.' + nameClass.replace('@', '\\@') + '{' + propAndVal + '}}';
       direct = false;
       styles[nameClass] = rule;
     });
@@ -201,9 +203,9 @@ const utils = {
    * @param {Object} Node Nodo a donde agregar las clases
    * @param {Array} classesNames Lista de nombres de las clases
    */
-  adClasses: function (classesNames, Node, prefix) {
-    classesNames.forEach(function (name) {
-      Node.classList.add(prefix + '-' + name);
+  adClasses: function (bpList, Node, prefix) {
+    Object.keys(bpList).forEach(function (bp) {
+      Node.classList.add(prefix + '-' + bpList[bp].name);
     });
   },
 
@@ -214,12 +216,12 @@ const utils = {
   settingCss: function (data) {
     // creating the styles
     const objStyles = this.createStyles(data.type, data.bps, data.instance);
-
+    console.dir(objStyles);
     // Inserting CSS rules
     this.insertRules(objStyles, data.instance);
   
     // Adding classes
-    this.adClasses(data.selectors, data.node, data.instance.prefix + data.type)
+    this.adClasses(data.bps, data.node, data.instance.prefix + data.type)
   },
   
   /**
@@ -260,7 +262,6 @@ const utils = {
     this.settingCss({
       type: type,
       bps: bpCals,
-      selectors: params[type],
       instance: instance,
       node: Node
     });
@@ -375,7 +376,6 @@ lProto.setCols = function (Node) {
   utils.settingCss({
     type: 'cols',
     bps: bpCals,
-    selectors: params.cols,
     instance: this,
     node: Node
   });
@@ -407,7 +407,7 @@ lProto.setFlex = function (Node) {
   let bpNameS, bpCals = {};
 
   // Getting numbers
-  let selectorName, paramPrepared, flexSplited, prop, val, propVal;
+  let selectorName, paramPrepared, flexSplited,  propVal;
   params.flex.forEach(function (param) {
     selectorName = param;
 
@@ -416,36 +416,25 @@ lProto.setFlex = function (Node) {
     param = paramPrepared.numbers;
 
     flexSplited = param.split(':');
-    prop = flexSplited[0];
-    val = flexSplited[1];
-    propVal = utils.flexpv[prop] + ':' + utils.flexpv[val]
+    propVal = utils.flexpv[flexSplited[0]] + ':' + utils.flexpv[flexSplited[1]]
 
     if (bpCals.hasOwnProperty(bpNameS)) {
-      bpCals[bpNameS].value += ';' + propVal
+      if (selectorName.indexOf('@') !== 1) selectorName = selectorName.split('@')[0];
+      bpCals[bpNameS].name = bpCals[bpNameS].name.split('@')[0] + '-' + selectorName + '@' + bpNameS;
+      bpCals[bpNameS].value += ';' + propVal;
     } else {
       bpCals[bpNameS] = {
         name: selectorName,
         value: propVal
       };
     }
-    /*
-    bpCals[bpNameS] = {
-      name: selectorName,
-      value: utils.flexpv[prop] + ':' + utils.flexpv[val]
-    };
-    */
   });
 
-  console.log(bpCals);
-
-  // Creating, inserting, and adding classNames of rules in Node.
-  /*
+  // Creating Styles, inserting, and adding classNames of rules in Node.
   utils.settingCss({
-    type: 'cols',
+    type: 'flex',
     bps: bpCals,
-    selectors: params.cols,
     instance: this,
     node: Node
   });
-  */
 };

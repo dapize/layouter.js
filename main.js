@@ -29,13 +29,13 @@
   //console.log('layout.getParameters', layout.getParameters(myDiv));
 
   // Columns
-  //layout.setCols(myDiv);
+  layout.setCols(myDiv);
 
   // Paddings
-  //layout.setPads(myDiv);
+  layout.setPads(myDiv);
 
   // Margins
-  //layout.setMars(myDiv);
+  layout.setMars(myDiv);
 
   // Flex
   layout.setFlex(myDiv);
