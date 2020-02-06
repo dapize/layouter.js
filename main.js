@@ -21,13 +21,14 @@
     }
   };
   const layout = new Layouter(configs);
-  //console.log('layout.breakPoints: ', layout.breakPoints);
-  //console.log('layout.sizes:', layout.sizes);
-  //console.log('layout.cols: ', layout.cols);
+  console.log('layout.breakPoints: ', layout.breakPoints);
+  console.log('layout.sizes:', layout.sizes);
+  console.log('layout.cols: ', layout.cols);
 
   const myDiv = document.querySelector('div');
-  //console.log('layout.getParameters', layout.getParameters(myDiv));
+  console.log('layout.getParameters', layout.getParameters(myDiv));
 
+  /*
   // Columns
   layout.setCols(myDiv);
 
@@ -39,4 +40,12 @@
 
   // Flex
   layout.setFlex(myDiv);
+  */
+
+  // Procesar todo
+  layout.all(myDiv);
+
+  layout.all(document.querySelectorAll('div')[1]);
+
+  console.dir(layout.styles);
 }());

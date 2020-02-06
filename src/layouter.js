@@ -1,5 +1,4 @@
 const utils = {
-
   /**
    * Obtiene el width y las columnas de los breakpoints.
    * @param {Object} objBps Objeto de los breakPoints
@@ -89,22 +88,25 @@ const utils = {
   },
 
   /**
-   * Tabla de propiedades CSS fucionadas a métodos de configuración
+   * Lista de procesadores disponibles, junto a su método y regla css
    */
-  propsCss: {
-    cols: 'width',
-    pad: 'padding',
-    padt: 'padding-top',
-    padr: 'padding-right',
-    padb: 'padding-bottom',
-    padl: 'padding-left',
-    mar: 'margin',
-    mart: 'margin-top',
-    marr: 'margin-right',
-    marb: 'margin-bottom',
-    marl: 'margin-left',
-    flex: 'display: flex;',
-    alg: 'text-align'
+  processors: {
+    cols: {
+      method: 'setCols',
+      ruleCss: 'width'
+    },
+    pad: {
+      method: 'setPads',
+      ruleCss: 'padding'
+    },
+    mar: {
+      method: 'setMars',
+      ruleCss: 'margin'
+    },
+    flex: {
+      method: 'setFlex',
+      ruleCss: 'display: flex'
+    }
   },
 
   /**
@@ -139,15 +141,21 @@ const utils = {
   createStyles: function (type, bps, instance) {
     const sizes = instance.sizes;
     const prefix = instance.prefix;
-    const prop = utils.propsCss[type];
+    const prop = utils.processors[type].ruleCss;
     const styles = {};
     let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal;
-    Object.keys(bps).forEach(function (bp) {
+    Object.keys(bps).forEach(function (bp, index) {
       // preparing the className
       nameClass = prefix + type + '-' + bps[bp].name;
       nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:');
+
       // Property and value
-      propAndVal = prop + ((prop.indexOf(':') === -1) ? ':' : '') + bps[bp].value;
+      if (prop.indexOf(':') !== -1) { // cuando se define una propiedad inicial (Ejm: display:flex)
+        propAndVal = bps[bp].value;
+        if (!index) styles[prefix + type + '-' + type] = '.' + prefix + type + '-' + type + '{' + prop + '}';
+      } else {
+        propAndVal = prop +  ':' + bps[bp].value;
+      }
 
       rule = '@media screen and ';
       if (bp.indexOf('-') === -1) { // no tiene unti
@@ -189,11 +197,11 @@ const utils = {
    */
   insertRules: function (objStyles, instance) {
     const nodeScope = instance.scope;
-    const vaultStyles = instance.styles;
     const prefix = instance.prefix;
     Object.keys(objStyles).forEach(function (className) {
-      if (!vaultStyles.hasOwnProperty(prefix + className)) {
+      if (!instance.styles.hasOwnProperty(prefix + className)) {
         nodeScope.insertRule(objStyles[className], nodeScope.rules.length);
+        instance.styles[prefix + className] = objStyles[className];
       }
     });
   },
@@ -203,9 +211,9 @@ const utils = {
    * @param {Object} Node Nodo a donde agregar las clases
    * @param {Array} classesNames Lista de nombres de las clases
    */
-  adClasses: function (bpList, Node, prefix) {
-    Object.keys(bpList).forEach(function (bp) {
-      Node.classList.add(prefix + '-' + bpList[bp].name);
+  adClasses: function (classesNames, Node) {
+    classesNames.forEach(function (name) {
+      Node.classList.add(name.replace('\/', '').replace('\\', '/').replace('/:', ':').replace('\\:', ':'));
     });
   },
 
@@ -216,12 +224,12 @@ const utils = {
   settingCss: function (data) {
     // creating the styles
     const objStyles = this.createStyles(data.type, data.bps, data.instance);
-    console.dir(objStyles);
+
     // Inserting CSS rules
     this.insertRules(objStyles, data.instance);
   
     // Adding classes
-    this.adClasses(data.bps, data.node, data.instance.prefix + data.type)
+    this.adClasses(Object.keys(objStyles), data.node)
   },
   
   /**
@@ -265,8 +273,10 @@ const utils = {
       instance: instance,
       node: Node
     });
-  }
 
+    // removing param
+    Node.removeAttribute(type);
+  }
 }
 
 /**
@@ -289,32 +299,7 @@ function Layouter (config) {
   this.scope = utils.createScopeStyles();
   this.styles = {};
 };
-
 const lProto = Layouter.prototype;
-
-
-/**
- * Lista de métodos disponibles para procesar.
- */
-Object.defineProperty(lProto, 'parameters', {
-  get: function () {
-    return {
-      cols: this.setCols,
-      pad: this.setPads,
-      padt: this.setPadt,
-      padr: this.setPadr,
-      padb: this.setPadb,
-      padl: this.setPadl,
-      mar: this.setMar,
-      mart: this.setMart,
-      marr: this.setMarr,
-      marb: this.setMarb,
-      marl: this.setMarl,
-      flex: this.setFlex,
-      alg: this.setAlg
-    }
-  }
-});
 
 /**
  * Obtiene los parametros disponibles para procesar
@@ -324,7 +309,7 @@ Object.defineProperty(lProto, 'parameters', {
 lProto.getParameters = function (Node) {
   const params = {};
   const attrs = Node.attributes;
-  const paramNames = Object.keys(this.parameters);
+  const paramNames = Object.keys(utils.processors);
   Array.prototype.forEach.call(attrs, function (attr) {
     if (paramNames.indexOf(attr.name) !== -1) {
       if (attr.value !== '') params[attr.name] = attr.value.split(' ');
@@ -379,6 +364,9 @@ lProto.setCols = function (Node) {
     instance: this,
     node: Node
   });
+
+  // removing param
+  Node.removeAttribute('cols');
 };
 
 /**
@@ -437,4 +425,24 @@ lProto.setFlex = function (Node) {
     instance: this,
     node: Node
   });
+
+  // removing param
+  Node.removeAttribute('flex');
 };
+
+/**
+ * Procesa todos los atributos de procesamiento que se tenga disponible
+ * @param {Object} Nodo Nodo vivo del DOM a asignarle el CSS
+ */
+lProto.all = function (Node) {
+  const params = this.getParameters(Node);
+  const proNames = Object.keys(params);
+  const _this = this;
+  if (proNames.length) {
+    proNames.forEach(function (processorName) {
+      _this[utils.processors[processorName].method](Node);
+    });
+  } else {
+    console.log("don't exists any parameter for processor")
+  }
+}
