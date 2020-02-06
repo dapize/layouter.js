@@ -1,4 +1,6 @@
-const utils = {
+(function (root) {
+        'use strict';
+        const utils = {
   /**
    * Obtiene el width y las columnas de los breakpoints.
    * @param {Object} objBps Objeto de los breakPoints
@@ -446,3 +448,11 @@ lProto.all = function (Node) {
     console.log("don't exists any parameter for processor")
   }
 }
+      
+        // Export Layouter
+        if (typeof module === "object" && module.exports) {
+          module.exports = Layouter;
+        } else {
+          root.Layouter = Layouter;
+        }
+      })(this);
