@@ -1,0 +1,34 @@
+// configuraciones extras
+
+prefix: 'lh',
+log: true
+
+
+
+  /**
+   * Equivalencias de las propiedades y valores de flexbox
+   */
+  flexpv: {
+    jc: 'justify-content',
+    ai: 'align-items',
+    c: 'center',
+    fs: 'flex-start',
+    fe: 'flex-end',
+    sb: 'space-between',
+    sa: 'space-around',
+    fw: 'flex-wrap',
+    nw: 'nowrap',
+    w: 'wrap',
+    wr: 'wrap-reverse',
+    fd: 'flex-direction',
+    r: 'row',
+    rr: 'row-reverse',
+    co: 'column',
+    cr: 'column-reverse'
+  },
+
+
+funcionalidades extras
+
+  agregarle un log
+  agregarle un guardado en localStorage

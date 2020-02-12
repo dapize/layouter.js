@@ -436,7 +436,7 @@ lProto.setFlex = function (Node) {
  * Procesa todos los atributos de procesamiento que se tenga disponible
  * @param {Object} Nodo Nodo vivo del DOM a asignarle el CSS
  */
-lProto.all = function (Node) {
+lProto.build = function (Node) {
   const params = this.getParameters(Node);
   const proNames = Object.keys(params);
   const _this = this;

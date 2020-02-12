@@ -238,7 +238,9 @@ const utils = {
   padsAndMargs: function (Node, type, instance) {
     const params = instance.getParameters(Node);
     const _this = this;
-    if (!params.hasOwnProperty(type)) return console.log("Don't exists " + type + "dings determined");
+    if (!params.hasOwnProperty(type)) return utils.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
+    margins
+    paddings
 
     const bpCals = {};
     let paramProcessed, numbersPures, propValue, bps;
@@ -263,7 +265,6 @@ const utils = {
           value: propValue
         };
       }
-      
     });
 
     // Creating, inserting, and adding classNames of rules in Node.
@@ -286,7 +287,7 @@ const utils = {
  */
 function Layouter (config) {
   // validation
-  if (!config.hasOwnProperty('breakPoints')) return console.log('¡configuration missing!');
+  if (!config.hasOwnProperty('breakPoints')) return utils.regError('Configuration Missing', '¡configuration missing! :V');
 
   // configs
   this.prefix = config.prefix ? config.prefix + '-' : ''
@@ -325,7 +326,7 @@ lProto.getParameters = function (Node) {
 lProto.setCols = function (Node) {
   const _this = this;
   const params = this.getParameters(Node);
-  if (!params.hasOwnProperty('cols')) return console.log("Don't exists columns determined");
+  if (!params.hasOwnProperty('cols')) return utils.regError('Parameter Missing', "Don't exists 'cols' determined");
   let cols, bp, bpCals = {};
 
   // Getting numbers
@@ -391,7 +392,7 @@ lProto.setMars = function (Node) {
  */
 lProto.setFlex = function (Node) {
   const params = this.getParameters(Node);
-  if (!params.hasOwnProperty('flex')) return console.log("Don't exists flex determinated.");
+  if (!params.hasOwnProperty('flex')) return utils.regError('Parameter Missing', "Don't exists 'flex' determinated.");
   let bpNameS, bpCals = {};
 
   // Getting numbers
@@ -434,7 +435,7 @@ lProto.setFlex = function (Node) {
  * Procesa todos los atributos de procesamiento que se tenga disponible
  * @param {Object} Nodo Nodo vivo del DOM a asignarle el CSS
  */
-lProto.all = function (Node) {
+lProto.build = function (Node) {
   const params = this.getParameters(Node);
   const proNames = Object.keys(params);
   const _this = this;
@@ -443,6 +444,6 @@ lProto.all = function (Node) {
       _this[utils.processors[processorName].method](Node);
     });
   } else {
-    console.log("don't exists any parameter for processor")
+    utils.regError('Parameter Missing', "don't exists any parameter to process")
   }
-}
+};

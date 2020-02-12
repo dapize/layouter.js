@@ -43,9 +43,9 @@
   */
 
   // Procesar todo
-  layout.all(myDiv);
+  layout.build(myDiv);
 
-  layout.all(document.querySelectorAll('div')[1]);
+  layout.build(document.querySelectorAll('div')[1]);
 
   console.dir(layout.styles);
 }());
