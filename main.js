@@ -24,8 +24,7 @@
   console.log('layout.breakPoints: ', layout.breakPoints);
   console.log('layout.sizes:', layout.sizes);
   console.log('layout.cols: ', layout.cols);
-
-  const myDiv = document.querySelector('div');
+  const myDiv = document.querySelector('.my-div');
   console.log('layout.getParameters', layout.getParameters(myDiv));
 
   /*
@@ -44,8 +43,17 @@
 
   // Procesar todo
   layout.build(myDiv);
-
-  layout.build(document.querySelectorAll('div')[1]);
-
   console.dir(layout.styles);
+
+  // Title
+  Array.prototype.forEach.call(document.querySelectorAll('h3'), function (title) {
+    layout.build(title);
+  });
+
+  // BOX LIST
+  layout.build(document.querySelector('.box-list'))
+  Array.prototype.forEach.call(document.querySelectorAll('.box-list li'), function (li) {
+    layout.build(li);
+  });
+
 }());

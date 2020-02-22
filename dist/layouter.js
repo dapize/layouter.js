@@ -71,15 +71,15 @@
       nProcessed = n.split('/');
       nProcessed = this.calPercentage(this.stringToNumber(nProcessed[0]), this.stringToNumber(nProcessed[1]))
     } else {
-      nProcessed = n + 'px';
+      nProcessed = n === 'auto' ? 'auto' : n + 'px';
     }
     return nProcessed;
   },
 
   /**
    * Utilidad para retornar errores.
-   * @param {String} type Tipo de error a mostrar
-   * @param {String} message Descripció del error
+   * @param {String} name Título del Error
+   * @param {String} message Descripción del error
    */
   regError: function (name, message) {
     const err = new Error();
@@ -117,7 +117,7 @@
   flexpv: {
     jc: 'justify-content',
     ai: 'align-items',
-    c: 'center',
+    ce: 'center',
     fs: 'flex-start',
     fe: 'flex-end',
     sb: 'space-between',
@@ -130,15 +130,14 @@
     r: 'row',
     rr: 'row-reverse',
     co: 'column',
-    cr: 'column-reverse'
+    cor: 'column-reverse'
   },
   
   /**
    * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
-   * @param {String} prop Nombre de regla css
-   * @param {Object} bps Breakpoints obtenidos
-   * @param {Object} sizes Medidas de ancho de los breakpoints
-   * @returns {Array} Lista de reglas CSS listas para usar.
+   * @param {String} type Tipo de estilos a dar: 'cols', 'pad', 'mar' o 'flex'
+   * @param {Object} bps Objeto de breakpoints registrados
+   * @param {Object} instance La instancia creada, el objeto mismo.
    */
   createStyles: function (type, bps, instance) {
     const sizes = instance.sizes;
@@ -149,7 +148,7 @@
     Object.keys(bps).forEach(function (bp, index) {
       // preparing the className
       nameClass = prefix + type + '-' + bps[bp].name;
-      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:');
+      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@');
 
       // Property and value
       if (prop.indexOf(':') !== -1) { // cuando se define una propiedad inicial (Ejm: display:flex)
@@ -175,7 +174,7 @@
         rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
       }
 
-      if (!direct) rule += '{.' + nameClass.replace('@', '\\@') + '{' + propAndVal + '}}';
+      if (!direct) rule += '{.' + nameClass + '{' + propAndVal + '}}';
       direct = false;
       styles[nameClass] = rule;
     });
@@ -189,7 +188,7 @@
     const stylesScope = document.createElement('style');
     stylesScope.appendChild(document.createTextNode(''));
     document.body.appendChild(stylesScope);
-    stylesScope.id = 'scope-layouter'
+    stylesScope.id = 'layouter'
     return stylesScope.sheet;
   },
 
@@ -209,13 +208,29 @@
   },
 
   /**
+   * Lista de caracteres a reemplazar para el nombre de las clases
+   */
+  replaceList: [
+    ['\/', ''],
+    ['\\', '/'],
+    ['/:', ':'],
+    ['\\:', ':'],
+    ['\\@', '@'],
+    ['/@', '@']
+  ],
+
+  /**
    * Asignador de nombre de clases a un nodo.
    * @param {Object} Node Nodo a donde agregar las clases
    * @param {Array} classesNames Lista de nombres de las clases
    */
   adClasses: function (classesNames, Node) {
+    const _this = this
     classesNames.forEach(function (name) {
-      Node.classList.add(name.replace('\/', '').replace('\\', '/').replace('/:', ':').replace('\\:', ':'));
+      _this.replaceList.forEach(function (reItem) {
+        name = name.replace(reItem[0], reItem[1])
+      });
+      Node.classList.add(name);
     });
   },
 
@@ -238,6 +253,7 @@
    * Setea los paddings y margenes
    */
   padsAndMargs: function (Node, type, instance) {
+    if (!Node) return utils.regError('Non-existent Node', "Don't exists the Node for processing.");
     const params = instance.getParameters(Node);
     const _this = this;
     if (!params.hasOwnProperty(type)) return utils.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
@@ -326,6 +342,7 @@ lProto.getParameters = function (Node) {
  * @param {Object} Node Nodo a donde asignar los estilos
  */
 lProto.setCols = function (Node) {
+  if (!Node) return utils.regError('Non-existent Node', "Don't exists the Node for processing.");
   const _this = this;
   const params = this.getParameters(Node);
   if (!params.hasOwnProperty('cols')) return utils.regError('Parameter Missing', "Don't exists 'cols' determined");
@@ -393,12 +410,13 @@ lProto.setMars = function (Node) {
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
  */
 lProto.setFlex = function (Node) {
+  if (!Node) return utils.regError('Non-existent Node', "Don't exists the Node for processing.");
   const params = this.getParameters(Node);
   if (!params.hasOwnProperty('flex')) return utils.regError('Parameter Missing', "Don't exists 'flex' determinated.");
   let bpNameS, bpCals = {};
 
   // Getting numbers
-  let selectorName, paramPrepared, flexSplited,  propVal;
+  let selectorName, paramPrepared, flexSplited,  propVal, nameProp, valProp;
   params.flex.forEach(function (param) {
     selectorName = param;
 
@@ -407,7 +425,17 @@ lProto.setFlex = function (Node) {
     param = paramPrepared.numbers;
 
     flexSplited = param.split(':');
-    propVal = utils.flexpv[flexSplited[0]] + ':' + utils.flexpv[flexSplited[1]]
+    nameProp = flexSplited[0];
+    if (utils.flexpv.hasOwnProperty(nameProp)) {
+      valProp = flexSplited[1];
+      if (utils.flexpv.hasOwnProperty(valProp)) {
+        propVal = utils.flexpv[nameProp] + ':' + utils.flexpv[flexSplited[1]]
+      } else {
+        return utils.regError('Non-existent Alias', "Don't exists the alias '" + valProp + "' in Flex vault.");
+      }
+    } else {
+      return utils.regError('Non-existent Alias', "Don't exists the alias '" + nameProp + "' in Flex vault.");
+    }
 
     if (bpCals.hasOwnProperty(bpNameS)) {
       if (selectorName.indexOf('@') !== 1) selectorName = selectorName.split('@')[0];
@@ -438,6 +466,7 @@ lProto.setFlex = function (Node) {
  * @param {Object} Nodo Nodo vivo del DOM a asignarle el CSS
  */
 lProto.build = function (Node) {
+  if (!Node) return utils.regError('Non-existent Node', "Don't exists the Node for processing.");
   const params = this.getParameters(Node);
   const proNames = Object.keys(params);
   const _this = this;

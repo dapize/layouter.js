@@ -128,7 +128,7 @@ y pues, estos estilos:
 ```
 > **OJO**: Estas clases estarán disponibles para todos los elementos que necesiten de ellas, son generales.
 
-> Para evitar estar manipulando el DOM en cada clase nueva que se creé, el sistema determina un solo vault de estilos, creando un nodo 'style' con el ID 'scope-layouter', éste estará bacio, solo servirá como puente para la inserción de los estilos de forma interna hacia el navegador mismo.
+> Para evitar estar manipulando el DOM en cada clase nueva que se creé, el sistema determina un solo vault de estilos, creando un nodo 'style' con el ID 'layouter', éste estará bacio, solo servirá como puente para la inserción de los estilos de forma interna hacia el navegador mismo.
 
 ##### Ejemplo 2: Con breakpoint min-width y max-width
 Tenemos un DIV que aparte de tener 13 columnas de 15 en mobile (el breakpoint 'xs') queremos designarle 20 columnas de 27 desde tablet hasta desktop (desde 'sm' hasta 'md') y apartir de 'lg', osea monitores más grandes, que continue con las 13 columnas de 15 que se le puso en mobile. Entonces...
@@ -189,7 +189,7 @@ Es una abreviación del shorthan 'margin' y sirve para determinar los margenes s
 ```html
 <div mar="20-2/15 40-3/31-20@sm 60-2/31@md">...</div>
 ```
-> Usa la misma sintaxis del margin combencional, osea: margin-top, margin-right, margin-bottom, margin-left.
+> Usa la misma sintaxis del margin combencional, osea: margin-top, margin-right, margin-bottom, margin-left. Pero solo para el margin left y right se puede declarar 'auto', mini Ejemplo: mar="20-auto"
 
 Solo los margenes superiores e inferiores son procesados como pixeles, los derechos e izquierdos son procesados porcentualmente.
 
@@ -275,7 +275,7 @@ Este es el parametro más interesante, porque es el que determina el 'display' d
 #### Equivalencias de abreviaciones:
 - jc: justify-content
 - ai: align-items
-- c: center
+- ce: center
 - fs: flex-start
 - fe: flex-end
 - sb: space-between
@@ -288,7 +288,7 @@ Este es el parametro más interesante, porque es el que determina el 'display' d
 - r: row
 - rr: row-reverse
 - co: column
-- cr: column-reverse
+- cor: column-reverse
 
 #### Ejemplo:
 ```html
