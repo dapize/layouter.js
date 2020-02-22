@@ -240,7 +240,7 @@
   padsAndMargs: function (Node, type, instance) {
     const params = instance.getParameters(Node);
     const _this = this;
-    if (!params.hasOwnProperty(type)) return console.log("Don't exists " + type + "dings determined");
+    if (!params.hasOwnProperty(type)) return utils.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
 
     const bpCals = {};
     let paramProcessed, numbersPures, propValue, bps;
@@ -265,7 +265,6 @@
           value: propValue
         };
       }
-      
     });
 
     // Creating, inserting, and adding classNames of rules in Node.
@@ -288,7 +287,7 @@
  */
 function Layouter (config) {
   // validation
-  if (!config.hasOwnProperty('breakPoints')) return console.log('¡configuration missing!');
+  if (!config.hasOwnProperty('breakPoints')) return utils.regError('Configuration Missing', '¡configuration missing! :V');
 
   // configs
   this.prefix = config.prefix ? config.prefix + '-' : ''
@@ -302,6 +301,8 @@ function Layouter (config) {
   this.styles = {};
 };
 const lProto = Layouter.prototype;
+
+Layouter.version = '1.0Beta';
 
 /**
  * Obtiene los parametros disponibles para procesar
@@ -327,7 +328,7 @@ lProto.getParameters = function (Node) {
 lProto.setCols = function (Node) {
   const _this = this;
   const params = this.getParameters(Node);
-  if (!params.hasOwnProperty('cols')) return console.log("Don't exists columns determined");
+  if (!params.hasOwnProperty('cols')) return utils.regError('Parameter Missing', "Don't exists 'cols' determined");
   let cols, bp, bpCals = {};
 
   // Getting numbers
@@ -393,7 +394,7 @@ lProto.setMars = function (Node) {
  */
 lProto.setFlex = function (Node) {
   const params = this.getParameters(Node);
-  if (!params.hasOwnProperty('flex')) return console.log("Don't exists flex determinated.");
+  if (!params.hasOwnProperty('flex')) return utils.regError('Parameter Missing', "Don't exists 'flex' determinated.");
   let bpNameS, bpCals = {};
 
   // Getting numbers
@@ -445,9 +446,9 @@ lProto.build = function (Node) {
       _this[utils.processors[processorName].method](Node);
     });
   } else {
-    console.log("don't exists any parameter for processor")
+    utils.regError('Parameter Missing', "don't exists any parameter to process")
   }
-}
+};
       
         // Export Layouter
         if (typeof module === "object" && module.exports) {

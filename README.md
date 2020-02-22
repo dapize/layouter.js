@@ -420,6 +420,7 @@ Para fines varios, se tiene acceso a los siguientes getters:
 - sizes: Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades los pixeles de ancho designados para esos breakpoints.
 - cols: Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades el número de columnas designadas para esos breakpoints.
 - styles: Este getter es interesante, porque devuelve un objeto con todos los estilos creados de forma general.
+- version: Devuelve la versión actual de la librería, este es un getter estático, así que no necesita una instancia para funcionar.
 
 > Tomando en cuenta el último ejemplo dado, los getters nos devolverán lo siguiente:
 
@@ -442,6 +443,7 @@ layout.styles: {
   "pad-40-3\\/31@sm": "@media screen and (min-width: 768px){.pad-40-3\\/31\\@sm{padding:40px 9.67741935483871%}}"
   "pad-60-2\\/31@md": "@media screen and (min-width: 1024px){.pad-60-2\\/31\\@md{padding:60px 6.451612903225806%}}"
 }
+Layouter.version: "1.0Beta"
 ```
 
 [&uarr; Volver Arriba](#layouter-js)

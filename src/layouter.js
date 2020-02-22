@@ -239,8 +239,6 @@ const utils = {
     const params = instance.getParameters(Node);
     const _this = this;
     if (!params.hasOwnProperty(type)) return utils.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
-    margins
-    paddings
 
     const bpCals = {};
     let paramProcessed, numbersPures, propValue, bps;
@@ -301,6 +299,8 @@ function Layouter (config) {
   this.styles = {};
 };
 const lProto = Layouter.prototype;
+
+Layouter.version = '1.0Beta';
 
 /**
  * Obtiene los parametros disponibles para procesar
