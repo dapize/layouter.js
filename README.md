@@ -1,12 +1,12 @@
 # Layouter JS
-Es un pequeño script que creará estilos al vuelo para un elemento dependiendo el valor del atributo que tenga.
+Es un pequeño script que creará estilos al vuelo grácias a ciertos atributos determinados en un elemento. Los atributos disponibles son: [Cols](#cols), [Pad](#pad), [Mar](#mar) y [Flex](#flex)
 
-Los atributos disponibles para determinar estilos son: **cols, pad, mar y flex**
+Más abajo los detallaremos.
 
-Normalmente hoy en día, se maqueta con una base de columnas designadas a un breakpoint (aunque aveces estos breakpoints pueden compartir el número de columnas).
+Normalmente hoy en día, se maqueta con una base de columnas designadas a un breakpoint. Este sistema aprovecha esa designación para dar estilos al vuelo (o como se dice en los llunaites: 'on the fly' XD)
 
 ## Inicialización
-Empezamos creando una instancia del constructor 'Layouter' con toda la configuración que necesitemos, ahi podemos incluir los breakpoints, en este caso necesitaré 4 breakpoints.
+Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi podemos incluir los breakpoints que necesitemos, en este caso necesitaré 4 breakpoints.
 
 ```javascript
 const layout = new Layouter({
@@ -180,6 +180,8 @@ Pero se obvia el número de columnas de donde se sacarán las columnas designada
 
 Este método de columnas explicitas solo es para ahorrarnos un poco de tiempo al designar las columnas que queremos en el atributo 'cols'. Sin embargo podría ser provechoso determinar así por si en algún momento las columnas designadas para un breakpoint en específico cambian, digamos que en el breakpoint 'sm' (tablet), yá no son 31 columnas sino 32, pues designación de columna explicitas nos ahorraríamos tener que cambiar en cada elemento donde determinamos cols="20/31@sm"
 
+[&uarr; Volver Arriba](#layouter-js)
+
 ### Mar
 Es una abreviación del shorthan 'margin' y sirve para determinar los margenes superiores, derechos, inferiores e izquierdos de un elemento.
 #### Ejemplo:
@@ -227,6 +229,8 @@ Y como estilos tendríamos disponible una clase llamada 'cols-13-15' la cual nos
 ```
 > Aquí aplica lo mismo de 'cols', con los breakpoints compuestos, (desde / hasta)
 
+[&uarr; Volver Arriba](#layouter-js)
+
 ### Pad
 Sirve para determinar los paddings que se le dará. Al igual que al atributo 'mar', solo el padding top y bottom se tomarán como pixeles y el left y right como porcentual.
 
@@ -263,6 +267,7 @@ Y pues, estos estilos:
   }
 }
 ```
+[&uarr; Volver Arriba](#layouter-js)
 
 ### Flex
 Este es el parametro más interesante, porque es el que determina el 'display' del elemento y la determinación del valor del atributo 'flex' se separa entre dos puntos, y no convencionalmente con guión como se hace en 'cols', 'mar' y 'pad'.
@@ -323,6 +328,8 @@ Y pues, estos estilos:
   }
 }
 ```
+
+[&uarr; Volver Arriba](#layouter-js)
 
 ## Finalmente
 Imaginemos que tenemos un DIV en donde hemos designado darle columnas, margenes, paddins y flex todo de un tiron:
@@ -405,6 +412,8 @@ Con los siguientes estilos
 }
 ```
 
+[&uarr; Volver Arriba](#layouter-js)
+
 ## Getters
 Para fines varios, se tiene acceso a los siguientes getters:
 - breakPoints: Devuelve un array con los breakpoints definidos en la configuración.
@@ -434,6 +443,9 @@ layout.styles: {
   "pad-60-2\\/31@md": "@media screen and (min-width: 1024px){.pad-60-2\\/31\\@md{padding:60px 6.451612903225806%}}"
 }
 ```
+
+[&uarr; Volver Arriba](#layouter-js)
+
 ## Método extra
 - ### getParameters
 Tambien es posible obtener los parametros definidos en un elemento, digamos, tenemos un DIV, y queremos saber si tiene cols, mar, flex o los que tengan, pues tiramos del método, 'getParameters'
