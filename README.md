@@ -464,6 +464,10 @@ layout.getParameters(myDiv);
 }
 ```
 
+## Cosas que agregaré más adelante
+- Sistema de Log
+- Guardado en localStorage de configuraciones parametrales y clases creadas.
+
 Por el momento eso es todo lo que trae, más adelante le agregaré más cosas que se me ocurran o que me sugieran.
 
 > Nota: Disculpen si hay alguna falta ortográfica en este documento, no soy muy bueno con las palabras, pero si con los números XD.
