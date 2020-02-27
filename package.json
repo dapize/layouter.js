@@ -21,9 +21,11 @@
   "homepage": "https://github.com/dapize/layouter#readme",
   "devDependencies": {
     "browser-sync": "^2.26.7",
+    "foodoc": "0.0.9",
     "gulp": "^4.0.2",
+    "gulp-jsdoc3": "^2.0.0",
+    "gulp-rename": "^2.0.0",
     "jest": "^25.1.0",
-    "jsdoc": "^3.6.3",
     "terser": "^4.6.3"
   }
 }

@@ -1,7 +1,9 @@
-const {watch} = require('gulp');
+const { src, watch } = require('gulp');
 const browserSync = require('browser-sync').create();
 const fs = require('fs');
 const Terser = require('terser');
+const jsdoc = require('gulp-jsdoc3');
+const rename = require('gulp-rename');
 
 // Static server
 const serve = function () {
@@ -58,6 +60,25 @@ const build = function (deploy) {
   });
 };
 
+const doc = () => {
+  return src([
+    './src/utils.js',
+    './src/constructor.js',
+    './src/methods.js'
+    ])
+    .pipe(jsdoc({
+      "opts": {
+        "destination": "./docs",
+        "template": "./node_modules/foodoc/template"
+      },
+      "source": {
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_",
+        "include": ["./README.md"]
+      }
+    }))
+};
+
 const deploy = function () {
   return build(true);
 };
@@ -65,3 +86,4 @@ const deploy = function () {
 exports.build = build;
 exports.serve = serve;
 exports.deploy = deploy;
+exports.doc = doc;
