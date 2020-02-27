@@ -2,7 +2,6 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font-display: block
 }
 
 html {
@@ -187,11 +186,13 @@ button:hover {
   display: none;
   position: absolute;
   top: 0;
-  left: 0;
   width: 100vw;
   height: 100vh;
   opacity: 0.05;
   pointer-events: none;
+  max-width: 1272px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .grid {
