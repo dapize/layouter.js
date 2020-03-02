@@ -1,9 +1,10 @@
 /**
  * Obtiene los parametros disponibles para procesar
+ * @memberof Layouter
  * @param {Object} Nodo Nodo de donde obtener los parametros.
  * @returns {Object}
  */
-lytProto.getParameters = function (Node) {
+Layouter.prototype.getParameters = function (Node) {
   const params = {};
   const attrs = Node.attributes;
   const paramNames = Object.keys(uLayouter.processors);
@@ -17,9 +18,10 @@ lytProto.getParameters = function (Node) {
 
 /**
  * Asigna los estilos necesarios a un nodo referentes a las columnas determinadas
+ * @memberof Layouter
  * @param {Object} Node Nodo a donde asignar los estilos
  */
-lytProto.setCols = function (Node) {
+Layouter.prototype.setCols = function (Node) {
   if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
   const _this = this;
   const params = this.getParameters(Node);
@@ -69,25 +71,28 @@ lytProto.setCols = function (Node) {
 
 /**
  * Setea los paddings necesarios para un Nodo.
- * @param {String} Node Nodo vivo del DOM a asignarle el CSS
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
  */
-lytProto.setPads = function (Node) {
+Layouter.prototype.setPads = function (Node) {
   uLayouter.padsAndMargs(Node, 'pad', this);
 };
 
 /**
  * Setea los margins necesarios para un Nodo.
- * @param {String} Node Nodo vivo del DOM a asignarle el CSS
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
  */
-lytProto.setMars = function (Node) {
+Layouter.prototype.setMars = function (Node) {
   uLayouter.padsAndMargs(Node, 'mar', this);
 };
 
 /**
  * Setea la propiedad Flex y las reglas designadas
+ * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
  */
-lytProto.setFlex = function (Node) {
+Layouter.prototype.setFlex = function (Node) {
   if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
   const params = this.getParameters(Node);
   if (!params.hasOwnProperty('flex')) return uLayouter.regError('Parameter Missing', "Don't exists 'flex' determinated.");
@@ -141,9 +146,10 @@ lytProto.setFlex = function (Node) {
 
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible
- * @param {Object} Nodo Nodo vivo del DOM a asignarle el CSS
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
  */
-lytProto.build = function (Node) {
+Layouter.prototype.build = function (Node) {
   if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
   const params = this.getParameters(Node);
   const proNames = Object.keys(params);

@@ -1,12 +1,15 @@
 /**
- * Utilidades generales
- * @class
- * @name uLayouter
+ * Utilidades varias
+ * @namespace uLayouter
+ * @property {Object} processors Lista de procesadores disponibles, junto a su método y regla css
+ * @property {Object} flexpv Equivalencias de las propiedades y valores de flexbox.
+ * @property {Object} replaceList Lista de caracteres a reemplazar para el nombre de las clases
  */
 const uLayouter = {
+
   /**
    * Obtiene el width y las columnas de los breakpoints.
-   * @name uLayouter#getNums
+   * @memberof uLayouter
    * @param {Object} objBps Objeto de los breakPoints
    * @param {String} propName Nombre de la propiedad
    */
@@ -20,6 +23,7 @@ const uLayouter = {
 
   /**
    * Determina si el parametro tiene o no un breakpoint designado
+   * @memberof uLayouter
    * @param {String} param Parametro
    */
   haveBreakPoint: function (param) {
@@ -28,6 +32,7 @@ const uLayouter = {
 
   /**
    * Prepara el parametro de un método especificado. (EJM: cols, pad, etc)
+   * @memberof uLayouter
    * @param {String} param Parametro de configuración sobre el método.
    */
   prepareParam: function (param) {
@@ -49,6 +54,7 @@ const uLayouter = {
 
   /**
    * Convierte un string a un número
+   * @memberof uLayouter
    * @param {String} n El string que se vá a convertir a número
    * @returns {Number}
    */
@@ -57,7 +63,8 @@ const uLayouter = {
   },
 
   /**
-   * Calcula el porcentaje de un número :V
+   * Calcula el porcentaje de un número
+   * @memberof uLayouter
    * @param {Number} n1 Numero de donde se sacará el porcentaje
    * @param {Number} n2 Número de valor máximo
    */
@@ -66,22 +73,23 @@ const uLayouter = {
   },
 
   /**
-   * Procesa un número, si es porcentual, lo calcula, sino, lo devuelve tal cual
+   * Procesa un número, si es porcentual lo calcula, sino lo devuelve tal cual, al igual que cuando se recibe 'auto'.
+   * @memberof uLayouter
    * @param {String} n Número a procesar
+   * @returns {String}
    */
   processedNumber: function (n) {
-    let nProcessed;
+    let nProcessed = (n === 'auto') ? 'auto' : n + 'px';
     if (n.indexOf('/') !== -1) {
       nProcessed = n.split('/');
       nProcessed = this.calPercentage(this.stringToNumber(nProcessed[0]), this.stringToNumber(nProcessed[1]))
-    } else {
-      nProcessed = n === 'auto' ? 'auto' : n + 'px';
-    }
+    };
     return nProcessed;
   },
 
   /**
    * Utilidad para retornar errores.
+   * @memberof uLayouter
    * @param {String} name Título del Error
    * @param {String} message Descripción del error
    */
@@ -139,6 +147,7 @@ const uLayouter = {
   
   /**
    * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
+   * @memberof uLayouter
    * @param {String} type Tipo de estilos a dar: 'cols', 'pad', 'mar' o 'flex'
    * @param {Object} bps Objeto de breakpoints registrados
    * @param {Object} instance La instancia creada, el objeto mismo.
@@ -187,6 +196,7 @@ const uLayouter = {
 
   /**
    * Crea el scope de la hoja de estilos que se usará para designar los estilos que se crean al vuelo.
+   * @memberof uLayouter
    */
   createScopeStyles: function () {
     const stylesScope = document.createElement('style');
@@ -198,6 +208,7 @@ const uLayouter = {
 
   /**
    * Agrega las reglas CSS para darle estilos a los nodos
+   * @memberof uLayouter
    * @param {Array} rules Lista de reglas CSS a agregar
    */
   insertRules: function (objStyles, instance) {
@@ -225,10 +236,11 @@ const uLayouter = {
 
   /**
    * Asignador de nombre de clases a un nodo.
+   * @memberof uLayouter
    * @param {Object} Node Nodo a donde agregar las clases
    * @param {Array} classesNames Lista de nombres de las clases
    */
-  adClasses: function (classesNames, Node) {
+  addClasses: function (classesNames, Node) {
     const _this = this
     classesNames.forEach(function (name) {
       _this.replaceList.forEach(function (reItem) {
@@ -240,6 +252,7 @@ const uLayouter = {
 
   /**
    * Crea e inserta los estilos calculandolos, y tambien adiciona las clases respectivas al nodo
+   * @memberof uLayouter
    * @param {Object} data Lista de data para el procesamiento del CSS
    */
   settingCss: function (data) {
@@ -250,11 +263,15 @@ const uLayouter = {
     this.insertRules(objStyles, data.instance);
   
     // Adding classes
-    this.adClasses(Object.keys(objStyles), data.node)
+    this.addClasses(Object.keys(objStyles), data.node)
   },
   
   /**
    * Setea los paddings y margenes
+   * @memberof uLayouter
+   * @param {Object} Node Nodo Element HTML
+   * @param {String} type Nombre del tipo de atributo a obtener. cols, pad, mar y flex.
+   * @param {Object} instance Instancia actual del Layouter
    */
   padsAndMargs: function (Node, type, instance) {
     if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");

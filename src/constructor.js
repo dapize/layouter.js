@@ -1,6 +1,7 @@
 /**
  * Construtor maestro del sistema.
  * @constructor
+ * @property {String} version Muestra la versión actual del sistema
  * @param {Object} config Objecto contenedor de las configuraciones.
  */
 function Layouter (config) {
@@ -18,6 +19,5 @@ function Layouter (config) {
   this.scope = uLayouter.createScopeStyles();
   this.styles = {};
 };
-const lytProto = Layouter.prototype;
 
 Layouter.version = '1.0.1Beta';

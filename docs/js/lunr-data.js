@@ -59,11 +59,109 @@ window.lunrData = {
           "list",
           "list:class"
         ],
-        "uLayouter.html": [
+        "list_namespace.html": [
+          "document",
+          "list",
+          "list:namespac",
+          "namespac"
+        ],
+        "Layouter.html": [
           "class",
-          "general",
+          "construtor",
+          "del",
+          "layout",
+          "maestro",
+          "sistema"
+        ],
+        "Layouter.html#getParameters": [
+          "dispon",
+          "function",
+          "getparamet",
+          "layouter#getparamet",
+          "lo",
+          "nodo",
+          "object",
+          "obtien",
+          "para",
+          "parametro",
+          "procesar"
+        ],
+        "Layouter.html#setCols": [
+          "asigna",
+          "columna",
+          "determinada",
+          "estilo",
+          "function",
+          "la",
+          "layouter#setcol",
+          "lo",
+          "necesario",
+          "node",
+          "nodo",
+          "referent",
+          "setcol",
+          "un"
+        ],
+        "Layouter.html#setPads": [
+          "function",
+          "layouter#setpad",
+          "lo",
+          "necesario",
+          "node",
+          "nodo",
+          "pad",
+          "para",
+          "setea",
+          "setpad",
+          "un"
+        ],
+        "Layouter.html#setMars": [
+          "function",
+          "layouter#setmar",
+          "lo",
+          "margin",
+          "necesario",
+          "node",
+          "nodo",
+          "para",
+          "setea",
+          "setmar",
+          "un"
+        ],
+        "Layouter.html#setFlex": [
+          "designada",
+          "flex",
+          "function",
+          "la",
+          "layouter#setflex",
+          "node",
+          "propiedad",
+          "regla",
+          "setea",
+          "setflex",
+          "y"
+        ],
+        "Layouter.html#build": [
+          "atributo",
+          "build",
+          "de",
+          "dispon",
+          "function",
+          "layouter#build",
+          "lo",
+          "node",
+          "procesa",
+          "procesamiento",
+          "que",
+          "se",
+          "tenga",
+          "todo"
+        ],
+        "uLayouter.html": [
+          "namespac",
           "ulayout",
-          "utilidad"
+          "utilidad",
+          "varia"
         ],
         "uLayouter.html#.processors": [
           "css",
@@ -109,17 +207,20 @@ window.lunrData = {
           "replacelist",
           "ulayouter.replacelist"
         ],
-        "uLayouter.html#getNums": [
+        "uLayouter.html#.getNums": [
           "breakpoint",
           "columna",
           "de",
           "el",
+          "function",
           "getnum",
           "la",
           "lo",
-          "member",
+          "lt;static&gt",
+          "objbp",
           "obtien",
-          "ulayouter#getnum",
+          "propnam",
+          "ulayouter.getnum",
           "width",
           "y"
         ],
@@ -181,15 +282,18 @@ window.lunrData = {
           "número",
           "porcentaj",
           "ulayouter.calpercentag",
-          "un",
-          "v"
+          "un"
         ],
         "uLayouter.html#.processedNumber": [
+          "al",
+          "auto",
           "calcula",
           "cual",
+          "cuando",
           "devuelv",
           "es",
           "function",
+          "igual",
           "lo",
           "lt;static&gt",
           "n",
@@ -197,8 +301,12 @@ window.lunrData = {
           "porcentu",
           "procesa",
           "processednumb",
+          "que",
+          "recib",
+          "se",
           "si",
           "sino",
+          "string",
           "tal",
           "ulayouter.processednumb",
           "un"
@@ -272,8 +380,8 @@ window.lunrData = {
           "rule",
           "ulayouter.insertrul"
         ],
-        "uLayouter.html#.adClasses": [
-          "adclass",
+        "uLayouter.html#.addClasses": [
+          "addclass",
           "asignador",
           "clase",
           "classesnam",
@@ -283,7 +391,7 @@ window.lunrData = {
           "node",
           "nodo",
           "nombr",
-          "ulayouter.adclass",
+          "ulayouter.addclass",
           "un"
         ],
         "uLayouter.html#.settingCss": [
@@ -309,25 +417,20 @@ window.lunrData = {
         ],
         "uLayouter.html#.padsAndMargs": [
           "function",
+          "instanc",
           "lo",
           "lt;static&gt",
           "margen",
+          "node",
           "pad",
           "padsandmarg",
           "setea",
+          "type",
           "ulayouter.padsandmarg",
           "y"
-        ],
-        "Layouter.html": [
-          "class",
-          "construtor",
-          "del",
-          "layout",
-          "maestro",
-          "sistema"
         ]
       },
-      "length": 21
+      "length": 28
     },
     "tokenStore": {
       "root": {
@@ -377,6 +480,23 @@ window.lunrData = {
               }
             }
           },
+          "u": {
+            "docs": {},
+            "i": {
+              "docs": {},
+              "l": {
+                "docs": {},
+                "d": {
+                  "docs": {
+                    "Layouter.html#build": {
+                      "ref": "Layouter.html#build",
+                      "tf": 700
+                    }
+                  }
+                }
+              }
+            }
+          },
           "r": {
             "docs": {},
             "e": {
@@ -395,8 +515,8 @@ window.lunrData = {
                           "docs": {},
                           "t": {
                             "docs": {
-                              "uLayouter.html#getNums": {
-                                "ref": "uLayouter.html#getNums",
+                              "uLayouter.html#.getNums": {
+                                "ref": "uLayouter.html#.getNums",
                                 "tf": 5.555555555555555
                               },
                               "uLayouter.html#.haveBreakPoint": {
@@ -448,40 +568,6 @@ window.lunrData = {
               }
             }
           },
-          "l": {
-            "docs": {},
-            "e": {
-              "docs": {},
-              "x": {
-                "docs": {},
-                "b": {
-                  "docs": {},
-                  "o": {
-                    "docs": {},
-                    "x": {
-                      "docs": {
-                        "uLayouter.html#.flexpv": {
-                          "ref": "uLayouter.html#.flexpv",
-                          "tf": 6.25
-                        }
-                      }
-                    }
-                  }
-                },
-                "p": {
-                  "docs": {},
-                  "v": {
-                    "docs": {
-                      "uLayouter.html#.flexpv": {
-                        "ref": "uLayouter.html#.flexpv",
-                        "tf": 700
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
           "u": {
             "docs": {},
             "n": {
@@ -496,6 +582,34 @@ window.lunrData = {
                       "docs": {},
                       "n": {
                         "docs": {
+                          "Layouter.html#getParameters": {
+                            "ref": "Layouter.html#getParameters",
+                            "tf": 110
+                          },
+                          "Layouter.html#setCols": {
+                            "ref": "Layouter.html#setCols",
+                            "tf": 110
+                          },
+                          "Layouter.html#setPads": {
+                            "ref": "Layouter.html#setPads",
+                            "tf": 110
+                          },
+                          "Layouter.html#setMars": {
+                            "ref": "Layouter.html#setMars",
+                            "tf": 110
+                          },
+                          "Layouter.html#setFlex": {
+                            "ref": "Layouter.html#setFlex",
+                            "tf": 110
+                          },
+                          "Layouter.html#build": {
+                            "ref": "Layouter.html#build",
+                            "tf": 110
+                          },
+                          "uLayouter.html#.getNums": {
+                            "ref": "uLayouter.html#.getNums",
+                            "tf": 110
+                          },
                           "uLayouter.html#.haveBreakPoint": {
                             "ref": "uLayouter.html#.haveBreakPoint",
                             "tf": 110
@@ -532,8 +646,8 @@ window.lunrData = {
                             "ref": "uLayouter.html#.insertRules",
                             "tf": 110
                           },
-                          "uLayouter.html#.adClasses": {
-                            "ref": "uLayouter.html#.adClasses",
+                          "uLayouter.html#.addClasses": {
+                            "ref": "uLayouter.html#.addClasses",
                             "tf": 110
                           },
                           "uLayouter.html#.settingCss": {
@@ -545,6 +659,45 @@ window.lunrData = {
                             "tf": 110
                           }
                         }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "l": {
+            "docs": {},
+            "e": {
+              "docs": {},
+              "x": {
+                "docs": {
+                  "Layouter.html#setFlex": {
+                    "ref": "Layouter.html#setFlex",
+                    "tf": 6.25
+                  }
+                },
+                "b": {
+                  "docs": {},
+                  "o": {
+                    "docs": {},
+                    "x": {
+                      "docs": {
+                        "uLayouter.html#.flexpv": {
+                          "ref": "uLayouter.html#.flexpv",
+                          "tf": 6.25
+                        }
+                      }
+                    }
+                  }
+                },
+                "p": {
+                  "docs": {},
+                  "v": {
+                    "docs": {
+                      "uLayouter.html#.flexpv": {
+                        "ref": "uLayouter.html#.flexpv",
+                        "tf": 700
                       }
                     }
                   }
@@ -671,6 +824,10 @@ window.lunrData = {
                         "uLayouter.html#.createStyles": {
                           "ref": "uLayouter.html#.createStyles",
                           "tf": 20
+                        },
+                        "uLayouter.html#.padsAndMargs": {
+                          "ref": "uLayouter.html#.padsAndMargs",
+                          "tf": 20
                         }
                       }
                     }
@@ -704,6 +861,23 @@ window.lunrData = {
                           "tf": 3.571428571428571
                         }
                       }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "g": {
+            "docs": {},
+            "u": {
+              "docs": {},
+              "a": {
+                "docs": {},
+                "l": {
+                  "docs": {
+                    "uLayouter.html#.processedNumber": {
+                      "ref": "uLayouter.html#.processedNumber",
+                      "tf": 2.5
                     }
                   }
                 }
@@ -769,12 +943,39 @@ window.lunrData = {
                 }
               }
             },
+            "f": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "r": {
+                  "docs": {},
+                  "e": {
+                    "docs": {},
+                    "n": {
+                      "docs": {},
+                      "t": {
+                        "docs": {
+                          "Layouter.html#setCols": {
+                            "ref": "Layouter.html#setCols",
+                            "tf": 5
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
             "g": {
               "docs": {},
               "l": {
                 "docs": {},
                 "a": {
                   "docs": {
+                    "Layouter.html#setFlex": {
+                      "ref": "Layouter.html#setFlex",
+                      "tf": 6.25
+                    },
                     "uLayouter.html#.processors": {
                       "ref": "uLayouter.html#.processors",
                       "tf": 5
@@ -863,6 +1064,20 @@ window.lunrData = {
                           }
                         }
                       }
+                    }
+                  }
+                }
+              }
+            },
+            "c": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "b": {
+                  "docs": {
+                    "uLayouter.html#.processedNumber": {
+                      "ref": "uLayouter.html#.processedNumber",
+                      "tf": 2.5
                     }
                   }
                 }
@@ -959,6 +1174,34 @@ window.lunrData = {
                   }
                 }
               }
+            },
+            "n": {
+              "docs": {},
+              "g": {
+                "docs": {},
+                "a": {
+                  "docs": {
+                    "Layouter.html#build": {
+                      "ref": "Layouter.html#build",
+                      "tf": 5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "o": {
+            "docs": {},
+            "d": {
+              "docs": {},
+              "o": {
+                "docs": {
+                  "Layouter.html#build": {
+                    "ref": "Layouter.html#build",
+                    "tf": 5
+                  }
+                }
+              }
             }
           },
           "i": {
@@ -981,7 +1224,7 @@ window.lunrData = {
               "docs": {
                 "uLayouter.html#.processedNumber": {
                   "ref": "uLayouter.html#.processedNumber",
-                  "tf": 3.8461538461538463
+                  "tf": 2.5
                 }
               }
             },
@@ -1015,6 +1258,10 @@ window.lunrData = {
                   "uLayouter.html#.createStyles": {
                     "ref": "uLayouter.html#.createStyles",
                     "tf": 20
+                  },
+                  "uLayouter.html#.padsAndMargs": {
+                    "ref": "uLayouter.html#.padsAndMargs",
+                    "tf": 20
                   }
                 }
               }
@@ -1044,6 +1291,10 @@ window.lunrData = {
                           "list_class.html": {
                             "ref": "list_class.html",
                             "tf": 35
+                          },
+                          "list_namespace.html": {
+                            "ref": "list_namespace.html",
+                            "tf": 35
                           }
                         }
                       }
@@ -1055,6 +1306,10 @@ window.lunrData = {
           },
           "e": {
             "docs": {
+              "Layouter.html#build": {
+                "ref": "Layouter.html#build",
+                "tf": 5
+              },
               "uLayouter.html#.processors": {
                 "ref": "uLayouter.html#.processors",
                 "tf": 5
@@ -1067,8 +1322,8 @@ window.lunrData = {
                 "ref": "uLayouter.html#.replaceList",
                 "tf": 10
               },
-              "uLayouter.html#getNums": {
-                "ref": "uLayouter.html#getNums",
+              "uLayouter.html#.getNums": {
+                "ref": "uLayouter.html#.getNums",
                 "tf": 5.555555555555555
               },
               "uLayouter.html#.prepareParam": {
@@ -1077,7 +1332,7 @@ window.lunrData = {
               },
               "uLayouter.html#.calPercentage": {
                 "ref": "uLayouter.html#.calPercentage",
-                "tf": 7.142857142857142
+                "tf": 8.333333333333332
               },
               "uLayouter.html#.createStyles": {
                 "ref": "uLayouter.html#.createStyles",
@@ -1087,9 +1342,54 @@ window.lunrData = {
                 "ref": "uLayouter.html#.createScopeStyles",
                 "tf": 5
               },
-              "uLayouter.html#.adClasses": {
-                "ref": "uLayouter.html#.adClasses",
+              "uLayouter.html#.addClasses": {
+                "ref": "uLayouter.html#.addClasses",
                 "tf": 14.285714285714285
+              }
+            },
+            "l": {
+              "docs": {
+                "Layouter.html": {
+                  "ref": "Layouter.html",
+                  "tf": 12.5
+                }
+              }
+            },
+            "t": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "r": {
+                  "docs": {},
+                  "m": {
+                    "docs": {},
+                    "i": {
+                      "docs": {},
+                      "n": {
+                        "docs": {},
+                        "a": {
+                          "docs": {
+                            "uLayouter.html#.haveBreakPoint": {
+                              "ref": "uLayouter.html#.haveBreakPoint",
+                              "tf": 5.555555555555555
+                            }
+                          },
+                          "d": {
+                            "docs": {},
+                            "a": {
+                              "docs": {
+                                "Layouter.html#setCols": {
+                                  "ref": "Layouter.html#setCols",
+                                  "tf": 5
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             },
             "s": {
@@ -1104,6 +1404,14 @@ window.lunrData = {
                       "docs": {},
                       "d": {
                         "docs": {},
+                        "a": {
+                          "docs": {
+                            "Layouter.html#setFlex": {
+                              "ref": "Layouter.html#setFlex",
+                              "tf": 6.25
+                            }
+                          }
+                        },
                         "o": {
                           "docs": {
                             "uLayouter.html#.haveBreakPoint": {
@@ -1126,32 +1434,6 @@ window.lunrData = {
                 }
               }
             },
-            "t": {
-              "docs": {},
-              "e": {
-                "docs": {},
-                "r": {
-                  "docs": {},
-                  "m": {
-                    "docs": {},
-                    "i": {
-                      "docs": {},
-                      "n": {
-                        "docs": {},
-                        "a": {
-                          "docs": {
-                            "uLayouter.html#.haveBreakPoint": {
-                              "ref": "uLayouter.html#.haveBreakPoint",
-                              "tf": 5.555555555555555
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
             "v": {
               "docs": {},
               "u": {
@@ -1164,19 +1446,11 @@ window.lunrData = {
                       "docs": {
                         "uLayouter.html#.processedNumber": {
                           "ref": "uLayouter.html#.processedNumber",
-                          "tf": 3.8461538461538463
+                          "tf": 2.5
                         }
                       }
                     }
                   }
-                }
-              }
-            },
-            "l": {
-              "docs": {
-                "Layouter.html": {
-                  "ref": "Layouter.html",
-                  "tf": 12.5
                 }
               }
             }
@@ -1191,6 +1465,14 @@ window.lunrData = {
                   "docs": {},
                   "n": {
                     "docs": {
+                      "Layouter.html#getParameters": {
+                        "ref": "Layouter.html#getParameters",
+                        "tf": 8.333333333333332
+                      },
+                      "Layouter.html#build": {
+                        "ref": "Layouter.html#build",
+                        "tf": 5
+                      },
                       "uLayouter.html#.processors": {
                         "ref": "uLayouter.html#.processors",
                         "tf": 5
@@ -1251,37 +1533,43 @@ window.lunrData = {
           },
           "e": {
             "docs": {},
-            "n": {
+            "t": {
               "docs": {},
-              "e": {
+              "p": {
                 "docs": {},
-                "r": {
+                "a": {
                   "docs": {},
-                  "a": {
+                  "r": {
                     "docs": {},
-                    "l": {
-                      "docs": {
-                        "uLayouter.html": {
-                          "ref": "uLayouter.html",
-                          "tf": 25
+                    "a": {
+                      "docs": {},
+                      "m": {
+                        "docs": {},
+                        "e": {
+                          "docs": {},
+                          "t": {
+                            "docs": {
+                              "Layouter.html#getParameters": {
+                                "ref": "Layouter.html#getParameters",
+                                "tf": 683.3333333333334
+                              }
+                            }
+                          }
                         }
                       }
                     }
                   }
                 }
-              }
-            },
-            "t": {
-              "docs": {},
+              },
               "n": {
                 "docs": {},
                 "u": {
                   "docs": {},
                   "m": {
                     "docs": {
-                      "uLayouter.html#getNums": {
-                        "ref": "uLayouter.html#getNums",
-                        "tf": 750
+                      "uLayouter.html#.getNums": {
+                        "ref": "uLayouter.html#.getNums",
+                        "tf": 675
                       }
                     }
                   }
@@ -1304,10 +1592,6 @@ window.lunrData = {
                       "ref": "list_class.html",
                       "tf": 635
                     },
-                    "uLayouter.html": {
-                      "ref": "uLayouter.html",
-                      "tf": 110
-                    },
                     "Layouter.html": {
                       "ref": "Layouter.html",
                       "tf": 110
@@ -1323,8 +1607,8 @@ window.lunrData = {
                           "docs": {},
                           "m": {
                             "docs": {
-                              "uLayouter.html#.adClasses": {
-                                "ref": "uLayouter.html#.adClasses",
+                              "uLayouter.html#.addClasses": {
+                                "ref": "uLayouter.html#.addClasses",
                                 "tf": 25
                               }
                             }
@@ -1340,13 +1624,94 @@ window.lunrData = {
                       "ref": "uLayouter.html#.replaceList",
                       "tf": 5
                     },
-                    "uLayouter.html#.adClasses": {
-                      "ref": "uLayouter.html#.adClasses",
+                    "uLayouter.html#.addClasses": {
+                      "ref": "uLayouter.html#.addClasses",
                       "tf": 7.142857142857142
                     },
                     "uLayouter.html#.settingCss": {
                       "ref": "uLayouter.html#.settingCss",
                       "tf": 3.571428571428571
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "o": {
+            "docs": {},
+            "n": {
+              "docs": {},
+              "s": {
+                "docs": {},
+                "t": {
+                  "docs": {},
+                  "r": {
+                    "docs": {},
+                    "u": {
+                      "docs": {},
+                      "t": {
+                        "docs": {},
+                        "o": {
+                          "docs": {},
+                          "r": {
+                            "docs": {
+                              "Layouter.html": {
+                                "ref": "Layouter.html",
+                                "tf": 12.5
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "v": {
+                "docs": {},
+                "i": {
+                  "docs": {},
+                  "e": {
+                    "docs": {},
+                    "r": {
+                      "docs": {},
+                      "t": {
+                        "docs": {
+                          "uLayouter.html#.stringToNumber": {
+                            "ref": "uLayouter.html#.stringToNumber",
+                            "tf": 10
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "l": {
+              "docs": {
+                "uLayouter.html#.prepareParam": {
+                  "ref": "uLayouter.html#.prepareParam",
+                  "tf": 4.545454545454546
+                }
+              },
+              "u": {
+                "docs": {},
+                "m": {
+                  "docs": {},
+                  "n": {
+                    "docs": {},
+                    "a": {
+                      "docs": {
+                        "Layouter.html#setCols": {
+                          "ref": "Layouter.html#setCols",
+                          "tf": 5
+                        },
+                        "uLayouter.html#.getNums": {
+                          "ref": "uLayouter.html#.getNums",
+                          "tf": 5.555555555555555
+                        }
+                      }
                     }
                   }
                 }
@@ -1409,11 +1774,11 @@ window.lunrData = {
                       "docs": {
                         "uLayouter.html#.calPercentage": {
                           "ref": "uLayouter.html#.calPercentage",
-                          "tf": 7.142857142857142
+                          "tf": 8.333333333333332
                         },
                         "uLayouter.html#.processedNumber": {
                           "ref": "uLayouter.html#.processedNumber",
-                          "tf": 3.8461538461538463
+                          "tf": 2.5
                         }
                       },
                       "n": {
@@ -1474,83 +1839,6 @@ window.lunrData = {
               }
             }
           },
-          "o": {
-            "docs": {},
-            "l": {
-              "docs": {
-                "uLayouter.html#.prepareParam": {
-                  "ref": "uLayouter.html#.prepareParam",
-                  "tf": 4.545454545454546
-                }
-              },
-              "u": {
-                "docs": {},
-                "m": {
-                  "docs": {},
-                  "n": {
-                    "docs": {},
-                    "a": {
-                      "docs": {
-                        "uLayouter.html#getNums": {
-                          "ref": "uLayouter.html#getNums",
-                          "tf": 5.555555555555555
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "n": {
-              "docs": {},
-              "v": {
-                "docs": {},
-                "i": {
-                  "docs": {},
-                  "e": {
-                    "docs": {},
-                    "r": {
-                      "docs": {},
-                      "t": {
-                        "docs": {
-                          "uLayouter.html#.stringToNumber": {
-                            "ref": "uLayouter.html#.stringToNumber",
-                            "tf": 10
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "s": {
-                "docs": {},
-                "t": {
-                  "docs": {},
-                  "r": {
-                    "docs": {},
-                    "u": {
-                      "docs": {},
-                      "t": {
-                        "docs": {},
-                        "o": {
-                          "docs": {},
-                          "r": {
-                            "docs": {
-                              "Layouter.html": {
-                                "ref": "Layouter.html",
-                                "tf": 12.5
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
           "u": {
             "docs": {},
             "a": {
@@ -1559,7 +1847,21 @@ window.lunrData = {
                 "docs": {
                   "uLayouter.html#.processedNumber": {
                     "ref": "uLayouter.html#.processedNumber",
-                    "tf": 3.8461538461538463
+                    "tf": 2.5
+                  }
+                }
+              },
+              "n": {
+                "docs": {},
+                "d": {
+                  "docs": {},
+                  "o": {
+                    "docs": {
+                      "uLayouter.html#.processedNumber": {
+                        "ref": "uLayouter.html#.processedNumber",
+                        "tf": 2.5
+                      }
+                    }
                   }
                 }
               }
@@ -1659,6 +1961,10 @@ window.lunrData = {
                   "list_class.html": {
                     "ref": "list_class.html",
                     "tf": 110
+                  },
+                  "list_namespace.html": {
+                    "ref": "list_namespace.html",
+                    "tf": 110
                   }
                 },
                 ":": {
@@ -1676,6 +1982,35 @@ window.lunrData = {
                               "list_class.html": {
                                 "ref": "list_class.html",
                                 "tf": 1300
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "n": {
+                    "docs": {},
+                    "a": {
+                      "docs": {},
+                      "m": {
+                        "docs": {},
+                        "e": {
+                          "docs": {},
+                          "s": {
+                            "docs": {},
+                            "p": {
+                              "docs": {},
+                              "a": {
+                                "docs": {},
+                                "c": {
+                                  "docs": {
+                                    "list_namespace.html": {
+                                      "ref": "list_namespace.html",
+                                      "tf": 1300
+                                    }
+                                  }
+                                }
                               }
                             }
                           }
@@ -1700,6 +2035,239 @@ window.lunrData = {
                     }
                   }
                 }
+              }
+            }
+          },
+          "a": {
+            "docs": {
+              "Layouter.html#setCols": {
+                "ref": "Layouter.html#setCols",
+                "tf": 5
+              },
+              "Layouter.html#setFlex": {
+                "ref": "Layouter.html#setFlex",
+                "tf": 12.5
+              },
+              "uLayouter.html#.flexpv": {
+                "ref": "uLayouter.html#.flexpv",
+                "tf": 6.25
+              },
+              "uLayouter.html#.replaceList": {
+                "ref": "uLayouter.html#.replaceList",
+                "tf": 5
+              },
+              "uLayouter.html#.getNums": {
+                "ref": "uLayouter.html#.getNums",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.createScopeStyles": {
+                "ref": "uLayouter.html#.createScopeStyles",
+                "tf": 2.5
+              },
+              "uLayouter.html#.insertRules": {
+                "ref": "uLayouter.html#.insertRules",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.settingCss": {
+                "ref": "uLayouter.html#.settingCss",
+                "tf": 3.571428571428571
+              }
+            },
+            "y": {
+              "docs": {},
+              "o": {
+                "docs": {},
+                "u": {
+                  "docs": {},
+                  "t": {
+                    "docs": {
+                      "Layouter.html": {
+                        "ref": "Layouter.html",
+                        "tf": 1900
+                      }
+                    },
+                    "e": {
+                      "docs": {},
+                      "r": {
+                        "docs": {},
+                        "#": {
+                          "docs": {},
+                          "g": {
+                            "docs": {},
+                            "e": {
+                              "docs": {},
+                              "t": {
+                                "docs": {},
+                                "p": {
+                                  "docs": {},
+                                  "a": {
+                                    "docs": {},
+                                    "r": {
+                                      "docs": {},
+                                      "a": {
+                                        "docs": {},
+                                        "m": {
+                                          "docs": {},
+                                          "e": {
+                                            "docs": {},
+                                            "t": {
+                                              "docs": {
+                                                "Layouter.html#getParameters": {
+                                                  "ref": "Layouter.html#getParameters",
+                                                  "tf": 1150
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "s": {
+                            "docs": {},
+                            "e": {
+                              "docs": {},
+                              "t": {
+                                "docs": {},
+                                "c": {
+                                  "docs": {},
+                                  "o": {
+                                    "docs": {},
+                                    "l": {
+                                      "docs": {
+                                        "Layouter.html#setCols": {
+                                          "ref": "Layouter.html#setCols",
+                                          "tf": 1150
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "p": {
+                                  "docs": {},
+                                  "a": {
+                                    "docs": {},
+                                    "d": {
+                                      "docs": {
+                                        "Layouter.html#setPads": {
+                                          "ref": "Layouter.html#setPads",
+                                          "tf": 1150
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "m": {
+                                  "docs": {},
+                                  "a": {
+                                    "docs": {},
+                                    "r": {
+                                      "docs": {
+                                        "Layouter.html#setMars": {
+                                          "ref": "Layouter.html#setMars",
+                                          "tf": 1150
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "f": {
+                                  "docs": {},
+                                  "l": {
+                                    "docs": {},
+                                    "e": {
+                                      "docs": {},
+                                      "x": {
+                                        "docs": {
+                                          "Layouter.html#setFlex": {
+                                            "ref": "Layouter.html#setFlex",
+                                            "tf": 1150
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "b": {
+                            "docs": {},
+                            "u": {
+                              "docs": {},
+                              "i": {
+                                "docs": {},
+                                "l": {
+                                  "docs": {},
+                                  "d": {
+                                    "docs": {
+                                      "Layouter.html#build": {
+                                        "ref": "Layouter.html#build",
+                                        "tf": 1150
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "o": {
+            "docs": {
+              "Layouter.html#getParameters": {
+                "ref": "Layouter.html#getParameters",
+                "tf": 8.333333333333332
+              },
+              "Layouter.html#setCols": {
+                "ref": "Layouter.html#setCols",
+                "tf": 5
+              },
+              "Layouter.html#setPads": {
+                "ref": "Layouter.html#setPads",
+                "tf": 7.142857142857142
+              },
+              "Layouter.html#setMars": {
+                "ref": "Layouter.html#setMars",
+                "tf": 7.142857142857142
+              },
+              "Layouter.html#build": {
+                "ref": "Layouter.html#build",
+                "tf": 5
+              },
+              "uLayouter.html#.getNums": {
+                "ref": "uLayouter.html#.getNums",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.processedNumber": {
+                "ref": "uLayouter.html#.processedNumber",
+                "tf": 5
+              },
+              "uLayouter.html#.createScopeStyles": {
+                "ref": "uLayouter.html#.createScopeStyles",
+                "tf": 2.5
+              },
+              "uLayouter.html#.insertRules": {
+                "ref": "uLayouter.html#.insertRules",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.settingCss": {
+                "ref": "uLayouter.html#.settingCss",
+                "tf": 3.571428571428571
+              },
+              "uLayouter.html#.padsAndMargs": {
+                "ref": "uLayouter.html#.padsAndMargs",
+                "tf": 10
               }
             }
           },
@@ -1737,6 +2305,10 @@ window.lunrData = {
                                     "ref": "uLayouter.html#.replaceList",
                                     "tf": 50
                                   },
+                                  "uLayouter.html#.getNums": {
+                                    "ref": "uLayouter.html#.getNums",
+                                    "tf": 25
+                                  },
                                   "uLayouter.html#.haveBreakPoint": {
                                     "ref": "uLayouter.html#.haveBreakPoint",
                                     "tf": 33.33333333333333
@@ -1755,7 +2327,7 @@ window.lunrData = {
                                   },
                                   "uLayouter.html#.processedNumber": {
                                     "ref": "uLayouter.html#.processedNumber",
-                                    "tf": 33.33333333333333
+                                    "tf": 25
                                   },
                                   "uLayouter.html#.regError": {
                                     "ref": "uLayouter.html#.regError",
@@ -1773,8 +2345,8 @@ window.lunrData = {
                                     "ref": "uLayouter.html#.insertRules",
                                     "tf": 33.33333333333333
                                   },
-                                  "uLayouter.html#.adClasses": {
-                                    "ref": "uLayouter.html#.adClasses",
+                                  "uLayouter.html#.addClasses": {
+                                    "ref": "uLayouter.html#.addClasses",
                                     "tf": 25
                                   },
                                   "uLayouter.html#.settingCss": {
@@ -1783,7 +2355,594 @@ window.lunrData = {
                                   },
                                   "uLayouter.html#.padsAndMargs": {
                                     "ref": "uLayouter.html#.padsAndMargs",
-                                    "tf": 50
+                                    "tf": 20
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "n": {
+          "1": {
+            "docs": {
+              "uLayouter.html#.calPercentage": {
+                "ref": "uLayouter.html#.calPercentage",
+                "tf": 25
+              }
+            }
+          },
+          "2": {
+            "docs": {
+              "uLayouter.html#.calPercentage": {
+                "ref": "uLayouter.html#.calPercentage",
+                "tf": 25
+              }
+            }
+          },
+          "docs": {
+            "uLayouter.html#.stringToNumber": {
+              "ref": "uLayouter.html#.stringToNumber",
+              "tf": 25
+            },
+            "uLayouter.html#.processedNumber": {
+              "ref": "uLayouter.html#.processedNumber",
+              "tf": 25
+            }
+          },
+          "a": {
+            "docs": {},
+            "m": {
+              "docs": {},
+              "e": {
+                "docs": {
+                  "uLayouter.html#.regError": {
+                    "ref": "uLayouter.html#.regError",
+                    "tf": 25
+                  }
+                },
+                "s": {
+                  "docs": {},
+                  "p": {
+                    "docs": {},
+                    "a": {
+                      "docs": {},
+                      "c": {
+                        "docs": {
+                          "list_namespace.html": {
+                            "ref": "list_namespace.html",
+                            "tf": 635
+                          },
+                          "uLayouter.html": {
+                            "ref": "uLayouter.html",
+                            "tf": 110
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "o": {
+            "docs": {},
+            "d": {
+              "docs": {},
+              "o": {
+                "docs": {
+                  "Layouter.html#getParameters": {
+                    "ref": "Layouter.html#getParameters",
+                    "tf": 33.33333333333333
+                  },
+                  "Layouter.html#setCols": {
+                    "ref": "Layouter.html#setCols",
+                    "tf": 5
+                  },
+                  "Layouter.html#setPads": {
+                    "ref": "Layouter.html#setPads",
+                    "tf": 7.142857142857142
+                  },
+                  "Layouter.html#setMars": {
+                    "ref": "Layouter.html#setMars",
+                    "tf": 7.142857142857142
+                  },
+                  "uLayouter.html#.insertRules": {
+                    "ref": "uLayouter.html#.insertRules",
+                    "tf": 5.555555555555555
+                  },
+                  "uLayouter.html#.addClasses": {
+                    "ref": "uLayouter.html#.addClasses",
+                    "tf": 7.142857142857142
+                  },
+                  "uLayouter.html#.settingCss": {
+                    "ref": "uLayouter.html#.settingCss",
+                    "tf": 3.571428571428571
+                  }
+                }
+              },
+              "e": {
+                "docs": {
+                  "Layouter.html#setCols": {
+                    "ref": "Layouter.html#setCols",
+                    "tf": 50
+                  },
+                  "Layouter.html#setPads": {
+                    "ref": "Layouter.html#setPads",
+                    "tf": 50
+                  },
+                  "Layouter.html#setMars": {
+                    "ref": "Layouter.html#setMars",
+                    "tf": 50
+                  },
+                  "Layouter.html#setFlex": {
+                    "ref": "Layouter.html#setFlex",
+                    "tf": 50
+                  },
+                  "Layouter.html#build": {
+                    "ref": "Layouter.html#build",
+                    "tf": 50
+                  },
+                  "uLayouter.html#.addClasses": {
+                    "ref": "uLayouter.html#.addClasses",
+                    "tf": 25
+                  },
+                  "uLayouter.html#.padsAndMargs": {
+                    "ref": "uLayouter.html#.padsAndMargs",
+                    "tf": 20
+                  }
+                }
+              }
+            },
+            "m": {
+              "docs": {},
+              "b": {
+                "docs": {},
+                "r": {
+                  "docs": {
+                    "uLayouter.html#.replaceList": {
+                      "ref": "uLayouter.html#.replaceList",
+                      "tf": 5
+                    },
+                    "uLayouter.html#.addClasses": {
+                      "ref": "uLayouter.html#.addClasses",
+                      "tf": 7.142857142857142
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "e": {
+            "docs": {},
+            "c": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "s": {
+                  "docs": {},
+                  "a": {
+                    "docs": {},
+                    "r": {
+                      "docs": {},
+                      "i": {
+                        "docs": {},
+                        "o": {
+                          "docs": {
+                            "Layouter.html#setCols": {
+                              "ref": "Layouter.html#setCols",
+                              "tf": 5
+                            },
+                            "Layouter.html#setPads": {
+                              "ref": "Layouter.html#setPads",
+                              "tf": 7.142857142857142
+                            },
+                            "Layouter.html#setMars": {
+                              "ref": "Layouter.html#setMars",
+                              "tf": 7.142857142857142
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "u": {
+            "docs": {},
+            "m": {
+              "docs": {},
+              "b": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "r": {
+                    "docs": {
+                      "uLayouter.html#.stringToNumber": {
+                        "ref": "uLayouter.html#.stringToNumber",
+                        "tf": 25
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "ú": {
+            "docs": {},
+            "m": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "r": {
+                  "docs": {},
+                  "o": {
+                    "docs": {
+                      "uLayouter.html#.stringToNumber": {
+                        "ref": "uLayouter.html#.stringToNumber",
+                        "tf": 10
+                      },
+                      "uLayouter.html#.calPercentage": {
+                        "ref": "uLayouter.html#.calPercentage",
+                        "tf": 8.333333333333332
+                      },
+                      "uLayouter.html#.processedNumber": {
+                        "ref": "uLayouter.html#.processedNumber",
+                        "tf": 2.5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "m": {
+          "docs": {},
+          "a": {
+            "docs": {},
+            "e": {
+              "docs": {},
+              "s": {
+                "docs": {},
+                "t": {
+                  "docs": {},
+                  "r": {
+                    "docs": {},
+                    "o": {
+                      "docs": {
+                        "Layouter.html": {
+                          "ref": "Layouter.html",
+                          "tf": 12.5
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "r": {
+              "docs": {},
+              "g": {
+                "docs": {},
+                "i": {
+                  "docs": {},
+                  "n": {
+                    "docs": {
+                      "Layouter.html#setMars": {
+                        "ref": "Layouter.html#setMars",
+                        "tf": 7.142857142857142
+                      }
+                    }
+                  }
+                },
+                "e": {
+                  "docs": {},
+                  "n": {
+                    "docs": {
+                      "uLayouter.html#.padsAndMargs": {
+                        "ref": "uLayouter.html#.padsAndMargs",
+                        "tf": 10
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "e": {
+            "docs": {},
+            "m": {
+              "docs": {},
+              "b": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "r": {
+                    "docs": {
+                      "uLayouter.html#.processors": {
+                        "ref": "uLayouter.html#.processors",
+                        "tf": 110
+                      },
+                      "uLayouter.html#.flexpv": {
+                        "ref": "uLayouter.html#.flexpv",
+                        "tf": 110
+                      },
+                      "uLayouter.html#.replaceList": {
+                        "ref": "uLayouter.html#.replaceList",
+                        "tf": 110
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "s": {
+              "docs": {},
+              "s": {
+                "docs": {},
+                "a": {
+                  "docs": {},
+                  "g": {
+                    "docs": {
+                      "uLayouter.html#.regError": {
+                        "ref": "uLayouter.html#.regError",
+                        "tf": 25
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "é": {
+            "docs": {},
+            "t": {
+              "docs": {},
+              "o": {
+                "docs": {},
+                "d": {
+                  "docs": {},
+                  "o": {
+                    "docs": {
+                      "uLayouter.html#.processors": {
+                        "ref": "uLayouter.html#.processors",
+                        "tf": 5
+                      },
+                      "uLayouter.html#.prepareParam": {
+                        "ref": "uLayouter.html#.prepareParam",
+                        "tf": 4.545454545454546
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "s": {
+          "docs": {},
+          "i": {
+            "docs": {
+              "uLayouter.html#.haveBreakPoint": {
+                "ref": "uLayouter.html#.haveBreakPoint",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.processedNumber": {
+                "ref": "uLayouter.html#.processedNumber",
+                "tf": 2.5
+              }
+            },
+            "s": {
+              "docs": {},
+              "t": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "m": {
+                    "docs": {},
+                    "a": {
+                      "docs": {
+                        "Layouter.html": {
+                          "ref": "Layouter.html",
+                          "tf": 12.5
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "n": {
+              "docs": {},
+              "o": {
+                "docs": {
+                  "uLayouter.html#.processedNumber": {
+                    "ref": "uLayouter.html#.processedNumber",
+                    "tf": 2.5
+                  }
+                }
+              }
+            }
+          },
+          "e": {
+            "docs": {
+              "Layouter.html#build": {
+                "ref": "Layouter.html#build",
+                "tf": 5
+              },
+              "uLayouter.html#.processedNumber": {
+                "ref": "uLayouter.html#.processedNumber",
+                "tf": 2.5
+              },
+              "uLayouter.html#.createScopeStyles": {
+                "ref": "uLayouter.html#.createScopeStyles",
+                "tf": 5
+              }
+            },
+            "t": {
+              "docs": {},
+              "c": {
+                "docs": {},
+                "o": {
+                  "docs": {},
+                  "l": {
+                    "docs": {
+                      "Layouter.html#setCols": {
+                        "ref": "Layouter.html#setCols",
+                        "tf": 700
+                      }
+                    }
+                  }
+                }
+              },
+              "e": {
+                "docs": {},
+                "a": {
+                  "docs": {
+                    "Layouter.html#setPads": {
+                      "ref": "Layouter.html#setPads",
+                      "tf": 7.142857142857142
+                    },
+                    "Layouter.html#setMars": {
+                      "ref": "Layouter.html#setMars",
+                      "tf": 7.142857142857142
+                    },
+                    "Layouter.html#setFlex": {
+                      "ref": "Layouter.html#setFlex",
+                      "tf": 6.25
+                    },
+                    "uLayouter.html#.padsAndMargs": {
+                      "ref": "uLayouter.html#.padsAndMargs",
+                      "tf": 10
+                    }
+                  }
+                }
+              },
+              "p": {
+                "docs": {},
+                "a": {
+                  "docs": {},
+                  "d": {
+                    "docs": {
+                      "Layouter.html#setPads": {
+                        "ref": "Layouter.html#setPads",
+                        "tf": 700
+                      }
+                    }
+                  }
+                }
+              },
+              "m": {
+                "docs": {},
+                "a": {
+                  "docs": {},
+                  "r": {
+                    "docs": {
+                      "Layouter.html#setMars": {
+                        "ref": "Layouter.html#setMars",
+                        "tf": 700
+                      }
+                    }
+                  }
+                }
+              },
+              "f": {
+                "docs": {},
+                "l": {
+                  "docs": {},
+                  "e": {
+                    "docs": {},
+                    "x": {
+                      "docs": {
+                        "Layouter.html#setFlex": {
+                          "ref": "Layouter.html#setFlex",
+                          "tf": 700
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "t": {
+                "docs": {},
+                "i": {
+                  "docs": {},
+                  "n": {
+                    "docs": {},
+                    "g": {
+                      "docs": {},
+                      "c": {
+                        "docs": {},
+                        "s": {
+                          "docs": {},
+                          "s": {
+                            "docs": {
+                              "uLayouter.html#.settingCss": {
+                                "ref": "uLayouter.html#.settingCss",
+                                "tf": 683.3333333333334
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "u": {
+            "docs": {
+              "uLayouter.html#.processors": {
+                "ref": "uLayouter.html#.processors",
+                "tf": 5
+              }
+            }
+          },
+          "t": {
+            "docs": {},
+            "r": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "n": {
+                  "docs": {},
+                  "g": {
+                    "docs": {
+                      "uLayouter.html#.stringToNumber": {
+                        "ref": "uLayouter.html#.stringToNumber",
+                        "tf": 10
+                      },
+                      "uLayouter.html#.processedNumber": {
+                        "ref": "uLayouter.html#.processedNumber",
+                        "tf": 25
+                      }
+                    },
+                    "t": {
+                      "docs": {},
+                      "o": {
+                        "docs": {},
+                        "n": {
+                          "docs": {},
+                          "u": {
+                            "docs": {},
+                            "m": {
+                              "docs": {},
+                              "b": {
+                                "docs": {
+                                  "uLayouter.html#.stringToNumber": {
+                                    "ref": "uLayouter.html#.stringToNumber",
+                                    "tf": 675
                                   }
                                 }
                               }
@@ -1797,44 +2956,396 @@ window.lunrData = {
               }
             }
           },
-          "a": {
-            "docs": {
-              "uLayouter.html#.flexpv": {
-                "ref": "uLayouter.html#.flexpv",
-                "tf": 6.25
-              },
-              "uLayouter.html#.replaceList": {
-                "ref": "uLayouter.html#.replaceList",
-                "tf": 5
-              },
-              "uLayouter.html#getNums": {
-                "ref": "uLayouter.html#getNums",
-                "tf": 5.555555555555555
-              },
-              "uLayouter.html#.createScopeStyles": {
-                "ref": "uLayouter.html#.createScopeStyles",
-                "tf": 2.5
-              },
-              "uLayouter.html#.insertRules": {
-                "ref": "uLayouter.html#.insertRules",
-                "tf": 5.555555555555555
-              },
-              "uLayouter.html#.settingCss": {
-                "ref": "uLayouter.html#.settingCss",
-                "tf": 3.571428571428571
-              }
-            },
-            "y": {
+          "c": {
+            "docs": {},
+            "o": {
               "docs": {},
-              "o": {
+              "p": {
                 "docs": {},
-                "u": {
+                "e": {
+                  "docs": {
+                    "uLayouter.html#.createScopeStyles": {
+                      "ref": "uLayouter.html#.createScopeStyles",
+                      "tf": 2.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "o": {
+          "docs": {
+            "uLayouter.html#.haveBreakPoint": {
+              "ref": "uLayouter.html#.haveBreakPoint",
+              "tf": 5.555555555555555
+            }
+          },
+          "b": {
+            "docs": {},
+            "j": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "c": {
                   "docs": {},
                   "t": {
                     "docs": {
-                      "Layouter.html": {
-                        "ref": "Layouter.html",
-                        "tf": 1900
+                      "Layouter.html#getParameters": {
+                        "ref": "Layouter.html#getParameters",
+                        "tf": 33.33333333333333
+                      }
+                    }
+                  }
+                }
+              },
+              "b": {
+                "docs": {},
+                "p": {
+                  "docs": {
+                    "uLayouter.html#.getNums": {
+                      "ref": "uLayouter.html#.getNums",
+                      "tf": 25
+                    }
+                  }
+                }
+              }
+            },
+            "t": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "n": {
+                    "docs": {
+                      "Layouter.html#getParameters": {
+                        "ref": "Layouter.html#getParameters",
+                        "tf": 8.333333333333332
+                      },
+                      "uLayouter.html#.getNums": {
+                        "ref": "uLayouter.html#.getNums",
+                        "tf": 5.555555555555555
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "p": {
+          "docs": {},
+          "a": {
+            "docs": {},
+            "r": {
+              "docs": {},
+              "a": {
+                "docs": {
+                  "Layouter.html#getParameters": {
+                    "ref": "Layouter.html#getParameters",
+                    "tf": 8.333333333333332
+                  },
+                  "Layouter.html#setPads": {
+                    "ref": "Layouter.html#setPads",
+                    "tf": 7.142857142857142
+                  },
+                  "Layouter.html#setMars": {
+                    "ref": "Layouter.html#setMars",
+                    "tf": 7.142857142857142
+                  },
+                  "uLayouter.html#.replaceList": {
+                    "ref": "uLayouter.html#.replaceList",
+                    "tf": 5
+                  },
+                  "uLayouter.html#.regError": {
+                    "ref": "uLayouter.html#.regError",
+                    "tf": 12.5
+                  },
+                  "uLayouter.html#.createScopeStyles": {
+                    "ref": "uLayouter.html#.createScopeStyles",
+                    "tf": 2.5
+                  },
+                  "uLayouter.html#.insertRules": {
+                    "ref": "uLayouter.html#.insertRules",
+                    "tf": 5.555555555555555
+                  }
+                },
+                "m": {
+                  "docs": {
+                    "uLayouter.html#.haveBreakPoint": {
+                      "ref": "uLayouter.html#.haveBreakPoint",
+                      "tf": 33.33333333333333
+                    },
+                    "uLayouter.html#.prepareParam": {
+                      "ref": "uLayouter.html#.prepareParam",
+                      "tf": 33.33333333333333
+                    }
+                  },
+                  "e": {
+                    "docs": {},
+                    "t": {
+                      "docs": {},
+                      "r": {
+                        "docs": {},
+                        "o": {
+                          "docs": {
+                            "Layouter.html#getParameters": {
+                              "ref": "Layouter.html#getParameters",
+                              "tf": 8.333333333333332
+                            },
+                            "uLayouter.html#.haveBreakPoint": {
+                              "ref": "uLayouter.html#.haveBreakPoint",
+                              "tf": 5.555555555555555
+                            },
+                            "uLayouter.html#.prepareParam": {
+                              "ref": "uLayouter.html#.prepareParam",
+                              "tf": 4.545454545454546
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "d": {
+              "docs": {
+                "Layouter.html#setPads": {
+                  "ref": "Layouter.html#setPads",
+                  "tf": 7.142857142857142
+                },
+                "uLayouter.html#.prepareParam": {
+                  "ref": "uLayouter.html#.prepareParam",
+                  "tf": 4.545454545454546
+                },
+                "uLayouter.html#.padsAndMargs": {
+                  "ref": "uLayouter.html#.padsAndMargs",
+                  "tf": 10
+                }
+              },
+              "s": {
+                "docs": {},
+                "a": {
+                  "docs": {},
+                  "n": {
+                    "docs": {},
+                    "d": {
+                      "docs": {},
+                      "m": {
+                        "docs": {},
+                        "a": {
+                          "docs": {},
+                          "r": {
+                            "docs": {},
+                            "g": {
+                              "docs": {
+                                "uLayouter.html#.padsAndMargs": {
+                                  "ref": "uLayouter.html#.padsAndMargs",
+                                  "tf": 670
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "r": {
+            "docs": {},
+            "o": {
+              "docs": {},
+              "c": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "s": {
+                    "docs": {},
+                    "a": {
+                      "docs": {
+                        "Layouter.html#build": {
+                          "ref": "Layouter.html#build",
+                          "tf": 5
+                        },
+                        "uLayouter.html#.processedNumber": {
+                          "ref": "uLayouter.html#.processedNumber",
+                          "tf": 2.5
+                        }
+                      },
+                      "r": {
+                        "docs": {
+                          "Layouter.html#getParameters": {
+                            "ref": "Layouter.html#getParameters",
+                            "tf": 8.333333333333332
+                          }
+                        }
+                      },
+                      "m": {
+                        "docs": {},
+                        "i": {
+                          "docs": {},
+                          "e": {
+                            "docs": {},
+                            "n": {
+                              "docs": {},
+                              "t": {
+                                "docs": {},
+                                "o": {
+                                  "docs": {
+                                    "Layouter.html#build": {
+                                      "ref": "Layouter.html#build",
+                                      "tf": 5
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "d": {
+                        "docs": {},
+                        "o": {
+                          "docs": {},
+                          "r": {
+                            "docs": {
+                              "uLayouter.html#.processors": {
+                                "ref": "uLayouter.html#.processors",
+                                "tf": 5
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "s": {
+                      "docs": {},
+                      "o": {
+                        "docs": {},
+                        "r": {
+                          "docs": {
+                            "uLayouter.html#.processors": {
+                              "ref": "uLayouter.html#.processors",
+                              "tf": 700
+                            }
+                          }
+                        }
+                      },
+                      "e": {
+                        "docs": {},
+                        "d": {
+                          "docs": {},
+                          "n": {
+                            "docs": {},
+                            "u": {
+                              "docs": {},
+                              "m": {
+                                "docs": {},
+                                "b": {
+                                  "docs": {
+                                    "uLayouter.html#.processedNumber": {
+                                      "ref": "uLayouter.html#.processedNumber",
+                                      "tf": 675
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "p": {
+                "docs": {},
+                "i": {
+                  "docs": {},
+                  "e": {
+                    "docs": {},
+                    "d": {
+                      "docs": {},
+                      "a": {
+                        "docs": {},
+                        "d": {
+                          "docs": {
+                            "Layouter.html#setFlex": {
+                              "ref": "Layouter.html#setFlex",
+                              "tf": 6.25
+                            },
+                            "uLayouter.html#.flexpv": {
+                              "ref": "uLayouter.html#.flexpv",
+                              "tf": 6.25
+                            },
+                            "uLayouter.html#.createStyles": {
+                              "ref": "uLayouter.html#.createStyles",
+                              "tf": 4.545454545454546
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "n": {
+                  "docs": {},
+                  "a": {
+                    "docs": {},
+                    "m": {
+                      "docs": {
+                        "uLayouter.html#.getNums": {
+                          "ref": "uLayouter.html#.getNums",
+                          "tf": 25
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "e": {
+              "docs": {},
+              "p": {
+                "docs": {},
+                "a": {
+                  "docs": {},
+                  "r": {
+                    "docs": {},
+                    "a": {
+                      "docs": {
+                        "uLayouter.html#.prepareParam": {
+                          "ref": "uLayouter.html#.prepareParam",
+                          "tf": 4.545454545454546
+                        }
+                      }
+                    },
+                    "e": {
+                      "docs": {},
+                      "p": {
+                        "docs": {},
+                        "a": {
+                          "docs": {},
+                          "r": {
+                            "docs": {},
+                            "a": {
+                              "docs": {},
+                              "m": {
+                                "docs": {
+                                  "uLayouter.html#.prepareParam": {
+                                    "ref": "uLayouter.html#.prepareParam",
+                                    "tf": 683.3333333333334
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -1843,36 +3354,467 @@ window.lunrData = {
             }
           },
           "o": {
+            "docs": {},
+            "r": {
+              "docs": {},
+              "c": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "n": {
+                    "docs": {},
+                    "t": {
+                      "docs": {},
+                      "a": {
+                        "docs": {},
+                        "j": {
+                          "docs": {
+                            "uLayouter.html#.calPercentage": {
+                              "ref": "uLayouter.html#.calPercentage",
+                              "tf": 8.333333333333332
+                            }
+                          }
+                        }
+                      },
+                      "u": {
+                        "docs": {
+                          "uLayouter.html#.processedNumber": {
+                            "ref": "uLayouter.html#.processedNumber",
+                            "tf": 2.5
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "a": {
+          "docs": {},
+          "s": {
+            "docs": {},
+            "i": {
+              "docs": {},
+              "g": {
+                "docs": {},
+                "n": {
+                  "docs": {},
+                  "a": {
+                    "docs": {
+                      "Layouter.html#setCols": {
+                        "ref": "Layouter.html#setCols",
+                        "tf": 5
+                      }
+                    },
+                    "d": {
+                      "docs": {},
+                      "o": {
+                        "docs": {},
+                        "r": {
+                          "docs": {
+                            "uLayouter.html#.addClasses": {
+                              "ref": "uLayouter.html#.addClasses",
+                              "tf": 7.142857142857142
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "t": {
+            "docs": {},
+            "r": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "b": {
+                  "docs": {},
+                  "u": {
+                    "docs": {},
+                    "t": {
+                      "docs": {},
+                      "o": {
+                        "docs": {
+                          "Layouter.html#build": {
+                            "ref": "Layouter.html#build",
+                            "tf": 5
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "l": {
             "docs": {
-              "uLayouter.html#getNums": {
-                "ref": "uLayouter.html#getNums",
-                "tf": 5.555555555555555
-              },
               "uLayouter.html#.processedNumber": {
                 "ref": "uLayouter.html#.processedNumber",
-                "tf": 7.6923076923076925
+                "tf": 2.5
               },
               "uLayouter.html#.createScopeStyles": {
                 "ref": "uLayouter.html#.createScopeStyles",
                 "tf": 2.5
               },
-              "uLayouter.html#.insertRules": {
-                "ref": "uLayouter.html#.insertRules",
-                "tf": 5.555555555555555
-              },
               "uLayouter.html#.settingCss": {
                 "ref": "uLayouter.html#.settingCss",
                 "tf": 3.571428571428571
+              }
+            }
+          },
+          "u": {
+            "docs": {},
+            "t": {
+              "docs": {},
+              "o": {
+                "docs": {
+                  "uLayouter.html#.processedNumber": {
+                    "ref": "uLayouter.html#.processedNumber",
+                    "tf": 2.5
+                  }
+                }
+              }
+            }
+          },
+          "p": {
+            "docs": {},
+            "a": {
+              "docs": {},
+              "r": {
+                "docs": {},
+                "t": {
+                  "docs": {},
+                  "i": {
+                    "docs": {},
+                    "r": {
+                      "docs": {
+                        "uLayouter.html#.createStyles": {
+                          "ref": "uLayouter.html#.createStyles",
+                          "tf": 4.545454545454546
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "g": {
+            "docs": {},
+            "r": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "g": {
+                  "docs": {},
+                  "a": {
+                    "docs": {
+                      "uLayouter.html#.insertRules": {
+                        "ref": "uLayouter.html#.insertRules",
+                        "tf": 5.555555555555555
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "d": {
+            "docs": {},
+            "d": {
+              "docs": {},
+              "c": {
+                "docs": {},
+                "l": {
+                  "docs": {},
+                  "a": {
+                    "docs": {},
+                    "s": {
+                      "docs": {},
+                      "s": {
+                        "docs": {
+                          "uLayouter.html#.addClasses": {
+                            "ref": "uLayouter.html#.addClasses",
+                            "tf": 675
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "i": {
+              "docs": {},
+              "c": {
+                "docs": {},
+                "i": {
+                  "docs": {},
+                  "o": {
+                    "docs": {},
+                    "n": {
+                      "docs": {},
+                      "a": {
+                        "docs": {
+                          "uLayouter.html#.settingCss": {
+                            "ref": "uLayouter.html#.settingCss",
+                            "tf": 3.571428571428571
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "e": {
+          "docs": {
+            "uLayouter.html#.settingCss": {
+              "ref": "uLayouter.html#.settingCss",
+              "tf": 3.571428571428571
+            }
+          },
+          "s": {
+            "docs": {
+              "uLayouter.html#.processedNumber": {
+                "ref": "uLayouter.html#.processedNumber",
+                "tf": 2.5
+              }
+            },
+            "t": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "l": {
+                  "docs": {},
+                  "o": {
+                    "docs": {
+                      "Layouter.html#setCols": {
+                        "ref": "Layouter.html#setCols",
+                        "tf": 5
+                      },
+                      "uLayouter.html#.createStyles": {
+                        "ref": "uLayouter.html#.createStyles",
+                        "tf": 4.545454545454546
+                      },
+                      "uLayouter.html#.createScopeStyles": {
+                        "ref": "uLayouter.html#.createScopeStyles",
+                        "tf": 5
+                      },
+                      "uLayouter.html#.insertRules": {
+                        "ref": "uLayouter.html#.insertRules",
+                        "tf": 5.555555555555555
+                      },
+                      "uLayouter.html#.settingCss": {
+                        "ref": "uLayouter.html#.settingCss",
+                        "tf": 3.571428571428571
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "p": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "c": {
+                  "docs": {},
+                  "i": {
+                    "docs": {},
+                    "f": {
+                      "docs": {},
+                      "i": {
+                        "docs": {},
+                        "c": {
+                          "docs": {},
+                          "a": {
+                            "docs": {},
+                            "d": {
+                              "docs": {},
+                              "o": {
+                                "docs": {
+                                  "uLayouter.html#.prepareParam": {
+                                    "ref": "uLayouter.html#.prepareParam",
+                                    "tf": 4.545454545454546
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "q": {
+            "docs": {},
+            "u": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "v": {
+                  "docs": {},
+                  "a": {
+                    "docs": {},
+                    "l": {
+                      "docs": {},
+                      "e": {
+                        "docs": {},
+                        "n": {
+                          "docs": {},
+                          "c": {
+                            "docs": {},
+                            "i": {
+                              "docs": {},
+                              "a": {
+                                "docs": {
+                                  "uLayouter.html#.flexpv": {
+                                    "ref": "uLayouter.html#.flexpv",
+                                    "tf": 6.25
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "l": {
+            "docs": {
+              "uLayouter.html#.replaceList": {
+                "ref": "uLayouter.html#.replaceList",
+                "tf": 5
               },
-              "uLayouter.html#.padsAndMargs": {
-                "ref": "uLayouter.html#.padsAndMargs",
-                "tf": 10
+              "uLayouter.html#.getNums": {
+                "ref": "uLayouter.html#.getNums",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.haveBreakPoint": {
+                "ref": "uLayouter.html#.haveBreakPoint",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.prepareParam": {
+                "ref": "uLayouter.html#.prepareParam",
+                "tf": 4.545454545454546
+              },
+              "uLayouter.html#.calPercentage": {
+                "ref": "uLayouter.html#.calPercentage",
+                "tf": 8.333333333333332
+              },
+              "uLayouter.html#.createScopeStyles": {
+                "ref": "uLayouter.html#.createScopeStyles",
+                "tf": 2.5
+              }
+            }
+          },
+          "j": {
+            "docs": {},
+            "m": {
+              "docs": {
+                "uLayouter.html#.prepareParam": {
+                  "ref": "uLayouter.html#.prepareParam",
+                  "tf": 4.545454545454546
+                }
+              }
+            }
+          },
+          "t": {
+            "docs": {},
+            "c": {
+              "docs": {
+                "uLayouter.html#.prepareParam": {
+                  "ref": "uLayouter.html#.prepareParam",
+                  "tf": 4.545454545454546
+                }
+              }
+            }
+          },
+          "r": {
+            "docs": {},
+            "r": {
+              "docs": {},
+              "o": {
+                "docs": {},
+                "r": {
+                  "docs": {
+                    "uLayouter.html#.regError": {
+                      "ref": "uLayouter.html#.regError",
+                      "tf": 12.5
+                    }
+                  }
+                }
               }
             }
           }
         },
         "u": {
           "docs": {},
+          "n": {
+            "docs": {
+              "Layouter.html#setCols": {
+                "ref": "Layouter.html#setCols",
+                "tf": 5
+              },
+              "Layouter.html#setPads": {
+                "ref": "Layouter.html#setPads",
+                "tf": 7.142857142857142
+              },
+              "Layouter.html#setMars": {
+                "ref": "Layouter.html#setMars",
+                "tf": 7.142857142857142
+              },
+              "uLayouter.html#.haveBreakPoint": {
+                "ref": "uLayouter.html#.haveBreakPoint",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.prepareParam": {
+                "ref": "uLayouter.html#.prepareParam",
+                "tf": 4.545454545454546
+              },
+              "uLayouter.html#.stringToNumber": {
+                "ref": "uLayouter.html#.stringToNumber",
+                "tf": 20
+              },
+              "uLayouter.html#.calPercentage": {
+                "ref": "uLayouter.html#.calPercentage",
+                "tf": 8.333333333333332
+              },
+              "uLayouter.html#.processedNumber": {
+                "ref": "uLayouter.html#.processedNumber",
+                "tf": 2.5
+              },
+              "uLayouter.html#.addClasses": {
+                "ref": "uLayouter.html#.addClasses",
+                "tf": 7.142857142857142
+              }
+            },
+            "a": {
+              "docs": {
+                "uLayouter.html#.createStyles": {
+                  "ref": "uLayouter.html#.createStyles",
+                  "tf": 4.545454545454546
+                }
+              }
+            }
+          },
           "l": {
             "docs": {},
             "a": {
@@ -2097,6 +4039,29 @@ window.lunrData = {
                                                 "tf": 1150
                                               }
                                             }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "g": {
+                              "docs": {},
+                              "e": {
+                                "docs": {},
+                                "t": {
+                                  "docs": {},
+                                  "n": {
+                                    "docs": {},
+                                    "u": {
+                                      "docs": {},
+                                      "m": {
+                                        "docs": {
+                                          "uLayouter.html#.getNums": {
+                                            "ref": "uLayouter.html#.getNums",
+                                            "tf": 1150
                                           }
                                         }
                                       }
@@ -2363,46 +4328,23 @@ window.lunrData = {
                               "docs": {},
                               "d": {
                                 "docs": {},
-                                "c": {
+                                "d": {
                                   "docs": {},
-                                  "l": {
+                                  "c": {
                                     "docs": {},
-                                    "a": {
+                                    "l": {
                                       "docs": {},
-                                      "s": {
+                                      "a": {
                                         "docs": {},
                                         "s": {
-                                          "docs": {
-                                            "uLayouter.html#.adClasses": {
-                                              "ref": "uLayouter.html#.adClasses",
-                                              "tf": 1150
+                                          "docs": {},
+                                          "s": {
+                                            "docs": {
+                                              "uLayouter.html#.addClasses": {
+                                                "ref": "uLayouter.html#.addClasses",
+                                                "tf": 1150
+                                              }
                                             }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          },
-                          "#": {
-                            "docs": {},
-                            "g": {
-                              "docs": {},
-                              "e": {
-                                "docs": {},
-                                "t": {
-                                  "docs": {},
-                                  "n": {
-                                    "docs": {},
-                                    "u": {
-                                      "docs": {},
-                                      "m": {
-                                        "docs": {
-                                          "uLayouter.html#getNums": {
-                                            "ref": "uLayouter.html#getNums",
-                                            "tf": 1150
                                           }
                                         }
                                       }
@@ -2450,42 +4392,6 @@ window.lunrData = {
               }
             }
           },
-          "n": {
-            "docs": {
-              "uLayouter.html#.haveBreakPoint": {
-                "ref": "uLayouter.html#.haveBreakPoint",
-                "tf": 5.555555555555555
-              },
-              "uLayouter.html#.prepareParam": {
-                "ref": "uLayouter.html#.prepareParam",
-                "tf": 4.545454545454546
-              },
-              "uLayouter.html#.stringToNumber": {
-                "ref": "uLayouter.html#.stringToNumber",
-                "tf": 20
-              },
-              "uLayouter.html#.calPercentage": {
-                "ref": "uLayouter.html#.calPercentage",
-                "tf": 7.142857142857142
-              },
-              "uLayouter.html#.processedNumber": {
-                "ref": "uLayouter.html#.processedNumber",
-                "tf": 3.8461538461538463
-              },
-              "uLayouter.html#.adClasses": {
-                "ref": "uLayouter.html#.adClasses",
-                "tf": 7.142857142857142
-              }
-            },
-            "a": {
-              "docs": {
-                "uLayouter.html#.createStyles": {
-                  "ref": "uLayouter.html#.createStyles",
-                  "tf": 4.545454545454546
-                }
-              }
-            }
-          },
           "s": {
             "docs": {},
             "a": {
@@ -2501,570 +4407,12 @@ window.lunrData = {
             }
           }
         },
-        "m": {
-          "docs": {},
-          "e": {
-            "docs": {},
-            "m": {
-              "docs": {},
-              "b": {
-                "docs": {},
-                "e": {
-                  "docs": {},
-                  "r": {
-                    "docs": {
-                      "uLayouter.html#.processors": {
-                        "ref": "uLayouter.html#.processors",
-                        "tf": 110
-                      },
-                      "uLayouter.html#.flexpv": {
-                        "ref": "uLayouter.html#.flexpv",
-                        "tf": 110
-                      },
-                      "uLayouter.html#.replaceList": {
-                        "ref": "uLayouter.html#.replaceList",
-                        "tf": 110
-                      },
-                      "uLayouter.html#getNums": {
-                        "ref": "uLayouter.html#getNums",
-                        "tf": 110
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "s": {
-              "docs": {},
-              "s": {
-                "docs": {},
-                "a": {
-                  "docs": {},
-                  "g": {
-                    "docs": {
-                      "uLayouter.html#.regError": {
-                        "ref": "uLayouter.html#.regError",
-                        "tf": 25
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "é": {
-            "docs": {},
-            "t": {
-              "docs": {},
-              "o": {
-                "docs": {},
-                "d": {
-                  "docs": {},
-                  "o": {
-                    "docs": {
-                      "uLayouter.html#.processors": {
-                        "ref": "uLayouter.html#.processors",
-                        "tf": 5
-                      },
-                      "uLayouter.html#.prepareParam": {
-                        "ref": "uLayouter.html#.prepareParam",
-                        "tf": 4.545454545454546
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "a": {
-            "docs": {},
-            "r": {
-              "docs": {},
-              "g": {
-                "docs": {},
-                "e": {
-                  "docs": {},
-                  "n": {
-                    "docs": {
-                      "uLayouter.html#.padsAndMargs": {
-                        "ref": "uLayouter.html#.padsAndMargs",
-                        "tf": 10
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "e": {
-              "docs": {},
-              "s": {
-                "docs": {},
-                "t": {
-                  "docs": {},
-                  "r": {
-                    "docs": {},
-                    "o": {
-                      "docs": {
-                        "Layouter.html": {
-                          "ref": "Layouter.html",
-                          "tf": 12.5
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "p": {
-          "docs": {},
-          "r": {
-            "docs": {},
-            "o": {
-              "docs": {},
-              "c": {
-                "docs": {},
-                "e": {
-                  "docs": {},
-                  "s": {
-                    "docs": {},
-                    "a": {
-                      "docs": {
-                        "uLayouter.html#.processedNumber": {
-                          "ref": "uLayouter.html#.processedNumber",
-                          "tf": 3.8461538461538463
-                        }
-                      },
-                      "d": {
-                        "docs": {},
-                        "o": {
-                          "docs": {},
-                          "r": {
-                            "docs": {
-                              "uLayouter.html#.processors": {
-                                "ref": "uLayouter.html#.processors",
-                                "tf": 5
-                              }
-                            }
-                          }
-                        }
-                      }
-                    },
-                    "s": {
-                      "docs": {},
-                      "o": {
-                        "docs": {},
-                        "r": {
-                          "docs": {
-                            "uLayouter.html#.processors": {
-                              "ref": "uLayouter.html#.processors",
-                              "tf": 700
-                            }
-                          }
-                        }
-                      },
-                      "e": {
-                        "docs": {},
-                        "d": {
-                          "docs": {},
-                          "n": {
-                            "docs": {},
-                            "u": {
-                              "docs": {},
-                              "m": {
-                                "docs": {},
-                                "b": {
-                                  "docs": {
-                                    "uLayouter.html#.processedNumber": {
-                                      "ref": "uLayouter.html#.processedNumber",
-                                      "tf": 683.3333333333334
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "p": {
-                "docs": {},
-                "i": {
-                  "docs": {},
-                  "e": {
-                    "docs": {},
-                    "d": {
-                      "docs": {},
-                      "a": {
-                        "docs": {},
-                        "d": {
-                          "docs": {
-                            "uLayouter.html#.flexpv": {
-                              "ref": "uLayouter.html#.flexpv",
-                              "tf": 6.25
-                            },
-                            "uLayouter.html#.createStyles": {
-                              "ref": "uLayouter.html#.createStyles",
-                              "tf": 4.545454545454546
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "e": {
-              "docs": {},
-              "p": {
-                "docs": {},
-                "a": {
-                  "docs": {},
-                  "r": {
-                    "docs": {},
-                    "a": {
-                      "docs": {
-                        "uLayouter.html#.prepareParam": {
-                          "ref": "uLayouter.html#.prepareParam",
-                          "tf": 4.545454545454546
-                        }
-                      }
-                    },
-                    "e": {
-                      "docs": {},
-                      "p": {
-                        "docs": {},
-                        "a": {
-                          "docs": {},
-                          "r": {
-                            "docs": {},
-                            "a": {
-                              "docs": {},
-                              "m": {
-                                "docs": {
-                                  "uLayouter.html#.prepareParam": {
-                                    "ref": "uLayouter.html#.prepareParam",
-                                    "tf": 683.3333333333334
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "a": {
-            "docs": {},
-            "r": {
-              "docs": {},
-              "a": {
-                "docs": {
-                  "uLayouter.html#.replaceList": {
-                    "ref": "uLayouter.html#.replaceList",
-                    "tf": 5
-                  },
-                  "uLayouter.html#.regError": {
-                    "ref": "uLayouter.html#.regError",
-                    "tf": 12.5
-                  },
-                  "uLayouter.html#.createScopeStyles": {
-                    "ref": "uLayouter.html#.createScopeStyles",
-                    "tf": 2.5
-                  },
-                  "uLayouter.html#.insertRules": {
-                    "ref": "uLayouter.html#.insertRules",
-                    "tf": 5.555555555555555
-                  }
-                },
-                "m": {
-                  "docs": {
-                    "uLayouter.html#.haveBreakPoint": {
-                      "ref": "uLayouter.html#.haveBreakPoint",
-                      "tf": 33.33333333333333
-                    },
-                    "uLayouter.html#.prepareParam": {
-                      "ref": "uLayouter.html#.prepareParam",
-                      "tf": 33.33333333333333
-                    }
-                  },
-                  "e": {
-                    "docs": {},
-                    "t": {
-                      "docs": {},
-                      "r": {
-                        "docs": {},
-                        "o": {
-                          "docs": {
-                            "uLayouter.html#.haveBreakPoint": {
-                              "ref": "uLayouter.html#.haveBreakPoint",
-                              "tf": 5.555555555555555
-                            },
-                            "uLayouter.html#.prepareParam": {
-                              "ref": "uLayouter.html#.prepareParam",
-                              "tf": 4.545454545454546
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "d": {
-              "docs": {
-                "uLayouter.html#.prepareParam": {
-                  "ref": "uLayouter.html#.prepareParam",
-                  "tf": 4.545454545454546
-                },
-                "uLayouter.html#.padsAndMargs": {
-                  "ref": "uLayouter.html#.padsAndMargs",
-                  "tf": 10
-                }
-              },
-              "s": {
-                "docs": {},
-                "a": {
-                  "docs": {},
-                  "n": {
-                    "docs": {},
-                    "d": {
-                      "docs": {},
-                      "m": {
-                        "docs": {},
-                        "a": {
-                          "docs": {},
-                          "r": {
-                            "docs": {},
-                            "g": {
-                              "docs": {
-                                "uLayouter.html#.padsAndMargs": {
-                                  "ref": "uLayouter.html#.padsAndMargs",
-                                  "tf": 700
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "o": {
-            "docs": {},
-            "r": {
-              "docs": {},
-              "c": {
-                "docs": {},
-                "e": {
-                  "docs": {},
-                  "n": {
-                    "docs": {},
-                    "t": {
-                      "docs": {},
-                      "a": {
-                        "docs": {},
-                        "j": {
-                          "docs": {
-                            "uLayouter.html#.calPercentage": {
-                              "ref": "uLayouter.html#.calPercentage",
-                              "tf": 7.142857142857142
-                            }
-                          }
-                        }
-                      },
-                      "u": {
-                        "docs": {
-                          "uLayouter.html#.processedNumber": {
-                            "ref": "uLayouter.html#.processedNumber",
-                            "tf": 3.8461538461538463
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "s": {
-          "docs": {},
-          "u": {
-            "docs": {
-              "uLayouter.html#.processors": {
-                "ref": "uLayouter.html#.processors",
-                "tf": 5
-              }
-            }
-          },
-          "i": {
-            "docs": {
-              "uLayouter.html#.haveBreakPoint": {
-                "ref": "uLayouter.html#.haveBreakPoint",
-                "tf": 5.555555555555555
-              },
-              "uLayouter.html#.processedNumber": {
-                "ref": "uLayouter.html#.processedNumber",
-                "tf": 3.8461538461538463
-              }
-            },
-            "n": {
-              "docs": {},
-              "o": {
-                "docs": {
-                  "uLayouter.html#.processedNumber": {
-                    "ref": "uLayouter.html#.processedNumber",
-                    "tf": 3.8461538461538463
-                  }
-                }
-              }
-            },
-            "s": {
-              "docs": {},
-              "t": {
-                "docs": {},
-                "e": {
-                  "docs": {},
-                  "m": {
-                    "docs": {},
-                    "a": {
-                      "docs": {
-                        "Layouter.html": {
-                          "ref": "Layouter.html",
-                          "tf": 12.5
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "t": {
-            "docs": {},
-            "r": {
-              "docs": {},
-              "i": {
-                "docs": {},
-                "n": {
-                  "docs": {},
-                  "g": {
-                    "docs": {
-                      "uLayouter.html#.stringToNumber": {
-                        "ref": "uLayouter.html#.stringToNumber",
-                        "tf": 10
-                      }
-                    },
-                    "t": {
-                      "docs": {},
-                      "o": {
-                        "docs": {},
-                        "n": {
-                          "docs": {},
-                          "u": {
-                            "docs": {},
-                            "m": {
-                              "docs": {},
-                              "b": {
-                                "docs": {
-                                  "uLayouter.html#.stringToNumber": {
-                                    "ref": "uLayouter.html#.stringToNumber",
-                                    "tf": 675
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "c": {
-            "docs": {},
-            "o": {
-              "docs": {},
-              "p": {
-                "docs": {},
-                "e": {
-                  "docs": {
-                    "uLayouter.html#.createScopeStyles": {
-                      "ref": "uLayouter.html#.createScopeStyles",
-                      "tf": 2.5
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "e": {
-            "docs": {
-              "uLayouter.html#.createScopeStyles": {
-                "ref": "uLayouter.html#.createScopeStyles",
-                "tf": 5
-              }
-            },
-            "t": {
-              "docs": {},
-              "t": {
-                "docs": {},
-                "i": {
-                  "docs": {},
-                  "n": {
-                    "docs": {},
-                    "g": {
-                      "docs": {},
-                      "c": {
-                        "docs": {},
-                        "s": {
-                          "docs": {},
-                          "s": {
-                            "docs": {
-                              "uLayouter.html#.settingCss": {
-                                "ref": "uLayouter.html#.settingCss",
-                                "tf": 683.3333333333334
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "e": {
-                "docs": {},
-                "a": {
-                  "docs": {
-                    "uLayouter.html#.padsAndMargs": {
-                      "ref": "uLayouter.html#.padsAndMargs",
-                      "tf": 10
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
         "y": {
           "docs": {
+            "Layouter.html#setFlex": {
+              "ref": "Layouter.html#setFlex",
+              "tf": 6.25
+            },
             "uLayouter.html#.processors": {
               "ref": "uLayouter.html#.processors",
               "tf": 5
@@ -3073,8 +4421,8 @@ window.lunrData = {
               "ref": "uLayouter.html#.flexpv",
               "tf": 6.25
             },
-            "uLayouter.html#getNums": {
-              "ref": "uLayouter.html#getNums",
+            "uLayouter.html#.getNums": {
+              "ref": "uLayouter.html#.getNums",
               "tf": 5.555555555555555
             },
             "uLayouter.html#.createStyles": {
@@ -3091,200 +4439,46 @@ window.lunrData = {
             }
           }
         },
-        "e": {
-          "docs": {
-            "uLayouter.html#.settingCss": {
-              "ref": "uLayouter.html#.settingCss",
-              "tf": 3.571428571428571
-            }
-          },
-          "q": {
+        "q": {
+          "docs": {},
+          "u": {
             "docs": {},
-            "u": {
-              "docs": {},
-              "i": {
-                "docs": {},
-                "v": {
-                  "docs": {},
-                  "a": {
-                    "docs": {},
-                    "l": {
-                      "docs": {},
-                      "e": {
-                        "docs": {},
-                        "n": {
-                          "docs": {},
-                          "c": {
-                            "docs": {},
-                            "i": {
-                              "docs": {},
-                              "a": {
-                                "docs": {
-                                  "uLayouter.html#.flexpv": {
-                                    "ref": "uLayouter.html#.flexpv",
-                                    "tf": 6.25
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "l": {
-            "docs": {
-              "uLayouter.html#.replaceList": {
-                "ref": "uLayouter.html#.replaceList",
-                "tf": 5
-              },
-              "uLayouter.html#getNums": {
-                "ref": "uLayouter.html#getNums",
-                "tf": 5.555555555555555
-              },
-              "uLayouter.html#.haveBreakPoint": {
-                "ref": "uLayouter.html#.haveBreakPoint",
-                "tf": 5.555555555555555
-              },
-              "uLayouter.html#.prepareParam": {
-                "ref": "uLayouter.html#.prepareParam",
-                "tf": 4.545454545454546
-              },
-              "uLayouter.html#.calPercentage": {
-                "ref": "uLayouter.html#.calPercentage",
-                "tf": 7.142857142857142
-              },
-              "uLayouter.html#.createScopeStyles": {
-                "ref": "uLayouter.html#.createScopeStyles",
-                "tf": 2.5
-              }
-            }
-          },
-          "j": {
-            "docs": {},
-            "m": {
+            "e": {
               "docs": {
-                "uLayouter.html#.prepareParam": {
-                  "ref": "uLayouter.html#.prepareParam",
-                  "tf": 4.545454545454546
-                }
-              }
-            }
-          },
-          "s": {
-            "docs": {
-              "uLayouter.html#.processedNumber": {
-                "ref": "uLayouter.html#.processedNumber",
-                "tf": 3.8461538461538463
-              }
-            },
-            "p": {
-              "docs": {},
-              "e": {
-                "docs": {},
-                "c": {
-                  "docs": {},
-                  "i": {
-                    "docs": {},
-                    "f": {
-                      "docs": {},
-                      "i": {
-                        "docs": {},
-                        "c": {
-                          "docs": {},
-                          "a": {
-                            "docs": {},
-                            "d": {
-                              "docs": {},
-                              "o": {
-                                "docs": {
-                                  "uLayouter.html#.prepareParam": {
-                                    "ref": "uLayouter.html#.prepareParam",
-                                    "tf": 4.545454545454546
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "t": {
-              "docs": {},
-              "i": {
-                "docs": {},
-                "l": {
-                  "docs": {},
-                  "o": {
-                    "docs": {
-                      "uLayouter.html#.createStyles": {
-                        "ref": "uLayouter.html#.createStyles",
-                        "tf": 4.545454545454546
-                      },
-                      "uLayouter.html#.createScopeStyles": {
-                        "ref": "uLayouter.html#.createScopeStyles",
-                        "tf": 5
-                      },
-                      "uLayouter.html#.insertRules": {
-                        "ref": "uLayouter.html#.insertRules",
-                        "tf": 5.555555555555555
-                      },
-                      "uLayouter.html#.settingCss": {
-                        "ref": "uLayouter.html#.settingCss",
-                        "tf": 3.571428571428571
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "t": {
-            "docs": {},
-            "c": {
-              "docs": {
-                "uLayouter.html#.prepareParam": {
-                  "ref": "uLayouter.html#.prepareParam",
-                  "tf": 4.545454545454546
-                }
-              }
-            }
-          },
-          "r": {
-            "docs": {},
-            "r": {
-              "docs": {},
-              "o": {
-                "docs": {},
-                "r": {
-                  "docs": {
-                    "uLayouter.html#.regError": {
-                      "ref": "uLayouter.html#.regError",
-                      "tf": 12.5
-                    }
-                  }
+                "Layouter.html#build": {
+                  "ref": "Layouter.html#build",
+                  "tf": 5
+                },
+                "uLayouter.html#.processedNumber": {
+                  "ref": "uLayouter.html#.processedNumber",
+                  "tf": 2.5
+                },
+                "uLayouter.html#.createScopeStyles": {
+                  "ref": "uLayouter.html#.createScopeStyles",
+                  "tf": 5
                 }
               }
             }
           }
         },
         "v": {
-          "docs": {
-            "uLayouter.html#.calPercentage": {
-              "ref": "uLayouter.html#.calPercentage",
-              "tf": 7.142857142857142
-            }
-          },
+          "docs": {},
           "a": {
             "docs": {},
+            "r": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "a": {
+                  "docs": {
+                    "uLayouter.html": {
+                      "ref": "uLayouter.html",
+                      "tf": 25
+                    }
+                  }
+                }
+              }
+            },
             "l": {
               "docs": {},
               "o": {
@@ -3318,172 +4512,6 @@ window.lunrData = {
             }
           }
         },
-        "n": {
-          "1": {
-            "docs": {
-              "uLayouter.html#.calPercentage": {
-                "ref": "uLayouter.html#.calPercentage",
-                "tf": 25
-              }
-            }
-          },
-          "2": {
-            "docs": {
-              "uLayouter.html#.calPercentage": {
-                "ref": "uLayouter.html#.calPercentage",
-                "tf": 25
-              }
-            }
-          },
-          "docs": {
-            "uLayouter.html#.stringToNumber": {
-              "ref": "uLayouter.html#.stringToNumber",
-              "tf": 25
-            },
-            "uLayouter.html#.processedNumber": {
-              "ref": "uLayouter.html#.processedNumber",
-              "tf": 33.33333333333333
-            }
-          },
-          "o": {
-            "docs": {},
-            "m": {
-              "docs": {},
-              "b": {
-                "docs": {},
-                "r": {
-                  "docs": {
-                    "uLayouter.html#.replaceList": {
-                      "ref": "uLayouter.html#.replaceList",
-                      "tf": 5
-                    },
-                    "uLayouter.html#.adClasses": {
-                      "ref": "uLayouter.html#.adClasses",
-                      "tf": 7.142857142857142
-                    }
-                  }
-                }
-              }
-            },
-            "d": {
-              "docs": {},
-              "o": {
-                "docs": {
-                  "uLayouter.html#.insertRules": {
-                    "ref": "uLayouter.html#.insertRules",
-                    "tf": 5.555555555555555
-                  },
-                  "uLayouter.html#.adClasses": {
-                    "ref": "uLayouter.html#.adClasses",
-                    "tf": 7.142857142857142
-                  },
-                  "uLayouter.html#.settingCss": {
-                    "ref": "uLayouter.html#.settingCss",
-                    "tf": 3.571428571428571
-                  }
-                }
-              },
-              "e": {
-                "docs": {
-                  "uLayouter.html#.adClasses": {
-                    "ref": "uLayouter.html#.adClasses",
-                    "tf": 25
-                  }
-                }
-              }
-            }
-          },
-          "u": {
-            "docs": {},
-            "m": {
-              "docs": {},
-              "b": {
-                "docs": {},
-                "e": {
-                  "docs": {},
-                  "r": {
-                    "docs": {
-                      "uLayouter.html#.stringToNumber": {
-                        "ref": "uLayouter.html#.stringToNumber",
-                        "tf": 25
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "ú": {
-            "docs": {},
-            "m": {
-              "docs": {},
-              "e": {
-                "docs": {},
-                "r": {
-                  "docs": {},
-                  "o": {
-                    "docs": {
-                      "uLayouter.html#.stringToNumber": {
-                        "ref": "uLayouter.html#.stringToNumber",
-                        "tf": 10
-                      },
-                      "uLayouter.html#.calPercentage": {
-                        "ref": "uLayouter.html#.calPercentage",
-                        "tf": 7.142857142857142
-                      },
-                      "uLayouter.html#.processedNumber": {
-                        "ref": "uLayouter.html#.processedNumber",
-                        "tf": 3.8461538461538463
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "a": {
-            "docs": {},
-            "m": {
-              "docs": {},
-              "e": {
-                "docs": {
-                  "uLayouter.html#.regError": {
-                    "ref": "uLayouter.html#.regError",
-                    "tf": 25
-                  }
-                }
-              }
-            }
-          }
-        },
-        "o": {
-          "docs": {
-            "uLayouter.html#.haveBreakPoint": {
-              "ref": "uLayouter.html#.haveBreakPoint",
-              "tf": 5.555555555555555
-            }
-          },
-          "b": {
-            "docs": {},
-            "t": {
-              "docs": {},
-              "i": {
-                "docs": {},
-                "e": {
-                  "docs": {},
-                  "n": {
-                    "docs": {
-                      "uLayouter.html#getNums": {
-                        "ref": "uLayouter.html#getNums",
-                        "tf": 5.555555555555555
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
         "w": {
           "docs": {},
           "i": {
@@ -3494,8 +4522,8 @@ window.lunrData = {
                 "docs": {},
                 "h": {
                   "docs": {
-                    "uLayouter.html#getNums": {
-                      "ref": "uLayouter.html#getNums",
+                    "uLayouter.html#.getNums": {
+                      "ref": "uLayouter.html#.getNums",
                       "tf": 5.555555555555555
                     }
                   }
@@ -3503,168 +4531,25 @@ window.lunrData = {
               }
             }
           }
-        },
-        "a": {
-          "docs": {},
-          "p": {
-            "docs": {},
-            "a": {
-              "docs": {},
-              "r": {
-                "docs": {},
-                "t": {
-                  "docs": {},
-                  "i": {
-                    "docs": {},
-                    "r": {
-                      "docs": {
-                        "uLayouter.html#.createStyles": {
-                          "ref": "uLayouter.html#.createStyles",
-                          "tf": 4.545454545454546
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "l": {
-            "docs": {
-              "uLayouter.html#.createScopeStyles": {
-                "ref": "uLayouter.html#.createScopeStyles",
-                "tf": 2.5
-              },
-              "uLayouter.html#.settingCss": {
-                "ref": "uLayouter.html#.settingCss",
-                "tf": 3.571428571428571
-              }
-            }
-          },
-          "g": {
-            "docs": {},
-            "r": {
-              "docs": {},
-              "e": {
-                "docs": {},
-                "g": {
-                  "docs": {},
-                  "a": {
-                    "docs": {
-                      "uLayouter.html#.insertRules": {
-                        "ref": "uLayouter.html#.insertRules",
-                        "tf": 5.555555555555555
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "d": {
-            "docs": {},
-            "c": {
-              "docs": {},
-              "l": {
-                "docs": {},
-                "a": {
-                  "docs": {},
-                  "s": {
-                    "docs": {},
-                    "s": {
-                      "docs": {
-                        "uLayouter.html#.adClasses": {
-                          "ref": "uLayouter.html#.adClasses",
-                          "tf": 675
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "i": {
-              "docs": {},
-              "c": {
-                "docs": {},
-                "i": {
-                  "docs": {},
-                  "o": {
-                    "docs": {},
-                    "n": {
-                      "docs": {},
-                      "a": {
-                        "docs": {
-                          "uLayouter.html#.settingCss": {
-                            "ref": "uLayouter.html#.settingCss",
-                            "tf": 3.571428571428571
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "s": {
-            "docs": {},
-            "i": {
-              "docs": {},
-              "g": {
-                "docs": {},
-                "n": {
-                  "docs": {},
-                  "a": {
-                    "docs": {},
-                    "d": {
-                      "docs": {},
-                      "o": {
-                        "docs": {},
-                        "r": {
-                          "docs": {
-                            "uLayouter.html#.adClasses": {
-                              "ref": "uLayouter.html#.adClasses",
-                              "tf": 7.142857142857142
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "q": {
-          "docs": {},
-          "u": {
-            "docs": {},
-            "e": {
-              "docs": {
-                "uLayouter.html#.createScopeStyles": {
-                  "ref": "uLayouter.html#.createScopeStyles",
-                  "tf": 5
-                }
-              }
-            }
-          }
         }
       },
-      "length": 245
+      "length": 334
     },
     "corpusTokens": [
-      "adclass",
+      "addclass",
       "adiciona",
       "agrega",
       "al",
       "apartir",
+      "asigna",
       "asignador",
+      "atributo",
+      "auto",
       "base",
       "bootstrap",
       "bp",
       "breakpoint",
+      "build",
       "calcula",
       "calculandolo",
       "calpercentag",
@@ -3682,13 +4567,16 @@ window.lunrData = {
       "createstyl",
       "css",
       "cual",
+      "cuando",
       "darl",
       "data",
       "de",
       "del",
+      "designada",
       "designado",
       "designar",
       "determina",
+      "determinada",
       "devuelv",
       "dispon",
       "document",
@@ -3701,16 +4589,18 @@ window.lunrData = {
       "especificado",
       "estilo",
       "etc",
+      "flex",
       "flexbox",
       "flexpv",
       "foodoc",
       "function",
-      "general",
       "getnum",
+      "getparamet",
       "global",
       "handlebar",
       "havebreakpoint",
       "hoja",
+      "igual",
       "index",
       "inserta",
       "insertrul",
@@ -3719,13 +4609,21 @@ window.lunrData = {
       "junto",
       "la",
       "layout",
+      "layouter#build",
+      "layouter#getparamet",
+      "layouter#setcol",
+      "layouter#setflex",
+      "layouter#setmar",
+      "layouter#setpad",
       "list",
       "list:class",
+      "list:namespac",
       "lista",
       "lo",
       "lt;static&gt",
       "maestro",
       "margen",
+      "margin",
       "member",
       "messag",
       "método",
@@ -3733,12 +4631,16 @@ window.lunrData = {
       "n1",
       "n2",
       "name",
+      "namespac",
+      "necesario",
       "node",
       "nodo",
       "nombr",
       "number",
       "número",
       "o",
+      "objbp",
+      "object",
       "obtien",
       "pad",
       "padsandmarg",
@@ -3751,12 +4653,17 @@ window.lunrData = {
       "prepareparam",
       "procesa",
       "procesador",
+      "procesamiento",
+      "procesar",
       "processednumb",
       "processor",
       "propiedad",
+      "propnam",
       "que",
       "readm",
+      "recib",
       "reemplazar",
+      "referent",
       "regerror",
       "regla",
       "replacelist",
@@ -3765,7 +4672,11 @@ window.lunrData = {
       "rule",
       "scope",
       "se",
+      "setcol",
       "setea",
+      "setflex",
+      "setmar",
+      "setpad",
       "settingcss",
       "si",
       "sino",
@@ -3776,15 +4687,17 @@ window.lunrData = {
       "tal",
       "tambien",
       "templat",
+      "tenga",
       "tien",
+      "todo",
       "type",
       "ulayout",
-      "ulayouter#getnum",
-      "ulayouter.adclass",
+      "ulayouter.addclass",
       "ulayouter.calpercentag",
       "ulayouter.createscopestyl",
       "ulayouter.createstyl",
       "ulayouter.flexpv",
+      "ulayouter.getnum",
       "ulayouter.havebreakpoint",
       "ulayouter.insertrul",
       "ulayouter.padsandmarg",
@@ -3799,8 +4712,8 @@ window.lunrData = {
       "una",
       "usar",
       "utilidad",
-      "v",
       "valor",
+      "varia",
       "vuelo",
       "width",
       "y"
@@ -3845,15 +4758,97 @@ window.lunrData = {
       "description": "",
       "body": ""
     },
+    "list_namespace.html": {
+      "id": "list_namespace.html",
+      "kind": "list",
+      "title": "Namespaces",
+      "longname": "list:namespace",
+      "name": "Namespaces",
+      "tags": "list:namespace",
+      "summary": "All documented namespaces.",
+      "description": "",
+      "body": ""
+    },
+    "Layouter.html": {
+      "id": "Layouter.html",
+      "kind": "class",
+      "title": "Layouter",
+      "longname": "Layouter",
+      "name": "Layouter",
+      "tags": "Layouter",
+      "summary": "",
+      "description": "Construtor maestro del sistema.",
+      "body": ""
+    },
+    "Layouter.html#getParameters": {
+      "id": "Layouter.html#getParameters",
+      "kind": "function",
+      "title": "getParameters( Nodo ) → {Object}",
+      "longname": "Layouter#getParameters",
+      "name": "getParameters",
+      "tags": "Layouter#getParameters getParameters",
+      "summary": "",
+      "description": "Obtiene los parametros disponibles para procesar"
+    },
+    "Layouter.html#setCols": {
+      "id": "Layouter.html#setCols",
+      "kind": "function",
+      "title": "setCols( Node )",
+      "longname": "Layouter#setCols",
+      "name": "setCols",
+      "tags": "Layouter#setCols setCols",
+      "summary": "",
+      "description": "Asigna los estilos necesarios a un nodo referentes a las columnas determinadas"
+    },
+    "Layouter.html#setPads": {
+      "id": "Layouter.html#setPads",
+      "kind": "function",
+      "title": "setPads( Node )",
+      "longname": "Layouter#setPads",
+      "name": "setPads",
+      "tags": "Layouter#setPads setPads",
+      "summary": "",
+      "description": "Setea los paddings necesarios para un Nodo."
+    },
+    "Layouter.html#setMars": {
+      "id": "Layouter.html#setMars",
+      "kind": "function",
+      "title": "setMars( Node )",
+      "longname": "Layouter#setMars",
+      "name": "setMars",
+      "tags": "Layouter#setMars setMars",
+      "summary": "",
+      "description": "Setea los margins necesarios para un Nodo."
+    },
+    "Layouter.html#setFlex": {
+      "id": "Layouter.html#setFlex",
+      "kind": "function",
+      "title": "setFlex( Node )",
+      "longname": "Layouter#setFlex",
+      "name": "setFlex",
+      "tags": "Layouter#setFlex setFlex",
+      "summary": "",
+      "description": "Setea la propiedad Flex y las reglas designadas"
+    },
+    "Layouter.html#build": {
+      "id": "Layouter.html#build",
+      "kind": "function",
+      "title": "build( Node )",
+      "longname": "Layouter#build",
+      "name": "build",
+      "tags": "Layouter#build build",
+      "summary": "",
+      "description": "Procesa todos los atributos de procesamiento que se tenga disponible"
+    },
     "uLayouter.html": {
       "id": "uLayouter.html",
-      "kind": "class",
+      "kind": "namespace",
       "title": "uLayouter",
       "longname": "uLayouter",
       "name": "uLayouter",
       "tags": "uLayouter",
       "summary": "",
-      "description": "Utilidades generales",
+      "description": "Utilidades varias",
       "body": ""
     },
     "uLayouter.html#.processors": {
@@ -3886,13 +4881,13 @@ window.lunrData = {
       "summary": "",
       "description": "Lista de caracteres a reemplazar para el nombre de las clases"
     },
-    "uLayouter.html#getNums": {
-      "id": "uLayouter.html#getNums",
-      "kind": "member",
-      "title": "getNums",
-      "longname": "uLayouter#getNums",
+    "uLayouter.html#.getNums": {
+      "id": "uLayouter.html#.getNums",
+      "kind": "function",
+      "title": "&lt;static&gt; getNums( objBps, propName )",
+      "longname": "uLayouter.getNums",
       "name": "getNums",
-      "tags": "uLayouter#getNums getNums",
+      "tags": "uLayouter.getNums getNums",
       "summary": "",
       "description": "Obtiene el width y las columnas de los breakpoints."
     },
@@ -3934,17 +4929,17 @@ window.lunrData = {
       "name": "calPercentage",
       "tags": "uLayouter.calPercentage calPercentage",
       "summary": "",
-      "description": "Calcula el porcentaje de un número :V"
+      "description": "Calcula el porcentaje de un número"
     },
     "uLayouter.html#.processedNumber": {
       "id": "uLayouter.html#.processedNumber",
       "kind": "function",
-      "title": "&lt;static&gt; processedNumber( n )",
+      "title": "&lt;static&gt; processedNumber( n ) → {String}",
       "longname": "uLayouter.processedNumber",
       "name": "processedNumber",
       "tags": "uLayouter.processedNumber processedNumber",
       "summary": "",
-      "description": "Procesa un número, si es porcentual, lo calcula, sino, lo devuelve tal cual"
+      "description": "Procesa un número, si es porcentual lo calcula, sino lo devuelve tal cual, al igual que cuando se recibe 'auto'."
     },
     "uLayouter.html#.regError": {
       "id": "uLayouter.html#.regError",
@@ -3986,13 +4981,13 @@ window.lunrData = {
       "summary": "",
       "description": "Agrega las reglas CSS para darle estilos a los nodos"
     },
-    "uLayouter.html#.adClasses": {
-      "id": "uLayouter.html#.adClasses",
+    "uLayouter.html#.addClasses": {
+      "id": "uLayouter.html#.addClasses",
       "kind": "function",
-      "title": "&lt;static&gt; adClasses( Node, classesNames )",
-      "longname": "uLayouter.adClasses",
-      "name": "adClasses",
-      "tags": "uLayouter.adClasses adClasses",
+      "title": "&lt;static&gt; addClasses( Node, classesNames )",
+      "longname": "uLayouter.addClasses",
+      "name": "addClasses",
+      "tags": "uLayouter.addClasses addClasses",
       "summary": "",
       "description": "Asignador de nombre de clases a un nodo."
     },
@@ -4009,23 +5004,12 @@ window.lunrData = {
     "uLayouter.html#.padsAndMargs": {
       "id": "uLayouter.html#.padsAndMargs",
       "kind": "function",
-      "title": "&lt;static&gt; padsAndMargs()",
+      "title": "&lt;static&gt; padsAndMargs( Node, type, instance )",
       "longname": "uLayouter.padsAndMargs",
       "name": "padsAndMargs",
       "tags": "uLayouter.padsAndMargs padsAndMargs",
       "summary": "",
       "description": "Setea los paddings y margenes"
-    },
-    "Layouter.html": {
-      "id": "Layouter.html",
-      "kind": "class",
-      "title": "Layouter",
-      "longname": "Layouter",
-      "name": "Layouter",
-      "tags": "Layouter",
-      "summary": "",
-      "description": "Construtor maestro del sistema.",
-      "body": ""
     }
   }
 };

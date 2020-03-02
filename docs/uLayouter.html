@@ -38,6 +38,11 @@
 									<a href="list_class.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 									<ul class="dropdown-menu">
 											<li><a href="Layouter.html">Layouter</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="list_namespace.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+									<ul class="dropdown-menu">
 											<li><a href="uLayouter.html">uLayouter</a></li>
 									</ul>
 								</li>
@@ -58,7 +63,7 @@
 	</header>
 	<!-- end:navbar.hbs -->		<div class="page-header">
 			<div class="container">
-				<span class="kind">class</span>
+				<span class="kind">namespace</span>
 				<h1><span class="name">uLayouter</span></h1>
 			</div>
 		</div>
@@ -67,18 +72,53 @@
 			<div class="col-md-9 main-content">
 						<ol class="breadcrumb">
 							<li><a href="index.html">Home</a></li>
-							<li><a href="list_class.html">Classes</a></li>
+							<li><a href="list_namespace.html">Namespaces</a></li>
 							<li class="active">uLayouter</li>
 						</ol>
 					<section>
 							<dl class="symbol primary">
-								<dt class="symbol-title class collapsible-symbol expanded">
-			<h2 class="class"><span class="signature-new">new&nbsp;</span><span class="name">uLayouter</span><span class="signature-params">()</span><span class="signature-type"></span></h2>
+								<dt class="symbol-title namespace collapsible-symbol expanded">
+			<h2 class="namespace"><span class="name">uLayouter</span></h2>
 </dt>
-<dd class="symbol-details class  collapsible-symbol expanded" style="max-height: 9999px;">
+<dd class="symbol-details namespace  collapsible-symbol expanded" style="max-height: 9999px;">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Utilidades generales</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Utilidades varias</div>
+			</div>			<div class="callout callout-info">
+				<h5>Properties</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>processors</code></td>
+							<td><span class="param-type">Object</span></td>
+							<td class="last">
+									Lista de procesadores disponibles, junto a su método y regla css
+							</td>
+						</tr>
+						<tr>
+								<td><code>flexpv</code></td>
+							<td><span class="param-type">Object</span></td>
+							<td class="last">
+									Equivalencias de las propiedades y valores de flexbox.
+							</td>
+						</tr>
+						<tr>
+								<td><code>replaceList</code></td>
+							<td><span class="param-type">Object</span></td>
+							<td class="last">
+									Lista de caracteres a reemplazar para el nombre de las clases
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
 			
@@ -139,7 +179,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-99">line 99</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-107">line 107</a></p>
 								</div>
 							</div>
 			
@@ -176,7 +216,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-121">line 121</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-129">line 129</a></p>
 								</div>
 							</div>
 			
@@ -213,7 +253,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-217">line 217</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-228">line 228</a></p>
 								</div>
 							</div>
 			
@@ -223,11 +263,14 @@
 					</form>
 			</div>	</div>
 </dd>
+									</dl>
+									<h3>Methods</h3>
+									<dl class="symbol">
 											<hr/>
-											<dt class="symbol-title member public collapsible-symbol">
-			<h4 id="getNums" class="member public"><span class="name">getNums</span><span class="signature-type"></span></h4>
+											<dt class="symbol-title function public collapsible-symbol">
+			<h4 id=".getNums" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">getNums</span><span class="signature-params">( <span class="signature-param">objBps</span>, <span class="signature-param">propName</span>&nbsp;)</span><span class="signature-type"></span></h4>
 		</dt>
-<dd class="symbol-details member public  collapsible-symbol">
+<dd class="symbol-details function public  collapsible-symbol">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Obtiene el width y las columnas de los breakpoints.</div>
 			</div>			<div class="callout callout-info">
@@ -278,7 +321,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-7">line 7</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-16">line 16</a></p>
 								</div>
 							</div>
 			
@@ -288,9 +331,6 @@
 					</form>
 			</div>	</div>
 </dd>
-									</dl>
-									<h3>Methods</h3>
-									<dl class="symbol">
 											<hr/>
 											<dt class="symbol-title function public collapsible-symbol">
 			<h4 id=".haveBreakPoint" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">haveBreakPoint</span><span class="signature-params">( <span class="signature-param">param</span>&nbsp;)</span><span class="signature-type"></span></h4>
@@ -339,7 +379,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-25">line 25</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-29">line 29</a></p>
 								</div>
 							</div>
 			
@@ -397,7 +437,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-33">line 33</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-38">line 38</a></p>
 								</div>
 							</div>
 			
@@ -463,7 +503,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-55">line 55</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-61">line 61</a></p>
 								</div>
 							</div>
 			
@@ -479,7 +519,7 @@
 		</dt>
 <dd class="symbol-details function public  collapsible-symbol">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Calcula el porcentaje de un número :V</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Calcula el porcentaje de un número</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -528,7 +568,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-64">line 64</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-71">line 71</a></p>
 								</div>
 							</div>
 			
@@ -540,11 +580,11 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public collapsible-symbol">
-			<h4 id=".processedNumber" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">processedNumber</span><span class="signature-params">( <span class="signature-param">n</span>&nbsp;)</span><span class="signature-type"></span></h4>
+			<h4 id=".processedNumber" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">processedNumber</span><span class="signature-params">( <span class="signature-param">n</span>&nbsp;)</span><span class="signature-type"> &rarr;&nbsp;{String}</span></h4>
 		</dt>
 <dd class="symbol-details function public  collapsible-symbol">
 	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Procesa un número, si es porcentual, lo calcula, sino, lo devuelve tal cual</div>
+			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Procesa un número, si es porcentual lo calcula, sino lo devuelve tal cual, al igual que cuando se recibe 'auto'.</div>
 			</div>			<div class="callout callout-info">
 				<h5>Parameters</h5>
 				<table class="params table table-striped">
@@ -566,7 +606,15 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			<div class="callout callout-success"><h5>Returns</h5>		<form class="form-horizontal returns">
+							<div class="form-group">
+								<label class="col-sm-3 control-label returns-type"><span class="param-type">String</span></label>
+								<div class="col-sm-9">
+									<div class="form-control-static returns-description"></div>
+								</div>
+							</div>
+					</form>
+			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
 			
@@ -586,7 +634,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-72">line 72</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-81">line 81</a></p>
 								</div>
 							</div>
 			
@@ -651,7 +699,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-88">line 88</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-96">line 96</a></p>
 								</div>
 							</div>
 			
@@ -723,7 +771,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-146">line 146</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-155">line 155</a></p>
 								</div>
 							</div>
 			
@@ -760,7 +808,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-191">line 191</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-201">line 201</a></p>
 								</div>
 							</div>
 			
@@ -818,7 +866,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-203">line 203</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-214">line 214</a></p>
 								</div>
 							</div>
 			
@@ -830,7 +878,7 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public collapsible-symbol">
-			<h4 id=".adClasses" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">adClasses</span><span class="signature-params">( <span class="signature-param">Node</span>, <span class="signature-param">classesNames</span>&nbsp;)</span><span class="signature-type"></span></h4>
+			<h4 id=".addClasses" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">addClasses</span><span class="signature-params">( <span class="signature-param">Node</span>, <span class="signature-param">classesNames</span>&nbsp;)</span><span class="signature-type"></span></h4>
 		</dt>
 <dd class="symbol-details function public  collapsible-symbol">
 	<div class="symbol-details-inner">
@@ -883,7 +931,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-231">line 231</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-243">line 243</a></p>
 								</div>
 							</div>
 			
@@ -941,7 +989,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-245">line 245</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-258">line 258</a></p>
 								</div>
 							</div>
 			
@@ -953,12 +1001,47 @@
 </dd>
 											<hr/>
 											<dt class="symbol-title function public collapsible-symbol">
-			<h4 id=".padsAndMargs" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">padsAndMargs</span><span class="signature-params">()</span><span class="signature-type"></span></h4>
+			<h4 id=".padsAndMargs" class="function public"><span class="signature-attribs">&lt;static> </span><span class="name">padsAndMargs</span><span class="signature-params">( <span class="signature-param">Node</span>, <span class="signature-param">type</span>, <span class="signature-param">instance</span>&nbsp;)</span><span class="signature-type"></span></h4>
 		</dt>
 <dd class="symbol-details function public  collapsible-symbol">
 	<div class="symbol-details-inner">
 			<div class="callout callout-primary"><h5>Description</h5>		<div class="description">Setea los paddings y margenes</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			</div>			<div class="callout callout-info">
+				<h5>Parameters</h5>
+				<table class="params table table-striped">
+					<thead>
+					<tr>
+							<th>Name</th>
+						<th>Type</th>
+						<th class="last">Description</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+								<td><code>Node</code></td>
+							<td><span class="param-type">Object</span></td>
+							<td class="last">
+									Nodo Element HTML
+							</td>
+						</tr>
+						<tr>
+								<td><code>type</code></td>
+							<td><span class="param-type">String</span></td>
+							<td class="last">
+									Nombre del tipo de atributo a obtener. cols, pad, mar y flex.
+							</td>
+						</tr>
+						<tr>
+								<td><code>instance</code></td>
+							<td><span class="param-type">Object</span></td>
+							<td class="last">
+									Instancia actual del Layouter
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
 			
 			
 			
@@ -978,7 +1061,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Source</label>
 								<div class="col-sm-9">
-									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-259">line 259</a></p>
+									<p class="form-control-static"><a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line-276">line 276</a></p>
 								</div>
 							</div>
 			
@@ -999,7 +1082,7 @@
 	</div>
 	<footer>
 				<div class="copyright">FooDoc Copyright © 2016 The contributors to the JSDoc3 and FooDoc projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on 27th Feb 2020 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on 1st Mar 2020 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

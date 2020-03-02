@@ -3,7 +3,7 @@ Es un pequeño script que creará estilos al vuelo grácias a ciertos atributos 
 
 Más abajo los detallaremos.
 
-Normalmente hoy en día, se maqueta con una base de columnas designadas a un breakpoint. Este sistema aprovecha esa designación para dar estilos al vuelo (o como se dice en los llunaites: 'on the fly' XD)
+Normalmente hoy en día, se maqueta con una base de columnas designadas a un breakpoint. Este sistema aprovecha esa designación para dar estilos al vuelo ('on the fly').
 
 ## Inicialización
 Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi podemos incluir los breakpoints que necesitemos, en este caso necesitaré 4 breakpoints.
