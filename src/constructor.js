@@ -20,4 +20,4 @@ function Layouter (config) {
 };
 const lytProto = Layouter.prototype;
 
-Layouter.version = '1.0Beta';
+Layouter.version = '1.0.1Beta';
