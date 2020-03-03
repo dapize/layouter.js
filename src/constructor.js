@@ -20,4 +20,4 @@ function Layouter (config) {
   this.styles = {};
 };
 
-Layouter.version = '1.0.1Beta';
+Layouter.version = '1.0.2Beta';

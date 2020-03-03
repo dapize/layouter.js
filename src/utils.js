@@ -79,11 +79,17 @@ const uLayouter = {
    * @returns {String}
    */
   processedNumber: function (n) {
-    let nProcessed = (n === 'auto') ? 'auto' : n + 'px';
+    let nProcessed;
     if (n.indexOf('/') !== -1) {
       nProcessed = n.split('/');
       nProcessed = this.calPercentage(this.stringToNumber(nProcessed[0]), this.stringToNumber(nProcessed[1]))
-    };
+    } else if (n === 'auto') {
+      nProcessed = 'auto'
+    } else if (n.indexOf('.') !== -1) {
+      nProcessed = n;
+    } else {
+      nProcessed = n + 'px'
+    }
     return nProcessed;
   },
 
@@ -161,7 +167,7 @@ const uLayouter = {
     Object.keys(bps).forEach(function (bp, index) {
       // preparing the className
       nameClass = prefix + type + '-' + bps[bp].name;
-      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@');
+      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
 
       // Property and value
       if (prop.indexOf(':') !== -1) { // cuando se define una propiedad inicial (Ejm: display:flex)
@@ -244,7 +250,7 @@ const uLayouter = {
     const _this = this
     classesNames.forEach(function (name) {
       _this.replaceList.forEach(function (reItem) {
-        name = name.replace(reItem[0], reItem[1])
+        name = name.split(reItem[0]).join(reItem[1]);
       });
       Node.classList.add(name);
     });
