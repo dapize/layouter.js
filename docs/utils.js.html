@@ -1,0 +1,427 @@
+<!-- start:source.tmpl.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>utils.js</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"FooDoc","systemSummary":"A Bootstrap and Handlebars based template for JSDoc3.","systemLogo":"","systemColor":"","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"","copyright":"FooDoc Copyright © 2016 The contributors to the JSDoc3 and FooDoc projects.","linenums":true,"collapseSymbols":true,"inverseNav":true,"inlineNav":false,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":true,"sort":"linenum, longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					FooDoc
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+								<li class="dropdown">
+									<a href="list_class.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+											<li><a href="Layouter.html">Layouter</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="list_namespace.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+											<li><a href="uLayouter.html">uLayouter</a></li>
+									</ul>
+								</li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">source</span>
+				<h1><span class="name">utils.js</span></h1>
+			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-12 main-content">
+		<section class="source-section">
+			<article></article>
+			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">/**
+ * Utilidades varias
+ * @namespace uLayouter
+ * @property {Object} processors Lista de procesadores disponibles, junto a su método y regla css
+ * @property {Object} flexpv Equivalencias de las propiedades y valores de flexbox.
+ * @property {Object} replaceList Lista de caracteres a reemplazar para el nombre de las clases
+ */
+const uLayouter = {
+
+  /**
+   * Obtiene el width y las columnas de los breakpoints.
+   * @memberof uLayouter
+   * @param {Object} objBps Objeto de los breakPoints
+   * @param {String} propName Nombre de la propiedad
+   */
+  getNums: function (objBps, propName) {
+    const sizes = {};
+    Object.keys(objBps).forEach(function (bp) {
+      sizes[bp] = propName === 'width' &amp;&amp; objBps[bp].direct ? 0 : objBps[bp][propName];
+    });
+    return sizes;
+  },
+
+  /**
+   * Determina si el parametro tiene o no un breakpoint designado
+   * @memberof uLayouter
+   * @param {String} param Parametro
+   */
+  haveBreakPoint: function (param) {
+    return param.indexOf('@') !== -1 ? true : false;
+  },
+
+  /**
+   * Prepara el parametro de un método especificado. (EJM: cols, pad, etc)
+   * @memberof uLayouter
+   * @param {String} param Parametro de configuración sobre el método.
+   */
+  prepareParam: function (param) {
+    let bp;
+    const haveBp = this.haveBreakPoint(param);
+    if (haveBp) {
+      const bpSplited = param.split('@');
+      param = bpSplited[0];
+      bp = bpSplited[1];
+    } else {
+      bp = 'xs';
+    }
+    return {
+      widthBp: haveBp,
+      numbers: param,
+      breakPoints: bp
+    }
+  },
+
+  /**
+   * Convierte un string a un número
+   * @memberof uLayouter
+   * @param {String} n El string que se vá a convertir a número
+   * @returns {Number}
+   */
+  stringToNumber: function (n) {
+    return typeof n === 'string' ? parseFloat(n) : n;
+  },
+
+  /**
+   * Calcula el porcentaje de un número
+   * @memberof uLayouter
+   * @param {Number} n1 Numero de donde se sacará el porcentaje
+   * @param {Number} n2 Número de valor máximo
+   */
+  calPercentage: function (n1, n2) {
+    return (n1 * 100) / n2 + '%'
+  },
+
+  /**
+   * Procesa un número, si es porcentual lo calcula, sino lo devuelve tal cual, al igual que cuando se recibe 'auto'.
+   * @memberof uLayouter
+   * @param {String} n Número a procesar
+   * @returns {String}
+   */
+  processedNumber: function (n) {
+    let nProcessed = (n === 'auto') ? 'auto' : n + 'px';
+    if (n.indexOf('/') !== -1) {
+      nProcessed = n.split('/');
+      nProcessed = this.calPercentage(this.stringToNumber(nProcessed[0]), this.stringToNumber(nProcessed[1]))
+    };
+    return nProcessed;
+  },
+
+  /**
+   * Utilidad para retornar errores.
+   * @memberof uLayouter
+   * @param {String} name Título del Error
+   * @param {String} message Descripción del error
+   */
+  regError: function (name, message) {
+    const err = new Error();
+    err.name = name;
+    err.message = message;
+    console.error(err);
+    return err;
+  },
+
+  /**
+   * Lista de procesadores disponibles, junto a su método y regla css
+   */
+  processors: {
+    cols: {
+      method: 'setCols',
+      ruleCss: 'width'
+    },
+    pad: {
+      method: 'setPads',
+      ruleCss: 'padding'
+    },
+    mar: {
+      method: 'setMars',
+      ruleCss: 'margin'
+    },
+    flex: {
+      method: 'setFlex',
+      ruleCss: 'display: flex'
+    }
+  },
+
+  /**
+   * Equivalencias de las propiedades y valores de flexbox
+   */
+  flexpv: {
+    jc: 'justify-content',
+    ai: 'align-items',
+    ce: 'center',
+    fs: 'flex-start',
+    fe: 'flex-end',
+    sb: 'space-between',
+    sa: 'space-around',
+    fw: 'flex-wrap',
+    nw: 'nowrap',
+    w: 'wrap',
+    wr: 'wrap-reverse',
+    fd: 'flex-direction',
+    r: 'row',
+    rr: 'row-reverse',
+    co: 'column',
+    cor: 'column-reverse'
+  },
+  
+  /**
+   * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
+   * @memberof uLayouter
+   * @param {String} type Tipo de estilos a dar: 'cols', 'pad', 'mar' o 'flex'
+   * @param {Object} bps Objeto de breakpoints registrados
+   * @param {Object} instance La instancia creada, el objeto mismo.
+   */
+  createStyles: function (type, bps, instance) {
+    const sizes = instance.sizes;
+    const prefix = instance.prefix;
+    const prop = uLayouter.processors[type].ruleCss;
+    const styles = {};
+    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal;
+    Object.keys(bps).forEach(function (bp, index) {
+      // preparing the className
+      nameClass = prefix + type + '-' + bps[bp].name;
+      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@');
+
+      // Property and value
+      if (prop.indexOf(':') !== -1) { // cuando se define una propiedad inicial (Ejm: display:flex)
+        propAndVal = bps[bp].value;
+        if (!index) styles[prefix + type + '-' + type] = '.' + prefix + type + '-' + type + '{' + prop + '}';
+      } else {
+        propAndVal = prop +  ':' + bps[bp].value;
+      }
+
+      rule = '@media screen and ';
+      if (bp.indexOf('-') === -1) { // no tiene unti
+        if (sizes[bp]) {
+          rule += '(min-width: ' + sizes[bp] + 'px)';
+        } else {
+          rule = '.' + nameClass + '{' + propAndVal + '}';
+          direct = true;
+        }
+      } else { 
+        bpSplited = bp.split('-');
+        bp1 = bpSplited[0];
+        if (bp1) rule += '(min-width: ' + sizes[bp1] + 'px) and ';
+        bp2 = bpSplited[1];
+        rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
+      }
+
+      if (!direct) rule += '{.' + nameClass + '{' + propAndVal + '}}';
+      direct = false;
+      styles[nameClass] = rule;
+    });
+    return styles;
+  },
+
+  /**
+   * Crea el scope de la hoja de estilos que se usará para designar los estilos que se crean al vuelo.
+   * @memberof uLayouter
+   */
+  createScopeStyles: function () {
+    const stylesScope = document.createElement('style');
+    stylesScope.appendChild(document.createTextNode(''));
+    document.body.appendChild(stylesScope);
+    stylesScope.id = 'layouter'
+    return stylesScope.sheet;
+  },
+
+  /**
+   * Agrega las reglas CSS para darle estilos a los nodos
+   * @memberof uLayouter
+   * @param {Array} rules Lista de reglas CSS a agregar
+   */
+  insertRules: function (objStyles, instance) {
+    const nodeScope = instance.scope;
+    const prefix = instance.prefix;
+    Object.keys(objStyles).forEach(function (className) {
+      if (!instance.styles.hasOwnProperty(prefix + className)) {
+        nodeScope.insertRule(objStyles[className], nodeScope.rules.length);
+        instance.styles[prefix + className] = objStyles[className];
+      }
+    });
+  },
+
+  /**
+   * Lista de caracteres a reemplazar para el nombre de las clases
+   */
+  replaceList: [
+    ['\/', ''],
+    ['\\', '/'],
+    ['/:', ':'],
+    ['\\:', ':'],
+    ['\\@', '@'],
+    ['/@', '@']
+  ],
+
+  /**
+   * Asignador de nombre de clases a un nodo.
+   * @memberof uLayouter
+   * @param {Object} Node Nodo a donde agregar las clases
+   * @param {Array} classesNames Lista de nombres de las clases
+   */
+  addClasses: function (classesNames, Node) {
+    const _this = this
+    classesNames.forEach(function (name) {
+      _this.replaceList.forEach(function (reItem) {
+        name = name.replace(reItem[0], reItem[1])
+      });
+      Node.classList.add(name);
+    });
+  },
+
+  /**
+   * Crea e inserta los estilos calculandolos, y tambien adiciona las clases respectivas al nodo
+   * @memberof uLayouter
+   * @param {Object} data Lista de data para el procesamiento del CSS
+   */
+  settingCss: function (data) {
+    // creating the styles
+    const objStyles = this.createStyles(data.type, data.bps, data.instance);
+
+    // Inserting CSS rules
+    this.insertRules(objStyles, data.instance);
+  
+    // Adding classes
+    this.addClasses(Object.keys(objStyles), data.node)
+  },
+  
+  /**
+   * Setea los paddings y margenes
+   * @memberof uLayouter
+   * @param {Object} Node Nodo Element HTML
+   * @param {String} type Nombre del tipo de atributo a obtener. cols, pad, mar y flex.
+   * @param {Object} instance Instancia actual del Layouter
+   */
+  padsAndMargs: function (Node, type, instance) {
+    if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+    const params = instance.getParameters(Node);
+    const _this = this;
+    if (!params.hasOwnProperty(type)) return uLayouter.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
+
+    const bpCals = {};
+    let paramProcessed, numbersPures, propValue, bps;
+    params[type].forEach(function (param) {
+
+      paramProcessed = uLayouter.prepareParam(param);
+      numbersPures = paramProcessed.numbers;
+      bps = paramProcessed.breakPoints;
+
+      // processing number values
+      propValue = numbersPures
+        .split('-')
+        .map(function (n) {
+          return _this.processedNumber(n);
+        })
+        .join(' ');
+      if (bpCals.hasOwnProperty(bps)) {
+        bpCals[bps].value += ';' + propValue
+      } else {
+        bpCals[bps] = {
+          name: param,
+          value: propValue
+        };
+      }
+    });
+
+    // Creating, inserting, and adding classNames of rules in Node.
+    this.settingCss({
+      type: type,
+      bps: bpCals,
+      instance: instance,
+      node: Node
+    });
+
+    // removing param
+    Node.removeAttribute(type);
+  }
+};</code></pre>
+		</section>
+			</div>
+		</div>
+	</div>
+	<footer>
+				<div class="copyright">FooDoc Copyright © 2016 The contributors to the JSDoc3 and FooDoc projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on 1st Mar 2020 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:source.tmpl.hbs -->

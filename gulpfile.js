@@ -1,9 +1,79 @@
-const {watch} = require('gulp');
+const { src, dest, series, watch } = require('gulp');
 const browserSync = require('browser-sync').create();
 const fs = require('fs');
-const Terser = require('terser');
+const Terser = require('gulp-terser');
+const jsdoc = require('gulp-jsdoc3');
+const concat = require('gulp-concat');
+const rename = require('gulp-rename');
+const sourcemaps = require('gulp-sourcemaps');
+const data = require('gulp-data');
+const fm = require('front-matter');
+const swig = require('gulp-swig');
+const size = require('gulp-filesize');
 
-// Static server
+
+const template = (content) => {
+  return `(function (root) {
+'use strict';
+  ${content}
+
+  // EXPORTING
+  if (typeof exports !== 'undefined') {
+    if (typeof module !== 'undefined' && module.exports) {
+      module.exports = Layouter;
+    }
+    exports.Layouter = Layouter;
+  } else {
+    root.Layouter = Layouter;
+  }
+}(this));`
+};
+
+const dist = () => {
+  return new Promise((resolve, reject) => {
+    const fDist = './dist';
+    fs.access(fDist, fs.F_OK, function(err) {
+      if (!err) resolve();
+      if (err) {
+        fs.mkdir(fDist, { recursive: true }, err => {
+          if (err) reject(err);
+          resolve()
+        });
+      } 
+    });
+  });
+};
+
+const build = () => {
+  return src([
+    './src/utils.js',
+    './src/constructor.js',
+    './src/methods.js'
+    ])
+    .pipe(sourcemaps.init())
+    .pipe(concat('layouter.js'))
+    .pipe(data(function(file) {
+      const content = fm(String(file._contents));
+      file._contents = template(Buffer.from(content.body));
+      return file._contents;
+    }))
+    .pipe(swig())
+    .pipe(rename('layouter.js'))
+    .pipe(sourcemaps.write('./'))
+    .pipe(dest('./dist'))
+    .pipe(size());
+};
+
+const buildMin = () => {
+  return src('./dist/layouter.js')
+    .pipe(rename('layouter.min.js'))
+    .pipe(sourcemaps.init())
+    .pipe(Terser({ output: { comments: false } }))
+    .pipe(sourcemaps.write('./'))
+    .pipe(dest('./dist'))
+    .pipe(size());
+};
+
 const serve = function () {
    browserSync.init({
     server: {
@@ -11,57 +81,33 @@ const serve = function () {
     }
   });
 
-  return watch(['./src/layouter.js', './main.js', './index.html'], function(cb) {
+  return watch(['./src/*.js', './main.js','./main.css' ,'./index.html'], function(cb) {
     build();
     cb();
   });
 };
 
-const build = function (deploy) {
-  return new Promise((resolve, reject) => {
-    if (!fs.existsSync('./dist')) fs.mkdirSync('./dist');
-    fs.readFile('./src/layouter.js', 'utf8', (err, contents) => {
-      if (err) reject(err);
-      const layouterCode = `(function (root) {
-        'use strict';
-        ${contents}
-      
-        // Export Layouter
-        if (typeof module === "object" && module.exports) {
-          module.exports = Layouter;
-        } else {
-          root.Layouter = Layouter;
-        }
-      })(this);`
-      const pathDist = './dist/layouter.js';
-      fs.writeFile(pathDist, layouterCode, (err) => {
-        if (err) reject(err);
-        console.log('Archivo compilado!');
-        browserSync.reload();
-        resolve();
-      });
-      // just in deploy
-      if (deploy) {
-        const result = Terser.minify({ 'layouter.js': layouterCode }, {
-          output: {
-            comments: false
-          }
-        });
-
-        let layouterPathMin = pathDist.split('.');
-        layouterPathMin.pop();
-        fs.writeFileSync('.' + layouterPathMin.join('') + '.min.js', result.code, 'utf8');
-        if (result.error) console.log(result.error);
-        if (result.warnings) console.log(result.warnings);
+const doc = () => {
+  return src([
+    './src/utils.js',
+    './src/constructor.js',
+    './src/methods.js'
+    ])
+    .pipe(jsdoc({
+      "opts": {
+        "destination": "./docs",
+        "template": "./node_modules/foodoc/template"
+      },
+      "source": {
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_",
+        "include": ["./README.md"]
       }
-    });
-  });
+    }))
 };
 
-const deploy = function () {
-  return build(true);
-};
-
-exports.build = build;
+exports.build = series(dist, build);
+exports.min = series(dist, buildMin);
 exports.serve = serve;
-exports.deploy = deploy;
+exports.deploy = series(dist, build, buildMin);
+exports.doc = series(dist, build, doc);

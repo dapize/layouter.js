@@ -3,7 +3,10 @@ Es un pequeño script que creará estilos al vuelo grácias a ciertos atributos 
 
 Más abajo los detallaremos.
 
-Normalmente hoy en día, se maqueta con una base de columnas designadas a un breakpoint. Este sistema aprovecha esa designación para dar estilos al vuelo (o como se dice en los llunaites: 'on the fly' XD)
+Normalmente hoy en día, se maqueta con una base de columnas designadas a un breakpoint. Este sistema aprovecha esa designación para dar estilos al vuelo ('on the fly').
+
+## Demo
+[https://dapize.github.io/layouter/](https://dapize.github.io/layouter/)
 
 ## Inicialización
 Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi podemos incluir los breakpoints que necesitemos, en este caso necesitaré 4 breakpoints.
@@ -151,7 +154,7 @@ El guión (-) indica 'desde / hasta' donde se quiere determinar las columnas. En
 ...aunque tambien se puede usar solo el 'hasta', así:
 ```html
 <div cols="20/27@-md">
-<!-- Esto le dará 20 columnas de 27 hasta 'desktop' (el breakpoint 'md') -->
+<!-- Esto le dará 20 columnas de 27 hasta 'desktop' (en el breakpoint 'md') -->
 ```
 y en estilos obtendremos esto:
 ```css
@@ -162,7 +165,7 @@ y en estilos obtendremos esto:
 }
 ```
 ##### Ejemplo 5: Columnas explicitas por breakpoint.
-Cuando queremos determinar un número de columnas en un breakpoint específico pero sin designarle el número de columnas de donde sacarlas, podemos hacerlo así:
+Cuando queremos determinar un número de columnas en un breakpoint específico pero sin designarle el número de columnas de donde sacarlas (o máximas), podemos hacerlo así:
 ```html
 <div cols="13 20@sm">...</div>
 ```
@@ -171,25 +174,25 @@ Eso es lo mismo que poner esto:
 <div cols="13/15 20/31@sm">...</div>
 ```
 Pero se obvia el número de columnas de donde se sacarán las columnas designadas, yá que el breakpoint tomará el número de columnas designadas para ese breakpoint, osea: el sistema reconocerá que son 13 columnas de 15 xq no se determinó breakpoint, y 15 son las columnas máximas que tiene el breakpoint 'xs' (mobile), y tambien reconocerá que son 20 columnas de 31, xq se determinó 20 columnas en el breakpoint 'sm' (tablet) y las columnas disponibles en tablet son 31.
-> **OJO**: **NO se puede** determinar columnas explicitas en breakpoints compuestos, osea en el 'desde / hasta', solo en breakpoints 'desde', osea '@sm', sino, tirará un mensaje de error, y no procesará.
+> **OJO**: **NO se puede** determinar columnas explicitas en breakpoints compuestos, osea en el 'desde / hasta', solo en breakpoints 'desde', osea estos '@sm', si no tirará un mensaje de error y no procesará.
 
 ```html
 <!-- ESTO NO ES VÁLIDO-->
 <div cols="20@sm-md">...</div>
 ```
 
-Este método de columnas explicitas solo es para ahorrarnos un poco de tiempo al designar las columnas que queremos en el atributo 'cols'. Sin embargo podría ser provechoso determinar así por si en algún momento las columnas designadas para un breakpoint en específico cambian, digamos que en el breakpoint 'sm' (tablet), yá no son 31 columnas sino 32, pues designación de columna explicitas nos ahorraríamos tener que cambiar en cada elemento donde determinamos cols="20/31@sm"
+Este método de columnas explicitas solo es para ahorrarnos un poco de tiempo al designar las columnas que queremos en el atributo 'cols'. Sin embargo podría ser provechoso determinar así por si en algún momento las columnas designadas para un breakpoint en específico cambian, digamos que en el breakpoint 'sm' (tablet), yá no son 31 columnas sino 32, pues con la designación de columna explicitas nos ahorraríamos tener que cambiar en cada elemento donde determinamos cols="20/31@sm"
 
 [&uarr; Volver Arriba](#layouter-js)
 
 ### Mar
-Es una abreviación del shorthan 'margin' y sirve para determinar los margenes superiores, derechos, inferiores e izquierdos de un elemento.
+Es una abreviación del shorthand 'margin' y sirve para determinar los margenes superiores, derechos, inferiores e izquierdos de un elemento.
 #### Ejemplo:
 
 ```html
 <div mar="20-2/15 40-3/31-20@sm 60-2/31@md">...</div>
 ```
-> Usa la misma sintaxis del margin combencional, osea: margin-top, margin-right, margin-bottom, margin-left. Pero solo para el margin left y right se puede declarar 'auto', mini Ejemplo: mar="20-auto"
+> Usa la misma sintaxis del margin combencional, osea: margin-top, margin-right, margin-bottom, margin-left. Pero solo para el margin left y right se puede declarar 'auto', si es que se requiere claro. Mini Ejemplo: mar="20-auto"
 
 Solo los margenes superiores e inferiores son procesados como pixeles, los derechos e izquierdos son procesados porcentualmente.
 
@@ -443,7 +446,7 @@ layout.styles: {
   "pad-40-3\\/31@sm": "@media screen and (min-width: 768px){.pad-40-3\\/31\\@sm{padding:40px 9.67741935483871%}}"
   "pad-60-2\\/31@md": "@media screen and (min-width: 1024px){.pad-60-2\\/31\\@md{padding:60px 6.451612903225806%}}"
 }
-Layouter.version: "1.0Beta"
+Layout.version: "1.0.2Beta"
 ```
 
 [&uarr; Volver Arriba](#layouter-js)
