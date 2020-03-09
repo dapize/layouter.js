@@ -161,18 +161,23 @@ const uLayouter = {
   createStyles: function (type, bps, instance) {
     const sizes = instance.sizes;
     const prefix = instance.prefix;
-    const prop = uLayouter.processors[type].ruleCss;
+    const prop = this.processors[type].ruleCss;
     const styles = {};
     let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal;
+    console.log('sizes: ', sizes)
+    console.log('bps: ', bps);
     Object.keys(bps).forEach(function (bp, index) {
       // preparing the className
       nameClass = prefix + type + '-' + bps[bp].name;
       nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
 
       // Property and value
-      if (prop.indexOf(':') !== -1) { // cuando se define una propiedad inicial (Ejm: display:flex)
+      if (type === 'flex') {
         propAndVal = bps[bp].value;
-        if (!index) styles[prefix + type + '-' + type] = '.' + prefix + type + '-' + type + '{' + prop + '}';
+        if (!index) {
+          styles[prefix + 'flex-flex'] = '.' + prefix + 'flex-flex' + '{display:flex}';
+          // console.log('bp, ', bp)
+        }
       } else {
         propAndVal = prop +  ':' + bps[bp].value;
       }
@@ -197,6 +202,7 @@ const uLayouter = {
       direct = false;
       styles[nameClass] = rule;
     });
+    console.log('styles: ', styles);
     return styles;
   },
 
@@ -206,7 +212,6 @@ const uLayouter = {
    */
   createScopeStyles: function () {
     const stylesScope = document.createElement('style');
-    stylesScope.appendChild(document.createTextNode(''));
     document.body.appendChild(stylesScope);
     stylesScope.id = 'layouter'
     return stylesScope.sheet;
@@ -280,16 +285,16 @@ const uLayouter = {
    * @param {Object} instance Instancia actual del Layouter
    */
   padsAndMargs: function (Node, type, instance) {
-    if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+    if (!Node) return this.regError('Non-existent Node', "Don't exists the Node for processing.");
     const params = instance.getParameters(Node);
     const _this = this;
-    if (!params.hasOwnProperty(type)) return uLayouter.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
+    if (!params.hasOwnProperty(type)) return this.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
 
     const bpCals = {};
     let paramProcessed, numbersPures, propValue, bps;
     params[type].forEach(function (param) {
 
-      paramProcessed = uLayouter.prepareParam(param);
+      paramProcessed = _this.prepareParam(param);
       numbersPures = paramProcessed.numbers;
       bps = paramProcessed.breakPoints;
 
