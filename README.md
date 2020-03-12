@@ -295,7 +295,7 @@ Este es el parametro más interesante, porque es el que determina el 'display' d
 
 #### Ejemplo:
 ```html
-<div flex="jc:c jc:fs@sm ai:fs@sm jc:fe@md">...</div>
+<div flex="jc:ce jc:fs@sm ai:fs@sm jc:fe@md">...</div>
 ```
 > **OJO**: Es posible determinar más de un estilo en el mismo breakpoint, en el caso del ejemplo de arriba, se determinó el justify-content: flex-start y align-items: flex-start para el breakpoint 'sm' osea (tablet)
 

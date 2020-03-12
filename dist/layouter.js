@@ -161,6 +161,9 @@ const uLayouter = {
    * @param {Object} instance La instancia creada, el objeto mismo.
    */
   createStyles: function (type, bps, instance) {
+    console.log(type);
+    console.log(bps);
+    return 
     const sizes = instance.sizes;
     const prefix = instance.prefix;
     const prop = uLayouter.processors[type].ruleCss;
@@ -172,6 +175,7 @@ const uLayouter = {
       nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
 
       // Property and value
+      // console.log(bps);
       if (prop.indexOf(':') !== -1) { // cuando se define una propiedad inicial (Ejm: display:flex)
         propAndVal = bps[bp].value;
         if (!index) styles[prefix + type + '-' + type] = '.' + prefix + type + '-' + type + '{' + prop + '}';
@@ -208,7 +212,6 @@ const uLayouter = {
    */
   createScopeStyles: function () {
     const stylesScope = document.createElement('style');
-    stylesScope.appendChild(document.createTextNode(''));
     document.body.appendChild(stylesScope);
     stylesScope.id = 'layouter'
     return stylesScope.sheet;
