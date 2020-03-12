@@ -164,8 +164,6 @@ const uLayouter = {
     const prop = this.processors[type].ruleCss;
     const styles = {};
     let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal;
-    console.log('sizes: ', sizes)
-    console.log('bps: ', bps);
     Object.keys(bps).forEach(function (bp, index) {
       // preparing the className
       nameClass = prefix + type + '-' + bps[bp].name;
@@ -173,11 +171,7 @@ const uLayouter = {
 
       // Property and value
       if (type === 'flex') {
-        propAndVal = bps[bp].value;
-        if (!index) {
-          styles[prefix + 'flex-flex'] = '.' + prefix + 'flex-flex' + '{display:flex}';
-          // console.log('bp, ', bp)
-        }
+        propAndVal = bps[bp].value + ';display: flex;';
       } else {
         propAndVal = prop +  ':' + bps[bp].value;
       }
@@ -202,7 +196,6 @@ const uLayouter = {
       direct = false;
       styles[nameClass] = rule;
     });
-    console.log('styles: ', styles);
     return styles;
   },
 
