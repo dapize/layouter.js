@@ -362,11 +362,11 @@ window.lunrData = {
         ],
         "uLayouter.html#.createScopeStyles": [
           "al",
+          "config",
           "crea",
           "crean",
           "createscopestyl",
           "de",
-          "debug",
           "designar",
           "el",
           "estilo",
@@ -1518,10 +1518,6 @@ window.lunrData = {
                     "uLayouter.html#.debug": {
                       "ref": "uLayouter.html#.debug",
                       "tf": 683.3333333333334
-                    },
-                    "uLayouter.html#.createScopeStyles": {
-                      "ref": "uLayouter.html#.createScopeStyles",
-                      "tf": 33.33333333333333
                     }
                   }
                 }
@@ -1792,6 +1788,20 @@ window.lunrData = {
                             "tf": 10
                           }
                         }
+                      }
+                    }
+                  }
+                }
+              },
+              "f": {
+                "docs": {},
+                "i": {
+                  "docs": {},
+                  "g": {
+                    "docs": {
+                      "uLayouter.html#.createScopeStyles": {
+                        "ref": "uLayouter.html#.createScopeStyles",
+                        "tf": 33.33333333333333
                       }
                     }
                   }
@@ -4761,6 +4771,7 @@ window.lunrData = {
       "classesnam",
       "col",
       "columna",
+      "config",
       "consola",
       "construtor",
       "conviert",
@@ -5186,7 +5197,7 @@ window.lunrData = {
     "uLayouter.html#.createScopeStyles": {
       "id": "uLayouter.html#.createScopeStyles",
       "kind": "function",
-      "title": "&lt;static&gt; createScopeStyles( debug )",
+      "title": "&lt;static&gt; createScopeStyles( config )",
       "longname": "uLayouter.createScopeStyles",
       "name": "createScopeStyles",
       "tags": "uLayouter.createScopeStyles createScopeStyles",

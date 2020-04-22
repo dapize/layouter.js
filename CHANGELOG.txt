@@ -19,3 +19,6 @@ v1.1.0Beta
 v1.2.0Beta
 - Se adiciona la propiedad 'debug' al objeto de configuración.
 - Se mejoró el tratado de la obtención de los parametros para el método 'build'. Ahora los métodos setCols, setPads, setMars y setFlex reciben como segundo argumento opcional los parametros del nodo previamente obtenido en el método 'build'.
+
+v1.3.0Beta
+- Se agrega la propiedad 'bridge' al objeto de configuración. Se detalla en README.
