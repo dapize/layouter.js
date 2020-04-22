@@ -325,9 +325,9 @@ const uLayouter = {
   /**
    * Crea el scope de la hoja de estilos que se usará para designar los estilos que se crean al vuelo.
    * @memberof uLayouter
-   * @param {Boolean | Undefined} debug Determina si se imprimirá o no el log para debug.
+   * @param {Object} config Configuración determinada.
    */
-  createScopeStyles: function (debug) {
+  createScopeStyles: function (config) {
     if (document.getElementById('layouter') !== null) {
       return this.regError('Existing Bridge', "The bridge of the layouter system already exists in the DOM. Please ¡remove it!");
     }
@@ -336,11 +336,17 @@ const uLayouter = {
     stylesScope.id = 'layouter'
     this.debug({
       type: 'i',
-      print: debug,
+      print: config.debug,
       message: 'Bridge layouter created and inserted in the DOM',
       data: stylesScope
     });
-    return stylesScope.sheet;
+    const bridge = config.bridge ? stylesScope.sheet : {
+      insertRule: function (ruleCss) {
+        stylesScope.innerHTML += '\n' + ruleCss;
+      },
+      rules: []
+    };
+    return bridge;
   },
 
   /**

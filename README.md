@@ -8,7 +8,7 @@ Normalmente hoy en día, se maqueta con una base de columnas designadas a un bre
 
 **Demo:** [https://dapize.github.io/layouter/](https://dapize.github.io/layouter/)
 
-**Documentación:** [https://dapize.github.io/layouter/doc](https://dapize.github.io/layouter/doc)
+**Documentación:** [https://dapize.github.io/layouter/docs](https://dapize.github.io/layouter/docs)
 
 ## Inicialización
 Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi podemos incluir los breakpoints que necesitemos, en este caso necesitaré 4 breakpoints.
@@ -40,6 +40,7 @@ const layout = new Layouter({
     }
   },
   debug: true // Indica si se necesita activar el modo 'debug', este modo sirve para imprimir en consola todo el proceso de un nodo. Es opcional.
+  bridge: false // Al poner esta propiedad en 'false', los estilos serán manejados como adición directa del nodo con id 'layouter'. Se detallará más abajo. Este parametro es opcional.
 });
 ```
 > La instancia creada muestra la designación de un 'prefijo' llamado 'lh', pero no lo usaré a lo largo de este documento, por motivos de ahorro visual XD.
@@ -51,8 +52,11 @@ const layout = new Layouter({
 
 ***Se pueden crear breakpoints a voluntad, el sistema admite cuantos breakpoints se necesite.***
 
-
 Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en **true**, así los estilos pasarán directos.
+
+## Bridge
+De forma automática el script crea un elemento tipo 'style' con el id 'layouter' y lo agrega al final del body. Éste nodo sirve como puente para insertar las reglas CSS que se definan, por lo tanto este nodo estará vacío, a no ser que en el objeto de configuración se determine la propiedad 'bridge' en 'false', en ese caso el nodo será rellenado con cada nueva regla CSS que se determine para los nodos a procesar con el sistema.
+> En algunas ocaciones se necesitará poner la propiedad 'bridge' en 'false' para cuando se trabaje con webs que manipulan mucho el DOM con JS.
 
 ## Parametros disponibles
 ### Cols

@@ -252,9 +252,9 @@ const uLayouter = {
   /**
    * Crea el scope de la hoja de estilos que se usará para designar los estilos que se crean al vuelo.
    * @memberof uLayouter
-   * @param {Boolean | Undefined} debug Determina si se imprimirá o no el log para debug.
+   * @param {Object} config Configuración determinada.
    */
-  createScopeStyles: function (debug) {
+  createScopeStyles: function (config) {
     if (document.getElementById('layouter') !== null) {
       return this.regError('Existing Bridge', "The bridge of the layouter system already exists in the DOM. Please ¡remove it!");
     }
@@ -263,11 +263,17 @@ const uLayouter = {
     stylesScope.id = 'layouter'
     this.debug({
       type: 'i',
-      print: debug,
+      print: config.debug,
       message: 'Bridge layouter created and inserted in the DOM',
       data: stylesScope
     });
-    return stylesScope.sheet;
+    const bridge = config.bridge ? stylesScope.sheet : {
+      insertRule: function (ruleCss) {
+        stylesScope.innerHTML += '\n' + ruleCss;
+      },
+      rules: []
+    };
+    return bridge;
   },
 
   /**
@@ -431,12 +437,12 @@ function Layouter (config) {
   this.breakPoints = Object.keys(bps);
   this.sizes = uLayouter.getNums(bps, 'width');
   this.cols = uLayouter.getNums(bps, 'cols');
-  this.scope = uLayouter.createScopeStyles(config.debug);
+  this.scope = uLayouter.createScopeStyles(Object.assign({bridge: true}, config));
   this.styles = {};
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.2.0Beta';
+Layouter.version = '1.3.0Beta';
 /**
  * Obtiene los parametros disponibles para procesar
  * @memberof Layouter

@@ -77,7 +77,7 @@
 <p>Más abajo los detallaremos.</p>
 <p>Normalmente hoy en día, se maqueta con una base de columnas designadas a un breakpoint. Este sistema aprovecha esa designación para dar estilos al vuelo ('on the fly').</p>
 <p><strong>Demo:</strong> <a href="https://dapize.github.io/layouter/">https://dapize.github.io/layouter/</a></p>
-<p><strong>Documentación:</strong> <a href="https://dapize.github.io/layouter/doc">https://dapize.github.io/layouter/doc</a></p>
+<p><strong>Documentación:</strong> <a href="https://dapize.github.io/layouter/docs">https://dapize.github.io/layouter/docs</a></p>
 <h2>Inicialización</h2>
 <p>Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi podemos incluir los breakpoints que necesitemos, en este caso necesitaré 4 breakpoints.</p>
 <pre class="prettyprint source lang-javascript"><code>const layout = new Layouter({
@@ -106,6 +106,7 @@
     }
   },
   debug: true // Indica si se necesita activar el modo 'debug', este modo sirve para imprimir en consola todo el proceso de un nodo. Es opcional.
+  bridge: false // Al poner esta propiedad en 'false', los estilos serán manejados como adición directa del nodo con id 'layouter'. Se detallará más abajo. Este parametro es opcional.
 });
 </code></pre>
 <blockquote>
@@ -121,6 +122,11 @@
 </blockquote>
 <p><em><strong>Se pueden crear breakpoints a voluntad, el sistema admite cuantos breakpoints se necesite.</strong></em></p>
 <p>Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en <strong>true</strong>, así los estilos pasarán directos.</p>
+<h2>Bridge</h2>
+<p>De forma automática el script crea un elemento tipo 'style' con el id 'layouter' y lo agrega al final del body. Éste nodo sirve como puente para insertar las reglas CSS que se definan, por lo tanto este nodo estará vacío, a no ser que en el objeto de configuración se determine la propiedad 'bridge' en 'false', en ese caso el nodo será rellenado con cada nueva regla CSS que se determine para los nodos a procesar con el sistema.</p>
+<blockquote>
+<p>En algunas ocaciones se necesitará poner la propiedad 'bridge' en 'false' para cuando se trabaje con webs que manipulan mucho el DOM con JS.</p>
+</blockquote>
 <h2>Parametros disponibles</h2>
 <h3>Cols</h3>
 <p>Determinará las columnas que se necesitan asignar, osea el 'width' de manera porcentual.</p>
