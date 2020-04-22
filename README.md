@@ -5,8 +5,10 @@ Más abajo los detallaremos.
 
 Normalmente hoy en día, se maqueta con una base de columnas designadas a un breakpoint. Este sistema aprovecha esa designación para dar estilos al vuelo ('on the fly').
 
-## Demo
-[https://dapize.github.io/layouter/](https://dapize.github.io/layouter/)
+
+**Demo:** [https://dapize.github.io/layouter/](https://dapize.github.io/layouter/)
+
+**Documentación:** [https://dapize.github.io/layouter/doc](https://dapize.github.io/layouter/doc)
 
 ## Inicialización
 Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi podemos incluir los breakpoints que necesitemos, en este caso necesitaré 4 breakpoints.
@@ -20,7 +22,7 @@ const layout = new Layouter({
       cols: 15, // ...y estas son las columnas disponibles que tiene ese breakpoint.
       direct: true
       /* 
-        La propiedad 'direct' determina que este breakpoint en especial 
+        La propiedad 'direct' determina que este breakpoint es especial 
         no necesita una media query para sus estilos.
       */
     },
@@ -36,7 +38,8 @@ const layout = new Layouter({
       width: 1280,
       cols: 31
     }
-  }
+  },
+  debug: true // Indica si se necesita activar el modo 'debug', este modo sirve para imprimir en consola todo el proceso de un nodo. Es opcional.
 });
 ```
 > La instancia creada muestra la designación de un 'prefijo' llamado 'lh', pero no lo usaré a lo largo de este documento, por motivos de ahorro visual XD.
@@ -334,6 +337,17 @@ Y pues, estos estilos:
 
 [&uarr; Volver Arriba](#layouter-js)
 
+## Nota extra:
+Es posible adicionar un segundo argumento a los métodos: setCols, setPads, setMars y setFlex, el cual es un objeto con los parametros obtenidos, aunque este uso no es comun, y se realiza de forma automática cuando se usa el método 'build', veamos un ejemplo:
+
+Si por alguna razón hemos obtenido previamente los parametros de un DIV y luego queremos determinarle las columnas, hacemos esto:
+```javascript
+const myDiv = document.querySelector('div');
+const myParameters = layout.getParameters(myDiv);
+layouter.setCols(myDiv, myParameters);
+```
+Se obtendrá el mismo resultado que si no le pases los parametros, pero puedes ahorrar un proceso más al sistema.
+
 ## Finalmente
 Imaginemos que tenemos un DIV en donde hemos designado darle columnas, margenes, paddins y flex todo de un tiron:
 
@@ -470,9 +484,9 @@ layout.getParameters(myDiv);
 ```
 
 ## Cosas que agregaré más adelante
-- Sistema de Log
+- ~~Sistema de Log~~ - Listo!
 - Guardado en localStorage de configuraciones parametrales y clases creadas.
 
 Por el momento eso es todo lo que trae, más adelante le agregaré más cosas que se me ocurran o que me sugieran.
 
-> Nota: Disculpen si hay alguna falta ortográfica en este documento, no soy muy bueno con las palabras, pero si con los números XD.
+> Nota: Disculpen si hay alguna falta ortográfica en este documento, no soy muy bueno con las palabras :V

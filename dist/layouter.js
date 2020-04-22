@@ -96,6 +96,46 @@ const uLayouter = {
   },
 
   /**
+   * Registra en consola diferentes tipos de mensaje.
+   * @memberof uLayouter
+   * @param {Object} obj Contiene tres propiedades: 'type', 'state', 'message' y posiblemente 'data'
+   * 
+   * @example
+   * uLayouter.debug({
+   *  type: 'i',
+   *  print: true,
+   *  message: 'Getting parameters of the Node:',
+   *  data: Node
+   * });
+   */
+  debug: function (obj) {
+    let printMessage = obj.print || false;
+    let cType;
+    switch(obj.type || 'l') {
+      case 'l':
+        cType = 'log';
+        break;
+      case 'e':
+        cType = 'error';
+        printMessage = true;
+        break;
+      case 'w':
+        cType = 'warn';
+        break;
+      case 'i':
+        cType = 'info';
+        break;
+    }
+    if (printMessage) {
+      let msgObj = Object.create(null);
+      msgObj.type = cType;
+      if (obj.message) msgObj.message = obj.message;
+      if (obj.data) msgObj.data = obj.data;
+      console[cType](msgObj);
+    } 
+  },
+
+  /**
    * Utilidad para retornar errores.
    * @memberof uLayouter
    * @param {String} name Título del Error
@@ -105,8 +145,10 @@ const uLayouter = {
     const err = new Error();
     err.name = name;
     err.message = message;
-    console.error(err);
-    return err;
+    return this.debug({
+      type: 'e',
+      message: err
+    });
   },
 
   /**
@@ -198,24 +240,41 @@ const uLayouter = {
       direct = false;
       styles[nameClass] = rule;
     });
+    this.debug({
+      type: 'i',
+      print: instance.debug,
+      message: 'Creating / Created Styles: ',
+      data: [bps, styles]
+    });
     return styles;
   },
 
   /**
    * Crea el scope de la hoja de estilos que se usará para designar los estilos que se crean al vuelo.
    * @memberof uLayouter
+   * @param {Boolean | Undefined} debug Determina si se imprimirá o no el log para debug.
    */
-  createScopeStyles: function () {
+  createScopeStyles: function (debug) {
+    if (document.getElementById('layouter') !== null) {
+      return this.regError('Existing Bridge', "The bridge of the layouter system already exists in the DOM. Please ¡remove it!");
+    }
     const stylesScope = document.createElement('style');
     document.body.appendChild(stylesScope);
     stylesScope.id = 'layouter'
+    this.debug({
+      type: 'i',
+      print: debug,
+      message: 'Bridge layouter created and inserted in the DOM',
+      data: stylesScope
+    });
     return stylesScope.sheet;
   },
 
   /**
    * Agrega las reglas CSS para darle estilos a los nodos
    * @memberof uLayouter
-   * @param {Array} rules Lista de reglas CSS a agregar
+   * @param {Object} objStyles Objeto de reglas css junto con su nombre de clase.
+   * @param {Object} instance Instancia iniciada del layouter.
    */
   insertRules: function (objStyles, instance) {
     const nodeScope = instance.scope;
@@ -225,6 +284,12 @@ const uLayouter = {
         nodeScope.insertRule(objStyles[className], nodeScope.rules.length);
         instance.styles[prefix + className] = objStyles[className];
       }
+    });
+    this.debug({
+      type: 'i',
+      print: instance.debug,
+      message: 'Inserting Styles: ',
+      data: objStyles
     });
   },
 
@@ -243,16 +308,35 @@ const uLayouter = {
   /**
    * Asignador de nombre de clases a un nodo.
    * @memberof uLayouter
-   * @param {Object} Node Nodo a donde agregar las clases
    * @param {Array} classesNames Lista de nombres de las clases
+   * @param {Object} Node Nodo a donde agregar las clases
+   * @param {Object} instance Instancia iniciada del layouter.
    */
-  addClasses: function (classesNames, Node) {
+  addClasses: function (classesNames, Node, instance) {
     const _this = this
     classesNames.forEach(function (name) {
       _this.replaceList.forEach(function (reItem) {
         name = name.split(reItem[0]).join(reItem[1]);
       });
-      Node.classList.add(name);
+      if (Node.classList.contains(name)) {
+        this.debug({
+          type: 'w',
+          print: instance.debug,
+          message: "The class name '" + name + "' already exists in the node and will not be added: ",
+          data: Node
+        });
+      } else {
+        Node.classList.add(name);
+      }
+    });
+    this.debug({
+      type: 'i',
+      print: instance.debug,
+      message: 'Adding classes to the Node: ',
+      data: {
+        classesNames: classesNames,
+        node: Node
+      }
     });
   },
 
@@ -269,7 +353,7 @@ const uLayouter = {
     this.insertRules(objStyles, data.instance);
   
     // Adding classes
-    this.addClasses(Object.keys(objStyles), data.node)
+    this.addClasses(Object.keys(objStyles), data.node, data.instance);
   },
   
   /**
@@ -277,11 +361,18 @@ const uLayouter = {
    * @memberof uLayouter
    * @param {Object} Node Nodo Element HTML
    * @param {String} type Nombre del tipo de atributo a obtener. cols, pad, mar y flex.
+   * @param {Object} [parameters] Parametros obtenidos del nodo.
    * @param {Object} instance Instancia actual del Layouter
    */
-  padsAndMargs: function (Node, type, instance) {
+  padsAndMargs: function (Node, type, parameters, instance) {
     if (!Node) return this.regError('Non-existent Node', "Don't exists the Node for processing.");
-    const params = instance.getParameters(Node);
+    this.debug({
+      type: 'i',
+      print: instance.debug,
+      message: "Processing the '" + type + "' to the Node:",
+      data: Node
+    });
+    const params = parameters || instance.getParameters(Node);
     const _this = this;
     if (!params.hasOwnProperty(type)) return this.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
 
@@ -340,11 +431,12 @@ function Layouter (config) {
   this.breakPoints = Object.keys(bps);
   this.sizes = uLayouter.getNums(bps, 'width');
   this.cols = uLayouter.getNums(bps, 'cols');
-  this.scope = uLayouter.createScopeStyles();
+  this.scope = uLayouter.createScopeStyles(config.debug);
   this.styles = {};
+  this.debug = config.debug || false;
 };
 
-Layouter.version = '1.1.2Beta';
+Layouter.version = '1.2.0Beta';
 /**
  * Obtiene los parametros disponibles para procesar
  * @memberof Layouter
@@ -360,6 +452,15 @@ Layouter.prototype.getParameters = function (Node) {
       if (attr.value !== '') params[attr.name] = attr.value.trim().split(' ');
     }
   });
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: 'Getting / Getted parameters of the Node:',
+    data: {
+      parameters: params,
+      node: Node
+    }
+  });
   return params;
 };
 
@@ -367,11 +468,18 @@ Layouter.prototype.getParameters = function (Node) {
  * Asigna los estilos necesarios a un nodo referentes a las columnas determinadas
  * @memberof Layouter
  * @param {Object} Node Nodo a donde asignar los estilos
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
-Layouter.prototype.setCols = function (Node) {
+Layouter.prototype.setCols = function (Node, parameters) {
   if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Processing the 'cols' to the Node:",
+    data: Node
+  });
   const _this = this;
-  const params = this.getParameters(Node);
+  const params = parameters || this.getParameters(Node);
   if (!params.hasOwnProperty('cols')) return uLayouter.regError('Parameter Missing', "Don't exists 'cols' determined");
   let cols, bp, bpCals = {};
 
@@ -420,28 +528,37 @@ Layouter.prototype.setCols = function (Node) {
  * Setea los paddings necesarios para un Nodo.
  * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
-Layouter.prototype.setPads = function (Node) {
-  uLayouter.padsAndMargs(Node, 'pad', this);
+Layouter.prototype.setPads = function (Node, parameters) {
+  uLayouter.padsAndMargs(Node, 'pad', parameters, this);
 };
 
 /**
  * Setea los margins necesarios para un Nodo.
  * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
-Layouter.prototype.setMars = function (Node) {
-  uLayouter.padsAndMargs(Node, 'mar', this);
+Layouter.prototype.setMars = function (Node, parameters) {
+  uLayouter.padsAndMargs(Node, 'mar', parameters, this);
 };
 
 /**
  * Setea la propiedad Flex y las reglas designadas
  * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
-Layouter.prototype.setFlex = function (Node) {
+Layouter.prototype.setFlex = function (Node, parameters) {
   if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
-  const params = this.getParameters(Node);
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Processing the 'flex' parameter to the Node:",
+    data: Node
+  });
+  const params = parameters || this.getParameters(Node);
   if (!params.hasOwnProperty('flex')) return uLayouter.regError('Parameter Missing', "Don't exists 'flex' determinated.");
   let bpNameS, bpCals = {};
 
@@ -498,12 +615,18 @@ Layouter.prototype.setFlex = function (Node) {
  */
 Layouter.prototype.build = function (Node) {
   if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Starting the build of the Node:",
+    data: Node
+  });
   const params = this.getParameters(Node);
   const proNames = Object.keys(params);
   const _this = this;
   if (proNames.length) {
     proNames.forEach(function (processorName) {
-      _this[uLayouter.processors[processorName].method](Node);
+      _this[uLayouter.processors[processorName].method](Node, params);
     });
   } else {
     uLayouter.regError('Parameter Missing', "don't exists any parameter to process")
