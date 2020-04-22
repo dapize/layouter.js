@@ -1,0 +1,21 @@
+v1.0Beta
+- Versión Inicial. Métodos base: setCols, setPads, setMars y setFlex. Documentación.
+
+v1.0.1Beta
+- Separación de código fuente, constructor.js, methods.js y utils.js
+- Creación de documentación html.
+- Afinación del procesador de parametros.
+
+v1.0.2Beta
+- Afinamiento en nombre de variables.
+- Se mejoró las notaciones de JS DOC
+- Mejoró la pura obtención del valor de los atributos (cols, pad, mar y flex).
+- Se mejoró enormemente el compilador y generador de Docs.
+- Se agregó un template para los commits.
+
+v1.1.0Beta
+- El "display: flex" se adiciona en conjunto a cada propiedad flex de cada breakpoint, no por separado.
+
+v1.2.0Beta
+- Se adiciona la propiedad 'debug' al objeto de configuración.
+- Se mejoró el tratado de la obtención de los parametros para el método 'build'. Ahora los métodos setCols, setPads, setMars y setFlex reciben como segundo argumento opcional los parametros del nodo previamente obtenido en el método 'build'.

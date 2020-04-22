@@ -1,0 +1,557 @@
+<!-- start:readme.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>FooDoc</title>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"FooDoc","systemSummary":"A Bootstrap and Handlebars based template for JSDoc3.","systemLogo":"","systemColor":"","navMembers":[{"kind":"class","title":"Classes","summary":"All documented classes."},{"kind":"external","title":"Externals","summary":"All documented external members."},{"kind":"global","title":"Globals","summary":"All documented globals."},{"kind":"mixin","title":"Mixins","summary":"All documented mixins."},{"kind":"interface","title":"Interfaces","summary":"All documented interfaces."},{"kind":"module","title":"Modules","summary":"All documented modules."},{"kind":"namespace","title":"Namespaces","summary":"All documented namespaces."},{"kind":"tutorial","title":"Tutorials","summary":"All available tutorials."}],"footer":"","copyright":"FooDoc Copyright © 2016 The contributors to the JSDoc3 and FooDoc projects.","linenums":true,"collapseSymbols":true,"inverseNav":true,"inlineNav":false,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":true,"sort":"linenum, longname, version, since","search":true,"favicon":null,"stylesheets":[],"scripts":[],"monospaceLinks":false,"cleverLinks":false};
+			window.DOCLET_TOC_ENABLED = true;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					FooDoc
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+								<li class="dropdown">
+									<a href="list_class.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+											<li><a href="Layouter.html">Layouter</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="list_namespace.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+											<li><a href="uLayouter.html">uLayouter</a></li>
+									</ul>
+								</li>
+				</ul>
+					<!-- start:lunr-search-navbar.hbs -->
+					<form class="navbar-form navbar-right" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" id="lunr-search-input">
+							<div class="input-group-btn">
+								<button class="btn btn-default" id="lunr-search-submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<!-- start:lunr-search-navbar.hbs -->		</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">readme</span>
+				<h1><span class="name">FooDoc</span></h1>
+				<div class="summary"><p>A Bootstrap and Handlebars based template for JSDoc3.</p></div>			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-9 main-content">
+		<section class="readme-section">
+			<article><h1>Layouter JS</h1>
+<p>Es un pequeño script que creará estilos al vuelo grácias a ciertos atributos determinados en un elemento. Los atributos disponibles son: <a href="#cols">Cols</a>, <a href="#pad">Pad</a>, <a href="#mar">Mar</a> y <a href="#flex">Flex</a></p>
+<p>Más abajo los detallaremos.</p>
+<p>Normalmente hoy en día, se maqueta con una base de columnas designadas a un breakpoint. Este sistema aprovecha esa designación para dar estilos al vuelo ('on the fly').</p>
+<p><strong>Demo:</strong> <a href="https://dapize.github.io/layouter/">https://dapize.github.io/layouter/</a></p>
+<p><strong>Documentación:</strong> <a href="https://dapize.github.io/layouter/doc">https://dapize.github.io/layouter/doc</a></p>
+<h2>Inicialización</h2>
+<p>Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi podemos incluir los breakpoints que necesitemos, en este caso necesitaré 4 breakpoints.</p>
+<pre class="prettyprint source lang-javascript"><code>const layout = new Layouter({
+  prefix: 'lh', // Esta propiedad determina el prefijo de las clases. Es opcional.
+  breakPoints: { // En este objeto determinaremos los breakpoints que necesitamos.
+    xs: {
+      width: 320, // Este será el ancho en pixeles que se determine al breakpoint 'xs'
+      cols: 15, // ...y estas son las columnas disponibles que tiene ese breakpoint.
+      direct: true
+      /* 
+        La propiedad 'direct' determina que este breakpoint es especial 
+        no necesita una media query para sus estilos.
+      */
+    },
+    sm: {
+      width: 768,
+      cols: 31
+    },
+    md: {
+      width: 1024,
+      cols: 31
+    },
+    lg: {
+      width: 1280,
+      cols: 31
+    }
+  },
+  debug: true // Indica si se necesita activar el modo 'debug', este modo sirve para imprimir en consola todo el proceso de un nodo. Es opcional.
+});
+</code></pre>
+<blockquote>
+<p>La instancia creada muestra la designación de un 'prefijo' llamado 'lh', pero no lo usaré a lo largo de este documento, por motivos de ahorro visual XD.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Convencionalmente 'xs' es para la versión 'mobile' (celular) osea apartir de 320 / 360 pixeles de ancho.</li>
+<li>'sm' Es para tablet, osea a partir de 768px de ancho.</li>
+<li>'md' Es para desktop, osea apartir de 1024px de ancho.</li>
+<li>'lg' es para desktop con monitores más grandes, apartir de 1280</li>
+</ul>
+</blockquote>
+<p><em><strong>Se pueden crear breakpoints a voluntad, el sistema admite cuantos breakpoints se necesite.</strong></em></p>
+<p>Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en <strong>true</strong>, así los estilos pasarán directos.</p>
+<h2>Parametros disponibles</h2>
+<h3>Cols</h3>
+<p>Determinará las columnas que se necesitan asignar, osea el 'width' de manera porcentual.</p>
+<h4>Ejemplos:</h4>
+<h5>Ejemplo 1: Con breakpoints simples (min-width)</h5>
+<p>Tenemos un 'DIV' al cual queremos designarle 13 columnas de 15 en mobile, 10 columnas de 31 en tablet y 15 columnas de 27 en desktop, así que creamos el atributo llamado 'cols' con el siguiente valor:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div cols=&quot;13/15 10/31@sm 15/27@md&quot;>...&lt;/div>
+</code></pre>
+<blockquote>
+<p>El sufijo arroba significa que esas columnas solo aplicarán desde un breakpoint determinado</p>
+</blockquote>
+<p><strong>Explicación:</strong></p>
+<p>Para el DIV del ejemplo de arriba se determinó que:</p>
+<ul>
+<li>Tendrá 13 columnas de 15, y como no tiene como sufijo el signo arroba, significa que las tendrá en el 'breakpoint directo' osea el 'xs'. Si el DIV solo tendría esta designación, luego de procesarlo...</li>
+</ul>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+layouter.setCols(myDiv);
+</code></pre>
+<p>...obtendríamos este resultado:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-13-15&quot;>...&lt;/div>
+&lt;!-- Vemos que el atributo 'cols' desapareció del elemento, esto es porque yá no lo necesita una vez procesado. -->
+</code></pre>
+<p>Y como estilos tendríamos disponible una clase llamada 'cols-13-15' la cual nos daría estos estilos:</p>
+<pre class="prettyprint source lang-css"><code>.cols-13\/15 {
+  width: 86.666%
+}
+</code></pre>
+<p><strong>Seguimos</strong>...</p>
+<ul>
+<li>Para el breakpoint 'sm', osea 'tablet' se determinó que se tendrá 10 columnas de 31, luego de procesarlo obtendríamos este resultado:</li>
+</ul>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-10-31@sm&quot;>...&lt;/div>
+</code></pre>
+<p>Pero como se determinó en un breakpoint, los estilos estarían regidos por él</p>
+<pre class="prettyprint source lang-css"><code>@media screen and (min-width: 768px) {
+  .cols-10\/31\@sm {
+    width: 32.2580%
+  }
+}
+</code></pre>
+<ul>
+<li>Para el breakpoint 'md', osea 'desktop' se determinó que se tendrá 15 columnas de 27, y luego de procesarlo obtendríamos este resultado:</li>
+</ul>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-15-27@md&quot;>...&lt;/div>
+</code></pre>
+<pre class="prettyprint source lang-css"><code>@media screen and (min-width: 1024px) {
+  .cols-15\/27\@sm {
+    width: 55.5556%
+  }
+}
+</code></pre>
+<p><strong>Finalmente</strong> si procesamos el valor completo del parametro 'cols' (13/15 10/31@sm 15/27@md) obtendríamos este resultado:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-13-15 cols-10-31@sm cols-15-27@md&quot;>...&lt;/div>
+</code></pre>
+<p>y pues, estos estilos:</p>
+<pre class="prettyprint source lang-css"><code>.cols-13-15 {
+  width: 86.666%
+}
+
+@media screen and (min-width: 768px) {
+  .cols-10\/31\@sm {
+    width: 32.2580%
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cols-15\/27\@sm {
+    width: 55.5556%
+  }
+}
+</code></pre>
+<blockquote>
+<p><strong>OJO</strong>: Estas clases estarán disponibles para todos los elementos que necesiten de ellas, son generales.</p>
+</blockquote>
+<blockquote>
+<p>Para evitar estar manipulando el DOM en cada clase nueva que se creé, el sistema determina un solo vault de estilos, creando un nodo 'style' con el ID 'layouter', éste estará bacio, solo servirá como puente para la inserción de los estilos de forma interna hacia el navegador mismo.</p>
+</blockquote>
+<h5>Ejemplo 2: Con breakpoint min-width y max-width</h5>
+<p>Tenemos un DIV que aparte de tener 13 columnas de 15 en mobile (el breakpoint 'xs') queremos designarle 20 columnas de 27 desde tablet hasta desktop (desde 'sm' hasta 'md') y apartir de 'lg', osea monitores más grandes, que continue con las 13 columnas de 15 que se le puso en mobile. Entonces...</p>
+<pre class="prettyprint source lang-html"><code>&lt;div cols=&quot;13/15 20/27@sm-md&quot;>
+</code></pre>
+<p>El guión (-) indica 'desde / hasta' donde se quiere determinar las columnas. En estilos tendríamos esto:</p>
+<pre class="prettyprint source lang-css"><code>.cols-13-15 {
+  width: 86.666%
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .cols-20\/27\@sm {
+    width: 74.0740%
+  }
+}
+</code></pre>
+<p>...aunque tambien se puede usar solo el 'hasta', así:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div cols=&quot;20/27@-md&quot;>
+&lt;!-- Esto le dará 20 columnas de 27 hasta 'desktop' (en el breakpoint 'md') -->
+</code></pre>
+<p>y en estilos obtendremos esto:</p>
+<pre class="prettyprint source lang-css"><code>@media screen and (max-width: 1023px) {
+  .cols-20\/27\@sm {
+    width: 74.0740%
+  }
+}
+</code></pre>
+<h5>Ejemplo 5: Columnas explicitas por breakpoint.</h5>
+<p>Cuando queremos determinar un número de columnas en un breakpoint específico pero sin designarle el número de columnas de donde sacarlas (o máximas), podemos hacerlo así:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div cols=&quot;13 20@sm&quot;>...&lt;/div>
+</code></pre>
+<p>Eso es lo mismo que poner esto:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div cols=&quot;13/15 20/31@sm&quot;>...&lt;/div>
+</code></pre>
+<p>Pero se obvia el número de columnas de donde se sacarán las columnas designadas, yá que el breakpoint tomará el número de columnas designadas para ese breakpoint, osea: el sistema reconocerá que son 13 columnas de 15 xq no se determinó breakpoint, y 15 son las columnas máximas que tiene el breakpoint 'xs' (mobile), y tambien reconocerá que son 20 columnas de 31, xq se determinó 20 columnas en el breakpoint 'sm' (tablet) y las columnas disponibles en tablet son 31.</p>
+<blockquote>
+<p><strong>OJO</strong>: <strong>NO se puede</strong> determinar columnas explicitas en breakpoints compuestos, osea en el 'desde / hasta', solo en breakpoints 'desde', osea estos '@sm', si no tirará un mensaje de error y no procesará.</p>
+</blockquote>
+<pre class="prettyprint source lang-html"><code>&lt;!-- ESTO NO ES VÁLIDO-->
+&lt;div cols=&quot;20@sm-md&quot;>...&lt;/div>
+</code></pre>
+<p>Este método de columnas explicitas solo es para ahorrarnos un poco de tiempo al designar las columnas que queremos en el atributo 'cols'. Sin embargo podría ser provechoso determinar así por si en algún momento las columnas designadas para un breakpoint en específico cambian, digamos que en el breakpoint 'sm' (tablet), yá no son 31 columnas sino 32, pues con la designación de columna explicitas nos ahorraríamos tener que cambiar en cada elemento donde determinamos cols=&quot;20/31@sm&quot;</p>
+<p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h3>Mar</h3>
+<p>Es una abreviación del shorthand 'margin' y sirve para determinar los margenes superiores, derechos, inferiores e izquierdos de un elemento.</p>
+<h4>Ejemplo:</h4>
+<pre class="prettyprint source lang-html"><code>&lt;div mar=&quot;20-2/15 40-3/31-20@sm 60-2/31@md&quot;>...&lt;/div>
+</code></pre>
+<blockquote>
+<p>Usa la misma sintaxis del margin combencional, osea: margin-top, margin-right, margin-bottom, margin-left. Pero solo para el margin left y right se puede declarar 'auto', si es que se requiere claro. Mini Ejemplo: mar=&quot;20-auto&quot;</p>
+</blockquote>
+<p>Solo los margenes superiores e inferiores son procesados como pixeles, los derechos e izquierdos son procesados porcentualmente.</p>
+<p><strong>Explicación:</strong> En el ejemplo de arriba se está determinando que el DIV :</p>
+<ul>
+<li>Tendrá 20 pixeles de margen superior (margin-top) e inferior, tambien 2 columnas de 15, en mobile.</li>
+<li>Tendrá 40 pixeles de margen superior, 3 columnas de 31 de margin derecho e izquierdo y 20 pixeles de margen inferior.</li>
+<li>y en desktop, tendrá 60 pixeles de margin superior e inferior y 2 columnas de 31 de margin derecho e izquierdo.</li>
+</ul>
+<p>...luego de procesarlo:</p>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+layouter.setMars(myDiv);
+</code></pre>
+<p>...obtendríamos este resultado:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;mar-20-2/15 mar-40-3/31-20@sm mar-60-2/31@md&quot;>...&lt;/div>
+&lt;!-- Vemos que el atributo 'mar' desapareció del elemento, esto es porque yá no lo necesita una vez procesado. -->
+</code></pre>
+<p>Y como estilos tendríamos disponible una clase llamada 'cols-13-15' la cual nos daría estos estilos:</p>
+<pre class="prettyprint source lang-css"><code>.mar-20-2\/15 {
+  margin: 20px 13.3333%;
+}
+
+@media screen and (min-width: 768px) {
+  .mar-40-3\/31-20\@sm {
+    margin: 40px 9.67742% 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .mar-60-2\/31\@md {
+    margin: 60px 6.45161%;
+  }
+}
+
+</code></pre>
+<blockquote>
+<p>Aquí aplica lo mismo de 'cols', con los breakpoints compuestos, (desde / hasta)</p>
+</blockquote>
+<p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h3>Pad</h3>
+<p>Sirve para determinar los paddings que se le dará. Al igual que al atributo 'mar', solo el padding top y bottom se tomarán como pixeles y el left y right como porcentual.</p>
+<p>Tiene exactamente la misma sintaxis que 'mar'</p>
+<h4>Ejemplo:</h4>
+<pre class="prettyprint source lang-html"><code>&lt;div mar=&quot;20-1/15 40-3/31@sm 60-2/31@md&quot;>...&lt;/div>
+</code></pre>
+<p>...luego de procesarlo:</p>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+layouter.setPads(myDiv);
+</code></pre>
+<p>...obtendríamos este resultado:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;pad-20-1/15 pad-40-3/31@sm pad-60-2/31@md&quot;>...&lt;/div>
+</code></pre>
+<p>Y pues, estos estilos:</p>
+<pre class="prettyprint source lang-css"><code>.pad-20-1\/15 {
+  padding: 20px 6.66667%;
+}
+
+@media screen and (min-width: 768px) {
+  .pad-40-3\/31\@sm {
+    padding: 40px 9.67742%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .pad-60-2\/31\@md {
+    padding: 60px 6.45161%;
+  }
+}
+</code></pre>
+<p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h3>Flex</h3>
+<p>Este es el parametro más interesante, porque es el que determina el 'display' del elemento y la determinación del valor del atributo 'flex' se separa entre dos puntos, y no convencionalmente con guión como se hace en 'cols', 'mar' y 'pad'.</p>
+<h4>Equivalencias de abreviaciones:</h4>
+<ul>
+<li>jc: justify-content</li>
+<li>ai: align-items</li>
+<li>ce: center</li>
+<li>fs: flex-start</li>
+<li>fe: flex-end</li>
+<li>sb: space-between</li>
+<li>sa: space-around</li>
+<li>fw: flex-wrap</li>
+<li>nw: nowrap</li>
+<li>w: wrap</li>
+<li>wr: wrap-reverse</li>
+<li>fd: flex-direction</li>
+<li>r: row</li>
+<li>rr: row-reverse</li>
+<li>co: column</li>
+<li>cor: column-reverse</li>
+</ul>
+<h4>Ejemplo:</h4>
+<pre class="prettyprint source lang-html"><code>&lt;div flex=&quot;jc:ce jc:fs@sm ai:fs@sm jc:fe@md&quot;>...&lt;/div>
+</code></pre>
+<blockquote>
+<p><strong>OJO</strong>: Es posible determinar más de un estilo en el mismo breakpoint, en el caso del ejemplo de arriba, se determinó el justify-content: flex-start y align-items: flex-start para el breakpoint 'sm' osea (tablet)</p>
+</blockquote>
+<p>...luego de procesarlo:</p>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+layouter.setFlex(myDiv);
+</code></pre>
+<p>...obtendríamos este resultado:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;flex-flex flex-jc:c flex-jc:fs-ai:fs@sm flex-jc:fe@md&quot;>...&lt;/div>
+</code></pre>
+<p>Y pues, estos estilos:</p>
+<pre class="prettyprint source lang-css"><code>.flex-flex {
+  display: flex;
+}
+
+.flex-jc\\:c {
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .flex-jc\\:fs-ai\\:fs\@sm {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .flex-jc\\:fe\@md {
+    justify-content: flex-end;
+  }
+}
+</code></pre>
+<p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h2>Nota extra:</h2>
+<p>Es posible adicionar un segundo argumento a los métodos: setCols, setPads, setMars y setFlex, el cual es un objeto con los parametros obtenidos, aunque este uso no es comun, y se realiza de forma automática cuando se usa el método 'build', veamos un ejemplo:</p>
+<p>Si por alguna razón hemos obtenido previamente los parametros de un DIV y luego queremos determinarle las columnas, hacemos esto:</p>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+const myParameters = layout.getParameters(myDiv);
+layouter.setCols(myDiv, myParameters);
+</code></pre>
+<p>Se obtendrá el mismo resultado que si no le pases los parametros, pero puedes ahorrar un proceso más al sistema.</p>
+<h2>Finalmente</h2>
+<p>Imaginemos que tenemos un DIV en donde hemos designado darle columnas, margenes, paddins y flex todo de un tiron:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div
+  cols=&quot;13/15 10/31@sm-md 15/27@md&quot;
+  pad=&quot;20-1/15 40-3/31@sm 60-2/31@md&quot;
+  mar=&quot;20-2/15 40-3/31@sm 60-2/31@md&quot;
+  flex=&quot;jc:c jc:fs@sm jc:fe@md ai:fs@sm&quot;
+>&lt;/div>
+</code></pre>
+<p>No sería recomendable aplicar los métodos separados de 'setCols', 'setPads', 'setMars' y 'setFlex' para procesar cada atributo, en ese caso procesamos con el método 'build', y éste procesará todos los demás mencionados:</p>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+layouter.build(myDiv);
+</code></pre>
+<p>Lo cual nos dará un resultado así:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-13/15 cols-10/31@sm-md cols-15/27@md pad-20-1/15 pad-40-3/31@sm pad-60-2/31@md mar-20-2/15 mar-40-3/31@sm mar-60-2/31@md flex-flex flex-jc:c flex-jc:fs-ai:fs@sm flex-jc:fe@md&quot;>&lt;/div>
+</code></pre>
+<p>Con los siguientes estilos</p>
+<pre class="prettyprint source lang-css"><code>.flex-flex {
+  display: flex;
+}
+
+.flex-jc\:c {
+  justify-content: center;
+}
+
+.cols-13\/15 {
+  width: 86.6667%;
+}
+
+.pad-20-1\/15 {
+  padding: 20px 6.66667%;
+}
+
+.mar-20-2\/15 {
+  margin: 20px 13.3333%;
+}
+
+@media screen and (min-width: 768px) {
+  .cols-10\/31\@sm-md {
+    width: 32.2581%;
+  }
+
+  .pad-40-3\/31\@sm {
+    padding: 40px 9.67742%;
+  }
+
+  .mar-40-3\/31\@sm {
+    margin: 40px 9.67742%;
+  }
+
+  .flex-jc\:fs-ai\:fs\@sm {
+    justify-content: flex-start;
+    align-items: flex-start;
+  } 
+}
+
+@media screen and (min-width: 1024px) {
+  .cols-15\/27\@md {
+    width: 55.5556%;
+  }
+
+  .pad-60-2\/31\@md {
+    padding: 60px 6.45161%;
+  }
+
+  .mar-60-2\/31\@md {
+    margin: 60px 6.45161%;
+  }
+
+  .flex-jc\:fe\@md {
+    justify-content: flex-end;
+  }
+}
+</code></pre>
+<p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h2>Getters</h2>
+<p>Para fines varios, se tiene acceso a los siguientes getters:</p>
+<ul>
+<li>breakPoints: Devuelve un array con los breakpoints definidos en la configuración.</li>
+<li>sizes: Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades los pixeles de ancho designados para esos breakpoints.</li>
+<li>cols: Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades el número de columnas designadas para esos breakpoints.</li>
+<li>styles: Este getter es interesante, porque devuelve un objeto con todos los estilos creados de forma general.</li>
+<li>version: Devuelve la versión actual de la librería, este es un getter estático, así que no necesita una instancia para funcionar.</li>
+</ul>
+<blockquote>
+<p>Tomando en cuenta el último ejemplo dado, los getters nos devolverán lo siguiente:</p>
+</blockquote>
+<pre class="prettyprint source lang-javascript"><code>layout.breakPoints:  [ &quot;xs&quot;, &quot;sm&quot;, &quot;md&quot;, &quot;lg&quot; ]
+layout.sizes: { xs: 0, sm: 768, md: 1024, lg: 1280 }
+layout.cols:  { xs: 15, sm: 31, md: 31, lg: 31 }
+layout.styles: {
+  &quot;cols-10\\/31@sm-md&quot;: &quot;@media screen and (min-width: 768px) and (max-width: 1023px){.cols-10\\/31\\@sm-md{width:32.25806451612903%}}&quot;
+  &quot;cols-13\\/15&quot;: &quot;.cols-13\\/15{width:86.66666666666667%}&quot;
+  &quot;cols-15\\/27@md&quot;: &quot;@media screen and (min-width: 1024px){.cols-15\\/27\\@md{width:55.55555555555556%}}&quot;
+  &quot;flex-flex&quot;: &quot;.flex-flex{display: flex}&quot;
+  &quot;flex-jc\\:c&quot;: &quot;.flex-jc\\:c{justify-content:center}&quot;
+  &quot;flex-jc\\:fe@md&quot;: &quot;@media screen and (min-width: 1024px){.flex-jc\\:fe\\@md{justify-content:flex-end}}&quot;
+  &quot;flex-jc\\:fs-ai\\:fs@sm&quot;: &quot;@media screen and (min-width: 768px){.flex-jc\\:fs-ai\\:fs\\@sm{justify-content:flex-start;align-items:flex-start}}&quot;
+  &quot;mar-20-2\\/15&quot;: &quot;.mar-20-2\\/15{margin:20px 13.333333333333334%}&quot;
+  &quot;mar-40-3\\/31@sm&quot;: &quot;@media screen and (min-width: 768px){.mar-40-3\\/31\\@sm{margin:40px 9.67741935483871%}}&quot;
+  &quot;mar-60-2\\/31@md&quot;: &quot;@media screen and (min-width: 1024px){.mar-60-2\\/31\\@md{margin:60px 6.451612903225806%}}&quot;
+  &quot;pad-20-1\\/15&quot;: &quot;.pad-20-1\\/15{padding:20px 6.666666666666667%}&quot;
+  &quot;pad-40-3\\/31@sm&quot;: &quot;@media screen and (min-width: 768px){.pad-40-3\\/31\\@sm{padding:40px 9.67741935483871%}}&quot;
+  &quot;pad-60-2\\/31@md&quot;: &quot;@media screen and (min-width: 1024px){.pad-60-2\\/31\\@md{padding:60px 6.451612903225806%}}&quot;
+}
+Layout.version: &quot;1.0.2Beta&quot;
+</code></pre>
+<p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h2>Método extra</h2>
+<ul>
+<li>
+<h3>getParameters</h3>
+</li>
+</ul>
+<p>Tambien es posible obtener los parametros definidos en un elemento, digamos, tenemos un DIV, y queremos saber si tiene cols, mar, flex o los que tengan, pues tiramos del método, 'getParameters'</p>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+layout.getParameters(myDiv);
+
+// Obtendremos un objeto así...
+
+{
+  cols: [ &quot;13/15&quot;, &quot;10/31@sm-md&quot;, &quot;15/27@md&quot; ],
+  mar: [ &quot;20-2/15&quot;, &quot;40-3/31@sm&quot;, &quot;60-2/31@md&quot; ],
+  pad: [ &quot;20-1/15&quot;, &quot;40-3/31@sm&quot;, &quot;60-2/31@md&quot; ],
+  flex: [ &quot;jc:c&quot;, &quot;jc:fs@sm&quot;, &quot;jc:fe@md&quot;, 'ai:fs@sm' ]
+}
+</code></pre>
+<h2>Cosas que agregaré más adelante</h2>
+<ul>
+<li><s>Sistema de Log</s> - Listo!</li>
+<li>Guardado en localStorage de configuraciones parametrales y clases creadas.</li>
+</ul>
+<p>Por el momento eso es todo lo que trae, más adelante le agregaré más cosas que se me ocurran o que me sugieran.</p>
+<blockquote>
+<p>Nota: Disculpen si hay alguna falta ortográfica en este documento, no soy muy bueno con las palabras :V</p>
+</blockquote></article>
+		</section>
+			</div>
+				<div class="col-md-3 side-content">
+					<nav class="toc hidden-print hidden-sm hidden-xs"></nav>
+				</div>
+		</div>
+	</div>
+	<footer>
+				<div class="copyright">FooDoc Copyright © 2016 The contributors to the JSDoc3 and FooDoc projects.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on 22nd Apr 2020 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+		<!-- start:lunr-search-modal.hbs -->
+		<div class="modal fade" id="lunr-search-modal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Search results</h4>
+					</div>
+					<div class="modal-body" id="lunr-search-body">
+					</div>
+					<div class="modal-footer" id="lunr-search-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+		<!-- end:lunr-search-modal.hbs -->		<script src="js/lunr.min.js"></script>
+	
+</body>
+</html>
+<!-- end:readme.hbs -->
