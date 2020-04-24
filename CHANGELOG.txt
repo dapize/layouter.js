@@ -22,3 +22,6 @@ v1.2.0Beta
 
 v1.3.0Beta
 - Se agrega la propiedad 'bridge' al objeto de configuración. Se detalla en README.
+
+v1.3.1Beta
+- Se adiciona la condicional para que designe el cero de forma pura y no con pixeles (de 'margin: 40px 0px 0px 0px' a 'margin: 40px 0 0 0')
