@@ -88,7 +88,7 @@ const uLayouter = {
     } else if (n.indexOf('.') !== -1) {
       nProcessed = n;
     } else {
-      nProcessed = n + 'px'
+      nProcessed = n === '0' ? n : n + 'px';
     }
     return nProcessed;
   },
@@ -206,7 +206,7 @@ const uLayouter = {
     const prop = this.processors[type].ruleCss;
     const styles = {};
     let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal;
-    Object.keys(bps).forEach(function (bp, index) {
+    Object.keys(bps).forEach(function (bp) {
       // preparing the className
       nameClass = prefix + type + '-' + bps[bp].name;
       nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
