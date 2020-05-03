@@ -25,6 +25,7 @@ const uLayouter = {
    * Determina si el parametro tiene o no un breakpoint designado
    * @memberof uLayouter
    * @param {String} param Parametro
+   * @returns {Boolean}
    */
   haveBreakPoint: function (param) {
     return param.indexOf('@') !== -1 ? true : false;
@@ -256,6 +257,7 @@ const uLayouter = {
     let stylesScope = document.getElementById('layouter');
     if (stylesScope === null) {
       stylesScope = document.createElement('style');
+      stylesScope.appendChild(document.createTextNode('')); // WebKit hack :(
       document.body.appendChild(stylesScope);
       stylesScope.id = 'layouter'
     };
@@ -417,3 +419,6 @@ const uLayouter = {
     Node.removeAttribute(type);
   }
 };
+
+// for test with jest
+if (typeof exports !== 'undefined' && typeof module !== 'undefined' && module.exports) module.exports = uLayouter;

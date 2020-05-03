@@ -22,6 +22,7 @@
     bridge: false
   };
   const layout = new Layouter(configs);
+  window.mira = layout;
   console.log('layout.breakPoints: ', layout.breakPoints);
   console.log('layout.sizes:', layout.sizes);
   console.log('layout.cols: ', layout.cols);
