@@ -255,12 +255,12 @@ const uLayouter = {
    * @param {Object} config Configuración determinada.
    */
   createScopeStyles: function (config) {
-    if (document.getElementById('layouter') !== null) {
-      return this.regError('Existing Bridge', "The bridge of the layouter system already exists in the DOM. Please ¡remove it!");
-    }
-    const stylesScope = document.createElement('style');
-    document.body.appendChild(stylesScope);
-    stylesScope.id = 'layouter'
+    let stylesScope = document.getElementById('layouter');
+    if (stylesScope === null) {
+      stylesScope = document.createElement('style');
+      document.body.appendChild(stylesScope);
+      stylesScope.id = 'layouter'
+    };
     this.debug({
       type: 'i',
       print: config.debug,
@@ -442,7 +442,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.3.1Beta';
+Layouter.version = '1.3.2Beta';
 /**
  * Obtiene los parametros disponibles para procesar
  * @memberof Layouter

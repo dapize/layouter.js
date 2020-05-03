@@ -18,7 +18,8 @@
         width: 1280,
         cols: 31
       }
-    }
+    },
+    bridge: false
   };
   const layout = new Layouter(configs);
   console.log('layout.breakPoints: ', layout.breakPoints);
@@ -55,5 +56,7 @@
   Array.prototype.forEach.call(document.querySelectorAll('.box-list li'), function (li) {
     layout.build(li);
   });
+
+  console.log(layout);
 
 }());
