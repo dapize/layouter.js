@@ -157,14 +157,48 @@ const uLayouter = {
       method: 'setCols',
       ruleCss: 'width'
     },
+    // Paddings
     pad: {
       method: 'setPads',
       ruleCss: 'padding'
     },
+      padt: {
+        method: 'setPads',
+        ruleCss: 'padding-top'
+      },
+      padr: {
+        method: 'setPads',
+        ruleCss: 'padding-right'
+      },
+      padb: {
+        method: 'setPads',
+        ruleCss: 'padding-bottom'
+      },
+      padl: {
+        method: 'setPads',
+        ruleCss: 'padding-left'
+      },
+    // Margin
     mar: {
       method: 'setMars',
       ruleCss: 'margin'
     },
+      mart: {
+        method: 'setMars',
+        ruleCss: 'margin-top'
+      },
+      marr: {
+        method: 'setMars',
+        ruleCss: 'margin-right'
+      },
+      marb: {
+        method: 'setMars',
+        ruleCss: 'margin-bottom'
+      },
+      marl: {
+        method: 'setMars',
+        ruleCss: 'margin-left'
+      },
     flex: {
       method: 'setFlex',
       ruleCss: 'display: flex'
