@@ -87,7 +87,7 @@ const uLayouter = {
     } else if (n === 'auto') {
       nProcessed = 'auto'
     } else if (n.indexOf('.') !== -1) {
-      nProcessed = n;
+      nProcessed = n + 'px';
     } else {
       nProcessed = n === '0' ? n : n + 'px';
     }
@@ -424,6 +424,56 @@ const uLayouter = {
     // Adding classes
     this.addClasses(Object.keys(objStyles), data.node, data.instance);
   },
+
+  /**
+   * Construye los paddings y margenes.
+   * @memberof uLayouter
+   * @param {Object} Node Nodo Element HTML
+   * @param {String} type Nombre del tipo de atributo a obtener. cols, pad, mar y flex.
+   * @param {Object} [parameters] Parametros obtenidos del nodo.
+   * @param {Object} instance Instancia actual del Layouter
+   */
+  buildPadsAndMargs: function (value, type, instance, insertStyles) {
+    if (value === undefined) return this.regError('Parameter Missing', "Don't exists a value determined");
+    this.debug({
+      type: 'i',
+      print: instance.debug,
+      message: "Building the 'pads or margs': " + value,
+    });
+    const _this = this;
+    const bpCals = {};
+    let paramProcessed, numbersPures, propValue, bps;
+    if (!Array.isArray(value)) value = value.split(' ');
+    value.forEach(function (param) {
+      paramProcessed = _this.prepareParam(param);
+      numbersPures = paramProcessed.numbers;
+      bps = paramProcessed.breakPoints;
+  
+      // processing number values
+      propValue = numbersPures
+        .split('-')
+        .map(function (n) {
+          return _this.processedNumber(n);
+        })
+        .join(' ');
+      if (bpCals.hasOwnProperty(bps)) {
+        bpCals[bps].value += ';' + propValue
+      } else {
+        bpCals[bps] = {
+          name: param,
+          value: propValue
+        };
+      }
+    });
+
+    // Building the classNames and the styles to use.
+    return this.buildCss({
+      type: type,
+      bps: bpCals,
+      instance: instance,
+      deep: (insertStyles === undefined ? true : insertStyles)
+    });
+  },
   
   /**
    * Setea los paddings y margenes
@@ -442,41 +492,13 @@ const uLayouter = {
       data: Node
     });
     const params = parameters || instance.getParameters(Node);
-    const _this = this;
     if (!params.hasOwnProperty(type)) return this.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
 
-    const bpCals = {};
-    let paramProcessed, numbersPures, propValue, bps;
-    params[type].forEach(function (param) {
-
-      paramProcessed = _this.prepareParam(param);
-      numbersPures = paramProcessed.numbers;
-      bps = paramProcessed.breakPoints;
-
-      // processing number values
-      propValue = numbersPures
-        .split('-')
-        .map(function (n) {
-          return _this.processedNumber(n);
-        })
-        .join(' ');
-      if (bpCals.hasOwnProperty(bps)) {
-        bpCals[bps].value += ';' + propValue
-      } else {
-        bpCals[bps] = {
-          name: param,
-          value: propValue
-        };
-      }
-    });
-
     // Creating, inserting, and adding classNames of rules in Node.
-    this.settingCss({
-      type: type,
-      bps: bpCals,
-      instance: instance,
-      node: Node
-    });
+    const objStyles = this.buildPadsAndMargs(params[type], type, instance);
+
+    // adding the classes names to the Node
+    this.addClasses(Object.keys(objStyles), Node, instance);
 
     // removing param
     Node.removeAttribute(type);
