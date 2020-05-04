@@ -229,6 +229,7 @@
           "y"
         ],
         "uLayouter.html#.haveBreakPoint": [
+          "boolean",
           "breakpoint",
           "designado",
           "determina",
@@ -494,6 +495,23 @@
                               "tf": 14
                             }
                           }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "l": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "a": {
+                    "docs": {},
+                    "n": {
+                      "docs": {
+                        "uLayouter.html#.haveBreakPoint": {
+                          "ref": "uLayouter.html#.haveBreakPoint",
+                          "tf": 25
                         }
                       }
                     }
@@ -788,7 +806,7 @@
                                     "docs": {
                                       "uLayouter.html#.haveBreakPoint": {
                                         "ref": "uLayouter.html#.haveBreakPoint",
-                                        "tf": 683.3333333333334
+                                        "tf": 675
                                       }
                                     }
                                   }
@@ -2431,7 +2449,7 @@
                                   },
                                   "uLayouter.html#.haveBreakPoint": {
                                     "ref": "uLayouter.html#.haveBreakPoint",
-                                    "tf": 33.33333333333333
+                                    "tf": 25
                                   },
                                   "uLayouter.html#.prepareParam": {
                                     "ref": "uLayouter.html#.prepareParam",
@@ -3238,7 +3256,7 @@
                   "docs": {
                     "uLayouter.html#.haveBreakPoint": {
                       "ref": "uLayouter.html#.haveBreakPoint",
-                      "tf": 33.33333333333333
+                      "tf": 25
                     },
                     "uLayouter.html#.prepareParam": {
                       "ref": "uLayouter.html#.prepareParam",
@@ -4745,7 +4763,7 @@
           }
         }
       },
-      "length": 354
+      "length": 355
     },
     "corpusTokens": [
       "addclass",
@@ -4758,6 +4776,7 @@
       "atributo",
       "auto",
       "base",
+      "boolean",
       "bootstrap",
       "bp",
       "breakpoint",
@@ -5117,7 +5136,7 @@
     "uLayouter.html#.haveBreakPoint": {
       "id": "uLayouter.html#.haveBreakPoint",
       "kind": "function",
-      "title": "&lt;static&gt; haveBreakPoint( param )",
+      "title": "&lt;static&gt; haveBreakPoint( param ) → {Boolean}",
       "longname": "uLayouter.haveBreakPoint",
       "name": "haveBreakPoint",
       "tags": "uLayouter.haveBreakPoint haveBreakPoint",
