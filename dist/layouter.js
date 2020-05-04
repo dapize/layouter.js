@@ -27,6 +27,7 @@ const uLayouter = {
    * Determina si el parametro tiene o no un breakpoint designado
    * @memberof uLayouter
    * @param {String} param Parametro
+   * @returns {Boolean}
    */
   haveBreakPoint: function (param) {
     return param.indexOf('@') !== -1 ? true : false;
@@ -90,7 +91,7 @@ const uLayouter = {
     } else if (n.indexOf('.') !== -1) {
       nProcessed = n;
     } else {
-      nProcessed = n + 'px'
+      nProcessed = n === '0' ? n : n + 'px';
     }
     return nProcessed;
   },
@@ -208,7 +209,7 @@ const uLayouter = {
     const prop = this.processors[type].ruleCss;
     const styles = {};
     let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal;
-    Object.keys(bps).forEach(function (bp, index) {
+    Object.keys(bps).forEach(function (bp) {
       // preparing the className
       nameClass = prefix + type + '-' + bps[bp].name;
       nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
@@ -252,22 +253,29 @@ const uLayouter = {
   /**
    * Crea el scope de la hoja de estilos que se usará para designar los estilos que se crean al vuelo.
    * @memberof uLayouter
-   * @param {Boolean | Undefined} debug Determina si se imprimirá o no el log para debug.
+   * @param {Object} config Configuración determinada.
    */
-  createScopeStyles: function (debug) {
-    if (document.getElementById('layouter') !== null) {
-      return this.regError('Existing Bridge', "The bridge of the layouter system already exists in the DOM. Please ¡remove it!");
-    }
-    const stylesScope = document.createElement('style');
-    document.body.appendChild(stylesScope);
-    stylesScope.id = 'layouter'
+  createScopeStyles: function (config) {
+    let stylesScope = document.getElementById('layouter');
+    if (stylesScope === null) {
+      stylesScope = document.createElement('style');
+      stylesScope.appendChild(document.createTextNode('')); // WebKit hack :(
+      document.body.appendChild(stylesScope);
+      stylesScope.id = 'layouter'
+    };
     this.debug({
       type: 'i',
-      print: debug,
+      print: config.debug,
       message: 'Bridge layouter created and inserted in the DOM',
       data: stylesScope
     });
-    return stylesScope.sheet;
+    const bridge = config.bridge ? stylesScope.sheet : {
+      insertRule: function (ruleCss) {
+        stylesScope.innerHTML += '\n' + ruleCss;
+      },
+      rules: []
+    };
+    return bridge;
   },
 
   /**
@@ -281,7 +289,7 @@ const uLayouter = {
     const prefix = instance.prefix;
     Object.keys(objStyles).forEach(function (className) {
       if (!instance.styles.hasOwnProperty(prefix + className)) {
-        nodeScope.insertRule(objStyles[className], nodeScope.rules.length);
+        nodeScope.insertRule(objStyles[className], (nodeScope.rules ? nodeScope.rules.length : 0));
         instance.styles[prefix + className] = objStyles[className];
       }
     });
@@ -413,6 +421,9 @@ const uLayouter = {
     Node.removeAttribute(type);
   }
 };
+
+// for test with jest
+if (typeof exports !== 'undefined' && typeof module !== 'undefined' && module.exports) module.exports = uLayouter;
 /**
  * Construtor maestro del sistema.
  * @constructor
@@ -431,12 +442,12 @@ function Layouter (config) {
   this.breakPoints = Object.keys(bps);
   this.sizes = uLayouter.getNums(bps, 'width');
   this.cols = uLayouter.getNums(bps, 'cols');
-  this.scope = uLayouter.createScopeStyles(config.debug);
+  this.scope = uLayouter.createScopeStyles(Object.assign({bridge: true}, config));
   this.styles = {};
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.2.0Beta';
+Layouter.version = '1.3.3Beta';
 /**
  * Obtiene los parametros disponibles para procesar
  * @memberof Layouter

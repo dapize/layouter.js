@@ -16,9 +16,9 @@ function Layouter (config) {
   this.breakPoints = Object.keys(bps);
   this.sizes = uLayouter.getNums(bps, 'width');
   this.cols = uLayouter.getNums(bps, 'cols');
-  this.scope = uLayouter.createScopeStyles(config.debug);
+  this.scope = uLayouter.createScopeStyles(Object.assign({bridge: true}, config));
   this.styles = {};
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.2.0Beta';
+Layouter.version = '1.3.3Beta';

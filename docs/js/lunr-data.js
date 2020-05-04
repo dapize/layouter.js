@@ -229,6 +229,7 @@ window.lunrData = {
           "y"
         ],
         "uLayouter.html#.haveBreakPoint": [
+          "boolean",
           "breakpoint",
           "designado",
           "determina",
@@ -362,11 +363,11 @@ window.lunrData = {
         ],
         "uLayouter.html#.createScopeStyles": [
           "al",
+          "config",
           "crea",
           "crean",
           "createscopestyl",
           "de",
-          "debug",
           "designar",
           "el",
           "estilo",
@@ -494,6 +495,23 @@ window.lunrData = {
                               "tf": 14
                             }
                           }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "l": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "a": {
+                    "docs": {},
+                    "n": {
+                      "docs": {
+                        "uLayouter.html#.haveBreakPoint": {
+                          "ref": "uLayouter.html#.haveBreakPoint",
+                          "tf": 25
                         }
                       }
                     }
@@ -788,7 +806,7 @@ window.lunrData = {
                                     "docs": {
                                       "uLayouter.html#.haveBreakPoint": {
                                         "ref": "uLayouter.html#.haveBreakPoint",
-                                        "tf": 683.3333333333334
+                                        "tf": 675
                                       }
                                     }
                                   }
@@ -1518,10 +1536,6 @@ window.lunrData = {
                     "uLayouter.html#.debug": {
                       "ref": "uLayouter.html#.debug",
                       "tf": 683.3333333333334
-                    },
-                    "uLayouter.html#.createScopeStyles": {
-                      "ref": "uLayouter.html#.createScopeStyles",
-                      "tf": 33.33333333333333
                     }
                   }
                 }
@@ -1792,6 +1806,20 @@ window.lunrData = {
                             "tf": 10
                           }
                         }
+                      }
+                    }
+                  }
+                }
+              },
+              "f": {
+                "docs": {},
+                "i": {
+                  "docs": {},
+                  "g": {
+                    "docs": {
+                      "uLayouter.html#.createScopeStyles": {
+                        "ref": "uLayouter.html#.createScopeStyles",
+                        "tf": 33.33333333333333
                       }
                     }
                   }
@@ -2421,7 +2449,7 @@ window.lunrData = {
                                   },
                                   "uLayouter.html#.haveBreakPoint": {
                                     "ref": "uLayouter.html#.haveBreakPoint",
-                                    "tf": 33.33333333333333
+                                    "tf": 25
                                   },
                                   "uLayouter.html#.prepareParam": {
                                     "ref": "uLayouter.html#.prepareParam",
@@ -3228,7 +3256,7 @@ window.lunrData = {
                   "docs": {
                     "uLayouter.html#.haveBreakPoint": {
                       "ref": "uLayouter.html#.haveBreakPoint",
-                      "tf": 33.33333333333333
+                      "tf": 25
                     },
                     "uLayouter.html#.prepareParam": {
                       "ref": "uLayouter.html#.prepareParam",
@@ -4735,7 +4763,7 @@ window.lunrData = {
           }
         }
       },
-      "length": 354
+      "length": 355
     },
     "corpusTokens": [
       "addclass",
@@ -4748,6 +4776,7 @@ window.lunrData = {
       "atributo",
       "auto",
       "base",
+      "boolean",
       "bootstrap",
       "bp",
       "breakpoint",
@@ -4761,6 +4790,7 @@ window.lunrData = {
       "classesnam",
       "col",
       "columna",
+      "config",
       "consola",
       "construtor",
       "conviert",
@@ -5106,7 +5136,7 @@ window.lunrData = {
     "uLayouter.html#.haveBreakPoint": {
       "id": "uLayouter.html#.haveBreakPoint",
       "kind": "function",
-      "title": "&lt;static&gt; haveBreakPoint( param )",
+      "title": "&lt;static&gt; haveBreakPoint( param ) → {Boolean}",
       "longname": "uLayouter.haveBreakPoint",
       "name": "haveBreakPoint",
       "tags": "uLayouter.haveBreakPoint haveBreakPoint",
@@ -5186,7 +5216,7 @@ window.lunrData = {
     "uLayouter.html#.createScopeStyles": {
       "id": "uLayouter.html#.createScopeStyles",
       "kind": "function",
-      "title": "&lt;static&gt; createScopeStyles( debug )",
+      "title": "&lt;static&gt; createScopeStyles( config )",
       "longname": "uLayouter.createScopeStyles",
       "name": "createScopeStyles",
       "tags": "uLayouter.createScopeStyles createScopeStyles",
