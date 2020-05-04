@@ -117,6 +117,66 @@
           "setpad",
           "un"
         ],
+        "Layouter.html#setPadTop": [
+          "el",
+          "function",
+          "layouter#setpadtop",
+          "necesario",
+          "node",
+          "nodo",
+          "pad",
+          "para",
+          "paramet",
+          "setea",
+          "setpadtop",
+          "top",
+          "un"
+        ],
+        "Layouter.html#setPadRight": [
+          "el",
+          "function",
+          "layouter#setpadright",
+          "necesario",
+          "node",
+          "nodo",
+          "pad",
+          "para",
+          "paramet",
+          "right",
+          "setea",
+          "setpadright",
+          "un"
+        ],
+        "Layouter.html#setPadBottom": [
+          "bottom",
+          "el",
+          "function",
+          "layouter#setpadbottom",
+          "necesario",
+          "node",
+          "nodo",
+          "pad",
+          "para",
+          "paramet",
+          "setea",
+          "setpadbottom",
+          "un"
+        ],
+        "Layouter.html#setPadLeft": [
+          "el",
+          "function",
+          "layouter#setpadleft",
+          "left",
+          "necesario",
+          "node",
+          "nodo",
+          "pad",
+          "para",
+          "paramet",
+          "setea",
+          "setpadleft",
+          "un"
+        ],
         "Layouter.html#setMars": [
           "function",
           "layouter#setmar",
@@ -129,6 +189,66 @@
           "paramet",
           "setea",
           "setmar",
+          "un"
+        ],
+        "Layouter.html#setMarTop": [
+          "el",
+          "function",
+          "layouter#setmartop",
+          "margin",
+          "necesario",
+          "node",
+          "nodo",
+          "para",
+          "paramet",
+          "setea",
+          "setmartop",
+          "top",
+          "un"
+        ],
+        "Layouter.html#setMarRight": [
+          "el",
+          "function",
+          "layouter#setmarright",
+          "margin",
+          "necesario",
+          "node",
+          "nodo",
+          "para",
+          "paramet",
+          "right",
+          "setea",
+          "setmarright",
+          "un"
+        ],
+        "Layouter.html#setMarBottom": [
+          "bottom",
+          "el",
+          "function",
+          "layouter#setmarbottom",
+          "margin",
+          "necesario",
+          "node",
+          "nodo",
+          "para",
+          "paramet",
+          "setea",
+          "setmarbottom",
+          "un"
+        ],
+        "Layouter.html#setMarLeft": [
+          "el",
+          "function",
+          "layouter#setmarleft",
+          "left",
+          "margin",
+          "necesario",
+          "node",
+          "nodo",
+          "para",
+          "paramet",
+          "setea",
+          "setmarleft",
           "un"
         ],
         "Layouter.html#setFlex": [
@@ -453,7 +573,7 @@
           "y"
         ]
       },
-      "length": 29
+      "length": 37
     },
     "tokenStore": {
       "root": {
@@ -513,6 +633,27 @@
                           "ref": "uLayouter.html#.haveBreakPoint",
                           "tf": 25
                         }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "t": {
+              "docs": {},
+              "t": {
+                "docs": {},
+                "o": {
+                  "docs": {},
+                  "m": {
+                    "docs": {
+                      "Layouter.html#setPadBottom": {
+                        "ref": "Layouter.html#setPadBottom",
+                        "tf": 6.25
+                      },
+                      "Layouter.html#setMarBottom": {
+                        "ref": "Layouter.html#setMarBottom",
+                        "tf": 6.25
                       }
                     }
                   }
@@ -634,8 +775,40 @@
                             "ref": "Layouter.html#setPads",
                             "tf": 110
                           },
+                          "Layouter.html#setPadTop": {
+                            "ref": "Layouter.html#setPadTop",
+                            "tf": 110
+                          },
+                          "Layouter.html#setPadRight": {
+                            "ref": "Layouter.html#setPadRight",
+                            "tf": 110
+                          },
+                          "Layouter.html#setPadBottom": {
+                            "ref": "Layouter.html#setPadBottom",
+                            "tf": 110
+                          },
+                          "Layouter.html#setPadLeft": {
+                            "ref": "Layouter.html#setPadLeft",
+                            "tf": 110
+                          },
                           "Layouter.html#setMars": {
                             "ref": "Layouter.html#setMars",
+                            "tf": 110
+                          },
+                          "Layouter.html#setMarTop": {
+                            "ref": "Layouter.html#setMarTop",
+                            "tf": 110
+                          },
+                          "Layouter.html#setMarRight": {
+                            "ref": "Layouter.html#setMarRight",
+                            "tf": 110
+                          },
+                          "Layouter.html#setMarBottom": {
+                            "ref": "Layouter.html#setMarBottom",
+                            "tf": 110
+                          },
+                          "Layouter.html#setMarLeft": {
+                            "ref": "Layouter.html#setMarLeft",
                             "tf": 110
                           },
                           "Layouter.html#setFlex": {
@@ -1207,6 +1380,27 @@
                 }
               }
             }
+          },
+          "i": {
+            "docs": {},
+            "g": {
+              "docs": {},
+              "h": {
+                "docs": {},
+                "t": {
+                  "docs": {
+                    "Layouter.html#setPadRight": {
+                      "ref": "Layouter.html#setPadRight",
+                      "tf": 6.25
+                    },
+                    "Layouter.html#setMarRight": {
+                      "ref": "Layouter.html#setMarRight",
+                      "tf": 6.25
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "t": {
@@ -1250,6 +1444,18 @@
           },
           "o": {
             "docs": {},
+            "p": {
+              "docs": {
+                "Layouter.html#setPadTop": {
+                  "ref": "Layouter.html#setPadTop",
+                  "tf": 6.25
+                },
+                "Layouter.html#setMarTop": {
+                  "ref": "Layouter.html#setMarTop",
+                  "tf": 6.25
+                }
+              }
+            },
             "d": {
               "docs": {},
               "o": {
@@ -2295,6 +2501,80 @@
                                           "ref": "Layouter.html#setPads",
                                           "tf": 1150
                                         }
+                                      },
+                                      "t": {
+                                        "docs": {},
+                                        "o": {
+                                          "docs": {},
+                                          "p": {
+                                            "docs": {
+                                              "Layouter.html#setPadTop": {
+                                                "ref": "Layouter.html#setPadTop",
+                                                "tf": 1150
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "r": {
+                                        "docs": {},
+                                        "i": {
+                                          "docs": {},
+                                          "g": {
+                                            "docs": {},
+                                            "h": {
+                                              "docs": {},
+                                              "t": {
+                                                "docs": {
+                                                  "Layouter.html#setPadRight": {
+                                                    "ref": "Layouter.html#setPadRight",
+                                                    "tf": 1150
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "b": {
+                                        "docs": {},
+                                        "o": {
+                                          "docs": {},
+                                          "t": {
+                                            "docs": {},
+                                            "t": {
+                                              "docs": {},
+                                              "o": {
+                                                "docs": {},
+                                                "m": {
+                                                  "docs": {
+                                                    "Layouter.html#setPadBottom": {
+                                                      "ref": "Layouter.html#setPadBottom",
+                                                      "tf": 1150
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "l": {
+                                        "docs": {},
+                                        "e": {
+                                          "docs": {},
+                                          "f": {
+                                            "docs": {},
+                                            "t": {
+                                              "docs": {
+                                                "Layouter.html#setPadLeft": {
+                                                  "ref": "Layouter.html#setPadLeft",
+                                                  "tf": 1150
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
                                       }
                                     }
                                   }
@@ -2308,6 +2588,80 @@
                                         "Layouter.html#setMars": {
                                           "ref": "Layouter.html#setMars",
                                           "tf": 1150
+                                        }
+                                      },
+                                      "t": {
+                                        "docs": {},
+                                        "o": {
+                                          "docs": {},
+                                          "p": {
+                                            "docs": {
+                                              "Layouter.html#setMarTop": {
+                                                "ref": "Layouter.html#setMarTop",
+                                                "tf": 1150
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "r": {
+                                        "docs": {},
+                                        "i": {
+                                          "docs": {},
+                                          "g": {
+                                            "docs": {},
+                                            "h": {
+                                              "docs": {},
+                                              "t": {
+                                                "docs": {
+                                                  "Layouter.html#setMarRight": {
+                                                    "ref": "Layouter.html#setMarRight",
+                                                    "tf": 1150
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "b": {
+                                        "docs": {},
+                                        "o": {
+                                          "docs": {},
+                                          "t": {
+                                            "docs": {},
+                                            "t": {
+                                              "docs": {},
+                                              "o": {
+                                                "docs": {},
+                                                "m": {
+                                                  "docs": {
+                                                    "Layouter.html#setMarBottom": {
+                                                      "ref": "Layouter.html#setMarBottom",
+                                                      "tf": 1150
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "l": {
+                                        "docs": {},
+                                        "e": {
+                                          "docs": {},
+                                          "f": {
+                                            "docs": {},
+                                            "t": {
+                                              "docs": {
+                                                "Layouter.html#setMarLeft": {
+                                                  "ref": "Layouter.html#setMarLeft",
+                                                  "tf": 1150
+                                                }
+                                              }
+                                            }
+                                          }
                                         }
                                       }
                                     }
@@ -2406,6 +2760,24 @@
               "uLayouter.html#.padsAndMargs": {
                 "ref": "uLayouter.html#.padsAndMargs",
                 "tf": 10
+              }
+            }
+          },
+          "e": {
+            "docs": {},
+            "f": {
+              "docs": {},
+              "t": {
+                "docs": {
+                  "Layouter.html#setPadLeft": {
+                    "ref": "Layouter.html#setPadLeft",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMarLeft": {
+                    "ref": "Layouter.html#setMarLeft",
+                    "tf": 6.25
+                  }
+                }
               }
             }
           },
@@ -2592,9 +2964,41 @@
                     "ref": "Layouter.html#setPads",
                     "tf": 7.142857142857142
                   },
+                  "Layouter.html#setPadTop": {
+                    "ref": "Layouter.html#setPadTop",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setPadRight": {
+                    "ref": "Layouter.html#setPadRight",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setPadBottom": {
+                    "ref": "Layouter.html#setPadBottom",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setPadLeft": {
+                    "ref": "Layouter.html#setPadLeft",
+                    "tf": 6.25
+                  },
                   "Layouter.html#setMars": {
                     "ref": "Layouter.html#setMars",
                     "tf": 7.142857142857142
+                  },
+                  "Layouter.html#setMarTop": {
+                    "ref": "Layouter.html#setMarTop",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMarRight": {
+                    "ref": "Layouter.html#setMarRight",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMarBottom": {
+                    "ref": "Layouter.html#setMarBottom",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMarLeft": {
+                    "ref": "Layouter.html#setMarLeft",
+                    "tf": 6.25
                   },
                   "uLayouter.html#.insertRules": {
                     "ref": "uLayouter.html#.insertRules",
@@ -2620,8 +3024,40 @@
                     "ref": "Layouter.html#setPads",
                     "tf": 33.33333333333333
                   },
+                  "Layouter.html#setPadTop": {
+                    "ref": "Layouter.html#setPadTop",
+                    "tf": 33.33333333333333
+                  },
+                  "Layouter.html#setPadRight": {
+                    "ref": "Layouter.html#setPadRight",
+                    "tf": 33.33333333333333
+                  },
+                  "Layouter.html#setPadBottom": {
+                    "ref": "Layouter.html#setPadBottom",
+                    "tf": 33.33333333333333
+                  },
+                  "Layouter.html#setPadLeft": {
+                    "ref": "Layouter.html#setPadLeft",
+                    "tf": 33.33333333333333
+                  },
                   "Layouter.html#setMars": {
                     "ref": "Layouter.html#setMars",
+                    "tf": 33.33333333333333
+                  },
+                  "Layouter.html#setMarTop": {
+                    "ref": "Layouter.html#setMarTop",
+                    "tf": 33.33333333333333
+                  },
+                  "Layouter.html#setMarRight": {
+                    "ref": "Layouter.html#setMarRight",
+                    "tf": 33.33333333333333
+                  },
+                  "Layouter.html#setMarBottom": {
+                    "ref": "Layouter.html#setMarBottom",
+                    "tf": 33.33333333333333
+                  },
+                  "Layouter.html#setMarLeft": {
+                    "ref": "Layouter.html#setMarLeft",
                     "tf": 33.33333333333333
                   },
                   "Layouter.html#setFlex": {
@@ -2686,9 +3122,41 @@
                               "ref": "Layouter.html#setPads",
                               "tf": 7.142857142857142
                             },
+                            "Layouter.html#setPadTop": {
+                              "ref": "Layouter.html#setPadTop",
+                              "tf": 6.25
+                            },
+                            "Layouter.html#setPadRight": {
+                              "ref": "Layouter.html#setPadRight",
+                              "tf": 6.25
+                            },
+                            "Layouter.html#setPadBottom": {
+                              "ref": "Layouter.html#setPadBottom",
+                              "tf": 6.25
+                            },
+                            "Layouter.html#setPadLeft": {
+                              "ref": "Layouter.html#setPadLeft",
+                              "tf": 6.25
+                            },
                             "Layouter.html#setMars": {
                               "ref": "Layouter.html#setMars",
                               "tf": 7.142857142857142
+                            },
+                            "Layouter.html#setMarTop": {
+                              "ref": "Layouter.html#setMarTop",
+                              "tf": 6.25
+                            },
+                            "Layouter.html#setMarRight": {
+                              "ref": "Layouter.html#setMarRight",
+                              "tf": 6.25
+                            },
+                            "Layouter.html#setMarBottom": {
+                              "ref": "Layouter.html#setMarBottom",
+                              "tf": 6.25
+                            },
+                            "Layouter.html#setMarLeft": {
+                              "ref": "Layouter.html#setMarLeft",
+                              "tf": 6.25
                             }
                           }
                         }
@@ -2783,6 +3251,22 @@
                       "Layouter.html#setMars": {
                         "ref": "Layouter.html#setMars",
                         "tf": 7.142857142857142
+                      },
+                      "Layouter.html#setMarTop": {
+                        "ref": "Layouter.html#setMarTop",
+                        "tf": 6.25
+                      },
+                      "Layouter.html#setMarRight": {
+                        "ref": "Layouter.html#setMarRight",
+                        "tf": 6.25
+                      },
+                      "Layouter.html#setMarBottom": {
+                        "ref": "Layouter.html#setMarBottom",
+                        "tf": 6.25
+                      },
+                      "Layouter.html#setMarLeft": {
+                        "ref": "Layouter.html#setMarLeft",
+                        "tf": 6.25
                       }
                     }
                   }
@@ -2972,9 +3456,41 @@
                       "ref": "Layouter.html#setPads",
                       "tf": 7.142857142857142
                     },
+                    "Layouter.html#setPadTop": {
+                      "ref": "Layouter.html#setPadTop",
+                      "tf": 6.25
+                    },
+                    "Layouter.html#setPadRight": {
+                      "ref": "Layouter.html#setPadRight",
+                      "tf": 6.25
+                    },
+                    "Layouter.html#setPadBottom": {
+                      "ref": "Layouter.html#setPadBottom",
+                      "tf": 6.25
+                    },
+                    "Layouter.html#setPadLeft": {
+                      "ref": "Layouter.html#setPadLeft",
+                      "tf": 6.25
+                    },
                     "Layouter.html#setMars": {
                       "ref": "Layouter.html#setMars",
                       "tf": 7.142857142857142
+                    },
+                    "Layouter.html#setMarTop": {
+                      "ref": "Layouter.html#setMarTop",
+                      "tf": 6.25
+                    },
+                    "Layouter.html#setMarRight": {
+                      "ref": "Layouter.html#setMarRight",
+                      "tf": 6.25
+                    },
+                    "Layouter.html#setMarBottom": {
+                      "ref": "Layouter.html#setMarBottom",
+                      "tf": 6.25
+                    },
+                    "Layouter.html#setMarLeft": {
+                      "ref": "Layouter.html#setMarLeft",
+                      "tf": 6.25
                     },
                     "Layouter.html#setFlex": {
                       "ref": "Layouter.html#setFlex",
@@ -2997,6 +3513,80 @@
                         "ref": "Layouter.html#setPads",
                         "tf": 683.3333333333334
                       }
+                    },
+                    "t": {
+                      "docs": {},
+                      "o": {
+                        "docs": {},
+                        "p": {
+                          "docs": {
+                            "Layouter.html#setPadTop": {
+                              "ref": "Layouter.html#setPadTop",
+                              "tf": 683.3333333333334
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "r": {
+                      "docs": {},
+                      "i": {
+                        "docs": {},
+                        "g": {
+                          "docs": {},
+                          "h": {
+                            "docs": {},
+                            "t": {
+                              "docs": {
+                                "Layouter.html#setPadRight": {
+                                  "ref": "Layouter.html#setPadRight",
+                                  "tf": 683.3333333333334
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "b": {
+                      "docs": {},
+                      "o": {
+                        "docs": {},
+                        "t": {
+                          "docs": {},
+                          "t": {
+                            "docs": {},
+                            "o": {
+                              "docs": {},
+                              "m": {
+                                "docs": {
+                                  "Layouter.html#setPadBottom": {
+                                    "ref": "Layouter.html#setPadBottom",
+                                    "tf": 683.3333333333334
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "l": {
+                      "docs": {},
+                      "e": {
+                        "docs": {},
+                        "f": {
+                          "docs": {},
+                          "t": {
+                            "docs": {
+                              "Layouter.html#setPadLeft": {
+                                "ref": "Layouter.html#setPadLeft",
+                                "tf": 683.3333333333334
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -3010,6 +3600,80 @@
                       "Layouter.html#setMars": {
                         "ref": "Layouter.html#setMars",
                         "tf": 683.3333333333334
+                      }
+                    },
+                    "t": {
+                      "docs": {},
+                      "o": {
+                        "docs": {},
+                        "p": {
+                          "docs": {
+                            "Layouter.html#setMarTop": {
+                              "ref": "Layouter.html#setMarTop",
+                              "tf": 683.3333333333334
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "r": {
+                      "docs": {},
+                      "i": {
+                        "docs": {},
+                        "g": {
+                          "docs": {},
+                          "h": {
+                            "docs": {},
+                            "t": {
+                              "docs": {
+                                "Layouter.html#setMarRight": {
+                                  "ref": "Layouter.html#setMarRight",
+                                  "tf": 683.3333333333334
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "b": {
+                      "docs": {},
+                      "o": {
+                        "docs": {},
+                        "t": {
+                          "docs": {},
+                          "t": {
+                            "docs": {},
+                            "o": {
+                              "docs": {},
+                              "m": {
+                                "docs": {
+                                  "Layouter.html#setMarBottom": {
+                                    "ref": "Layouter.html#setMarBottom",
+                                    "tf": 683.3333333333334
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "l": {
+                      "docs": {},
+                      "e": {
+                        "docs": {},
+                        "f": {
+                          "docs": {},
+                          "t": {
+                            "docs": {
+                              "Layouter.html#setMarLeft": {
+                                "ref": "Layouter.html#setMarLeft",
+                                "tf": 683.3333333333334
+                              }
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -3231,9 +3895,41 @@
                     "ref": "Layouter.html#setPads",
                     "tf": 7.142857142857142
                   },
+                  "Layouter.html#setPadTop": {
+                    "ref": "Layouter.html#setPadTop",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setPadRight": {
+                    "ref": "Layouter.html#setPadRight",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setPadBottom": {
+                    "ref": "Layouter.html#setPadBottom",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setPadLeft": {
+                    "ref": "Layouter.html#setPadLeft",
+                    "tf": 6.25
+                  },
                   "Layouter.html#setMars": {
                     "ref": "Layouter.html#setMars",
                     "tf": 7.142857142857142
+                  },
+                  "Layouter.html#setMarTop": {
+                    "ref": "Layouter.html#setMarTop",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMarRight": {
+                    "ref": "Layouter.html#setMarRight",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMarBottom": {
+                    "ref": "Layouter.html#setMarBottom",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMarLeft": {
+                    "ref": "Layouter.html#setMarLeft",
+                    "tf": 6.25
                   },
                   "uLayouter.html#.replaceList": {
                     "ref": "uLayouter.html#.replaceList",
@@ -3275,8 +3971,40 @@
                           "ref": "Layouter.html#setPads",
                           "tf": 33.33333333333333
                         },
+                        "Layouter.html#setPadTop": {
+                          "ref": "Layouter.html#setPadTop",
+                          "tf": 33.33333333333333
+                        },
+                        "Layouter.html#setPadRight": {
+                          "ref": "Layouter.html#setPadRight",
+                          "tf": 33.33333333333333
+                        },
+                        "Layouter.html#setPadBottom": {
+                          "ref": "Layouter.html#setPadBottom",
+                          "tf": 33.33333333333333
+                        },
+                        "Layouter.html#setPadLeft": {
+                          "ref": "Layouter.html#setPadLeft",
+                          "tf": 33.33333333333333
+                        },
                         "Layouter.html#setMars": {
                           "ref": "Layouter.html#setMars",
+                          "tf": 33.33333333333333
+                        },
+                        "Layouter.html#setMarTop": {
+                          "ref": "Layouter.html#setMarTop",
+                          "tf": 33.33333333333333
+                        },
+                        "Layouter.html#setMarRight": {
+                          "ref": "Layouter.html#setMarRight",
+                          "tf": 33.33333333333333
+                        },
+                        "Layouter.html#setMarBottom": {
+                          "ref": "Layouter.html#setMarBottom",
+                          "tf": 33.33333333333333
+                        },
+                        "Layouter.html#setMarLeft": {
+                          "ref": "Layouter.html#setMarLeft",
                           "tf": 33.33333333333333
                         },
                         "Layouter.html#setFlex": {
@@ -3317,6 +4045,22 @@
                 "Layouter.html#setPads": {
                   "ref": "Layouter.html#setPads",
                   "tf": 7.142857142857142
+                },
+                "Layouter.html#setPadTop": {
+                  "ref": "Layouter.html#setPadTop",
+                  "tf": 6.25
+                },
+                "Layouter.html#setPadRight": {
+                  "ref": "Layouter.html#setPadRight",
+                  "tf": 6.25
+                },
+                "Layouter.html#setPadBottom": {
+                  "ref": "Layouter.html#setPadBottom",
+                  "tf": 6.25
+                },
+                "Layouter.html#setPadLeft": {
+                  "ref": "Layouter.html#setPadLeft",
+                  "tf": 6.25
                 },
                 "uLayouter.html#.prepareParam": {
                   "ref": "uLayouter.html#.prepareParam",
@@ -3861,6 +4605,66 @@
               }
             }
           },
+          "l": {
+            "docs": {
+              "Layouter.html#setPadTop": {
+                "ref": "Layouter.html#setPadTop",
+                "tf": 6.25
+              },
+              "Layouter.html#setPadRight": {
+                "ref": "Layouter.html#setPadRight",
+                "tf": 6.25
+              },
+              "Layouter.html#setPadBottom": {
+                "ref": "Layouter.html#setPadBottom",
+                "tf": 6.25
+              },
+              "Layouter.html#setPadLeft": {
+                "ref": "Layouter.html#setPadLeft",
+                "tf": 6.25
+              },
+              "Layouter.html#setMarTop": {
+                "ref": "Layouter.html#setMarTop",
+                "tf": 6.25
+              },
+              "Layouter.html#setMarRight": {
+                "ref": "Layouter.html#setMarRight",
+                "tf": 6.25
+              },
+              "Layouter.html#setMarBottom": {
+                "ref": "Layouter.html#setMarBottom",
+                "tf": 6.25
+              },
+              "Layouter.html#setMarLeft": {
+                "ref": "Layouter.html#setMarLeft",
+                "tf": 6.25
+              },
+              "uLayouter.html#.replaceList": {
+                "ref": "uLayouter.html#.replaceList",
+                "tf": 5
+              },
+              "uLayouter.html#.getNums": {
+                "ref": "uLayouter.html#.getNums",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.haveBreakPoint": {
+                "ref": "uLayouter.html#.haveBreakPoint",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.prepareParam": {
+                "ref": "uLayouter.html#.prepareParam",
+                "tf": 4.545454545454546
+              },
+              "uLayouter.html#.calPercentage": {
+                "ref": "uLayouter.html#.calPercentage",
+                "tf": 8.333333333333332
+              },
+              "uLayouter.html#.createScopeStyles": {
+                "ref": "uLayouter.html#.createScopeStyles",
+                "tf": 2.5
+              }
+            }
+          },
           "q": {
             "docs": {},
             "u": {
@@ -3896,34 +4700,6 @@
                     }
                   }
                 }
-              }
-            }
-          },
-          "l": {
-            "docs": {
-              "uLayouter.html#.replaceList": {
-                "ref": "uLayouter.html#.replaceList",
-                "tf": 5
-              },
-              "uLayouter.html#.getNums": {
-                "ref": "uLayouter.html#.getNums",
-                "tf": 5.555555555555555
-              },
-              "uLayouter.html#.haveBreakPoint": {
-                "ref": "uLayouter.html#.haveBreakPoint",
-                "tf": 5.555555555555555
-              },
-              "uLayouter.html#.prepareParam": {
-                "ref": "uLayouter.html#.prepareParam",
-                "tf": 4.545454545454546
-              },
-              "uLayouter.html#.calPercentage": {
-                "ref": "uLayouter.html#.calPercentage",
-                "tf": 8.333333333333332
-              },
-              "uLayouter.html#.createScopeStyles": {
-                "ref": "uLayouter.html#.createScopeStyles",
-                "tf": 2.5
               }
             }
           },
@@ -3987,9 +4763,41 @@
                 "ref": "Layouter.html#setPads",
                 "tf": 7.142857142857142
               },
+              "Layouter.html#setPadTop": {
+                "ref": "Layouter.html#setPadTop",
+                "tf": 6.25
+              },
+              "Layouter.html#setPadRight": {
+                "ref": "Layouter.html#setPadRight",
+                "tf": 6.25
+              },
+              "Layouter.html#setPadBottom": {
+                "ref": "Layouter.html#setPadBottom",
+                "tf": 6.25
+              },
+              "Layouter.html#setPadLeft": {
+                "ref": "Layouter.html#setPadLeft",
+                "tf": 6.25
+              },
               "Layouter.html#setMars": {
                 "ref": "Layouter.html#setMars",
                 "tf": 7.142857142857142
+              },
+              "Layouter.html#setMarTop": {
+                "ref": "Layouter.html#setMarTop",
+                "tf": 6.25
+              },
+              "Layouter.html#setMarRight": {
+                "ref": "Layouter.html#setMarRight",
+                "tf": 6.25
+              },
+              "Layouter.html#setMarBottom": {
+                "ref": "Layouter.html#setMarBottom",
+                "tf": 6.25
+              },
+              "Layouter.html#setMarLeft": {
+                "ref": "Layouter.html#setMarLeft",
+                "tf": 6.25
               },
               "uLayouter.html#.haveBreakPoint": {
                 "ref": "uLayouter.html#.haveBreakPoint",
@@ -4763,7 +5571,7 @@
           }
         }
       },
-      "length": 355
+      "length": 459
     },
     "corpusTokens": [
       "addclass",
@@ -4778,6 +5586,7 @@
       "base",
       "boolean",
       "bootstrap",
+      "bottom",
       "bp",
       "breakpoint",
       "build",
@@ -4850,7 +5659,16 @@
       "layouter#setcol",
       "layouter#setflex",
       "layouter#setmar",
+      "layouter#setmarbottom",
+      "layouter#setmarleft",
+      "layouter#setmarright",
+      "layouter#setmartop",
       "layouter#setpad",
+      "layouter#setpadbottom",
+      "layouter#setpadleft",
+      "layouter#setpadright",
+      "layouter#setpadtop",
+      "left",
       "list",
       "list:class",
       "list:namespac",
@@ -4910,13 +5728,22 @@
       "replacelist",
       "respectiva",
       "retornar",
+      "right",
       "scope",
       "se",
       "setcol",
       "setea",
       "setflex",
       "setmar",
+      "setmarbottom",
+      "setmarleft",
+      "setmarright",
+      "setmartop",
       "setpad",
+      "setpadbottom",
+      "setpadleft",
+      "setpadright",
+      "setpadtop",
       "settingcss",
       "si",
       "sino",
@@ -4931,6 +5758,7 @@
       "tien",
       "tipo",
       "todo",
+      "top",
       "type",
       "ulayout",
       "ulayouter.addclass",
@@ -5052,6 +5880,46 @@
       "summary": "",
       "description": "Setea los paddings necesarios para un Nodo."
     },
+    "Layouter.html#setPadTop": {
+      "id": "Layouter.html#setPadTop",
+      "kind": "function",
+      "title": "setPadTop( Node [, parameters ] )",
+      "longname": "Layouter#setPadTop",
+      "name": "setPadTop",
+      "tags": "Layouter#setPadTop setPadTop",
+      "summary": "",
+      "description": "Setea el padding top necesario para un nodo."
+    },
+    "Layouter.html#setPadRight": {
+      "id": "Layouter.html#setPadRight",
+      "kind": "function",
+      "title": "setPadRight( Node [, parameters ] )",
+      "longname": "Layouter#setPadRight",
+      "name": "setPadRight",
+      "tags": "Layouter#setPadRight setPadRight",
+      "summary": "",
+      "description": "Setea el padding right necesario para un nodo."
+    },
+    "Layouter.html#setPadBottom": {
+      "id": "Layouter.html#setPadBottom",
+      "kind": "function",
+      "title": "setPadBottom( Node [, parameters ] )",
+      "longname": "Layouter#setPadBottom",
+      "name": "setPadBottom",
+      "tags": "Layouter#setPadBottom setPadBottom",
+      "summary": "",
+      "description": "Setea el padding bottom necesario para un nodo."
+    },
+    "Layouter.html#setPadLeft": {
+      "id": "Layouter.html#setPadLeft",
+      "kind": "function",
+      "title": "setPadLeft( Node [, parameters ] )",
+      "longname": "Layouter#setPadLeft",
+      "name": "setPadLeft",
+      "tags": "Layouter#setPadLeft setPadLeft",
+      "summary": "",
+      "description": "Setea el padding left necesario para un nodo."
+    },
     "Layouter.html#setMars": {
       "id": "Layouter.html#setMars",
       "kind": "function",
@@ -5061,6 +5929,46 @@
       "tags": "Layouter#setMars setMars",
       "summary": "",
       "description": "Setea los margins necesarios para un Nodo."
+    },
+    "Layouter.html#setMarTop": {
+      "id": "Layouter.html#setMarTop",
+      "kind": "function",
+      "title": "setMarTop( Node [, parameters ] )",
+      "longname": "Layouter#setMarTop",
+      "name": "setMarTop",
+      "tags": "Layouter#setMarTop setMarTop",
+      "summary": "",
+      "description": "Setea el margin top necesario para un Nodo."
+    },
+    "Layouter.html#setMarRight": {
+      "id": "Layouter.html#setMarRight",
+      "kind": "function",
+      "title": "setMarRight( Node [, parameters ] )",
+      "longname": "Layouter#setMarRight",
+      "name": "setMarRight",
+      "tags": "Layouter#setMarRight setMarRight",
+      "summary": "",
+      "description": "Setea el margin right necesario para un Nodo."
+    },
+    "Layouter.html#setMarBottom": {
+      "id": "Layouter.html#setMarBottom",
+      "kind": "function",
+      "title": "setMarBottom( Node [, parameters ] )",
+      "longname": "Layouter#setMarBottom",
+      "name": "setMarBottom",
+      "tags": "Layouter#setMarBottom setMarBottom",
+      "summary": "",
+      "description": "Setea el margin bottom necesario para un Nodo."
+    },
+    "Layouter.html#setMarLeft": {
+      "id": "Layouter.html#setMarLeft",
+      "kind": "function",
+      "title": "setMarLeft( Node [, parameters ] )",
+      "longname": "Layouter#setMarLeft",
+      "name": "setMarLeft",
+      "tags": "Layouter#setMarLeft setMarLeft",
+      "summary": "",
+      "description": "Setea el margin left necesario para un Nodo."
     },
     "Layouter.html#setFlex": {
       "id": "Layouter.html#setFlex",

@@ -96,6 +96,46 @@ Layouter.prototype.setPads = function (Node, parameters) {
 };
 
 /**
+ * Setea el padding top necesario para un nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setPadTop = function (Node, parameters) {
+  uLayouter.padsAndMargs(Node, 'padt', parameters, this);
+};
+
+/**
+ * Setea el padding right necesario para un nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setPadRight = function (Node, parameters) {
+  uLayouter.padsAndMargs(Node, 'padr', parameters, this);
+};
+
+/**
+ * Setea el padding bottom necesario para un nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setPadBottom = function (Node, parameters) {
+  uLayouter.padsAndMargs(Node, 'padb', parameters, this);
+};
+
+/**
+ * Setea el padding left necesario para un nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setPadLeft = function (Node, parameters) {
+  uLayouter.padsAndMargs(Node, 'padl', parameters, this);
+};
+
+/**
  * Setea los margins necesarios para un Nodo.
  * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
@@ -103,6 +143,46 @@ Layouter.prototype.setPads = function (Node, parameters) {
  */
 Layouter.prototype.setMars = function (Node, parameters) {
   uLayouter.padsAndMargs(Node, 'mar', parameters, this);
+};
+
+/**
+ * Setea el margin top necesario para un Nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setMarTop = function (Node, parameters) {
+  uLayouter.padsAndMargs(Node, 'mart', parameters, this);
+};
+
+/**
+ * Setea el margin right necesario para un Nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setMarRight = function (Node, parameters) {
+  uLayouter.padsAndMargs(Node, 'marr', parameters, this);
+};
+
+/**
+ * Setea el margin bottom necesario para un Nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setMarBottom = function (Node, parameters) {
+  uLayouter.padsAndMargs(Node, 'marb', parameters, this);
+};
+
+/**
+ * Setea el margin left necesario para un Nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setMarLeft = function (Node, parameters) {
+  uLayouter.padsAndMargs(Node, 'marl', parameters, this);
 };
 
 /**
