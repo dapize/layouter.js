@@ -86,6 +86,27 @@ window.lunrData = {
           "parametro",
           "procesar"
         ],
+        "Layouter.html#buildCols": [
+          "buildcol",
+          "clase",
+          "columna",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "la",
+          "layouter#buildcol",
+          "lo",
+          "nombr",
+          "object",
+          "requerida",
+          "valcol",
+          "y"
+        ],
         "Layouter.html#setCols": [
           "asigna",
           "columna",
@@ -103,6 +124,26 @@ window.lunrData = {
           "setcol",
           "un"
         ],
+        "Layouter.html#buildPads": [
+          "buildpad",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "layouter#buildpad",
+          "lo",
+          "nombr",
+          "object",
+          "pad",
+          "requerida",
+          "valpad",
+          "y"
+        ],
         "Layouter.html#setPads": [
           "function",
           "layouter#setpad",
@@ -116,6 +157,26 @@ window.lunrData = {
           "setea",
           "setpad",
           "un"
+        ],
+        "Layouter.html#buildPadTop": [
+          "buildpadtop",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "layouter#buildpadtop",
+          "lo",
+          "nombr",
+          "object",
+          "pad",
+          "superior",
+          "valpad",
+          "y"
         ],
         "Layouter.html#setPadTop": [
           "el",
@@ -132,6 +193,26 @@ window.lunrData = {
           "top",
           "un"
         ],
+        "Layouter.html#buildPadRight": [
+          "buildpadright",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "derecho",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "layouter#buildpadright",
+          "lo",
+          "nombr",
+          "object",
+          "pad",
+          "valpad",
+          "y"
+        ],
         "Layouter.html#setPadRight": [
           "el",
           "function",
@@ -146,6 +227,26 @@ window.lunrData = {
           "setea",
           "setpadright",
           "un"
+        ],
+        "Layouter.html#buildPadBottom": [
+          "buildpadbottom",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "inferior",
+          "insertstyl",
+          "layouter#buildpadbottom",
+          "lo",
+          "nombr",
+          "object",
+          "pad",
+          "valpad",
+          "y"
         ],
         "Layouter.html#setPadBottom": [
           "bottom",
@@ -162,6 +263,26 @@ window.lunrData = {
           "setpadbottom",
           "un"
         ],
+        "Layouter.html#buildPadLeft": [
+          "buildpadleft",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "izquierdo",
+          "layouter#buildpadleft",
+          "lo",
+          "nombr",
+          "object",
+          "pad",
+          "valpad",
+          "y"
+        ],
         "Layouter.html#setPadLeft": [
           "el",
           "function",
@@ -177,6 +298,25 @@ window.lunrData = {
           "setpadleft",
           "un"
         ],
+        "Layouter.html#buildMars": [
+          "buildmar",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "layouter#buildmar",
+          "lo",
+          "margen",
+          "nombr",
+          "object",
+          "valmar",
+          "y"
+        ],
         "Layouter.html#setMars": [
           "function",
           "layouter#setmar",
@@ -190,6 +330,26 @@ window.lunrData = {
           "setea",
           "setmar",
           "un"
+        ],
+        "Layouter.html#buildMarTop": [
+          "buildmartop",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "layouter#buildmartop",
+          "lo",
+          "margen",
+          "nombr",
+          "object",
+          "superior",
+          "valmar",
+          "y"
         ],
         "Layouter.html#setMarTop": [
           "el",
@@ -206,6 +366,26 @@ window.lunrData = {
           "top",
           "un"
         ],
+        "Layouter.html#buildMarRight": [
+          "buildmarright",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "derecho",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "layouter#buildmarright",
+          "lo",
+          "margen",
+          "nombr",
+          "object",
+          "valmar",
+          "y"
+        ],
         "Layouter.html#setMarRight": [
           "el",
           "function",
@@ -220,6 +400,26 @@ window.lunrData = {
           "setea",
           "setmarright",
           "un"
+        ],
+        "Layouter.html#buildMarBottom": [
+          "buildmarbottom",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "inferior",
+          "insertstyl",
+          "layouter#buildmarbottom",
+          "lo",
+          "margen",
+          "nombr",
+          "object",
+          "valmar",
+          "y"
         ],
         "Layouter.html#setMarBottom": [
           "bottom",
@@ -236,6 +436,26 @@ window.lunrData = {
           "setmarbottom",
           "un"
         ],
+        "Layouter.html#buildMarLeft": [
+          "buildmarleft",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "inferior",
+          "insertstyl",
+          "layouter#buildmarleft",
+          "lo",
+          "margen",
+          "nombr",
+          "object",
+          "valmar",
+          "y"
+        ],
         "Layouter.html#setMarLeft": [
           "el",
           "function",
@@ -250,6 +470,25 @@ window.lunrData = {
           "setea",
           "setmarleft",
           "un"
+        ],
+        "Layouter.html#buildFlex": [
+          "al",
+          "buildflex",
+          "clase",
+          "construy",
+          "css",
+          "de",
+          "flex",
+          "function",
+          "insertstyl",
+          "la",
+          "layouter#buildflex",
+          "nombr",
+          "object",
+          "referent",
+          "regla",
+          "valflex",
+          "y"
         ],
         "Layouter.html#setFlex": [
           "designada",
@@ -536,6 +775,37 @@ window.lunrData = {
           "ulayouter.addclass",
           "un"
         ],
+        "uLayouter.html#.nameCleaner": [
+          "clase",
+          "de",
+          "function",
+          "la",
+          "limpia",
+          "lo",
+          "lt;static&gt",
+          "nameclean",
+          "nombr",
+          "obj",
+          "object",
+          "ulayouter.nameclean"
+        ],
+        "uLayouter.html#.buildCss": [
+          "buildcss",
+          "clase",
+          "construy",
+          "css",
+          "data",
+          "de",
+          "el",
+          "function",
+          "la",
+          "lt;static&gt",
+          "nombr",
+          "registra",
+          "regla",
+          "ulayouter.buildcss",
+          "y"
+        ],
         "uLayouter.html#.settingCss": [
           "adiciona",
           "al",
@@ -557,6 +827,21 @@ window.lunrData = {
           "ulayouter.settingcss",
           "y"
         ],
+        "uLayouter.html#.buildPadsAndMargs": [
+          "buildpadsandmarg",
+          "construy",
+          "function",
+          "instanc",
+          "lo",
+          "lt;static&gt",
+          "margen",
+          "node",
+          "pad",
+          "paramet",
+          "type",
+          "ulayouter.buildpadsandmarg",
+          "y"
+        ],
         "uLayouter.html#.padsAndMargs": [
           "function",
           "instanc",
@@ -573,7 +858,7 @@ window.lunrData = {
           "y"
         ]
       },
-      "length": 37
+      "length": 52
     },
     "tokenStore": {
       "root": {
@@ -673,6 +958,253 @@ window.lunrData = {
                       "ref": "Layouter.html#build",
                       "tf": 700
                     }
+                  },
+                  "c": {
+                    "docs": {},
+                    "o": {
+                      "docs": {},
+                      "l": {
+                        "docs": {
+                          "Layouter.html#buildCols": {
+                            "ref": "Layouter.html#buildCols",
+                            "tf": 675
+                          }
+                        }
+                      }
+                    },
+                    "s": {
+                      "docs": {},
+                      "s": {
+                        "docs": {
+                          "uLayouter.html#.buildCss": {
+                            "ref": "uLayouter.html#.buildCss",
+                            "tf": 683.3333333333334
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "p": {
+                    "docs": {},
+                    "a": {
+                      "docs": {},
+                      "d": {
+                        "docs": {
+                          "Layouter.html#buildPads": {
+                            "ref": "Layouter.html#buildPads",
+                            "tf": 675
+                          }
+                        },
+                        "t": {
+                          "docs": {},
+                          "o": {
+                            "docs": {},
+                            "p": {
+                              "docs": {
+                                "Layouter.html#buildPadTop": {
+                                  "ref": "Layouter.html#buildPadTop",
+                                  "tf": 675
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "r": {
+                          "docs": {},
+                          "i": {
+                            "docs": {},
+                            "g": {
+                              "docs": {},
+                              "h": {
+                                "docs": {},
+                                "t": {
+                                  "docs": {
+                                    "Layouter.html#buildPadRight": {
+                                      "ref": "Layouter.html#buildPadRight",
+                                      "tf": 675
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "b": {
+                          "docs": {},
+                          "o": {
+                            "docs": {},
+                            "t": {
+                              "docs": {},
+                              "t": {
+                                "docs": {},
+                                "o": {
+                                  "docs": {},
+                                  "m": {
+                                    "docs": {
+                                      "Layouter.html#buildPadBottom": {
+                                        "ref": "Layouter.html#buildPadBottom",
+                                        "tf": 675
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "l": {
+                          "docs": {},
+                          "e": {
+                            "docs": {},
+                            "f": {
+                              "docs": {},
+                              "t": {
+                                "docs": {
+                                  "Layouter.html#buildPadLeft": {
+                                    "ref": "Layouter.html#buildPadLeft",
+                                    "tf": 675
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "s": {
+                          "docs": {},
+                          "a": {
+                            "docs": {},
+                            "n": {
+                              "docs": {},
+                              "d": {
+                                "docs": {},
+                                "m": {
+                                  "docs": {},
+                                  "a": {
+                                    "docs": {},
+                                    "r": {
+                                      "docs": {},
+                                      "g": {
+                                        "docs": {
+                                          "uLayouter.html#.buildPadsAndMargs": {
+                                            "ref": "uLayouter.html#.buildPadsAndMargs",
+                                            "tf": 666.6666666666666
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "m": {
+                    "docs": {},
+                    "a": {
+                      "docs": {},
+                      "r": {
+                        "docs": {
+                          "Layouter.html#buildMars": {
+                            "ref": "Layouter.html#buildMars",
+                            "tf": 675
+                          }
+                        },
+                        "t": {
+                          "docs": {},
+                          "o": {
+                            "docs": {},
+                            "p": {
+                              "docs": {
+                                "Layouter.html#buildMarTop": {
+                                  "ref": "Layouter.html#buildMarTop",
+                                  "tf": 675
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "r": {
+                          "docs": {},
+                          "i": {
+                            "docs": {},
+                            "g": {
+                              "docs": {},
+                              "h": {
+                                "docs": {},
+                                "t": {
+                                  "docs": {
+                                    "Layouter.html#buildMarRight": {
+                                      "ref": "Layouter.html#buildMarRight",
+                                      "tf": 675
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "b": {
+                          "docs": {},
+                          "o": {
+                            "docs": {},
+                            "t": {
+                              "docs": {},
+                              "t": {
+                                "docs": {},
+                                "o": {
+                                  "docs": {},
+                                  "m": {
+                                    "docs": {
+                                      "Layouter.html#buildMarBottom": {
+                                        "ref": "Layouter.html#buildMarBottom",
+                                        "tf": 675
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "l": {
+                          "docs": {},
+                          "e": {
+                            "docs": {},
+                            "f": {
+                              "docs": {},
+                              "t": {
+                                "docs": {
+                                  "Layouter.html#buildMarLeft": {
+                                    "ref": "Layouter.html#buildMarLeft",
+                                    "tf": 675
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "f": {
+                    "docs": {},
+                    "l": {
+                      "docs": {},
+                      "e": {
+                        "docs": {},
+                        "x": {
+                          "docs": {
+                            "Layouter.html#buildFlex": {
+                              "ref": "Layouter.html#buildFlex",
+                              "tf": 675
+                            }
+                          }
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -767,48 +1299,96 @@ window.lunrData = {
                             "ref": "Layouter.html#getParameters",
                             "tf": 110
                           },
+                          "Layouter.html#buildCols": {
+                            "ref": "Layouter.html#buildCols",
+                            "tf": 110
+                          },
                           "Layouter.html#setCols": {
                             "ref": "Layouter.html#setCols",
+                            "tf": 110
+                          },
+                          "Layouter.html#buildPads": {
+                            "ref": "Layouter.html#buildPads",
                             "tf": 110
                           },
                           "Layouter.html#setPads": {
                             "ref": "Layouter.html#setPads",
                             "tf": 110
                           },
+                          "Layouter.html#buildPadTop": {
+                            "ref": "Layouter.html#buildPadTop",
+                            "tf": 110
+                          },
                           "Layouter.html#setPadTop": {
                             "ref": "Layouter.html#setPadTop",
+                            "tf": 110
+                          },
+                          "Layouter.html#buildPadRight": {
+                            "ref": "Layouter.html#buildPadRight",
                             "tf": 110
                           },
                           "Layouter.html#setPadRight": {
                             "ref": "Layouter.html#setPadRight",
                             "tf": 110
                           },
+                          "Layouter.html#buildPadBottom": {
+                            "ref": "Layouter.html#buildPadBottom",
+                            "tf": 110
+                          },
                           "Layouter.html#setPadBottom": {
                             "ref": "Layouter.html#setPadBottom",
+                            "tf": 110
+                          },
+                          "Layouter.html#buildPadLeft": {
+                            "ref": "Layouter.html#buildPadLeft",
                             "tf": 110
                           },
                           "Layouter.html#setPadLeft": {
                             "ref": "Layouter.html#setPadLeft",
                             "tf": 110
                           },
+                          "Layouter.html#buildMars": {
+                            "ref": "Layouter.html#buildMars",
+                            "tf": 110
+                          },
                           "Layouter.html#setMars": {
                             "ref": "Layouter.html#setMars",
+                            "tf": 110
+                          },
+                          "Layouter.html#buildMarTop": {
+                            "ref": "Layouter.html#buildMarTop",
                             "tf": 110
                           },
                           "Layouter.html#setMarTop": {
                             "ref": "Layouter.html#setMarTop",
                             "tf": 110
                           },
+                          "Layouter.html#buildMarRight": {
+                            "ref": "Layouter.html#buildMarRight",
+                            "tf": 110
+                          },
                           "Layouter.html#setMarRight": {
                             "ref": "Layouter.html#setMarRight",
+                            "tf": 110
+                          },
+                          "Layouter.html#buildMarBottom": {
+                            "ref": "Layouter.html#buildMarBottom",
                             "tf": 110
                           },
                           "Layouter.html#setMarBottom": {
                             "ref": "Layouter.html#setMarBottom",
                             "tf": 110
                           },
+                          "Layouter.html#buildMarLeft": {
+                            "ref": "Layouter.html#buildMarLeft",
+                            "tf": 110
+                          },
                           "Layouter.html#setMarLeft": {
                             "ref": "Layouter.html#setMarLeft",
+                            "tf": 110
+                          },
+                          "Layouter.html#buildFlex": {
+                            "ref": "Layouter.html#buildFlex",
                             "tf": 110
                           },
                           "Layouter.html#setFlex": {
@@ -867,8 +1447,20 @@ window.lunrData = {
                             "ref": "uLayouter.html#.addClasses",
                             "tf": 110
                           },
+                          "uLayouter.html#.nameCleaner": {
+                            "ref": "uLayouter.html#.nameCleaner",
+                            "tf": 110
+                          },
+                          "uLayouter.html#.buildCss": {
+                            "ref": "uLayouter.html#.buildCss",
+                            "tf": 110
+                          },
                           "uLayouter.html#.settingCss": {
                             "ref": "uLayouter.html#.settingCss",
+                            "tf": 110
+                          },
+                          "uLayouter.html#.buildPadsAndMargs": {
+                            "ref": "uLayouter.html#.buildPadsAndMargs",
                             "tf": 110
                           },
                           "uLayouter.html#.padsAndMargs": {
@@ -889,6 +1481,10 @@ window.lunrData = {
               "docs": {},
               "x": {
                 "docs": {
+                  "Layouter.html#buildFlex": {
+                    "ref": "Layouter.html#buildFlex",
+                    "tf": 4.545454545454546
+                  },
                   "Layouter.html#setFlex": {
                     "ref": "Layouter.html#setFlex",
                     "tf": 6.25
@@ -1030,6 +1626,98 @@ window.lunrData = {
             },
             "s": {
               "docs": {},
+              "e": {
+                "docs": {},
+                "r": {
+                  "docs": {},
+                  "t": {
+                    "docs": {},
+                    "s": {
+                      "docs": {},
+                      "t": {
+                        "docs": {},
+                        "y": {
+                          "docs": {},
+                          "l": {
+                            "docs": {
+                              "Layouter.html#buildCols": {
+                                "ref": "Layouter.html#buildCols",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildPads": {
+                                "ref": "Layouter.html#buildPads",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildPadTop": {
+                                "ref": "Layouter.html#buildPadTop",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildPadRight": {
+                                "ref": "Layouter.html#buildPadRight",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildPadBottom": {
+                                "ref": "Layouter.html#buildPadBottom",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildPadLeft": {
+                                "ref": "Layouter.html#buildPadLeft",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildMars": {
+                                "ref": "Layouter.html#buildMars",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildMarTop": {
+                                "ref": "Layouter.html#buildMarTop",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildMarRight": {
+                                "ref": "Layouter.html#buildMarRight",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildMarBottom": {
+                                "ref": "Layouter.html#buildMarBottom",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildMarLeft": {
+                                "ref": "Layouter.html#buildMarLeft",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildFlex": {
+                                "ref": "Layouter.html#buildFlex",
+                                "tf": 25
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "r": {
+                      "docs": {},
+                      "u": {
+                        "docs": {},
+                        "l": {
+                          "docs": {
+                            "uLayouter.html#.insertRules": {
+                              "ref": "uLayouter.html#.insertRules",
+                              "tf": 675
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "a": {
+                      "docs": {
+                        "uLayouter.html#.settingCss": {
+                          "ref": "uLayouter.html#.settingCss",
+                          "tf": 3.571428571428571
+                        }
+                      }
+                    }
+                  }
+                }
+              },
               "t": {
                 "docs": {},
                 "a": {
@@ -1050,6 +1738,10 @@ window.lunrData = {
                           "ref": "uLayouter.html#.addClasses",
                           "tf": 20
                         },
+                        "uLayouter.html#.buildPadsAndMargs": {
+                          "ref": "uLayouter.html#.buildPadsAndMargs",
+                          "tf": 16.666666666666664
+                        },
                         "uLayouter.html#.padsAndMargs": {
                           "ref": "uLayouter.html#.padsAndMargs",
                           "tf": 16.666666666666664
@@ -1058,32 +1750,61 @@ window.lunrData = {
                     }
                   }
                 }
-              },
+              }
+            },
+            "f": {
+              "docs": {},
               "e": {
                 "docs": {},
                 "r": {
                   "docs": {},
-                  "t": {
+                  "i": {
                     "docs": {},
-                    "r": {
+                    "o": {
                       "docs": {},
-                      "u": {
-                        "docs": {},
-                        "l": {
-                          "docs": {
-                            "uLayouter.html#.insertRules": {
-                              "ref": "uLayouter.html#.insertRules",
-                              "tf": 675
-                            }
+                      "r": {
+                        "docs": {
+                          "Layouter.html#buildPadBottom": {
+                            "ref": "Layouter.html#buildPadBottom",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildMarBottom": {
+                            "ref": "Layouter.html#buildMarBottom",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildMarLeft": {
+                            "ref": "Layouter.html#buildMarLeft",
+                            "tf": 3.8461538461538463
                           }
                         }
                       }
-                    },
-                    "a": {
-                      "docs": {
-                        "uLayouter.html#.settingCss": {
-                          "ref": "uLayouter.html#.settingCss",
-                          "tf": 3.571428571428571
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "z": {
+            "docs": {},
+            "q": {
+              "docs": {},
+              "u": {
+                "docs": {},
+                "i": {
+                  "docs": {},
+                  "e": {
+                    "docs": {},
+                    "r": {
+                      "docs": {},
+                      "d": {
+                        "docs": {},
+                        "o": {
+                          "docs": {
+                            "Layouter.html#buildPadLeft": {
+                              "ref": "Layouter.html#buildPadLeft",
+                              "tf": 3.8461538461538463
+                            }
+                          }
                         }
                       }
                     }
@@ -1168,6 +1889,36 @@ window.lunrData = {
                 }
               }
             },
+            "q": {
+              "docs": {},
+              "u": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "r": {
+                    "docs": {},
+                    "i": {
+                      "docs": {},
+                      "d": {
+                        "docs": {},
+                        "a": {
+                          "docs": {
+                            "Layouter.html#buildCols": {
+                              "ref": "Layouter.html#buildCols",
+                              "tf": 3.8461538461538463
+                            },
+                            "Layouter.html#buildPads": {
+                              "ref": "Layouter.html#buildPads",
+                              "tf": 3.8461538461538463
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
             "f": {
               "docs": {},
               "e": {
@@ -1183,6 +1934,10 @@ window.lunrData = {
                           "Layouter.html#setCols": {
                             "ref": "Layouter.html#setCols",
                             "tf": 5
+                          },
+                          "Layouter.html#buildFlex": {
+                            "ref": "Layouter.html#buildFlex",
+                            "tf": 4.545454545454546
                           }
                         }
                       }
@@ -1197,6 +1952,10 @@ window.lunrData = {
                 "docs": {},
                 "a": {
                   "docs": {
+                    "Layouter.html#buildFlex": {
+                      "ref": "Layouter.html#buildFlex",
+                      "tf": 4.545454545454546
+                    },
                     "Layouter.html#setFlex": {
                       "ref": "Layouter.html#setFlex",
                       "tf": 6.25
@@ -1208,6 +1967,10 @@ window.lunrData = {
                     "uLayouter.html#.insertRules": {
                       "ref": "uLayouter.html#.insertRules",
                       "tf": 5.555555555555555
+                    },
+                    "uLayouter.html#.buildCss": {
+                      "ref": "uLayouter.html#.buildCss",
+                      "tf": 5
                     }
                   }
                 }
@@ -1225,6 +1988,10 @@ window.lunrData = {
                           "uLayouter.html#.debug": {
                             "ref": "uLayouter.html#.debug",
                             "tf": 7.142857142857142
+                          },
+                          "uLayouter.html#.buildCss": {
+                            "ref": "uLayouter.html#.buildCss",
+                            "tf": 5
                           }
                         }
                       }
@@ -1534,6 +2301,10 @@ window.lunrData = {
                     "ref": "uLayouter.html#.createStyles",
                     "tf": 20
                   },
+                  "uLayouter.html#.buildPadsAndMargs": {
+                    "ref": "uLayouter.html#.buildPadsAndMargs",
+                    "tf": 16.666666666666664
+                  },
                   "uLayouter.html#.padsAndMargs": {
                     "ref": "uLayouter.html#.padsAndMargs",
                     "tf": 16.666666666666664
@@ -1581,6 +2352,54 @@ window.lunrData = {
           },
           "e": {
             "docs": {
+              "Layouter.html#buildCols": {
+                "ref": "Layouter.html#buildCols",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildPads": {
+                "ref": "Layouter.html#buildPads",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildPadTop": {
+                "ref": "Layouter.html#buildPadTop",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildPadRight": {
+                "ref": "Layouter.html#buildPadRight",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildPadBottom": {
+                "ref": "Layouter.html#buildPadBottom",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildPadLeft": {
+                "ref": "Layouter.html#buildPadLeft",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMars": {
+                "ref": "Layouter.html#buildMars",
+                "tf": 4.166666666666666
+              },
+              "Layouter.html#buildMarTop": {
+                "ref": "Layouter.html#buildMarTop",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMarRight": {
+                "ref": "Layouter.html#buildMarRight",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMarBottom": {
+                "ref": "Layouter.html#buildMarBottom",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMarLeft": {
+                "ref": "Layouter.html#buildMarLeft",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildFlex": {
+                "ref": "Layouter.html#buildFlex",
+                "tf": 4.545454545454546
+              },
               "Layouter.html#build": {
                 "ref": "Layouter.html#build",
                 "tf": 5
@@ -1624,6 +2443,14 @@ window.lunrData = {
               "uLayouter.html#.addClasses": {
                 "ref": "uLayouter.html#.addClasses",
                 "tf": 14.285714285714285
+              },
+              "uLayouter.html#.nameCleaner": {
+                "ref": "uLayouter.html#.nameCleaner",
+                "tf": 8.333333333333332
+              },
+              "uLayouter.html#.buildCss": {
+                "ref": "uLayouter.html#.buildCss",
+                "tf": 5
               }
             },
             "l": {
@@ -1631,6 +2458,95 @@ window.lunrData = {
                 "Layouter.html": {
                   "ref": "Layouter.html",
                   "tf": 12.5
+                }
+              }
+            },
+            "v": {
+              "docs": {},
+              "o": {
+                "docs": {},
+                "l": {
+                  "docs": {},
+                  "v": {
+                    "docs": {},
+                    "i": {
+                      "docs": {},
+                      "e": {
+                        "docs": {},
+                        "n": {
+                          "docs": {},
+                          "d": {
+                            "docs": {},
+                            "o": {
+                              "docs": {
+                                "Layouter.html#buildCols": {
+                                  "ref": "Layouter.html#buildCols",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildPads": {
+                                  "ref": "Layouter.html#buildPads",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildPadTop": {
+                                  "ref": "Layouter.html#buildPadTop",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildPadRight": {
+                                  "ref": "Layouter.html#buildPadRight",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildPadBottom": {
+                                  "ref": "Layouter.html#buildPadBottom",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildPadLeft": {
+                                  "ref": "Layouter.html#buildPadLeft",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildMars": {
+                                  "ref": "Layouter.html#buildMars",
+                                  "tf": 4.166666666666666
+                                },
+                                "Layouter.html#buildMarTop": {
+                                  "ref": "Layouter.html#buildMarTop",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildMarRight": {
+                                  "ref": "Layouter.html#buildMarRight",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildMarBottom": {
+                                  "ref": "Layouter.html#buildMarBottom",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildMarLeft": {
+                                  "ref": "Layouter.html#buildMarLeft",
+                                  "tf": 3.8461538461538463
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "u": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "l": {
+                    "docs": {},
+                    "v": {
+                      "docs": {
+                        "uLayouter.html#.processedNumber": {
+                          "ref": "uLayouter.html#.processedNumber",
+                          "tf": 2.5
+                        }
+                      }
+                    }
+                  }
                 }
               }
             },
@@ -1664,6 +2580,30 @@ window.lunrData = {
                               }
                             }
                           }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "r": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "c": {
+                  "docs": {},
+                  "h": {
+                    "docs": {},
+                    "o": {
+                      "docs": {
+                        "Layouter.html#buildPadRight": {
+                          "ref": "Layouter.html#buildPadRight",
+                          "tf": 3.8461538461538463
+                        },
+                        "Layouter.html#buildMarRight": {
+                          "ref": "Layouter.html#buildMarRight",
+                          "tf": 3.8461538461538463
                         }
                       }
                     }
@@ -1706,26 +2646,6 @@ window.lunrData = {
                             "ref": "uLayouter.html#.createScopeStyles",
                             "tf": 2.5
                           }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "v": {
-              "docs": {},
-              "u": {
-                "docs": {},
-                "e": {
-                  "docs": {},
-                  "l": {
-                    "docs": {},
-                    "v": {
-                      "docs": {
-                        "uLayouter.html#.processedNumber": {
-                          "ref": "uLayouter.html#.processedNumber",
-                          "tf": 2.5
                         }
                       }
                     }
@@ -1816,6 +2736,10 @@ window.lunrData = {
               "docs": {},
               "a": {
                 "docs": {
+                  "uLayouter.html#.buildCss": {
+                    "ref": "uLayouter.html#.buildCss",
+                    "tf": 33.33333333333333
+                  },
                   "uLayouter.html#.settingCss": {
                     "ref": "uLayouter.html#.settingCss",
                     "tf": 33.33333333333333
@@ -1936,6 +2860,54 @@ window.lunrData = {
                 },
                 "e": {
                   "docs": {
+                    "Layouter.html#buildCols": {
+                      "ref": "Layouter.html#buildCols",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildPads": {
+                      "ref": "Layouter.html#buildPads",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildPadTop": {
+                      "ref": "Layouter.html#buildPadTop",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildPadRight": {
+                      "ref": "Layouter.html#buildPadRight",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildPadBottom": {
+                      "ref": "Layouter.html#buildPadBottom",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildPadLeft": {
+                      "ref": "Layouter.html#buildPadLeft",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMars": {
+                      "ref": "Layouter.html#buildMars",
+                      "tf": 4.166666666666666
+                    },
+                    "Layouter.html#buildMarTop": {
+                      "ref": "Layouter.html#buildMarTop",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMarRight": {
+                      "ref": "Layouter.html#buildMarRight",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMarBottom": {
+                      "ref": "Layouter.html#buildMarBottom",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMarLeft": {
+                      "ref": "Layouter.html#buildMarLeft",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildFlex": {
+                      "ref": "Layouter.html#buildFlex",
+                      "tf": 4.545454545454546
+                    },
                     "uLayouter.html#.replaceList": {
                       "ref": "uLayouter.html#.replaceList",
                       "tf": 5
@@ -1943,6 +2915,14 @@ window.lunrData = {
                     "uLayouter.html#.addClasses": {
                       "ref": "uLayouter.html#.addClasses",
                       "tf": 7.142857142857142
+                    },
+                    "uLayouter.html#.nameCleaner": {
+                      "ref": "uLayouter.html#.nameCleaner",
+                      "tf": 8.333333333333332
+                    },
+                    "uLayouter.html#.buildCss": {
+                      "ref": "uLayouter.html#.buildCss",
+                      "tf": 5
                     },
                     "uLayouter.html#.settingCss": {
                       "ref": "uLayouter.html#.settingCss",
@@ -1976,6 +2956,66 @@ window.lunrData = {
                                 "tf": 12.5
                               }
                             }
+                          }
+                        }
+                      },
+                      "y": {
+                        "docs": {
+                          "Layouter.html#buildCols": {
+                            "ref": "Layouter.html#buildCols",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildPads": {
+                            "ref": "Layouter.html#buildPads",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildPadTop": {
+                            "ref": "Layouter.html#buildPadTop",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildPadRight": {
+                            "ref": "Layouter.html#buildPadRight",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildPadBottom": {
+                            "ref": "Layouter.html#buildPadBottom",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildPadLeft": {
+                            "ref": "Layouter.html#buildPadLeft",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildMars": {
+                            "ref": "Layouter.html#buildMars",
+                            "tf": 4.166666666666666
+                          },
+                          "Layouter.html#buildMarTop": {
+                            "ref": "Layouter.html#buildMarTop",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildMarRight": {
+                            "ref": "Layouter.html#buildMarRight",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildMarBottom": {
+                            "ref": "Layouter.html#buildMarBottom",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildMarLeft": {
+                            "ref": "Layouter.html#buildMarLeft",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildFlex": {
+                            "ref": "Layouter.html#buildFlex",
+                            "tf": 4.545454545454546
+                          },
+                          "uLayouter.html#.buildCss": {
+                            "ref": "uLayouter.html#.buildCss",
+                            "tf": 5
+                          },
+                          "uLayouter.html#.buildPadsAndMargs": {
+                            "ref": "uLayouter.html#.buildPadsAndMargs",
+                            "tf": 10
                           }
                         }
                       }
@@ -2047,6 +3087,10 @@ window.lunrData = {
                     "docs": {},
                     "a": {
                       "docs": {
+                        "Layouter.html#buildCols": {
+                          "ref": "Layouter.html#buildCols",
+                          "tf": 3.8461538461538463
+                        },
                         "Layouter.html#setCols": {
                           "ref": "Layouter.html#setCols",
                           "tf": 5
@@ -2062,10 +3106,147 @@ window.lunrData = {
               }
             }
           },
+          "r": {
+            "docs": {},
+            "e": {
+              "docs": {},
+              "a": {
+                "docs": {
+                  "uLayouter.html#.createStyles": {
+                    "ref": "uLayouter.html#.createStyles",
+                    "tf": 4.545454545454546
+                  },
+                  "uLayouter.html#.createScopeStyles": {
+                    "ref": "uLayouter.html#.createScopeStyles",
+                    "tf": 2.5
+                  },
+                  "uLayouter.html#.settingCss": {
+                    "ref": "uLayouter.html#.settingCss",
+                    "tf": 3.571428571428571
+                  }
+                },
+                "d": {
+                  "docs": {},
+                  "o": {
+                    "docs": {
+                      "Layouter.html#buildCols": {
+                        "ref": "Layouter.html#buildCols",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildPads": {
+                        "ref": "Layouter.html#buildPads",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildPadTop": {
+                        "ref": "Layouter.html#buildPadTop",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildPadRight": {
+                        "ref": "Layouter.html#buildPadRight",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildPadBottom": {
+                        "ref": "Layouter.html#buildPadBottom",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildPadLeft": {
+                        "ref": "Layouter.html#buildPadLeft",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMars": {
+                        "ref": "Layouter.html#buildMars",
+                        "tf": 4.166666666666666
+                      },
+                      "Layouter.html#buildMarTop": {
+                        "ref": "Layouter.html#buildMarTop",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMarRight": {
+                        "ref": "Layouter.html#buildMarRight",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMarBottom": {
+                        "ref": "Layouter.html#buildMarBottom",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMarLeft": {
+                        "ref": "Layouter.html#buildMarLeft",
+                        "tf": 3.8461538461538463
+                      }
+                    }
+                  }
+                },
+                "t": {
+                  "docs": {},
+                  "e": {
+                    "docs": {},
+                    "s": {
+                      "docs": {},
+                      "t": {
+                        "docs": {},
+                        "y": {
+                          "docs": {},
+                          "l": {
+                            "docs": {
+                              "uLayouter.html#.createStyles": {
+                                "ref": "uLayouter.html#.createStyles",
+                                "tf": 670
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "c": {
+                        "docs": {},
+                        "o": {
+                          "docs": {},
+                          "p": {
+                            "docs": {},
+                            "e": {
+                              "docs": {},
+                              "s": {
+                                "docs": {},
+                                "t": {
+                                  "docs": {},
+                                  "y": {
+                                    "docs": {},
+                                    "l": {
+                                      "docs": {
+                                        "uLayouter.html#.createScopeStyles": {
+                                          "ref": "uLayouter.html#.createScopeStyles",
+                                          "tf": 683.3333333333334
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "n": {
+                  "docs": {
+                    "uLayouter.html#.createScopeStyles": {
+                      "ref": "uLayouter.html#.createScopeStyles",
+                      "tf": 2.5
+                    }
+                  }
+                }
+              }
+            }
+          },
           "s": {
             "docs": {},
             "s": {
               "docs": {
+                "Layouter.html#buildFlex": {
+                  "ref": "Layouter.html#buildFlex",
+                  "tf": 4.545454545454546
+                },
                 "uLayouter.html#.processors": {
                   "ref": "uLayouter.html#.processors",
                   "tf": 5
@@ -2077,6 +3258,10 @@ window.lunrData = {
                 "uLayouter.html#.insertRules": {
                   "ref": "uLayouter.html#.insertRules",
                   "tf": 5.555555555555555
+                },
+                "uLayouter.html#.buildCss": {
+                  "ref": "uLayouter.html#.buildCss",
+                  "tf": 5
                 }
               }
             }
@@ -2210,88 +3395,6 @@ window.lunrData = {
                 }
               }
             }
-          },
-          "r": {
-            "docs": {},
-            "e": {
-              "docs": {},
-              "a": {
-                "docs": {
-                  "uLayouter.html#.createStyles": {
-                    "ref": "uLayouter.html#.createStyles",
-                    "tf": 4.545454545454546
-                  },
-                  "uLayouter.html#.createScopeStyles": {
-                    "ref": "uLayouter.html#.createScopeStyles",
-                    "tf": 2.5
-                  },
-                  "uLayouter.html#.settingCss": {
-                    "ref": "uLayouter.html#.settingCss",
-                    "tf": 3.571428571428571
-                  }
-                },
-                "t": {
-                  "docs": {},
-                  "e": {
-                    "docs": {},
-                    "s": {
-                      "docs": {},
-                      "t": {
-                        "docs": {},
-                        "y": {
-                          "docs": {},
-                          "l": {
-                            "docs": {
-                              "uLayouter.html#.createStyles": {
-                                "ref": "uLayouter.html#.createStyles",
-                                "tf": 670
-                              }
-                            }
-                          }
-                        }
-                      },
-                      "c": {
-                        "docs": {},
-                        "o": {
-                          "docs": {},
-                          "p": {
-                            "docs": {},
-                            "e": {
-                              "docs": {},
-                              "s": {
-                                "docs": {},
-                                "t": {
-                                  "docs": {},
-                                  "y": {
-                                    "docs": {},
-                                    "l": {
-                                      "docs": {
-                                        "uLayouter.html#.createScopeStyles": {
-                                          "ref": "uLayouter.html#.createScopeStyles",
-                                          "tf": 683.3333333333334
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                },
-                "n": {
-                  "docs": {
-                    "uLayouter.html#.createScopeStyles": {
-                      "ref": "uLayouter.html#.createScopeStyles",
-                      "tf": 2.5
-                    }
-                  }
-                }
-              }
-            }
           }
         },
         "l": {
@@ -2380,13 +3483,38 @@ window.lunrData = {
                   }
                 }
               }
+            },
+            "m": {
+              "docs": {},
+              "p": {
+                "docs": {},
+                "i": {
+                  "docs": {},
+                  "a": {
+                    "docs": {
+                      "uLayouter.html#.nameCleaner": {
+                        "ref": "uLayouter.html#.nameCleaner",
+                        "tf": 8.333333333333332
+                      }
+                    }
+                  }
+                }
+              }
             }
           },
           "a": {
             "docs": {
+              "Layouter.html#buildCols": {
+                "ref": "Layouter.html#buildCols",
+                "tf": 3.8461538461538463
+              },
               "Layouter.html#setCols": {
                 "ref": "Layouter.html#setCols",
                 "tf": 5
+              },
+              "Layouter.html#buildFlex": {
+                "ref": "Layouter.html#buildFlex",
+                "tf": 4.545454545454546
               },
               "Layouter.html#setFlex": {
                 "ref": "Layouter.html#setFlex",
@@ -2411,6 +3539,14 @@ window.lunrData = {
               "uLayouter.html#.insertRules": {
                 "ref": "uLayouter.html#.insertRules",
                 "tf": 5.555555555555555
+              },
+              "uLayouter.html#.nameCleaner": {
+                "ref": "uLayouter.html#.nameCleaner",
+                "tf": 8.333333333333332
+              },
+              "uLayouter.html#.buildCss": {
+                "ref": "uLayouter.html#.buildCss",
+                "tf": 5
               },
               "uLayouter.html#.settingCss": {
                 "ref": "uLayouter.html#.settingCss",
@@ -2460,6 +3596,233 @@ window.lunrData = {
                                                   "ref": "Layouter.html#getParameters",
                                                   "tf": 1150
                                                 }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "b": {
+                            "docs": {},
+                            "u": {
+                              "docs": {},
+                              "i": {
+                                "docs": {},
+                                "l": {
+                                  "docs": {},
+                                  "d": {
+                                    "docs": {
+                                      "Layouter.html#build": {
+                                        "ref": "Layouter.html#build",
+                                        "tf": 1150
+                                      }
+                                    },
+                                    "c": {
+                                      "docs": {},
+                                      "o": {
+                                        "docs": {},
+                                        "l": {
+                                          "docs": {
+                                            "Layouter.html#buildCols": {
+                                              "ref": "Layouter.html#buildCols",
+                                              "tf": 1150
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "p": {
+                                      "docs": {},
+                                      "a": {
+                                        "docs": {},
+                                        "d": {
+                                          "docs": {
+                                            "Layouter.html#buildPads": {
+                                              "ref": "Layouter.html#buildPads",
+                                              "tf": 1150
+                                            }
+                                          },
+                                          "t": {
+                                            "docs": {},
+                                            "o": {
+                                              "docs": {},
+                                              "p": {
+                                                "docs": {
+                                                  "Layouter.html#buildPadTop": {
+                                                    "ref": "Layouter.html#buildPadTop",
+                                                    "tf": 1150
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "r": {
+                                            "docs": {},
+                                            "i": {
+                                              "docs": {},
+                                              "g": {
+                                                "docs": {},
+                                                "h": {
+                                                  "docs": {},
+                                                  "t": {
+                                                    "docs": {
+                                                      "Layouter.html#buildPadRight": {
+                                                        "ref": "Layouter.html#buildPadRight",
+                                                        "tf": 1150
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "b": {
+                                            "docs": {},
+                                            "o": {
+                                              "docs": {},
+                                              "t": {
+                                                "docs": {},
+                                                "t": {
+                                                  "docs": {},
+                                                  "o": {
+                                                    "docs": {},
+                                                    "m": {
+                                                      "docs": {
+                                                        "Layouter.html#buildPadBottom": {
+                                                          "ref": "Layouter.html#buildPadBottom",
+                                                          "tf": 1150
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "l": {
+                                            "docs": {},
+                                            "e": {
+                                              "docs": {},
+                                              "f": {
+                                                "docs": {},
+                                                "t": {
+                                                  "docs": {
+                                                    "Layouter.html#buildPadLeft": {
+                                                      "ref": "Layouter.html#buildPadLeft",
+                                                      "tf": 1150
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "m": {
+                                      "docs": {},
+                                      "a": {
+                                        "docs": {},
+                                        "r": {
+                                          "docs": {
+                                            "Layouter.html#buildMars": {
+                                              "ref": "Layouter.html#buildMars",
+                                              "tf": 1150
+                                            }
+                                          },
+                                          "t": {
+                                            "docs": {},
+                                            "o": {
+                                              "docs": {},
+                                              "p": {
+                                                "docs": {
+                                                  "Layouter.html#buildMarTop": {
+                                                    "ref": "Layouter.html#buildMarTop",
+                                                    "tf": 1150
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "r": {
+                                            "docs": {},
+                                            "i": {
+                                              "docs": {},
+                                              "g": {
+                                                "docs": {},
+                                                "h": {
+                                                  "docs": {},
+                                                  "t": {
+                                                    "docs": {
+                                                      "Layouter.html#buildMarRight": {
+                                                        "ref": "Layouter.html#buildMarRight",
+                                                        "tf": 1150
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "b": {
+                                            "docs": {},
+                                            "o": {
+                                              "docs": {},
+                                              "t": {
+                                                "docs": {},
+                                                "t": {
+                                                  "docs": {},
+                                                  "o": {
+                                                    "docs": {},
+                                                    "m": {
+                                                      "docs": {
+                                                        "Layouter.html#buildMarBottom": {
+                                                          "ref": "Layouter.html#buildMarBottom",
+                                                          "tf": 1150
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "l": {
+                                            "docs": {},
+                                            "e": {
+                                              "docs": {},
+                                              "f": {
+                                                "docs": {},
+                                                "t": {
+                                                  "docs": {
+                                                    "Layouter.html#buildMarLeft": {
+                                                      "ref": "Layouter.html#buildMarLeft",
+                                                      "tf": 1150
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "f": {
+                                      "docs": {},
+                                      "l": {
+                                        "docs": {},
+                                        "e": {
+                                          "docs": {},
+                                          "x": {
+                                            "docs": {
+                                              "Layouter.html#buildFlex": {
+                                                "ref": "Layouter.html#buildFlex",
+                                                "tf": 1150
                                               }
                                             }
                                           }
@@ -2686,26 +4049,6 @@ window.lunrData = {
                                 }
                               }
                             }
-                          },
-                          "b": {
-                            "docs": {},
-                            "u": {
-                              "docs": {},
-                              "i": {
-                                "docs": {},
-                                "l": {
-                                  "docs": {},
-                                  "d": {
-                                    "docs": {
-                                      "Layouter.html#build": {
-                                        "ref": "Layouter.html#build",
-                                        "tf": 1150
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
                           }
                         }
                       }
@@ -2721,17 +4064,61 @@ window.lunrData = {
                 "ref": "Layouter.html#getParameters",
                 "tf": 8.333333333333332
               },
+              "Layouter.html#buildCols": {
+                "ref": "Layouter.html#buildCols",
+                "tf": 3.8461538461538463
+              },
               "Layouter.html#setCols": {
                 "ref": "Layouter.html#setCols",
                 "tf": 5
+              },
+              "Layouter.html#buildPads": {
+                "ref": "Layouter.html#buildPads",
+                "tf": 7.6923076923076925
               },
               "Layouter.html#setPads": {
                 "ref": "Layouter.html#setPads",
                 "tf": 7.142857142857142
               },
+              "Layouter.html#buildPadTop": {
+                "ref": "Layouter.html#buildPadTop",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildPadRight": {
+                "ref": "Layouter.html#buildPadRight",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildPadBottom": {
+                "ref": "Layouter.html#buildPadBottom",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildPadLeft": {
+                "ref": "Layouter.html#buildPadLeft",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMars": {
+                "ref": "Layouter.html#buildMars",
+                "tf": 8.333333333333332
+              },
               "Layouter.html#setMars": {
                 "ref": "Layouter.html#setMars",
                 "tf": 7.142857142857142
+              },
+              "Layouter.html#buildMarTop": {
+                "ref": "Layouter.html#buildMarTop",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMarRight": {
+                "ref": "Layouter.html#buildMarRight",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMarBottom": {
+                "ref": "Layouter.html#buildMarBottom",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMarLeft": {
+                "ref": "Layouter.html#buildMarLeft",
+                "tf": 3.8461538461538463
               },
               "Layouter.html#build": {
                 "ref": "Layouter.html#build",
@@ -2753,9 +4140,17 @@ window.lunrData = {
                 "ref": "uLayouter.html#.insertRules",
                 "tf": 5.555555555555555
               },
+              "uLayouter.html#.nameCleaner": {
+                "ref": "uLayouter.html#.nameCleaner",
+                "tf": 8.333333333333332
+              },
               "uLayouter.html#.settingCss": {
                 "ref": "uLayouter.html#.settingCss",
                 "tf": 3.571428571428571
+              },
+              "uLayouter.html#.buildPadsAndMargs": {
+                "ref": "uLayouter.html#.buildPadsAndMargs",
+                "tf": 10
               },
               "uLayouter.html#.padsAndMargs": {
                 "ref": "uLayouter.html#.padsAndMargs",
@@ -2863,9 +4258,21 @@ window.lunrData = {
                                     "ref": "uLayouter.html#.addClasses",
                                     "tf": 20
                                   },
+                                  "uLayouter.html#.nameCleaner": {
+                                    "ref": "uLayouter.html#.nameCleaner",
+                                    "tf": 25
+                                  },
+                                  "uLayouter.html#.buildCss": {
+                                    "ref": "uLayouter.html#.buildCss",
+                                    "tf": 33.33333333333333
+                                  },
                                   "uLayouter.html#.settingCss": {
                                     "ref": "uLayouter.html#.settingCss",
                                     "tf": 33.33333333333333
+                                  },
+                                  "uLayouter.html#.buildPadsAndMargs": {
+                                    "ref": "uLayouter.html#.buildPadsAndMargs",
+                                    "tf": 16.666666666666664
                                   },
                                   "uLayouter.html#.padsAndMargs": {
                                     "ref": "uLayouter.html#.padsAndMargs",
@@ -2937,6 +4344,26 @@ window.lunrData = {
                           "uLayouter.html": {
                             "ref": "uLayouter.html",
                             "tf": 110
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "c": {
+                  "docs": {},
+                  "l": {
+                    "docs": {},
+                    "e": {
+                      "docs": {},
+                      "a": {
+                        "docs": {},
+                        "n": {
+                          "docs": {
+                            "uLayouter.html#.nameCleaner": {
+                              "ref": "uLayouter.html#.nameCleaner",
+                              "tf": 675
+                            }
                           }
                         }
                       }
@@ -3072,6 +4499,10 @@ window.lunrData = {
                     "ref": "uLayouter.html#.addClasses",
                     "tf": 20
                   },
+                  "uLayouter.html#.buildPadsAndMargs": {
+                    "ref": "uLayouter.html#.buildPadsAndMargs",
+                    "tf": 16.666666666666664
+                  },
                   "uLayouter.html#.padsAndMargs": {
                     "ref": "uLayouter.html#.padsAndMargs",
                     "tf": 16.666666666666664
@@ -3085,6 +4516,54 @@ window.lunrData = {
                 "docs": {},
                 "r": {
                   "docs": {
+                    "Layouter.html#buildCols": {
+                      "ref": "Layouter.html#buildCols",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildPads": {
+                      "ref": "Layouter.html#buildPads",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildPadTop": {
+                      "ref": "Layouter.html#buildPadTop",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildPadRight": {
+                      "ref": "Layouter.html#buildPadRight",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildPadBottom": {
+                      "ref": "Layouter.html#buildPadBottom",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildPadLeft": {
+                      "ref": "Layouter.html#buildPadLeft",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMars": {
+                      "ref": "Layouter.html#buildMars",
+                      "tf": 4.166666666666666
+                    },
+                    "Layouter.html#buildMarTop": {
+                      "ref": "Layouter.html#buildMarTop",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMarRight": {
+                      "ref": "Layouter.html#buildMarRight",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMarBottom": {
+                      "ref": "Layouter.html#buildMarBottom",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMarLeft": {
+                      "ref": "Layouter.html#buildMarLeft",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildFlex": {
+                      "ref": "Layouter.html#buildFlex",
+                      "tf": 4.545454545454546
+                    },
                     "uLayouter.html#.replaceList": {
                       "ref": "uLayouter.html#.replaceList",
                       "tf": 5
@@ -3092,6 +4571,14 @@ window.lunrData = {
                     "uLayouter.html#.addClasses": {
                       "ref": "uLayouter.html#.addClasses",
                       "tf": 7.142857142857142
+                    },
+                    "uLayouter.html#.nameCleaner": {
+                      "ref": "uLayouter.html#.nameCleaner",
+                      "tf": 8.333333333333332
+                    },
+                    "uLayouter.html#.buildCss": {
+                      "ref": "uLayouter.html#.buildCss",
+                      "tf": 5
                     }
                   }
                 }
@@ -3244,6 +4731,41 @@ window.lunrData = {
               "docs": {},
               "g": {
                 "docs": {},
+                "e": {
+                  "docs": {},
+                  "n": {
+                    "docs": {
+                      "Layouter.html#buildMars": {
+                        "ref": "Layouter.html#buildMars",
+                        "tf": 4.166666666666666
+                      },
+                      "Layouter.html#buildMarTop": {
+                        "ref": "Layouter.html#buildMarTop",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMarRight": {
+                        "ref": "Layouter.html#buildMarRight",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMarBottom": {
+                        "ref": "Layouter.html#buildMarBottom",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMarLeft": {
+                        "ref": "Layouter.html#buildMarLeft",
+                        "tf": 3.8461538461538463
+                      },
+                      "uLayouter.html#.buildPadsAndMargs": {
+                        "ref": "uLayouter.html#.buildPadsAndMargs",
+                        "tf": 10
+                      },
+                      "uLayouter.html#.padsAndMargs": {
+                        "ref": "uLayouter.html#.padsAndMargs",
+                        "tf": 10
+                      }
+                    }
+                  }
+                },
                 "i": {
                   "docs": {},
                   "n": {
@@ -3267,17 +4789,6 @@ window.lunrData = {
                       "Layouter.html#setMarLeft": {
                         "ref": "Layouter.html#setMarLeft",
                         "tf": 6.25
-                      }
-                    }
-                  }
-                },
-                "e": {
-                  "docs": {},
-                  "n": {
-                    "docs": {
-                      "uLayouter.html#.padsAndMargs": {
-                        "ref": "uLayouter.html#.padsAndMargs",
-                        "tf": 10
                       }
                     }
                   }
@@ -3730,6 +5241,33 @@ window.lunrData = {
                 "ref": "uLayouter.html#.processors",
                 "tf": 5
               }
+            },
+            "p": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "r": {
+                  "docs": {},
+                  "i": {
+                    "docs": {},
+                    "o": {
+                      "docs": {},
+                      "r": {
+                        "docs": {
+                          "Layouter.html#buildPadTop": {
+                            "ref": "Layouter.html#buildPadTop",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildMarTop": {
+                            "ref": "Layouter.html#buildMarTop",
+                            "tf": 3.8461538461538463
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           },
           "t": {
@@ -3811,6 +5349,10 @@ window.lunrData = {
                 "uLayouter.html#.debug": {
                   "ref": "uLayouter.html#.debug",
                   "tf": 33.33333333333333
+                },
+                "uLayouter.html#.nameCleaner": {
+                  "ref": "uLayouter.html#.nameCleaner",
+                  "tf": 25
                 }
               },
               "e": {
@@ -3822,6 +5364,58 @@ window.lunrData = {
                       "Layouter.html#getParameters": {
                         "ref": "Layouter.html#getParameters",
                         "tf": 33.33333333333333
+                      },
+                      "Layouter.html#buildCols": {
+                        "ref": "Layouter.html#buildCols",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildPads": {
+                        "ref": "Layouter.html#buildPads",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildPadTop": {
+                        "ref": "Layouter.html#buildPadTop",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildPadRight": {
+                        "ref": "Layouter.html#buildPadRight",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildPadBottom": {
+                        "ref": "Layouter.html#buildPadBottom",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildPadLeft": {
+                        "ref": "Layouter.html#buildPadLeft",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMars": {
+                        "ref": "Layouter.html#buildMars",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMarTop": {
+                        "ref": "Layouter.html#buildMarTop",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMarRight": {
+                        "ref": "Layouter.html#buildMarRight",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMarBottom": {
+                        "ref": "Layouter.html#buildMarBottom",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMarLeft": {
+                        "ref": "Layouter.html#buildMarLeft",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildFlex": {
+                        "ref": "Layouter.html#buildFlex",
+                        "tf": 25
+                      },
+                      "uLayouter.html#.nameCleaner": {
+                        "ref": "uLayouter.html#.nameCleaner",
+                        "tf": 25
                       }
                     }
                   }
@@ -4011,6 +5605,10 @@ window.lunrData = {
                           "ref": "Layouter.html#setFlex",
                           "tf": 33.33333333333333
                         },
+                        "uLayouter.html#.buildPadsAndMargs": {
+                          "ref": "uLayouter.html#.buildPadsAndMargs",
+                          "tf": 16.666666666666664
+                        },
                         "uLayouter.html#.padsAndMargs": {
                           "ref": "uLayouter.html#.padsAndMargs",
                           "tf": 16.666666666666664
@@ -4042,21 +5640,41 @@ window.lunrData = {
             },
             "d": {
               "docs": {
+                "Layouter.html#buildPads": {
+                  "ref": "Layouter.html#buildPads",
+                  "tf": 3.8461538461538463
+                },
                 "Layouter.html#setPads": {
                   "ref": "Layouter.html#setPads",
                   "tf": 7.142857142857142
+                },
+                "Layouter.html#buildPadTop": {
+                  "ref": "Layouter.html#buildPadTop",
+                  "tf": 3.8461538461538463
                 },
                 "Layouter.html#setPadTop": {
                   "ref": "Layouter.html#setPadTop",
                   "tf": 6.25
                 },
+                "Layouter.html#buildPadRight": {
+                  "ref": "Layouter.html#buildPadRight",
+                  "tf": 3.8461538461538463
+                },
                 "Layouter.html#setPadRight": {
                   "ref": "Layouter.html#setPadRight",
                   "tf": 6.25
                 },
+                "Layouter.html#buildPadBottom": {
+                  "ref": "Layouter.html#buildPadBottom",
+                  "tf": 3.8461538461538463
+                },
                 "Layouter.html#setPadBottom": {
                   "ref": "Layouter.html#setPadBottom",
                   "tf": 6.25
+                },
+                "Layouter.html#buildPadLeft": {
+                  "ref": "Layouter.html#buildPadLeft",
+                  "tf": 3.8461538461538463
                 },
                 "Layouter.html#setPadLeft": {
                   "ref": "Layouter.html#setPadLeft",
@@ -4065,6 +5683,10 @@ window.lunrData = {
                 "uLayouter.html#.prepareParam": {
                   "ref": "uLayouter.html#.prepareParam",
                   "tf": 4.545454545454546
+                },
+                "uLayouter.html#.buildPadsAndMargs": {
+                  "ref": "uLayouter.html#.buildPadsAndMargs",
+                  "tf": 10
                 },
                 "uLayouter.html#.padsAndMargs": {
                   "ref": "uLayouter.html#.padsAndMargs",
@@ -4337,6 +5959,557 @@ window.lunrData = {
             }
           }
         },
+        "e": {
+          "docs": {
+            "uLayouter.html#.settingCss": {
+              "ref": "uLayouter.html#.settingCss",
+              "tf": 3.571428571428571
+            }
+          },
+          "l": {
+            "docs": {
+              "Layouter.html#buildCols": {
+                "ref": "Layouter.html#buildCols",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildPads": {
+                "ref": "Layouter.html#buildPads",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildPadTop": {
+                "ref": "Layouter.html#buildPadTop",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setPadTop": {
+                "ref": "Layouter.html#setPadTop",
+                "tf": 6.25
+              },
+              "Layouter.html#buildPadRight": {
+                "ref": "Layouter.html#buildPadRight",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setPadRight": {
+                "ref": "Layouter.html#setPadRight",
+                "tf": 6.25
+              },
+              "Layouter.html#buildPadBottom": {
+                "ref": "Layouter.html#buildPadBottom",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setPadBottom": {
+                "ref": "Layouter.html#setPadBottom",
+                "tf": 6.25
+              },
+              "Layouter.html#buildPadLeft": {
+                "ref": "Layouter.html#buildPadLeft",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setPadLeft": {
+                "ref": "Layouter.html#setPadLeft",
+                "tf": 6.25
+              },
+              "Layouter.html#buildMars": {
+                "ref": "Layouter.html#buildMars",
+                "tf": 4.166666666666666
+              },
+              "Layouter.html#buildMarTop": {
+                "ref": "Layouter.html#buildMarTop",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setMarTop": {
+                "ref": "Layouter.html#setMarTop",
+                "tf": 6.25
+              },
+              "Layouter.html#buildMarRight": {
+                "ref": "Layouter.html#buildMarRight",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setMarRight": {
+                "ref": "Layouter.html#setMarRight",
+                "tf": 6.25
+              },
+              "Layouter.html#buildMarBottom": {
+                "ref": "Layouter.html#buildMarBottom",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setMarBottom": {
+                "ref": "Layouter.html#setMarBottom",
+                "tf": 6.25
+              },
+              "Layouter.html#buildMarLeft": {
+                "ref": "Layouter.html#buildMarLeft",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setMarLeft": {
+                "ref": "Layouter.html#setMarLeft",
+                "tf": 6.25
+              },
+              "uLayouter.html#.replaceList": {
+                "ref": "uLayouter.html#.replaceList",
+                "tf": 5
+              },
+              "uLayouter.html#.getNums": {
+                "ref": "uLayouter.html#.getNums",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.haveBreakPoint": {
+                "ref": "uLayouter.html#.haveBreakPoint",
+                "tf": 5.555555555555555
+              },
+              "uLayouter.html#.prepareParam": {
+                "ref": "uLayouter.html#.prepareParam",
+                "tf": 4.545454545454546
+              },
+              "uLayouter.html#.calPercentage": {
+                "ref": "uLayouter.html#.calPercentage",
+                "tf": 8.333333333333332
+              },
+              "uLayouter.html#.createScopeStyles": {
+                "ref": "uLayouter.html#.createScopeStyles",
+                "tf": 2.5
+              },
+              "uLayouter.html#.buildCss": {
+                "ref": "uLayouter.html#.buildCss",
+                "tf": 5
+              }
+            }
+          },
+          "s": {
+            "docs": {
+              "uLayouter.html#.processedNumber": {
+                "ref": "uLayouter.html#.processedNumber",
+                "tf": 2.5
+              }
+            },
+            "t": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "l": {
+                  "docs": {},
+                  "o": {
+                    "docs": {
+                      "Layouter.html#buildCols": {
+                        "ref": "Layouter.html#buildCols",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#setCols": {
+                        "ref": "Layouter.html#setCols",
+                        "tf": 5
+                      },
+                      "Layouter.html#buildPads": {
+                        "ref": "Layouter.html#buildPads",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildPadTop": {
+                        "ref": "Layouter.html#buildPadTop",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildPadRight": {
+                        "ref": "Layouter.html#buildPadRight",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildPadBottom": {
+                        "ref": "Layouter.html#buildPadBottom",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildPadLeft": {
+                        "ref": "Layouter.html#buildPadLeft",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMars": {
+                        "ref": "Layouter.html#buildMars",
+                        "tf": 4.166666666666666
+                      },
+                      "Layouter.html#buildMarTop": {
+                        "ref": "Layouter.html#buildMarTop",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMarRight": {
+                        "ref": "Layouter.html#buildMarRight",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMarBottom": {
+                        "ref": "Layouter.html#buildMarBottom",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMarLeft": {
+                        "ref": "Layouter.html#buildMarLeft",
+                        "tf": 3.8461538461538463
+                      },
+                      "uLayouter.html#.createStyles": {
+                        "ref": "uLayouter.html#.createStyles",
+                        "tf": 4.545454545454546
+                      },
+                      "uLayouter.html#.createScopeStyles": {
+                        "ref": "uLayouter.html#.createScopeStyles",
+                        "tf": 5
+                      },
+                      "uLayouter.html#.insertRules": {
+                        "ref": "uLayouter.html#.insertRules",
+                        "tf": 5.555555555555555
+                      },
+                      "uLayouter.html#.settingCss": {
+                        "ref": "uLayouter.html#.settingCss",
+                        "tf": 3.571428571428571
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "p": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "c": {
+                  "docs": {},
+                  "i": {
+                    "docs": {},
+                    "f": {
+                      "docs": {},
+                      "i": {
+                        "docs": {},
+                        "c": {
+                          "docs": {},
+                          "a": {
+                            "docs": {},
+                            "d": {
+                              "docs": {},
+                              "o": {
+                                "docs": {
+                                  "uLayouter.html#.prepareParam": {
+                                    "ref": "uLayouter.html#.prepareParam",
+                                    "tf": 4.545454545454546
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "q": {
+            "docs": {},
+            "u": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "v": {
+                  "docs": {},
+                  "a": {
+                    "docs": {},
+                    "l": {
+                      "docs": {},
+                      "e": {
+                        "docs": {},
+                        "n": {
+                          "docs": {},
+                          "c": {
+                            "docs": {},
+                            "i": {
+                              "docs": {},
+                              "a": {
+                                "docs": {
+                                  "uLayouter.html#.flexpv": {
+                                    "ref": "uLayouter.html#.flexpv",
+                                    "tf": 6.25
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "j": {
+            "docs": {},
+            "m": {
+              "docs": {
+                "uLayouter.html#.prepareParam": {
+                  "ref": "uLayouter.html#.prepareParam",
+                  "tf": 4.545454545454546
+                }
+              }
+            }
+          },
+          "t": {
+            "docs": {},
+            "c": {
+              "docs": {
+                "uLayouter.html#.prepareParam": {
+                  "ref": "uLayouter.html#.prepareParam",
+                  "tf": 4.545454545454546
+                }
+              }
+            }
+          },
+          "n": {
+            "docs": {
+              "uLayouter.html#.debug": {
+                "ref": "uLayouter.html#.debug",
+                "tf": 7.142857142857142
+              }
+            }
+          },
+          "r": {
+            "docs": {},
+            "r": {
+              "docs": {},
+              "o": {
+                "docs": {},
+                "r": {
+                  "docs": {
+                    "uLayouter.html#.regError": {
+                      "ref": "uLayouter.html#.regError",
+                      "tf": 12.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "v": {
+          "docs": {},
+          "a": {
+            "docs": {},
+            "l": {
+              "docs": {},
+              "c": {
+                "docs": {},
+                "o": {
+                  "docs": {},
+                  "l": {
+                    "docs": {
+                      "Layouter.html#buildCols": {
+                        "ref": "Layouter.html#buildCols",
+                        "tf": 25
+                      }
+                    }
+                  }
+                }
+              },
+              "p": {
+                "docs": {},
+                "a": {
+                  "docs": {},
+                  "d": {
+                    "docs": {
+                      "Layouter.html#buildPads": {
+                        "ref": "Layouter.html#buildPads",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildPadTop": {
+                        "ref": "Layouter.html#buildPadTop",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildPadRight": {
+                        "ref": "Layouter.html#buildPadRight",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildPadBottom": {
+                        "ref": "Layouter.html#buildPadBottom",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildPadLeft": {
+                        "ref": "Layouter.html#buildPadLeft",
+                        "tf": 25
+                      }
+                    }
+                  }
+                }
+              },
+              "m": {
+                "docs": {},
+                "a": {
+                  "docs": {},
+                  "r": {
+                    "docs": {
+                      "Layouter.html#buildMars": {
+                        "ref": "Layouter.html#buildMars",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMarTop": {
+                        "ref": "Layouter.html#buildMarTop",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMarRight": {
+                        "ref": "Layouter.html#buildMarRight",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMarBottom": {
+                        "ref": "Layouter.html#buildMarBottom",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMarLeft": {
+                        "ref": "Layouter.html#buildMarLeft",
+                        "tf": 25
+                      }
+                    }
+                  }
+                }
+              },
+              "f": {
+                "docs": {},
+                "l": {
+                  "docs": {},
+                  "e": {
+                    "docs": {},
+                    "x": {
+                      "docs": {
+                        "Layouter.html#buildFlex": {
+                          "ref": "Layouter.html#buildFlex",
+                          "tf": 25
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "o": {
+                "docs": {},
+                "r": {
+                  "docs": {
+                    "uLayouter.html#.flexpv": {
+                      "ref": "uLayouter.html#.flexpv",
+                      "tf": 6.25
+                    }
+                  }
+                }
+              }
+            },
+            "r": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "a": {
+                  "docs": {
+                    "uLayouter.html": {
+                      "ref": "uLayouter.html",
+                      "tf": 25
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "u": {
+            "docs": {},
+            "e": {
+              "docs": {},
+              "l": {
+                "docs": {},
+                "o": {
+                  "docs": {
+                    "uLayouter.html#.createScopeStyles": {
+                      "ref": "uLayouter.html#.createScopeStyles",
+                      "tf": 2.5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "y": {
+          "docs": {
+            "Layouter.html#buildCols": {
+              "ref": "Layouter.html#buildCols",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildPads": {
+              "ref": "Layouter.html#buildPads",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildPadTop": {
+              "ref": "Layouter.html#buildPadTop",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildPadRight": {
+              "ref": "Layouter.html#buildPadRight",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildPadBottom": {
+              "ref": "Layouter.html#buildPadBottom",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildPadLeft": {
+              "ref": "Layouter.html#buildPadLeft",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildMars": {
+              "ref": "Layouter.html#buildMars",
+              "tf": 4.166666666666666
+            },
+            "Layouter.html#buildMarTop": {
+              "ref": "Layouter.html#buildMarTop",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildMarRight": {
+              "ref": "Layouter.html#buildMarRight",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildMarBottom": {
+              "ref": "Layouter.html#buildMarBottom",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildMarLeft": {
+              "ref": "Layouter.html#buildMarLeft",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildFlex": {
+              "ref": "Layouter.html#buildFlex",
+              "tf": 4.545454545454546
+            },
+            "Layouter.html#setFlex": {
+              "ref": "Layouter.html#setFlex",
+              "tf": 6.25
+            },
+            "uLayouter.html#.processors": {
+              "ref": "uLayouter.html#.processors",
+              "tf": 5
+            },
+            "uLayouter.html#.flexpv": {
+              "ref": "uLayouter.html#.flexpv",
+              "tf": 6.25
+            },
+            "uLayouter.html#.getNums": {
+              "ref": "uLayouter.html#.getNums",
+              "tf": 5.555555555555555
+            },
+            "uLayouter.html#.createStyles": {
+              "ref": "uLayouter.html#.createStyles",
+              "tf": 4.545454545454546
+            },
+            "uLayouter.html#.buildCss": {
+              "ref": "uLayouter.html#.buildCss",
+              "tf": 5
+            },
+            "uLayouter.html#.settingCss": {
+              "ref": "uLayouter.html#.settingCss",
+              "tf": 3.571428571428571
+            },
+            "uLayouter.html#.buildPadsAndMargs": {
+              "ref": "uLayouter.html#.buildPadsAndMargs",
+              "tf": 10
+            },
+            "uLayouter.html#.padsAndMargs": {
+              "ref": "uLayouter.html#.padsAndMargs",
+              "tf": 10
+            }
+          }
+        },
         "a": {
           "docs": {},
           "s": {
@@ -4373,6 +6546,26 @@ window.lunrData = {
               }
             }
           },
+          "l": {
+            "docs": {
+              "Layouter.html#buildFlex": {
+                "ref": "Layouter.html#buildFlex",
+                "tf": 4.545454545454546
+              },
+              "uLayouter.html#.processedNumber": {
+                "ref": "uLayouter.html#.processedNumber",
+                "tf": 2.5
+              },
+              "uLayouter.html#.createScopeStyles": {
+                "ref": "uLayouter.html#.createScopeStyles",
+                "tf": 2.5
+              },
+              "uLayouter.html#.settingCss": {
+                "ref": "uLayouter.html#.settingCss",
+                "tf": 3.571428571428571
+              }
+            }
+          },
           "t": {
             "docs": {},
             "r": {
@@ -4396,22 +6589,6 @@ window.lunrData = {
                     }
                   }
                 }
-              }
-            }
-          },
-          "l": {
-            "docs": {
-              "uLayouter.html#.processedNumber": {
-                "ref": "uLayouter.html#.processedNumber",
-                "tf": 2.5
-              },
-              "uLayouter.html#.createScopeStyles": {
-                "ref": "uLayouter.html#.createScopeStyles",
-                "tf": 2.5
-              },
-              "uLayouter.html#.settingCss": {
-                "ref": "uLayouter.html#.settingCss",
-                "tf": 3.571428571428571
               }
             }
           },
@@ -4515,235 +6692,6 @@ window.lunrData = {
                           }
                         }
                       }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "e": {
-          "docs": {
-            "uLayouter.html#.settingCss": {
-              "ref": "uLayouter.html#.settingCss",
-              "tf": 3.571428571428571
-            }
-          },
-          "s": {
-            "docs": {
-              "uLayouter.html#.processedNumber": {
-                "ref": "uLayouter.html#.processedNumber",
-                "tf": 2.5
-              }
-            },
-            "t": {
-              "docs": {},
-              "i": {
-                "docs": {},
-                "l": {
-                  "docs": {},
-                  "o": {
-                    "docs": {
-                      "Layouter.html#setCols": {
-                        "ref": "Layouter.html#setCols",
-                        "tf": 5
-                      },
-                      "uLayouter.html#.createStyles": {
-                        "ref": "uLayouter.html#.createStyles",
-                        "tf": 4.545454545454546
-                      },
-                      "uLayouter.html#.createScopeStyles": {
-                        "ref": "uLayouter.html#.createScopeStyles",
-                        "tf": 5
-                      },
-                      "uLayouter.html#.insertRules": {
-                        "ref": "uLayouter.html#.insertRules",
-                        "tf": 5.555555555555555
-                      },
-                      "uLayouter.html#.settingCss": {
-                        "ref": "uLayouter.html#.settingCss",
-                        "tf": 3.571428571428571
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "p": {
-              "docs": {},
-              "e": {
-                "docs": {},
-                "c": {
-                  "docs": {},
-                  "i": {
-                    "docs": {},
-                    "f": {
-                      "docs": {},
-                      "i": {
-                        "docs": {},
-                        "c": {
-                          "docs": {},
-                          "a": {
-                            "docs": {},
-                            "d": {
-                              "docs": {},
-                              "o": {
-                                "docs": {
-                                  "uLayouter.html#.prepareParam": {
-                                    "ref": "uLayouter.html#.prepareParam",
-                                    "tf": 4.545454545454546
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "l": {
-            "docs": {
-              "Layouter.html#setPadTop": {
-                "ref": "Layouter.html#setPadTop",
-                "tf": 6.25
-              },
-              "Layouter.html#setPadRight": {
-                "ref": "Layouter.html#setPadRight",
-                "tf": 6.25
-              },
-              "Layouter.html#setPadBottom": {
-                "ref": "Layouter.html#setPadBottom",
-                "tf": 6.25
-              },
-              "Layouter.html#setPadLeft": {
-                "ref": "Layouter.html#setPadLeft",
-                "tf": 6.25
-              },
-              "Layouter.html#setMarTop": {
-                "ref": "Layouter.html#setMarTop",
-                "tf": 6.25
-              },
-              "Layouter.html#setMarRight": {
-                "ref": "Layouter.html#setMarRight",
-                "tf": 6.25
-              },
-              "Layouter.html#setMarBottom": {
-                "ref": "Layouter.html#setMarBottom",
-                "tf": 6.25
-              },
-              "Layouter.html#setMarLeft": {
-                "ref": "Layouter.html#setMarLeft",
-                "tf": 6.25
-              },
-              "uLayouter.html#.replaceList": {
-                "ref": "uLayouter.html#.replaceList",
-                "tf": 5
-              },
-              "uLayouter.html#.getNums": {
-                "ref": "uLayouter.html#.getNums",
-                "tf": 5.555555555555555
-              },
-              "uLayouter.html#.haveBreakPoint": {
-                "ref": "uLayouter.html#.haveBreakPoint",
-                "tf": 5.555555555555555
-              },
-              "uLayouter.html#.prepareParam": {
-                "ref": "uLayouter.html#.prepareParam",
-                "tf": 4.545454545454546
-              },
-              "uLayouter.html#.calPercentage": {
-                "ref": "uLayouter.html#.calPercentage",
-                "tf": 8.333333333333332
-              },
-              "uLayouter.html#.createScopeStyles": {
-                "ref": "uLayouter.html#.createScopeStyles",
-                "tf": 2.5
-              }
-            }
-          },
-          "q": {
-            "docs": {},
-            "u": {
-              "docs": {},
-              "i": {
-                "docs": {},
-                "v": {
-                  "docs": {},
-                  "a": {
-                    "docs": {},
-                    "l": {
-                      "docs": {},
-                      "e": {
-                        "docs": {},
-                        "n": {
-                          "docs": {},
-                          "c": {
-                            "docs": {},
-                            "i": {
-                              "docs": {},
-                              "a": {
-                                "docs": {
-                                  "uLayouter.html#.flexpv": {
-                                    "ref": "uLayouter.html#.flexpv",
-                                    "tf": 6.25
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "j": {
-            "docs": {},
-            "m": {
-              "docs": {
-                "uLayouter.html#.prepareParam": {
-                  "ref": "uLayouter.html#.prepareParam",
-                  "tf": 4.545454545454546
-                }
-              }
-            }
-          },
-          "t": {
-            "docs": {},
-            "c": {
-              "docs": {
-                "uLayouter.html#.prepareParam": {
-                  "ref": "uLayouter.html#.prepareParam",
-                  "tf": 4.545454545454546
-                }
-              }
-            }
-          },
-          "n": {
-            "docs": {
-              "uLayouter.html#.debug": {
-                "ref": "uLayouter.html#.debug",
-                "tf": 7.142857142857142
-              }
-            }
-          },
-          "r": {
-            "docs": {},
-            "r": {
-              "docs": {},
-              "o": {
-                "docs": {},
-                "r": {
-                  "docs": {
-                    "uLayouter.html#.regError": {
-                      "ref": "uLayouter.html#.regError",
-                      "tf": 12.5
                     }
                   }
                 }
@@ -5390,6 +7338,105 @@ window.lunrData = {
                                   }
                                 }
                               }
+                            },
+                            "n": {
+                              "docs": {},
+                              "a": {
+                                "docs": {},
+                                "m": {
+                                  "docs": {},
+                                  "e": {
+                                    "docs": {},
+                                    "c": {
+                                      "docs": {},
+                                      "l": {
+                                        "docs": {},
+                                        "e": {
+                                          "docs": {},
+                                          "a": {
+                                            "docs": {},
+                                            "n": {
+                                              "docs": {
+                                                "uLayouter.html#.nameCleaner": {
+                                                  "ref": "uLayouter.html#.nameCleaner",
+                                                  "tf": 1150
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "b": {
+                              "docs": {},
+                              "u": {
+                                "docs": {},
+                                "i": {
+                                  "docs": {},
+                                  "l": {
+                                    "docs": {},
+                                    "d": {
+                                      "docs": {},
+                                      "c": {
+                                        "docs": {},
+                                        "s": {
+                                          "docs": {},
+                                          "s": {
+                                            "docs": {
+                                              "uLayouter.html#.buildCss": {
+                                                "ref": "uLayouter.html#.buildCss",
+                                                "tf": 1150
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "p": {
+                                        "docs": {},
+                                        "a": {
+                                          "docs": {},
+                                          "d": {
+                                            "docs": {},
+                                            "s": {
+                                              "docs": {},
+                                              "a": {
+                                                "docs": {},
+                                                "n": {
+                                                  "docs": {},
+                                                  "d": {
+                                                    "docs": {},
+                                                    "m": {
+                                                      "docs": {},
+                                                      "a": {
+                                                        "docs": {},
+                                                        "r": {
+                                                          "docs": {},
+                                                          "g": {
+                                                            "docs": {
+                                                              "uLayouter.html#.buildPadsAndMargs": {
+                                                                "ref": "uLayouter.html#.buildPadsAndMargs",
+                                                                "tf": 1150
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
                             }
                           }
                         }
@@ -5445,38 +7492,6 @@ window.lunrData = {
             }
           }
         },
-        "y": {
-          "docs": {
-            "Layouter.html#setFlex": {
-              "ref": "Layouter.html#setFlex",
-              "tf": 6.25
-            },
-            "uLayouter.html#.processors": {
-              "ref": "uLayouter.html#.processors",
-              "tf": 5
-            },
-            "uLayouter.html#.flexpv": {
-              "ref": "uLayouter.html#.flexpv",
-              "tf": 6.25
-            },
-            "uLayouter.html#.getNums": {
-              "ref": "uLayouter.html#.getNums",
-              "tf": 5.555555555555555
-            },
-            "uLayouter.html#.createStyles": {
-              "ref": "uLayouter.html#.createStyles",
-              "tf": 4.545454545454546
-            },
-            "uLayouter.html#.settingCss": {
-              "ref": "uLayouter.html#.settingCss",
-              "tf": 3.571428571428571
-            },
-            "uLayouter.html#.padsAndMargs": {
-              "ref": "uLayouter.html#.padsAndMargs",
-              "tf": 10
-            }
-          }
-        },
         "q": {
           "docs": {},
           "u": {
@@ -5494,57 +7509,6 @@ window.lunrData = {
                 "uLayouter.html#.createScopeStyles": {
                   "ref": "uLayouter.html#.createScopeStyles",
                   "tf": 5
-                }
-              }
-            }
-          }
-        },
-        "v": {
-          "docs": {},
-          "a": {
-            "docs": {},
-            "r": {
-              "docs": {},
-              "i": {
-                "docs": {},
-                "a": {
-                  "docs": {
-                    "uLayouter.html": {
-                      "ref": "uLayouter.html",
-                      "tf": 25
-                    }
-                  }
-                }
-              }
-            },
-            "l": {
-              "docs": {},
-              "o": {
-                "docs": {},
-                "r": {
-                  "docs": {
-                    "uLayouter.html#.flexpv": {
-                      "ref": "uLayouter.html#.flexpv",
-                      "tf": 6.25
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "u": {
-            "docs": {},
-            "e": {
-              "docs": {},
-              "l": {
-                "docs": {},
-                "o": {
-                  "docs": {
-                    "uLayouter.html#.createScopeStyles": {
-                      "ref": "uLayouter.html#.createScopeStyles",
-                      "tf": 2.5
-                    }
-                  }
                 }
               }
             }
@@ -5571,7 +7535,7 @@ window.lunrData = {
           }
         }
       },
-      "length": 459
+      "length": 714
     },
     "corpusTokens": [
       "addclass",
@@ -5590,6 +7554,20 @@ window.lunrData = {
       "bp",
       "breakpoint",
       "build",
+      "buildcol",
+      "buildcss",
+      "buildflex",
+      "buildmar",
+      "buildmarbottom",
+      "buildmarleft",
+      "buildmarright",
+      "buildmartop",
+      "buildpad",
+      "buildpadbottom",
+      "buildpadleft",
+      "buildpadright",
+      "buildpadsandmarg",
+      "buildpadtop",
       "calcula",
       "calculandolo",
       "calpercentag",
@@ -5602,8 +7580,10 @@ window.lunrData = {
       "config",
       "consola",
       "construtor",
+      "construy",
       "conviert",
       "crea",
+      "creado",
       "crean",
       "createscopestyl",
       "createstyl",
@@ -5615,11 +7595,13 @@ window.lunrData = {
       "de",
       "debug",
       "del",
+      "derecho",
       "designada",
       "designado",
       "designar",
       "determina",
       "determinada",
+      "devolviendo",
       "devuelv",
       "diferent",
       "dispon",
@@ -5647,14 +7629,29 @@ window.lunrData = {
       "hoja",
       "igual",
       "index",
+      "inferior",
       "inserta",
       "insertrul",
+      "insertstyl",
       "instanc",
+      "izquierdo",
       "jsdoc3",
       "junto",
       "la",
       "layout",
       "layouter#build",
+      "layouter#buildcol",
+      "layouter#buildflex",
+      "layouter#buildmar",
+      "layouter#buildmarbottom",
+      "layouter#buildmarleft",
+      "layouter#buildmarright",
+      "layouter#buildmartop",
+      "layouter#buildpad",
+      "layouter#buildpadbottom",
+      "layouter#buildpadleft",
+      "layouter#buildpadright",
+      "layouter#buildpadtop",
       "layouter#getparamet",
       "layouter#setcol",
       "layouter#setflex",
@@ -5669,6 +7666,7 @@ window.lunrData = {
       "layouter#setpadright",
       "layouter#setpadtop",
       "left",
+      "limpia",
       "list",
       "list:class",
       "list:namespac",
@@ -5686,6 +7684,7 @@ window.lunrData = {
       "n1",
       "n2",
       "name",
+      "nameclean",
       "namespac",
       "necesario",
       "node",
@@ -5726,6 +7725,7 @@ window.lunrData = {
       "registra",
       "regla",
       "replacelist",
+      "requerida",
       "respectiva",
       "retornar",
       "right",
@@ -5751,6 +7751,7 @@ window.lunrData = {
       "string",
       "stringtonumb",
       "su",
+      "superior",
       "tal",
       "tambien",
       "templat",
@@ -5762,6 +7763,8 @@ window.lunrData = {
       "type",
       "ulayout",
       "ulayouter.addclass",
+      "ulayouter.buildcss",
+      "ulayouter.buildpadsandmarg",
       "ulayouter.calpercentag",
       "ulayouter.createscopestyl",
       "ulayouter.createstyl",
@@ -5770,6 +7773,7 @@ window.lunrData = {
       "ulayouter.getnum",
       "ulayouter.havebreakpoint",
       "ulayouter.insertrul",
+      "ulayouter.nameclean",
       "ulayouter.padsandmarg",
       "ulayouter.prepareparam",
       "ulayouter.processednumb",
@@ -5782,7 +7786,11 @@ window.lunrData = {
       "una",
       "usar",
       "utilidad",
+      "valcol",
+      "valflex",
+      "valmar",
       "valor",
+      "valpad",
       "varia",
       "vuelo",
       "width",
@@ -5860,6 +7868,16 @@ window.lunrData = {
       "summary": "",
       "description": "Obtiene los parametros disponibles para procesar"
     },
+    "Layouter.html#buildCols": {
+      "id": "Layouter.html#buildCols",
+      "kind": "function",
+      "title": "buildCols( valCols [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildCols",
+      "name": "buildCols",
+      "tags": "Layouter#buildCols buildCols",
+      "summary": "",
+      "description": "Construye las columnas requeridas, devolviendo el nombre de clase y los estilos creados."
+    },
     "Layouter.html#setCols": {
       "id": "Layouter.html#setCols",
       "kind": "function",
@@ -5869,6 +7887,16 @@ window.lunrData = {
       "tags": "Layouter#setCols setCols",
       "summary": "",
       "description": "Asigna los estilos necesarios a un nodo referentes a las columnas determinadas"
+    },
+    "Layouter.html#buildPads": {
+      "id": "Layouter.html#buildPads",
+      "kind": "function",
+      "title": "buildPads( valPads [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildPads",
+      "name": "buildPads",
+      "tags": "Layouter#buildPads buildPads",
+      "summary": "",
+      "description": "Construye los paddings requeridas, devolviendo el nombre de clase y los estilos creados."
     },
     "Layouter.html#setPads": {
       "id": "Layouter.html#setPads",
@@ -5880,6 +7908,16 @@ window.lunrData = {
       "summary": "",
       "description": "Setea los paddings necesarios para un Nodo."
     },
+    "Layouter.html#buildPadTop": {
+      "id": "Layouter.html#buildPadTop",
+      "kind": "function",
+      "title": "buildPadTop( valPad [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildPadTop",
+      "name": "buildPadTop",
+      "tags": "Layouter#buildPadTop buildPadTop",
+      "summary": "",
+      "description": "Construye el padding superior, devolviendo el nombre de clase y los estilos creados."
+    },
     "Layouter.html#setPadTop": {
       "id": "Layouter.html#setPadTop",
       "kind": "function",
@@ -5889,6 +7927,16 @@ window.lunrData = {
       "tags": "Layouter#setPadTop setPadTop",
       "summary": "",
       "description": "Setea el padding top necesario para un nodo."
+    },
+    "Layouter.html#buildPadRight": {
+      "id": "Layouter.html#buildPadRight",
+      "kind": "function",
+      "title": "buildPadRight( valPad [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildPadRight",
+      "name": "buildPadRight",
+      "tags": "Layouter#buildPadRight buildPadRight",
+      "summary": "",
+      "description": "Construye el padding derecho, devolviendo el nombre de clase y los estilos creados."
     },
     "Layouter.html#setPadRight": {
       "id": "Layouter.html#setPadRight",
@@ -5900,6 +7948,16 @@ window.lunrData = {
       "summary": "",
       "description": "Setea el padding right necesario para un nodo."
     },
+    "Layouter.html#buildPadBottom": {
+      "id": "Layouter.html#buildPadBottom",
+      "kind": "function",
+      "title": "buildPadBottom( valPad [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildPadBottom",
+      "name": "buildPadBottom",
+      "tags": "Layouter#buildPadBottom buildPadBottom",
+      "summary": "",
+      "description": "Construye el padding inferior, devolviendo el nombre de clase y los estilos creados."
+    },
     "Layouter.html#setPadBottom": {
       "id": "Layouter.html#setPadBottom",
       "kind": "function",
@@ -5909,6 +7967,16 @@ window.lunrData = {
       "tags": "Layouter#setPadBottom setPadBottom",
       "summary": "",
       "description": "Setea el padding bottom necesario para un nodo."
+    },
+    "Layouter.html#buildPadLeft": {
+      "id": "Layouter.html#buildPadLeft",
+      "kind": "function",
+      "title": "buildPadLeft( valPad [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildPadLeft",
+      "name": "buildPadLeft",
+      "tags": "Layouter#buildPadLeft buildPadLeft",
+      "summary": "",
+      "description": "Construye el padding izquierdo, devolviendo el nombre de clase y los estilos creados."
     },
     "Layouter.html#setPadLeft": {
       "id": "Layouter.html#setPadLeft",
@@ -5920,6 +7988,16 @@ window.lunrData = {
       "summary": "",
       "description": "Setea el padding left necesario para un nodo."
     },
+    "Layouter.html#buildMars": {
+      "id": "Layouter.html#buildMars",
+      "kind": "function",
+      "title": "buildMars( valMars [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildMars",
+      "name": "buildMars",
+      "tags": "Layouter#buildMars buildMars",
+      "summary": "",
+      "description": "Construye los margenes, devolviendo el nombre de clase y los estilos creados."
+    },
     "Layouter.html#setMars": {
       "id": "Layouter.html#setMars",
       "kind": "function",
@@ -5929,6 +8007,16 @@ window.lunrData = {
       "tags": "Layouter#setMars setMars",
       "summary": "",
       "description": "Setea los margins necesarios para un Nodo."
+    },
+    "Layouter.html#buildMarTop": {
+      "id": "Layouter.html#buildMarTop",
+      "kind": "function",
+      "title": "buildMarTop( valMar [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildMarTop",
+      "name": "buildMarTop",
+      "tags": "Layouter#buildMarTop buildMarTop",
+      "summary": "",
+      "description": "Construye el margen superior, devolviendo el nombre de clase y los estilos creados."
     },
     "Layouter.html#setMarTop": {
       "id": "Layouter.html#setMarTop",
@@ -5940,6 +8028,16 @@ window.lunrData = {
       "summary": "",
       "description": "Setea el margin top necesario para un Nodo."
     },
+    "Layouter.html#buildMarRight": {
+      "id": "Layouter.html#buildMarRight",
+      "kind": "function",
+      "title": "buildMarRight( valMar [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildMarRight",
+      "name": "buildMarRight",
+      "tags": "Layouter#buildMarRight buildMarRight",
+      "summary": "",
+      "description": "Construye el margen derecho, devolviendo el nombre de clase y los estilos creados."
+    },
     "Layouter.html#setMarRight": {
       "id": "Layouter.html#setMarRight",
       "kind": "function",
@@ -5949,6 +8047,16 @@ window.lunrData = {
       "tags": "Layouter#setMarRight setMarRight",
       "summary": "",
       "description": "Setea el margin right necesario para un Nodo."
+    },
+    "Layouter.html#buildMarBottom": {
+      "id": "Layouter.html#buildMarBottom",
+      "kind": "function",
+      "title": "buildMarBottom( valMar [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildMarBottom",
+      "name": "buildMarBottom",
+      "tags": "Layouter#buildMarBottom buildMarBottom",
+      "summary": "",
+      "description": "Construye el margen inferior, devolviendo el nombre de clase y los estilos creados."
     },
     "Layouter.html#setMarBottom": {
       "id": "Layouter.html#setMarBottom",
@@ -5960,6 +8068,16 @@ window.lunrData = {
       "summary": "",
       "description": "Setea el margin bottom necesario para un Nodo."
     },
+    "Layouter.html#buildMarLeft": {
+      "id": "Layouter.html#buildMarLeft",
+      "kind": "function",
+      "title": "buildMarLeft( valMar [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildMarLeft",
+      "name": "buildMarLeft",
+      "tags": "Layouter#buildMarLeft buildMarLeft",
+      "summary": "",
+      "description": "Construye el margen inferior, devolviendo el nombre de clase y los estilos creados."
+    },
     "Layouter.html#setMarLeft": {
       "id": "Layouter.html#setMarLeft",
       "kind": "function",
@@ -5969,6 +8087,16 @@ window.lunrData = {
       "tags": "Layouter#setMarLeft setMarLeft",
       "summary": "",
       "description": "Setea el margin left necesario para un Nodo."
+    },
+    "Layouter.html#buildFlex": {
+      "id": "Layouter.html#buildFlex",
+      "kind": "function",
+      "title": "buildFlex( valFlex [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildFlex",
+      "name": "buildFlex",
+      "tags": "Layouter#buildFlex buildFlex",
+      "summary": "",
+      "description": "Construye las reglas CSS y nombre de clases referente al 'flex'."
     },
     "Layouter.html#setFlex": {
       "id": "Layouter.html#setFlex",
@@ -6151,6 +8279,26 @@ window.lunrData = {
       "summary": "",
       "description": "Asignador de nombre de clases a un nodo."
     },
+    "uLayouter.html#.nameCleaner": {
+      "id": "uLayouter.html#.nameCleaner",
+      "kind": "function",
+      "title": "&lt;static&gt; nameCleaner( obj ) → {Object}",
+      "longname": "uLayouter.nameCleaner",
+      "name": "nameCleaner",
+      "tags": "uLayouter.nameCleaner nameCleaner",
+      "summary": "",
+      "description": "Limpia los nombres de las clases."
+    },
+    "uLayouter.html#.buildCss": {
+      "id": "uLayouter.html#.buildCss",
+      "kind": "function",
+      "title": "&lt;static&gt; buildCss( data )",
+      "longname": "uLayouter.buildCss",
+      "name": "buildCss",
+      "tags": "uLayouter.buildCss buildCss",
+      "summary": "",
+      "description": "Construye el nombre de clase y registra las reglas css."
+    },
     "uLayouter.html#.settingCss": {
       "id": "uLayouter.html#.settingCss",
       "kind": "function",
@@ -6160,6 +8308,16 @@ window.lunrData = {
       "tags": "uLayouter.settingCss settingCss",
       "summary": "",
       "description": "Crea e inserta los estilos calculandolos, y tambien adiciona las clases respectivas al nodo"
+    },
+    "uLayouter.html#.buildPadsAndMargs": {
+      "id": "uLayouter.html#.buildPadsAndMargs",
+      "kind": "function",
+      "title": "&lt;static&gt; buildPadsAndMargs( Node, type [, parameters ], instance )",
+      "longname": "uLayouter.buildPadsAndMargs",
+      "name": "buildPadsAndMargs",
+      "tags": "uLayouter.buildPadsAndMargs buildPadsAndMargs",
+      "summary": "",
+      "description": "Construye los paddings y margenes."
     },
     "uLayouter.html#.padsAndMargs": {
       "id": "uLayouter.html#.padsAndMargs",
