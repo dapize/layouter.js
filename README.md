@@ -10,7 +10,27 @@ Normalmente hoy en día, se maqueta con una base de columnas designadas a un bre
 
 **Documentación:** [https://dapize.github.io/layouter/docs](https://dapize.github.io/layouter/docs)
 
+## Instalación
+Solo debes agregar, a tu página web, la llamada al script 'layouter.min.js' que se encuentra dentro de la carpeta 'dist' de este repositorio. De preferencia antes de cerrar el `<body>`.
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Página Web</title>
+</head>
+<body>
+  <span>Hola mundo XD</span>
+  <script src="layouter.min.js"></script>
+</body>
+</html>
+```
 ## Inicialización
+
+> Esto lo puedes hacer en un archivo 'main.js' que tienes que llamarlo luego del layouter.min.js o en el mismo HTML
+
 Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi podemos incluir los breakpoints que necesitemos, en este caso necesitaré 4 breakpoints.
 
 ```javascript
@@ -436,12 +456,11 @@ Con los siguientes estilos
 [&uarr; Volver Arriba](#layouter-js)
 
 ## Getters
-Para fines varios, se tiene acceso a los siguientes getters:
+Para fines varios, se tiene acceso a los siguientes getters de la instancia:
 - breakPoints: Devuelve un array con los breakpoints definidos en la configuración.
 - sizes: Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades los pixeles de ancho designados para esos breakpoints.
 - cols: Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades el número de columnas designadas para esos breakpoints.
 - styles: Este getter es interesante, porque devuelve un objeto con todos los estilos creados de forma general.
-- version: Devuelve la versión actual de la librería, este es un getter estático, así que no necesita una instancia para funcionar.
 
 > Tomando en cuenta el último ejemplo dado, los getters nos devolverán lo siguiente:
 
@@ -453,10 +472,9 @@ layout.styles: {
   "cols-10\\/31@sm-md": "@media screen and (min-width: 768px) and (max-width: 1023px){.cols-10\\/31\\@sm-md{width:32.25806451612903%}}"
   "cols-13\\/15": ".cols-13\\/15{width:86.66666666666667%}"
   "cols-15\\/27@md": "@media screen and (min-width: 1024px){.cols-15\\/27\\@md{width:55.55555555555556%}}"
-  "flex-flex": ".flex-flex{display: flex}"
-  "flex-jc\\:c": ".flex-jc\\:c{justify-content:center}"
-  "flex-jc\\:fe@md": "@media screen and (min-width: 1024px){.flex-jc\\:fe\\@md{justify-content:flex-end}}"
-  "flex-jc\\:fs-ai\\:fs@sm": "@media screen and (min-width: 768px){.flex-jc\\:fs-ai\\:fs\\@sm{justify-content:flex-start;align-items:flex-start}}"
+  "flex-jc\\:c": ".flex-jc\\:c{justify-content:center;display: flex}"
+  "flex-jc\\:fe@md": "@media screen and (min-width: 1024px){.flex-jc\\:fe\\@md{justify-content:flex-end;display: flex}}"
+  "flex-jc\\:fs-ai\\:fs@sm": "@media screen and (min-width: 768px){.flex-jc\\:fs-ai\\:fs\\@sm{justify-content:flex-start;align-items:flex-start;display: flex}}"
   "mar-20-2\\/15": ".mar-20-2\\/15{margin:20px 13.333333333333334%}"
   "mar-40-3\\/31@sm": "@media screen and (min-width: 768px){.mar-40-3\\/31\\@sm{margin:40px 9.67741935483871%}}"
   "mar-60-2\\/31@md": "@media screen and (min-width: 1024px){.mar-60-2\\/31\\@md{margin:60px 6.451612903225806%}}"
@@ -464,7 +482,15 @@ layout.styles: {
   "pad-40-3\\/31@sm": "@media screen and (min-width: 768px){.pad-40-3\\/31\\@sm{padding:40px 9.67741935483871%}}"
   "pad-60-2\\/31@md": "@media screen and (min-width: 1024px){.pad-60-2\\/31\\@md{padding:60px 6.451612903225806%}}"
 }
-Layout.version: "1.0.2Beta"
+```
+
+Tambien tenemos este único getter general que nos dará la versión de la librería:
+
+- version: Devuelve la versión actual de la librería, este es un getter estático, así que no necesita una instancia para funcionar.
+
+```javascript
+Layouter.version: "1.3.2Beta"
+/* Se tiene acceso a la variable 'Layouter' de forma global a penas se carga la librería */
 ```
 
 [&uarr; Volver Arriba](#layouter-js)

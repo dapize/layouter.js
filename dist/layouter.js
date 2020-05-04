@@ -27,6 +27,7 @@ const uLayouter = {
    * Determina si el parametro tiene o no un breakpoint designado
    * @memberof uLayouter
    * @param {String} param Parametro
+   * @returns {Boolean}
    */
   haveBreakPoint: function (param) {
     return param.indexOf('@') !== -1 ? true : false;
@@ -255,12 +256,13 @@ const uLayouter = {
    * @param {Object} config Configuración determinada.
    */
   createScopeStyles: function (config) {
-    if (document.getElementById('layouter') !== null) {
-      return this.regError('Existing Bridge', "The bridge of the layouter system already exists in the DOM. Please ¡remove it!");
-    }
-    const stylesScope = document.createElement('style');
-    document.body.appendChild(stylesScope);
-    stylesScope.id = 'layouter'
+    let stylesScope = document.getElementById('layouter');
+    if (stylesScope === null) {
+      stylesScope = document.createElement('style');
+      stylesScope.appendChild(document.createTextNode('')); // WebKit hack :(
+      document.body.appendChild(stylesScope);
+      stylesScope.id = 'layouter'
+    };
     this.debug({
       type: 'i',
       print: config.debug,
@@ -287,7 +289,7 @@ const uLayouter = {
     const prefix = instance.prefix;
     Object.keys(objStyles).forEach(function (className) {
       if (!instance.styles.hasOwnProperty(prefix + className)) {
-        nodeScope.insertRule(objStyles[className], nodeScope.rules.length);
+        nodeScope.insertRule(objStyles[className], (nodeScope.rules ? nodeScope.rules.length : 0));
         instance.styles[prefix + className] = objStyles[className];
       }
     });
@@ -419,6 +421,9 @@ const uLayouter = {
     Node.removeAttribute(type);
   }
 };
+
+// for test with jest
+if (typeof exports !== 'undefined' && typeof module !== 'undefined' && module.exports) module.exports = uLayouter;
 /**
  * Construtor maestro del sistema.
  * @constructor
@@ -442,7 +447,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.3.1Beta';
+Layouter.version = '1.3.3Beta';
 /**
  * Obtiene los parametros disponibles para procesar
  * @memberof Layouter

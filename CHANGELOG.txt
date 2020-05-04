@@ -25,3 +25,9 @@ v1.3.0Beta
 
 v1.3.1Beta
 - Se adiciona la condicional para que designe el cero de forma pura y no con pixeles (de 'margin: 40px 0px 0px 0px' a 'margin: 40px 0 0 0')
+
+v1.3.2Beta
+- Se modifica el método interno 'createScopeStyles' para que reutilize un bridge de estilos si es que yá lo encuentra en el DOM.
+
+v1.3.3Beta
+- Se añadió un 'fallback' en la utilidad 'insertRules' para cuando se obtiene la longitud de la propiedad 'rules' del 'sheet' en el 'CSSStyleSheet'.
