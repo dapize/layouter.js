@@ -287,7 +287,7 @@ const uLayouter = {
     const prefix = instance.prefix;
     Object.keys(objStyles).forEach(function (className) {
       if (!instance.styles.hasOwnProperty(prefix + className)) {
-        nodeScope.insertRule(objStyles[className], nodeScope.rules.length);
+        nodeScope.insertRule(objStyles[className], (nodeScope.rules ? nodeScope.rules.length : 0));
         instance.styles[prefix + className] = objStyles[className];
       }
     });

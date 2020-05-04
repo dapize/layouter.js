@@ -289,7 +289,7 @@ const uLayouter = {
     const prefix = instance.prefix;
     Object.keys(objStyles).forEach(function (className) {
       if (!instance.styles.hasOwnProperty(prefix + className)) {
-        nodeScope.insertRule(objStyles[className], nodeScope.rules.length);
+        nodeScope.insertRule(objStyles[className], (nodeScope.rules ? nodeScope.rules.length : 0));
         instance.styles[prefix + className] = objStyles[className];
       }
     });
@@ -447,7 +447,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.3.2Beta';
+Layouter.version = '1.3.3Beta';
 /**
  * Obtiene los parametros disponibles para procesar
  * @memberof Layouter

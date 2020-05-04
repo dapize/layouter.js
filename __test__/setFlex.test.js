@@ -17,21 +17,20 @@ const Layouter = new lib({
   }
 });
 
-describe('Setting cols', () => {
+describe('Setting Flex', () => {
   it('simple', () => {
     const myDiv = document.createElement('div');
-    myDiv.setAttribute('cols', '3/13');
-    Layouter.setCols(myDiv);
-    expect(myDiv.classList.contains('cols-3/13')).toBeTruthy();
+    myDiv.setAttribute('flex', 'jc:ce');
+    Layouter.setFlex(myDiv);
+    expect(myDiv.classList.contains('flex-jc:ce')).toBeTruthy();
   });
 
   it('With breakpoints', () => {
     const myDiv = document.createElement('div');
-    myDiv.setAttribute('cols', '3/15 8/31@sm 20.5/31@md');
-    Layouter.setCols(myDiv);
-    ['cols-3/15', 'cols-8/31@sm', 'cols-20_5/31@md'].forEach(item => {
+    myDiv.setAttribute('flex', 'jc:ce ai:ce fw:w@sm jc:sb@sm fd:co@md');
+    Layouter.setFlex(myDiv);
+    ['flex-jc:ce-ai:ce@xs', 'flex-fw:w-jc:sb@sm', 'flex-fd:co@md'].forEach(item => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
-    })
-    expect(myDiv.classList.contains('cols-1/1')).toBeFalsy();
+    });
   });
 });

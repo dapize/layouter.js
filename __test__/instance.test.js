@@ -1,7 +1,7 @@
 let lib = require('../dist/layouter');
 
 describe('config of the instance', () => {
-  it('Light', () => {
+  it('Ligth', () => {
     /*
       this test get all the variables and methods expected the variable 'scope'
       because the content of the variable 'scope' is creating in the fly.

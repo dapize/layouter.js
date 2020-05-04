@@ -17,21 +17,20 @@ const Layouter = new lib({
   }
 });
 
-describe('Setting cols', () => {
+describe('Setting Mars', () => {
   it('simple', () => {
     const myDiv = document.createElement('div');
-    myDiv.setAttribute('cols', '3/13');
-    Layouter.setCols(myDiv);
-    expect(myDiv.classList.contains('cols-3/13')).toBeTruthy();
+    myDiv.setAttribute('mar', '40-0');
+    Layouter.setMars(myDiv);
+    expect(myDiv.classList.contains('mar-40-0')).toBeTruthy();
   });
 
   it('With breakpoints', () => {
     const myDiv = document.createElement('div');
-    myDiv.setAttribute('cols', '3/15 8/31@sm 20.5/31@md');
-    Layouter.setCols(myDiv);
-    ['cols-3/15', 'cols-8/31@sm', 'cols-20_5/31@md'].forEach(item => {
+    myDiv.setAttribute('mar', '10-1/15 20.5-3/31@sm 30-2/31@md');
+    Layouter.setMars(myDiv);
+    ['mar-10-1/15', 'mar-20_5-3/31@sm', 'mar-30-2/31@md'].forEach(item => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
-    })
-    expect(myDiv.classList.contains('cols-1/1')).toBeFalsy();
+    });
   });
 });

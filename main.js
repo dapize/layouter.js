@@ -18,8 +18,7 @@
         width: 1280,
         cols: 31
       }
-    },
-    bridge: false
+    }
   };
   const layout = new Layouter(configs);
   window.mira = layout;
