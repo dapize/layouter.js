@@ -1,5 +1,19 @@
 # Layouter JS
-Es un pequeño script que creará estilos al vuelo grácias a ciertos atributos determinados en un elemento. Los atributos disponibles son: [Cols](#cols), [Pad](#pad), [Mar](#mar) y [Flex](#flex)
+Es una librería permite asignar estilos al vuelo grácias a ciertos atributos determinados en un nodo. Los atributos disponibles son: 
+
+- [Cols](#cols)
+- [Pad](#pad)
+  - [Padt](#padt)
+  - [Padr](#padr)
+  - [Padb](#padb)
+  - [Padl](#padl)
+- [Mar](#mar)
+  - [Mart](#mart)
+  - [Marr](#marr)
+  - [Marb](#marb)
+  - [Marl](#marl)
+- [Flex](#flex)
+- [Build](#build)
 
 Más abajo los detallaremos.
 
@@ -225,7 +239,7 @@ Solo los margenes superiores e inferiores son procesados como pixeles, los derec
 
 **Explicación:** En el ejemplo de arriba se está determinando que el DIV :
 - Tendrá 20 pixeles de margen superior (margin-top) e inferior, tambien 2 columnas de 15, en mobile.
-- Tendrá 40 pixeles de margen superior, 3 columnas de 31 de margin derecho e izquierdo y 20 pixeles de margen inferior.
+- Tendrá 40 pixeles de margen superior, 3 columnas de 31 de margin derecho e izquierdo y 20 pixeles de margen inferior en tablet.
 - y en desktop, tendrá 60 pixeles de margin superior e inferior y 2 columnas de 31 de margin derecho e izquierdo.
 
 ...luego de procesarlo:
@@ -238,7 +252,7 @@ layouter.setMars(myDiv);
 <div class="mar-20-2/15 mar-40-3/31-20@sm mar-60-2/31@md">...</div>
 <!-- Vemos que el atributo 'mar' desapareció del elemento, esto es porque yá no lo necesita una vez procesado. -->
 ```
-Y como estilos tendríamos disponible una clase llamada 'cols-13-15' la cual nos daría estos estilos:
+Y pues, estos estilos:
 ```css
 .mar-20-2\/15 {
   margin: 20px 13.3333%;
@@ -258,6 +272,118 @@ Y como estilos tendríamos disponible una clase llamada 'cols-13-15' la cual nos
 
 ```
 > Aquí aplica lo mismo de 'cols', con los breakpoints compuestos, (desde / hasta)
+
+> Si se desea determinar los margenes de formar separada es decir solo el margen: superior, derecho, inferior o izquierdo entonces usamos mart, marr, marb, y marl respectivamente, veamoslos a continuación:
+
+### Mart
+Sirve para determinar los margenes superiores de un elemento.
+
+#### Ejemplo:
+
+```html
+<div mart="10 20.5@sm 30@md">...</div>
+```
+
+**Explicación:** En el ejemplo de arriba se está determinando que el margen superior del DIV sea:
+- 10 pixeles en mobile.
+- 20.5 pixeles en tablet.
+- y 30 pixeles en desktop.
+
+...luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+layouter.setMarTop(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="mart-10 mart-20_5@sm mart-30@md">...</div>
+<!-- Vemos que el atributo 'mart' desapareció del elemento, esto es porque yá no lo necesita una vez procesado. -->
+```
+Y pues, estos estilos:
+```css
+.mart-10 {
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .mart-20_5\@sm {
+    margin-top: 20.5px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .mart-30\@md {
+    margin-top: 30px;
+  }
+}
+```
+
+[&uarr; Volver Arriba](#layouter-js)
+
+### Marr
+### Marb
+### Marl
+Sirven para determinar los margenes derechos, inferiores e izquierdos respectivamente en un elemento. Es lo mismo que 'mart'
+
+#### Un simple ejemplo:
+
+```html
+<div marr="10 20.5@sm 30@md">...</div>
+<div marb="20 30.5@sm 40@md">...</div>
+<div marl="30 40.5@sm 50@md">...</div>
+```
+...luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+
+layouter.setMarRight(myDiv);
+layouter.setMarBottom(myDiv);
+layouter.setMarLeft(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="marr-10 marr-20_5@sm marr-30@md">...</div>
+<div class="marb-20 marb-30_5@sm marb-40@md">...</div>
+<div class="marl-30 marl-40_5@sm marl-50@md">...</div>
+```
+Y pues, estos estilos:
+```css
+.marr-10 {
+  margin-right: 10px;
+}
+
+.marb-10 {
+  margin-bottom: 20px;
+}
+
+.marl-10 {
+  margin-left: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .marr-20_5\@sm {
+    margin-right: 20.5px;
+  }
+  .marr-30_5\@sm {
+    margin-bottom: 30.5px;
+  }
+  .marr-40_5\@sm {
+    margin-left: 40.5px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .marr-30\@md {
+    margin-right: 30px;
+  }
+  .marr-40\@md {
+    margin-bottom: 40px;
+  }
+  .marr-50\@md {
+    margin-left: 50px;
+  }
+}
+```
 
 [&uarr; Volver Arriba](#layouter-js)
 
@@ -298,6 +424,122 @@ Y pues, estos estilos:
 }
 ```
 [&uarr; Volver Arriba](#layouter-js)
+
+### Padt
+Sirve para determinar los paddings superiores de un elemento.
+
+#### Ejemplo:
+
+```html
+<div mapt="10 20.5@sm 30@md">...</div>
+```
+
+**Explicación:** En el ejemplo de arriba se está determinando que el padding superior del DIV sea:
+- 10 pixeles en mobile.
+- 20.5 pixeles en tablet.
+- y 30 pixeles en desktop.
+
+...luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+layouter.setPadTop(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="padt-10 padt-20_5@sm padt-30@md">...</div>
+```
+Y pues, estos estilos:
+```css
+.padt-10 {
+  padding-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .padt-20_5\@sm {
+    padding-top: 20.5px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .padt-30\@md {
+    padding-top: 30px;
+  }
+}
+```
+
+[&uarr; Volver Arriba](#layouter-js)
+
+### Padr
+### Padb
+### Padl
+Sirven para determinar los paddings derechos, inferiores e izquierdos respectivamente en un elemento. Es lo mismo que 'padt'
+
+#### Un simple ejemplo:
+
+```html
+<div padr="10 20.5@sm 30@md">...</div>
+<div padb="20 30.5@sm 40@md">...</div>
+<div padl="30 40.5@sm 50@md">...</div>
+```
+...luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+
+layouter.setPadRight(myDiv);
+layouter.setPadBottom(myDiv);
+layouter.setPadLeft(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="padr-10 padr-20_5@sm padr-30@md">...</div>
+<div class="padb-20 padb-30_5@sm padb-40@md">...</div>
+<div class="padl-30 padl-40_5@sm padl-50@md">...</div>
+```
+Y pues, estos estilos:
+```css
+.padr-10 {
+  padding-right: 10px;
+}
+
+.padb-10 {
+  padding-bottom: 20px;
+}
+
+.padl-10 {
+  padding-left: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .padr-20_5\@sm {
+    padding-right: 20.5px;
+  }
+  .padr-30_5\@sm {
+    padding-bottom: 30.5px;
+  }
+  .padr-40_5\@sm {
+    padding-left: 40.5px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .padr-30\@md {
+    padding-right: 30px;
+  }
+  .padr-40\@md {
+    padding-bottom: 40px;
+  }
+  .padr-50\@md {
+    padding-left: 50px;
+  }
+}
+```
+
+[&uarr; Volver Arriba](#layouter-js)
+
+
+
+
+
 
 ### Flex
 Este es el parametro más interesante, porque es el que determina el 'display' del elemento y la determinación del valor del atributo 'flex' se separa entre dos puntos, y no convencionalmente con guión como se hace en 'cols', 'mar' y 'pad'.
@@ -372,8 +614,11 @@ layouter.setCols(myDiv, myParameters);
 ```
 Se obtendrá el mismo resultado que si no le pases los parametros, pero puedes ahorrar un proceso más al sistema.
 
-## Finalmente
-Imaginemos que tenemos un DIV en donde hemos designado darle columnas, margenes, paddins y flex todo de un tiron:
+### Build
+Sirve para procesar todos los atributos aceptados por el sistema.
+
+#### Ejemplo:
+Imaginemos que tenemos un DIV en donde hemos designado darle columnas, margenes, paddings y flex todo de un tiron:
 
 ```html
 <div
@@ -453,6 +698,8 @@ Con los siguientes estilos
 }
 ```
 
+> OJO: El método build también procesa los atributos de los margenes y paddings por separado, osea 'mart, marr, padb, padl, etc"
+
 [&uarr; Volver Arriba](#layouter-js)
 
 ## Getters
@@ -515,6 +762,7 @@ layout.getParameters(myDiv);
 
 ## Cosas que agregaré más adelante
 - ~~Sistema de Log~~ - Listo!
+- Adicionar la posibilidad de determinar un estilo con !important.
 - Guardado en localStorage de configuraciones parametrales y clases creadas.
 
 Por el momento eso es todo lo que trae, más adelante le agregaré más cosas que se me ocurran o que me sugieran.
