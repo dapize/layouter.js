@@ -164,19 +164,19 @@ const uLayouter = {
       ruleCss: 'padding'
     },
       padt: {
-        method: 'setPads',
+        method: 'setPadTop',
         ruleCss: 'padding-top'
       },
       padr: {
-        method: 'setPads',
+        method: 'setPadRight',
         ruleCss: 'padding-right'
       },
       padb: {
-        method: 'setPads',
+        method: 'setPadBottom',
         ruleCss: 'padding-bottom'
       },
       padl: {
-        method: 'setPads',
+        method: 'setPadLeft',
         ruleCss: 'padding-left'
       },
     // Margin
@@ -185,19 +185,19 @@ const uLayouter = {
       ruleCss: 'margin'
     },
       mart: {
-        method: 'setMars',
+        method: 'setMarTop',
         ruleCss: 'margin-top'
       },
       marr: {
-        method: 'setMars',
+        method: 'setMarRight',
         ruleCss: 'margin-right'
       },
       marb: {
-        method: 'setMars',
+        method: 'setMarBottom',
         ruleCss: 'margin-bottom'
       },
       marl: {
-        method: 'setMars',
+        method: 'setMarLeft',
         ruleCss: 'margin-left'
       },
     flex: {
