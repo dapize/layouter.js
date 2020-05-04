@@ -21,4 +21,4 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.4.0Beta';
+Layouter.version = '1.5.0Beta';

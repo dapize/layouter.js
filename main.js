@@ -18,7 +18,8 @@
         width: 1280,
         cols: 31
       }
-    }
+    },
+    bridge: false
   };
   const layout = new Layouter(configs);
   console.log('layout.breakPoints: ', layout.breakPoints);

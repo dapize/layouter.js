@@ -357,9 +357,6 @@ const uLayouter = {
   addClasses: function (classesNames, Node, instance) {
     const _this = this
     classesNames.forEach(function (name) {
-      _this.replaceList.forEach(function (reItem) {
-        name = name.split(reItem[0]).join(reItem[1]);
-      });
       if (Node.classList.contains(name)) {
         this.debug({
           type: 'w',
@@ -368,6 +365,7 @@ const uLayouter = {
           data: Node
         });
       } else {
+        // console.log('añadiendo: ' + name);
         Node.classList.add(name);
       }
     });
@@ -383,16 +381,47 @@ const uLayouter = {
   },
 
   /**
+   * Limpia los nombres de las clases.
+   * @param {Object} obj Contenedor de los nombres de clases y reglas CSS
+   * @returns {Object}
+   */
+  nameCleaner: function (objStyles) {
+    const _this = this;
+    const obj = {};
+    Object.keys(objStyles).forEach(function (name) {
+      let newName = name;
+      _this.replaceList.forEach(function (reItem) {
+        newName = newName.split(reItem[0]).join(reItem[1]);
+      });
+      obj[newName] = objStyles[name];
+    });
+    return obj;
+  },
+
+  /**
+   * Construye el nombre de clase y registra las reglas css.
+   * @memberof uLayouter
+   * @param {Object} data Lista de data para el procesamiento del CSS
+   */
+  buildCss: function (data) {
+    // creating the styles
+    const objStyles = this.createStyles(data.type, data.bps, data.instance);
+
+    // Inserting CSS rules
+    if (data.deep) this.insertRules(objStyles, data.instance);
+    
+    // name classes cleaner
+    return this.nameCleaner(objStyles);
+  },
+
+  /**
    * Crea e inserta los estilos calculandolos, y tambien adiciona las clases respectivas al nodo
    * @memberof uLayouter
    * @param {Object} data Lista de data para el procesamiento del CSS
    */
   settingCss: function (data) {
-    // creating the styles
-    const objStyles = this.createStyles(data.type, data.bps, data.instance);
-
-    // Inserting CSS rules
-    this.insertRules(objStyles, data.instance);
+    // Building css stuffs
+    const objStyles = this.buildCss(Object.assign({deep: true}, data));
   
     // Adding classes
     this.addClasses(Object.keys(objStyles), data.node, data.instance);
@@ -481,7 +510,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.4.0Beta';
+Layouter.version = '1.5.0Beta';
 /**
  * Obtiene los parametros disponibles para procesar
  * @memberof Layouter
@@ -510,27 +539,25 @@ Layouter.prototype.getParameters = function (Node) {
 };
 
 /**
- * Asigna los estilos necesarios a un nodo referentes a las columnas determinadas
+ * Procesa las columnas requeridas, devolviendo el nombre de clase y los estilos creados.
  * @memberof Layouter
- * @param {Object} Node Nodo a donde asignar los estilos
- * @param {Object} [parameters] Parametros obtenidos del nodo.
+ * @param {String} valCols columnas a procesar
+ * @returns {Object}
  */
-Layouter.prototype.setCols = function (Node, parameters) {
-  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+Layouter.prototype.buildCols = function (valCols, insertStyles) {
+  if (valCols === undefined) return uLayouter.regError('Parameter Missing', "Don't exists 'cols' determined");
   uLayouter.debug({
     type: 'i',
     print: this.debug,
-    message: "Processing the 'cols' to the Node:",
-    data: Node
+    message: "Building the 'cols': " + valCols,
   });
   const _this = this;
-  const params = parameters || this.getParameters(Node);
-  if (!params.hasOwnProperty('cols')) return uLayouter.regError('Parameter Missing', "Don't exists 'cols' determined");
   let cols, bp, bpCals = {};
 
   // Getting numbers
   let selectorName, propValue, paramPrepared;
-  params.cols.forEach(function (param) {
+  if (!Array.isArray(valCols)) valCols = valCols.split(' ');
+  valCols.forEach(function (param) {
     selectorName = param;
 
     paramPrepared = uLayouter.prepareParam(param);
@@ -557,13 +584,38 @@ Layouter.prototype.setCols = function (Node, parameters) {
       value: propValue
     };
   });
-  // Creating, inserting, and adding classNames of rules in Node.
-  uLayouter.settingCss({
+
+  // Building the classNames and the styles to use.
+  return uLayouter.buildCss({
     type: 'cols',
     bps: bpCals,
     instance: this,
-    node: Node
+    deep: (insertStyles === undefined ? true : insertStyles)
   });
+};
+
+/**
+ * Asigna los estilos necesarios a un nodo referentes a las columnas determinadas
+ * @memberof Layouter
+ * @param {Object} Node Nodo a donde asignar los estilos
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setCols = function (Node, parameters) {
+  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Processing the 'cols' to the Node:",
+    data: Node
+  });
+  const params = parameters || this.getParameters(Node);
+  if (!params.hasOwnProperty('cols')) return uLayouter.regError('Parameter Missing', "Don't exists 'cols' determined");
+
+  // Creating, inserting, and adding classNames of rules in Node.
+  const objStyles = this.buildCols(params.cols);
+
+  // adding the classes names to the Node
+  uLayouter.addClasses(Object.keys(objStyles), Node, this);
 
   // removing param
   Node.removeAttribute('cols');

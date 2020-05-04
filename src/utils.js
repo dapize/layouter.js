@@ -355,9 +355,6 @@ const uLayouter = {
   addClasses: function (classesNames, Node, instance) {
     const _this = this
     classesNames.forEach(function (name) {
-      _this.replaceList.forEach(function (reItem) {
-        name = name.split(reItem[0]).join(reItem[1]);
-      });
       if (Node.classList.contains(name)) {
         this.debug({
           type: 'w',
@@ -366,6 +363,7 @@ const uLayouter = {
           data: Node
         });
       } else {
+        // console.log('añadiendo: ' + name);
         Node.classList.add(name);
       }
     });
@@ -381,16 +379,47 @@ const uLayouter = {
   },
 
   /**
+   * Limpia los nombres de las clases.
+   * @param {Object} obj Contenedor de los nombres de clases y reglas CSS
+   * @returns {Object}
+   */
+  nameCleaner: function (objStyles) {
+    const _this = this;
+    const obj = {};
+    Object.keys(objStyles).forEach(function (name) {
+      let newName = name;
+      _this.replaceList.forEach(function (reItem) {
+        newName = newName.split(reItem[0]).join(reItem[1]);
+      });
+      obj[newName] = objStyles[name];
+    });
+    return obj;
+  },
+
+  /**
+   * Construye el nombre de clase y registra las reglas css.
+   * @memberof uLayouter
+   * @param {Object} data Lista de data para el procesamiento del CSS
+   */
+  buildCss: function (data) {
+    // creating the styles
+    const objStyles = this.createStyles(data.type, data.bps, data.instance);
+
+    // Inserting CSS rules
+    if (data.deep) this.insertRules(objStyles, data.instance);
+    
+    // name classes cleaner
+    return this.nameCleaner(objStyles);
+  },
+
+  /**
    * Crea e inserta los estilos calculandolos, y tambien adiciona las clases respectivas al nodo
    * @memberof uLayouter
    * @param {Object} data Lista de data para el procesamiento del CSS
    */
   settingCss: function (data) {
-    // creating the styles
-    const objStyles = this.createStyles(data.type, data.bps, data.instance);
-
-    // Inserting CSS rules
-    this.insertRules(objStyles, data.instance);
+    // Building css stuffs
+    const objStyles = this.buildCss(Object.assign({deep: true}, data));
   
     // Adding classes
     this.addClasses(Object.keys(objStyles), data.node, data.instance);

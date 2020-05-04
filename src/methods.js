@@ -26,27 +26,25 @@ Layouter.prototype.getParameters = function (Node) {
 };
 
 /**
- * Asigna los estilos necesarios a un nodo referentes a las columnas determinadas
+ * Procesa las columnas requeridas, devolviendo el nombre de clase y los estilos creados.
  * @memberof Layouter
- * @param {Object} Node Nodo a donde asignar los estilos
- * @param {Object} [parameters] Parametros obtenidos del nodo.
+ * @param {String} valCols columnas a procesar
+ * @returns {Object}
  */
-Layouter.prototype.setCols = function (Node, parameters) {
-  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+Layouter.prototype.buildCols = function (valCols, insertStyles) {
+  if (valCols === undefined) return uLayouter.regError('Parameter Missing', "Don't exists 'cols' determined");
   uLayouter.debug({
     type: 'i',
     print: this.debug,
-    message: "Processing the 'cols' to the Node:",
-    data: Node
+    message: "Building the 'cols': " + valCols,
   });
   const _this = this;
-  const params = parameters || this.getParameters(Node);
-  if (!params.hasOwnProperty('cols')) return uLayouter.regError('Parameter Missing', "Don't exists 'cols' determined");
   let cols, bp, bpCals = {};
 
   // Getting numbers
   let selectorName, propValue, paramPrepared;
-  params.cols.forEach(function (param) {
+  if (!Array.isArray(valCols)) valCols = valCols.split(' ');
+  valCols.forEach(function (param) {
     selectorName = param;
 
     paramPrepared = uLayouter.prepareParam(param);
@@ -73,13 +71,38 @@ Layouter.prototype.setCols = function (Node, parameters) {
       value: propValue
     };
   });
-  // Creating, inserting, and adding classNames of rules in Node.
-  uLayouter.settingCss({
+
+  // Building the classNames and the styles to use.
+  return uLayouter.buildCss({
     type: 'cols',
     bps: bpCals,
     instance: this,
-    node: Node
+    deep: (insertStyles === undefined ? true : insertStyles)
   });
+};
+
+/**
+ * Asigna los estilos necesarios a un nodo referentes a las columnas determinadas
+ * @memberof Layouter
+ * @param {Object} Node Nodo a donde asignar los estilos
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setCols = function (Node, parameters) {
+  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Processing the 'cols' to the Node:",
+    data: Node
+  });
+  const params = parameters || this.getParameters(Node);
+  if (!params.hasOwnProperty('cols')) return uLayouter.regError('Parameter Missing', "Don't exists 'cols' determined");
+
+  // Creating, inserting, and adding classNames of rules in Node.
+  const objStyles = this.buildCols(params.cols);
+
+  // adding the classes names to the Node
+  uLayouter.addClasses(Object.keys(objStyles), Node, this);
 
   // removing param
   Node.removeAttribute('cols');

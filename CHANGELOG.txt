@@ -34,3 +34,6 @@ v1.3.3Beta
 
 v1.4.0Beta
 - Ahora es posible determinar de forma separada los margenes y paddings que se necesiten. (Ejm: <div mart="10 20.5@sm 30@md">...</div> o <div padb="20 30.5@sm 40@md">...</div>)
+
+v1.5.0Beta
+- Se añadieron varios metodos para procesar los margenes, paddings, columnas y el flex de forma independiente a los atributos designados en un Nodo.
