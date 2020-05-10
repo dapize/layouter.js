@@ -19,7 +19,6 @@ describe('Adding classes css to a Node', () => {
   it('Simple class name', () => {
     const myDiv = document.createElement('div');
     uLayouter.addClasses(['mar-0-0-40'], myDiv, Layouter);
-    console.log(myDiv.className);
     expect(myDiv.classList.contains('mar-0-0-40')).toBeTruthy();
   });
 
