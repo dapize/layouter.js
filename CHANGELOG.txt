@@ -34,3 +34,15 @@ v1.3.3Beta
 
 v1.4.0Beta
 - Ahora es posible determinar de forma separada los margenes y paddings que se necesiten. (Ejm: <div mart="10 20.5@sm 30@md">...</div> o <div padb="20 30.5@sm 40@md">...</div>)
+
+v1.5.0Beta
+- Se añadieron varios metodos para procesar los margenes, paddings, columnas y el flex de forma independiente a los atributos designados en un Nodo.
+
+v1.6.0Beta
+- Fix en el método utilidad 'processedNumber', cuando se le pasaba un valor con decimal no concatenaba el string 'px' (padding:20.5 9% => padding:20.5px 9%)
+- Se añade el procesamiento de margenes, paddings, columnas y el flex de forma independiente a los atributos de un nodo. Nuevos métodos (buildCols, buildMars, buildPads, etc)
+
+v1.6.1Beta
+- Método 'build' cambiado de nombre a 'set'.
+- Se crearón varios métodos 'builds' para procesar los valores de los atributos sin depender de un Nodo.
+- Se actualizó bastante el README contando sobre los nuevos métodos, y agregando varios ejemplos.

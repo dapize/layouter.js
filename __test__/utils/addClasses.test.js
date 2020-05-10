@@ -24,13 +24,13 @@ describe('Adding classes css to a Node', () => {
 
   it('Class Name with breakpoints', () => {
     const myDiv = document.createElement('div');
-    uLayouter.addClasses(['cols-21\\@sm'], myDiv, Layouter);
+    uLayouter.addClasses(['cols-21@sm'], myDiv, Layouter);
     expect(myDiv.classList.contains('cols-21@sm')).toBeTruthy();
   });
 
   it('Class Name Flex', () => {
     const myDiv = document.createElement('div');
-    uLayouter.addClasses(['flex-jc\\:ce-ai\\:ce\\@xs'], myDiv, Layouter);
+    uLayouter.addClasses(['flex-jc:ce-ai:ce@xs'], myDiv, Layouter);
     expect(myDiv.classList.contains('flex-jc:ce-ai:ce@xs')).toBeTruthy();
   });
 });

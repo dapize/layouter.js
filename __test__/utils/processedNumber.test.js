@@ -10,7 +10,7 @@ describe('Procesing number param', () => {
   });
 
   it('with decimal"', () => {
-    expect(uLayouter.processedNumber('20.5')).toBe('20.5')
+    expect(uLayouter.processedNumber('20.5')).toBe('20.5px')
   });
 
   it('A number"', () => {

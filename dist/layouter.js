@@ -89,7 +89,7 @@ const uLayouter = {
     } else if (n === 'auto') {
       nProcessed = 'auto'
     } else if (n.indexOf('.') !== -1) {
-      nProcessed = n;
+      nProcessed = n + 'px';
     } else {
       nProcessed = n === '0' ? n : n + 'px';
     }
@@ -157,53 +157,65 @@ const uLayouter = {
    */
   processors: {
     cols: {
-      method: 'setCols',
+      set: 'setCols',
+      build: 'buildCols',
       ruleCss: 'width'
     },
     // Paddings
     pad: {
-      method: 'setPads',
+      set: 'setPads',
+      build: 'buildPads',
       ruleCss: 'padding'
     },
       padt: {
-        method: 'setPadTop',
+        set: 'setPadTop',
+        build: 'buildPadTop',
         ruleCss: 'padding-top'
       },
       padr: {
-        method: 'setPadRight',
+        set: 'setPadRight',
+        build: 'buildPadRight',
         ruleCss: 'padding-right'
       },
       padb: {
-        method: 'setPadBottom',
+        set: 'setPadBottom',
+        build: 'buildPadBottom',
         ruleCss: 'padding-bottom'
       },
       padl: {
-        method: 'setPadLeft',
+        set: 'setPadLeft',
+        build: 'buildPadLeft',
         ruleCss: 'padding-left'
       },
     // Margin
     mar: {
-      method: 'setMars',
+      set: 'setMars',
+      build: 'buildMars',
       ruleCss: 'margin'
     },
       mart: {
-        method: 'setMarTop',
+        set: 'setMarTop',
+        build: 'buildMarTop',
         ruleCss: 'margin-top'
       },
       marr: {
-        method: 'setMarRight',
+        set: 'setMarRight',
+        build: 'buildMarRight',
         ruleCss: 'margin-right'
       },
       marb: {
-        method: 'setMarBottom',
+        set: 'setMarBottom',
+        build: 'buildMarBottom',
         ruleCss: 'margin-bottom'
       },
       marl: {
-        method: 'setMarLeft',
+        set: 'setMarLeft',
+        build: 'buildMarLeft',
         ruleCss: 'margin-left'
       },
     flex: {
-      method: 'setFlex',
+      set: 'setFlex',
+      build: 'buildFlex',
       ruleCss: 'display: flex'
     }
   },
@@ -357,9 +369,6 @@ const uLayouter = {
   addClasses: function (classesNames, Node, instance) {
     const _this = this
     classesNames.forEach(function (name) {
-      _this.replaceList.forEach(function (reItem) {
-        name = name.split(reItem[0]).join(reItem[1]);
-      });
       if (Node.classList.contains(name)) {
         this.debug({
           type: 'w',
@@ -368,6 +377,7 @@ const uLayouter = {
           data: Node
         });
       } else {
+        // console.log('añadiendo: ' + name);
         Node.classList.add(name);
       }
     });
@@ -383,19 +393,100 @@ const uLayouter = {
   },
 
   /**
+   * Limpia los nombres de las clases.
+   * @param {Object} obj Contenedor de los nombres de clases y reglas CSS
+   * @returns {Object}
+   */
+  nameCleaner: function (objStyles) {
+    const _this = this;
+    const obj = {};
+    Object.keys(objStyles).forEach(function (name) {
+      let newName = name;
+      _this.replaceList.forEach(function (reItem) {
+        newName = newName.split(reItem[0]).join(reItem[1]);
+      });
+      obj[newName] = objStyles[name];
+    });
+    return obj;
+  },
+
+  /**
+   * Construye el nombre de clase y registra las reglas css.
+   * @memberof uLayouter
+   * @param {Object} data Lista de data para el procesamiento del CSS
+   */
+  buildCss: function (data) {
+    // creating the styles
+    const objStyles = this.createStyles(data.type, data.bps, data.instance);
+
+    // Inserting CSS rules
+    if (data.deep) this.insertRules(objStyles, data.instance);
+    
+    // name classes cleaner
+    return this.nameCleaner(objStyles);
+  },
+
+  /**
    * Crea e inserta los estilos calculandolos, y tambien adiciona las clases respectivas al nodo
    * @memberof uLayouter
    * @param {Object} data Lista de data para el procesamiento del CSS
    */
   settingCss: function (data) {
-    // creating the styles
-    const objStyles = this.createStyles(data.type, data.bps, data.instance);
-
-    // Inserting CSS rules
-    this.insertRules(objStyles, data.instance);
+    // Building css stuffs
+    const objStyles = this.buildCss(Object.assign({deep: true}, data));
   
     // Adding classes
     this.addClasses(Object.keys(objStyles), data.node, data.instance);
+  },
+
+  /**
+   * Construye los paddings y margenes.
+   * @memberof uLayouter
+   * @param {Object} Node Nodo Element HTML
+   * @param {String} type Nombre del tipo de atributo a obtener. cols, pad, mar y flex.
+   * @param {Object} [parameters] Parametros obtenidos del nodo.
+   * @param {Object} instance Instancia actual del Layouter
+   */
+  buildPadsAndMargs: function (value, type, instance, insertStyles) {
+    if (value === undefined) return this.regError('Parameter Missing', "Don't exists a value determined");
+    this.debug({
+      type: 'i',
+      print: instance.debug,
+      message: "Building the 'pads or margs': " + value,
+    });
+    const _this = this;
+    const bpCals = {};
+    let paramProcessed, numbersPures, propValue, bps;
+    if (!Array.isArray(value)) value = value.split(' ');
+    value.forEach(function (param) {
+      paramProcessed = _this.prepareParam(param);
+      numbersPures = paramProcessed.numbers;
+      bps = paramProcessed.breakPoints;
+  
+      // processing number values
+      propValue = numbersPures
+        .split('-')
+        .map(function (n) {
+          return _this.processedNumber(n);
+        })
+        .join(' ');
+      if (bpCals.hasOwnProperty(bps)) {
+        bpCals[bps].value += ';' + propValue
+      } else {
+        bpCals[bps] = {
+          name: param,
+          value: propValue
+        };
+      }
+    });
+
+    // Building the classNames and the styles to use.
+    return this.buildCss({
+      type: type,
+      bps: bpCals,
+      instance: instance,
+      deep: (insertStyles === undefined ? true : insertStyles)
+    });
   },
   
   /**
@@ -415,41 +506,13 @@ const uLayouter = {
       data: Node
     });
     const params = parameters || instance.getParameters(Node);
-    const _this = this;
     if (!params.hasOwnProperty(type)) return this.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
 
-    const bpCals = {};
-    let paramProcessed, numbersPures, propValue, bps;
-    params[type].forEach(function (param) {
-
-      paramProcessed = _this.prepareParam(param);
-      numbersPures = paramProcessed.numbers;
-      bps = paramProcessed.breakPoints;
-
-      // processing number values
-      propValue = numbersPures
-        .split('-')
-        .map(function (n) {
-          return _this.processedNumber(n);
-        })
-        .join(' ');
-      if (bpCals.hasOwnProperty(bps)) {
-        bpCals[bps].value += ';' + propValue
-      } else {
-        bpCals[bps] = {
-          name: param,
-          value: propValue
-        };
-      }
-    });
-
     // Creating, inserting, and adding classNames of rules in Node.
-    this.settingCss({
-      type: type,
-      bps: bpCals,
-      instance: instance,
-      node: Node
-    });
+    const objStyles = this.buildPadsAndMargs(params[type], type, instance);
+
+    // adding the classes names to the Node
+    this.addClasses(Object.keys(objStyles), Node, instance);
 
     // removing param
     Node.removeAttribute(type);
@@ -481,7 +544,54 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.4.0Beta';
+Layouter.version = '1.6.1Beta';
+/**
+ * Procesa todos los atributos de procesamiento que se tenga disponible
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ */
+Layouter.prototype.set = function (Node) {
+  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Starting the 'set' of the Node:",
+    data: Node
+  });
+  const params = this.getParameters(Node);
+  const proNames = Object.keys(params);
+  const _this = this;
+  if (proNames.length) {
+    proNames.forEach(function (processorName) {
+      _this[uLayouter.processors[processorName].set](Node, params);
+    });
+  } else {
+    uLayouter.regError('Parameter Missing', "don't exists any parameter to process")
+  }
+};
+
+/**
+ * Procesa un objeto de designaciones que representan los atributos de un Nodo
+ * @memberof Layouter
+ * @param {Object} obj Contenedor de los atributos a procesar.
+ */
+Layouter.prototype.build = function (obj) {
+  if (!Node) return uLayouter.regError('Non-existent Object', "Don't exists the object for processing.");
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Starting building the attributes:",
+    data: obj
+  });
+  const rObj = {}, _this = this;
+  let propData;
+  Object.keys(obj).forEach(function (prop) {
+    propData = uLayouter.processors[prop];
+    if (propData) rObj[prop] = _this[propData.build](obj[prop])
+  });
+  return (Object.keys(rObj).length) ? rObj : false;
+};
+
 /**
  * Obtiene los parametros disponibles para procesar
  * @memberof Layouter
@@ -510,27 +620,26 @@ Layouter.prototype.getParameters = function (Node) {
 };
 
 /**
- * Asigna los estilos necesarios a un nodo referentes a las columnas determinadas
+ * Construye las columnas requeridas, devolviendo el nombre de clase y los estilos creados.
  * @memberof Layouter
- * @param {Object} Node Nodo a donde asignar los estilos
- * @param {Object} [parameters] Parametros obtenidos del nodo.
+ * @param {String} valCols columnas a procesar
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @returns {Object}
  */
-Layouter.prototype.setCols = function (Node, parameters) {
-  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+Layouter.prototype.buildCols = function (valCols, insertStyles) {
+  if (valCols === undefined) return uLayouter.regError('Parameter Missing', "Don't exists 'cols' determined");
   uLayouter.debug({
     type: 'i',
     print: this.debug,
-    message: "Processing the 'cols' to the Node:",
-    data: Node
+    message: "Building the 'cols': " + valCols,
   });
   const _this = this;
-  const params = parameters || this.getParameters(Node);
-  if (!params.hasOwnProperty('cols')) return uLayouter.regError('Parameter Missing', "Don't exists 'cols' determined");
   let cols, bp, bpCals = {};
 
   // Getting numbers
   let selectorName, propValue, paramPrepared;
-  params.cols.forEach(function (param) {
+  if (!Array.isArray(valCols)) valCols = valCols.split(' ');
+  valCols.forEach(function (param) {
     selectorName = param;
 
     paramPrepared = uLayouter.prepareParam(param);
@@ -557,16 +666,52 @@ Layouter.prototype.setCols = function (Node, parameters) {
       value: propValue
     };
   });
-  // Creating, inserting, and adding classNames of rules in Node.
-  uLayouter.settingCss({
+
+  // Building the classNames and the styles to use.
+  return uLayouter.buildCss({
     type: 'cols',
     bps: bpCals,
     instance: this,
-    node: Node
+    deep: (insertStyles === undefined ? true : insertStyles)
   });
+};
+
+/**
+ * Asigna los estilos necesarios a un nodo referentes a las columnas determinadas
+ * @memberof Layouter
+ * @param {Object} Node Nodo a donde asignar los estilos
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setCols = function (Node, parameters) {
+  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Processing the 'cols' to the Node:",
+    data: Node
+  });
+  const params = parameters || this.getParameters(Node);
+  if (!params.hasOwnProperty('cols')) return uLayouter.regError('Parameter Missing', "Don't exists 'cols' determined");
+
+  // Creating, inserting, and adding classNames of rules in Node.
+  const objStyles = this.buildCols(params.cols);
+
+  // adding the classes names to the Node
+  uLayouter.addClasses(Object.keys(objStyles), Node, this);
 
   // removing param
   Node.removeAttribute('cols');
+};
+
+/**
+ * Construye los paddings requeridas, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valPads Paddings a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildPads = function (valPads, insertStyles) {
+  return uLayouter.buildPadsAndMargs(valPads, 'pad', this, insertStyles);
 };
 
 /**
@@ -580,6 +725,17 @@ Layouter.prototype.setPads = function (Node, parameters) {
 };
 
 /**
+ * Construye el padding superior, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valPad Paddings a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildPadTop = function (valPad, insertStyles) {
+  return uLayouter.buildPadsAndMargs(valPad, 'padt', this, insertStyles);
+};
+
+/**
  * Setea el padding top necesario para un nodo.
  * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
@@ -587,6 +743,17 @@ Layouter.prototype.setPads = function (Node, parameters) {
  */
 Layouter.prototype.setPadTop = function (Node, parameters) {
   uLayouter.padsAndMargs(Node, 'padt', parameters, this);
+};
+
+/**
+ * Construye el padding derecho, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valPad Paddings a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildPadRight = function (valPad, insertStyles) {
+  return uLayouter.buildPadsAndMargs(valPad, 'padr', this, insertStyles);
 };
 
 /**
@@ -600,6 +767,17 @@ Layouter.prototype.setPadRight = function (Node, parameters) {
 };
 
 /**
+ * Construye el padding inferior, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valPad Paddings a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildPadBottom = function (valPad, insertStyles) {
+  return uLayouter.buildPadsAndMargs(valPad, 'padb', this, insertStyles);
+};
+
+/**
  * Setea el padding bottom necesario para un nodo.
  * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
@@ -607,6 +785,17 @@ Layouter.prototype.setPadRight = function (Node, parameters) {
  */
 Layouter.prototype.setPadBottom = function (Node, parameters) {
   uLayouter.padsAndMargs(Node, 'padb', parameters, this);
+};
+
+/**
+ * Construye el padding izquierdo, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valPad Paddings a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildPadLeft = function (valPad, insertStyles) {
+  return uLayouter.buildPadsAndMargs(valPad, 'padl', this, insertStyles);
 };
 
 /**
@@ -620,6 +809,17 @@ Layouter.prototype.setPadLeft = function (Node, parameters) {
 };
 
 /**
+ * Construye los margenes, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMars Paddings a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMars = function (valMars, insertStyles) {
+  return uLayouter.buildPadsAndMargs(valMars, 'mar', this, insertStyles);
+};
+
+/**
  * Setea los margins necesarios para un Nodo.
  * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
@@ -627,6 +827,17 @@ Layouter.prototype.setPadLeft = function (Node, parameters) {
  */
 Layouter.prototype.setMars = function (Node, parameters) {
   uLayouter.padsAndMargs(Node, 'mar', parameters, this);
+};
+
+/**
+ * Construye el margen superior, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMar Paddings a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMarTop = function (valMar, insertStyles) {
+  return uLayouter.buildPadsAndMargs(valMar, 'mart', this, insertStyles);
 };
 
 /**
@@ -640,6 +851,17 @@ Layouter.prototype.setMarTop = function (Node, parameters) {
 };
 
 /**
+ * Construye el margen derecho, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMar Paddings a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMarRight = function (valMar, insertStyles) {
+  return uLayouter.buildPadsAndMargs(valMar, 'marr', this, insertStyles);
+};
+
+/**
  * Setea el margin right necesario para un Nodo.
  * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
@@ -647,6 +869,17 @@ Layouter.prototype.setMarTop = function (Node, parameters) {
  */
 Layouter.prototype.setMarRight = function (Node, parameters) {
   uLayouter.padsAndMargs(Node, 'marr', parameters, this);
+};
+
+/**
+ * Construye el margen inferior, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMar Paddings a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMarBottom = function (valMar, insertStyles) {
+  return uLayouter.buildPadsAndMargs(valMar, 'marb', this, insertStyles);
 };
 
 /**
@@ -660,6 +893,17 @@ Layouter.prototype.setMarBottom = function (Node, parameters) {
 };
 
 /**
+ * Construye el margen inferior, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMar Paddings a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMarLeft = function (valMar, insertStyles) {
+  return uLayouter.buildPadsAndMargs(valMar, 'marl', this, insertStyles);
+};
+
+/**
  * Setea el margin left necesario para un Nodo.
  * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
@@ -670,26 +914,26 @@ Layouter.prototype.setMarLeft = function (Node, parameters) {
 };
 
 /**
- * Setea la propiedad Flex y las reglas designadas
+ * Construye las reglas CSS y nombre de clases referente al 'flex'.
  * @memberof Layouter
- * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
- * @param {Object} [parameters] Parametros obtenidos del nodo.
+ * @param {String} valFlex columnas a procesar
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @returns {Object}
  */
-Layouter.prototype.setFlex = function (Node, parameters) {
-  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+Layouter.prototype.buildFlex = function (valFlex, insertStyles) {
+  if (valFlex === undefined) return uLayouter.regError('Parameter Missing', "Don't exists 'flex' determined");
   uLayouter.debug({
     type: 'i',
     print: this.debug,
-    message: "Processing the 'flex' parameter to the Node:",
-    data: Node
+    message: "Building the 'flex': " + valFlex,
   });
-  const params = parameters || this.getParameters(Node);
-  if (!params.hasOwnProperty('flex')) return uLayouter.regError('Parameter Missing', "Don't exists 'flex' determinated.");
   let bpNameS, bpCals = {};
 
   // Getting numbers
   let selectorName, paramPrepared, flexSplited,  propVal, nameProp, valProp;
-  params.flex.forEach(function (param) {
+  if (!Array.isArray(valFlex)) valFlex = valFlex.split(' ');
+
+  valFlex.forEach(function (param) {
     selectorName = param;
 
     paramPrepared = uLayouter.prepareParam(param);
@@ -721,41 +965,40 @@ Layouter.prototype.setFlex = function (Node, parameters) {
     }
   });
 
-  // Creating Styles, inserting, and adding classNames of rules in Node.
-  uLayouter.settingCss({
+  // Building the classNames and the styles to use.
+  return uLayouter.buildCss({
     type: 'flex',
     bps: bpCals,
     instance: this,
-    node: Node
+    deep: (insertStyles === undefined ? true : insertStyles)
   });
-
-  // removing param
-  Node.removeAttribute('flex');
 };
 
 /**
- * Procesa todos los atributos de procesamiento que se tenga disponible
+ * Setea la propiedad Flex y las reglas designadas
  * @memberof Layouter
  * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
-Layouter.prototype.build = function (Node) {
+Layouter.prototype.setFlex = function (Node, parameters) {
   if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
   uLayouter.debug({
     type: 'i',
     print: this.debug,
-    message: "Starting the build of the Node:",
+    message: "Processing the 'flex' parameter to the Node:",
     data: Node
   });
-  const params = this.getParameters(Node);
-  const proNames = Object.keys(params);
-  const _this = this;
-  if (proNames.length) {
-    proNames.forEach(function (processorName) {
-      _this[uLayouter.processors[processorName].method](Node, params);
-    });
-  } else {
-    uLayouter.regError('Parameter Missing', "don't exists any parameter to process")
-  }
+  const params = parameters || this.getParameters(Node);
+  if (!params.hasOwnProperty('flex')) return uLayouter.regError('Parameter Missing', "Don't exists 'flex' determinated.");
+
+  // Creating, inserting, and adding classNames of rules in Node.
+  const objStyles = this.buildFlex(params.flex);
+
+  // adding the classes names to the Node
+  uLayouter.addClasses(Object.keys(objStyles), Node, this);
+
+  // removing param
+  Node.removeAttribute('flex');
 };
 
   // EXPORTING
