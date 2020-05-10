@@ -1,14 +1,14 @@
 # Layouter JS
 Es una librería que nos permite **armar el layout de una web de forma muy sencilla y rápida, bazandoce en el uso de grillas**, estos estilos se crean al vuelo ('on the fly'). Se pueden definir las columnas, los paddings, los margenes y hasta si un elemento tendrá display 'flex'.
 
-Esto se hace a travez de atributos en las etiquetas html, aunque tambien se pueden procesar directamente sin depender de una etiqueta.
+Esto se hace a travez de atributos en las etiquetas HTML, aunque tambien se pueden procesar directamente sin depender de una etiqueta.
 
 - **Demo on line:** [https://dapize.github.io/layouter/](https://dapize.github.io/layouter/)
 
 - **Documentación Técnica:** [https://dapize.github.io/layouter/docs](https://dapize.github.io/layouter/docs)
 
 ## Instalación
-Solo debes agregar, a tu página web, la llamada al script 'layouter.min.js' que se encuentra dentro de la carpeta 'dist' de este repositorio. De preferencia agregarlo antes del cierre del `<body>` y como último archivo JS a cargar. Así:
+Solo debes agregar, a tu página web, la llamada al script 'layouter.min.js' que se encuentra dentro de la carpeta 'dist' de este repositorio. De preferencia agregarlo antes del cierre del `<body>` Así:
 
 ```html
 <!DOCTYPE html>
@@ -20,8 +20,6 @@ Solo debes agregar, a tu página web, la llamada al script 'layouter.min.js' que
 </head>
 <body>
   <span>Hola mundo XD</span>
-  <script src="un-script-cualquier.js"></script>
-  <script src="otro-script-cualquiera.js"></script>
   <script src="layouter.min.js"></script>
 </body>
 </html>
@@ -67,9 +65,9 @@ const layout = new Layouter(myConfig);
 - **breakPoints**: Es un objeto contenedor de objetos, cada objeto hijo designa un breakpoint a definir, el nombre de la propiedad de cada objeto será el alias para el breakpoint.
   - **width**: Determina el ancho el pixeles del breakpoint.
   - **cols**: Definen las columnas máximas que tendrá el breakpoint.
-  - **direct**: esta propiedad es opciona, y se usa para indicar que dicho breakpoint no necesita de un @media query para poder definir sus reglas CSS.
+  - **direct**: esta propiedad es opcional, y se usa para indicar que dicho breakpoint no necesita de un '@media query' para poder definir sus reglas CSS.
 - **debug**: Sirve para activar el modo 'debugeo', éste imprimirá en consola cada parte en el procesamiento de un nodo.
-- **bridge**: Si se pone en 'false', el puente que automáticamente se crea para la definiciones de las reglas CSS yá no existirá, y éstas se insertarán directamente en el nodo con id 'layouter', más abajo detallamos esto.
+- **bridge**: Si se pone en 'false', el puente que automáticamente se crea para la definiciones de las reglas CSS yá no existirá, y éstas se insertarán directamente en el nodo con id 'layouter' [más abajo detallamos esto].
 
 > La instancia creada más arriba muestra la designación de un 'prefijo' llamado 'lh', pero no lo usaré a lo largo de esta documentación, por motivos de ahorro visual XD.
 
@@ -80,7 +78,7 @@ const layout = new Layouter(myConfig);
 
 ***Se pueden crear breakpoints a voluntad, el sistema admite cuantos breakpoints se necesite.***
 
-Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en **true**, así los estilos pasarán directos.
+Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en **true**, así los estilos pasarán directos. Ahora veamos los atributos y métodos disponibles:
 
 ## Atributos
 
@@ -134,14 +132,14 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
 
 
 ## Bridge
-De forma automática el script crea un nodo tipo 'style' con el id 'layouter' y lo agrega al final del body. Este nodo sirve como puente para insertar las reglas CSS que se definan, por lo tanto este nodo estará vacío, a no ser que en el objeto de configuración se determine la propiedad 'bridge' en 'false', en ese caso el nodo será rellenado con cada nueva regla CSS que se determine para los nodos a procesar con el sistema.
+De forma automática el sistema crea un nodo tipo 'style' con el id 'layouter' y lo agrega al final del body. Este nodo sirve como puente para insertar las reglas CSS que se definan, por lo tanto este nodo estará vacío, a no ser que en el objeto de configuración se determine la propiedad 'bridge' en 'false', en ese caso el nodo será rellenado con cada nueva regla CSS que se determine para los nodos a procesar con el sistema.
 > En algunas ocaciones se necesitará poner la propiedad 'bridge' en 'false' para cuando se trabaje con webs que manipulan mucho el DOM con JS.
 
 ## Atributos (Definición):
 ### Cols
 Determinará las columnas que se necesitan asignar, osea el 'width' de manera porcentual.
-#### Ejemplos:
-##### Ejemplo 1: Con breakpoints simples (min-width)
+
+#### Ejemplo 1: Con breakpoints simples (min-width)
 Tenemos un 'DIV' al cual queremos designarle 13 de 15 columnas en mobile, 10 columnas de 31 en tablet y 15 columnas de 27 en desktop, así que creamos el atributo llamado 'cols' con el siguiente valor:
 ```html
 <div cols="13/15 10/31@sm 15/27@md">...</div>
@@ -217,7 +215,7 @@ y pues, estos estilos:
 ```
 > **OJO**: Estas clases estarán disponibles para todos los elementos que necesiten de ellas, son generales.
 
-##### Ejemplo 2: Con breakpoint min-width y max-width
+#### Ejemplo 2: Con breakpoint min-width y max-width
 Tenemos un DIV que aparte de tener 13 columnas de 15 en mobile (el breakpoint 'xs') queremos designarle 20 columnas de 27 desde tablet hasta desktop (desde 'sm' hasta 'md') y apartir de 'lg', osea monitores más grandes, que continue con las 13 columnas de 15 que se le puso en mobile. Entonces...
 
 ```html
@@ -248,7 +246,7 @@ y en estilos obtendremos esto:
   }
 }
 ```
-##### Ejemplo 3: Columnas explicitas por breakpoint.
+#### Ejemplo 3: Columnas explicitas por breakpoint.
 Cuando queremos determinar un número de columnas en un breakpoint específico pero sin designarle el número de columnas de donde sacarlas (o máximas), podemos hacerlo así:
 ```html
 <div cols="13 20@sm">...</div>
@@ -637,22 +635,11 @@ Y pues, estos estilos:
 }
 ```
 
-> Nota: cuando determinamos más de un estilo para 1 mismo breakpoint, el nombre de las clases generadas son concatenadas, solo para ahorrar espacio.
+> Nota: cuando determinamos más de un estilo para un mismo breakpoint, el nombre de las clases generadas son concatenadas, solo para ahorrar espacio.
 
 [&uarr; Volver Arriba](#layouter-js)
 
 ## Métodos:
-
-### GetParameters:
-Es posible adicionar un segundo argumento a los métodos: setCols, setPads, setMars y setFlex, el cual es un objeto con los parametros obtenidos, aunque este uso no es comun, y se realiza de forma automática cuando se usa el método 'build', veamos un ejemplo:
-
-Si por alguna razón hemos obtenido previamente los parametros de un DIV y luego queremos determinarle las columnas, hacemos esto:
-```javascript
-const myDiv = document.querySelector('div');
-const myParameters = layout.getParameters(myDiv);
-layouter.setCols(myDiv, myParameters);
-```
-Se obtendrá el mismo resultado que si no le pases los parametros, pero puedes ahorrar un proceso más al sistema.
 
 ### Set
 Sirve para procesar todos los atributos aceptados por el sistema.
@@ -737,9 +724,138 @@ Con los siguientes estilos
 }
 ```
 
-> OJO: El método build también procesa los atributos de los margenes y paddings por separado, osea 'mart, marr, padb, padl, etc"
+> OJO: El método 'set' también procesa los atributos de los margenes y paddings por separado, osea 'mart, marr, padb, padl, etc"
 
 [&uarr; Volver Arriba](#layouter-js)
+
+### SetCols
+Es exactamente igual que el método 'set' pero procesa solamente las columnas, de echo...
+
+### SetPads
+### SetPadTop
+### SetPadRight
+### SetPadBottom
+### SetPadLeft
+### SetMars
+### SetMarTop
+### SetMarRight
+### SetMarBottom
+### SetMarLeft
+### setFlex
+
+Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom y left respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex'.
+
+[&uarr; Volver Arriba](#layouter-js)
+
+De echo, los métodos builds son lo mismo, pero para esto no es necesario pasarle como parametro el Nodo, sino el valor a procesar, veamos:
+
+### Build
+Sirve para procesar todos los valores de todos los atributos aceptados por el sistema:
+
+#### Sintaxis
+```javascript
+layout.build(Object);
+
+// Object Syntax
+{
+  nameAttribute: valueAttribute
+}
+```
+
+#### Ejemplo:
+```javascript
+layout.build({
+  flex: 'jc:ce ai:ce',
+  cols: '3/13 21/21@sm 27/27@md',
+  mar: '0-2/13-0-0@-sm 0-0-20-0@sm',
+  pad: '20-0@sm'
+});
+```
+
+Y nos devuelve un objeto con los nombres de las clases creadas junto con los estilos:
+
+```javascript
+{
+  flex: {
+    "flex-jc:ce-ai:ce@xs": ".flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display: flex;}"
+  },
+  cols: {
+    "cols-21/21@sm": "@media screen and (min-width: 768px){.cols-21\\/21\\@sm{width:100%}}",
+    "cols-27/27@md": "@media screen and (min-width: 1024px){.cols-27\\/27\\@md{width:100%}}",
+    "cols-3/13": ".cols-3\\/13{width:23.076923076923077%}"
+  },
+  mar: {
+    "mar-0-0-20-0@sm": "@media screen and (min-width: 768px){.mar-0-0-20-0\\@sm{margin:0 0 20px 0}}",
+    "mar-0-2/13-0-0@-sm": "@media screen and (max-width: 767px){.mar-0-2\\/13-0-0\\@-sm{margin:0 15.384615384615385% 0 0}}"
+  },
+  pad: {
+    "pad-20-0@sm": "@media screen and (min-width: 768px){.pad-20-0\\@sm{padding:20px 0}}"
+  }
+}
+```
+
+### BuildCols
+Sirve para procesar solamente las columnas:
+
+#### Sintaxis
+```javascript
+layout.buildCols(String);
+```
+#### Ejemplo:
+```javascript
+layout.buildCols('3/13 21/21@sm 27/27@md')
+```
+
+...y nos devuelve este objeto:
+```javascript
+{
+  "cols-21/21@sm": "@media screen and (min-width: 768px){.cols-21\\/21\\@sm{width:100%}}",
+  "cols-27/27@md": "@media screen and (min-width: 1024px){.cols-27\\/27\\@md{width:100%}}",
+  "cols-3/13": ".cols-3\\/13{width:23.076923076923077%}"
+}
+```
+
+### BuildMars
+### BuildMarTop
+### BuildMarRight
+### buildMarBottom
+### BuildMarLeft
+### BuildPads
+### BuildPadTop
+### BuildPadRight
+### BuildPadBottom
+### BuildPadLeft
+### BuildFlex
+Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, y flex tmb.
+
+### GetParameters
+Tambien es posible obtener los parametros definidos en un elemento, digamos, tenemos un DIV, y queremos saber si tiene cols, mar, flex o los que tengan, pues tiramos del método, 'getParameters'
+
+```javascript
+const myDiv = document.querySelector('div');
+layout.getParameters(myDiv);
+
+// Obtendremos un objeto así...
+
+{
+  cols: [ "13/15", "10/31@sm-md", "15/27@md" ],
+  mar: [ "20-2/15", "40-3/31@sm", "60-2/31@md" ],
+  pad: [ "20-1/15", "40-3/31@sm", "60-2/31@md" ],
+  flex: [ "jc:c", "jc:fs@sm", "jc:fe@md", 'ai:fs@sm' ]
+}
+```
+
+### Extra:
+Es posible adicionar un segundo argumento a todos los métodos que comienzan con 'set', el cual es un objeto con los parametros obtenidos, aunque este uso no es comun ya que se realiza de forma automática cuando se usa el método 'set', veamos un ejemplo:
+
+Si por alguna razón hemos obtenido previamente los parametros de un DIV y luego queremos determinarle las columnas, hacemos esto:
+```javascript
+const myDiv = document.querySelector('div');
+const myParameters = layout.getParameters(myDiv);
+layouter.setCols(myDiv, myParameters);
+```
+Se obtendrá el mismo resultado que cuando no le pases los parametros, pero puedes ahorrar un proceso más al sistema.
+
 
 ## Getters
 Para fines varios, se tiene acceso a los siguientes getters de la instancia:
@@ -780,29 +896,6 @@ Layouter.version: "1.3.2Beta"
 ```
 
 [&uarr; Volver Arriba](#layouter-js)
-
-## Método extra
-- ### getParameters
-Tambien es posible obtener los parametros definidos en un elemento, digamos, tenemos un DIV, y queremos saber si tiene cols, mar, flex o los que tengan, pues tiramos del método, 'getParameters'
-
-```javascript
-const myDiv = document.querySelector('div');
-layout.getParameters(myDiv);
-
-// Obtendremos un objeto así...
-
-{
-  cols: [ "13/15", "10/31@sm-md", "15/27@md" ],
-  mar: [ "20-2/15", "40-3/31@sm", "60-2/31@md" ],
-  pad: [ "20-1/15", "40-3/31@sm", "60-2/31@md" ],
-  flex: [ "jc:c", "jc:fs@sm", "jc:fe@md", 'ai:fs@sm' ]
-}
-```
-
-## Cosas que agregaré más adelante
-- ~~Sistema de Log~~ - Listo!
-- Adicionar la posibilidad de determinar un estilo con !important.
-- Guardado en localStorage de configuraciones parametrales y clases creadas.
 
 Por el momento eso es todo lo que trae, más adelante le agregaré más cosas que se me ocurran o que me sugieran.
 

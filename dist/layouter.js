@@ -544,7 +544,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.6.0Beta';
+Layouter.version = '1.6.1Beta';
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible
  * @memberof Layouter
