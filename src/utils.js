@@ -155,53 +155,65 @@ const uLayouter = {
    */
   processors: {
     cols: {
-      method: 'setCols',
+      set: 'setCols',
+      build: 'buildCols',
       ruleCss: 'width'
     },
     // Paddings
     pad: {
-      method: 'setPads',
+      set: 'setPads',
+      build: 'buildPads',
       ruleCss: 'padding'
     },
       padt: {
-        method: 'setPadTop',
+        set: 'setPadTop',
+        build: 'buildPadTop',
         ruleCss: 'padding-top'
       },
       padr: {
-        method: 'setPadRight',
+        set: 'setPadRight',
+        build: 'buildPadRight',
         ruleCss: 'padding-right'
       },
       padb: {
-        method: 'setPadBottom',
+        set: 'setPadBottom',
+        build: 'buildPadBottom',
         ruleCss: 'padding-bottom'
       },
       padl: {
-        method: 'setPadLeft',
+        set: 'setPadLeft',
+        build: 'buildPadLeft',
         ruleCss: 'padding-left'
       },
     // Margin
     mar: {
-      method: 'setMars',
+      set: 'setMars',
+      build: 'buildMars',
       ruleCss: 'margin'
     },
       mart: {
-        method: 'setMarTop',
+        set: 'setMarTop',
+        build: 'buildMarTop',
         ruleCss: 'margin-top'
       },
       marr: {
-        method: 'setMarRight',
+        set: 'setMarRight',
+        build: 'buildMarRight',
         ruleCss: 'margin-right'
       },
       marb: {
-        method: 'setMarBottom',
+        set: 'setMarBottom',
+        build: 'buildMarBottom',
         ruleCss: 'margin-bottom'
       },
       marl: {
-        method: 'setMarLeft',
+        set: 'setMarLeft',
+        build: 'buildMarLeft',
         ruleCss: 'margin-left'
       },
     flex: {
-      method: 'setFlex',
+      set: 'setFlex',
+      build: 'buildFlex',
       ruleCss: 'display: flex'
     }
   },

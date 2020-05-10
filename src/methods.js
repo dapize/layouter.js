@@ -1,4 +1,51 @@
 /**
+ * Procesa todos los atributos de procesamiento que se tenga disponible
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ */
+Layouter.prototype.set = function (Node) {
+  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Starting the 'set' of the Node:",
+    data: Node
+  });
+  const params = this.getParameters(Node);
+  const proNames = Object.keys(params);
+  const _this = this;
+  if (proNames.length) {
+    proNames.forEach(function (processorName) {
+      _this[uLayouter.processors[processorName].set](Node, params);
+    });
+  } else {
+    uLayouter.regError('Parameter Missing', "don't exists any parameter to process")
+  }
+};
+
+/**
+ * Procesa un objeto de designaciones que representan los atributos de un Nodo
+ * @memberof Layouter
+ * @param {Object} obj Contenedor de los atributos a procesar.
+ */
+Layouter.prototype.build = function (obj) {
+  if (!Node) return uLayouter.regError('Non-existent Object', "Don't exists the object for processing.");
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Starting building the attributes:",
+    data: obj
+  });
+  const rObj = {}, _this = this;
+  let propData;
+  Object.keys(obj).forEach(function (prop) {
+    propData = uLayouter.processors[prop];
+    if (propData) rObj[prop] = _this[propData.build](obj[prop])
+  });
+  return (Object.keys(rObj).length) ? rObj : false;
+};
+
+/**
  * Obtiene los parametros disponibles para procesar
  * @memberof Layouter
  * @param {Object} Nodo Nodo de donde obtener los parametros.
@@ -405,29 +452,4 @@ Layouter.prototype.setFlex = function (Node, parameters) {
 
   // removing param
   Node.removeAttribute('flex');
-};
-
-/**
- * Procesa todos los atributos de procesamiento que se tenga disponible
- * @memberof Layouter
- * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
- */
-Layouter.prototype.build = function (Node) {
-  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
-  uLayouter.debug({
-    type: 'i',
-    print: this.debug,
-    message: "Starting the build of the Node:",
-    data: Node
-  });
-  const params = this.getParameters(Node);
-  const proNames = Object.keys(params);
-  const _this = this;
-  if (proNames.length) {
-    proNames.forEach(function (processorName) {
-      _this[uLayouter.processors[processorName].method](Node, params);
-    });
-  } else {
-    uLayouter.regError('Parameter Missing', "don't exists any parameter to process")
-  }
 };
