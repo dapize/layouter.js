@@ -654,7 +654,7 @@ layouter.setCols(myDiv, myParameters);
 ```
 Se obtendrá el mismo resultado que si no le pases los parametros, pero puedes ahorrar un proceso más al sistema.
 
-### Build
+### Set
 Sirve para procesar todos los atributos aceptados por el sistema.
 
 #### Ejemplo:
@@ -669,10 +669,10 @@ Imaginemos que tenemos un DIV en donde hemos designado darle columnas, margenes,
 ></div>
 ```
 
-No sería recomendable aplicar los métodos separados de 'setCols', 'setPads', 'setMars' y 'setFlex' para procesar cada atributo, en ese caso procesamos con el método 'build', y éste procesará todos los demás mencionados:
+No sería recomendable aplicar los métodos separados de 'setCols', 'setPads', 'setMars' y 'setFlex' para procesar cada atributo, en ese caso procesamos con el método 'set', y éste procesará todos los demás mencionados:
 ```javascript
 const myDiv = document.querySelector('div');
-layouter.build(myDiv);
+layouter.set(myDiv);
 ```
 Lo cual nos dará un resultado así:
 ```html
@@ -680,11 +680,8 @@ Lo cual nos dará un resultado así:
 ```
 Con los siguientes estilos
 ```css
-.flex-flex {
-  display: flex;
-}
-
 .flex-jc\:c {
+  display: flex;
   justify-content: center;
 }
 
@@ -714,6 +711,7 @@ Con los siguientes estilos
   }
 
   .flex-jc\:fs-ai\:fs\@sm {
+    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
   } 
@@ -733,6 +731,7 @@ Con los siguientes estilos
   }
 
   .flex-jc\:fe\@md {
+    display: flex;
     justify-content: flex-end;
   }
 }

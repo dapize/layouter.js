@@ -8,7 +8,7 @@ Layouter.prototype.set = function (Node) {
   uLayouter.debug({
     type: 'i',
     print: this.debug,
-    message: "Starting the build of the Node:",
+    message: "Starting the 'set' of the Node:",
     data: Node
   });
   const params = this.getParameters(Node);
@@ -16,11 +16,33 @@ Layouter.prototype.set = function (Node) {
   const _this = this;
   if (proNames.length) {
     proNames.forEach(function (processorName) {
-      _this[uLayouter.processors[processorName].method](Node, params);
+      _this[uLayouter.processors[processorName].set](Node, params);
     });
   } else {
     uLayouter.regError('Parameter Missing', "don't exists any parameter to process")
   }
+};
+
+/**
+ * Procesa un objeto de designaciones que representan los atributos de un Nodo
+ * @memberof Layouter
+ * @param {Object} obj Contenedor de los atributos a procesar.
+ */
+Layouter.prototype.build = function (obj) {
+  if (!Node) return uLayouter.regError('Non-existent Object', "Don't exists the object for processing.");
+  uLayouter.debug({
+    type: 'i',
+    print: this.debug,
+    message: "Starting building the attributes:",
+    data: obj
+  });
+  const rObj = {}, _this = this;
+  let propData;
+  Object.keys(obj).forEach(function (prop) {
+    propData = uLayouter.processors[prop];
+    if (propData) rObj[prop] = _this[propData.build](obj[prop])
+  });
+  return (Object.keys(rObj).length) ? rObj : false;
 };
 
 /**
