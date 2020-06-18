@@ -46,3 +46,6 @@ v1.6.1Beta
 - Método 'build' cambiado de nombre a 'set'.
 - Se crearón varios métodos 'builds' para procesar los valores de los atributos sin depender de un Nodo.
 - Se actualizó bastante el README contando sobre los nuevos métodos, y agregando varios ejemplos.
+
+v1.6.2Beta
+- Se agrega el polyfill para 'Object.assign' y así poder funcionar en IE11.
