@@ -46,6 +46,7 @@ const dist = () => {
 
 const build = () => {
   return src([
+    './src/polyfills.js',
     './src/utils.js',
     './src/constructor.js',
     './src/methods.js'
@@ -89,6 +90,7 @@ const serve = function () {
 
 const doc = () => {
   return src([
+    './src/polyfills.js',
     './src/utils.js',
     './src/constructor.js',
     './src/methods.js'
