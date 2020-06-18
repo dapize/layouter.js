@@ -1,6 +1,32 @@
 (function (root) {
 'use strict';
-  /**
+  if (typeof Object.assign !== 'function') {
+  Object.defineProperty(Object, 'assign', {
+    value: function assign(target, varArgs) {
+      'use strict';
+      if (target === null) throw new TypeError('Cannot convert undefined or null to object');
+
+      let to = Object(target);
+      let index;
+      const nArguments = arguments.length;
+      let nextSource;
+      for (index = 1; index < nArguments; index++) {
+        nextSource = arguments[index];
+        if (nextSource != null) {
+          for (var nextKey in nextSource) {
+            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+              to[nextKey] = nextSource[nextKey];
+            }
+          }
+        }
+      }
+      return to;
+    },
+    writable: true,
+    configurable: true,
+  });
+};
+/**
  * Utilidades varias
  * @namespace uLayouter
  * @property {Object} processors Lista de procesadores disponibles, junto a su método y regla css
@@ -544,7 +570,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.6.1Beta';
+Layouter.version = '1.6.2Beta';
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible
  * @memberof Layouter
