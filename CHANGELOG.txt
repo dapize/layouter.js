@@ -49,3 +49,6 @@ v1.6.1Beta
 
 v1.6.2Beta
 - Se agrega el polyfill para 'Object.assign' y así poder funcionar en IE11.
+
+v1.6.3Beta
+- Fix del 'this' en el util 'addClasses'.

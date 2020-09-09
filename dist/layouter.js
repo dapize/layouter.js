@@ -396,7 +396,7 @@ const uLayouter = {
     const _this = this
     classesNames.forEach(function (name) {
       if (Node.classList.contains(name)) {
-        this.debug({
+        _this.debug({
           type: 'w',
           print: instance.debug,
           message: "The class name '" + name + "' already exists in the node and will not be added: ",
@@ -570,7 +570,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.6.2Beta';
+Layouter.version = '1.6.3Beta';
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible
  * @memberof Layouter
