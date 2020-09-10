@@ -368,7 +368,7 @@ const uLayouter = {
     const _this = this
     classesNames.forEach(function (name) {
       if (Node.classList.contains(name)) {
-        this.debug({
+        _this.debug({
           type: 'w',
           print: instance.debug,
           message: "The class name '" + name + "' already exists in the node and will not be added: ",
