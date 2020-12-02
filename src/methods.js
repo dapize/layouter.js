@@ -95,7 +95,6 @@ Layouter.prototype.buildCols = function (valCols, insertStyles) {
   if (!Array.isArray(valCols)) valCols = valCols.split(' ');
   valCols.forEach(function (param) {
     selectorName = param;
-
     paramPrepared = uLayouter.prepareParam(param, bpsObj);
     bp = paramPrepared.breakPoints;
     param = paramPrepared.numbers;

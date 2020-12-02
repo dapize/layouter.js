@@ -84,7 +84,7 @@ const uLayouter = {
    * Sirve para obtener el breakpoint declarado con la propiedad 'direct'.
    * @param {Object} objBps Objecto contenedor con los breakpoints pasados en la configuración.
    */
-  getDirectBp (objBps) {
+  getDirectBp: function (objBps) {
     const bpDirect = Object.keys(objBps).filter(function (iBp) {
       return objBps[iBp].direct
     });
@@ -95,6 +95,7 @@ const uLayouter = {
    * Prepara el parametro de un método especificado. (EJM: cols, pad, etc)
    * @memberof uLayouter
    * @param {String} param Parametro de configuración sobre el método.
+   * @param {Object} objBps Objeto de Breakpoints definidos en la configuración base.
    */
   prepareParam: function (param, objBps) {
     let bp;
@@ -397,16 +398,17 @@ const uLayouter = {
     let bridge;
     if (config.bridge) {
       bridge = {
-        insertRule: stylesScope.sheet.insertRule,
-        rules: stylesScope.sheet.rules,
+        method: stylesScope.sheet,
         node: stylesScope
       }
     } else {
       bridge = {
-        insertRule: function (ruleCss) {
-          stylesScope.innerHTML += '\n' + ruleCss;
+        method: {
+          insertRule: function (ruleCss) {
+            stylesScope.appendChild(document.createTextNode(ruleCss))
+          },
+          rules: [],
         },
-        rules: [],
         node: stylesScope
       }
     }
@@ -432,7 +434,7 @@ const uLayouter = {
    * @param {String} className Nombre de la clase CSS
    * @param {Object} instance Instancia de la librería.
    */
-  getScopeByclassName (className, instance) {
+  getScopeByclassName: function (className, instance) {
     const bps = instance.breakPoints;
     const atIndex = className.indexOf('@');
 
@@ -478,7 +480,7 @@ const uLayouter = {
     Object.keys(objStyles).forEach(function (className) {
       if (!instance.styles.hasOwnProperty(className)) {
         let nodeScope = _this.getScopeByclassName(className, instance);
-        nodeScope.insertRule(objStyles[className], (nodeScope.rules ? nodeScope.rules.length : 0));
+        nodeScope.method.insertRule(objStyles[className], (nodeScope.method.rules ? nodeScope.method.rules.length : 0));
         instance.styles[className] = objStyles[className]; // saving in styles vault
       }
     });
@@ -686,7 +688,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.7.3Beta';
+Layouter.version = '1.6.4Beta';
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible
  * @memberof Layouter
@@ -784,7 +786,6 @@ Layouter.prototype.buildCols = function (valCols, insertStyles) {
   if (!Array.isArray(valCols)) valCols = valCols.split(' ');
   valCols.forEach(function (param) {
     selectorName = param;
-
     paramPrepared = uLayouter.prepareParam(param, bpsObj);
     bp = paramPrepared.breakPoints;
     param = paramPrepared.numbers;
