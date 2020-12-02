@@ -29,7 +29,7 @@ Solo debes agregar, a tu página web, la llamada al script 'layouter.min.js' que
 
 > Esto lo puedes hacer en un archivo 'main.js' que tienes que llamarlo luego del layouter.min.js o en el mismo HTML
 
-Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi agregamos los breakpoints que necesitemos, en este caso necesitaré 4 breakpoints.
+Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi agregamos los breakpoints que necesitemos, en ésta ocasión necesitaré 4 breakpoints.
 
 ```javascript
 // main.js
@@ -132,7 +132,8 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
 
 
 ## Bridge
-De forma automática el sistema crea un nodo tipo 'style' con el id 'layouter' y lo agrega al final del body. Este nodo sirve como puente para insertar las reglas CSS que se definan, por lo tanto este nodo estará vacío, a no ser que en el objeto de configuración se determine la propiedad 'bridge' en 'false', en ese caso el nodo será rellenado con cada nueva regla CSS que se determine para los nodos a procesar con el sistema.
+De forma automática el sistema crea varios nodos tipo 'style', un nodo por cada breakpoint designado en la configuración base, y los intermedios cuando se define un estilo con el 'desde - hasta (@sm-md por ejemplo). Cada nodo tiene como ID la palabra 'layouter' más el alias del breakpoint definido. Estos nodos son agregados al final del body y sirven como puente para insertar las reglas CSS que se definan, por lo tanto estarán vacíos, a menos que en el objeto de configuración se determine la propiedad 'bridge' en 'false', en ese caso los nodos serán rellenados con cada nueva regla CSS que se creé.
+
 > En algunas ocaciones se necesitará poner la propiedad 'bridge' en 'false' para cuando se trabaje con webs que manipulan mucho el DOM con JS.
 
 ## Atributos (Definición):

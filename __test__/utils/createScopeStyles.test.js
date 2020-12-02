@@ -1,6 +1,8 @@
 let lib = require('../../dist/layouter');
 const uLayouter = require('../../src/utils');
 describe('Bridge of styles', () => {
+  const objScope = uLayouter.createScopeStyles({bridge: true}, 'xs', 'append', document.body);
+
   it('Creating the bridge', () => {
     const Layouter = new lib({
       breakPoints: {
@@ -15,10 +17,10 @@ describe('Bridge of styles', () => {
         }
       }
     });
-    expect(uLayouter.createScopeStyles({bridge: true})).toEqual(Layouter.scope);
+    expect(objScope).toEqual(Layouter.scope.xs);
   });
 
   it('Using a bridge existing', () => {
-    expect(uLayouter.createScopeStyles({})).toHaveProperty('rules', []);
+    expect(objScope.method).toHaveProperty('cssRules', []);
   });
 });

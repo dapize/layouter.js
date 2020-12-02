@@ -81,7 +81,6 @@
  * @property {Object} replaceList Lista de caracteres a reemplazar para el nombre de las clases
  */
 const uLayouter = {
-
   /**
    * Obtiene el width y las columnas de los breakpoints.
    * @memberof uLayouter
@@ -97,33 +96,73 @@ const uLayouter = {
   },
 
   /**
+   * Devuelve un array ordenando los Breakpoints de menor a mayor, dependiendo su width
+   * @param {Object} bps Objeto breakpoints definidos en la configuración de la instancia.
+   * @returns {Array}
+   */
+  getBpsOrdered: function (bps) {
+    const objBps = this.getNums(bps, 'width');
+    const arrBps = Object.keys(bps);
+    return arrBps
+      .map(function (bp) {
+        return objBps[bp];
+      })
+      .sort(function(a, b) {
+        return a - b;
+      })
+      .map(function (width) {
+        return arrBps.filter(function (iBp) {
+          return objBps[iBp] === width
+        })[0]
+      })
+  },
+
+  /**
    * Determina si el parametro tiene o no un breakpoint designado
    * @memberof uLayouter
    * @param {String} param Parametro
    * @returns {Boolean}
    */
   haveBreakPoint: function (param) {
-    return param.indexOf('@') !== -1 ? true : false;
+    return param.indexOf('@') !== -1;
+  },
+
+  /**
+   * Sirve para obtener el breakpoint declarado con la propiedad 'direct'.
+   * @param {Object} objBps Objecto contenedor con los breakpoints pasados en la configuración.
+   */
+  getDirectBp: function (objBps) {
+    const bpDirect = Object.keys(objBps).filter(function (iBp) {
+      return objBps[iBp].direct
+    });
+    return bpDirect.length ? bpDirect[0] : false;
   },
 
   /**
    * Prepara el parametro de un método especificado. (EJM: cols, pad, etc)
    * @memberof uLayouter
    * @param {String} param Parametro de configuración sobre el método.
+   * @param {Object} objBps Objeto de Breakpoints definidos en la configuración base.
    */
-  prepareParam: function (param) {
+  prepareParam: function (param, objBps) {
     let bp;
-    const haveBp = this.haveBreakPoint(param);
+    let argParam = param;
+    const haveBp = this.haveBreakPoint(argParam);
     if (haveBp) {
-      const bpSplited = param.split('@');
-      param = bpSplited[0];
+      const bpSplited = argParam.split('@');
+      argParam = bpSplited[0];
       bp = bpSplited[1];
     } else {
-      bp = 'xs';
+      const directBp = this.getDirectBp(objBps);
+      if (directBp) {
+        bp = directBp;
+      } else {
+        return this.regError("without 'direct' breakpoint", "Don't exists a breakpoint with 'direct' designation.");
+      }
     }
     return {
       widthBp: haveBp,
-      numbers: param,
+      numbers: argParam,
       breakPoints: bp
     }
   },
@@ -370,17 +409,32 @@ const uLayouter = {
   },
 
   /**
-   * Crea el scope de la hoja de estilos que se usará para designar los estilos que se crean al vuelo.
+   * Crea el scope para un BP determinado.
    * @memberof uLayouter
    * @param {Object} config Configuración determinada.
+   * @param {String} bp El Break Point, dependiendo de la definición sería: xs, sm, md, lg u otros.
+   * @param {String} insertionType Define el tipo de inserción a realizar.
+   * @param {HTMLElement} node El nodo base desde donde se insertará el nuevo nodo de estilos (ya sea antes, despues, o como nuevo hermano).
+   * @returns {Object}
    */
-  createScopeStyles: function (config) {
-    let stylesScope = document.getElementById('layouter');
-    if (stylesScope === null) {
+  createScopeStyles: function (config, bp, insertionType, node) {
+    let stylesScope = document.getElementById('layouter-' + bp);
+    if (!stylesScope) {
       stylesScope = document.createElement('style');
       stylesScope.appendChild(document.createTextNode('')); // WebKit hack :(
-      document.body.appendChild(stylesScope);
-      stylesScope.id = 'layouter'
+      switch(insertionType) {
+        case 'before':
+          node.parentNode.insertBefore(stylesScope, node)
+          break;
+        case 'after':
+          const nodeParent = node.parentNode;
+          node.nextSibling ? nodeParent.insertBefore(stylesScope, node.nextSibling) : nodeParent.appendChild(stylesScope);
+          break;
+        case 'append':
+          node.appendChild(stylesScope);
+          break;
+      }
+      stylesScope.id = 'layouter-' + bp;
     };
     this.debug({
       type: 'i',
@@ -388,13 +442,78 @@ const uLayouter = {
       message: 'Bridge layouter created and inserted in the DOM',
       data: stylesScope
     });
-    const bridge = config.bridge ? stylesScope.sheet : {
-      insertRule: function (ruleCss) {
-        stylesScope.innerHTML += '\n' + ruleCss;
-      },
-      rules: []
-    };
+    let bridge;
+    if (config.bridge) {
+      bridge = {
+        method: stylesScope.sheet,
+        node: stylesScope
+      }
+    } else {
+      bridge = {
+        method: {
+          insertRule: function (ruleCss) {
+            stylesScope.appendChild(document.createTextNode(ruleCss))
+          },
+          rules: [],
+        },
+        node: stylesScope
+      }
+    }
     return bridge;
+  },
+
+  /**
+   * Crea los scopes correspondientes para cada breakpoint definido, de forma ordenada, eso es muy importante.
+   * @param {Object} config Objeto base de configuración que se pasa en la instancia.
+   */
+  createScopesStyles: function (config) {
+    const arrBps = this.getBpsOrdered(config.breakPoints);
+    const scopes = {};
+    const _this = this;
+    arrBps.forEach(function (bp) {
+      scopes[bp] = _this.createScopeStyles(config, bp, 'append', document.body);
+    });
+    return scopes;
+  },
+
+  /**
+   * Obtiene el los métodos del nodo 'style' desde un 'className'. 
+   * @param {String} className Nombre de la clase CSS
+   * @param {Object} instance Instancia de la librería.
+   */
+  getScopeByclassName: function (className, instance) {
+    const bps = instance.breakPoints;
+    const atIndex = className.indexOf('@');
+
+    // Haven´t a BP designed
+    if (atIndex === -1) {
+      const directBp = this.getDirectBp(bps);
+      return instance.scope[directBp];  
+    };
+
+    // Have a BP designed, a normal BP.
+    const bp = className.substring(atIndex + 1);
+    if (bp.indexOf('-') === -1) return instance.scope[bp]; // A simple BP, not compound (like this: 13/15@sm-md).
+
+    // For the nexts types insertions
+    const smallConfig = {
+      bridge: instance.bridge,
+      debug: instance.debug
+    };
+
+    // A BP until. Example 13/15@-md
+    if (bp.substring(0, 1) === '-') {
+      if (instance.scope.hasOwnProperty(bp)) return instance.scope[bp]; // exists the Scope.
+      const bpUntil = bp.substring(1);
+      instance.scope[bp] = this.createScopeStyles(smallConfig, bp, 'before', instance.scope[bpUntil].node);
+      return instance.scope[bp]; // returning a new scope created
+    }
+
+    // A BP from and until (a BP Compount). Example: Example 13/15@sm-md
+    if (instance.scope.hasOwnProperty(bp)) return instance.scope[bp]; // exists the Scope.
+    const fromBp = bp.split('-')[0];
+    instance.scope[bp] = this.createScopeStyles(smallConfig, bp, 'after', instance.scope[fromBp].node);
+    return instance.scope[bp]; // returning a new scope compounted created
   },
 
   /**
@@ -404,12 +523,12 @@ const uLayouter = {
    * @param {Object} instance Instancia iniciada del layouter.
    */
   insertRules: function (objStyles, instance) {
-    const nodeScope = instance.scope;
-    const prefix = instance.prefix;
+    const _this = this;
     Object.keys(objStyles).forEach(function (className) {
-      if (!instance.styles.hasOwnProperty(prefix + className)) {
-        nodeScope.insertRule(objStyles[className], (nodeScope.rules ? nodeScope.rules.length : 0));
-        instance.styles[prefix + className] = objStyles[className];
+      if (!instance.styles.hasOwnProperty(className)) {
+        let nodeScope = _this.getScopeByclassName(className, instance);
+        nodeScope.method.insertRule(objStyles[className], (nodeScope.method.rules ? nodeScope.method.rules.length : 0));
+        instance.styles[className] = objStyles[className]; // saving in styles vault
       }
     });
     this.debug({
@@ -443,14 +562,13 @@ const uLayouter = {
     const _this = this
     classesNames.forEach(function (name) {
       if (Node.classList.contains(name)) {
-        this.debug({
+        _this.debug({
           type: 'w',
           print: instance.debug,
           message: "The class name '" + name + "' already exists in the node and will not be added: ",
           data: Node
         });
       } else {
-        // console.log('añadiendo: ' + name);
         Node.classList.add(name);
       }
     });
@@ -532,7 +650,7 @@ const uLayouter = {
     let paramProcessed, numbersPures, propValue, bps;
     if (!Array.isArray(value)) value = value.split(' ');
     value.forEach(function (param) {
-      paramProcessed = _this.prepareParam(param);
+      paramProcessed = _this.prepareParam(param, instance.breakPoints);
       numbersPures = paramProcessed.numbers;
       bps = paramProcessed.breakPoints;
   
@@ -600,7 +718,7 @@ if (typeof exports !== 'undefined' &amp;&amp; typeof module !== 'undefined' &amp
 	</div>
 	<footer>
 				<div class="copyright">FooDoc Copyright © 2016 The contributors to the JSDoc3 and FooDoc projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on 10th May 2020 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on 2nd Dec 2020 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
