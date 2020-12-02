@@ -91,11 +91,12 @@ Layouter.prototype.buildCols = function (valCols, insertStyles) {
 
   // Getting numbers
   let selectorName, propValue, paramPrepared;
+  const bpsObj = this.breakPoints;
   if (!Array.isArray(valCols)) valCols = valCols.split(' ');
   valCols.forEach(function (param) {
     selectorName = param;
 
-    paramPrepared = uLayouter.prepareParam(param);
+    paramPrepared = uLayouter.prepareParam(param, bpsObj);
     bp = paramPrepared.breakPoints;
     param = paramPrepared.numbers;
 
@@ -385,11 +386,11 @@ Layouter.prototype.buildFlex = function (valFlex, insertStyles) {
   // Getting numbers
   let selectorName, paramPrepared, flexSplited,  propVal, nameProp, valProp;
   if (!Array.isArray(valFlex)) valFlex = valFlex.split(' ');
-
+  const bpsObj = this.breakPoints;
   valFlex.forEach(function (param) {
     selectorName = param;
 
-    paramPrepared = uLayouter.prepareParam(param);
+    paramPrepared = uLayouter.prepareParam(param, bpsObj);
     bpNameS = paramPrepared.breakPoints;
     param = paramPrepared.numbers;
 
