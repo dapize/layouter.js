@@ -118,6 +118,21 @@ window.lunrData = {
           "parametro",
           "procesar"
         ],
+        "Layouter.html#reset": [
+          "array",
+          "clase",
+          "cualquier",
+          "de",
+          "function",
+          "la",
+          "layout",
+          "layouter#reset",
+          "nodo",
+          "pasado",
+          "remuev",
+          "reset",
+          "tipo"
+        ],
         "Layouter.html#buildCols": [
           "buildcol",
           "clase",
@@ -944,7 +959,7 @@ window.lunrData = {
           "y"
         ]
       },
-      "length": 57
+      "length": 58
     },
     "tokenStore": {
       "root": {
@@ -1425,6 +1440,10 @@ window.lunrData = {
                           },
                           "Layouter.html#getParameters": {
                             "ref": "Layouter.html#getParameters",
+                            "tf": 110
+                          },
+                          "Layouter.html#reset": {
+                            "ref": "Layouter.html#reset",
                             "tf": 110
                           },
                           "Layouter.html#buildCols": {
@@ -2132,6 +2151,63 @@ window.lunrData = {
                 }
               }
             },
+            "m": {
+              "docs": {},
+              "u": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "v": {
+                    "docs": {
+                      "Layouter.html#reset": {
+                        "ref": "Layouter.html#reset",
+                        "tf": 5
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "s": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "t": {
+                  "docs": {
+                    "Layouter.html#reset": {
+                      "ref": "Layouter.html#reset",
+                      "tf": 683.3333333333334
+                    }
+                  }
+                }
+              },
+              "p": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "c": {
+                    "docs": {},
+                    "t": {
+                      "docs": {},
+                      "i": {
+                        "docs": {},
+                        "v": {
+                          "docs": {},
+                          "a": {
+                            "docs": {
+                              "uLayouter.html#.settingCss": {
+                                "ref": "uLayouter.html#.settingCss",
+                                "tf": 3.571428571428571
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
             "q": {
               "docs": {},
               "u": {
@@ -2328,35 +2404,6 @@ window.lunrData = {
                   }
                 }
               }
-            },
-            "s": {
-              "docs": {},
-              "p": {
-                "docs": {},
-                "e": {
-                  "docs": {},
-                  "c": {
-                    "docs": {},
-                    "t": {
-                      "docs": {},
-                      "i": {
-                        "docs": {},
-                        "v": {
-                          "docs": {},
-                          "a": {
-                            "docs": {
-                              "uLayouter.html#.settingCss": {
-                                "ref": "uLayouter.html#.settingCss",
-                                "tf": 3.571428571428571
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
             }
           },
           "i": {
@@ -2448,6 +2495,21 @@ window.lunrData = {
           },
           "i": {
             "docs": {},
+            "p": {
+              "docs": {},
+              "o": {
+                "docs": {
+                  "Layouter.html#reset": {
+                    "ref": "Layouter.html#reset",
+                    "tf": 5
+                  },
+                  "uLayouter.html#.debug": {
+                    "ref": "uLayouter.html#.debug",
+                    "tf": 7.142857142857142
+                  }
+                }
+              }
+            },
             "e": {
               "docs": {},
               "n": {
@@ -2455,17 +2517,6 @@ window.lunrData = {
                   "uLayouter.html#.haveBreakPoint": {
                     "ref": "uLayouter.html#.haveBreakPoint",
                     "tf": 5.555555555555555
-                  }
-                }
-              }
-            },
-            "p": {
-              "docs": {},
-              "o": {
-                "docs": {
-                  "uLayouter.html#.debug": {
-                    "ref": "uLayouter.html#.debug",
-                    "tf": 7.142857142857142
                   }
                 }
               }
@@ -2570,6 +2621,10 @@ window.lunrData = {
               "Layouter.html#build": {
                 "ref": "Layouter.html#build",
                 "tf": 8.333333333333332
+              },
+              "Layouter.html#reset": {
+                "ref": "Layouter.html#reset",
+                "tf": 10
               },
               "Layouter.html#buildCols": {
                 "ref": "Layouter.html#buildCols",
@@ -3326,6 +3381,10 @@ window.lunrData = {
                 },
                 "e": {
                   "docs": {
+                    "Layouter.html#reset": {
+                      "ref": "Layouter.html#reset",
+                      "tf": 5
+                    },
                     "Layouter.html#buildCols": {
                       "ref": "Layouter.html#buildCols",
                       "tf": 3.8461538461538463
@@ -3622,6 +3681,54 @@ window.lunrData = {
               }
             }
           },
+          "u": {
+            "docs": {},
+            "a": {
+              "docs": {},
+              "l": {
+                "docs": {
+                  "uLayouter.html#.processedNumber": {
+                    "ref": "uLayouter.html#.processedNumber",
+                    "tf": 2.5
+                  }
+                },
+                "q": {
+                  "docs": {},
+                  "u": {
+                    "docs": {},
+                    "i": {
+                      "docs": {},
+                      "e": {
+                        "docs": {},
+                        "r": {
+                          "docs": {
+                            "Layouter.html#reset": {
+                              "ref": "Layouter.html#reset",
+                              "tf": 5
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "n": {
+                "docs": {},
+                "d": {
+                  "docs": {},
+                  "o": {
+                    "docs": {
+                      "uLayouter.html#.processedNumber": {
+                        "ref": "uLayouter.html#.processedNumber",
+                        "tf": 2.5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
           "r": {
             "docs": {},
             "e": {
@@ -3907,34 +4014,6 @@ window.lunrData = {
                 }
               }
             }
-          },
-          "u": {
-            "docs": {},
-            "a": {
-              "docs": {},
-              "l": {
-                "docs": {
-                  "uLayouter.html#.processedNumber": {
-                    "ref": "uLayouter.html#.processedNumber",
-                    "tf": 2.5
-                  }
-                }
-              },
-              "n": {
-                "docs": {},
-                "d": {
-                  "docs": {},
-                  "o": {
-                    "docs": {
-                      "uLayouter.html#.processedNumber": {
-                        "ref": "uLayouter.html#.processedNumber",
-                        "tf": 2.5
-                      }
-                    }
-                  }
-                }
-              }
-            }
           }
         },
         "l": {
@@ -4044,6 +4123,10 @@ window.lunrData = {
           },
           "a": {
             "docs": {
+              "Layouter.html#reset": {
+                "ref": "Layouter.html#reset",
+                "tf": 5
+              },
               "Layouter.html#buildCols": {
                 "ref": "Layouter.html#buildCols",
                 "tf": 3.8461538461538463
@@ -4104,6 +4187,10 @@ window.lunrData = {
                       "Layouter.html": {
                         "ref": "Layouter.html",
                         "tf": 1900
+                      },
+                      "Layouter.html#reset": {
+                        "ref": "Layouter.html#reset",
+                        "tf": 5
                       }
                     },
                     "e": {
@@ -4594,6 +4681,26 @@ window.lunrData = {
                                 }
                               }
                             }
+                          },
+                          "r": {
+                            "docs": {},
+                            "e": {
+                              "docs": {},
+                              "s": {
+                                "docs": {},
+                                "e": {
+                                  "docs": {},
+                                  "t": {
+                                    "docs": {
+                                      "Layouter.html#reset": {
+                                        "ref": "Layouter.html#reset",
+                                        "tf": 1150
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
                           }
                         }
                       }
@@ -5031,6 +5138,10 @@ window.lunrData = {
                   "Layouter.html#getParameters": {
                     "ref": "Layouter.html#getParameters",
                     "tf": 33.33333333333333
+                  },
+                  "Layouter.html#reset": {
+                    "ref": "Layouter.html#reset",
+                    "tf": 38.33333333333333
                   },
                   "Layouter.html#setCols": {
                     "ref": "Layouter.html#setCols",
@@ -6026,6 +6137,27 @@ window.lunrData = {
               }
             }
           },
+          "r": {
+            "docs": {},
+            "r": {
+              "docs": {},
+              "a": {
+                "docs": {},
+                "y": {
+                  "docs": {
+                    "Layouter.html#reset": {
+                      "ref": "Layouter.html#reset",
+                      "tf": 33.33333333333333
+                    },
+                    "uLayouter.html#.getBpsOrdered": {
+                      "ref": "uLayouter.html#.getBpsOrdered",
+                      "tf": 29.166666666666664
+                    }
+                  }
+                }
+              }
+            }
+          },
           "s": {
             "docs": {},
             "i": {
@@ -6073,23 +6205,6 @@ window.lunrData = {
               "uLayouter.html#.settingCss": {
                 "ref": "uLayouter.html#.settingCss",
                 "tf": 3.571428571428571
-              }
-            }
-          },
-          "r": {
-            "docs": {},
-            "r": {
-              "docs": {},
-              "a": {
-                "docs": {},
-                "y": {
-                  "docs": {
-                    "uLayouter.html#.getBpsOrdered": {
-                      "ref": "uLayouter.html#.getBpsOrdered",
-                      "tf": 29.166666666666664
-                    }
-                  }
-                }
               }
             }
           },
@@ -6572,6 +6687,23 @@ window.lunrData = {
                             }
                           }
                         }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "s": {
+              "docs": {},
+              "a": {
+                "docs": {},
+                "d": {
+                  "docs": {},
+                  "o": {
+                    "docs": {
+                      "Layouter.html#reset": {
+                        "ref": "Layouter.html#reset",
+                        "tf": 5
                       }
                     }
                   }
@@ -8433,7 +8565,7 @@ window.lunrData = {
           }
         }
       },
-      "length": 790
+      "length": 803
     },
     "corpusTokens": [
       "addclass",
@@ -8492,6 +8624,7 @@ window.lunrData = {
       "createstyl",
       "css",
       "cual",
+      "cualquier",
       "cuando",
       "darl",
       "data",
@@ -8568,6 +8701,7 @@ window.lunrData = {
       "layouter#buildpadright",
       "layouter#buildpadtop",
       "layouter#getparamet",
+      "layouter#reset",
       "layouter#set",
       "layouter#setcol",
       "layouter#setflex",
@@ -8627,6 +8761,7 @@ window.lunrData = {
       "param",
       "paramet",
       "parametro",
+      "pasado",
       "porcentaj",
       "porcentu",
       "prepara",
@@ -8647,9 +8782,11 @@ window.lunrData = {
       "regerror",
       "registra",
       "regla",
+      "remuev",
       "replacelist",
       "representan",
       "requerida",
+      "reset",
       "respectiva",
       "retornar",
       "right",
@@ -8816,6 +8953,16 @@ window.lunrData = {
       "tags": "Layouter#getParameters getParameters",
       "summary": "",
       "description": "Obtiene los parametros disponibles para procesar"
+    },
+    "Layouter.html#reset": {
+      "id": "Layouter.html#reset",
+      "kind": "function",
+      "title": "reset( Nodo ) → {Array}",
+      "longname": "Layouter#reset",
+      "name": "reset",
+      "tags": "Layouter#reset reset",
+      "summary": "",
+      "description": "Remueve las clases de tipo layouter de cualquier nodo pasado"
     },
     "Layouter.html#buildCols": {
       "id": "Layouter.html#buildCols",

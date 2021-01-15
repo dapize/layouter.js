@@ -21,12 +21,12 @@ const configs = {
   },
   bridge: false
 };
-const layout = new Layouter(configs);
-console.log('layout.breakPoints: ', layout.breakPoints);
-console.log('layout.sizes:', layout.sizes);
-console.log('layout.cols: ', layout.cols);
+const layouter = new Layouter(configs);
+console.log('layouter.breakPoints: ', layouter.breakPoints);
+console.log('layouter.sizes:', layouter.sizes);
+console.log('layouter.cols: ', layouter.cols);
 const myDiv = document.querySelector('.my-div');
-console.log('layout.getParameters', layout.getParameters(myDiv));
+console.log('layouter.getParameters', layouter.getParameters(myDiv));
 
 /*
 // Columns
@@ -43,18 +43,18 @@ layout.setFlex(myDiv);
 */
 
 // Procesar todo
-layout.set(myDiv);
-console.dir(layout.styles);
+layouter.set(myDiv);
+console.dir(layouter.styles);
 
 // Title
 Array.prototype.forEach.call(document.querySelectorAll('h3'), function (title) {
-  layout.set(title);
+  layouter.set(title);
 });
 
 // BOX LIST
-layout.set(document.querySelector('.box-list'))
+layouter.set(document.querySelector('.box-list'))
 Array.prototype.forEach.call(document.querySelectorAll('.box-list li'), function (li) {
-  layout.set(li);
+  layouter.set(li);
 });
 
-console.log(layout);
+console.log(layouter);
