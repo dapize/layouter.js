@@ -58,7 +58,7 @@ const myConfig = {
   bridge: false
 };
 
-const layout = new Layouter(myConfig);
+const layouter = new Layouter(myConfig);
 ```
 ### Propiedades del objeto de configuración:
 - **prefix**: Sirve para determinar el prefijo que tendrán el nombre de las clases que se crearán. Esta propiedad es opcional.
@@ -127,6 +127,7 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
 
   - [buildFlex](#BuildFlex)
 - [getParameters](#getParameters)
+- [reset](#reset)
 
 
 
@@ -755,7 +756,7 @@ Sirve para procesar todos los valores de todos los atributos aceptados por el si
 
 #### Sintaxis
 ```javascript
-layout.build(Object);
+layouter.build(Object);
 
 // Object Syntax
 {
@@ -765,7 +766,7 @@ layout.build(Object);
 
 #### Ejemplo:
 ```javascript
-layout.build({
+layouter.build({
   flex: 'jc:ce ai:ce',
   cols: '3/13 21/21@sm 27/27@md',
   mar: '0-2/13-0-0@-sm 0-0-20-0@sm',
@@ -800,11 +801,11 @@ Sirve para procesar solamente las columnas:
 
 #### Sintaxis
 ```javascript
-layout.buildCols(String);
+layouter.buildCols(String);
 ```
 #### Ejemplo:
 ```javascript
-layout.buildCols('3/13 21/21@sm 27/27@md')
+layouter.buildCols('3/13 21/21@sm 27/27@md')
 ```
 
 ...y nos devuelve este objeto:
@@ -834,7 +835,7 @@ Tambien es posible obtener los parametros definidos en un elemento, digamos, ten
 
 ```javascript
 const myDiv = document.querySelector('div');
-layout.getParameters(myDiv);
+layouter.getParameters(myDiv);
 
 // Obtendremos un objeto así...
 
@@ -846,13 +847,29 @@ layout.getParameters(myDiv);
 }
 ```
 
+### Reset
+Si por cualquier motivo necesitamos remover todas las clases tipo layouter sobre un nodo, podemos usar el método 'reset', el cual devolverá un array con todas las clases removidas.
+> Las clases se removerán del nodo pero seguirán disponibles para el uso en cualquier otro nodo.
+
+```javascript
+const myDiv = document.querySelector('div');
+myDiv.className = 'my-div pad-10-1/15 pad-20-3/31@sm test pad-30-2/31@md mar-0-0-40'
+layouter.reset(myDiv);
+
+// Obtendremos un array con los siguientes elementos...
+['pad-10-1/15', 'pad-20-3/31@sm', 'pad-30-2/31@md', 'mar-0-0-4']
+
+// y el nodo se quedará solo con dos clases
+myDiv.className => 'my-div test'
+```
+
 ### Extra:
 Es posible adicionar un segundo argumento a todos los métodos que comienzan con 'set', el cual es un objeto con los parametros obtenidos, aunque este uso no es comun ya que se realiza de forma automática cuando se usa el método 'set', veamos un ejemplo:
 
 Si por alguna razón hemos obtenido previamente los parametros de un DIV y luego queremos determinarle las columnas, hacemos esto:
 ```javascript
 const myDiv = document.querySelector('div');
-const myParameters = layout.getParameters(myDiv);
+const myParameters = layouter.getParameters(myDiv);
 layouter.setCols(myDiv, myParameters);
 ```
 Se obtendrá el mismo resultado que cuando no le pases los parametros, pero puedes ahorrar un proceso más al sistema.
@@ -868,10 +885,10 @@ Para fines varios, se tiene acceso a los siguientes getters de la instancia:
 > Tomando en cuenta el último ejemplo dado, los getters nos devolverán lo siguiente:
 
 ```javascript
-layout.breakPoints:  [ "xs", "sm", "md", "lg" ]
-layout.sizes: { xs: 0, sm: 768, md: 1024, lg: 1280 }
-layout.cols:  { xs: 15, sm: 31, md: 31, lg: 31 }
-layout.styles: {
+layouter.breakPoints:  [ "xs", "sm", "md", "lg" ]
+layouter.sizes: { xs: 0, sm: 768, md: 1024, lg: 1280 }
+layouter.cols:  { xs: 15, sm: 31, md: 31, lg: 31 }
+layouter.styles: {
   "cols-10\\/31@sm-md": "@media screen and (min-width: 768px) and (max-width: 1023px){.cols-10\\/31\\@sm-md{width:32.25806451612903%}}"
   "cols-13\\/15": ".cols-13\\/15{width:86.66666666666667%}"
   "cols-15\\/27@md": "@media screen and (min-width: 1024px){.cols-15\\/27\\@md{width:55.55555555555556%}}"

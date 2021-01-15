@@ -73,6 +73,55 @@ Layouter.prototype.getParameters = function (Node) {
 };
 
 /**
+ * Remueve las clases de tipo layouter de cualquier nodo pasado
+ * @memberof Layouter
+ * @param {Object} Nodo Nodo al cual remover las clases
+ * @returns {Array} Las clases remover.
+ */
+Layouter.prototype.reset = function (Node) {
+  if (!Node) return uLayouter.regError('Non-existent Node', "Don't exists the Node for processing.");
+  if (!Node.className) {
+    uLayouter.debug({
+      type: 'i',
+      print: this.debug,
+      message: "The Node passed haven't any CSS class",
+      data: Node
+    });
+    return classesList
+  };
+  let nPrex, prex;
+  const layouterClasses = Object.keys(uLayouter.processors);
+  const restClass = [];
+  const classList = Node.className.split(' ')
+    .filter(function (name) {
+      if (name.length < 4) {
+        restClass.push(name);
+        return false; 
+      }
+      nPrex = name.length >= 5 ? 5 : 4;
+      prex = name.substring(0, nPrex);
+      let lineIndex = prex.split('').indexOf('-');
+      if (lineIndex === -1) {
+        restClass.push(name);
+        return false;
+      }
+      prex = prex.substring(0, lineIndex);
+      if (layouterClasses.indexOf(prex) !== -1) {
+        return true;
+      } else {
+        restClass.push(name);
+        return false;
+      }
+    });
+  if (restClass.length) {
+    Node.className = restClass.join(' ');
+  } else {
+    Node.removeAttribute('class');
+  }
+  return classList;
+};
+
+/**
  * Construye las columnas requeridas, devolviendo el nombre de clase y los estilos creados.
  * @memberof Layouter
  * @param {String} valCols columnas a procesar
