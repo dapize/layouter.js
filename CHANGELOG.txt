@@ -55,3 +55,6 @@ v1.6.3Beta
 
 v1.6.4Beta
 - Se mejoró el tratado de la inserción de los estilos, ahora estos son separados, antes solo existía el tag STYLE con ID 'Layouter', ahora hay uno por cada breakpoint.
+
+v1.6.5Beta
+- Se definió un nuevo método llamado 'reset', para remover las clases tipo layouter de cualquier nodo procesado.
