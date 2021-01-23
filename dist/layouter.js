@@ -304,8 +304,17 @@ const uLayouter = {
     r: 'row',
     rr: 'row-reverse',
     co: 'column',
-    cor: 'column-reverse'
+    cor: 'column-reverse',
+    fg: 'flex-grow',
+    fh: 'flex-shrink',
+    as: 'align-self',
+    or: 'order'
   },
+
+  /**
+   * Define los atributos de flex que no dependen del mismo.
+   */
+  flexAttrsSelf: ['fg', 'fh', 'as', 'or'],
   
   /**
    * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
@@ -319,15 +328,18 @@ const uLayouter = {
     const prefix = instance.prefix;
     const prop = this.processors[type].ruleCss;
     const styles = {};
-    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal;
+    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal, shortNameClass;
+    const _this = this;
     Object.keys(bps).forEach(function (bp) {
       // preparing the className
-      nameClass = prefix + type + '-' + bps[bp].name;
+      shortNameClass = bps[bp].name;
+      nameClass = prefix + type + '-' + shortNameClass;
       nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
 
       // Property and value
       if (type === 'flex') {
-        propAndVal = bps[bp].value + ';display: flex;';
+        propAndVal = bps[bp].value;
+        if (_this.flexAttrsSelf.indexOf(shortNameClass.split(':')[0]) === -1)  propAndVal += ';display: flex;';
       } else {
         propAndVal = prop +  ':' + bps[bp].value;
       }
@@ -688,7 +700,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.6.5Beta'
+Layouter.version = '1.6.6Beta'
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible
  * @memberof Layouter
@@ -1135,15 +1147,19 @@ Layouter.prototype.buildFlex = function (valFlex, insertStyles) {
 
     flexSplited = param.split(':');
     nameProp = flexSplited[0];
-    if (uLayouter.flexpv.hasOwnProperty(nameProp)) {
-      valProp = flexSplited[1];
-      if (uLayouter.flexpv.hasOwnProperty(valProp)) {
-        propVal = uLayouter.flexpv[nameProp] + ':' + uLayouter.flexpv[flexSplited[1]]
+    valProp = flexSplited[1];
+    if (uLayouter.flexAttrsSelf.indexOf(nameProp) === -1) { // ignoring the flex attrs selfs
+      if (uLayouter.flexpv.hasOwnProperty(nameProp)) {
+        if (uLayouter.flexpv.hasOwnProperty(valProp)) {
+          propVal = uLayouter.flexpv[nameProp] + ':' + uLayouter.flexpv[valProp];
+        } else {
+          return uLayouter.regError('Non-existent Alias 1', "Don't exists the alias '" + valProp + "' in Flex vault.");
+        }
       } else {
-        return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + valProp + "' in Flex vault.");
+        return uLayouter.regError('Non-existent Alias 2', "Don't exists the alias '" + nameProp + "' in Flex vault.");
       }
     } else {
-      return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + nameProp + "' in Flex vault.");
+      propVal = uLayouter.flexpv[nameProp] + ':' + valProp;
     }
 
     if (bpCals.hasOwnProperty(bpNameS)) {

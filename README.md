@@ -599,6 +599,10 @@ Este es el parametro más interesante, porque es el que determina el 'display' d
 - rr: row-reverse
 - co: column
 - cor: column-reverse
+- fg: flex-grow
+- fh: flex-shrink
+- as: align-self
+- or: order
 
 #### Ejemplo:
 ```html
