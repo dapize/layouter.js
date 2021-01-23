@@ -33,4 +33,11 @@ describe('Setting Flex', () => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
     });
   });
+
+  it('Attributes for Flex Items', () => {
+    const myDiv = document.createElement('div');
+    myDiv.setAttribute('flex', 'fg:1 fh:1 as:ce or:1');
+    Layouter.setFlex(myDiv);
+    expect(myDiv.classList.contains('flex-fg:1-fh:1-as:ce-or:1@xs')).toBeTruthy();
+  });
 });

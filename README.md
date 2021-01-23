@@ -603,6 +603,11 @@ Este es el parametro más interesante, porque es el que determina el 'display' d
 - fh: flex-shrink
 - as: align-self
 - or: order
+- au: auto
+- st: stretch
+- bl: baseline
+- in: initial
+- ih: inheri
 
 #### Ejemplo:
 ```html

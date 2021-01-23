@@ -450,10 +450,10 @@ Layouter.prototype.buildFlex = function (valFlex, insertStyles) {
         if (uLayouter.flexpv.hasOwnProperty(valProp)) {
           propVal = uLayouter.flexpv[nameProp] + ':' + uLayouter.flexpv[valProp];
         } else {
-          return uLayouter.regError('Non-existent Alias 1', "Don't exists the alias '" + valProp + "' in Flex vault.");
+          return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + valProp + "' in Flex vault.");
         }
       } else {
-        return uLayouter.regError('Non-existent Alias 2', "Don't exists the alias '" + nameProp + "' in Flex vault.");
+        return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + nameProp + "' in Flex vault.");
       }
     } else {
       propVal = uLayouter.flexpv[nameProp] + ':' + valProp;

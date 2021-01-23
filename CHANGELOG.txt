@@ -60,4 +60,4 @@ v1.6.5Beta
 - Se definió un nuevo método llamado 'reset', para remover las clases tipo layouter de cualquier nodo procesado.
 
 v1.6.6Beta
-- Se añade atributos para los flex items: flex-grow, flex-shrink, align-self y order.
+- Se añade atributos para los flex items: flex-grow, flex-shrink, align-self, order y sus alias para sus respectivos valores.
