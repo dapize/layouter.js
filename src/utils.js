@@ -276,8 +276,22 @@ const uLayouter = {
     r: 'row',
     rr: 'row-reverse',
     co: 'column',
-    cor: 'column-reverse'
+    cor: 'column-reverse',
+    fg: 'flex-grow',
+    fh: 'flex-shrink',
+    as: 'align-self',
+    or: 'order',
+    au: 'auto',
+    st: 'stretch',
+    bl: 'baseline',
+    in: 'initial',
+    ih: 'inherit'
   },
+
+  /**
+   * Define los atributos de flex que no dependen del mismo.
+   */
+  flexAttrsSelf: ['fg', 'fh', 'or'],
   
   /**
    * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
@@ -291,15 +305,19 @@ const uLayouter = {
     const prefix = instance.prefix;
     const prop = this.processors[type].ruleCss;
     const styles = {};
-    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal;
+    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal, shortNameClass, pureShortName;
+    const _this = this;
     Object.keys(bps).forEach(function (bp) {
       // preparing the className
-      nameClass = prefix + type + '-' + bps[bp].name;
+      shortNameClass = bps[bp].name;
+      nameClass = prefix + type + '-' + shortNameClass;
       nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
 
       // Property and value
       if (type === 'flex') {
-        propAndVal = bps[bp].value + ';display: flex;';
+        propAndVal = bps[bp].value;
+        pureShortName = shortNameClass.split(':')[0];
+        if (_this.flexAttrsSelf.indexOf(pureShortName) === -1 && pureShortName !== 'as') propAndVal += ';display: flex;';
       } else {
         propAndVal = prop +  ':' + bps[bp].value;
       }

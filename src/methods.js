@@ -444,15 +444,19 @@ Layouter.prototype.buildFlex = function (valFlex, insertStyles) {
 
     flexSplited = param.split(':');
     nameProp = flexSplited[0];
-    if (uLayouter.flexpv.hasOwnProperty(nameProp)) {
-      valProp = flexSplited[1];
-      if (uLayouter.flexpv.hasOwnProperty(valProp)) {
-        propVal = uLayouter.flexpv[nameProp] + ':' + uLayouter.flexpv[flexSplited[1]]
+    valProp = flexSplited[1];
+    if (uLayouter.flexAttrsSelf.indexOf(nameProp) === -1) { // ignoring the flex attrs selfs
+      if (uLayouter.flexpv.hasOwnProperty(nameProp)) {
+        if (uLayouter.flexpv.hasOwnProperty(valProp)) {
+          propVal = uLayouter.flexpv[nameProp] + ':' + uLayouter.flexpv[valProp];
+        } else {
+          return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + valProp + "' in Flex vault.");
+        }
       } else {
-        return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + valProp + "' in Flex vault.");
+        return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + nameProp + "' in Flex vault.");
       }
     } else {
-      return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + nameProp + "' in Flex vault.");
+      propVal = uLayouter.flexpv[nameProp] + ':' + valProp;
     }
 
     if (bpCals.hasOwnProperty(bpNameS)) {
