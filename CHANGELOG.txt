@@ -56,11 +56,11 @@ v1.6.3Beta
 v1.6.4Beta
 - Se mejoró el tratado de la inserción de los estilos, ahora estos son separados, antes solo existía el tag STYLE con ID 'Layouter', ahora hay uno por cada breakpoint.
 
-v1.6.5Beta
+v1.7.0Beta
 - Se definió un nuevo método llamado 'reset', para remover las clases tipo layouter de cualquier nodo procesado.
 
-v1.6.6Beta
+v1.8.0Beta
 - Se añade atributos para los flex items: flex-grow, flex-shrink, align-self, order y sus alias para sus respectivos valores.
 
-v1.6.7Beta
+v1.9.0Beta
 - Se añade un nuevo flag '!' para definir que los estilos aplicados se declaren con !important.
