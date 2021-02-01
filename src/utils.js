@@ -72,6 +72,7 @@ const uLayouter = {
   prepareParam: function (param, objBps) {
     let bp;
     let argParam = param;
+    let important = false;
     const haveBp = this.haveBreakPoint(argParam);
     if (haveBp) {
       const bpSplited = argParam.split('@');
@@ -84,11 +85,19 @@ const uLayouter = {
       } else {
         return this.regError("without 'direct' breakpoint", "Don't exists a breakpoint with 'direct' designation.");
       }
-    }
+    };
+
+    if (param.indexOf('!') !== -1) {
+      important = true;
+      bp = bp.replace(/!/g, '');
+      argParam = argParam.replace(/!/g, '');
+    };
+
     return {
       widthBp: haveBp,
       numbers: argParam,
-      breakPoints: bp
+      breakPoints: bp,
+      important: important
     }
   },
 
@@ -294,64 +303,6 @@ const uLayouter = {
   flexAttrsSelf: ['fg', 'fh', 'or'],
   
   /**
-   * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
-   * @memberof uLayouter
-   * @param {String} type Tipo de estilos a dar: 'cols', 'pad', 'mar' o 'flex'
-   * @param {Object} bps Objeto de breakpoints registrados
-   * @param {Object} instance La instancia creada, el objeto mismo.
-   */
-  createStyles: function (type, bps, instance) {
-    const sizes = instance.sizes;
-    const prefix = instance.prefix;
-    const prop = this.processors[type].ruleCss;
-    const styles = {};
-    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal, shortNameClass, pureShortName;
-    const _this = this;
-    Object.keys(bps).forEach(function (bp) {
-      // preparing the className
-      shortNameClass = bps[bp].name;
-      nameClass = prefix + type + '-' + shortNameClass;
-      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
-
-      // Property and value
-      if (type === 'flex') {
-        propAndVal = bps[bp].value;
-        pureShortName = shortNameClass.split(':')[0];
-        if (_this.flexAttrsSelf.indexOf(pureShortName) === -1 && pureShortName !== 'as') propAndVal += ';display: flex;';
-      } else {
-        propAndVal = prop +  ':' + bps[bp].value;
-      }
-
-      rule = '@media screen and ';
-      if (bp.indexOf('-') === -1) { // no tiene unti
-        if (sizes[bp]) {
-          rule += '(min-width: ' + sizes[bp] + 'px)';
-        } else {
-          rule = '.' + nameClass + '{' + propAndVal + '}';
-          direct = true;
-        }
-      } else { 
-        bpSplited = bp.split('-');
-        bp1 = bpSplited[0];
-        if (bp1) rule += '(min-width: ' + sizes[bp1] + 'px) and ';
-        bp2 = bpSplited[1];
-        rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
-      }
-
-      if (!direct) rule += '{.' + nameClass + '{' + propAndVal + '}}';
-      direct = false;
-      styles[nameClass] = rule;
-    });
-    this.debug({
-      type: 'i',
-      print: instance.debug,
-      message: 'Creating / Created Styles: ',
-      data: [bps, styles]
-    });
-    return styles;
-  },
-
-  /**
    * Crea el scope para un BP determinado.
    * @memberof uLayouter
    * @param {Object} config Configuración determinada.
@@ -426,7 +377,8 @@ const uLayouter = {
    */
   getScopeByclassName: function (className, instance) {
     const bps = instance.breakPoints;
-    const atIndex = className.indexOf('@');
+    const nameClass = className.replace(/!/g, '');
+    const atIndex = nameClass.indexOf('@');
 
     // Haven´t a BP designed
     if (atIndex === -1) {
@@ -435,7 +387,7 @@ const uLayouter = {
     };
 
     // Have a BP designed, a normal BP.
-    const bp = className.substring(atIndex + 1);
+    const bp = nameClass.substring(atIndex + 1);
     if (bp.indexOf('-') === -1) return instance.scope[bp]; // A simple BP, not compound (like this: 13/15@sm-md).
 
     // For the nexts types insertions
@@ -454,32 +406,10 @@ const uLayouter = {
 
     // A BP from and until (a BP Compount). Example: Example 13/15@sm-md
     if (instance.scope.hasOwnProperty(bp)) return instance.scope[bp]; // exists the Scope.
+    
     const fromBp = bp.split('-')[0];
     instance.scope[bp] = this.createScopeStyles(smallConfig, bp, 'after', instance.scope[fromBp].node);
     return instance.scope[bp]; // returning a new scope compounted created
-  },
-
-  /**
-   * Agrega las reglas CSS para darle estilos a los nodos
-   * @memberof uLayouter
-   * @param {Object} objStyles Objeto de reglas css junto con su nombre de clase.
-   * @param {Object} instance Instancia iniciada del layouter.
-   */
-  insertRules: function (objStyles, instance) {
-    const _this = this;
-    Object.keys(objStyles).forEach(function (className) {
-      if (!instance.styles.hasOwnProperty(className)) {
-        let nodeScope = _this.getScopeByclassName(className, instance);
-        nodeScope.method.insertRule(objStyles[className], (nodeScope.method.rules ? nodeScope.method.rules.length : 0));
-        instance.styles[className] = objStyles[className]; // saving in styles vault
-      }
-    });
-    this.debug({
-      type: 'i',
-      print: instance.debug,
-      message: 'Inserting Styles: ',
-      data: objStyles
-    });
   },
 
   /**
@@ -545,6 +475,93 @@ const uLayouter = {
   },
 
   /**
+   * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
+   * @memberof uLayouter
+   * @param {String} type Tipo de estilos a dar: 'cols', 'pad', 'mar' o 'flex'
+   * @param {Object} bps Objeto de breakpoints registrados
+   * @param {Object} instance La instancia creada, el objeto mismo.
+   */
+  createStyles: function (type, bps, instance) {
+    const sizes = instance.sizes;
+    const prefix = instance.prefix;
+    const prop = this.processors[type].ruleCss;
+    const styles = {};
+    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal, shortNameClass, pureShortName;
+    const _this = this;
+    Object.keys(bps).forEach(function (bp) {
+      // preparing the className
+      shortNameClass = bps[bp].name;
+      nameClass = prefix + type + '-' + shortNameClass;
+      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
+
+      // Property and value
+      if (type === 'flex') {
+        propAndVal = bps[bp].value;
+        pureShortName = shortNameClass.split(':')[0];
+        if (_this.flexAttrsSelf.indexOf(pureShortName) === -1 && pureShortName !== 'as') {
+          propAndVal += shortNameClass.indexOf('!') !== -1 ? ';display:flex !important;' : ';display:flex;';
+        }
+      } else {
+        propAndVal = prop +  ':' + bps[bp].value;
+      }
+
+      rule = '@media screen and ';
+      if (bp.indexOf('-') === -1) { // no tiene until
+        if (sizes[bp]) {
+          rule += '(min-width: ' + sizes[bp] + 'px)';
+        } else {
+          rule = '.' + nameClass.replace(/!/g, '\\!') + '{' + propAndVal + '}';
+          direct = true;
+        }
+      } else { 
+        bpSplited = bp.split('-');
+        bp1 = bpSplited[0];
+        if (bp1) rule += '(min-width: ' + sizes[bp1] + 'px) and ';
+        bp2 = bpSplited[1];
+        rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
+      }
+
+      if (!direct) rule += '{.' + nameClass.replace(/!/g, '\\!') + '{' + propAndVal + '}}';
+      direct = false;
+      styles[nameClass] = rule;
+    });
+    this.debug({
+      type: 'i',
+      print: instance.debug,
+      message: 'Creating / Created Styles: ',
+      data: [bps, styles]
+    });
+    return styles;
+  },
+
+  /**
+   * Agrega las reglas CSS para darle estilos a los nodos
+   * @memberof uLayouter
+   * @param {Object} objStyles Objeto de reglas css junto con su nombre de clase.
+   * @param {Object} instance Instancia iniciada del layouter.
+   */
+  insertRules: function (objStyles, instance) {
+    const _this = this;
+    Object.keys(objStyles).forEach(function (className) {
+      if (!instance.styles.hasOwnProperty(className)) {
+        let nodeScope = _this.getScopeByclassName(className, instance);
+        if (nodeScope !== undefined) {
+          nodeScope.method.insertRule(objStyles[className], (nodeScope.method.rules ? nodeScope.method.rules.length : 0));
+          instance.styles[className] = objStyles[className]; // saving in styles vault
+        } else {
+          _this.regError('Dont exists scope', "Don't exists a scope valid for '" + className + "'");
+        }
+      }
+    });
+    this.debug({
+      type: 'i',
+      print: instance.debug,
+      message: 'Inserting Styles: ',
+      data: objStyles
+    });
+  },
+
+  /**
    * Construye el nombre de clase y registra las reglas css.
    * @memberof uLayouter
    * @param {Object} data Lista de data para el procesamiento del CSS
@@ -555,7 +572,7 @@ const uLayouter = {
 
     // Inserting CSS rules
     if (data.deep) this.insertRules(objStyles, data.instance);
-    
+
     // name classes cleaner
     return this.nameCleaner(objStyles);
   },
@@ -604,6 +621,7 @@ const uLayouter = {
           return _this.processedNumber(n);
         })
         .join(' ');
+      if (paramProcessed.important) propValue += ' !important';
       if (bpCals.hasOwnProperty(bps)) {
         bpCals[bps].value += ';' + propValue
       } else {
