@@ -551,6 +551,76 @@
           "setflex",
           "y"
         ],
+        "Layouter.html#buildMaxWidth": [
+          "ancho",
+          "buildmaxwidth",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "layouter#buildmaxwidth",
+          "lo",
+          "máximo",
+          "nombr",
+          "object",
+          "valmxw",
+          "y"
+        ],
+        "Layouter.html#setMaxWidth": [
+          "ancho",
+          "el",
+          "function",
+          "layouter#setmaxwidth",
+          "máximo",
+          "necesario",
+          "node",
+          "nodo",
+          "para",
+          "paramet",
+          "setea",
+          "setmaxwidth",
+          "un"
+        ],
+        "Layouter.html#buildMaxHeight": [
+          "alto",
+          "buildmaxheight",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "layouter#buildmaxheight",
+          "lo",
+          "máximo",
+          "nombr",
+          "object",
+          "valmxh",
+          "y"
+        ],
+        "Layouter.html#setMaxHeight": [
+          "alto",
+          "el",
+          "function",
+          "layouter#setmaxheight",
+          "máximo",
+          "necesario",
+          "node",
+          "nodo",
+          "para",
+          "paramet",
+          "setea",
+          "setmaxheight",
+          "un"
+        ],
         "uLayouter.html": [
           "namespac",
           "ulayout",
@@ -943,8 +1013,8 @@
           "ulayouter.settingcss",
           "y"
         ],
-        "uLayouter.html#.buildPadsAndMargs": [
-          "buildpadsandmarg",
+        "uLayouter.html#.buildPadsMargsMaxs": [
+          "buildpadsmargsmax",
           "construy",
           "function",
           "instanc",
@@ -955,10 +1025,10 @@
           "pad",
           "paramet",
           "type",
-          "ulayouter.buildpadsandmarg",
+          "ulayouter.buildpadsmargsmax",
           "y"
         ],
-        "uLayouter.html#.padsAndMargs": [
+        "uLayouter.html#.setPadsMargsMaxs": [
           "function",
           "instanc",
           "lo",
@@ -966,15 +1036,15 @@
           "margen",
           "node",
           "pad",
-          "padsandmarg",
           "paramet",
           "setea",
+          "setpadsmargsmax",
           "type",
-          "ulayouter.padsandmarg",
+          "ulayouter.setpadsmargsmax",
           "y"
         ]
       },
-      "length": 59
+      "length": 63
     },
     "tokenStore": {
       "root": {
@@ -1187,23 +1257,26 @@
                         },
                         "s": {
                           "docs": {},
-                          "a": {
+                          "m": {
                             "docs": {},
-                            "n": {
+                            "a": {
                               "docs": {},
-                              "d": {
+                              "r": {
                                 "docs": {},
-                                "m": {
+                                "g": {
                                   "docs": {},
-                                  "a": {
+                                  "s": {
                                     "docs": {},
-                                    "r": {
+                                    "m": {
                                       "docs": {},
-                                      "g": {
-                                        "docs": {
-                                          "uLayouter.html#.buildPadsAndMargs": {
-                                            "ref": "uLayouter.html#.buildPadsAndMargs",
-                                            "tf": 666.6666666666666
+                                      "a": {
+                                        "docs": {},
+                                        "x": {
+                                          "docs": {
+                                            "uLayouter.html#.buildPadsMargsMaxs": {
+                                              "ref": "uLayouter.html#.buildPadsMargsMaxs",
+                                              "tf": 666.6666666666666
+                                            }
                                           }
                                         }
                                       }
@@ -1296,6 +1369,52 @@
                                   "Layouter.html#buildMarLeft": {
                                     "ref": "Layouter.html#buildMarLeft",
                                     "tf": 675
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "x": {
+                        "docs": {},
+                        "w": {
+                          "docs": {},
+                          "i": {
+                            "docs": {},
+                            "d": {
+                              "docs": {},
+                              "t": {
+                                "docs": {},
+                                "h": {
+                                  "docs": {
+                                    "Layouter.html#buildMaxWidth": {
+                                      "ref": "Layouter.html#buildMaxWidth",
+                                      "tf": 675
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "h": {
+                          "docs": {},
+                          "e": {
+                            "docs": {},
+                            "i": {
+                              "docs": {},
+                              "g": {
+                                "docs": {},
+                                "h": {
+                                  "docs": {},
+                                  "t": {
+                                    "docs": {
+                                      "Layouter.html#buildMaxHeight": {
+                                        "ref": "Layouter.html#buildMaxHeight",
+                                        "tf": 675
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -1557,6 +1676,22 @@
                             "ref": "Layouter.html#setFlex",
                             "tf": 110
                           },
+                          "Layouter.html#buildMaxWidth": {
+                            "ref": "Layouter.html#buildMaxWidth",
+                            "tf": 110
+                          },
+                          "Layouter.html#setMaxWidth": {
+                            "ref": "Layouter.html#setMaxWidth",
+                            "tf": 110
+                          },
+                          "Layouter.html#buildMaxHeight": {
+                            "ref": "Layouter.html#buildMaxHeight",
+                            "tf": 110
+                          },
+                          "Layouter.html#setMaxHeight": {
+                            "ref": "Layouter.html#setMaxHeight",
+                            "tf": 110
+                          },
                           "uLayouter.html#.getNums": {
                             "ref": "uLayouter.html#.getNums",
                             "tf": 110
@@ -1633,12 +1768,12 @@
                             "ref": "uLayouter.html#.settingCss",
                             "tf": 110
                           },
-                          "uLayouter.html#.buildPadsAndMargs": {
-                            "ref": "uLayouter.html#.buildPadsAndMargs",
+                          "uLayouter.html#.buildPadsMargsMaxs": {
+                            "ref": "uLayouter.html#.buildPadsMargsMaxs",
                             "tf": 110
                           },
-                          "uLayouter.html#.padsAndMargs": {
-                            "ref": "uLayouter.html#.padsAndMargs",
+                          "uLayouter.html#.setPadsMargsMaxs": {
+                            "ref": "uLayouter.html#.setPadsMargsMaxs",
                             "tf": 110
                           }
                         }
@@ -1883,6 +2018,14 @@
                               "Layouter.html#buildFlex": {
                                 "ref": "Layouter.html#buildFlex",
                                 "tf": 25
+                              },
+                              "Layouter.html#buildMaxWidth": {
+                                "ref": "Layouter.html#buildMaxWidth",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildMaxHeight": {
+                                "ref": "Layouter.html#buildMaxHeight",
+                                "tf": 25
                               }
                             }
                           }
@@ -1961,12 +2104,12 @@
                           "ref": "uLayouter.html#.insertRules",
                           "tf": 25
                         },
-                        "uLayouter.html#.buildPadsAndMargs": {
-                          "ref": "uLayouter.html#.buildPadsAndMargs",
+                        "uLayouter.html#.buildPadsMargsMaxs": {
+                          "ref": "uLayouter.html#.buildPadsMargsMaxs",
                           "tf": 16.666666666666664
                         },
-                        "uLayouter.html#.padsAndMargs": {
-                          "ref": "uLayouter.html#.padsAndMargs",
+                        "uLayouter.html#.setPadsMargsMaxs": {
+                          "ref": "uLayouter.html#.setPadsMargsMaxs",
                           "tf": 16.666666666666664
                         }
                       }
@@ -2614,12 +2757,12 @@
                     "ref": "uLayouter.html#.createStyles",
                     "tf": 20
                   },
-                  "uLayouter.html#.buildPadsAndMargs": {
-                    "ref": "uLayouter.html#.buildPadsAndMargs",
+                  "uLayouter.html#.buildPadsMargsMaxs": {
+                    "ref": "uLayouter.html#.buildPadsMargsMaxs",
                     "tf": 16.666666666666664
                   },
-                  "uLayouter.html#.padsAndMargs": {
-                    "ref": "uLayouter.html#.padsAndMargs",
+                  "uLayouter.html#.setPadsMargsMaxs": {
+                    "ref": "uLayouter.html#.setPadsMargsMaxs",
                     "tf": 16.666666666666664
                   }
                 }
@@ -2724,6 +2867,14 @@
               "Layouter.html#buildFlex": {
                 "ref": "Layouter.html#buildFlex",
                 "tf": 4.545454545454546
+              },
+              "Layouter.html#buildMaxWidth": {
+                "ref": "Layouter.html#buildMaxWidth",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMaxHeight": {
+                "ref": "Layouter.html#buildMaxHeight",
+                "tf": 3.8461538461538463
               },
               "uLayouter.html#.processors": {
                 "ref": "uLayouter.html#.processors",
@@ -2917,6 +3068,14 @@
                                 },
                                 "Layouter.html#buildMarLeft": {
                                   "ref": "Layouter.html#buildMarLeft",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildMaxWidth": {
+                                  "ref": "Layouter.html#buildMaxWidth",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildMaxHeight": {
+                                  "ref": "Layouter.html#buildMaxHeight",
                                   "tf": 3.8461538461538463
                                 }
                               }
@@ -3508,6 +3667,14 @@
                       "ref": "Layouter.html#buildFlex",
                       "tf": 4.545454545454546
                     },
+                    "Layouter.html#buildMaxWidth": {
+                      "ref": "Layouter.html#buildMaxWidth",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMaxHeight": {
+                      "ref": "Layouter.html#buildMaxHeight",
+                      "tf": 3.8461538461538463
+                    },
                     "uLayouter.html#.replaceList": {
                       "ref": "uLayouter.html#.replaceList",
                       "tf": 5
@@ -3614,12 +3781,20 @@
                             "ref": "Layouter.html#buildFlex",
                             "tf": 4.545454545454546
                           },
+                          "Layouter.html#buildMaxWidth": {
+                            "ref": "Layouter.html#buildMaxWidth",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildMaxHeight": {
+                            "ref": "Layouter.html#buildMaxHeight",
+                            "tf": 3.8461538461538463
+                          },
                           "uLayouter.html#.buildCss": {
                             "ref": "uLayouter.html#.buildCss",
                             "tf": 5
                           },
-                          "uLayouter.html#.buildPadsAndMargs": {
-                            "ref": "uLayouter.html#.buildPadsAndMargs",
+                          "uLayouter.html#.buildPadsMargsMaxs": {
+                            "ref": "uLayouter.html#.buildPadsMargsMaxs",
                             "tf": 10
                           }
                         }
@@ -3873,6 +4048,14 @@
                       },
                       "Layouter.html#buildMarLeft": {
                         "ref": "Layouter.html#buildMarLeft",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMaxWidth": {
+                        "ref": "Layouter.html#buildMaxWidth",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMaxHeight": {
+                        "ref": "Layouter.html#buildMaxHeight",
                         "tf": 3.8461538461538463
                       }
                     }
@@ -4472,6 +4655,52 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "x": {
+                                      "docs": {},
+                                      "w": {
+                                        "docs": {},
+                                        "i": {
+                                          "docs": {},
+                                          "d": {
+                                            "docs": {},
+                                            "t": {
+                                              "docs": {},
+                                              "h": {
+                                                "docs": {
+                                                  "Layouter.html#setMaxWidth": {
+                                                    "ref": "Layouter.html#setMaxWidth",
+                                                    "tf": 1150
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "h": {
+                                        "docs": {},
+                                        "e": {
+                                          "docs": {},
+                                          "i": {
+                                            "docs": {},
+                                            "g": {
+                                              "docs": {},
+                                              "h": {
+                                                "docs": {},
+                                                "t": {
+                                                  "docs": {
+                                                    "Layouter.html#setMaxHeight": {
+                                                      "ref": "Layouter.html#setMaxHeight",
+                                                      "tf": 1150
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
                                     }
                                   }
                                 },
@@ -4697,6 +4926,52 @@
                                               }
                                             }
                                           }
+                                        },
+                                        "x": {
+                                          "docs": {},
+                                          "w": {
+                                            "docs": {},
+                                            "i": {
+                                              "docs": {},
+                                              "d": {
+                                                "docs": {},
+                                                "t": {
+                                                  "docs": {},
+                                                  "h": {
+                                                    "docs": {
+                                                      "Layouter.html#buildMaxWidth": {
+                                                        "ref": "Layouter.html#buildMaxWidth",
+                                                        "tf": 1150
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "h": {
+                                            "docs": {},
+                                            "e": {
+                                              "docs": {},
+                                              "i": {
+                                                "docs": {},
+                                                "g": {
+                                                  "docs": {},
+                                                  "h": {
+                                                    "docs": {},
+                                                    "t": {
+                                                      "docs": {
+                                                        "Layouter.html#buildMaxHeight": {
+                                                          "ref": "Layouter.html#buildMaxHeight",
+                                                          "tf": 1150
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
                                         }
                                       }
                                     },
@@ -4855,6 +5130,14 @@
                 "ref": "Layouter.html#buildMarLeft",
                 "tf": 3.8461538461538463
               },
+              "Layouter.html#buildMaxWidth": {
+                "ref": "Layouter.html#buildMaxWidth",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMaxHeight": {
+                "ref": "Layouter.html#buildMaxHeight",
+                "tf": 3.8461538461538463
+              },
               "uLayouter.html#.flexAttrsSelf": {
                 "ref": "uLayouter.html#.flexAttrsSelf",
                 "tf": 5.555555555555555
@@ -4891,12 +5174,12 @@
                 "ref": "uLayouter.html#.settingCss",
                 "tf": 3.571428571428571
               },
-              "uLayouter.html#.buildPadsAndMargs": {
-                "ref": "uLayouter.html#.buildPadsAndMargs",
+              "uLayouter.html#.buildPadsMargsMaxs": {
+                "ref": "uLayouter.html#.buildPadsMargsMaxs",
                 "tf": 10
               },
-              "uLayouter.html#.padsAndMargs": {
-                "ref": "uLayouter.html#.padsAndMargs",
+              "uLayouter.html#.setPadsMargsMaxs": {
+                "ref": "uLayouter.html#.setPadsMargsMaxs",
                 "tf": 10
               }
             }
@@ -5033,12 +5316,12 @@
                                     "ref": "uLayouter.html#.settingCss",
                                     "tf": 33.33333333333333
                                   },
-                                  "uLayouter.html#.buildPadsAndMargs": {
-                                    "ref": "uLayouter.html#.buildPadsAndMargs",
+                                  "uLayouter.html#.buildPadsMargsMaxs": {
+                                    "ref": "uLayouter.html#.buildPadsMargsMaxs",
                                     "tf": 16.666666666666664
                                   },
-                                  "uLayouter.html#.padsAndMargs": {
-                                    "ref": "uLayouter.html#.padsAndMargs",
+                                  "uLayouter.html#.setPadsMargsMaxs": {
+                                    "ref": "uLayouter.html#.setPadsMargsMaxs",
                                     "tf": 16.666666666666664
                                   }
                                 }
@@ -5194,6 +5477,14 @@
                     "ref": "Layouter.html#setFlex",
                     "tf": 33.33333333333333
                   },
+                  "Layouter.html#setMaxWidth": {
+                    "ref": "Layouter.html#setMaxWidth",
+                    "tf": 33.33333333333333
+                  },
+                  "Layouter.html#setMaxHeight": {
+                    "ref": "Layouter.html#setMaxHeight",
+                    "tf": 33.33333333333333
+                  },
                   "uLayouter.html#.createScopeStyles": {
                     "ref": "uLayouter.html#.createScopeStyles",
                     "tf": 14.285714285714285
@@ -5202,12 +5493,12 @@
                     "ref": "uLayouter.html#.addClasses",
                     "tf": 20
                   },
-                  "uLayouter.html#.buildPadsAndMargs": {
-                    "ref": "uLayouter.html#.buildPadsAndMargs",
+                  "uLayouter.html#.buildPadsMargsMaxs": {
+                    "ref": "uLayouter.html#.buildPadsMargsMaxs",
                     "tf": 16.666666666666664
                   },
-                  "uLayouter.html#.padsAndMargs": {
-                    "ref": "uLayouter.html#.padsAndMargs",
+                  "uLayouter.html#.setPadsMargsMaxs": {
+                    "ref": "uLayouter.html#.setPadsMargsMaxs",
                     "tf": 16.666666666666664
                   }
                 }
@@ -5268,6 +5559,14 @@
                   },
                   "Layouter.html#setMarLeft": {
                     "ref": "Layouter.html#setMarLeft",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMaxWidth": {
+                    "ref": "Layouter.html#setMaxWidth",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMaxHeight": {
+                    "ref": "Layouter.html#setMaxHeight",
                     "tf": 6.25
                   },
                   "uLayouter.html#.getScopeByclassName": {
@@ -5342,6 +5641,14 @@
                     "Layouter.html#buildFlex": {
                       "ref": "Layouter.html#buildFlex",
                       "tf": 4.545454545454546
+                    },
+                    "Layouter.html#buildMaxWidth": {
+                      "ref": "Layouter.html#buildMaxWidth",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMaxHeight": {
+                      "ref": "Layouter.html#buildMaxHeight",
+                      "tf": 3.8461538461538463
                     },
                     "uLayouter.html#.replaceList": {
                       "ref": "uLayouter.html#.replaceList",
@@ -5422,6 +5729,14 @@
                             },
                             "Layouter.html#setMarLeft": {
                               "ref": "Layouter.html#setMarLeft",
+                              "tf": 6.25
+                            },
+                            "Layouter.html#setMaxWidth": {
+                              "ref": "Layouter.html#setMaxWidth",
+                              "tf": 6.25
+                            },
+                            "Layouter.html#setMaxHeight": {
+                              "ref": "Layouter.html#setMaxHeight",
                               "tf": 6.25
                             }
                           }
@@ -5534,12 +5849,12 @@
                         "ref": "Layouter.html#buildMarLeft",
                         "tf": 3.8461538461538463
                       },
-                      "uLayouter.html#.buildPadsAndMargs": {
-                        "ref": "uLayouter.html#.buildPadsAndMargs",
+                      "uLayouter.html#.buildPadsMargsMaxs": {
+                        "ref": "uLayouter.html#.buildPadsMargsMaxs",
                         "tf": 10
                       },
-                      "uLayouter.html#.padsAndMargs": {
-                        "ref": "uLayouter.html#.padsAndMargs",
+                      "uLayouter.html#.setPadsMargsMaxs": {
+                        "ref": "uLayouter.html#.setPadsMargsMaxs",
                         "tf": 10
                       }
                     }
@@ -5583,6 +5898,38 @@
                     "uLayouter.html#.getBpsOrdered": {
                       "ref": "uLayouter.html#.getBpsOrdered",
                       "tf": 4.166666666666666
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "á": {
+            "docs": {},
+            "x": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "m": {
+                  "docs": {},
+                  "o": {
+                    "docs": {
+                      "Layouter.html#buildMaxWidth": {
+                        "ref": "Layouter.html#buildMaxWidth",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#setMaxWidth": {
+                        "ref": "Layouter.html#setMaxWidth",
+                        "tf": 6.25
+                      },
+                      "Layouter.html#buildMaxHeight": {
+                        "ref": "Layouter.html#buildMaxHeight",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#setMaxHeight": {
+                        "ref": "Layouter.html#setMaxHeight",
+                        "tf": 6.25
+                      }
                     }
                   }
                 }
@@ -5859,8 +6206,16 @@
                       "ref": "Layouter.html#setFlex",
                       "tf": 6.25
                     },
-                    "uLayouter.html#.padsAndMargs": {
-                      "ref": "uLayouter.html#.padsAndMargs",
+                    "Layouter.html#setMaxWidth": {
+                      "ref": "Layouter.html#setMaxWidth",
+                      "tf": 6.25
+                    },
+                    "Layouter.html#setMaxHeight": {
+                      "ref": "Layouter.html#setMaxHeight",
+                      "tf": 6.25
+                    },
+                    "uLayouter.html#.setPadsMargsMaxs": {
+                      "ref": "uLayouter.html#.setPadsMargsMaxs",
                       "tf": 10
                     }
                   }
@@ -5950,6 +6305,38 @@
                           }
                         }
                       }
+                    },
+                    "s": {
+                      "docs": {},
+                      "m": {
+                        "docs": {},
+                        "a": {
+                          "docs": {},
+                          "r": {
+                            "docs": {},
+                            "g": {
+                              "docs": {},
+                              "s": {
+                                "docs": {},
+                                "m": {
+                                  "docs": {},
+                                  "a": {
+                                    "docs": {},
+                                    "x": {
+                                      "docs": {
+                                        "uLayouter.html#.setPadsMargsMaxs": {
+                                          "ref": "uLayouter.html#.setPadsMargsMaxs",
+                                          "tf": 666.6666666666666
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -6033,6 +6420,52 @@
                               "Layouter.html#setMarLeft": {
                                 "ref": "Layouter.html#setMarLeft",
                                 "tf": 683.3333333333334
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x": {
+                    "docs": {},
+                    "w": {
+                      "docs": {},
+                      "i": {
+                        "docs": {},
+                        "d": {
+                          "docs": {},
+                          "t": {
+                            "docs": {},
+                            "h": {
+                              "docs": {
+                                "Layouter.html#setMaxWidth": {
+                                  "ref": "Layouter.html#setMaxWidth",
+                                  "tf": 683.3333333333334
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "h": {
+                      "docs": {},
+                      "e": {
+                        "docs": {},
+                        "i": {
+                          "docs": {},
+                          "g": {
+                            "docs": {},
+                            "h": {
+                              "docs": {},
+                              "t": {
+                                "docs": {
+                                  "Layouter.html#setMaxHeight": {
+                                    "ref": "Layouter.html#setMaxHeight",
+                                    "tf": 683.3333333333334
+                                  }
+                                }
                               }
                             }
                           }
@@ -6313,6 +6746,42 @@
               "uLayouter.html#.settingCss": {
                 "ref": "uLayouter.html#.settingCss",
                 "tf": 3.571428571428571
+              }
+            },
+            "t": {
+              "docs": {},
+              "o": {
+                "docs": {
+                  "Layouter.html#buildMaxHeight": {
+                    "ref": "Layouter.html#buildMaxHeight",
+                    "tf": 3.8461538461538463
+                  },
+                  "Layouter.html#setMaxHeight": {
+                    "ref": "Layouter.html#setMaxHeight",
+                    "tf": 6.25
+                  }
+                }
+              }
+            }
+          },
+          "n": {
+            "docs": {},
+            "c": {
+              "docs": {},
+              "h": {
+                "docs": {},
+                "o": {
+                  "docs": {
+                    "Layouter.html#buildMaxWidth": {
+                      "ref": "Layouter.html#buildMaxWidth",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#setMaxWidth": {
+                      "ref": "Layouter.html#setMaxWidth",
+                      "tf": 6.25
+                    }
+                  }
+                }
               }
             }
           },
@@ -6680,6 +7149,14 @@
                     "ref": "Layouter.html#setMarLeft",
                     "tf": 6.25
                   },
+                  "Layouter.html#setMaxWidth": {
+                    "ref": "Layouter.html#setMaxWidth",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMaxHeight": {
+                    "ref": "Layouter.html#setMaxHeight",
+                    "tf": 6.25
+                  },
                   "uLayouter.html#.replaceList": {
                     "ref": "uLayouter.html#.replaceList",
                     "tf": 5
@@ -6768,12 +7245,20 @@
                           "ref": "Layouter.html#setFlex",
                           "tf": 33.33333333333333
                         },
-                        "uLayouter.html#.buildPadsAndMargs": {
-                          "ref": "uLayouter.html#.buildPadsAndMargs",
+                        "Layouter.html#setMaxWidth": {
+                          "ref": "Layouter.html#setMaxWidth",
+                          "tf": 33.33333333333333
+                        },
+                        "Layouter.html#setMaxHeight": {
+                          "ref": "Layouter.html#setMaxHeight",
+                          "tf": 33.33333333333333
+                        },
+                        "uLayouter.html#.buildPadsMargsMaxs": {
+                          "ref": "uLayouter.html#.buildPadsMargsMaxs",
                           "tf": 16.666666666666664
                         },
-                        "uLayouter.html#.padsAndMargs": {
-                          "ref": "uLayouter.html#.padsAndMargs",
+                        "uLayouter.html#.setPadsMargsMaxs": {
+                          "ref": "uLayouter.html#.setPadsMargsMaxs",
                           "tf": 16.666666666666664
                         }
                       },
@@ -6864,42 +7349,13 @@
                   "ref": "uLayouter.html#.prepareParam",
                   "tf": 4.545454545454546
                 },
-                "uLayouter.html#.buildPadsAndMargs": {
-                  "ref": "uLayouter.html#.buildPadsAndMargs",
+                "uLayouter.html#.buildPadsMargsMaxs": {
+                  "ref": "uLayouter.html#.buildPadsMargsMaxs",
                   "tf": 10
                 },
-                "uLayouter.html#.padsAndMargs": {
-                  "ref": "uLayouter.html#.padsAndMargs",
+                "uLayouter.html#.setPadsMargsMaxs": {
+                  "ref": "uLayouter.html#.setPadsMargsMaxs",
                   "tf": 10
-                }
-              },
-              "s": {
-                "docs": {},
-                "a": {
-                  "docs": {},
-                  "n": {
-                    "docs": {},
-                    "d": {
-                      "docs": {},
-                      "m": {
-                        "docs": {},
-                        "a": {
-                          "docs": {},
-                          "r": {
-                            "docs": {},
-                            "g": {
-                              "docs": {
-                                "uLayouter.html#.padsAndMargs": {
-                                  "ref": "uLayouter.html#.padsAndMargs",
-                                  "tf": 666.6666666666666
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
                 }
               }
             }
@@ -7059,6 +7515,14 @@
                       },
                       "Layouter.html#buildFlex": {
                         "ref": "Layouter.html#buildFlex",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMaxWidth": {
+                        "ref": "Layouter.html#buildMaxWidth",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMaxHeight": {
+                        "ref": "Layouter.html#buildMaxHeight",
                         "tf": 25
                       },
                       "uLayouter.html#.createScopeStyles": {
@@ -7240,6 +7704,14 @@
                 "ref": "Layouter.html#setMarLeft",
                 "tf": 6.25
               },
+              "Layouter.html#setMaxWidth": {
+                "ref": "Layouter.html#setMaxWidth",
+                "tf": 6.25
+              },
+              "Layouter.html#setMaxHeight": {
+                "ref": "Layouter.html#setMaxHeight",
+                "tf": 6.25
+              },
               "uLayouter.html#.getBpsOrdered": {
                 "ref": "uLayouter.html#.getBpsOrdered",
                 "tf": 4.166666666666666
@@ -7386,41 +7858,6 @@
                                                         "ref": "uLayouter.html#.prepareParam",
                                                         "tf": 1150
                                                       }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              },
-                              "a": {
-                                "docs": {},
-                                "d": {
-                                  "docs": {},
-                                  "s": {
-                                    "docs": {},
-                                    "a": {
-                                      "docs": {},
-                                      "n": {
-                                        "docs": {},
-                                        "d": {
-                                          "docs": {},
-                                          "m": {
-                                            "docs": {},
-                                            "a": {
-                                              "docs": {},
-                                              "r": {
-                                                "docs": {},
-                                                "g": {
-                                                  "docs": {
-                                                    "uLayouter.html#.padsAndMargs": {
-                                                      "ref": "uLayouter.html#.padsAndMargs",
-                                                      "tf": 1150
                                                     }
                                                   }
                                                 }
@@ -7791,6 +8228,47 @@
                                         }
                                       }
                                     }
+                                  },
+                                  "p": {
+                                    "docs": {},
+                                    "a": {
+                                      "docs": {},
+                                      "d": {
+                                        "docs": {},
+                                        "s": {
+                                          "docs": {},
+                                          "m": {
+                                            "docs": {},
+                                            "a": {
+                                              "docs": {},
+                                              "r": {
+                                                "docs": {},
+                                                "g": {
+                                                  "docs": {},
+                                                  "s": {
+                                                    "docs": {},
+                                                    "m": {
+                                                      "docs": {},
+                                                      "a": {
+                                                        "docs": {},
+                                                        "x": {
+                                                          "docs": {
+                                                            "uLayouter.html#.setPadsMargsMaxs": {
+                                                              "ref": "uLayouter.html#.setPadsMargsMaxs",
+                                                              "tf": 1150
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
                                   }
                                 }
                               }
@@ -8059,23 +8537,26 @@
                                             "docs": {},
                                             "s": {
                                               "docs": {},
-                                              "a": {
+                                              "m": {
                                                 "docs": {},
-                                                "n": {
+                                                "a": {
                                                   "docs": {},
-                                                  "d": {
+                                                  "r": {
                                                     "docs": {},
-                                                    "m": {
+                                                    "g": {
                                                       "docs": {},
-                                                      "a": {
+                                                      "s": {
                                                         "docs": {},
-                                                        "r": {
+                                                        "m": {
                                                           "docs": {},
-                                                          "g": {
-                                                            "docs": {
-                                                              "uLayouter.html#.buildPadsAndMargs": {
-                                                                "ref": "uLayouter.html#.buildPadsAndMargs",
-                                                                "tf": 1150
+                                                          "a": {
+                                                            "docs": {},
+                                                            "x": {
+                                                              "docs": {
+                                                                "uLayouter.html#.buildPadsMargsMaxs": {
+                                                                  "ref": "uLayouter.html#.buildPadsMargsMaxs",
+                                                                  "tf": 1150
+                                                                }
                                                               }
                                                             }
                                                           }
@@ -8219,6 +8700,22 @@
                 "ref": "Layouter.html#setMarLeft",
                 "tf": 6.25
               },
+              "Layouter.html#buildMaxWidth": {
+                "ref": "Layouter.html#buildMaxWidth",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setMaxWidth": {
+                "ref": "Layouter.html#setMaxWidth",
+                "tf": 6.25
+              },
+              "Layouter.html#buildMaxHeight": {
+                "ref": "Layouter.html#buildMaxHeight",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setMaxHeight": {
+                "ref": "Layouter.html#setMaxHeight",
+                "tf": 6.25
+              },
               "uLayouter.html#.replaceList": {
                 "ref": "uLayouter.html#.replaceList",
                 "tf": 5
@@ -8322,6 +8819,14 @@
                       },
                       "Layouter.html#buildMarLeft": {
                         "ref": "Layouter.html#buildMarLeft",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMaxWidth": {
+                        "ref": "Layouter.html#buildMaxWidth",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMaxHeight": {
+                        "ref": "Layouter.html#buildMaxHeight",
                         "tf": 3.8461538461538463
                       },
                       "uLayouter.html#.createStyles": {
@@ -8549,6 +9054,25 @@
                       }
                     }
                   }
+                },
+                "x": {
+                  "docs": {},
+                  "w": {
+                    "docs": {
+                      "Layouter.html#buildMaxWidth": {
+                        "ref": "Layouter.html#buildMaxWidth",
+                        "tf": 25
+                      }
+                    }
+                  },
+                  "h": {
+                    "docs": {
+                      "Layouter.html#buildMaxHeight": {
+                        "ref": "Layouter.html#buildMaxHeight",
+                        "tf": 25
+                      }
+                    }
+                  }
                 }
               },
               "f": {
@@ -8650,6 +9174,14 @@
               "ref": "Layouter.html#setFlex",
               "tf": 6.25
             },
+            "Layouter.html#buildMaxWidth": {
+              "ref": "Layouter.html#buildMaxWidth",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildMaxHeight": {
+              "ref": "Layouter.html#buildMaxHeight",
+              "tf": 3.8461538461538463
+            },
             "uLayouter.html#.processors": {
               "ref": "uLayouter.html#.processors",
               "tf": 5
@@ -8674,12 +9206,12 @@
               "ref": "uLayouter.html#.settingCss",
               "tf": 3.571428571428571
             },
-            "uLayouter.html#.buildPadsAndMargs": {
-              "ref": "uLayouter.html#.buildPadsAndMargs",
+            "uLayouter.html#.buildPadsMargsMaxs": {
+              "ref": "uLayouter.html#.buildPadsMargsMaxs",
               "tf": 10
             },
-            "uLayouter.html#.padsAndMargs": {
-              "ref": "uLayouter.html#.padsAndMargs",
+            "uLayouter.html#.setPadsMargsMaxs": {
+              "ref": "uLayouter.html#.setPadsMargsMaxs",
               "tf": 10
             }
           }
@@ -8709,13 +9241,15 @@
           }
         }
       },
-      "length": 816
+      "length": 878
     },
     "corpusTokens": [
       "addclass",
       "adiciona",
       "agrega",
       "al",
+      "alto",
+      "ancho",
       "apartir",
       "array",
       "asigna",
@@ -8737,11 +9271,13 @@
       "buildmarleft",
       "buildmarright",
       "buildmartop",
+      "buildmaxheight",
+      "buildmaxwidth",
       "buildpad",
       "buildpadbottom",
       "buildpadleft",
       "buildpadright",
-      "buildpadsandmarg",
+      "buildpadsmargsmax",
       "buildpadtop",
       "cada",
       "calcula",
@@ -8842,6 +9378,8 @@
       "layouter#buildmarleft",
       "layouter#buildmarright",
       "layouter#buildmartop",
+      "layouter#buildmaxheight",
+      "layouter#buildmaxwidth",
       "layouter#buildpad",
       "layouter#buildpadbottom",
       "layouter#buildpadleft",
@@ -8857,6 +9395,8 @@
       "layouter#setmarleft",
       "layouter#setmarright",
       "layouter#setmartop",
+      "layouter#setmaxheight",
+      "layouter#setmaxwidth",
       "layouter#setpad",
       "layouter#setpadbottom",
       "layouter#setpadleft",
@@ -8880,6 +9420,7 @@
       "messag",
       "mismo",
       "muy",
+      "máximo",
       "método",
       "n",
       "n1",
@@ -8904,7 +9445,6 @@
       "ordenada",
       "ordenando",
       "pad",
-      "padsandmarg",
       "para",
       "param",
       "paramet",
@@ -8949,10 +9489,13 @@
       "setmarleft",
       "setmarright",
       "setmartop",
+      "setmaxheight",
+      "setmaxwidth",
       "setpad",
       "setpadbottom",
       "setpadleft",
       "setpadright",
+      "setpadsmargsmax",
       "setpadtop",
       "settingcss",
       "si",
@@ -8976,7 +9519,7 @@
       "ulayout",
       "ulayouter.addclass",
       "ulayouter.buildcss",
-      "ulayouter.buildpadsandmarg",
+      "ulayouter.buildpadsmargsmax",
       "ulayouter.calpercentag",
       "ulayouter.createscopesstyl",
       "ulayouter.createscopestyl",
@@ -8991,12 +9534,12 @@
       "ulayouter.havebreakpoint",
       "ulayouter.insertrul",
       "ulayouter.nameclean",
-      "ulayouter.padsandmarg",
       "ulayouter.prepareparam",
       "ulayouter.processednumb",
       "ulayouter.processor",
       "ulayouter.regerror",
       "ulayouter.replacelist",
+      "ulayouter.setpadsmargsmax",
       "ulayouter.settingcss",
       "ulayouter.stringtonumb",
       "un",
@@ -9005,6 +9548,8 @@
       "valcol",
       "valflex",
       "valmar",
+      "valmxh",
+      "valmxw",
       "valor",
       "valpad",
       "varia",
@@ -9353,6 +9898,46 @@
       "summary": "",
       "description": "Setea la propiedad Flex y las reglas designadas"
     },
+    "Layouter.html#buildMaxWidth": {
+      "id": "Layouter.html#buildMaxWidth",
+      "kind": "function",
+      "title": "buildMaxWidth( valMxw [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildMaxWidth",
+      "name": "buildMaxWidth",
+      "tags": "Layouter#buildMaxWidth buildMaxWidth",
+      "summary": "",
+      "description": "Construye el máximo ancho, devolviendo el nombre de clase y los estilos creados."
+    },
+    "Layouter.html#setMaxWidth": {
+      "id": "Layouter.html#setMaxWidth",
+      "kind": "function",
+      "title": "setMaxWidth( Node [, parameters ] )",
+      "longname": "Layouter#setMaxWidth",
+      "name": "setMaxWidth",
+      "tags": "Layouter#setMaxWidth setMaxWidth",
+      "summary": "",
+      "description": "Setea el máximo ancho necesario para un Nodo."
+    },
+    "Layouter.html#buildMaxHeight": {
+      "id": "Layouter.html#buildMaxHeight",
+      "kind": "function",
+      "title": "buildMaxHeight( valMxh [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildMaxHeight",
+      "name": "buildMaxHeight",
+      "tags": "Layouter#buildMaxHeight buildMaxHeight",
+      "summary": "",
+      "description": "Construye el máximo alto, devolviendo el nombre de clase y los estilos creados."
+    },
+    "Layouter.html#setMaxHeight": {
+      "id": "Layouter.html#setMaxHeight",
+      "kind": "function",
+      "title": "setMaxHeight( Node [, parameters ] )",
+      "longname": "Layouter#setMaxHeight",
+      "name": "setMaxHeight",
+      "tags": "Layouter#setMaxHeight setMaxHeight",
+      "summary": "",
+      "description": "Setea el máximo alto necesario para un Nodo."
+    },
     "uLayouter.html": {
       "id": "uLayouter.html",
       "kind": "namespace",
@@ -9594,23 +10179,23 @@
       "summary": "",
       "description": "Crea e inserta los estilos calculandolos, y tambien adiciona las clases respectivas al nodo"
     },
-    "uLayouter.html#.buildPadsAndMargs": {
-      "id": "uLayouter.html#.buildPadsAndMargs",
+    "uLayouter.html#.buildPadsMargsMaxs": {
+      "id": "uLayouter.html#.buildPadsMargsMaxs",
       "kind": "function",
-      "title": "&lt;static&gt; buildPadsAndMargs( Node, type [, parameters ], instance )",
-      "longname": "uLayouter.buildPadsAndMargs",
-      "name": "buildPadsAndMargs",
-      "tags": "uLayouter.buildPadsAndMargs buildPadsAndMargs",
+      "title": "&lt;static&gt; buildPadsMargsMaxs( Node, type [, parameters ], instance )",
+      "longname": "uLayouter.buildPadsMargsMaxs",
+      "name": "buildPadsMargsMaxs",
+      "tags": "uLayouter.buildPadsMargsMaxs buildPadsMargsMaxs",
       "summary": "",
       "description": "Construye los paddings y margenes."
     },
-    "uLayouter.html#.padsAndMargs": {
-      "id": "uLayouter.html#.padsAndMargs",
+    "uLayouter.html#.setPadsMargsMaxs": {
+      "id": "uLayouter.html#.setPadsMargsMaxs",
       "kind": "function",
-      "title": "&lt;static&gt; padsAndMargs( Node, type [, parameters ], instance )",
-      "longname": "uLayouter.padsAndMargs",
-      "name": "padsAndMargs",
-      "tags": "uLayouter.padsAndMargs padsAndMargs",
+      "title": "&lt;static&gt; setPadsMargsMaxs( Node, type [, parameters ], instance )",
+      "longname": "uLayouter.setPadsMargsMaxs",
+      "name": "setPadsMargsMaxs",
+      "tags": "uLayouter.setPadsMargsMaxs setPadsMargsMaxs",
       "summary": "",
       "description": "Setea los paddings y margenes"
     }

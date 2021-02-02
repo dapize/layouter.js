@@ -67,3 +67,6 @@ v1.9.0Beta
 
 v1.9.1Beta
 - Se mejora el tratamiento del método 'set' unificando el procesamiento de los atributos así como tambien la inserción de las clases (CSS) creadas.
+
+v1.10.0RC
+- Se añade dos atributos nuevos, el 'mx' y 'mh' para definir el máximo ancho y alto.
