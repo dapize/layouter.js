@@ -24,11 +24,17 @@ describe('Buildings Padding-top', () => {
     });
   });
 
-  it('With breakpoints', () => {
-    expect(Layouter.buildPadTop('10 20.5@sm 30@md')).toEqual({
-      "padt-10": ".padt-10{padding-top:10px}",
+  it('simple with important flag', () => {
+    expect(Layouter.buildPadTop('40!')).toEqual({
+      "padt-40!": ".padt-40\\!{padding-top:40px !important}"
+    });
+  });
+
+  it('With breakpoints and important flag', () => {
+    expect(Layouter.buildPadTop('10! 20.5@sm 30@md!')).toEqual({
+      "padt-10!": ".padt-10\\!{padding-top:10px !important}",
       "padt-20_5@sm": "@media screen and (min-width: 768px){.padt-20_5\\@sm{padding-top:20.5px}}",
-      "padt-30@md": "@media screen and (min-width: 1024px){.padt-30\\@md{padding-top:30px}}"
+      "padt-30@md!": "@media screen and (min-width: 1024px){.padt-30\\@md\\!{padding-top:30px !important}}"
     })
   });
 });
