@@ -162,6 +162,7 @@ Layouter.prototype.buildCols = function (valCols, insertStyles) {
       }
     }
     propValue = uLayouter.calPercentage(cols[0], cols[1]);
+    if (paramPrepared.important) propValue += ' !important';
 
     bpCals[bp] = {
       name: selectorName,
@@ -458,6 +459,8 @@ Layouter.prototype.buildFlex = function (valFlex, insertStyles) {
     } else {
       propVal = uLayouter.flexpv[nameProp] + ':' + valProp;
     }
+
+    if (paramPrepared.important) propVal += ' !important';
 
     if (bpCals.hasOwnProperty(bpNameS)) {
       if (selectorName.indexOf('@') !== 1) selectorName = selectorName.split('@')[0];

@@ -25,7 +25,8 @@ describe('Preparing the param with and without breakpoint', () => {
     expect(uLayouter.prepareParam('14/15', objBase)).toEqual({
       widthBp: false,
       numbers: '14/15',
-      breakPoints: 'xs'
+      breakPoints: 'xs',
+      important: false
     })
   });
 
@@ -33,7 +34,8 @@ describe('Preparing the param with and without breakpoint', () => {
     expect(uLayouter.prepareParam('14/15@sm', objBase)).toEqual({
       widthBp: true,
       numbers: '14/15',
-      breakPoints: 'sm'
+      breakPoints: 'sm',
+      important: false
     })
   });
 });

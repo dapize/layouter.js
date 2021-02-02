@@ -26,7 +26,7 @@ describe('Building all', () => {
       pad: '20-0@sm'
     });
     expect(lBuild.flex).toEqual({
-      "flex-jc:ce-ai:ce@xs": ".flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display: flex;}"
+      "flex-jc:ce-ai:ce@xs": ".flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display:flex;}"
     });
     expect(lBuild.cols).toEqual({
       "cols-21/21@sm": "@media screen and (min-width: 768px){.cols-21\\/21\\@sm{width:100%}}",
@@ -44,7 +44,7 @@ describe('Building all', () => {
 
   it('Separated', () => {
     expect(Layouter.build({flex: 'jc:ce ai:ce'})).toEqual({
-      flex: { "flex-jc:ce-ai:ce@xs": ".flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display: flex;}" }
+      flex: { "flex-jc:ce-ai:ce@xs": ".flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display:flex;}" }
     });
     expect(Layouter.build({cols: '3/13 21/21@sm 27/27@md'})).toEqual({
       cols: {
