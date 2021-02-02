@@ -12,15 +12,22 @@ Layouter.prototype.set = function (Node) {
     data: Node
   });
   const params = this.getParameters(Node);
-  const proNames = Object.keys(params);
-  const _this = this;
-  if (proNames.length) {
-    proNames.forEach(function (processorName) {
-      _this[uLayouter.processors[processorName].set](Node, params);
-    });
-  } else {
-    uLayouter.regError('Parameter Missing', "don't exists any parameter to process")
-  }
+  const arrParams = Object.keys(params);
+  if (!arrParams.length) return uLayouter.regError('Parameter Missing', "don't exists any parameter to process");
+  const toBuild = {};
+  for(let prop in params) toBuild[prop] = params[prop].join(' ');
+  const classesObj = this.build(toBuild);
+  const classesNames = Object.keys(classesObj)
+    .map(function (name) {
+      return Object.keys(classesObj[name]).join(' ')
+    })
+    .join(' ');
+  Node.className = Node.className ? Node.className + ' ' + classesNames : classesNames;
+  arrParams.forEach(function (nameParam) {
+    setTimeout(function (name) {
+      Node.removeAttribute(name);
+    }, 0, nameParam)
+  })
 };
 
 /**

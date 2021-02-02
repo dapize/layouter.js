@@ -65,5 +65,8 @@ v1.8.0Beta
 v1.9.0Beta
 - Se añade un nuevo flag '!' para definir que los estilos aplicados se declaren con !important.
 
+v1.9.1Beta
+- Se mejora el tratamiento del método 'set' unificando el procesamiento de los atributos así como tambien la inserción de las clases (CSS) creadas.
+
 v1.10.0RC
 - Se añade dos atributos nuevos, el 'mx' y 'mh' para definir el máximo ancho y alto.
