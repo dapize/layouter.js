@@ -94,6 +94,9 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
   - [Marb](#marb)
   - [Marl](#marl)
 - [Flex](#flex)
+- [Mw](#maxwidth)
+- [Mh](#maxheight)
+
 
 ## Métodos
 - [set](#Set)
@@ -109,6 +112,8 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
     - [setMarBottom](#SetMarBottom)
     - [setMarLeft](#SetMarLeft)
   - [setFlex](#setFlex)
+  - [setMaxWidth](#setMaxWidth)
+  - [setMaxHeight](#setMaxHeight)
 
 - [build](#Build)
   - [buildCols](#BuildCols)
@@ -126,6 +131,9 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
     - [buildPadLeft](#BuildPadLeft)
 
   - [buildFlex](#BuildFlex)
+  - [buildMaxWidth](#BuildMaxWidth)
+  - [buildMaxHeight](#BuildMaxHeight)
+
 - [getParameters](#getParameters)
 - [reset](#reset)
 
@@ -651,6 +659,73 @@ Y pues, estos estilos:
 
 [&uarr; Volver Arriba](#layouter-js)
 
+### MaxWidth
+Sirve para determinar el máximo ancho que tendrá un nodo en pixeles.
+
+#### Ejemplo:
+```html
+<div mw="100 150@sm">...</div>
+```
+
+...luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+layouter.setMaxWidth(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="mw-100 mw-150@sm">...</div>
+```
+Y pues, estos estilos:
+```css
+.mw-100{
+  max-width:100px
+}
+
+@media screen and (min-width: 768px){
+  .mw-150\@sm{
+    max-width:150px
+  }
+}
+
+```
+
+[&uarr; Volver Arriba](#layouter-js)
+
+
+### MaxHeight
+Sirve para determinar el máximo alto que tendrá un nodo en pixeles.
+
+#### Ejemplo:
+```html
+<div mh="100 150@sm">...</div>
+```
+
+...luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+layouter.setMaxHeight(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="mh-100 mh-150@sm">...</div>
+```
+Y pues, estos estilos:
+```css
+.mh-100{
+  max-height:100px
+}
+
+@media screen and (min-width: 768px){
+  .mh-150\@sm{
+    max-height:150px
+  }
+}
+
+```
+
+[&uarr; Volver Arriba](#layouter-js)
+
 ## Métodos:
 
 ### Set
@@ -753,9 +828,11 @@ Es exactamente igual que el método 'set' pero procesa solamente las columnas, d
 ### SetMarRight
 ### SetMarBottom
 ### SetMarLeft
+### setMaxWidth
+### setMaxHeight
 ### setFlex
 
-Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom y left respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex'.
+Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom, left, el max width y height respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex'.
 
 [&uarr; Volver Arriba](#layouter-js)
 
@@ -837,8 +914,10 @@ layouter.buildCols('3/13 21/21@sm 27/27@md')
 ### BuildPadRight
 ### BuildPadBottom
 ### BuildPadLeft
+### BuildMaxWidth
+### BuildMaxHeight
 ### BuildFlex
-Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, y flex tmb.
+Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, máximo ancho & alto y flex tmb.
 
 ### GetParameters
 Tambien es posible obtener los parametros definidos en un elemento, digamos, tenemos un DIV, y queremos saber si tiene cols, mar, flex o los que tengan, pues tiramos del método, 'getParameters'
@@ -941,7 +1020,7 @@ Tambien tenemos este único getter general que nos dará la versión de la libre
 - version: Devuelve la versión actual de la librería, este es un getter estático, así que no necesita una instancia para funcionar.
 
 ```javascript
-Layouter.version: "1.3.2Beta"
+Layouter.version: "1.10.0RC"
 /* Se tiene acceso a la variable 'Layouter' de forma global a penas se carga la librería */
 ```
 

@@ -263,6 +263,17 @@ const uLayouter = {
       set: 'setFlex',
       build: 'buildFlex',
       ruleCss: 'display: flex'
+    },
+
+    mw: {
+      set: 'setMaxWidth',
+      build: 'buildMaxWidth',
+      ruleCss: 'max-width'
+    },
+    mh: {
+      set: 'setMaxHeight',
+      build: 'buildMaxHeight',
+      ruleCss: 'max-height'
     }
   },
 
@@ -598,7 +609,7 @@ const uLayouter = {
    * @param {Object} [parameters] Parametros obtenidos del nodo.
    * @param {Object} instance Instancia actual del Layouter
    */
-  buildPadsAndMargs: function (value, type, instance, insertStyles) {
+  buildPadsMargsMaxs: function (value, type, instance, insertStyles) {
     if (value === undefined) return this.regError('Parameter Missing', "Don't exists a value determined");
     this.debug({
       type: 'i',
@@ -649,7 +660,7 @@ const uLayouter = {
    * @param {Object} [parameters] Parametros obtenidos del nodo.
    * @param {Object} instance Instancia actual del Layouter
    */
-  padsAndMargs: function (Node, type, parameters, instance) {
+  setPadsMargsMaxs: function (Node, type, parameters, instance) {
     if (!Node) return this.regError('Non-existent Node', "Don't exists the Node for processing.");
     this.debug({
       type: 'i',
@@ -661,7 +672,7 @@ const uLayouter = {
     if (!params.hasOwnProperty(type)) return this.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
 
     // Creating, inserting, and adding classNames of rules in Node.
-    const objStyles = this.buildPadsAndMargs(params[type], type, instance);
+    const objStyles = this.buildPadsMargsMaxs(params[type], type, instance);
 
     // adding the classes names to the Node
     this.addClasses(Object.keys(objStyles), Node, instance);

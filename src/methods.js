@@ -214,7 +214,7 @@ Layouter.prototype.setCols = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildPads = function (valPads, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valPads, 'pad', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valPads, 'pad', this, insertStyles);
 };
 
 /**
@@ -224,7 +224,7 @@ Layouter.prototype.buildPads = function (valPads, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setPads = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'pad', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'pad', parameters, this);
 };
 
 /**
@@ -235,7 +235,7 @@ Layouter.prototype.setPads = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildPadTop = function (valPad, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valPad, 'padt', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valPad, 'padt', this, insertStyles);
 };
 
 /**
@@ -245,7 +245,7 @@ Layouter.prototype.buildPadTop = function (valPad, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setPadTop = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'padt', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'padt', parameters, this);
 };
 
 /**
@@ -256,7 +256,7 @@ Layouter.prototype.setPadTop = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildPadRight = function (valPad, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valPad, 'padr', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valPad, 'padr', this, insertStyles);
 };
 
 /**
@@ -266,7 +266,7 @@ Layouter.prototype.buildPadRight = function (valPad, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setPadRight = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'padr', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'padr', parameters, this);
 };
 
 /**
@@ -277,7 +277,7 @@ Layouter.prototype.setPadRight = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildPadBottom = function (valPad, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valPad, 'padb', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valPad, 'padb', this, insertStyles);
 };
 
 /**
@@ -287,7 +287,7 @@ Layouter.prototype.buildPadBottom = function (valPad, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setPadBottom = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'padb', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'padb', parameters, this);
 };
 
 /**
@@ -298,7 +298,7 @@ Layouter.prototype.setPadBottom = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildPadLeft = function (valPad, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valPad, 'padl', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valPad, 'padl', this, insertStyles);
 };
 
 /**
@@ -308,7 +308,7 @@ Layouter.prototype.buildPadLeft = function (valPad, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setPadLeft = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'padl', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'padl', parameters, this);
 };
 
 /**
@@ -319,7 +319,7 @@ Layouter.prototype.setPadLeft = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMars = function (valMars, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valMars, 'mar', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMars, 'mar', this, insertStyles);
 };
 
 /**
@@ -329,7 +329,7 @@ Layouter.prototype.buildMars = function (valMars, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMars = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'mar', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'mar', parameters, this);
 };
 
 /**
@@ -340,7 +340,7 @@ Layouter.prototype.setMars = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMarTop = function (valMar, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valMar, 'mart', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMar, 'mart', this, insertStyles);
 };
 
 /**
@@ -350,7 +350,7 @@ Layouter.prototype.buildMarTop = function (valMar, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMarTop = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'mart', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'mart', parameters, this);
 };
 
 /**
@@ -361,7 +361,7 @@ Layouter.prototype.setMarTop = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMarRight = function (valMar, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valMar, 'marr', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMar, 'marr', this, insertStyles);
 };
 
 /**
@@ -371,7 +371,7 @@ Layouter.prototype.buildMarRight = function (valMar, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMarRight = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'marr', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'marr', parameters, this);
 };
 
 /**
@@ -382,7 +382,7 @@ Layouter.prototype.setMarRight = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMarBottom = function (valMar, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valMar, 'marb', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMar, 'marb', this, insertStyles);
 };
 
 /**
@@ -392,7 +392,7 @@ Layouter.prototype.buildMarBottom = function (valMar, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMarBottom = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'marb', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'marb', parameters, this);
 };
 
 /**
@@ -403,7 +403,7 @@ Layouter.prototype.setMarBottom = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMarLeft = function (valMar, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valMar, 'marl', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMar, 'marl', this, insertStyles);
 };
 
 /**
@@ -413,7 +413,7 @@ Layouter.prototype.buildMarLeft = function (valMar, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMarLeft = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'marl', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'marl', parameters, this);
 };
 
 /**
@@ -508,4 +508,46 @@ Layouter.prototype.setFlex = function (Node, parameters) {
 
   // removing param
   Node.removeAttribute('flex');
+};
+
+/**
+ * Construye el máximo ancho, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMxw máximo ancho a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMaxWidth = function (valMxw, insertStyles) {
+  return uLayouter.buildPadsMargsMaxs(valMxw, 'mw', this, insertStyles);
+};
+
+/**
+ * Setea el máximo ancho necesario para un Nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setMaxWidth = function (Node, parameters) {
+  uLayouter.setPadsMargsMaxs(Node, 'mw', parameters, this);
+};
+
+/**
+ * Construye el máximo alto, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMxh máximo alto a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMaxHeight = function (valMxh, insertStyles) {
+  return uLayouter.buildPadsMargsMaxs(valMxh, 'mh', this, insertStyles);
+};
+
+/**
+ * Setea el máximo alto necesario para un Nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setMaxHeight = function (Node, parameters) {
+  uLayouter.setPadsMargsMaxs(Node, 'mh', parameters, this);
 };
