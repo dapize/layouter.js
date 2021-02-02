@@ -94,6 +94,9 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
   - [Marb](#marb)
   - [Marl](#marl)
 - [Flex](#flex)
+- [Mw](#maxwidth)
+- [Mh](#maxheight)
+
 
 ## Métodos
 - [set](#Set)
@@ -109,6 +112,8 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
     - [setMarBottom](#SetMarBottom)
     - [setMarLeft](#SetMarLeft)
   - [setFlex](#setFlex)
+  - [setMaxWidth](#setMaxWidth)
+  - [setMaxHeight](#setMaxHeight)
 
 - [build](#Build)
   - [buildCols](#BuildCols)
@@ -126,11 +131,15 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
     - [buildPadLeft](#BuildPadLeft)
 
   - [buildFlex](#BuildFlex)
+  - [buildMaxWidth](#BuildMaxWidth)
+  - [buildMaxHeight](#BuildMaxHeight)
+
 - [getParameters](#getParameters)
 - [reset](#reset)
 
 
-
+## Flags
+- [ImportantFlag](#ImportantFlag) (**!**)
 
 ## Bridge
 De forma automática el sistema crea varios nodos tipo 'style', un nodo por cada breakpoint designado en la configuración base, y los intermedios cuando se define un estilo con el 'desde - hasta (@sm-md por ejemplo). Cada nodo tiene como ID la palabra 'layouter' más el alias del breakpoint definido. Estos nodos son agregados al final del body y sirven como puente para insertar las reglas CSS que se definan, por lo tanto estarán vacíos, a menos que en el objeto de configuración se determine la propiedad 'bridge' en 'false', en ese caso los nodos serán rellenados con cada nueva regla CSS que se creé.
@@ -599,6 +608,15 @@ Este es el parametro más interesante, porque es el que determina el 'display' d
 - rr: row-reverse
 - co: column
 - cor: column-reverse
+- fg: flex-grow
+- fh: flex-shrink
+- as: align-self
+- or: order
+- au: auto
+- st: stretch
+- bl: baseline
+- in: initial
+- ih: inheri
 
 #### Ejemplo:
 ```html
@@ -638,6 +656,73 @@ Y pues, estos estilos:
 ```
 
 > Nota: cuando determinamos más de un estilo para un mismo breakpoint, el nombre de las clases generadas son concatenadas, solo para ahorrar espacio.
+
+[&uarr; Volver Arriba](#layouter-js)
+
+### MaxWidth
+Sirve para determinar el máximo ancho que tendrá un nodo en pixeles.
+
+#### Ejemplo:
+```html
+<div mw="100 150@sm">...</div>
+```
+
+...luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+layouter.setMaxWidth(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="mw-100 mw-150@sm">...</div>
+```
+Y pues, estos estilos:
+```css
+.mw-100{
+  max-width:100px
+}
+
+@media screen and (min-width: 768px){
+  .mw-150\@sm{
+    max-width:150px
+  }
+}
+
+```
+
+[&uarr; Volver Arriba](#layouter-js)
+
+
+### MaxHeight
+Sirve para determinar el máximo alto que tendrá un nodo en pixeles.
+
+#### Ejemplo:
+```html
+<div mh="100 150@sm">...</div>
+```
+
+...luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+layouter.setMaxHeight(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="mh-100 mh-150@sm">...</div>
+```
+Y pues, estos estilos:
+```css
+.mh-100{
+  max-height:100px
+}
+
+@media screen and (min-width: 768px){
+  .mh-150\@sm{
+    max-height:150px
+  }
+}
+
+```
 
 [&uarr; Volver Arriba](#layouter-js)
 
@@ -743,9 +828,11 @@ Es exactamente igual que el método 'set' pero procesa solamente las columnas, d
 ### SetMarRight
 ### SetMarBottom
 ### SetMarLeft
+### setMaxWidth
+### setMaxHeight
 ### setFlex
 
-Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom y left respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex'.
+Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom, left, el max width y height respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex'.
 
 [&uarr; Volver Arriba](#layouter-js)
 
@@ -827,8 +914,10 @@ layouter.buildCols('3/13 21/21@sm 27/27@md')
 ### BuildPadRight
 ### BuildPadBottom
 ### BuildPadLeft
+### BuildMaxWidth
+### BuildMaxHeight
 ### BuildFlex
-Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, y flex tmb.
+Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, máximo ancho & alto y flex tmb.
 
 ### GetParameters
 Tambien es posible obtener los parametros definidos en un elemento, digamos, tenemos un DIV, y queremos saber si tiene cols, mar, flex o los que tengan, pues tiramos del método, 'getParameters'
@@ -861,6 +950,28 @@ layouter.reset(myDiv);
 
 // y el nodo se quedará solo con dos clases
 myDiv.className => 'my-div test'
+```
+
+### ImportantFlag
+Es posible, pero no recomendable, adicionar un caracter especial en la declaración de las columnas, margenes, padding, y el display, el cual agregará el "!important" comun que se usa en CSS, este caracter es el 'signo de exclamación'.
+> Siempre se debe agregar al final de la sentencia declarada
+
+**Ejemplo:**
+```html
+<div cols="13/15! 20/27@sm!">
+```
+
+El cual nos dará el siguiente CSS:
+```css
+.cols-13\/15\! {
+  width:86.66666666666667% !important
+}
+
+@media screen and (min-width: 768px) {
+  .cols-20\/27\@sm-md {
+    width:74.07407407407408% !important
+  }
+}
 ```
 
 ### Extra:
@@ -909,7 +1020,7 @@ Tambien tenemos este único getter general que nos dará la versión de la libre
 - version: Devuelve la versión actual de la librería, este es un getter estático, así que no necesita una instancia para funcionar.
 
 ```javascript
-Layouter.version: "1.3.2Beta"
+Layouter.version: "1.10.0RC"
 /* Se tiene acceso a la variable 'Layouter' de forma global a penas se carga la librería */
 ```
 

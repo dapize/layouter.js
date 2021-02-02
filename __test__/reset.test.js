@@ -23,7 +23,6 @@ describe('Resetting Node', () => {
     const classList = ['my-div', 'pad-10-1/15', 'pad-20-3/31@sm', 'test', 'pad-30-2/31@md', 'mar-0-0-40'];
     myDiv.className = classList.join(' ');
     Layouter.reset(myDiv);
-    console.log(myDiv.className);
     expect(myDiv.className).toEqual('my-div test');
   });
 });

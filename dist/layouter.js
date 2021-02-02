@@ -100,6 +100,7 @@ const uLayouter = {
   prepareParam: function (param, objBps) {
     let bp;
     let argParam = param;
+    let important = false;
     const haveBp = this.haveBreakPoint(argParam);
     if (haveBp) {
       const bpSplited = argParam.split('@');
@@ -112,11 +113,19 @@ const uLayouter = {
       } else {
         return this.regError("without 'direct' breakpoint", "Don't exists a breakpoint with 'direct' designation.");
       }
-    }
+    };
+
+    if (param.indexOf('!') !== -1) {
+      important = true;
+      bp = bp.replace(/!/g, '');
+      argParam = argParam.replace(/!/g, '');
+    };
+
     return {
       widthBp: haveBp,
       numbers: argParam,
-      breakPoints: bp
+      breakPoints: bp,
+      important: important
     }
   },
 
@@ -282,6 +291,17 @@ const uLayouter = {
       set: 'setFlex',
       build: 'buildFlex',
       ruleCss: 'display: flex'
+    },
+
+    mw: {
+      set: 'setMaxWidth',
+      build: 'buildMaxWidth',
+      ruleCss: 'max-width'
+    },
+    mh: {
+      set: 'setMaxHeight',
+      build: 'buildMaxHeight',
+      ruleCss: 'max-height'
     }
   },
 
@@ -304,63 +324,23 @@ const uLayouter = {
     r: 'row',
     rr: 'row-reverse',
     co: 'column',
-    cor: 'column-reverse'
+    cor: 'column-reverse',
+    fg: 'flex-grow',
+    fh: 'flex-shrink',
+    as: 'align-self',
+    or: 'order',
+    au: 'auto',
+    st: 'stretch',
+    bl: 'baseline',
+    in: 'initial',
+    ih: 'inherit'
   },
-  
+
   /**
-   * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
-   * @memberof uLayouter
-   * @param {String} type Tipo de estilos a dar: 'cols', 'pad', 'mar' o 'flex'
-   * @param {Object} bps Objeto de breakpoints registrados
-   * @param {Object} instance La instancia creada, el objeto mismo.
+   * Define los atributos de flex que no dependen del mismo.
    */
-  createStyles: function (type, bps, instance) {
-    const sizes = instance.sizes;
-    const prefix = instance.prefix;
-    const prop = this.processors[type].ruleCss;
-    const styles = {};
-    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal;
-    Object.keys(bps).forEach(function (bp) {
-      // preparing the className
-      nameClass = prefix + type + '-' + bps[bp].name;
-      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
-
-      // Property and value
-      if (type === 'flex') {
-        propAndVal = bps[bp].value + ';display: flex;';
-      } else {
-        propAndVal = prop +  ':' + bps[bp].value;
-      }
-
-      rule = '@media screen and ';
-      if (bp.indexOf('-') === -1) { // no tiene unti
-        if (sizes[bp]) {
-          rule += '(min-width: ' + sizes[bp] + 'px)';
-        } else {
-          rule = '.' + nameClass + '{' + propAndVal + '}';
-          direct = true;
-        }
-      } else { 
-        bpSplited = bp.split('-');
-        bp1 = bpSplited[0];
-        if (bp1) rule += '(min-width: ' + sizes[bp1] + 'px) and ';
-        bp2 = bpSplited[1];
-        rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
-      }
-
-      if (!direct) rule += '{.' + nameClass + '{' + propAndVal + '}}';
-      direct = false;
-      styles[nameClass] = rule;
-    });
-    this.debug({
-      type: 'i',
-      print: instance.debug,
-      message: 'Creating / Created Styles: ',
-      data: [bps, styles]
-    });
-    return styles;
-  },
-
+  flexAttrsSelf: ['fg', 'fh', 'or'],
+  
   /**
    * Crea el scope para un BP determinado.
    * @memberof uLayouter
@@ -436,7 +416,8 @@ const uLayouter = {
    */
   getScopeByclassName: function (className, instance) {
     const bps = instance.breakPoints;
-    const atIndex = className.indexOf('@');
+    const nameClass = className.replace(/!/g, '');
+    const atIndex = nameClass.indexOf('@');
 
     // Haven´t a BP designed
     if (atIndex === -1) {
@@ -445,7 +426,7 @@ const uLayouter = {
     };
 
     // Have a BP designed, a normal BP.
-    const bp = className.substring(atIndex + 1);
+    const bp = nameClass.substring(atIndex + 1);
     if (bp.indexOf('-') === -1) return instance.scope[bp]; // A simple BP, not compound (like this: 13/15@sm-md).
 
     // For the nexts types insertions
@@ -464,32 +445,10 @@ const uLayouter = {
 
     // A BP from and until (a BP Compount). Example: Example 13/15@sm-md
     if (instance.scope.hasOwnProperty(bp)) return instance.scope[bp]; // exists the Scope.
+    
     const fromBp = bp.split('-')[0];
     instance.scope[bp] = this.createScopeStyles(smallConfig, bp, 'after', instance.scope[fromBp].node);
     return instance.scope[bp]; // returning a new scope compounted created
-  },
-
-  /**
-   * Agrega las reglas CSS para darle estilos a los nodos
-   * @memberof uLayouter
-   * @param {Object} objStyles Objeto de reglas css junto con su nombre de clase.
-   * @param {Object} instance Instancia iniciada del layouter.
-   */
-  insertRules: function (objStyles, instance) {
-    const _this = this;
-    Object.keys(objStyles).forEach(function (className) {
-      if (!instance.styles.hasOwnProperty(className)) {
-        let nodeScope = _this.getScopeByclassName(className, instance);
-        nodeScope.method.insertRule(objStyles[className], (nodeScope.method.rules ? nodeScope.method.rules.length : 0));
-        instance.styles[className] = objStyles[className]; // saving in styles vault
-      }
-    });
-    this.debug({
-      type: 'i',
-      print: instance.debug,
-      message: 'Inserting Styles: ',
-      data: objStyles
-    });
   },
 
   /**
@@ -555,6 +514,93 @@ const uLayouter = {
   },
 
   /**
+   * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
+   * @memberof uLayouter
+   * @param {String} type Tipo de estilos a dar: 'cols', 'pad', 'mar' o 'flex'
+   * @param {Object} bps Objeto de breakpoints registrados
+   * @param {Object} instance La instancia creada, el objeto mismo.
+   */
+  createStyles: function (type, bps, instance) {
+    const sizes = instance.sizes;
+    const prefix = instance.prefix;
+    const prop = this.processors[type].ruleCss;
+    const styles = {};
+    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal, shortNameClass, pureShortName;
+    const _this = this;
+    Object.keys(bps).forEach(function (bp) {
+      // preparing the className
+      shortNameClass = bps[bp].name;
+      nameClass = prefix + type + '-' + shortNameClass;
+      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
+
+      // Property and value
+      if (type === 'flex') {
+        propAndVal = bps[bp].value;
+        pureShortName = shortNameClass.split(':')[0];
+        if (_this.flexAttrsSelf.indexOf(pureShortName) === -1 && pureShortName !== 'as') {
+          propAndVal += shortNameClass.indexOf('!') !== -1 ? ';display:flex !important;' : ';display:flex;';
+        }
+      } else {
+        propAndVal = prop +  ':' + bps[bp].value;
+      }
+
+      rule = '@media screen and ';
+      if (bp.indexOf('-') === -1) { // no tiene until
+        if (sizes[bp]) {
+          rule += '(min-width: ' + sizes[bp] + 'px)';
+        } else {
+          rule = '.' + nameClass.replace(/!/g, '\\!') + '{' + propAndVal + '}';
+          direct = true;
+        }
+      } else { 
+        bpSplited = bp.split('-');
+        bp1 = bpSplited[0];
+        if (bp1) rule += '(min-width: ' + sizes[bp1] + 'px) and ';
+        bp2 = bpSplited[1];
+        rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
+      }
+
+      if (!direct) rule += '{.' + nameClass.replace(/!/g, '\\!') + '{' + propAndVal + '}}';
+      direct = false;
+      styles[nameClass] = rule;
+    });
+    this.debug({
+      type: 'i',
+      print: instance.debug,
+      message: 'Creating / Created Styles: ',
+      data: [bps, styles]
+    });
+    return styles;
+  },
+
+  /**
+   * Agrega las reglas CSS para darle estilos a los nodos
+   * @memberof uLayouter
+   * @param {Object} objStyles Objeto de reglas css junto con su nombre de clase.
+   * @param {Object} instance Instancia iniciada del layouter.
+   */
+  insertRules: function (objStyles, instance) {
+    const _this = this;
+    Object.keys(objStyles).forEach(function (className) {
+      if (!instance.styles.hasOwnProperty(className)) {
+        let nodeScope = _this.getScopeByclassName(className, instance);
+        if (nodeScope !== undefined) {
+          nodeScope.method.insertRule(objStyles[className], (nodeScope.method.rules ? nodeScope.method.rules.length : 0));
+          instance.styles[className] = objStyles[className]; // saving in styles vault
+        } else {
+          _this.regError('Dont exists scope', "Don't exists a scope valid for '" + className + "'");
+        }
+      }
+    });
+    this.debug({
+      type: 'i',
+      print: instance.debug,
+      message: 'Inserting Styles: ',
+      data: objStyles
+    });
+  },
+
+  /**
    * Construye el nombre de clase y registra las reglas css.
    * @memberof uLayouter
    * @param {Object} data Lista de data para el procesamiento del CSS
@@ -565,7 +611,7 @@ const uLayouter = {
 
     // Inserting CSS rules
     if (data.deep) this.insertRules(objStyles, data.instance);
-    
+
     // name classes cleaner
     return this.nameCleaner(objStyles);
   },
@@ -591,7 +637,7 @@ const uLayouter = {
    * @param {Object} [parameters] Parametros obtenidos del nodo.
    * @param {Object} instance Instancia actual del Layouter
    */
-  buildPadsAndMargs: function (value, type, instance, insertStyles) {
+  buildPadsMargsMaxs: function (value, type, instance, insertStyles) {
     if (value === undefined) return this.regError('Parameter Missing', "Don't exists a value determined");
     this.debug({
       type: 'i',
@@ -614,6 +660,7 @@ const uLayouter = {
           return _this.processedNumber(n);
         })
         .join(' ');
+      if (paramProcessed.important) propValue += ' !important';
       if (bpCals.hasOwnProperty(bps)) {
         bpCals[bps].value += ';' + propValue
       } else {
@@ -641,7 +688,7 @@ const uLayouter = {
    * @param {Object} [parameters] Parametros obtenidos del nodo.
    * @param {Object} instance Instancia actual del Layouter
    */
-  padsAndMargs: function (Node, type, parameters, instance) {
+  setPadsMargsMaxs: function (Node, type, parameters, instance) {
     if (!Node) return this.regError('Non-existent Node', "Don't exists the Node for processing.");
     this.debug({
       type: 'i',
@@ -653,7 +700,7 @@ const uLayouter = {
     if (!params.hasOwnProperty(type)) return this.regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
 
     // Creating, inserting, and adding classNames of rules in Node.
-    const objStyles = this.buildPadsAndMargs(params[type], type, instance);
+    const objStyles = this.buildPadsMargsMaxs(params[type], type, instance);
 
     // adding the classes names to the Node
     this.addClasses(Object.keys(objStyles), Node, instance);
@@ -688,7 +735,8 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.6.5Beta'
+Layouter.version = '1.10.0RC'
+
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible
  * @memberof Layouter
@@ -703,15 +751,22 @@ Layouter.prototype.set = function (Node) {
     data: Node
   });
   const params = this.getParameters(Node);
-  const proNames = Object.keys(params);
-  const _this = this;
-  if (proNames.length) {
-    proNames.forEach(function (processorName) {
-      _this[uLayouter.processors[processorName].set](Node, params);
-    });
-  } else {
-    uLayouter.regError('Parameter Missing', "don't exists any parameter to process")
-  }
+  const arrParams = Object.keys(params);
+  if (!arrParams.length) return uLayouter.regError('Parameter Missing', "don't exists any parameter to process");
+  const toBuild = {};
+  for(let prop in params) toBuild[prop] = params[prop].join(' ');
+  const classesObj = this.build(toBuild);
+  const classesNames = Object.keys(classesObj)
+    .map(function (name) {
+      return Object.keys(classesObj[name]).join(' ')
+    })
+    .join(' ');
+  Node.className = Node.className ? Node.className + ' ' + classesNames : classesNames;
+  arrParams.forEach(function (nameParam) {
+    setTimeout(function (name) {
+      Node.removeAttribute(name);
+    }, 0, nameParam)
+  })
 };
 
 /**
@@ -853,6 +908,7 @@ Layouter.prototype.buildCols = function (valCols, insertStyles) {
       }
     }
     propValue = uLayouter.calPercentage(cols[0], cols[1]);
+    if (paramPrepared.important) propValue += ' !important';
 
     bpCals[bp] = {
       name: selectorName,
@@ -904,7 +960,7 @@ Layouter.prototype.setCols = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildPads = function (valPads, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valPads, 'pad', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valPads, 'pad', this, insertStyles);
 };
 
 /**
@@ -914,7 +970,7 @@ Layouter.prototype.buildPads = function (valPads, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setPads = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'pad', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'pad', parameters, this);
 };
 
 /**
@@ -925,7 +981,7 @@ Layouter.prototype.setPads = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildPadTop = function (valPad, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valPad, 'padt', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valPad, 'padt', this, insertStyles);
 };
 
 /**
@@ -935,7 +991,7 @@ Layouter.prototype.buildPadTop = function (valPad, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setPadTop = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'padt', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'padt', parameters, this);
 };
 
 /**
@@ -946,7 +1002,7 @@ Layouter.prototype.setPadTop = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildPadRight = function (valPad, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valPad, 'padr', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valPad, 'padr', this, insertStyles);
 };
 
 /**
@@ -956,7 +1012,7 @@ Layouter.prototype.buildPadRight = function (valPad, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setPadRight = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'padr', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'padr', parameters, this);
 };
 
 /**
@@ -967,7 +1023,7 @@ Layouter.prototype.setPadRight = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildPadBottom = function (valPad, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valPad, 'padb', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valPad, 'padb', this, insertStyles);
 };
 
 /**
@@ -977,7 +1033,7 @@ Layouter.prototype.buildPadBottom = function (valPad, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setPadBottom = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'padb', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'padb', parameters, this);
 };
 
 /**
@@ -988,7 +1044,7 @@ Layouter.prototype.setPadBottom = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildPadLeft = function (valPad, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valPad, 'padl', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valPad, 'padl', this, insertStyles);
 };
 
 /**
@@ -998,7 +1054,7 @@ Layouter.prototype.buildPadLeft = function (valPad, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setPadLeft = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'padl', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'padl', parameters, this);
 };
 
 /**
@@ -1009,7 +1065,7 @@ Layouter.prototype.setPadLeft = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMars = function (valMars, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valMars, 'mar', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMars, 'mar', this, insertStyles);
 };
 
 /**
@@ -1019,7 +1075,7 @@ Layouter.prototype.buildMars = function (valMars, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMars = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'mar', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'mar', parameters, this);
 };
 
 /**
@@ -1030,7 +1086,7 @@ Layouter.prototype.setMars = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMarTop = function (valMar, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valMar, 'mart', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMar, 'mart', this, insertStyles);
 };
 
 /**
@@ -1040,7 +1096,7 @@ Layouter.prototype.buildMarTop = function (valMar, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMarTop = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'mart', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'mart', parameters, this);
 };
 
 /**
@@ -1051,7 +1107,7 @@ Layouter.prototype.setMarTop = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMarRight = function (valMar, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valMar, 'marr', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMar, 'marr', this, insertStyles);
 };
 
 /**
@@ -1061,7 +1117,7 @@ Layouter.prototype.buildMarRight = function (valMar, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMarRight = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'marr', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'marr', parameters, this);
 };
 
 /**
@@ -1072,7 +1128,7 @@ Layouter.prototype.setMarRight = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMarBottom = function (valMar, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valMar, 'marb', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMar, 'marb', this, insertStyles);
 };
 
 /**
@@ -1082,7 +1138,7 @@ Layouter.prototype.buildMarBottom = function (valMar, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMarBottom = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'marb', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'marb', parameters, this);
 };
 
 /**
@@ -1093,7 +1149,7 @@ Layouter.prototype.setMarBottom = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMarLeft = function (valMar, insertStyles) {
-  return uLayouter.buildPadsAndMargs(valMar, 'marl', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMar, 'marl', this, insertStyles);
 };
 
 /**
@@ -1103,7 +1159,7 @@ Layouter.prototype.buildMarLeft = function (valMar, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMarLeft = function (Node, parameters) {
-  uLayouter.padsAndMargs(Node, 'marl', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'marl', parameters, this);
 };
 
 /**
@@ -1135,16 +1191,22 @@ Layouter.prototype.buildFlex = function (valFlex, insertStyles) {
 
     flexSplited = param.split(':');
     nameProp = flexSplited[0];
-    if (uLayouter.flexpv.hasOwnProperty(nameProp)) {
-      valProp = flexSplited[1];
-      if (uLayouter.flexpv.hasOwnProperty(valProp)) {
-        propVal = uLayouter.flexpv[nameProp] + ':' + uLayouter.flexpv[flexSplited[1]]
+    valProp = flexSplited[1];
+    if (uLayouter.flexAttrsSelf.indexOf(nameProp) === -1) { // ignoring the flex attrs selfs
+      if (uLayouter.flexpv.hasOwnProperty(nameProp)) {
+        if (uLayouter.flexpv.hasOwnProperty(valProp)) {
+          propVal = uLayouter.flexpv[nameProp] + ':' + uLayouter.flexpv[valProp];
+        } else {
+          return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + valProp + "' in Flex vault.");
+        }
       } else {
-        return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + valProp + "' in Flex vault.");
+        return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + nameProp + "' in Flex vault.");
       }
     } else {
-      return uLayouter.regError('Non-existent Alias', "Don't exists the alias '" + nameProp + "' in Flex vault.");
+      propVal = uLayouter.flexpv[nameProp] + ':' + valProp;
     }
+
+    if (paramPrepared.important) propVal += ' !important';
 
     if (bpCals.hasOwnProperty(bpNameS)) {
       if (selectorName.indexOf('@') !== 1) selectorName = selectorName.split('@')[0];
@@ -1192,6 +1254,48 @@ Layouter.prototype.setFlex = function (Node, parameters) {
 
   // removing param
   Node.removeAttribute('flex');
+};
+
+/**
+ * Construye el máximo ancho, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMxw máximo ancho a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMaxWidth = function (valMxw, insertStyles) {
+  return uLayouter.buildPadsMargsMaxs(valMxw, 'mw', this, insertStyles);
+};
+
+/**
+ * Setea el máximo ancho necesario para un Nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setMaxWidth = function (Node, parameters) {
+  uLayouter.setPadsMargsMaxs(Node, 'mw', parameters, this);
+};
+
+/**
+ * Construye el máximo alto, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMxh máximo alto a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMaxHeight = function (valMxh, insertStyles) {
+  return uLayouter.buildPadsMargsMaxs(valMxh, 'mh', this, insertStyles);
+};
+
+/**
+ * Setea el máximo alto necesario para un Nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setMaxHeight = function (Node, parameters) {
+  uLayouter.setPadsMargsMaxs(Node, 'mh', parameters, this);
 };
 
   // EXPORTING

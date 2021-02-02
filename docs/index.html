@@ -177,6 +177,8 @@ const layouter = new Layouter(myConfig);
 </ul>
 </li>
 <li><a href="#flex">Flex</a></li>
+<li><a href="#maxwidth">Mw</a></li>
+<li><a href="#maxheight">Mh</a></li>
 </ul>
 <h2>Métodos</h2>
 <ul>
@@ -201,6 +203,8 @@ const layouter = new Layouter(myConfig);
 </ul>
 </li>
 <li><a href="#setFlex">setFlex</a></li>
+<li><a href="#setMaxWidth">setMaxWidth</a></li>
+<li><a href="#setMaxHeight">setMaxHeight</a></li>
 </ul>
 </li>
 <li>
@@ -230,6 +234,12 @@ const layouter = new Layouter(myConfig);
 <li>
 <p><a href="#BuildFlex">buildFlex</a></p>
 </li>
+<li>
+<p><a href="#BuildMaxWidth">buildMaxWidth</a></p>
+</li>
+<li>
+<p><a href="#BuildMaxHeight">buildMaxHeight</a></p>
+</li>
 </ul>
 </li>
 <li>
@@ -238,6 +248,10 @@ const layouter = new Layouter(myConfig);
 <li>
 <p><a href="#reset">reset</a></p>
 </li>
+</ul>
+<h2>Flags</h2>
+<ul>
+<li><a href="#ImportantFlag">ImportantFlag</a> (<strong>!</strong>)</li>
 </ul>
 <h2>Bridge</h2>
 <p>De forma automática el sistema crea varios nodos tipo 'style', un nodo por cada breakpoint designado en la configuración base, y los intermedios cuando se define un estilo con el 'desde - hasta (@sm-md por ejemplo). Cada nodo tiene como ID la palabra 'layouter' más el alias del breakpoint definido. Estos nodos son agregados al final del body y sirven como puente para insertar las reglas CSS que se definan, por lo tanto estarán vacíos, a menos que en el objeto de configuración se determine la propiedad 'bridge' en 'false', en ese caso los nodos serán rellenados con cada nueva regla CSS que se creé.</p>
@@ -649,6 +663,15 @@ layouter.setPadLeft(myDiv);
 <li>rr: row-reverse</li>
 <li>co: column</li>
 <li>cor: column-reverse</li>
+<li>fg: flex-grow</li>
+<li>fh: flex-shrink</li>
+<li>as: align-self</li>
+<li>or: order</li>
+<li>au: auto</li>
+<li>st: stretch</li>
+<li>bl: baseline</li>
+<li>in: initial</li>
+<li>ih: inheri</li>
 </ul>
 <h4>Ejemplo:</h4>
 <pre class="prettyprint source lang-html"><code>&lt;div flex=&quot;jc:ce jc:fs@sm ai:fs@sm jc:fe@md&quot;>...&lt;/div>
@@ -686,6 +709,56 @@ layouter.setFlex(myDiv);
 <blockquote>
 <p>Nota: cuando determinamos más de un estilo para un mismo breakpoint, el nombre de las clases generadas son concatenadas, solo para ahorrar espacio.</p>
 </blockquote>
+<p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h3>MaxWidth</h3>
+<p>Sirve para determinar el máximo ancho que tendrá un nodo en pixeles.</p>
+<h4>Ejemplo:</h4>
+<pre class="prettyprint source lang-html"><code>&lt;div mw=&quot;100 150@sm&quot;>...&lt;/div>
+</code></pre>
+<p>...luego de procesarlo:</p>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+layouter.setMaxWidth(myDiv);
+</code></pre>
+<p>...obtendríamos este resultado:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;mw-100 mw-150@sm&quot;>...&lt;/div>
+</code></pre>
+<p>Y pues, estos estilos:</p>
+<pre class="prettyprint source lang-css"><code>.mw-100{
+  max-width:100px
+}
+
+@media screen and (min-width: 768px){
+  .mw-150\@sm{
+    max-width:150px
+  }
+}
+
+</code></pre>
+<p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h3>MaxHeight</h3>
+<p>Sirve para determinar el máximo alto que tendrá un nodo en pixeles.</p>
+<h4>Ejemplo:</h4>
+<pre class="prettyprint source lang-html"><code>&lt;div mh=&quot;100 150@sm&quot;>...&lt;/div>
+</code></pre>
+<p>...luego de procesarlo:</p>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+layouter.setMaxHeight(myDiv);
+</code></pre>
+<p>...obtendríamos este resultado:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;mh-100 mh-150@sm&quot;>...&lt;/div>
+</code></pre>
+<p>Y pues, estos estilos:</p>
+<pre class="prettyprint source lang-css"><code>.mh-100{
+  max-height:100px
+}
+
+@media screen and (min-width: 768px){
+  .mh-150\@sm{
+    max-height:150px
+  }
+}
+
+</code></pre>
 <p><a href="#layouter-js">↑ Volver Arriba</a></p>
 <h2>Métodos:</h2>
 <h3>Set</h3>
@@ -779,8 +852,10 @@ layouter.set(myDiv);
 <h3>SetMarRight</h3>
 <h3>SetMarBottom</h3>
 <h3>SetMarLeft</h3>
+<h3>setMaxWidth</h3>
+<h3>setMaxHeight</h3>
 <h3>setFlex</h3>
-<p>Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom y left respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex'.</p>
+<p>Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom, left, el max width y height respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex'.</p>
 <p><a href="#layouter-js">↑ Volver Arriba</a></p>
 <p>De echo, los métodos builds son lo mismo, pero para esto no es necesario pasarle como parametro el Nodo, sino el valor a procesar, veamos:</p>
 <h3>Build</h3>
@@ -845,8 +920,10 @@ layouter.set(myDiv);
 <h3>BuildPadRight</h3>
 <h3>BuildPadBottom</h3>
 <h3>BuildPadLeft</h3>
+<h3>BuildMaxWidth</h3>
+<h3>BuildMaxHeight</h3>
 <h3>BuildFlex</h3>
-<p>Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, y flex tmb.</p>
+<p>Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, máximo ancho &amp; alto y flex tmb.</p>
 <h3>GetParameters</h3>
 <p>Tambien es posible obtener los parametros definidos en un elemento, digamos, tenemos un DIV, y queremos saber si tiene cols, mar, flex o los que tengan, pues tiramos del método, 'getParameters'</p>
 <pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
@@ -875,6 +952,25 @@ layouter.reset(myDiv);
 
 // y el nodo se quedará solo con dos clases
 myDiv.className => 'my-div test'
+</code></pre>
+<h3>ImportantFlag</h3>
+<p>Es posible, pero no recomendable, adicionar un caracter especial en la declaración de las columnas, margenes, padding, y el display, el cual agregará el &quot;!important&quot; comun que se usa en CSS, este caracter es el 'signo de exclamación'.</p>
+<blockquote>
+<p>Siempre se debe agregar al final de la sentencia declarada</p>
+</blockquote>
+<p><strong>Ejemplo:</strong></p>
+<pre class="prettyprint source lang-html"><code>&lt;div cols=&quot;13/15! 20/27@sm!&quot;>
+</code></pre>
+<p>El cual nos dará el siguiente CSS:</p>
+<pre class="prettyprint source lang-css"><code>.cols-13\/15\! {
+  width:86.66666666666667% !important
+}
+
+@media screen and (min-width: 768px) {
+  .cols-20\/27\@sm-md {
+    width:74.07407407407408% !important
+  }
+}
 </code></pre>
 <h3>Extra:</h3>
 <p>Es posible adicionar un segundo argumento a todos los métodos que comienzan con 'set', el cual es un objeto con los parametros obtenidos, aunque este uso no es comun ya que se realiza de forma automática cuando se usa el método 'set', veamos un ejemplo:</p>
@@ -917,7 +1013,7 @@ layouter.styles: {
 <ul>
 <li>version: Devuelve la versión actual de la librería, este es un getter estático, así que no necesita una instancia para funcionar.</li>
 </ul>
-<pre class="prettyprint source lang-javascript"><code>Layouter.version: &quot;1.3.2Beta&quot;
+<pre class="prettyprint source lang-javascript"><code>Layouter.version: &quot;1.10.0RC&quot;
 /* Se tiene acceso a la variable 'Layouter' de forma global a penas se carga la librería */
 </code></pre>
 <p><a href="#layouter-js">↑ Volver Arriba</a></p>
@@ -934,7 +1030,7 @@ layouter.styles: {
 	</div>
 	<footer>
 				<div class="copyright">FooDoc Copyright © 2016 The contributors to the JSDoc3 and FooDoc projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on 15th Jan 2021 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on 2nd Feb 2021 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
