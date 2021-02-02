@@ -735,11 +735,8 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-<<<<<<< HEAD
 Layouter.version = '1.10.0RC'
-=======
-Layouter.version = '1.9.1Beta'
->>>>>>> bcf115a79b86824328bd3ab8749a9a5656d1bf6f
+
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible
  * @memberof Layouter
