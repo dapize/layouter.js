@@ -130,7 +130,8 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
 - [reset](#reset)
 
 
-
+## Flags
+- [ImportantFlag](#ImportantFlag) (**!**)
 
 ## Bridge
 De forma automática el sistema crea varios nodos tipo 'style', un nodo por cada breakpoint designado en la configuración base, y los intermedios cuando se define un estilo con el 'desde - hasta (@sm-md por ejemplo). Cada nodo tiene como ID la palabra 'layouter' más el alias del breakpoint definido. Estos nodos son agregados al final del body y sirven como puente para insertar las reglas CSS que se definan, por lo tanto estarán vacíos, a menos que en el objeto de configuración se determine la propiedad 'bridge' en 'false', en ese caso los nodos serán rellenados con cada nueva regla CSS que se creé.
@@ -870,6 +871,28 @@ layouter.reset(myDiv);
 
 // y el nodo se quedará solo con dos clases
 myDiv.className => 'my-div test'
+```
+
+### ImportantFlag
+Es posible, pero no recomendable, adicionar un caracter especial en la declaración de las columnas, margenes, padding, y el display, el cual agregará el "!important" comun que se usa en CSS, este caracter es el 'signo de exclamación'.
+> Siempre se debe agregar al final de la sentencia declarada
+
+**Ejemplo:**
+```html
+<div cols="13/15! 20/27@sm!">
+```
+
+El cual nos dará el siguiente CSS:
+```css
+.cols-13\/15\! {
+  width:86.66666666666667% !important
+}
+
+@media screen and (min-width: 768px) {
+  .cols-20\/27\@sm-md {
+    width:74.07407407407408% !important
+  }
+}
 ```
 
 ### Extra:
