@@ -69,4 +69,9 @@ v1.9.1Beta
 - Se mejora el tratamiento del método 'set' unificando el procesamiento de los atributos así como tambien la inserción de las clases (CSS) creadas.
 
 v1.10.0RC
-- Se añade dos atributos nuevos, el 'mx' y 'mh' para definir el máximo ancho y alto.
+- Se añade dos atributos nuevos, el 'mw' y 'mh' para definir el máximo ancho y alto.
+
+v1.11.0RC
+- Se añade dos atributos nuevos, el 'miw' y 'mih' para definir el mínimo ancho y alto.
+- Se cambian los atributos 'mw' y 'mh' (max-width y max-height) por 'mxw' y 'mxh'.
+- Se fixea algunas partes de la documentación.

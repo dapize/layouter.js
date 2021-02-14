@@ -20,21 +20,21 @@ const Layouter = new lib({
 describe('Buildings Max-height', () => {
   it('simple', () => {
     expect(Layouter.buildMaxHeight('100')).toEqual({
-      "mh-100": ".mh-100{max-height:100px}"
+      "mxh-100": ".mxh-100{max-height:100px}"
     });
   });
 
   it('simple with important flag', () => {
     expect(Layouter.buildMaxHeight('100!')).toEqual({
-      "mh-100!": ".mh-100\\!{max-height:100px !important}"
+      "mxh-100!": ".mxh-100\\!{max-height:100px !important}"
     });
   });
 
   it('With breakpoints and important flag', () => {
     expect(Layouter.buildMaxHeight('100! 200@sm 300@md!')).toEqual({
-      "mh-100!": ".mh-100\\!{max-height:100px !important}",
-      "mh-200@sm": "@media screen and (min-width: 768px){.mh-200\\@sm{max-height:200px}}",
-      "mh-300@md!": "@media screen and (min-width: 1024px){.mh-300\\@md\\!{max-height:300px !important}}"
+      "mxh-100!": ".mxh-100\\!{max-height:100px !important}",
+      "mxh-200@sm": "@media screen and (min-width: 768px){.mxh-200\\@sm{max-height:200px}}",
+      "mxh-300@md!": "@media screen and (min-width: 1024px){.mxh-300\\@md\\!{max-height:300px !important}}"
     })
   });
 });

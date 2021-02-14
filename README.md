@@ -76,7 +76,7 @@ const layouter = new Layouter(myConfig);
 > - 'md' Es para desktop, osea apartir de 1024px de ancho.
 > - 'lg' es para desktop con monitores más grandes, apartir de 1280
 
-***Se pueden crear breakpoints a voluntad, el sistema admite cuantos breakpoints se necesite.***
+***Se pueden definir cuantos breakpoints se requiera, no hay límite.***
 
 Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en **true**, así los estilos pasarán directos. Ahora veamos los atributos y métodos disponibles:
 
@@ -94,8 +94,10 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
   - [Marb](#marb)
   - [Marl](#marl)
 - [Flex](#flex)
-- [Mw](#maxwidth)
-- [Mh](#maxheight)
+- [Mxw](#maxwidth)
+- [Mxh](#maxheight)
+- [Miw](#minwidth)
+- [Mih](#minheight)
 
 
 ## Métodos
@@ -114,6 +116,8 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
   - [setFlex](#setFlex)
   - [setMaxWidth](#setMaxWidth)
   - [setMaxHeight](#setMaxHeight)
+  - [setMinWidth](#setMinWidth)
+  - [setMinHeight](#setMinHeight)
 
 - [build](#Build)
   - [buildCols](#BuildCols)
@@ -131,8 +135,11 @@ Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no nece
     - [buildPadLeft](#BuildPadLeft)
 
   - [buildFlex](#BuildFlex)
+
   - [buildMaxWidth](#BuildMaxWidth)
   - [buildMaxHeight](#BuildMaxHeight)
+  - [buildMinWidth](#BuildMinWidth)
+  - [buildMinHeight](#BuildMinHeight)
 
 - [getParameters](#getParameters)
 - [reset](#reset)
@@ -161,7 +168,7 @@ Tenemos un 'DIV' al cual queremos designarle 13 de 15 columnas en mobile, 10 col
 
 Para el DIV del ejemplo de arriba se determinó que:
 
-- Tendrá 13 columnas de 15, y como no tiene como sufijo el signo arroba, significa que las tendrá en el 'breakpoint directo' osea el 'xs'. Si el DIV solo tendría esa designación, luego de procesarlo...
+- Tendrá 13 columnas de 15, y como no tiene como sufijo el signo arroba, significa que las tendrá en el 'breakpoint directo' osea el 'xs'. Si el DIV solo tendría esa atributo definido, luego de procesarlo con...
  
 ```javascript
 const myDiv = document.querySelector('div');
@@ -169,10 +176,11 @@ layouter.setCols(myDiv);
 ```
 ...obtendríamos este resultado:
 ```html
-<div class="cols-13-15">...</div>
-<!-- Vemos que el atributo 'cols' desapareció del elemento, esto es porque yá no lo necesita una vez procesado. -->
+<div class="cols-13/15">...</div>
 ```
-Y como estilos tendríamos disponible una clase llamada 'cols-13-15' la cual nos daría estos estilos:
+> Vemos que el atributo 'cols' desapareció del elemento, esto es porque ya no lo necesita una vez procesado
+
+Y como estilos tendríamos disponible una clase llamada 'cols-13/15' la cual nos daría estos estilos:
 ```css
 .cols-13\/15 {
   width: 86.666%
@@ -181,7 +189,7 @@ Y como estilos tendríamos disponible una clase llamada 'cols-13-15' la cual nos
 **Seguimos**...
 - Para el breakpoint 'sm' (osea 'tablet') se determinó que se tendrá 10 columnas de 31, luego de procesarlo obtendríamos este resultado:
 ```html
-<div class="cols-10-31@sm">...</div>
+<div class="cols-10/31@sm">...</div>
 ```
 Pero como se determinó en un breakpoint, los estilos estarían regidos por él
 ```css
@@ -193,7 +201,7 @@ Pero como se determinó en un breakpoint, los estilos estarían regidos por él
 ```
 - Para el breakpoint 'md' (osea 'desktop') se determinó que se tendrá 15 columnas de 27, y luego de procesarlo obtendríamos este resultado:
 ```html
-<div class="cols-15-27@md">...</div>
+<div class="cols-15/27@md">...</div>
 ```
 ```css
 @media screen and (min-width: 1024px) {
@@ -204,11 +212,11 @@ Pero como se determinó en un breakpoint, los estilos estarían regidos por él
 ```
 **Finalmente** si procesamos el valor completo del parametro 'cols' (13/15 10/31@sm 15/27@md) obtendríamos este resultado:
 ```html
-<div class="cols-13-15 cols-10-31@sm cols-15-27@md">...</div>
+<div class="cols-13/15 cols-10/31@sm cols-15/27@md">...</div>
 ```
 y pues, estos estilos:
 ```css
-.cols-13-15 {
+.cols-13\/15 {
   width: 86.666%
 }
 
@@ -234,7 +242,7 @@ Tenemos un DIV que aparte de tener 13 columnas de 15 en mobile (el breakpoint 'x
 ```
 El guión (-) indica 'desde / hasta' donde se quiere determinar las columnas. En estilos tendríamos esto:
 ```css
-.cols-13-15 {
+.cols-13\/15 {
   width: 86.666%
 }
 
@@ -247,8 +255,9 @@ El guión (-) indica 'desde / hasta' donde se quiere determinar las columnas. En
 ...aunque tambien se puede usar solo el 'hasta', así:
 ```html
 <div cols="20/27@-md">
-<!-- Esto le dará 20 columnas de 27 hasta 'desktop' (en el breakpoint 'md') -->
 ```
+> Esto le dará 20 columnas de 27 hasta 'desktop' (en el breakpoint 'md')
+
 y en estilos obtendremos esto:
 ```css
 @media screen and (max-width: 1023px) {
@@ -302,8 +311,9 @@ layouter.setMars(myDiv);
 ...obtendríamos este resultado:
 ```html
 <div class="mar-20-2/15 mar-40-3/31-20@sm mar-60-2/31@md">...</div>
-<!-- Vemos que el atributo 'mar' desapareció del elemento, esto es porque yá no lo necesita una vez procesado. -->
 ```
+> Vemos que el atributo 'mar' desapareció del elemento, esto es porque yá no lo necesita una vez procesado.
+
 Y pues, estos estilos:
 ```css
 .mar-20-2\/15 {
@@ -349,8 +359,9 @@ layouter.setMarTop(myDiv);
 ...obtendríamos este resultado:
 ```html
 <div class="mart-10 mart-20_5@sm mart-30@md">...</div>
-<!-- Vemos que el atributo 'mart' desapareció del elemento, esto es porque yá no lo necesita una vez procesado. -->
 ```
+> Vemos que el atributo 'mart' desapareció del elemento, esto es porque yá no lo necesita una vez procesado
+
 Y pues, estos estilos:
 ```css
 .mart-10 {
@@ -404,11 +415,11 @@ Y pues, estos estilos:
   margin-right: 10px;
 }
 
-.marb-10 {
+.marb-20 {
   margin-bottom: 20px;
 }
 
-.marl-10 {
+.marl-30 {
   margin-left: 30px;
 }
 
@@ -553,11 +564,11 @@ Y pues, estos estilos:
   padding-right: 10px;
 }
 
-.padb-10 {
+.padb-20 {
   padding-bottom: 20px;
 }
 
-.padl-10 {
+.padl-30 {
   padding-left: 30px;
 }
 
@@ -664,7 +675,7 @@ Sirve para determinar el máximo ancho que tendrá un nodo en pixeles.
 
 #### Ejemplo:
 ```html
-<div mw="100 150@sm">...</div>
+<div mxw="100 150@sm">...</div>
 ```
 
 ...luego de procesarlo:
@@ -674,16 +685,16 @@ layouter.setMaxWidth(myDiv);
 ```
 ...obtendríamos este resultado:
 ```html
-<div class="mw-100 mw-150@sm">...</div>
+<div class="mxw-100 mxw-150@sm">...</div>
 ```
 Y pues, estos estilos:
 ```css
-.mw-100{
+.mxw-100{
   max-width:100px
 }
 
 @media screen and (min-width: 768px){
-  .mw-150\@sm{
+  .mxw-150\@sm{
     max-width:150px
   }
 }
@@ -698,7 +709,7 @@ Sirve para determinar el máximo alto que tendrá un nodo en pixeles.
 
 #### Ejemplo:
 ```html
-<div mh="100 150@sm">...</div>
+<div mxh="100 150@sm">...</div>
 ```
 
 ...luego de procesarlo:
@@ -708,16 +719,16 @@ layouter.setMaxHeight(myDiv);
 ```
 ...obtendríamos este resultado:
 ```html
-<div class="mh-100 mh-150@sm">...</div>
+<div class="mxh-100 mxh-150@sm">...</div>
 ```
 Y pues, estos estilos:
 ```css
-.mh-100{
+.mxh-100{
   max-height:100px
 }
 
 @media screen and (min-width: 768px){
-  .mh-150\@sm{
+  .mxh-150\@sm{
     max-height:150px
   }
 }
@@ -725,6 +736,11 @@ Y pues, estos estilos:
 ```
 
 [&uarr; Volver Arriba](#layouter-js)
+
+### MinWidth
+### MinHeight
+Sirven para determinar el mínimo ancho y mínimo alto en pixeles respectivamente, es lo mismo que el max-width y max-height nombrados más arriba.
+
 
 ## Métodos:
 
@@ -830,9 +846,11 @@ Es exactamente igual que el método 'set' pero procesa solamente las columnas, d
 ### SetMarLeft
 ### setMaxWidth
 ### setMaxHeight
+### setMinWidth
+### setMinHeight
 ### setFlex
 
-Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom, left, el max width y height respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex'.
+Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom, left, el max/min width y height respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex' XD.
 
 [&uarr; Volver Arriba](#layouter-js)
 
@@ -916,6 +934,8 @@ layouter.buildCols('3/13 21/21@sm 27/27@md')
 ### BuildPadLeft
 ### BuildMaxWidth
 ### BuildMaxHeight
+### BuildMinWidth
+### BuildMinHeight
 ### BuildFlex
 Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, máximo ancho & alto y flex tmb.
 

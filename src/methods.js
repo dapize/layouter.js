@@ -525,7 +525,7 @@ Layouter.prototype.setFlex = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMaxWidth = function (valMxw, insertStyles) {
-  return uLayouter.buildPadsMargsMaxs(valMxw, 'mw', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMxw, 'mxw', this, insertStyles);
 };
 
 /**
@@ -535,7 +535,7 @@ Layouter.prototype.buildMaxWidth = function (valMxw, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMaxWidth = function (Node, parameters) {
-  uLayouter.setPadsMargsMaxs(Node, 'mw', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'mxw', parameters, this);
 };
 
 /**
@@ -546,7 +546,7 @@ Layouter.prototype.setMaxWidth = function (Node, parameters) {
  * @return {Object}
  */
 Layouter.prototype.buildMaxHeight = function (valMxh, insertStyles) {
-  return uLayouter.buildPadsMargsMaxs(valMxh, 'mh', this, insertStyles);
+  return uLayouter.buildPadsMargsMaxs(valMxh, 'mxh', this, insertStyles);
 };
 
 /**
@@ -556,5 +556,47 @@ Layouter.prototype.buildMaxHeight = function (valMxh, insertStyles) {
  * @param {Object} [parameters] Parametros obtenidos del nodo.
  */
 Layouter.prototype.setMaxHeight = function (Node, parameters) {
-  uLayouter.setPadsMargsMaxs(Node, 'mh', parameters, this);
+  uLayouter.setPadsMargsMaxs(Node, 'mxh', parameters, this);
+};
+
+/**
+ * Construye el mínimo ancho, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMiw mínimo ancho a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMinWidth = function (valMiw, insertStyles) {
+  return uLayouter.buildPadsMargsMaxs(valMiw, 'miw', this, insertStyles);
+};
+
+/**
+ * Setea el mínimo ancho necesario para un Nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setMinWidth = function (Node, parameters) {
+  uLayouter.setPadsMargsMaxs(Node, 'miw', parameters, this);
+};
+
+/**
+ * Construye el mínimo alto, devolviendo el nombre de clase y los estilos creados.
+ * @memberof Layouter
+ * @param {String} valMih mínimo alto a construir
+ * @param {Boolean} [insertStyles] Indica si se vá o no procesar en el navegador la regla css para ser usada.
+ * @return {Object}
+ */
+Layouter.prototype.buildMinHeight = function (valMih, insertStyles) {
+  return uLayouter.buildPadsMargsMaxs(valMih, 'mih', this, insertStyles);
+};
+
+/**
+ * Setea el mínimo alto necesario para un Nodo.
+ * @memberof Layouter
+ * @param {Object} Node Nodo vivo del DOM a asignarle el CSS
+ * @param {Object} [parameters] Parametros obtenidos del nodo.
+ */
+Layouter.prototype.setMinHeight = function (Node, parameters) {
+  uLayouter.setPadsMargsMaxs(Node, 'mih', parameters, this);
 };
