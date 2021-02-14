@@ -621,6 +621,76 @@ window.lunrData = {
           "setmaxheight",
           "un"
         ],
+        "Layouter.html#buildMinWidth": [
+          "ancho",
+          "buildminwidth",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "layouter#buildminwidth",
+          "lo",
+          "mínimo",
+          "nombr",
+          "object",
+          "valmiw",
+          "y"
+        ],
+        "Layouter.html#setMinWidth": [
+          "ancho",
+          "el",
+          "function",
+          "layouter#setminwidth",
+          "mínimo",
+          "necesario",
+          "node",
+          "nodo",
+          "para",
+          "paramet",
+          "setea",
+          "setminwidth",
+          "un"
+        ],
+        "Layouter.html#buildMinHeight": [
+          "alto",
+          "buildminheight",
+          "clase",
+          "construy",
+          "creado",
+          "de",
+          "devolviendo",
+          "el",
+          "estilo",
+          "function",
+          "insertstyl",
+          "layouter#buildminheight",
+          "lo",
+          "mínimo",
+          "nombr",
+          "object",
+          "valmih",
+          "y"
+        ],
+        "Layouter.html#setMinHeight": [
+          "alto",
+          "el",
+          "function",
+          "layouter#setminheight",
+          "mínimo",
+          "necesario",
+          "node",
+          "nodo",
+          "para",
+          "paramet",
+          "setea",
+          "setminheight",
+          "un"
+        ],
         "uLayouter.html": [
           "namespac",
           "ulayout",
@@ -1044,7 +1114,7 @@ window.lunrData = {
           "y"
         ]
       },
-      "length": 63
+      "length": 67
     },
     "tokenStore": {
       "root": {
@@ -1422,6 +1492,55 @@ window.lunrData = {
                           }
                         }
                       }
+                    },
+                    "i": {
+                      "docs": {},
+                      "n": {
+                        "docs": {},
+                        "w": {
+                          "docs": {},
+                          "i": {
+                            "docs": {},
+                            "d": {
+                              "docs": {},
+                              "t": {
+                                "docs": {},
+                                "h": {
+                                  "docs": {
+                                    "Layouter.html#buildMinWidth": {
+                                      "ref": "Layouter.html#buildMinWidth",
+                                      "tf": 675
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "h": {
+                          "docs": {},
+                          "e": {
+                            "docs": {},
+                            "i": {
+                              "docs": {},
+                              "g": {
+                                "docs": {},
+                                "h": {
+                                  "docs": {},
+                                  "t": {
+                                    "docs": {
+                                      "Layouter.html#buildMinHeight": {
+                                        "ref": "Layouter.html#buildMinHeight",
+                                        "tf": 675
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   },
                   "f": {
@@ -1690,6 +1809,22 @@ window.lunrData = {
                           },
                           "Layouter.html#setMaxHeight": {
                             "ref": "Layouter.html#setMaxHeight",
+                            "tf": 110
+                          },
+                          "Layouter.html#buildMinWidth": {
+                            "ref": "Layouter.html#buildMinWidth",
+                            "tf": 110
+                          },
+                          "Layouter.html#setMinWidth": {
+                            "ref": "Layouter.html#setMinWidth",
+                            "tf": 110
+                          },
+                          "Layouter.html#buildMinHeight": {
+                            "ref": "Layouter.html#buildMinHeight",
+                            "tf": 110
+                          },
+                          "Layouter.html#setMinHeight": {
+                            "ref": "Layouter.html#setMinHeight",
                             "tf": 110
                           },
                           "uLayouter.html#.getNums": {
@@ -2025,6 +2160,14 @@ window.lunrData = {
                               },
                               "Layouter.html#buildMaxHeight": {
                                 "ref": "Layouter.html#buildMaxHeight",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildMinWidth": {
+                                "ref": "Layouter.html#buildMinWidth",
+                                "tf": 25
+                              },
+                              "Layouter.html#buildMinHeight": {
+                                "ref": "Layouter.html#buildMinHeight",
                                 "tf": 25
                               }
                             }
@@ -2876,6 +3019,14 @@ window.lunrData = {
                 "ref": "Layouter.html#buildMaxHeight",
                 "tf": 3.8461538461538463
               },
+              "Layouter.html#buildMinWidth": {
+                "ref": "Layouter.html#buildMinWidth",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMinHeight": {
+                "ref": "Layouter.html#buildMinHeight",
+                "tf": 3.8461538461538463
+              },
               "uLayouter.html#.processors": {
                 "ref": "uLayouter.html#.processors",
                 "tf": 5
@@ -3076,6 +3227,14 @@ window.lunrData = {
                                 },
                                 "Layouter.html#buildMaxHeight": {
                                   "ref": "Layouter.html#buildMaxHeight",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildMinWidth": {
+                                  "ref": "Layouter.html#buildMinWidth",
+                                  "tf": 3.8461538461538463
+                                },
+                                "Layouter.html#buildMinHeight": {
+                                  "ref": "Layouter.html#buildMinHeight",
                                   "tf": 3.8461538461538463
                                 }
                               }
@@ -3675,6 +3834,14 @@ window.lunrData = {
                       "ref": "Layouter.html#buildMaxHeight",
                       "tf": 3.8461538461538463
                     },
+                    "Layouter.html#buildMinWidth": {
+                      "ref": "Layouter.html#buildMinWidth",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMinHeight": {
+                      "ref": "Layouter.html#buildMinHeight",
+                      "tf": 3.8461538461538463
+                    },
                     "uLayouter.html#.replaceList": {
                       "ref": "uLayouter.html#.replaceList",
                       "tf": 5
@@ -3787,6 +3954,14 @@ window.lunrData = {
                           },
                           "Layouter.html#buildMaxHeight": {
                             "ref": "Layouter.html#buildMaxHeight",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildMinWidth": {
+                            "ref": "Layouter.html#buildMinWidth",
+                            "tf": 3.8461538461538463
+                          },
+                          "Layouter.html#buildMinHeight": {
+                            "ref": "Layouter.html#buildMinHeight",
                             "tf": 3.8461538461538463
                           },
                           "uLayouter.html#.buildCss": {
@@ -4056,6 +4231,14 @@ window.lunrData = {
                       },
                       "Layouter.html#buildMaxHeight": {
                         "ref": "Layouter.html#buildMaxHeight",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMinWidth": {
+                        "ref": "Layouter.html#buildMinWidth",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMinHeight": {
+                        "ref": "Layouter.html#buildMinHeight",
                         "tf": 3.8461538461538463
                       }
                     }
@@ -4702,6 +4885,55 @@ window.lunrData = {
                                         }
                                       }
                                     }
+                                  },
+                                  "i": {
+                                    "docs": {},
+                                    "n": {
+                                      "docs": {},
+                                      "w": {
+                                        "docs": {},
+                                        "i": {
+                                          "docs": {},
+                                          "d": {
+                                            "docs": {},
+                                            "t": {
+                                              "docs": {},
+                                              "h": {
+                                                "docs": {
+                                                  "Layouter.html#setMinWidth": {
+                                                    "ref": "Layouter.html#setMinWidth",
+                                                    "tf": 1150
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "h": {
+                                        "docs": {},
+                                        "e": {
+                                          "docs": {},
+                                          "i": {
+                                            "docs": {},
+                                            "g": {
+                                              "docs": {},
+                                              "h": {
+                                                "docs": {},
+                                                "t": {
+                                                  "docs": {
+                                                    "Layouter.html#setMinHeight": {
+                                                      "ref": "Layouter.html#setMinHeight",
+                                                      "tf": 1150
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
                                   }
                                 },
                                 "f": {
@@ -4973,6 +5205,55 @@ window.lunrData = {
                                             }
                                           }
                                         }
+                                      },
+                                      "i": {
+                                        "docs": {},
+                                        "n": {
+                                          "docs": {},
+                                          "w": {
+                                            "docs": {},
+                                            "i": {
+                                              "docs": {},
+                                              "d": {
+                                                "docs": {},
+                                                "t": {
+                                                  "docs": {},
+                                                  "h": {
+                                                    "docs": {
+                                                      "Layouter.html#buildMinWidth": {
+                                                        "ref": "Layouter.html#buildMinWidth",
+                                                        "tf": 1150
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "h": {
+                                            "docs": {},
+                                            "e": {
+                                              "docs": {},
+                                              "i": {
+                                                "docs": {},
+                                                "g": {
+                                                  "docs": {},
+                                                  "h": {
+                                                    "docs": {},
+                                                    "t": {
+                                                      "docs": {
+                                                        "Layouter.html#buildMinHeight": {
+                                                          "ref": "Layouter.html#buildMinHeight",
+                                                          "tf": 1150
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
                                       }
                                     },
                                     "f": {
@@ -5136,6 +5417,14 @@ window.lunrData = {
               },
               "Layouter.html#buildMaxHeight": {
                 "ref": "Layouter.html#buildMaxHeight",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMinWidth": {
+                "ref": "Layouter.html#buildMinWidth",
+                "tf": 3.8461538461538463
+              },
+              "Layouter.html#buildMinHeight": {
+                "ref": "Layouter.html#buildMinHeight",
                 "tf": 3.8461538461538463
               },
               "uLayouter.html#.flexAttrsSelf": {
@@ -5485,6 +5774,14 @@ window.lunrData = {
                     "ref": "Layouter.html#setMaxHeight",
                     "tf": 33.33333333333333
                   },
+                  "Layouter.html#setMinWidth": {
+                    "ref": "Layouter.html#setMinWidth",
+                    "tf": 33.33333333333333
+                  },
+                  "Layouter.html#setMinHeight": {
+                    "ref": "Layouter.html#setMinHeight",
+                    "tf": 33.33333333333333
+                  },
                   "uLayouter.html#.createScopeStyles": {
                     "ref": "uLayouter.html#.createScopeStyles",
                     "tf": 14.285714285714285
@@ -5569,6 +5866,14 @@ window.lunrData = {
                     "ref": "Layouter.html#setMaxHeight",
                     "tf": 6.25
                   },
+                  "Layouter.html#setMinWidth": {
+                    "ref": "Layouter.html#setMinWidth",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMinHeight": {
+                    "ref": "Layouter.html#setMinHeight",
+                    "tf": 6.25
+                  },
                   "uLayouter.html#.getScopeByclassName": {
                     "ref": "uLayouter.html#.getScopeByclassName",
                     "tf": 5
@@ -5648,6 +5953,14 @@ window.lunrData = {
                     },
                     "Layouter.html#buildMaxHeight": {
                       "ref": "Layouter.html#buildMaxHeight",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMinWidth": {
+                      "ref": "Layouter.html#buildMinWidth",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#buildMinHeight": {
+                      "ref": "Layouter.html#buildMinHeight",
                       "tf": 3.8461538461538463
                     },
                     "uLayouter.html#.replaceList": {
@@ -5737,6 +6050,14 @@ window.lunrData = {
                             },
                             "Layouter.html#setMaxHeight": {
                               "ref": "Layouter.html#setMaxHeight",
+                              "tf": 6.25
+                            },
+                            "Layouter.html#setMinWidth": {
+                              "ref": "Layouter.html#setMinWidth",
+                              "tf": 6.25
+                            },
+                            "Layouter.html#setMinHeight": {
+                              "ref": "Layouter.html#setMinHeight",
                               "tf": 6.25
                             }
                           }
@@ -5928,6 +6249,38 @@ window.lunrData = {
                       },
                       "Layouter.html#setMaxHeight": {
                         "ref": "Layouter.html#setMaxHeight",
+                        "tf": 6.25
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "í": {
+            "docs": {},
+            "n": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "m": {
+                  "docs": {},
+                  "o": {
+                    "docs": {
+                      "Layouter.html#buildMinWidth": {
+                        "ref": "Layouter.html#buildMinWidth",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#setMinWidth": {
+                        "ref": "Layouter.html#setMinWidth",
+                        "tf": 6.25
+                      },
+                      "Layouter.html#buildMinHeight": {
+                        "ref": "Layouter.html#buildMinHeight",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#setMinHeight": {
+                        "ref": "Layouter.html#setMinHeight",
                         "tf": 6.25
                       }
                     }
@@ -6214,6 +6567,14 @@ window.lunrData = {
                       "ref": "Layouter.html#setMaxHeight",
                       "tf": 6.25
                     },
+                    "Layouter.html#setMinWidth": {
+                      "ref": "Layouter.html#setMinWidth",
+                      "tf": 6.25
+                    },
+                    "Layouter.html#setMinHeight": {
+                      "ref": "Layouter.html#setMinHeight",
+                      "tf": 6.25
+                    },
                     "uLayouter.html#.setPadsMargsMaxs": {
                       "ref": "uLayouter.html#.setPadsMargsMaxs",
                       "tf": 10
@@ -6463,6 +6824,55 @@ window.lunrData = {
                                 "docs": {
                                   "Layouter.html#setMaxHeight": {
                                     "ref": "Layouter.html#setMaxHeight",
+                                    "tf": 683.3333333333334
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "i": {
+                  "docs": {},
+                  "n": {
+                    "docs": {},
+                    "w": {
+                      "docs": {},
+                      "i": {
+                        "docs": {},
+                        "d": {
+                          "docs": {},
+                          "t": {
+                            "docs": {},
+                            "h": {
+                              "docs": {
+                                "Layouter.html#setMinWidth": {
+                                  "ref": "Layouter.html#setMinWidth",
+                                  "tf": 683.3333333333334
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "h": {
+                      "docs": {},
+                      "e": {
+                        "docs": {},
+                        "i": {
+                          "docs": {},
+                          "g": {
+                            "docs": {},
+                            "h": {
+                              "docs": {},
+                              "t": {
+                                "docs": {
+                                  "Layouter.html#setMinHeight": {
+                                    "ref": "Layouter.html#setMinHeight",
                                     "tf": 683.3333333333334
                                   }
                                 }
@@ -6759,6 +7169,14 @@ window.lunrData = {
                   "Layouter.html#setMaxHeight": {
                     "ref": "Layouter.html#setMaxHeight",
                     "tf": 6.25
+                  },
+                  "Layouter.html#buildMinHeight": {
+                    "ref": "Layouter.html#buildMinHeight",
+                    "tf": 3.8461538461538463
+                  },
+                  "Layouter.html#setMinHeight": {
+                    "ref": "Layouter.html#setMinHeight",
+                    "tf": 6.25
                   }
                 }
               }
@@ -6778,6 +7196,14 @@ window.lunrData = {
                     },
                     "Layouter.html#setMaxWidth": {
                       "ref": "Layouter.html#setMaxWidth",
+                      "tf": 6.25
+                    },
+                    "Layouter.html#buildMinWidth": {
+                      "ref": "Layouter.html#buildMinWidth",
+                      "tf": 3.8461538461538463
+                    },
+                    "Layouter.html#setMinWidth": {
+                      "ref": "Layouter.html#setMinWidth",
                       "tf": 6.25
                     }
                   }
@@ -7157,6 +7583,14 @@ window.lunrData = {
                     "ref": "Layouter.html#setMaxHeight",
                     "tf": 6.25
                   },
+                  "Layouter.html#setMinWidth": {
+                    "ref": "Layouter.html#setMinWidth",
+                    "tf": 6.25
+                  },
+                  "Layouter.html#setMinHeight": {
+                    "ref": "Layouter.html#setMinHeight",
+                    "tf": 6.25
+                  },
                   "uLayouter.html#.replaceList": {
                     "ref": "uLayouter.html#.replaceList",
                     "tf": 5
@@ -7251,6 +7685,14 @@ window.lunrData = {
                         },
                         "Layouter.html#setMaxHeight": {
                           "ref": "Layouter.html#setMaxHeight",
+                          "tf": 33.33333333333333
+                        },
+                        "Layouter.html#setMinWidth": {
+                          "ref": "Layouter.html#setMinWidth",
+                          "tf": 33.33333333333333
+                        },
+                        "Layouter.html#setMinHeight": {
+                          "ref": "Layouter.html#setMinHeight",
                           "tf": 33.33333333333333
                         },
                         "uLayouter.html#.buildPadsMargsMaxs": {
@@ -7525,6 +7967,14 @@ window.lunrData = {
                         "ref": "Layouter.html#buildMaxHeight",
                         "tf": 25
                       },
+                      "Layouter.html#buildMinWidth": {
+                        "ref": "Layouter.html#buildMinWidth",
+                        "tf": 25
+                      },
+                      "Layouter.html#buildMinHeight": {
+                        "ref": "Layouter.html#buildMinHeight",
+                        "tf": 25
+                      },
                       "uLayouter.html#.createScopeStyles": {
                         "ref": "uLayouter.html#.createScopeStyles",
                         "tf": 14.285714285714285
@@ -7710,6 +8160,14 @@ window.lunrData = {
               },
               "Layouter.html#setMaxHeight": {
                 "ref": "Layouter.html#setMaxHeight",
+                "tf": 6.25
+              },
+              "Layouter.html#setMinWidth": {
+                "ref": "Layouter.html#setMinWidth",
+                "tf": 6.25
+              },
+              "Layouter.html#setMinHeight": {
+                "ref": "Layouter.html#setMinHeight",
                 "tf": 6.25
               },
               "uLayouter.html#.getBpsOrdered": {
@@ -8716,6 +9174,22 @@ window.lunrData = {
                 "ref": "Layouter.html#setMaxHeight",
                 "tf": 6.25
               },
+              "Layouter.html#buildMinWidth": {
+                "ref": "Layouter.html#buildMinWidth",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setMinWidth": {
+                "ref": "Layouter.html#setMinWidth",
+                "tf": 6.25
+              },
+              "Layouter.html#buildMinHeight": {
+                "ref": "Layouter.html#buildMinHeight",
+                "tf": 7.6923076923076925
+              },
+              "Layouter.html#setMinHeight": {
+                "ref": "Layouter.html#setMinHeight",
+                "tf": 6.25
+              },
               "uLayouter.html#.replaceList": {
                 "ref": "uLayouter.html#.replaceList",
                 "tf": 5
@@ -8827,6 +9301,14 @@ window.lunrData = {
                       },
                       "Layouter.html#buildMaxHeight": {
                         "ref": "Layouter.html#buildMaxHeight",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMinWidth": {
+                        "ref": "Layouter.html#buildMinWidth",
+                        "tf": 3.8461538461538463
+                      },
+                      "Layouter.html#buildMinHeight": {
+                        "ref": "Layouter.html#buildMinHeight",
                         "tf": 3.8461538461538463
                       },
                       "uLayouter.html#.createStyles": {
@@ -9073,6 +9555,25 @@ window.lunrData = {
                       }
                     }
                   }
+                },
+                "i": {
+                  "docs": {},
+                  "w": {
+                    "docs": {
+                      "Layouter.html#buildMinWidth": {
+                        "ref": "Layouter.html#buildMinWidth",
+                        "tf": 25
+                      }
+                    }
+                  },
+                  "h": {
+                    "docs": {
+                      "Layouter.html#buildMinHeight": {
+                        "ref": "Layouter.html#buildMinHeight",
+                        "tf": 25
+                      }
+                    }
+                  }
                 }
               },
               "f": {
@@ -9182,6 +9683,14 @@ window.lunrData = {
               "ref": "Layouter.html#buildMaxHeight",
               "tf": 3.8461538461538463
             },
+            "Layouter.html#buildMinWidth": {
+              "ref": "Layouter.html#buildMinWidth",
+              "tf": 3.8461538461538463
+            },
+            "Layouter.html#buildMinHeight": {
+              "ref": "Layouter.html#buildMinHeight",
+              "tf": 3.8461538461538463
+            },
             "uLayouter.html#.processors": {
               "ref": "uLayouter.html#.processors",
               "tf": 5
@@ -9241,7 +9750,7 @@ window.lunrData = {
           }
         }
       },
-      "length": 878
+      "length": 940
     },
     "corpusTokens": [
       "addclass",
@@ -9273,6 +9782,8 @@ window.lunrData = {
       "buildmartop",
       "buildmaxheight",
       "buildmaxwidth",
+      "buildminheight",
+      "buildminwidth",
       "buildpad",
       "buildpadbottom",
       "buildpadleft",
@@ -9380,6 +9891,8 @@ window.lunrData = {
       "layouter#buildmartop",
       "layouter#buildmaxheight",
       "layouter#buildmaxwidth",
+      "layouter#buildminheight",
+      "layouter#buildminwidth",
       "layouter#buildpad",
       "layouter#buildpadbottom",
       "layouter#buildpadleft",
@@ -9397,6 +9910,8 @@ window.lunrData = {
       "layouter#setmartop",
       "layouter#setmaxheight",
       "layouter#setmaxwidth",
+      "layouter#setminheight",
+      "layouter#setminwidth",
       "layouter#setpad",
       "layouter#setpadbottom",
       "layouter#setpadleft",
@@ -9422,6 +9937,7 @@ window.lunrData = {
       "muy",
       "máximo",
       "método",
+      "mínimo",
       "n",
       "n1",
       "n2",
@@ -9491,6 +10007,8 @@ window.lunrData = {
       "setmartop",
       "setmaxheight",
       "setmaxwidth",
+      "setminheight",
+      "setminwidth",
       "setpad",
       "setpadbottom",
       "setpadleft",
@@ -9548,6 +10066,8 @@ window.lunrData = {
       "valcol",
       "valflex",
       "valmar",
+      "valmih",
+      "valmiw",
       "valmxh",
       "valmxw",
       "valor",
@@ -9937,6 +10457,46 @@ window.lunrData = {
       "tags": "Layouter#setMaxHeight setMaxHeight",
       "summary": "",
       "description": "Setea el máximo alto necesario para un Nodo."
+    },
+    "Layouter.html#buildMinWidth": {
+      "id": "Layouter.html#buildMinWidth",
+      "kind": "function",
+      "title": "buildMinWidth( valMiw [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildMinWidth",
+      "name": "buildMinWidth",
+      "tags": "Layouter#buildMinWidth buildMinWidth",
+      "summary": "",
+      "description": "Construye el mínimo ancho, devolviendo el nombre de clase y los estilos creados."
+    },
+    "Layouter.html#setMinWidth": {
+      "id": "Layouter.html#setMinWidth",
+      "kind": "function",
+      "title": "setMinWidth( Node [, parameters ] )",
+      "longname": "Layouter#setMinWidth",
+      "name": "setMinWidth",
+      "tags": "Layouter#setMinWidth setMinWidth",
+      "summary": "",
+      "description": "Setea el mínimo ancho necesario para un Nodo."
+    },
+    "Layouter.html#buildMinHeight": {
+      "id": "Layouter.html#buildMinHeight",
+      "kind": "function",
+      "title": "buildMinHeight( valMih [, insertStyles ] ) → {Object}",
+      "longname": "Layouter#buildMinHeight",
+      "name": "buildMinHeight",
+      "tags": "Layouter#buildMinHeight buildMinHeight",
+      "summary": "",
+      "description": "Construye el mínimo alto, devolviendo el nombre de clase y los estilos creados."
+    },
+    "Layouter.html#setMinHeight": {
+      "id": "Layouter.html#setMinHeight",
+      "kind": "function",
+      "title": "setMinHeight( Node [, parameters ] )",
+      "longname": "Layouter#setMinHeight",
+      "name": "setMinHeight",
+      "tags": "Layouter#setMinHeight setMinHeight",
+      "summary": "",
+      "description": "Setea el mínimo alto necesario para un Nodo."
     },
     "uLayouter.html": {
       "id": "uLayouter.html",

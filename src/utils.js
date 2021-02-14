@@ -265,15 +265,28 @@ const uLayouter = {
       ruleCss: 'display: flex'
     },
 
-    mw: {
+    mxw: {
       set: 'setMaxWidth',
       build: 'buildMaxWidth',
       ruleCss: 'max-width'
     },
-    mh: {
+    
+    mxh: {
       set: 'setMaxHeight',
       build: 'buildMaxHeight',
       ruleCss: 'max-height'
+    },
+
+    miw: {
+      set: 'setMinWidth',
+      build: 'buildMinWidth',
+      ruleCss: 'min-width'
+    },
+
+    mih: {
+      set: 'setMinHeight',
+      build: 'buildMinHeight',
+      ruleCss: 'min-height'
     }
   },
 
