@@ -17,19 +17,19 @@ const Layouter = new lib({
   }
 });
 
-describe('Setting max height', () => {
+describe('Setting mix height', () => {
   it('simple', () => {
     const myDiv = document.createElement('div');
-    myDiv.setAttribute('mxh', '100');
-    Layouter.setMaxHeight(myDiv);
-    expect(myDiv.classList.contains('mxh-100')).toBeTruthy();
+    myDiv.setAttribute('mih', '100');
+    Layouter.setMinHeight(myDiv);
+    expect(myDiv.classList.contains('mih-100')).toBeTruthy();
   });
 
   it('With breakpoints', () => {
     const myDiv = document.createElement('div');
-    myDiv.setAttribute('mxh', '100 200@sm 300@md');
-    Layouter.setMaxHeight(myDiv);
-    ['mxh-100', 'mxh-200@sm', 'mxh-300@md'].forEach(item => {
+    myDiv.setAttribute('mih', '100 200@sm 300@md');
+    Layouter.setMinHeight(myDiv);
+    ['mih-100', 'mih-200@sm', 'mih-300@md'].forEach(item => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
     });
   });

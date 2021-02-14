@@ -155,7 +155,7 @@ const layouter = new Layouter(myConfig);
 <li>'lg' es para desktop con monitores más grandes, apartir de 1280</li>
 </ul>
 </blockquote>
-<p><em><strong>Se pueden crear breakpoints a voluntad, el sistema admite cuantos breakpoints se necesite.</strong></em></p>
+<p><em><strong>Se pueden definir cuantos breakpoints se requiera, no hay límite.</strong></em></p>
 <p>Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en <strong>true</strong>, así los estilos pasarán directos. Ahora veamos los atributos y métodos disponibles:</p>
 <h2>Atributos</h2>
 <ul>
@@ -177,8 +177,10 @@ const layouter = new Layouter(myConfig);
 </ul>
 </li>
 <li><a href="#flex">Flex</a></li>
-<li><a href="#maxwidth">Mw</a></li>
-<li><a href="#maxheight">Mh</a></li>
+<li><a href="#maxwidth">Mxw</a></li>
+<li><a href="#maxheight">Mxh</a></li>
+<li><a href="#minwidth">Miw</a></li>
+<li><a href="#minheight">Mih</a></li>
 </ul>
 <h2>Métodos</h2>
 <ul>
@@ -205,6 +207,8 @@ const layouter = new Layouter(myConfig);
 <li><a href="#setFlex">setFlex</a></li>
 <li><a href="#setMaxWidth">setMaxWidth</a></li>
 <li><a href="#setMaxHeight">setMaxHeight</a></li>
+<li><a href="#setMinWidth">setMinWidth</a></li>
+<li><a href="#setMinHeight">setMinHeight</a></li>
 </ul>
 </li>
 <li>
@@ -240,6 +244,12 @@ const layouter = new Layouter(myConfig);
 <li>
 <p><a href="#BuildMaxHeight">buildMaxHeight</a></p>
 </li>
+<li>
+<p><a href="#BuildMinWidth">buildMinWidth</a></p>
+</li>
+<li>
+<p><a href="#BuildMinHeight">buildMinHeight</a></p>
+</li>
 </ul>
 </li>
 <li>
@@ -271,16 +281,18 @@ const layouter = new Layouter(myConfig);
 <p><strong>Explicación:</strong></p>
 <p>Para el DIV del ejemplo de arriba se determinó que:</p>
 <ul>
-<li>Tendrá 13 columnas de 15, y como no tiene como sufijo el signo arroba, significa que las tendrá en el 'breakpoint directo' osea el 'xs'. Si el DIV solo tendría esa designación, luego de procesarlo...</li>
+<li>Tendrá 13 columnas de 15, y como no tiene como sufijo el signo arroba, significa que las tendrá en el 'breakpoint directo' osea el 'xs'. Si el DIV solo tendría esa atributo definido, luego de procesarlo con...</li>
 </ul>
 <pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
 layouter.setCols(myDiv);
 </code></pre>
 <p>...obtendríamos este resultado:</p>
-<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-13-15&quot;>...&lt;/div>
-&lt;!-- Vemos que el atributo 'cols' desapareció del elemento, esto es porque yá no lo necesita una vez procesado. -->
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-13/15&quot;>...&lt;/div>
 </code></pre>
-<p>Y como estilos tendríamos disponible una clase llamada 'cols-13-15' la cual nos daría estos estilos:</p>
+<blockquote>
+<p>Vemos que el atributo 'cols' desapareció del elemento, esto es porque ya no lo necesita una vez procesado</p>
+</blockquote>
+<p>Y como estilos tendríamos disponible una clase llamada 'cols-13/15' la cual nos daría estos estilos:</p>
 <pre class="prettyprint source lang-css"><code>.cols-13\/15 {
   width: 86.666%
 }
@@ -289,7 +301,7 @@ layouter.setCols(myDiv);
 <ul>
 <li>Para el breakpoint 'sm' (osea 'tablet') se determinó que se tendrá 10 columnas de 31, luego de procesarlo obtendríamos este resultado:</li>
 </ul>
-<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-10-31@sm&quot;>...&lt;/div>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-10/31@sm&quot;>...&lt;/div>
 </code></pre>
 <p>Pero como se determinó en un breakpoint, los estilos estarían regidos por él</p>
 <pre class="prettyprint source lang-css"><code>@media screen and (min-width: 768px) {
@@ -301,7 +313,7 @@ layouter.setCols(myDiv);
 <ul>
 <li>Para el breakpoint 'md' (osea 'desktop') se determinó que se tendrá 15 columnas de 27, y luego de procesarlo obtendríamos este resultado:</li>
 </ul>
-<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-15-27@md&quot;>...&lt;/div>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-15/27@md&quot;>...&lt;/div>
 </code></pre>
 <pre class="prettyprint source lang-css"><code>@media screen and (min-width: 1024px) {
   .cols-15\/27\@sm {
@@ -310,10 +322,10 @@ layouter.setCols(myDiv);
 }
 </code></pre>
 <p><strong>Finalmente</strong> si procesamos el valor completo del parametro 'cols' (13/15 10/31@sm 15/27@md) obtendríamos este resultado:</p>
-<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-13-15 cols-10-31@sm cols-15-27@md&quot;>...&lt;/div>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;cols-13/15 cols-10/31@sm cols-15/27@md&quot;>...&lt;/div>
 </code></pre>
 <p>y pues, estos estilos:</p>
-<pre class="prettyprint source lang-css"><code>.cols-13-15 {
+<pre class="prettyprint source lang-css"><code>.cols-13\/15 {
   width: 86.666%
 }
 
@@ -337,7 +349,7 @@ layouter.setCols(myDiv);
 <pre class="prettyprint source lang-html"><code>&lt;div cols=&quot;13/15 20/27@sm-md&quot;>
 </code></pre>
 <p>El guión (-) indica 'desde / hasta' donde se quiere determinar las columnas. En estilos tendríamos esto:</p>
-<pre class="prettyprint source lang-css"><code>.cols-13-15 {
+<pre class="prettyprint source lang-css"><code>.cols-13\/15 {
   width: 86.666%
 }
 
@@ -349,8 +361,10 @@ layouter.setCols(myDiv);
 </code></pre>
 <p>...aunque tambien se puede usar solo el 'hasta', así:</p>
 <pre class="prettyprint source lang-html"><code>&lt;div cols=&quot;20/27@-md&quot;>
-&lt;!-- Esto le dará 20 columnas de 27 hasta 'desktop' (en el breakpoint 'md') -->
 </code></pre>
+<blockquote>
+<p>Esto le dará 20 columnas de 27 hasta 'desktop' (en el breakpoint 'md')</p>
+</blockquote>
 <p>y en estilos obtendremos esto:</p>
 <pre class="prettyprint source lang-css"><code>@media screen and (max-width: 1023px) {
   .cols-20\/27\@sm {
@@ -395,8 +409,10 @@ layouter.setMars(myDiv);
 </code></pre>
 <p>...obtendríamos este resultado:</p>
 <pre class="prettyprint source lang-html"><code>&lt;div class=&quot;mar-20-2/15 mar-40-3/31-20@sm mar-60-2/31@md&quot;>...&lt;/div>
-&lt;!-- Vemos que el atributo 'mar' desapareció del elemento, esto es porque yá no lo necesita una vez procesado. -->
 </code></pre>
+<blockquote>
+<p>Vemos que el atributo 'mar' desapareció del elemento, esto es porque yá no lo necesita una vez procesado.</p>
+</blockquote>
 <p>Y pues, estos estilos:</p>
 <pre class="prettyprint source lang-css"><code>.mar-20-2\/15 {
   margin: 20px 13.3333%;
@@ -438,8 +454,10 @@ layouter.setMarTop(myDiv);
 </code></pre>
 <p>...obtendríamos este resultado:</p>
 <pre class="prettyprint source lang-html"><code>&lt;div class=&quot;mart-10 mart-20_5@sm mart-30@md&quot;>...&lt;/div>
-&lt;!-- Vemos que el atributo 'mart' desapareció del elemento, esto es porque yá no lo necesita una vez procesado. -->
 </code></pre>
+<blockquote>
+<p>Vemos que el atributo 'mart' desapareció del elemento, esto es porque yá no lo necesita una vez procesado</p>
+</blockquote>
 <p>Y pues, estos estilos:</p>
 <pre class="prettyprint source lang-css"><code>.mart-10 {
   margin-top: 10px;
@@ -484,11 +502,11 @@ layouter.setMarLeft(myDiv);
   margin-right: 10px;
 }
 
-.marb-10 {
+.marb-20 {
   margin-bottom: 20px;
 }
 
-.marl-10 {
+.marl-30 {
   margin-left: 30px;
 }
 
@@ -610,11 +628,11 @@ layouter.setPadLeft(myDiv);
   padding-right: 10px;
 }
 
-.padb-10 {
+.padb-20 {
   padding-bottom: 20px;
 }
 
-.padl-10 {
+.padl-30 {
   padding-left: 30px;
 }
 
@@ -713,22 +731,22 @@ layouter.setFlex(myDiv);
 <h3>MaxWidth</h3>
 <p>Sirve para determinar el máximo ancho que tendrá un nodo en pixeles.</p>
 <h4>Ejemplo:</h4>
-<pre class="prettyprint source lang-html"><code>&lt;div mw=&quot;100 150@sm&quot;>...&lt;/div>
+<pre class="prettyprint source lang-html"><code>&lt;div mxw=&quot;100 150@sm&quot;>...&lt;/div>
 </code></pre>
 <p>...luego de procesarlo:</p>
 <pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
 layouter.setMaxWidth(myDiv);
 </code></pre>
 <p>...obtendríamos este resultado:</p>
-<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;mw-100 mw-150@sm&quot;>...&lt;/div>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;mxw-100 mxw-150@sm&quot;>...&lt;/div>
 </code></pre>
 <p>Y pues, estos estilos:</p>
-<pre class="prettyprint source lang-css"><code>.mw-100{
+<pre class="prettyprint source lang-css"><code>.mxw-100{
   max-width:100px
 }
 
 @media screen and (min-width: 768px){
-  .mw-150\@sm{
+  .mxw-150\@sm{
     max-width:150px
   }
 }
@@ -738,28 +756,31 @@ layouter.setMaxWidth(myDiv);
 <h3>MaxHeight</h3>
 <p>Sirve para determinar el máximo alto que tendrá un nodo en pixeles.</p>
 <h4>Ejemplo:</h4>
-<pre class="prettyprint source lang-html"><code>&lt;div mh=&quot;100 150@sm&quot;>...&lt;/div>
+<pre class="prettyprint source lang-html"><code>&lt;div mxh=&quot;100 150@sm&quot;>...&lt;/div>
 </code></pre>
 <p>...luego de procesarlo:</p>
 <pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
 layouter.setMaxHeight(myDiv);
 </code></pre>
 <p>...obtendríamos este resultado:</p>
-<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;mh-100 mh-150@sm&quot;>...&lt;/div>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;mxh-100 mxh-150@sm&quot;>...&lt;/div>
 </code></pre>
 <p>Y pues, estos estilos:</p>
-<pre class="prettyprint source lang-css"><code>.mh-100{
+<pre class="prettyprint source lang-css"><code>.mxh-100{
   max-height:100px
 }
 
 @media screen and (min-width: 768px){
-  .mh-150\@sm{
+  .mxh-150\@sm{
     max-height:150px
   }
 }
 
 </code></pre>
 <p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h3>MinWidth</h3>
+<h3>MinHeight</h3>
+<p>Sirven para determinar el mínimo ancho y mínimo alto en pixeles respectivamente, es lo mismo que el max-width y max-height nombrados más arriba.</p>
 <h2>Métodos:</h2>
 <h3>Set</h3>
 <p>Sirve para procesar todos los atributos aceptados por el sistema.</p>
@@ -854,8 +875,10 @@ layouter.set(myDiv);
 <h3>SetMarLeft</h3>
 <h3>setMaxWidth</h3>
 <h3>setMaxHeight</h3>
+<h3>setMinWidth</h3>
+<h3>setMinHeight</h3>
 <h3>setFlex</h3>
-<p>Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom, left, el max width y height respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex'.</p>
+<p>Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom, left, el max/min width y height respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... el atributo 'flex' XD.</p>
 <p><a href="#layouter-js">↑ Volver Arriba</a></p>
 <p>De echo, los métodos builds son lo mismo, pero para esto no es necesario pasarle como parametro el Nodo, sino el valor a procesar, veamos:</p>
 <h3>Build</h3>
@@ -922,6 +945,8 @@ layouter.set(myDiv);
 <h3>BuildPadLeft</h3>
 <h3>BuildMaxWidth</h3>
 <h3>BuildMaxHeight</h3>
+<h3>BuildMinWidth</h3>
+<h3>BuildMinHeight</h3>
 <h3>BuildFlex</h3>
 <p>Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, máximo ancho &amp; alto y flex tmb.</p>
 <h3>GetParameters</h3>
@@ -1030,7 +1055,7 @@ layouter.styles: {
 	</div>
 	<footer>
 				<div class="copyright">FooDoc Copyright © 2016 The contributors to the JSDoc3 and FooDoc projects.</div>
-			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on 2nd Feb 2021 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on 14th Feb 2021 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
 	</footer>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

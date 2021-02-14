@@ -20,21 +20,21 @@ const Layouter = new lib({
 describe('Buildings Max-width', () => {
   it('simple', () => {
     expect(Layouter.buildMaxWidth('100')).toEqual({
-      "mw-100": ".mw-100{max-width:100px}"
+      "mxw-100": ".mxw-100{max-width:100px}"
     });
   });
 
   it('simple with important flag', () => {
     expect(Layouter.buildMaxWidth('100!')).toEqual({
-      "mw-100!": ".mw-100\\!{max-width:100px !important}"
+      "mxw-100!": ".mxw-100\\!{max-width:100px !important}"
     });
   });
 
   it('With breakpoints and important flag', () => {
     expect(Layouter.buildMaxWidth('100! 200@sm 300@md!')).toEqual({
-      "mw-100!": ".mw-100\\!{max-width:100px !important}",
-      "mw-200@sm": "@media screen and (min-width: 768px){.mw-200\\@sm{max-width:200px}}",
-      "mw-300@md!": "@media screen and (min-width: 1024px){.mw-300\\@md\\!{max-width:300px !important}}"
+      "mxw-100!": ".mxw-100\\!{max-width:100px !important}",
+      "mxw-200@sm": "@media screen and (min-width: 768px){.mxw-200\\@sm{max-width:200px}}",
+      "mxw-300@md!": "@media screen and (min-width: 1024px){.mxw-300\\@md\\!{max-width:300px !important}}"
     })
   });
 });

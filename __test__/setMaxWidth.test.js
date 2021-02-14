@@ -20,16 +20,16 @@ const Layouter = new lib({
 describe('Setting max width', () => {
   it('simple', () => {
     const myDiv = document.createElement('div');
-    myDiv.setAttribute('mw', '100');
+    myDiv.setAttribute('mxw', '100');
     Layouter.setMaxWidth(myDiv);
-    expect(myDiv.classList.contains('mw-100')).toBeTruthy();
+    expect(myDiv.classList.contains('mxw-100')).toBeTruthy();
   });
 
   it('With breakpoints', () => {
     const myDiv = document.createElement('div');
-    myDiv.setAttribute('mw', '100 200@sm 300@md');
+    myDiv.setAttribute('mxw', '100 200@sm 300@md');
     Layouter.setMaxWidth(myDiv);
-    ['mw-100', 'mw-200@sm', 'mw-300@md'].forEach(item => {
+    ['mxw-100', 'mxw-200@sm', 'mxw-300@md'].forEach(item => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
     });
   });
