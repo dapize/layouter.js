@@ -538,7 +538,7 @@ const uLayouter = {
     const prefix = instance.prefix;
     const prop = this.processors[type].ruleCss;
     const styles = {};
-    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal, shortNameClass, pureShortName;
+    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal, shortNameClass, attrsFlexSelfs;
     const _this = this;
     Object.keys(bps).forEach(function (bp) {
       // preparing the className
@@ -549,8 +549,17 @@ const uLayouter = {
       // Property and value
       if (type === 'flex') {
         propAndVal = bps[bp].value;
-        pureShortName = shortNameClass.split(':')[0];
-        if (_this.flexAttrsSelf.indexOf(pureShortName) === -1 && pureShortName !== 'as') {
+
+        // Searching a flex self inside. ['as' for 'align-self']
+        attrsFlexSelfs = ['as'].concat(_this.flexAttrsSelf).filter(function (nameAttrFlex) {
+          return shortNameClass.indexOf(nameAttrFlex + ':') !== -1
+        });
+        if (attrsFlexSelfs.length) {
+          // if the items number of flex selft (+1) is diferrent so exists other flex attribute
+          if ((attrsFlexSelfs.length + 1) !== shortNameClass.split(':').length) {
+            propAndVal += shortNameClass.indexOf('!') !== -1 ? ';display:flex !important;' : ';display:flex;';
+          }
+        } else {
           propAndVal += shortNameClass.indexOf('!') !== -1 ? ';display:flex !important;' : ';display:flex;';
         }
       } else {
@@ -748,7 +757,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.11.0RC'
+Layouter.version = '1.11.1RC'
 
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible

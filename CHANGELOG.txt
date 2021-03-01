@@ -75,3 +75,6 @@ v1.11.0RC
 - Se añade dos atributos nuevos, el 'miw' y 'mih' para definir el mínimo ancho y alto.
 - Se cambian los atributos 'mw' y 'mh' (max-width y max-height) por 'mxw' y 'mxh'.
 - Se fixea algunas partes de la documentación.
+
+v1.11.1RC
+- Se fixea el tratado de un flex attribute self (fg, gs, or, as). Cuando se agregaba al principio del valor del atributo 'flex' en algún nodo, en conjunto a otro atributo que no era 'flex self', bloqueaba la adición del estilo 'display:flex'.
