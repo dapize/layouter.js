@@ -30,6 +30,12 @@ describe('Buildings margin-top', () => {
     });
   });
 
+  it('simple with units relative', () => {
+    expect(Layouter.buildMarTop('40%')).toEqual({
+      "mart-0¯40": ".mart-0¯40{margin-top:40%}"
+    });
+  });
+
   it('With breakpoints', () => {
     expect(Layouter.buildMarTop('10 20.5@sm 30@md')).toEqual({
       "mart-10": ".mart-10{margin-top:10px}",

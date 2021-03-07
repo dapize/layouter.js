@@ -150,6 +150,11 @@ const uLayouter = {
   },
 
   /**
+   * Medidas relativas que sustituirán los pixeles en un valor designado.
+   */
+  relativeMeasures: ['%', 'rem', 'em', 'ex', 'vw', 'vh'],
+
+  /**
    * Procesa un número, si es porcentual lo calcula, sino lo devuelve tal cual, al igual que cuando se recibe 'auto'.
    * @memberof uLayouter
    * @param {String} n Número a procesar
@@ -162,11 +167,16 @@ const uLayouter = {
       nProcessed = this.calPercentage(this.stringToNumber(nProcessed[0]), this.stringToNumber(nProcessed[1]))
     } else if (n === 'auto') {
       nProcessed = 'auto'
-    } else if (n.indexOf('.') !== -1) {
-      nProcessed = n + 'px';
     } else {
-      nProcessed = n === '0' ? n : n + 'px';
-    }
+      const relativeUnits = this.relativeMeasures.filter(function (unit) {
+        return n.indexOf(unit) !== -1
+      });
+      if (relativeUnits.length) {
+        nProcessed = n;
+      } else {
+        nProcessed = n === '0' ? n : n + 'px';
+      }
+    };
     return nProcessed;
   },
 
@@ -527,6 +537,14 @@ const uLayouter = {
   },
 
   /**
+   * Convierte un valor con porcentaje a su equivalente más legible
+   * @param {String} percentage Valor en porcentaje a convertir
+   */
+  percentageConverter: function (percentage) {
+    return '0¯' + percentage.replace('%', '');
+  },
+
+  /**
    * Crea una lista de estilos CSS apartir de breakpoints y propiedades.
    * @memberof uLayouter
    * @param {String} type Tipo de estilos a dar: 'cols', 'pad', 'mar' o 'flex'
@@ -538,13 +556,16 @@ const uLayouter = {
     const prefix = instance.prefix;
     const prop = this.processors[type].ruleCss;
     const styles = {};
-    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal, shortNameClass, attrsFlexSelfs;
+    let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal, shortNameClass, attrsFlexSelfs, nameClassCss;
     const _this = this;
     Object.keys(bps).forEach(function (bp) {
       // preparing the className
       shortNameClass = bps[bp].name;
-      nameClass = prefix + type + '-' + shortNameClass;
-      nameClass = nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
+
+      // just if have a percentage
+      nameClass = shortNameClass;
+      if (shortNameClass.indexOf('%') !== -1) nameClass = shortNameClass.replace(shortNameClass, _this.percentageConverter(shortNameClass))
+      nameClass = prefix + type + '-' + nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
 
       // Property and value
       if (type === 'flex') {
@@ -757,7 +778,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.11.1RC'
+Layouter.version = '1.12.0RC'
 
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible

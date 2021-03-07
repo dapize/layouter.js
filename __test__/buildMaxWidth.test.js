@@ -30,6 +30,12 @@ describe('Buildings Max-width', () => {
     });
   });
 
+  it('simple with units relative', () => {
+    expect(Layouter.buildMaxWidth('40rem')).toEqual({
+      "mxw-40rem": ".mxw-40rem{max-width:40rem}"
+    });
+  });
+
   it('With breakpoints and important flag', () => {
     expect(Layouter.buildMaxWidth('100! 200@sm 300@md!')).toEqual({
       "mxw-100!": ".mxw-100\\!{max-width:100px !important}",

@@ -27,7 +27,7 @@ Solo debes agregar, a tu página web, la llamada al script 'layouter.min.js' que
 
 ## Inicialización
 
-> Esto lo puedes hacer en un archivo 'main.js' que tienes que llamarlo luego del layouter.min.js o en el mismo HTML
+> Esto lo puedes hacer en un archivo 'main.js' que tienes que llamar luego del layouter.min.js o en el mismo HTML
 
 Empezamos creando una instancia del constructor 'Layouter' pasandole un objeto de configuración, ahi agregamos los breakpoints que necesitemos, en ésta ocasión necesitaré 4 breakpoints.
 
@@ -76,9 +76,12 @@ const layouter = new Layouter(myConfig);
 > - 'md' Es para desktop, osea apartir de 1024px de ancho.
 > - 'lg' es para desktop con monitores más grandes, apartir de 1280
 
-***Se pueden definir cuantos breakpoints se requiera, no hay límite.***
+### A tomar en cuenta:
+- Se pueden definir cuantos breakpoints se requiera, no hay límite.
+- Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en **true**, así los estilos pasarán directos.
+- Si no se define ninguna unidad de medida ('%', 'rem', 'em', 'ex', 'vw', 'vh') en el valor de cualquier atributo (que no sea naturalmente porcentual), se tomará como pixeles, [me refiero a esto](#Unidades-de-medida-definidas):
 
-Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en **true**, así los estilos pasarán directos. Ahora veamos los atributos y métodos disponibles:
+Ahora veamos los atributos y métodos disponibles:
 
 ## Atributos
 
@@ -449,6 +452,30 @@ Y pues, estos estilos:
 ```
 
 [&uarr; Volver Arriba](#layouter-js)
+
+### Unidades de medida definidas
+Para las definiciones de la mayoría de atributos que se auto definen como pixeles, como el 'mart', 'marb', y cualquier otro más, es posible definirle una unidad de medida relativa, las cuales pueden ser: '%', 'rem', 'em', 'ex', 'vw' y 'vh',
+
+Por ejemplo:
+```html
+<div mart="20%">...</div>
+```
+... luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+layouter.setMarTop(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="mart-0¯20">...</div>
+```
+Y pues, estos estilo:
+```css
+.mart-0¯20 {
+  margin-top: 20%;
+}
+```
+**OJO**: Esto aplica para cualquier otro valor que se auto define como pixeles: mih, mxw, padt, padb, etc.
 
 ### Pad
 Sirve para determinar los paddings que se le dará. Al igual que al atributo 'mar', solo el padding top y bottom se tomarán como pixeles y el left y right como porcentual.

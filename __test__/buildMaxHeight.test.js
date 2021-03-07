@@ -30,6 +30,12 @@ describe('Buildings Max-height', () => {
     });
   });
 
+  it('simple with units relative', () => {
+    expect(Layouter.buildMaxHeight('100vh!')).toEqual({
+      "mxh-100vh!": ".mxh-100vh\\!{max-height:100vh !important}"
+    });
+  });
+
   it('With breakpoints and important flag', () => {
     expect(Layouter.buildMaxHeight('100! 200@sm 300@md!')).toEqual({
       "mxh-100!": ".mxh-100\\!{max-height:100px !important}",
