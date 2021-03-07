@@ -108,7 +108,7 @@ const myConfig = {
   prefix: 'lh',
   breakPoints: {
     xs: {
-      width: 320,
+      width: 360,
       cols: 15,
       direct: true
     },
@@ -159,7 +159,7 @@ const layouter = new Layouter(myConfig);
 <ul>
 <li>Se pueden definir cuantos breakpoints se requiera, no hay límite.</li>
 <li>Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en <strong>true</strong>, así los estilos pasarán directos.</li>
-<li>Si no se define ninguna unidad de medida ('%', 'rem', 'em', 'ex', 'vw', 'vh') en el valor de cualquier atributo (que no sea naturalmente porcentual), se tomará como pixeles, <a href="#Unidades-de-medida-definidas">me refiero a esto</a>:</li>
+<li>Si no se define ninguna unidad de medida en el valor de cualquier atributo (que no sea naturalmente porcentual), se tomará en pixeles <a href="#Unidades-de-medida-definidas">me refiero a esto</a>:</li>
 </ul>
 <p>Ahora veamos los atributos y métodos disponibles:</p>
 <h2>Atributos</h2>
@@ -182,6 +182,8 @@ const layouter = new Layouter(myConfig);
 </ul>
 </li>
 <li><a href="#flex">Flex</a></li>
+<li><a href="#width">Wdh</a></li>
+<li><a href="#height">Hgt</a></li>
 <li><a href="#maxwidth">Mxw</a></li>
 <li><a href="#maxheight">Mxh</a></li>
 <li><a href="#minwidth">Miw</a></li>
@@ -210,6 +212,8 @@ const layouter = new Layouter(myConfig);
 </ul>
 </li>
 <li><a href="#setFlex">setFlex</a></li>
+<li><a href="#setWidth">setWidth</a></li>
+<li><a href="#setHeight">setHeight</a></li>
 <li><a href="#setMaxWidth">setMaxWidth</a></li>
 <li><a href="#setMaxHeight">setMaxHeight</a></li>
 <li><a href="#setMinWidth">setMinWidth</a></li>
@@ -227,7 +231,7 @@ const layouter = new Layouter(myConfig);
 <ul>
 <li><a href="#BuildMarTop">buildMarTop</a></li>
 <li><a href="#BuildMarRight">buildMarRight</a></li>
-<li><a href="#buildMarBottom">buildMarBottom</a></li>
+<li><a href="#BuildMarBottom">buildMarBottom</a></li>
 <li><a href="#BuildMarLeft">buildMarLeft</a></li>
 </ul>
 </li>
@@ -242,6 +246,12 @@ const layouter = new Layouter(myConfig);
 </li>
 <li>
 <p><a href="#BuildFlex">buildFlex</a></p>
+</li>
+<li>
+<p><a href="#BuildWidth">buildWidth</a></p>
+</li>
+<li>
+<p><a href="#BuildHeight">buildHeight</a></p>
 </li>
 <li>
 <p><a href="#BuildMaxWidth">buildMaxWidth</a></p>
@@ -541,7 +551,7 @@ layouter.setMarLeft(myDiv);
 </code></pre>
 <p><a href="#layouter-js">↑ Volver Arriba</a></p>
 <h3>Unidades de medida definidas</h3>
-<p>Para las definiciones de la mayoría de atributos que se auto definen como pixeles, como el 'mart', 'marb', y cualquier otro más, es posible definirle una unidad de medida relativa, las cuales pueden ser: '%', 'rem', 'em', 'ex', 'vw' y 'vh',</p>
+<p>Para las definiciones de la mayoría de atributos que se auto definen como pixeles, como el 'mart', 'marb', y cualquier otro más, es posible definirle una unidad de medida relativa, las cuales pueden ser: <strong>%, rem, em, ex, vw y vh</strong>,</p>
 <p>Por ejemplo:</p>
 <pre class="prettyprint source lang-html"><code>&lt;div mart=&quot;20%&quot;>...&lt;/div>
 </code></pre>
@@ -751,8 +761,65 @@ layouter.setFlex(myDiv);
 <p>Nota: cuando determinamos más de un estilo para un mismo breakpoint, el nombre de las clases generadas son concatenadas, solo para ahorrar espacio.</p>
 </blockquote>
 <p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h3>Width</h3>
+<p>Sirve para determinar el ancho de un nodo en pixeles, siempre y cuando no se defina una unidad de medida.</p>
+<h4>Ejemplo 1:</h4>
+<pre class="prettyprint source lang-html"><code>&lt;div wdh=&quot;100 150@sm&quot;>...&lt;/div>
+</code></pre>
+<p>...luego de procesarlo:</p>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+layouter.setWidth(myDiv);
+</code></pre>
+<p>...obtendríamos este resultado:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;wdh-100 wdh-150@sm&quot;>...&lt;/div>
+</code></pre>
+<p>Y pues, estos estilos:</p>
+<pre class="prettyprint source lang-css"><code>.wdh-100{
+  width:100px
+}
+
+@media screen and (min-width: 768px){
+  .wdh-150\@sm{
+    width:150px
+  }
+}
+
+</code></pre>
+<p>Es posible determinar las únidades relativas: %, rem, em, ex, vw y vh.</p>
+<h4>Ejemplo 2:</h4>
+<pre class="prettyprint source lang-html"><code>&lt;div wdh=&quot;100% 150%@sm&quot;>...&lt;/div>
+</code></pre>
+<p>...luego de procesarlo:</p>
+<pre class="prettyprint source lang-javascript"><code>const myDiv = document.querySelector('div');
+layouter.setWidth(myDiv);
+</code></pre>
+<p>...obtendríamos este resultado:</p>
+<pre class="prettyprint source lang-html"><code>&lt;div class=&quot;wdh-0¯100 wdh-0¯150@sm&quot;>...&lt;/div>
+</code></pre>
+<p>Y pues, estos estilos:</p>
+<pre class="prettyprint source lang-css"><code>.wdh-0¯100{
+  width:100%
+}
+
+@media screen and (min-width: 768px){
+  .wdh-0¯150\@sm{
+    width:150%
+  }
+}
+
+</code></pre>
+<p><a href="#layouter-js">↑ Volver Arriba</a></p>
+<h3>Height</h3>
+<p>Es lo mismo que el 'Width' pero para determinar el alto, y tambien acepta determinar con unidades de medidas relativas.</p>
+<h4>Ejemplo 1:</h4>
+<pre class="prettyprint source lang-html"><code>&lt;div hgt=&quot;100 150@sm&quot;>...&lt;/div>
+</code></pre>
+<h4>Ejemplo 2:</h4>
+<pre class="prettyprint source lang-html"><code>&lt;div hgt=&quot;100vh 150vh@sm&quot;>...&lt;/div>
+</code></pre>
+<p><a href="#layouter-js">↑ Volver Arriba</a></p>
 <h3>MaxWidth</h3>
-<p>Sirve para determinar el máximo ancho que tendrá un nodo en pixeles.</p>
+<p>Sirve para determinar el máximo ancho que tendrá un nodo en pixeles, siempre y cuando no se defina</p>
 <h4>Ejemplo:</h4>
 <pre class="prettyprint source lang-html"><code>&lt;div mxw=&quot;100 150@sm&quot;>...&lt;/div>
 </code></pre>
@@ -959,13 +1026,15 @@ layouter.set(myDiv);
 <h3>BuildMars</h3>
 <h3>BuildMarTop</h3>
 <h3>BuildMarRight</h3>
-<h3>buildMarBottom</h3>
+<h3>BuildMarBottom</h3>
 <h3>BuildMarLeft</h3>
 <h3>BuildPads</h3>
 <h3>BuildPadTop</h3>
 <h3>BuildPadRight</h3>
 <h3>BuildPadBottom</h3>
 <h3>BuildPadLeft</h3>
+<h3>BuildWidth</h3>
+<h3>BuildHeight</h3>
 <h3>BuildMaxWidth</h3>
 <h3>BuildMaxHeight</h3>
 <h3>BuildMinWidth</h3>
