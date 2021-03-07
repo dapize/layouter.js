@@ -81,3 +81,6 @@ v1.11.1RC
 
 v1.12.0RC
 - Se adiciona la posibilidad de declarar una medida definida a un eje que comunmente se obtiene en pixeles, por ejemplo con marr="20" se obtendría margin-right: 20px, pero ahora si se define marr="20%", se obtendrá margin-right: 20%, de igual forma sirben para las siguientes unidades de medidas: %, em, ex, rem, vh, vw.
+
+v1.13.0RC
+- Se agregan dos nuevos atributos: 'wdh' y 'hgt', para determinar de forma directa el 'width' y el 'height' respectivamente con cualquier unidad de medida relativa.

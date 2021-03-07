@@ -37,7 +37,7 @@ const myConfig = {
   prefix: 'lh',
   breakPoints: {
     xs: {
-      width: 320,
+      width: 360,
       cols: 15,
       direct: true
     },
@@ -79,7 +79,7 @@ const layouter = new Layouter(myConfig);
 ### A tomar en cuenta:
 - Se pueden definir cuantos breakpoints se requiera, no hay límite.
 - Devido a que normalmente se maqueta en 'mobile first' el breakpoint 'xs' no necesita un 'media query' (osea: @media), es por eso que se pone 'direct' en **true**, así los estilos pasarán directos.
-- Si no se define ninguna unidad de medida ('%', 'rem', 'em', 'ex', 'vw', 'vh') en el valor de cualquier atributo (que no sea naturalmente porcentual), se tomará como pixeles, [me refiero a esto](#Unidades-de-medida-definidas):
+- Si no se define ninguna unidad de medida en el valor de cualquier atributo (que no sea naturalmente porcentual), se tomará en pixeles [me refiero a esto](#Unidades-de-medida-definidas):
 
 Ahora veamos los atributos y métodos disponibles:
 
@@ -97,6 +97,8 @@ Ahora veamos los atributos y métodos disponibles:
   - [Marb](#marb)
   - [Marl](#marl)
 - [Flex](#flex)
+- [Wdh](#width)
+- [Hgt](#height)
 - [Mxw](#maxwidth)
 - [Mxh](#maxheight)
 - [Miw](#minwidth)
@@ -117,6 +119,8 @@ Ahora veamos los atributos y métodos disponibles:
     - [setMarBottom](#SetMarBottom)
     - [setMarLeft](#SetMarLeft)
   - [setFlex](#setFlex)
+  - [setWidth](#setWidth)
+  - [setHeight](#setHeight)
   - [setMaxWidth](#setMaxWidth)
   - [setMaxHeight](#setMaxHeight)
   - [setMinWidth](#setMinWidth)
@@ -128,7 +132,7 @@ Ahora veamos los atributos y métodos disponibles:
   - [buildMars](#BuildMars)
     - [buildMarTop](#BuildMarTop)
     - [buildMarRight](#BuildMarRight)
-    - [buildMarBottom](#buildMarBottom)
+    - [buildMarBottom](#BuildMarBottom)
     - [buildMarLeft](#BuildMarLeft)
     
   - [buildPads](#BuildPads)
@@ -139,11 +143,14 @@ Ahora veamos los atributos y métodos disponibles:
 
   - [buildFlex](#BuildFlex)
 
+  - [buildWidth](#BuildWidth)
+  - [buildHeight](#BuildHeight)
+
   - [buildMaxWidth](#BuildMaxWidth)
   - [buildMaxHeight](#BuildMaxHeight)
   - [buildMinWidth](#BuildMinWidth)
   - [buildMinHeight](#BuildMinHeight)
-
+  
 - [getParameters](#getParameters)
 - [reset](#reset)
 
@@ -454,7 +461,7 @@ Y pues, estos estilos:
 [&uarr; Volver Arriba](#layouter-js)
 
 ### Unidades de medida definidas
-Para las definiciones de la mayoría de atributos que se auto definen como pixeles, como el 'mart', 'marb', y cualquier otro más, es posible definirle una unidad de medida relativa, las cuales pueden ser: '%', 'rem', 'em', 'ex', 'vw' y 'vh',
+Para las definiciones de la mayoría de atributos que se auto definen como pixeles, como el 'mart', 'marb', y cualquier otro más, es posible definirle una unidad de medida relativa, las cuales pueden ser: **%, rem, em, ex, vw y vh**,
 
 Por ejemplo:
 ```html
@@ -697,8 +704,90 @@ Y pues, estos estilos:
 
 [&uarr; Volver Arriba](#layouter-js)
 
+
+
+### Width
+Sirve para determinar el ancho de un nodo en pixeles, siempre y cuando no se defina una unidad de medida.
+
+#### Ejemplo 1:
+```html
+<div wdh="100 150@sm">...</div>
+```
+
+...luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+layouter.setWidth(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="wdh-100 wdh-150@sm">...</div>
+```
+Y pues, estos estilos:
+```css
+.wdh-100{
+  width:100px
+}
+
+@media screen and (min-width: 768px){
+  .wdh-150\@sm{
+    width:150px
+  }
+}
+
+```
+
+Es posible determinar las únidades relativas: %, rem, em, ex, vw y vh.
+
+#### Ejemplo 2:
+```html
+<div wdh="100% 150%@sm">...</div>
+```
+
+...luego de procesarlo:
+```javascript
+const myDiv = document.querySelector('div');
+layouter.setWidth(myDiv);
+```
+...obtendríamos este resultado:
+```html
+<div class="wdh-0¯100 wdh-0¯150@sm">...</div>
+```
+Y pues, estos estilos:
+```css
+.wdh-0¯100{
+  width:100%
+}
+
+@media screen and (min-width: 768px){
+  .wdh-0¯150\@sm{
+    width:150%
+  }
+}
+
+```
+
+[&uarr; Volver Arriba](#layouter-js)
+
+
+### Height
+Es lo mismo que el 'Width' pero para determinar el alto, y tambien acepta determinar con unidades de medidas relativas.
+
+#### Ejemplo 1:
+```html
+<div hgt="100 150@sm">...</div>
+```
+
+#### Ejemplo 2:
+```html
+<div hgt="100vh 150vh@sm">...</div>
+```
+
+[&uarr; Volver Arriba](#layouter-js)
+
+
 ### MaxWidth
-Sirve para determinar el máximo ancho que tendrá un nodo en pixeles.
+Sirve para determinar el máximo ancho que tendrá un nodo en pixeles, siempre y cuando no se defina
 
 #### Ejemplo:
 ```html
@@ -952,17 +1041,20 @@ layouter.buildCols('3/13 21/21@sm 27/27@md')
 ### BuildMars
 ### BuildMarTop
 ### BuildMarRight
-### buildMarBottom
+### BuildMarBottom
 ### BuildMarLeft
 ### BuildPads
 ### BuildPadTop
 ### BuildPadRight
 ### BuildPadBottom
 ### BuildPadLeft
+### BuildWidth
+### BuildHeight
 ### BuildMaxWidth
 ### BuildMaxHeight
 ### BuildMinWidth
 ### BuildMinHeight
+
 ### BuildFlex
 Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, máximo ancho & alto y flex tmb.
 
