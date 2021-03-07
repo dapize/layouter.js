@@ -30,6 +30,12 @@ describe('Buildings Margins', () => {
     });
   });
 
+  it('simple with units relative', () => {
+    expect(Layouter.buildMars('40%-0!')).toEqual({
+      "mar-0¯40-0!": ".mar-0¯40-0\\!{margin:40% 0 !important}"
+    });
+  });
+
   it('With breakpoints', () => {
     expect(Layouter.buildMars('10-1/15 20.5-3/31@sm 30-2/31@md')).toEqual({
       "mar-10-1/15": ".mar-10-1\\/15{margin:10px 6.666666666666667%}",

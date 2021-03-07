@@ -30,6 +30,12 @@ describe('Buildings Min-height', () => {
     });
   });
 
+  it('simple with units relative', () => {
+    expect(Layouter.buildMinHeight('100ex')).toEqual({
+      "mih-100ex": ".mih-100ex{min-height:100ex}"
+    });
+  });
+
   it('With breakpoints and important flag', () => {
     expect(Layouter.buildMinHeight('100! 200@sm 300@md!')).toEqual({
       "mih-100!": ".mih-100\\!{min-height:100px !important}",

@@ -78,3 +78,6 @@ v1.11.0RC
 
 v1.11.1RC
 - Se fixea el tratado de un flex attribute self (fg, gs, or, as). Cuando se agregaba al principio del valor del atributo 'flex' en algún nodo, en conjunto a otro atributo que no era 'flex self', bloqueaba la adición del estilo 'display:flex'.
+
+v1.12.0RC
+- Se adiciona la posibilidad de declarar una medida definida a un eje que comunmente se obtiene en pixeles, por ejemplo con marr="20" se obtendría margin-right: 20px, pero ahora si se define marr="20%", se obtendrá margin-right: 20%, de igual forma sirben para las siguientes unidades de medidas: %, em, ex, rem, vh, vw.

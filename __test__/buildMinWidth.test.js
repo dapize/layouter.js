@@ -30,6 +30,12 @@ describe('Buildings Min-width', () => {
     });
   });
 
+  it('simple with units relative', () => {
+    expect(Layouter.buildMinWidth('40vw')).toEqual({
+      "miw-40vw": ".miw-40vw{min-width:40vw}"
+    });
+  });
+
   it('With breakpoints and important flag', () => {
     expect(Layouter.buildMinWidth('100! 200@sm 300@md!')).toEqual({
       "miw-100!": ".miw-100\\!{min-width:100px !important}",
