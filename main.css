@@ -135,18 +135,8 @@ select {
   appearance: none
 }
 
-
-.container {
-  max-width: 1272px;
-  margin: 0 auto;
-}
-
 body {
   font-family: 'Open Sans';
-}
-
-.my-div {
-  height: 200px;
 }
 
 .text-box {
@@ -154,11 +144,6 @@ body {
   border: 1px solid #2980B9;
   background-color: #3498DB;
   color: white;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  WIDTH: 100%;
 }
 
 button {
