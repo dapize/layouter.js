@@ -1,60 +1,68 @@
-
-const configs = {
-  breakPoints: {
-    xs: {
-      width: 320,
-      cols: 15,
-      direct: true
+(function () {
+  
+  // CONFIG
+  const layouter = new Layouter({
+    breakPoints: {
+      xs: {
+        width: 360,
+        cols: 15,
+        direct: true
+      },
+      sm: {
+        width: 768,
+        cols: 31
+      },
+      md: {
+        width: 1024,
+        cols: 31
+      },
+      lg: {
+        width: 1280,
+        cols: 31
+      }
     },
-    sm: {
-      width: 768,
-      cols: 31
-    },
-    md: {
-      width: 1024,
-      cols: 31
-    },
-    lg: {
-      width: 1280,
-      cols: 31
-    }
-  },
-  bridge: false
-};
-const layouter = new Layouter(configs);
-console.log('layouter.breakPoints: ', layouter.breakPoints);
-console.log('layouter.sizes:', layouter.sizes);
-console.log('layouter.cols: ', layouter.cols);
-const myDiv = document.querySelector('.my-div');
-console.log('layouter.getParameters', layouter.getParameters(myDiv));
+    bridge: false
+  });
+  
+  // PROCESOR
+  let nodes = document.querySelectorAll(
+    "[cols], [pad], [padt], [padr], [padb], [padl], [mar], [mart], [marr], [marb], [marl], [flex], [mxw], [mxh], [miw], [mih], [hgt], [wdh]"
+  );
+  if (!nodes.length) return false;
+  
+  const setNodes = new Set();
+  Array.prototype.forEach.call(nodes, function (itemNode) {
+    setNodes.add(itemNode);
+  });
+  
+  nodes = [];
+  setNodes.forEach(function (node) {
+    nodes.push(node);
+    layouter.set(node);
+  });
+  
+  console.log('layouter.breakPoints: ', layouter.breakPoints);
+  console.log('layouter.sizes:', layouter.sizes);
+  console.log('layouter.cols: ', layouter.cols);
 
-/*
-// Columns
-layout.setCols(myDiv);
+  const myDiv = document.querySelector('.my-div');
+  console.log('layouter.getParameters', layouter.getParameters(myDiv));
 
-// Paddings
-layout.setPads(myDiv);
+  /*
+    // Columns
+    layout.setCols(myDiv);
 
-// Margins
-layout.setMars(myDiv);
+    // Paddings
+    layout.setPads(myDiv);
 
-// Flex
-layout.setFlex(myDiv);
-*/
+    // Margins
+    layout.setMars(myDiv);
 
-// Procesar todo
-layouter.set(myDiv);
-console.dir(layouter.styles);
+    // Flex
+    layout.setFlex(myDiv);
+  */
 
-// Title
-Array.prototype.forEach.call(document.querySelectorAll('h3'), function (title) {
-  layouter.set(title);
-});
+  console.log(layouter);
 
-// BOX LIST
-layouter.set(document.querySelector('.box-list'))
-Array.prototype.forEach.call(document.querySelectorAll('.box-list li'), function (li) {
-  layouter.set(li);
-});
+}());
 
-console.log(layouter);
