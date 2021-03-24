@@ -796,7 +796,7 @@ function Layouter (config) {
   this.debug = config.debug || false;
 };
 
-Layouter.version = '1.13.0RC'
+Layouter.version = '1.3.1RC'
 
 /**
  * Procesa todos los atributos de procesamiento que se tenga disponible
@@ -864,7 +864,9 @@ Layouter.prototype.getParameters = function (Node) {
   const paramNames = Object.keys(uLayouter.processors);
   Array.prototype.forEach.call(attrs, function (attr) {
     if (paramNames.indexOf(attr.name) !== -1) {
-      if (attr.value !== '') params[attr.name] = attr.value.trim().split(' ');
+      if (attr.value !== '') params[attr.name] = attr.value.trim().split(' ').filter(function (item) {
+        return item
+      });
     }
   });
   uLayouter.debug({
