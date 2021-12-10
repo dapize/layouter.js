@@ -1,38 +1,55 @@
 {
-  "name": "layouter",
-  "version": "1.0.0",
-  "description": "Un setteador de estilos on the fly",
-  "main": "index.js",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
-    "test": "jest",
-    "deploy": "gulp deploy",
-    "build": "gulp build",
-    "serve": "browser-sync . --watch ."
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dapize/layouter.git"
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dapize/layouter/issues"
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
-  "homepage": "https://github.com/dapize/layouter#readme",
+  "name": "layouter",
+  "author": "daniel",
+  "module": "dist/layouter.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/layouter.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/layouter.esm.js",
+      "limit": "10 KB"
+    }
+  ],
   "devDependencies": {
-    "browser-sync": "^2.26.7",
-    "foodoc": "0.0.9",
-    "front-matter": "^3.1.0",
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-data": "^1.3.1",
-    "gulp-filesize": "0.0.6",
-    "gulp-jsdoc3": "^2.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-swig": "^0.9.1",
-    "gulp-terser": "^1.2.0",
-    "jest": "^25.1.0"
+    "@size-limit/preset-small-lib": "^7.0.3",
+    "husky": "^7.0.4",
+    "size-limit": "^7.0.4",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.3"
   }
 }
