@@ -11,7 +11,7 @@ export interface IBreakpoint {
   width: number;
 }
 
-const getNums = (objBps: IBreakpoints, propName: TNumProp): IBreakpointObj => {
+const breakpointsNums = (objBps: IBreakpoints, propName: TNumProp): IBreakpointObj => {
   const sizes: IBreakpointObj = {};
 
   if ( propName === 'width' ) {
@@ -36,4 +36,4 @@ const getNums = (objBps: IBreakpoints, propName: TNumProp): IBreakpointObj => {
   return sizes;
 };
 
-export default getNums;
+export default breakpointsNums;

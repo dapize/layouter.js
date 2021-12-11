@@ -1,4 +1,5 @@
-import getNums, { IBreakpointObj } from './helpers/getNums';
+import breakpointsNums, { IBreakpointObj } from './helpers/breakpointsNums';
+import scopesStylesBuilder, { IScopes } from './helpers/scopesStylesBuilder';
 
 export interface IBreakpoints {
   [ alias: string ]: {
@@ -7,10 +8,16 @@ export interface IBreakpoints {
   }
 }
 
+export interface IClassNameObj {
+  [ className: string ]: string;
+}
+
 export interface ILayouter {
   prefix?: string;
   breakpoints: IBreakpoints;
   bridge?: boolean;
+  scope: IScopes;
+  styles: IClassNameObj;
 }
 
 class Layouter {
@@ -18,12 +25,16 @@ class Layouter {
   breakpoints: ILayouter['breakpoints'];
   sizes: IBreakpointObj;
   cols: IBreakpointObj;
+  scope: IScopes;
+  styles: IClassNameObj
   
   constructor ( config: ILayouter ) {
     this.prefix = config.prefix ? config.prefix + '-' : '';
     this.breakpoints = config.breakpoints;
-    this.sizes = getNums( config.breakpoints, 'width' );
-    this.cols = getNums( config.breakpoints, 'cols' );
+    this.sizes = breakpointsNums( config.breakpoints, 'width' );
+    this.cols = breakpointsNums( config.breakpoints, 'cols' );
+    this.scope = scopesStylesBuilder( { bridge: true, ...config } );
+    this.styles = {};
   }
 }
 
