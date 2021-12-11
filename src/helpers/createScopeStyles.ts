@@ -1,4 +1,4 @@
-import { ILayouter } from '../index';
+import { IConfig } from "../config";
 
 export type TInsertion = 'before' | 'after' | 'append';
 
@@ -10,7 +10,7 @@ export interface IRCreateScopeStyles {
   node: HTMLElement;
 }
 
-const createScopeStyles = ( config: ILayouter, bp: string, insertionType: TInsertion, node: HTMLElement ): IRCreateScopeStyles => {
+const createScopeStyles = ( config: IConfig, bp: string, insertionType: TInsertion, node: HTMLElement ): IRCreateScopeStyles => {
   let stylesScope = document.getElementById('layouter-' + bp);
   if (!stylesScope) {
     stylesScope = document.createElement('style');

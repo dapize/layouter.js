@@ -1,12 +1,12 @@
-import { ILayouter } from '../index';
 import breakpointsOrdered from './breakpointsOrdered';
 import createScopeStyles, { IRCreateScopeStyles } from './createScopeStyles';
+import { IConfig } from '../config';
 
 export interface IScopes {
   [ name: string ]: IRCreateScopeStyles;
 }
 
-const scopesStylesBuilder = ( config: ILayouter ): IScopes => {
+const scopesStylesBuilder = ( config: IConfig ): IScopes => {
   const arrBps = breakpointsOrdered( config.breakpoints );
   const scopes:IScopes = {};
   arrBps.forEach( ( bp: string ) => {

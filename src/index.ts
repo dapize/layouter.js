@@ -1,5 +1,6 @@
 import breakpointsNums, { IBreakpointObj } from './helpers/breakpointsNums';
 import scopesStylesBuilder, { IScopes } from './helpers/scopesStylesBuilder';
+import config, { IConfig } from './config';
 
 export interface IBreakpoints {
   [ alias: string ]: {
@@ -12,30 +13,52 @@ export interface IClassNameObj {
   [ className: string ]: string;
 }
 
-export interface ILayouter {
-  prefix?: string;
-  breakpoints: IBreakpoints;
+export interface ILayouter extends IConfig {
   bridge?: boolean;
   scope: IScopes;
   styles: IClassNameObj;
 }
 
-class Layouter {
+const defaultConfig = config();
+
+export class Layouter {
   prefix: ILayouter['prefix'];
   breakpoints: ILayouter['breakpoints'];
   sizes: IBreakpointObj;
   cols: IBreakpointObj;
   scope: IScopes;
-  styles: IClassNameObj
+  styles: IClassNameObj;
+  config: IConfig;
   
-  constructor ( config: ILayouter ) {
-    this.prefix = config.prefix ? config.prefix + '-' : '';
+  constructor ( configUser?: IConfig ) {
+    const obj = configUser || {};
+    const config = { ...defaultConfig, ...obj };
+    this.config = config;
+
+    this.prefix = config.prefix;
     this.breakpoints = config.breakpoints;
     this.sizes = breakpointsNums( config.breakpoints, 'width' );
     this.cols = breakpointsNums( config.breakpoints, 'cols' );
-    this.scope = scopesStylesBuilder( { bridge: true, ...config } );
+    this.scope = scopesStylesBuilder( config );
     this.styles = {};
+
+    this.ready();
+  }
+
+  ready () {
+    const ready = this.config.ready;
+    if ( ready ) ready();
   }
 }
+
+new Layouter();
+
+declare global {
+  interface Window {
+    Layouter: typeof Layouter
+  }
+}
+
+if ( window ) window.Layouter = Layouter;
 
 export default Layouter;
