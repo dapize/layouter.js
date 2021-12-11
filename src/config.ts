@@ -10,8 +10,8 @@ export interface IConfig {
 declare global {
   interface Window {
     layouter: {
-      config: IConfig
-    }
+      config: IConfig;
+    };
   }
 }
 
@@ -20,29 +20,29 @@ const init: IConfig = {
   breakpoints: {
     xs: {
       width: 360,
-      cols: 15
+      cols: 15,
     },
     sm: {
       width: 768,
-      cols: 31
+      cols: 31,
     },
     md: {
       width: 1024,
-      cols: 31
-    }
+      cols: 31,
+    },
   },
-  bridge: false
+  bridge: false,
 };
 
 const config = (): IConfig => {
   let obj = init;
-  if ( window && window.layouter ) {
+  if (window && window.layouter) {
     obj = {
       ...obj,
-      ...window.layouter
-    }
+      ...window.layouter,
+    };
   }
-  return obj
-}
+  return obj;
+};
 
 export default config;
