@@ -2,16 +2,14 @@ import { IBreakpoints } from './index';
 
 export interface IConfig {
   prefix?: string;
-  breakpoints: IBreakpoints;
+  breakpoints?: IBreakpoints;
   bridge?: boolean;
   ready?: () => void;
 }
 
 declare global {
   interface Window {
-    layouter: {
-      config: IConfig;
-    };
+    layouter: IConfig;
   }
 }
 

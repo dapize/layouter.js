@@ -21,6 +21,6 @@ const bpsUnordered = {
 
 describe('Ordering the breakpoints object', () => {
   it('Widths', () => {
-    expect(breakpointsOrdered( bpsUnordered )).toEqual(['xs', 'sm', 'md', 'lg']);
-  })
-})
+    expect(breakpointsOrdered(bpsUnordered)).toEqual(['xs', 'sm', 'md', 'lg']);
+  });
+});
