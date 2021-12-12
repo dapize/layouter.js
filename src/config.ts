@@ -1,9 +1,9 @@
 import { IBreakpoints } from './index';
 
 export interface IConfig {
-  prefix?: string;
-  breakpoints?: IBreakpoints;
-  bridge?: boolean;
+  prefix: string;
+  breakpoints: IBreakpoints;
+  bridge: boolean;
   ready?: () => void;
 }
 

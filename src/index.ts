@@ -14,7 +14,7 @@ export interface IClassNameObj {
 }
 
 export interface ILayouter extends IConfig {
-  bridge?: boolean;
+  bridge: boolean;
   scope: IScopes;
   styles: IClassNameObj;
 }
@@ -30,7 +30,7 @@ export class Layouter {
   styles: IClassNameObj;
   config: IConfig;
 
-  constructor(configUser?: IConfig) {
+  constructor(configUser?: Partial<IConfig>) {
     const obj = configUser || {};
     const config = { ...defaultConfig, ...obj };
     this.config = config;
