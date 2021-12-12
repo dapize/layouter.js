@@ -1,4 +1,5 @@
 import Layouter from '../src/index';
+import processors from '../src/processors';
 
 describe('Instance Layouter', () => {
   it('Automatic', () => {
@@ -11,5 +12,10 @@ describe('Instance Layouter', () => {
       ready: myReady,
     });
     expect(myReady).toHaveBeenCalled();
+  });
+
+  it('Getting processors', () => {
+    const myLayouter = new Layouter();
+    expect(myLayouter.processors).toEqual(processors);
   });
 });

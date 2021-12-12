@@ -13,7 +13,8 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test --ci --coverage --maxWorkers=2",
+    "test": "tsdx test",
+    "test:full": "tsdx test --ci --coverage --maxWorkers=2",
     "lint": "tsdx lint",
     "lint:fix": "tsdx lint --fix",
     "prepare": "tsdx build",

@@ -1,5 +1,4 @@
-import breakpointsNums from './breakpointsNums';
-import { IBreakpoints } from '../index';
+import breakpointsNums, { IBreakpoints } from './breakpointsNums';
 
 const breakpointsOrdered = (bps: IBreakpoints) => {
   const objBps = breakpointsNums(bps, 'width');

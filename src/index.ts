@@ -1,34 +1,28 @@
 import breakpointsNums, { IBreakpointObj } from './helpers/breakpointsNums';
 import scopesStylesBuilder, { IScopes } from './helpers/scopesStylesBuilder';
 import config, { IConfig } from './config';
+import getParameters, { IParams } from './methods/getParameters';
+import processors, { IProcessors } from './processors';
 
-export interface IBreakpoints {
-  [alias: string]: {
-    width: number;
-    cols: number;
-  };
-}
-
-export interface IClassNameObj {
-  [className: string]: string;
-}
-
-export interface ILayouter extends IConfig {
-  bridge: boolean;
-  scope: IScopes;
-  styles: IClassNameObj;
+export interface ILayouter {
+  getParameters?: (Node: HTMLElement) => IParams;
+  processors?: IProcessors;
 }
 
 const defaultConfig = config();
 
-export class Layouter {
-  prefix: ILayouter['prefix'];
-  breakpoints: ILayouter['breakpoints'];
+export class Layouter implements ILayouter {
+  prefix: IConfig['prefix'];
+  breakpoints: IConfig['breakpoints'];
   sizes: IBreakpointObj;
   cols: IBreakpointObj;
   scope: IScopes;
-  styles: IClassNameObj;
+  styles: {
+    [className: string]: string;
+  };
   config: IConfig;
+  getParameters?: ILayouter['getParameters'];
+  processors?: IProcessors;
 
   constructor(configUser?: Partial<IConfig>) {
     const obj = configUser || {};
@@ -51,14 +45,26 @@ export class Layouter {
   }
 }
 
+// Methods, Getter and Setters
+Layouter.prototype.getParameters = getParameters;
+
+Object.defineProperty(Layouter.prototype, 'processors', {
+  get: () => {
+    return processors;
+  },
+});
+
+// Auto instance
 new Layouter();
 
+// Global Declare
 declare global {
   interface Window {
     Layouter: typeof Layouter;
   }
 }
 
+// Attaching to window
 if (window) window.Layouter = Layouter;
 
 export default Layouter;

@@ -1,4 +1,4 @@
-import { IBreakpoints } from './index';
+import { IBreakpoints } from './helpers/breakpointsNums';
 
 export interface IConfig {
   prefix: string;
