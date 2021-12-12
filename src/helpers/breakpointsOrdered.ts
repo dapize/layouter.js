@@ -1,8 +1,8 @@
-import getNums from './breakpointsNums';
+import breakpointsNums from './breakpointsNums';
 import { IBreakpoints } from '../index';
 
 const breakpointsOrdered = (bps: IBreakpoints) => {
-  const objBps = getNums(bps, 'width');
+  const objBps = breakpointsNums(bps, 'width');
   const arrBps = Object.keys(bps);
   return arrBps
     .map(bp => {

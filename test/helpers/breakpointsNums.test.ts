@@ -1,17 +1,17 @@
 import breakpointsNums from '../../src/helpers/breakpointsNums';
 
 export const bps = {
-  xs: {
-    width: 360,
-    cols: 15,
+  md: {
+    width: 1024,
+    cols: 31,
   },
   sm: {
     width: 768,
     cols: 25,
   },
-  md: {
-    width: 1024,
-    cols: 31,
+  xs: {
+    width: 360,
+    cols: 15,
   },
   lg: {
     width: 1280,

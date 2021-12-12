@@ -15,7 +15,7 @@ declare global {
   }
 }
 
-const init: IConfig = {
+export const init: IConfig = {
   prefix: '',
   breakpoints: {
     xs: {
@@ -31,7 +31,7 @@ const init: IConfig = {
       cols: 31,
     },
   },
-  bridge: false,
+  bridge: true,
 };
 
 const config = (): IConfig => {
