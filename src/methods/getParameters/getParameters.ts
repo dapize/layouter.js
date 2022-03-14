@@ -1,8 +1,5 @@
-import processors from '../processors';
-
-export interface IParams {
-  [attrName: string]: string;
-}
+import processors from '../../processors';
+import { IParams } from './getParameters.d';
 
 const getParameters = (Node: HTMLElement): IParams => {
   const params: IParams = {};

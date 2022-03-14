@@ -1,10 +1,8 @@
-import breakpointsOrdered from './breakpointsOrdered';
-import createScopeStyles, { IRCreateScopeStyles } from './createScopeStyles';
-import { IConfig } from '../config';
+import breakpointsOrdered from '../breakpointsOrdered';
+import createScopeStyles from '../createScopeStyles';
+import { IConfig } from '../../config';
+import { IScopes } from './scopesStylesBuilder.d'
 
-export interface IScopes {
-  [name: string]: IRCreateScopeStyles;
-}
 
 const scopesStylesBuilder = (config: IConfig): IScopes => {
   const arrBps = breakpointsOrdered(config.breakpoints);

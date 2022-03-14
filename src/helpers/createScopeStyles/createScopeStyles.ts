@@ -1,16 +1,5 @@
-import { IConfig } from '../config';
-
-export type TInsertion = 'before' | 'after' | 'append';
-
-export interface IRCreateScopeStyles {
-  method:
-    | CSSStyleSheet
-    | {
-        insertRule: (ruleCss: string) => void;
-        rules: string[];
-      };
-  node: HTMLElement;
-}
+import { IConfig } from '../../config';
+import { TInsertion, IRCreateScopeStyles } from './createScopeStyles.d';
 
 const createScopeStyles = (
   config: IConfig,

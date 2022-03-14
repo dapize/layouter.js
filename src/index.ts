@@ -3,10 +3,12 @@ import scopesStylesBuilder, { IScopes } from './helpers/scopesStylesBuilder';
 import config, { IConfig } from './config';
 import getParameters, { IParams } from './methods/getParameters';
 import processors, { IProcessors } from './processors';
+import buildCols from './methods/buildCols';
 
 export interface ILayouter {
   getParameters?: (Node: HTMLElement) => IParams;
   processors?: IProcessors;
+  buildCols?: (valCols: string | string[], insertStyles?: boolean) => void;
 }
 
 const defaultConfig = config();
@@ -23,6 +25,7 @@ export class Layouter implements ILayouter {
   config: IConfig;
   getParameters?: ILayouter['getParameters'];
   processors?: IProcessors;
+  buildCols?: (valCols: string | string[], insertStyles?: boolean) => void;
 
   constructor(configUser?: Partial<IConfig>) {
     const obj = configUser || {};
@@ -54,8 +57,10 @@ Object.defineProperty(Layouter.prototype, 'processors', {
   },
 });
 
+Layouter.prototype.buildCols = buildCols;
+
 // Auto instance
-new Layouter();
+//new Layouter();
 
 // Global Declare
 declare global {

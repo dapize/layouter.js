@@ -1,6 +1,7 @@
 import { IBreakpoints } from './helpers/breakpointsNums';
 
 export interface IConfig {
+  init: boolean;
   prefix: string;
   breakpoints: IBreakpoints;
   bridge: boolean;
@@ -14,6 +15,7 @@ declare global {
 }
 
 export const init: IConfig = {
+  init: false,
   prefix: '',
   breakpoints: {
     xs: {
