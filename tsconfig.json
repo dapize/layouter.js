@@ -2,9 +2,9 @@
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "include": ["src", "types", "@testing-library/jest-dom"],
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
     "importHelpers": true,
     // output .d.ts declaration files for consumers
     "declaration": true,
@@ -32,5 +32,14 @@
     "forceConsistentCasingInFileNames": true,
     // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
     "noEmit": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@": ["./"],
+      "@/*": ["./*"],
+      "@core": ["core"],
+      "@core/*": ["core/*"],
+      "@helpers/*": ["helpers/*"],
+      "@methods/*": ["methods/*"]
+    }
   }
 }

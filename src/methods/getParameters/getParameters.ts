@@ -1,4 +1,4 @@
-import processors from '../../processors';
+import { processors } from '@core';
 import { IParams } from './getParameters.d';
 
 const getParameters = (Node: HTMLElement): IParams => {

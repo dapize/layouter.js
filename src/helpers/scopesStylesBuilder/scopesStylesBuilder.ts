@@ -1,16 +1,19 @@
-import breakpointsOrdered from '../breakpointsOrdered';
-import createScopeStyles from '../createScopeStyles';
-import { IConfig } from '../../config';
+import breakpointsOrdered from '@helpers/breakpointsOrdered';
+import createScopeStyles from '@helpers/createScopeStyles';
+import { IConfig } from '@core';
 import { IScopes } from './scopesStylesBuilder.d'
 
 
-const scopesStylesBuilder = (config: IConfig): IScopes => {
+export const scopesStylesBuilder = (config: IConfig): IScopes => {
   const arrBps = breakpointsOrdered(config.breakpoints);
   const scopes: IScopes = {};
   arrBps.forEach((bp: string) => {
-    scopes[bp] = createScopeStyles(config, bp, 'append', document.body);
+    scopes[bp] = createScopeStyles({
+      bridge: config.bridge,
+      bp,
+      insertionType: 'append',
+      node: document.body
+    });
   });
   return scopes;
 };
-
-export default scopesStylesBuilder;

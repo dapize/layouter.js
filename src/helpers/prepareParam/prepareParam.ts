@@ -1,11 +1,11 @@
-import { IBreakpointObj } from '../breakpointsNums'
+import { IBreakpoints } from '@helpers/breakpointsNums'
 import { IRprepareParam } from './prepareParam.d';
 
-const prepareParam = ( param: string, objBps: IBreakpointObj ): IRprepareParam => {
+const prepareParam = ( param: string, objBps: IBreakpoints ): IRprepareParam => {
   let bp: string;
   let argParam = param;
   let important = false;
-  const haveBp = argParam.includes('@'); 
+  const haveBp = argParam.includes('@');
   if (haveBp) {
     const bpSplited = argParam.split('@');
     argParam = bpSplited[0];
@@ -14,7 +14,7 @@ const prepareParam = ( param: string, objBps: IBreakpointObj ): IRprepareParam =
     bp = Object.keys( objBps )[0];
   };
 
-  if (param.indexOf('!') !== -1) {
+  if (param.includes('!')) {
     important = true;
     bp = bp.replace(/!/g, '');
     argParam = argParam.replace(/!/g, '');

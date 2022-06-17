@@ -1,5 +1,5 @@
-import { IRCreateScopeStyles } from '../createScopeStyles';
+import { IRCreateScopeStyles } from '@helpers/createScopeStyles';
 
 export interface IScopes {
-    [name: string]: IRCreateScopeStyles;
-  }
+  [name: string]: IRCreateScopeStyles;
+}

@@ -1,31 +1,27 @@
-import breakpointsNums, { IBreakpointObj } from './helpers/breakpointsNums';
-import scopesStylesBuilder, { IScopes } from './helpers/scopesStylesBuilder';
-import config, { IConfig } from './config';
-import getParameters, { IParams } from './methods/getParameters';
-import processors, { IProcessors } from './processors';
-import buildCols from './methods/buildCols';
+import breakpointsNums from '@helpers/breakpointsNums';
+import scopesStylesBuilder from '@helpers/scopesStylesBuilder';
 
-export interface ILayouter {
-  getParameters?: (Node: HTMLElement) => IParams;
-  processors?: IProcessors;
-  buildCols?: (valCols: string | string[], insertStyles?: boolean) => void;
-}
+import getParameters from '@methods/getParameters';
+import buildCols from '@methods/buildCols';
+
+import { config, IConfig, processors } from '@core';
+
+import { ILayouter } from './index.d';
+
 
 const defaultConfig = config();
 
-export class Layouter implements ILayouter {
-  prefix: IConfig['prefix'];
-  breakpoints: IConfig['breakpoints'];
-  sizes: IBreakpointObj;
-  cols: IBreakpointObj;
-  scope: IScopes;
-  styles: {
-    [className: string]: string;
-  };
-  config: IConfig;
+class Layouter implements ILayouter {
+  prefix: ILayouter['prefix'];
+  breakpoints: ILayouter['breakpoints'];
+  sizes: ILayouter['sizes'];
+  cols: ILayouter['cols'];
+  scope: ILayouter['scope'];
+  styles: ILayouter['styles'];
+  config: ILayouter['config'];
   getParameters?: ILayouter['getParameters'];
-  processors?: IProcessors;
-  buildCols?: (valCols: string | string[], insertStyles?: boolean) => void;
+  processors?: ILayouter['processors'];
+  buildCols?: ILayouter['buildCols'];
 
   constructor(configUser?: Partial<IConfig>) {
     const obj = configUser || {};

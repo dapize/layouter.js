@@ -1,12 +1,6 @@
-export interface IProcessors {
-  [proName: string]: {
-    set: string;
-    build: string;
-    ruleCss: string;
-  };
-}
+import { IProcessors } from './processors.d';
 
-const processors: IProcessors = {
+export const processors: IProcessors = {
   cols: {
     set: 'setCols',
     build: 'buildCols',
@@ -112,5 +106,3 @@ const processors: IProcessors = {
     ruleCss: 'height',
   },
 };
-
-export default processors;
