@@ -2,19 +2,10 @@ import prepareParam from '../helpers/prepareParam';
 import regError from '../helpers/regError';
 import calPercentage from '../helpers/calPercentage';
 
-import buildCss from '../helpers/buildCss';
+import buildCss, { IBpCals } from '../helpers/buildCss';
 import getConfig from '../config/main';
 import { IStyles } from '../helpers/createStyles';
 import breakpointsOrdered from '../helpers/breakpointsOrdered';
-
-export interface IRBuildCols {
-  name: string;
-  value: string;
-}
-
-export interface IBpCals {
-  [bpName: string]: IRBuildCols;
-}
 
 const buildCols = (
   valCols: string | string[],

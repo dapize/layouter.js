@@ -4,7 +4,7 @@ export interface IParams {
   [attrName: string]: string[];
 }
 
-const getParameters = (Node: HTMLElement): IParams => {
+const getParameters = (Node: HTMLElement | Element): IParams => {
   const params: IParams = {};
   const attrs = Node.attributes;
   const paramNames = Object.keys(processors);

@@ -1,8 +1,7 @@
 import { flexAttrsSelf } from '../config/flex';
 import config from '../config/main';
 import { processors } from '../config/processors';
-import { IBpCals } from '../methods/buildCols';
-import { IPropNode } from './buildCss';
+import { IBpCals, IPropNode } from './buildCss';
 import percentageConverter from './percentageConverter';
 
 export interface IStyles {
@@ -34,8 +33,9 @@ const createStyles = (type: IPropNode, bps: IBpCals): IStyles => {
         shortNameClass,
         percentageConverter(shortNameClass)
       );
+    const finalPrefix = prefix ? prefix + '-' : '';
     nameClass =
-      prefix +
+      finalPrefix +
       type +
       '-' +
       nameClass

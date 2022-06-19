@@ -1,27 +1,17 @@
-import { IBpCals } from '../methods/buildCols';
 import createStyles, { IStyles } from './createStyles';
 import insertRules from './insertRules';
 import nameCleaner from './nameCleaner';
 
-export type IPropNode =
-  | 'cols'
-  | 'pad'
-  | 'padt'
-  | 'padr'
-  | 'padb'
-  | 'padl'
-  | 'mar'
-  | 'mart'
-  | 'marr'
-  | 'marb'
-  | 'marl'
-  | 'flex'
-  | 'wdh'
-  | 'hgt'
-  | 'mxw'
-  | 'mxh'
-  | 'miw'
-  | 'mih';
+export type IPropNode = 'pad' | 'padt' | 'padr' | 'padb' | 'padl' | 'mar' | 'mart' | 'marr' | 'marb' | 'marl' | 'mxw' | 'mxh' | 'miw' | 'mih' | 'hgt' | 'wdh' | 'cols' | 'flex';
+
+export interface IRBuildCols {
+  name: string;
+  value: string;
+}
+
+export interface IBpCals {
+  [bpName: string]: IRBuildCols;
+}
 
 export interface IBuildCss {
   type: IPropNode;

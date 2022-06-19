@@ -1,7 +1,9 @@
-const addClasses = (classesNames: string[], Node: HTMLElement) => {
-  classesNames.forEach(name => {
-    if (!Node.classList.contains(name)) Node.classList.add(name);
-  });
+const addClasses = (classesNames: string[], Node: HTMLElement | Element) => {
+  const classesToAdd = classesNames.filter( name => !Node.classList.contains(name))
+  if ( classesToAdd.length ) {
+    const space = Node.hasAttribute('class') ? ' ' : '';
+    Node.className += space + classesToAdd.join(' ');
+  }
 };
 
 export default addClasses;

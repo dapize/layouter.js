@@ -3,12 +3,11 @@ import config, { baseConfig } from '../../src/config/main';
 
 describe('Config', () => {
   it('Default config', () => {
-    const myLayouter = layouter();
-    expect(myLayouter).toMatchObject({
+    expect(layouter).toMatchObject({
       ...baseConfig,
     });
-    expect(myLayouter).toHaveProperty('scope');
-    expect(myLayouter).toHaveProperty('styles');
+    expect(layouter).toHaveProperty('scope');
+    expect(layouter).toHaveProperty('styles');
   });
 
   it('Setting by Window', () => {

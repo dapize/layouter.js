@@ -1,9 +1,10 @@
 (function () {
-  window.layouterConfig = {
-    prefix: 'dpz',
-    bridge: false
-  }
-  const myLayouter = layouter();
+  // window.layouterConfig = {
+  //   prefix: 'dpz',
+  //   bridge: false
+  // }
 
-  console.log(myLayouter)
+  setTimeout(() => {
+    console.log(window.layouter);
+  }, 2000)
 }());
