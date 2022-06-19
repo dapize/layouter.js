@@ -23,7 +23,7 @@ export const flexProsAndVals = {
   st: 'stretch',
   bl: 'baseline',
   in: 'initial',
-  ih: 'inherit'
+  ih: 'inherit',
 };
 
 export const flexAttrsSelf = ['fg', 'fh', 'or'];

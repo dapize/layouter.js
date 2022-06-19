@@ -13,10 +13,13 @@ export interface IRBuildCols {
 }
 
 export interface IBpCals {
-  [bpName: string]: IRBuildCols
+  [bpName: string]: IRBuildCols;
 }
 
-const buildCols = ( valCols: string | string[], insertStyles: boolean = true ): IStyles | boolean => {
+const buildCols = (
+  valCols: string | string[],
+  insertStyles: boolean = true
+): IStyles | boolean => {
   let cols: number[];
   let bp;
   let bpCals: IBpCals = {};
@@ -39,18 +42,21 @@ const buildCols = ( valCols: string | string[], insertStyles: boolean = true ): 
 
     if (param.includes('/')) {
       const paramSplited = param.split('/');
-      cols = [ Number( paramSplited[0] ), Number( paramSplited[1] )];
+      cols = [Number(paramSplited[0]), Number(paramSplited[1])];
     } else {
       if (paramPrepared.widthBp) {
         if (bp.includes('-')) {
-          regError('SyntaxError', "You can't determine a 'until breakpoint' when use the explicit columns max");
+          regError(
+            'SyntaxError',
+            "You can't determine a 'until breakpoint' when use the explicit columns max"
+          );
           builded = false;
           break;
         } else {
-          cols = [ Number( param ), config.cols[bp] as number ];
+          cols = [Number(param), config.cols[bp] as number];
         }
       } else {
-        cols = [ Number( param ), config.cols[arrBps[0]] as number ];
+        cols = [Number(param), config.cols[arrBps[0]] as number];
       }
     }
 
@@ -59,17 +65,17 @@ const buildCols = ( valCols: string | string[], insertStyles: boolean = true ): 
 
     bpCals[bp] = {
       name: selectorName,
-      value: propValue
+      value: propValue,
     };
   }
 
-  if ( !builded ) return builded;
+  if (!builded) return builded;
 
   // Building the classNames and the styles to use.
   return buildCss({
     type: 'cols',
     bps: bpCals,
-    deep: insertStyles
+    deep: insertStyles,
   });
 };
 

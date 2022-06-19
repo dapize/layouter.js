@@ -17,7 +17,12 @@ export interface IRCreateScopeStyles {
   node: HTMLElement;
 }
 
-const createScopeStyles = ( { bridge: withBridge, bp, insertionType, node }: ICreateScopeStyles ): IRCreateScopeStyles => {
+const createScopeStyles = ({
+  bridge: withBridge,
+  bp,
+  insertionType,
+  node,
+}: ICreateScopeStyles): IRCreateScopeStyles => {
   let stylesScope = document.getElementById('layouter-' + bp);
   if (!stylesScope) {
     stylesScope = document.createElement('style');

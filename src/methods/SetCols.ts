@@ -1,7 +1,7 @@
-import addClasses from "../helpers/addClasses";
-import regError from "../helpers/regError";
-import buildCols from "./buildCols";
-import getParameters, { IParams } from "./getParameters";
+import addClasses from '../helpers/addClasses';
+import regError from '../helpers/regError';
+import buildCols from './buildCols';
+import getParameters, { IParams } from './getParameters';
 
 const setCols = (Node: HTMLElement, parameters?: IParams): boolean => {
   const params = parameters || getParameters(Node);
@@ -19,7 +19,7 @@ const setCols = (Node: HTMLElement, parameters?: IParams): boolean => {
   // removing param
   Node.removeAttribute('cols');
 
-  return true
+  return true;
 };
 
 export default setCols;

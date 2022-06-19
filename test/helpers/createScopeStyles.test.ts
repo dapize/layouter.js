@@ -10,8 +10,8 @@ describe('Create Scope Styles', () => {
       bridge: true,
       bp: 'xs',
       insertionType: 'before',
-      node: div
-    })
+      node: div,
+    });
     const styleNode = myBody.querySelector('#layouter-xs');
     expect(styleNode).toBeTruthy();
   });
@@ -21,8 +21,8 @@ describe('Create Scope Styles', () => {
       bridge: true,
       bp: 'sm',
       insertionType: 'after',
-      node: div
-    })
+      node: div,
+    });
     const styleNode = myBody.querySelector('#layouter-sm');
     expect(styleNode).toBeTruthy();
   });
@@ -32,7 +32,7 @@ describe('Create Scope Styles', () => {
       bridge: false,
       bp: 'lg',
       insertionType: 'append',
-      node: div
+      node: div,
     });
     bridge.method.insertRule('hello');
 

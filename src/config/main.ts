@@ -1,8 +1,8 @@
-import breakpointsNums, { IBreakpoints } from "../helpers/breakpointsNums";
-import { IScopes, scopesStylesBuilder } from "../helpers/scopesStylesBuilder";
+import breakpointsNums, { IBreakpoints } from '../helpers/breakpointsNums';
+import { IScopes, scopesStylesBuilder } from '../helpers/scopesStylesBuilder';
 
 export interface ICols {
-  [ colAlias: string ]: number;
+  [colAlias: string]: number;
 }
 
 export interface IConfigUser {
@@ -48,62 +48,66 @@ const breakpointsInit: IBreakpoints = {
 export let baseConfig: IConfigUser = {
   prefix: '',
   breakpoints: breakpointsInit,
-  bridge: true
+  bridge: true,
 };
 
 let config: IConfig;
 
-const configNums = (bps: IBreakpoints, bridge: boolean, scope?: IScopes): IConfigNums => {
+const configNums = (
+  bps: IBreakpoints,
+  bridge: boolean,
+  scope?: IScopes
+): IConfigNums => {
   return {
     sizes: breakpointsNums(bps, 'width'),
     cols: breakpointsNums(bps, 'cols'),
     scope: scopesStylesBuilder(bps, bridge, scope),
-  }
-}
+  };
+};
 
-export const setConfig = ( customCfg: Partial<IConfigUser> = {} ): IConfig => {
+export const setConfig = (customCfg: Partial<IConfigUser> = {}): IConfig => {
   if (window && window.layouterConfig) {
     baseConfig = {
       ...baseConfig,
       ...window.layouterConfig,
-      ...customCfg
+      ...customCfg,
     };
   } else {
-    if ( customCfg ) {
+    if (customCfg) {
       baseConfig = {
         ...baseConfig,
-        ...customCfg
-      }
+        ...customCfg,
+      };
     }
   }
 
   config = {
     ...baseConfig,
     ...configNums(baseConfig.breakpoints, baseConfig.bridge),
-    styles: {}
-  }
+    styles: {},
+  };
 
-  return config
+  return config;
 };
 
 const getConfig = (reset: boolean = false): IConfig => {
-  return reset ? setConfig() : config
-}
+  return reset ? setConfig() : config;
+};
 
-export const updateConfig = ( userConfig: Partial<IConfigUser> ): IConfig => {
+export const updateConfig = (userConfig: Partial<IConfigUser>): IConfig => {
   config = {
     ...config,
-    ...userConfig
-  }
+    ...userConfig,
+  };
 
   if (userConfig.breakpoints) {
     config = {
       ...config,
       ...configNums(config.breakpoints, config.bridge, config.scope),
-    }
+    };
   }
 
   return config;
-}
+};
 
 export default getConfig;

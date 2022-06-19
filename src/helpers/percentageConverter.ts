@@ -1,5 +1,5 @@
-const percentageConverter = ( percentage: string ) => {
+const percentageConverter = (percentage: string) => {
   return '0¯' + percentage.replace('%', '');
 };
 
-export default percentageConverter
+export default percentageConverter;

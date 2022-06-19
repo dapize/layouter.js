@@ -1,8 +1,8 @@
-import config from "../config/main";
-import { IStyles } from "./createStyles";
-import getScopeByclassName from "./getScopeByclassName";
+import config from '../config/main';
+import { IStyles } from './createStyles';
+import getScopeByclassName from './getScopeByclassName';
 
-const insertRules = (objStyles: IStyles ) => {
+const insertRules = (objStyles: IStyles) => {
   const { styles } = config();
 
   for (const className in objStyles) {
@@ -10,7 +10,7 @@ const insertRules = (objStyles: IStyles ) => {
       let nodeScope = getScopeByclassName(className);
       const valClass = objStyles[className];
       const rules = nodeScope.method.rules;
-      nodeScope.method.insertRule(valClass, (rules ? rules.length : 0));
+      nodeScope.method.insertRule(valClass, rules ? rules.length : 0);
       styles[className] = valClass; // saving in styles vault
     }
   }

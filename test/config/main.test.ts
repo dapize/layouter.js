@@ -5,7 +5,7 @@ describe('Config', () => {
   it('Default config', () => {
     const myLayouter = layouter();
     expect(myLayouter).toMatchObject({
-      ...baseConfig
+      ...baseConfig,
     });
     expect(myLayouter).toHaveProperty('scope');
     expect(myLayouter).toHaveProperty('styles');
@@ -21,7 +21,7 @@ describe('Config', () => {
         },
         sm: {
           width: 600,
-          cols: 8
+          cols: 8,
         },
       },
       bridge: false,

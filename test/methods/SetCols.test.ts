@@ -23,7 +23,7 @@ describe('Setting cols', () => {
     myLayouter.setCols(myDiv);
     ['cols-3/15', 'cols-8/31@sm', 'cols-20_5/31@md'].forEach(item => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
-    })
+    });
     expect(myDiv.classList.contains('cols-1/1')).toBeFalsy();
   });
 });
