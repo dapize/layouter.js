@@ -1,45 +1,52 @@
-import { ILayouter } from "@/index.d";
+import config from "../config/main";
+import breakpointsOrdered from "./breakpointsOrdered";
 import createScopeStyles from "./createScopeStyles";
-import getDirectBp from "@helpers/getDirectBp";
 
-const getScopeByclassName = (className: string, instance: ILayouter) => {
+
+const getScopeByclassName = ( className: string ) => {
   const nameClass = className.replace(/!/g, '');
   const atIndex = nameClass.indexOf('@');
+  const { breakpoints, scope, bridge } = config();
 
   // Haven´t a BP designed
   if (atIndex === -1) {
-    const directBp = getDirectBp(instance.breakpoints);
-    return instance.scope[directBp as string];
+    const arrBps = breakpointsOrdered(breakpoints);
+    return scope[arrBps[0] as string];
   };
 
   // Have a BP designed, a normal BP.
   const bp = nameClass.substring(atIndex + 1);
-  if (bp.indexOf('-') === -1) return instance.scope[bp]; // A simple BP, not compound (like this: 13/15@sm-md).
+  if ( !bp.includes('-') ) return scope[bp]; // A simple BP, not compound (like this: 13/15@sm-md).
 
   // A BP until. Example 13/15@-md
   if (bp.substring(0, 1) === '-') {
-    if (instance.scope.hasOwnProperty(bp)) return instance.scope[bp]; // exists the Scope.
+    if (scope.hasOwnProperty(bp)) return scope[bp]; // exists the Scope.
     const bpUntil = bp.substring(1);
-    instance.scope[bp] = createScopeStyles({
-      bridge: instance.bridge,
+    scope[bp] = createScopeStyles({
+      bridge: bridge,
       bp,
       insertionType: 'before',
-      node: instance.scope[bpUntil].node
+      node: scope[bpUntil].node
     });
-    return instance.scope[bp]; // returning a new scope created
+    return scope[bp]; // returning a new scope created
   }
 
   // A BP from and until (a BP Compount). Example: Example 13/15@sm-md
-  if (instance.scope.hasOwnProperty(bp)) return instance.scope[bp]; // exists the Scope.
+  if (scope.hasOwnProperty(bp)) {
+    console.log('tengo el scrope es: ', bp)
+    return scope[bp]; // exists the Scope.
+  }
 
   const fromBp = bp.split('-')[0];
-  instance.scope[bp] = createScopeStyles({
-    bridge: instance.bridge,
+  console.log('vamos a crearlo');
+  scope[bp] = createScopeStyles({
+    bridge: bridge,
     bp,
     insertionType: 'after',
-    node: instance.scope[fromBp].node
+    node: scope[fromBp].node
   });
-  return instance.scope[bp]; // returning a new scope compounted created
+
+  return scope[bp]; // returning a new scope compounted created
 };
 
 export default getScopeByclassName;

@@ -1,71 +1,31 @@
-import breakpointsNums from '@helpers/breakpointsNums';
-import scopesStylesBuilder from '@helpers/scopesStylesBuilder';
+import { IConfig, IConfigUser, setConfig, updateConfig } from "./config/main";
+import getParameters, { IParams } from "./methods/getParameters";
+import buildCols from "./methods/buildCols";
+import { IStyles } from "./helpers/createStyles";
 
-import getParameters from '@methods/getParameters';
-import buildCols from '@methods/buildCols';
+export interface ILayouter extends IConfig {
+  getParameters: (Node: HTMLElement) => IParams;
+  buildCols: ( valCols: string | string[], insertStyles?: boolean ) => IStyles;
+  updateConfig: ( userConfig: Partial<Omit<IConfigUser, 'bridge'>> ) => IConfig;
+}
 
-import { config, IConfig, processors } from '@core';
+const layouter = ( userConfig: Partial<IConfigUser> = {} ): ILayouter => {
+  const config = setConfig( userConfig );
 
-import { ILayouter } from './index.d';
-
-
-const defaultConfig = config();
-
-class Layouter implements ILayouter {
-  prefix: ILayouter['prefix'];
-  breakpoints: ILayouter['breakpoints'];
-  sizes: ILayouter['sizes'];
-  cols: ILayouter['cols'];
-  scope: ILayouter['scope'];
-  styles: ILayouter['styles'];
-  config: ILayouter['config'];
-  getParameters?: ILayouter['getParameters'];
-  processors?: ILayouter['processors'];
-  buildCols?: ILayouter['buildCols'];
-
-  constructor(configUser?: Partial<IConfig>) {
-    const obj = configUser || {};
-    const config = { ...defaultConfig, ...obj };
-    this.config = config;
-
-    this.prefix = config.prefix;
-    this.breakpoints = config.breakpoints;
-    this.sizes = breakpointsNums(config.breakpoints, 'width');
-    this.cols = breakpointsNums(config.breakpoints, 'cols');
-    this.scope = scopesStylesBuilder(config);
-    this.styles = {};
-
-    this.ready();
-  }
-
-  ready() {
-    const ready = this.config.ready;
-    if (ready) ready();
+  return {
+    ...config,
+    getParameters,
+    buildCols,
+    updateConfig
   }
 }
 
-// Methods, Getter and Setters
-Layouter.prototype.getParameters = getParameters;
-
-Object.defineProperty(Layouter.prototype, 'processors', {
-  get: () => {
-    return processors;
-  },
-});
-
-Layouter.prototype.buildCols = buildCols;
-
-// Auto instance
-//new Layouter();
-
-// Global Declare
 declare global {
   interface Window {
-    Layouter: typeof Layouter;
+    layouter: typeof layouter;
   }
 }
 
-// Attaching to window
-if (window) window.Layouter = Layouter;
+if (window) window.layouter = layouter;
 
-export default Layouter;
+export default layouter;

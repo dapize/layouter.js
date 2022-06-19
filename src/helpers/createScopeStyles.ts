@@ -1,6 +1,23 @@
-import { ICreateScopeStyles, IRCreateScopeStyles } from './createScopeStyles.d';
+export type TInsertion = 'before' | 'after' | 'append';
 
-export const createScopeStyles = ( { bridge: withBridge, bp, insertionType, node }: ICreateScopeStyles ): IRCreateScopeStyles => {
+export interface ICreateScopeStyles {
+  bridge?: boolean;
+  bp: string;
+  insertionType: TInsertion;
+  node: HTMLElement;
+}
+
+export interface IRCreateScopeStyles {
+  method:
+    | CSSStyleSheet
+    | {
+        insertRule: (ruleCss: string) => void;
+        rules: string[];
+      };
+  node: HTMLElement;
+}
+
+const createScopeStyles = ( { bridge: withBridge, bp, insertionType, node }: ICreateScopeStyles ): IRCreateScopeStyles => {
   let stylesScope = document.getElementById('layouter-' + bp);
   if (!stylesScope) {
     stylesScope = document.createElement('style');
@@ -43,3 +60,5 @@ export const createScopeStyles = ( { bridge: withBridge, bp, insertionType, node
   }
   return bridge;
 };
+
+export default createScopeStyles;

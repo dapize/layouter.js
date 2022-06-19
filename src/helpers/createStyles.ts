@@ -1,13 +1,16 @@
-import { ILayouter } from "@/index.d";
-import { processors, flexAttrsSelf } from '@core';
-import percentageConverter from '@helpers/percentageConverter';
-import { IPropNode } from '@helpers/buildCss';
-import { IBpCals } from '@methods/buildCols';
-import { IStyles } from './createStyles.d';
+import { flexAttrsSelf } from "../config/flex";
+import config from "../config/main";
+import { processors } from "../config/processors";
+import { IBpCals } from "../methods/buildCols";
+import { IPropNode } from "./buildCss";
+import percentageConverter from "./percentageConverter";
 
-export const createStyles = (type: IPropNode, bps: IBpCals, instance: ILayouter): IStyles => {
-  const sizes = instance.sizes;
-  const prefix = instance.prefix;
+export interface IStyles {
+  [ name: string ]: string;
+}
+
+const createStyles = ( type: IPropNode, bps: IBpCals ): IStyles => {
+  const { sizes, prefix } = config()
   const prop = processors[type].ruleCss;
   const styles: IStyles = {};
   let rule, bpSplited, bp1, bp2, direct = false, nameClass, propAndVal, attrsFlexSelfs;
@@ -63,3 +66,5 @@ export const createStyles = (type: IPropNode, bps: IBpCals, instance: ILayouter)
 
   return styles;
 };
+
+export default createStyles;

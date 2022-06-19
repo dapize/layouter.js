@@ -1,7 +1,13 @@
-import { IBreakpoints } from '@helpers/breakpointsNums'
-import { IRprepareParam } from './prepareParam.d';
+import { IBreakpoints } from "./breakpointsNums";
 
-const prepareParam = ( param: string, objBps: IBreakpoints ): IRprepareParam => {
+export interface IPrepareParam {
+  widthBp: boolean;
+  numbers: string,
+  breakPoints: string;
+  important: boolean;
+}
+
+const prepareParam = ( param: string, objBps: IBreakpoints ): IPrepareParam => {
   let bp: string;
   let argParam = param;
   let important = false;

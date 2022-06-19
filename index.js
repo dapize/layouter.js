@@ -1,8 +1,9 @@
 (function () {
-  const layouter = {
-    ready: () => {
-      console.log('ready');
-    }
+  window.layouterConfig = {
+    prefix: 'dpz',
+    bridge: false
   }
-  window.layouter = layouter;
+  const myLayouter = layouter();
+
+  console.log(myLayouter)
 }());

@@ -1,4 +1,10 @@
-import { IProcessors } from './processors.d';
+export interface IProcessors {
+  [proName: string]: {
+    set: string;
+    build: string;
+    ruleCss: string;
+  };
+}
 
 export const processors: IProcessors = {
   cols: {
