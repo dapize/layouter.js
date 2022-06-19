@@ -5,6 +5,7 @@ import calPercentage from '../helpers/calPercentage';
 import buildCss from '../helpers/buildCss';
 import getConfig from '../config/main';
 import { IStyles } from '../helpers/createStyles';
+import breakpointsOrdered from '../helpers/breakpointsOrdered';
 
 export interface IRBuildCols {
   name: string;
@@ -15,7 +16,7 @@ export interface IBpCals {
   [bpName: string]: IRBuildCols
 }
 
-const buildCols = ( valCols: string | string[], insertStyles: boolean = true ): IStyles => {
+const buildCols = ( valCols: string | string[], insertStyles: boolean = true ): IStyles | boolean => {
   let cols: number[];
   let bp;
   let bpCals: IBpCals = {};
@@ -26,7 +27,11 @@ const buildCols = ( valCols: string | string[], insertStyles: boolean = true ): 
   const bpsObj = config.breakpoints;
   if (!Array.isArray(valCols)) valCols = valCols.split(' ');
 
-  valCols.forEach( (param) => {
+  let builded: boolean = true;
+  const arrBps = breakpointsOrdered(bpsObj);
+
+  for (const item in valCols) {
+    let param = valCols[item];
     selectorName = param;
     paramPrepared = prepareParam(param, bpsObj);
     bp = paramPrepared.breakPoints;
@@ -39,13 +44,16 @@ const buildCols = ( valCols: string | string[], insertStyles: boolean = true ): 
       if (paramPrepared.widthBp) {
         if (bp.includes('-')) {
           regError('SyntaxError', "You can't determine a 'until breakpoint' when use the explicit columns max");
+          builded = false;
+          break;
         } else {
           cols = [ Number( param ), config.cols[bp] as number ];
         }
       } else {
-        cols = [ Number( param ), config.cols.xs as number ];
+        cols = [ Number( param ), config.cols[arrBps[0]] as number ];
       }
     }
+
     propValue = calPercentage(cols[0], cols[1]);
     if (paramPrepared.important) propValue += ' !important';
 
@@ -53,7 +61,9 @@ const buildCols = ( valCols: string | string[], insertStyles: boolean = true ): 
       name: selectorName,
       value: propValue
     };
-  });
+  }
+
+  if ( !builded ) return builded;
 
   // Building the classNames and the styles to use.
   return buildCss({

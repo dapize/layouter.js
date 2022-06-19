@@ -10,6 +10,32 @@ describe('Build Cols params ', () => {
     });
     expect(document.querySelector('#layouter-xs')?.outerHTML)
       .toEqual('<style id="layouter-xs"></style>');
+  });
+
+  it('Simple with important!', () => {
+    const styles = myLayouter.buildCols('3!');
+    expect(styles).toEqual({
+      "cols-3!": ".cols-3\\!{width:20% !important}"
+    });
+  })
+
+  it('Simple with implicit columns', () => {
+    const styles = myLayouter.buildCols('3@sm');
+    expect(styles).toEqual({
+      "cols-3@sm": "@media screen and (min-width: 768px){.cols-3\\@sm{width:9.677%}}",
+    });
+  })
+
+  it('Simple with implicit columns and until', () => {
+    const styles = myLayouter.buildCols('3@sm-md');
+    expect(styles).toBeFalsy();
+  })
+
+  it('Simple with implicit columns and withouth breakpoint', () => {
+    const styles = myLayouter.buildCols('3');
+    expect(styles).toEqual({
+      "cols-3": ".cols-3{width:20%}"
+    });
   })
 
   it('Compound', () => {

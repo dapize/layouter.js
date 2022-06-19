@@ -28,16 +28,17 @@ const createStyles = ( type: IPropNode, bps: IBpCals ): IStyles => {
     // Property and value
     if (type === 'flex') {
       propAndVal = bps[bp].value;
+      const flexImportant = shortNameClass.includes('!') ? ';display:flex !important;' : ';display:flex;';
 
       // Searching a flex self inside. ['as' for 'align-self']
       attrsFlexSelfs = ['as'].concat(flexAttrsSelf).filter(( nameAttrFlex ) => ( shortNameClass.includes(nameAttrFlex + ':') ));
       if (attrsFlexSelfs.length) {
         // if the items number of flex selft (+1) is diferrent so exists other flex attribute
         if ((attrsFlexSelfs.length + 1) !== shortNameClass.split(':').length) {
-          propAndVal += shortNameClass.includes('!') ? ';display:flex !important;' : ';display:flex;';
+          propAndVal += flexImportant
         }
       } else {
-        propAndVal += shortNameClass.includes('!') ? ';display:flex !important;' : ';display:flex;';
+        propAndVal += flexImportant
       }
     } else {
       propAndVal = prop +  ':' + bps[bp].value;

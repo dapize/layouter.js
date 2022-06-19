@@ -21,7 +21,7 @@ export const bps = {
 
 describe('Getting Widths and Cols', () => {
   it('Widths', () => {
-    expect(breakpointsNums(bps, 'width')).toEqual({
+    expect(breakpointsNums({ ...bps }, 'width')).toEqual({
       xs: 0,
       sm: 768,
       md: 1024,
@@ -30,7 +30,7 @@ describe('Getting Widths and Cols', () => {
   });
 
   it('Cols', () => {
-    expect(breakpointsNums(bps, 'cols')).toEqual({
+    expect(breakpointsNums({ ...bps }, 'cols')).toEqual({
       xs: 15,
       sm: 25,
       md: 31,

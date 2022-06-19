@@ -1,6 +1,6 @@
 import breakpointsNums, { IBreakpoints } from './breakpointsNums';
 
-const breakpointsOrdered = (bps: IBreakpoints) => {
+const breakpointsOrdered = (bps: IBreakpoints): string[] => {
   const objBps = breakpointsNums(bps, 'width');
   const arrBps = Object.keys(bps);
   return arrBps
