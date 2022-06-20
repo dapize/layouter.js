@@ -21,6 +21,7 @@ import buildMinHeight from './methods/buildMinHeight'
 import buildHeight from './methods/buildHeight'
 import buildWidth from './methods/buildWidth'
 
+import set from './methods/set';
 import setFlex from './methods/setFlex';
 import setCols from './methods/SetCols';
 import setHeight from './methods/setHeight';
@@ -39,7 +40,6 @@ import setPads from './methods/setPads';
 import setPadTop from './methods/setPadTop';
 import setWidth from './methods/setWidth';
 import setMaxHeight from './methods/setMaxHeight';
-import set from './methods/set';
 
 import insertRules from './methods/insertRules';
 
@@ -50,7 +50,7 @@ export interface ILayouter extends IConfig {
   getParameters: (Node: HTMLElement | Element) => IParams;
   updateConfig: (userConfig: Partial<Omit<IConfigUser, 'bridge'>>) => IConfig;
 
-  build: (obj: Partial<IBuild>) => Partial<IBuildResult> | boolean;
+  build: (obj: Partial<IBuild>, insertStyles?: boolean) => Partial<IBuildResult> | boolean;
   buildCols: (valCols: string | string[], insertStyles?: boolean) => IStyles | boolean;
   buildFlex: (valFlex: string | string[], insertStyles?: boolean) => IStyles | boolean;
 
@@ -71,7 +71,7 @@ export interface ILayouter extends IConfig {
   buildHeight: (valHeight: string | string[], insertStyles?: boolean) => IStyles | boolean;
   buildWidth: (valWidth: string | string[], insertStyles?: boolean) => IStyles | boolean;
 
-  set: (Node: HTMLElement | Element) => void;
+  set: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
   setCols: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
   setFlex: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
 

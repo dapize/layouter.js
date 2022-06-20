@@ -48,13 +48,13 @@ export interface IBuild {
   [ prop: string ]: string;
 }
 
-const build = (obj: Partial<IBuild>): Partial<IBuildResult> | boolean => {
+const build = (obj: Partial<IBuild>, insertStyles: boolean = false): Partial<IBuildResult> | boolean => {
   const rObj: Partial<IBuildResult> = {};
   let propData;
   Object.keys(obj).forEach( ( prop ) => {
     propData = processors[prop];
     if (propData) {
-      rObj[prop] = builders[propData.build as keyof typeof builders](obj[prop] as string)
+      rObj[prop] = builders[propData.build as keyof typeof builders](obj[prop] as string, insertStyles)
     }
   });
 

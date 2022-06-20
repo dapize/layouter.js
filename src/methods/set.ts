@@ -1,29 +1,35 @@
 import { IStyles } from "../helpers/createStyles";
 import regError from "../helpers/regError";
 import build, { IBuildResult } from "./build";
-import getParameters from "./getParameters";
+import getParameters, { IParams } from "./getParameters";
 
-const set = (Node: HTMLElement | Element) => {
-  const params = getParameters(Node);
-  const arrParams = Object.keys(params);
-  if (!arrParams.length) return regError('Parameter Missing', "don't exists any parameter to process");
-  const toBuild: { [ prop: string ]: string } = {};
+const set = (Node: HTMLElement | Element, parameters?: IParams): Promise<boolean> => {
+  return new Promise((resolve, reject) => {
+    const params = parameters || getParameters(Node);
+    const arrParams = Object.keys(params);
+    if (!arrParams.length) {
+      regError('Parameter Missing', "don't exists any parameter to process");
+      reject(false);
+    }
+    const toBuild: { [ prop: string ]: string } = {};
 
-  for(let prop in params) {
-    toBuild[prop] = params[prop].join(' ');
-  }
+    for(let prop in params) {
+      toBuild[prop] = params[prop].join(' ');
+    }
 
-  const classesObj = build(toBuild) as Partial<IBuildResult>;
-  const classesNames = Object.keys(classesObj)
-    .map( (name: string) => {
-      return Object.keys(classesObj[name] as IStyles).join(' ')
-    })
-    .join(' ');
-  Node.className = Node.className ? Node.className + ' ' + classesNames : classesNames;
-  arrParams.forEach(nameParam => {
-    setTimeout( name => {
-      Node.removeAttribute(name);
-    }, 0, nameParam)
+    const classesObj = build(toBuild, true) as Partial<IBuildResult>;
+    const classesNames = Object.keys(classesObj)
+      .map( (name: string) => {
+        return Object.keys(classesObj[name] as IStyles).join(' ')
+      })
+      .join(' ');
+    Node.className = Node.className ? Node.className + ' ' + classesNames : classesNames;
+    arrParams.forEach(nameParam => {
+      setTimeout( name => {
+        Node.removeAttribute(name);
+      }, 0, nameParam)
+    });
+    resolve(true);
   })
 };
 

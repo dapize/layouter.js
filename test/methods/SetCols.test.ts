@@ -3,6 +3,7 @@ import layouter from '../../src';
 describe('Setting cols', () => {
   it('simple', async () => {
     const myDiv = document.createElement('div');
+    myDiv.className = 'test'
     myDiv.setAttribute('cols', '3/13');
     await layouter.setCols(myDiv);
     expect(myDiv.classList.contains('cols-3/13')).toBeTruthy();
