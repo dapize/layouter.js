@@ -1,8 +1,8 @@
 import { ILayouter } from './../index';
-import { processors } from "../config/processors";
+import { processors } from '../config/processors';
 
-const initAutoProcessor = ( layouter: ILayouter ) => {
-  return new Promise((resolve) => {
+const initAutoProcessor = (layouter: ILayouter) => {
+  return new Promise(resolve => {
     const props = Object.keys(processors);
     const attrs = props.map(prop => `[${prop}]`).join(', ');
     const nodes = document.querySelectorAll(attrs);
@@ -14,8 +14,8 @@ const initAutoProcessor = ( layouter: ILayouter ) => {
     setNodes.forEach(node => {
       promises.push(layouter.set(node as Element | HTMLElement));
     });
-    Promise.all(promises).then(resolve)
-  })
-}
+    Promise.all(promises).then(resolve);
+  });
+};
 
 export default initAutoProcessor;

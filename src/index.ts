@@ -260,8 +260,8 @@ if (window) {
   // Auto init process
   initAutoProcessor(layouter).then(() => {
     if (layouter.ready) layouter.ready(layouter);
-    observer( layouter );
-  })
+    observer(layouter);
+  });
 }
 
 export default layouter;

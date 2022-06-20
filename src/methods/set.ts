@@ -34,8 +34,8 @@ const set = (
 
     // removing unnecessary props
     removeAttr(Node, arrParams)
-      .then( () => addClasses(classesNames, Node))
-      .then( resolve );
+      .then(() => addClasses(classesNames, Node))
+      .then(resolve);
   });
 };
 
