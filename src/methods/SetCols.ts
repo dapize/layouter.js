@@ -12,7 +12,7 @@ const setCols = (Node: HTMLElement | Element, parameters?: IParams): Promise<boo
     }
 
     // Creating, inserting, and adding classNames of rules in Node.
-    const objStyles = buildCols(params.cols);
+    const objStyles = buildCols(params.cols, true);
 
     // adding the classes names to the Node
     addClasses(Object.keys(objStyles), Node);

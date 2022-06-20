@@ -1,6 +1,6 @@
 import buildAttr from "../helpers/buildAttr";
 
-const buildMarRight = (valMarRight: string | string[], insertStyles?: boolean) => {
+const buildMarRight = (valMarRight: string | string[], insertStyles: boolean = false) => {
   return buildAttr(valMarRight, 'marr', insertStyles);
 };
 

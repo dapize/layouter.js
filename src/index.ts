@@ -1,6 +1,7 @@
 import { IConfig, IConfigUser, setConfig, updateConfig } from './config/main';
 import getParameters, { IParams } from './methods/getParameters';
 
+import build from './methods/build';
 import buildCols from './methods/buildCols'
 import buildFlex from './methods/buildFlex'
 import buildPads from './methods/buildPads'
@@ -38,13 +39,18 @@ import setPads from './methods/setPads';
 import setPadTop from './methods/setPadTop';
 import setWidth from './methods/setWidth';
 import setMaxHeight from './methods/setMaxHeight';
+import set from './methods/set';
+
+import insertRules from './methods/insertRules';
 
 import { IStyles } from './helpers/createStyles';
+import { IBuild, IBuildResult } from './methods/build';
 
 export interface ILayouter extends IConfig {
   getParameters: (Node: HTMLElement | Element) => IParams;
   updateConfig: (userConfig: Partial<Omit<IConfigUser, 'bridge'>>) => IConfig;
 
+  build: (obj: Partial<IBuild>) => Partial<IBuildResult> | boolean;
   buildCols: (valCols: string | string[], insertStyles?: boolean) => IStyles | boolean;
   buildFlex: (valFlex: string | string[], insertStyles?: boolean) => IStyles | boolean;
 
@@ -65,6 +71,7 @@ export interface ILayouter extends IConfig {
   buildHeight: (valHeight: string | string[], insertStyles?: boolean) => IStyles | boolean;
   buildWidth: (valWidth: string | string[], insertStyles?: boolean) => IStyles | boolean;
 
+  set: (Node: HTMLElement | Element) => void;
   setCols: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
   setFlex: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
 
@@ -87,6 +94,8 @@ export interface ILayouter extends IConfig {
   setHeight: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
   setMinHeight: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
   setMaxHeight: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
+
+  insertRules: (objStyles: IStyles) => void;
 }
 
 const layouter = ((userConfig: Partial<IConfigUser> = {}): ILayouter => {
@@ -96,6 +105,8 @@ const layouter = ((userConfig: Partial<IConfigUser> = {}): ILayouter => {
     ...config,
     getParameters,
     updateConfig,
+    insertRules,
+    build,
     buildCols,
     buildFlex,
     buildPads,
@@ -114,6 +125,7 @@ const layouter = ((userConfig: Partial<IConfigUser> = {}): ILayouter => {
     buildMinHeight,
     buildHeight,
     buildWidth,
+    set,
     setCols,
     setFlex,
     setMars,
@@ -148,12 +160,12 @@ if (window) {
   // document.querySelectorAll(props);
   // console.timeEnd('todos');
 
-  console.time('colsNodes');
-  const colsNodes = document.querySelectorAll('[cols]');
-  const nodes = Array.prototype.map.call(colsNodes, node => layouter.setCols(node))
-  Promise.all(nodes).then(() => {
-    console.timeEnd('colsNodes')
-  })
+  // console.time('colsNodes');
+  // const colsNodes = document.querySelectorAll('[cols]');
+  // const nodes = Array.prototype.map.call(colsNodes, node => layouter.setCols(node))
+  // Promise.all(nodes).then(() => {
+  //   console.timeEnd('colsNodes')
+  // })
 }
 
 export default layouter;

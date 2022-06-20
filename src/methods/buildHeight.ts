@@ -1,6 +1,6 @@
 import buildAttr from "../helpers/buildAttr";
 
-const buildHeight = (valHeight: string | string[], insertStyles?: boolean) => {
+const buildHeight = (valHeight: string | string[], insertStyles: boolean = false) => {
   return buildAttr(valHeight, 'hgt', insertStyles);
 };
 

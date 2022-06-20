@@ -13,7 +13,7 @@ const setAttr = (Node: HTMLElement | Element, type: IPropNode, parameters?: IPar
     }
 
     // Creating, inserting, and adding classNames of rules in Node.
-    const objStyles = buildAttr(params[type], type);
+    const objStyles = buildAttr(params[type], type, true);
 
     // adding the classes names to the Node
     addClasses(Object.keys(objStyles), Node);

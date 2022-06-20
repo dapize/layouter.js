@@ -12,7 +12,7 @@ const setFlex = (Node: HTMLElement | Element, parameters?: IParams): Promise<boo
     }
 
     // Creating, inserting, and adding classNames of rules in Node.
-    const objStyles = buildFlex(params.flex);
+    const objStyles = buildFlex(params.flex, true);
 
     // adding the classes names to the Node
     addClasses(Object.keys(objStyles), Node);

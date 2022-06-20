@@ -40,19 +40,24 @@ const builders = {
   buildWidth,
 }
 
-interface IBuildResult {
-  [ propName: string ]: IStyles | boolean;
+export interface IBuildResult {
+  [ prop: string ]: IStyles | boolean;
 }
 
-const build = (obj: { [ nameProp: string ]: string }): IBuildResult | boolean => {
-  const rObj: IBuildResult = {};
+export interface IBuild {
+  [ prop: string ]: string;
+}
+
+const build = (obj: Partial<IBuild>): Partial<IBuildResult> | boolean => {
+  const rObj: Partial<IBuildResult> = {};
   let propData;
-  Object.keys(obj).forEach( prop => {
+  Object.keys(obj).forEach( ( prop ) => {
     propData = processors[prop];
     if (propData) {
-      rObj[prop] = builders[propData.build as keyof typeof builders](obj[prop])
+      rObj[prop] = builders[propData.build as keyof typeof builders](obj[prop] as string)
     }
   });
+
   return (Object.keys(rObj).length) ? rObj : false;
 };
 

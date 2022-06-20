@@ -9,7 +9,7 @@ import breakpointsOrdered from '../helpers/breakpointsOrdered';
 
 const buildCols = (
   valCols: string | string[],
-  insertStyles: boolean = true
+  insertStyles: boolean = false
 ): IStyles | boolean => {
   let cols: number[];
   let bp;

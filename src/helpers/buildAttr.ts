@@ -3,7 +3,7 @@ import buildCss, { IBpCals, IPropNode } from "./buildCss";
 import prepareParam from "./prepareParam";
 import processedNumber from "./processedNumber";
 
-const buildAttr = (value: string | string[], prop: IPropNode, insertStyles: boolean = true) => {
+const buildAttr = (value: string | string[], prop: IPropNode, insertStyles: boolean = false) => {
   const { breakpoints } = config();
   let bpCals: IBpCals = {};
   let paramProcessed, numbersPures, propValue, bps;

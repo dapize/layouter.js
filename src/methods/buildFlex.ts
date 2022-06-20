@@ -4,7 +4,10 @@ import buildCss, { IBpCals } from "../helpers/buildCss";
 import prepareParam from "../helpers/prepareParam";
 import regError from "../helpers/regError";
 
-const buildFlex = (valFlex: string | string[], insertStyles?: boolean) => {
+const buildFlex = (
+  valFlex: string | string[],
+  insertStyles: boolean = false
+) => {
   const { breakpoints } = config();
   let bpNames;
   let bpCals: IBpCals = {};

@@ -1,6 +1,6 @@
 import config from '../config/main';
-import { IStyles } from './createStyles';
-import getScopeByclassName from './getScopeByclassName';
+import { IStyles } from '../helpers/createStyles';
+import getScopeByclassName from '../helpers/getScopeByclassName';
 
 const insertRules = (objStyles: IStyles) => {
   const { styles } = config();

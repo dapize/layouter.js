@@ -26,7 +26,7 @@ export interface IConfig extends IConfigUser, IConfigNums {
 
 declare global {
   interface Window {
-    layouterConfig: IConfigUser;
+    layouterConfig: Partial<IConfigUser>;
   }
 }
 
