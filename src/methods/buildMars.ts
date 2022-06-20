@@ -1,6 +1,9 @@
-import buildAttr from "../helpers/buildAttr";
+import buildAttr from '../helpers/buildAttr';
 
-const buildMars = (valMars: string | string[], insertStyles: boolean = false) => {
+const buildMars = (
+  valMars: string | string[],
+  insertStyles: boolean = false
+) => {
   return buildAttr(valMars, 'mar', insertStyles);
 };
 

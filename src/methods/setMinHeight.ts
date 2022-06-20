@@ -1,8 +1,11 @@
-import { IParams } from "./getParameters";
-import setAttr from "./setAttr";
+import { IParams } from './getParameters';
+import setAttr from './setAttr';
 
-const setMinHeight = (Node: HTMLElement | Element, parameters?: IParams): Promise<boolean> => {
+const setMinHeight = (
+  Node: HTMLElement | Element,
+  parameters?: IParams
+): Promise<boolean> => {
   return setAttr(Node, 'mih', parameters);
 };
 
-export default setMinHeight
+export default setMinHeight;

@@ -2,7 +2,25 @@ import insertRules from '../methods/insertRules';
 import createStyles, { IStyles } from './createStyles';
 import nameCleaner from './nameCleaner';
 
-export type IPropNode = 'cols' | 'flex' | 'pad' | 'padt' | 'padr' | 'padb' | 'padl' | 'mar' | 'mart' | 'marr' | 'marb' | 'marl' | 'mxw' | 'mxh' | 'miw' | 'mih' | 'hgt' | 'wdh';
+export type IPropNode =
+  | 'cols'
+  | 'flex'
+  | 'pad'
+  | 'padt'
+  | 'padr'
+  | 'padb'
+  | 'padl'
+  | 'mar'
+  | 'mart'
+  | 'marr'
+  | 'marb'
+  | 'marl'
+  | 'mxw'
+  | 'mxh'
+  | 'miw'
+  | 'mih'
+  | 'hgt'
+  | 'wdh';
 
 export interface IRBuildCols {
   name: string;

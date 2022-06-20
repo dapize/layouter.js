@@ -3,21 +3,21 @@ window.layouterConfig = {
   breakpoints: {
     xs: {
       width: 320,
-      cols: 15
+      cols: 15,
     },
     sm: {
       width: 768,
-      cols: 31
+      cols: 31,
     },
     md: {
       width: 1024,
-      cols: 31
-    }
-  }
-}
+      cols: 31,
+    },
+  },
+};
 
 describe('Setting padding top', () => {
-  it('simple', async ()  => {
+  it('simple', async () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('padt', '40');
     await layouter.setPadTop(myDiv);

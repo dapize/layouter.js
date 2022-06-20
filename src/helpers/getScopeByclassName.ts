@@ -1,8 +1,8 @@
-import config from "../config/main";
-import breakpointsOrdered from "./breakpointsOrdered";
-import createScopeStyles from "./createScopeStyles";
+import config from '../config/main';
+import breakpointsOrdered from './breakpointsOrdered';
+import createScopeStyles from './createScopeStyles';
 
-const getScopeByclassName = ( className: string ) => {
+const getScopeByclassName = (className: string) => {
   const nameClass = className.replace(/!/g, '');
   const atIndex = nameClass.indexOf('@');
   const { breakpoints, scope, bridge } = config();
@@ -11,11 +11,11 @@ const getScopeByclassName = ( className: string ) => {
   if (atIndex === -1) {
     const arrBps = breakpointsOrdered(breakpoints);
     return scope[arrBps[0] as string];
-  };
+  }
 
   // Have a BP designed, a normal BP.
   const bp = nameClass.substring(atIndex + 1);
-  if ( !bp.includes('-') ) return scope[bp]; // A simple BP, not compound (like this: 13/15@sm-md).
+  if (!bp.includes('-')) return scope[bp]; // A simple BP, not compound (like this: 13/15@sm-md).
 
   // A BP until. Example 13/15@-md
   if (bp.substring(0, 1) === '-') {
@@ -25,7 +25,7 @@ const getScopeByclassName = ( className: string ) => {
       bridge: bridge,
       bp,
       insertionType: 'before',
-      node: scope[bpUntil].node
+      node: scope[bpUntil].node,
     });
     return scope[bp]; // returning a new scope created
   }
@@ -40,7 +40,7 @@ const getScopeByclassName = ( className: string ) => {
     bridge: bridge,
     bp,
     insertionType: 'after',
-    node: scope[fromBp].node
+    node: scope[fromBp].node,
   });
 
   return scope[bp]; // returning a new scope compounted created

@@ -2,24 +2,24 @@ import { IConfig, IConfigUser, setConfig, updateConfig } from './config/main';
 import getParameters, { IParams } from './methods/getParameters';
 
 import build from './methods/build';
-import buildCols from './methods/buildCols'
-import buildFlex from './methods/buildFlex'
-import buildPads from './methods/buildPads'
-import buildPadTop from './methods/buildPadTop'
-import buildPadRight from './methods/buildPadRight'
-import buildPadBottom from './methods/buildPadBottom'
-import buildPadLeft from './methods/buildPadLeft'
-import buildMars from './methods/buildMars'
-import buildMarTop from './methods/buildMarTop'
-import buildMarRight from './methods/buildMarRight'
-import buildMarBottom from './methods/buildMarBottom'
-import buildMarLeft from './methods/buildMarLeft'
-import buildMaxWidth from './methods/buildMaxWidth'
-import buildMaxHeight from './methods/buildMaxHeight'
-import buildMinWidth from './methods/buildMinWidth'
-import buildMinHeight from './methods/buildMinHeight'
-import buildHeight from './methods/buildHeight'
-import buildWidth from './methods/buildWidth'
+import buildCols from './methods/buildCols';
+import buildFlex from './methods/buildFlex';
+import buildPads from './methods/buildPads';
+import buildPadTop from './methods/buildPadTop';
+import buildPadRight from './methods/buildPadRight';
+import buildPadBottom from './methods/buildPadBottom';
+import buildPadLeft from './methods/buildPadLeft';
+import buildMars from './methods/buildMars';
+import buildMarTop from './methods/buildMarTop';
+import buildMarRight from './methods/buildMarRight';
+import buildMarBottom from './methods/buildMarBottom';
+import buildMarLeft from './methods/buildMarLeft';
+import buildMaxWidth from './methods/buildMaxWidth';
+import buildMaxHeight from './methods/buildMaxHeight';
+import buildMinWidth from './methods/buildMinWidth';
+import buildMinHeight from './methods/buildMinHeight';
+import buildHeight from './methods/buildHeight';
+import buildWidth from './methods/buildWidth';
 
 import set from './methods/set';
 import setFlex from './methods/setFlex';
@@ -50,50 +50,161 @@ export interface ILayouter extends IConfig {
   getParameters: (Node: HTMLElement | Element) => IParams;
   updateConfig: (userConfig: Partial<Omit<IConfigUser, 'bridge'>>) => IConfig;
 
-  build: (obj: Partial<IBuild>, insertStyles?: boolean) => Partial<IBuildResult> | boolean;
-  buildCols: (valCols: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildFlex: (valFlex: string | string[], insertStyles?: boolean) => IStyles | boolean;
+  build: (
+    obj: Partial<IBuild>,
+    insertStyles?: boolean
+  ) => Partial<IBuildResult> | boolean;
+  buildCols: (
+    valCols: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildFlex: (
+    valFlex: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
 
-  buildPads: (valPads: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildPadTop: (valPadTop: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildPadRight: (valPadRight: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildPadBottom: (valPadBottom: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildPadLeft: (valPadLeft: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildMars: (valMars: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildMarTop: (valMarTop: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildMarRight: (valMarRight: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildMarBottom: (valMarBottom: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildMarLeft: (valMarLeft: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildMaxWidth: (valMaxWidth: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildMaxHeight: (valMaxHeight: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildMinWidth: (valMinWidth: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildMinHeight: (valMinHeight: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildHeight: (valHeight: string | string[], insertStyles?: boolean) => IStyles | boolean;
-  buildWidth: (valWidth: string | string[], insertStyles?: boolean) => IStyles | boolean;
+  buildPads: (
+    valPads: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildPadTop: (
+    valPadTop: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildPadRight: (
+    valPadRight: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildPadBottom: (
+    valPadBottom: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildPadLeft: (
+    valPadLeft: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildMars: (
+    valMars: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildMarTop: (
+    valMarTop: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildMarRight: (
+    valMarRight: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildMarBottom: (
+    valMarBottom: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildMarLeft: (
+    valMarLeft: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildMaxWidth: (
+    valMaxWidth: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildMaxHeight: (
+    valMaxHeight: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildMinWidth: (
+    valMinWidth: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildMinHeight: (
+    valMinHeight: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildHeight: (
+    valHeight: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
+  buildWidth: (
+    valWidth: string | string[],
+    insertStyles?: boolean
+  ) => IStyles | boolean;
 
   set: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setCols: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setFlex: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
+  setCols: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setFlex: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
 
-  setMars: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setMarTop: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setMarRight: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setMarBottom: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setMarLeft: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
+  setMars: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setMarTop: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setMarRight: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setMarBottom: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setMarLeft: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
 
-  setPads: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setPadTop: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setPadRight: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setPadBottom: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setPadLeft: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
+  setPads: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setPadTop: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setPadRight: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setPadBottom: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setPadLeft: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
 
-  setWidth: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setMinWidth: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setMaxWidth: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
+  setWidth: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setMinWidth: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setMaxWidth: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
 
-  setHeight: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setMinHeight: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
-  setMaxHeight: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
+  setHeight: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setMinHeight: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
+  setMaxHeight: (
+    Node: HTMLElement | Element,
+    parameters?: IParams
+  ) => Promise<boolean>;
 
   insertRules: (objStyles: IStyles) => void;
 }

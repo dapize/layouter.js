@@ -1,14 +1,21 @@
-import addClasses from "../helpers/addClasses";
-import buildAttr from "../helpers/buildAttr";
-import { IPropNode } from "../helpers/buildCss";
-import regError from "../helpers/regError";
-import getParameters, { IParams } from "./getParameters";
+import addClasses from '../helpers/addClasses';
+import buildAttr from '../helpers/buildAttr';
+import { IPropNode } from '../helpers/buildCss';
+import regError from '../helpers/regError';
+import getParameters, { IParams } from './getParameters';
 
-const setAttr = (Node: HTMLElement | Element, type: IPropNode, parameters?: IParams): Promise<boolean> => {
+const setAttr = (
+  Node: HTMLElement | Element,
+  type: IPropNode,
+  parameters?: IParams
+): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     const params = parameters || getParameters(Node);
     if (!params.hasOwnProperty(type)) {
-      regError('Parameter Missing', "Don't exists the param '" + type + "' determined");
+      regError(
+        'Parameter Missing',
+        "Don't exists the param '" + type + "' determined"
+      );
       reject(false);
     }
 
@@ -21,8 +28,8 @@ const setAttr = (Node: HTMLElement | Element, type: IPropNode, parameters?: IPar
     // removing param
     Node.removeAttribute(type);
 
-    resolve(true)
-  })
-}
+    resolve(true);
+  });
+};
 
 export default setAttr;

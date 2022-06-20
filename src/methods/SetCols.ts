@@ -3,7 +3,10 @@ import regError from '../helpers/regError';
 import buildCols from './buildCols';
 import getParameters, { IParams } from './getParameters';
 
-const setCols = (Node: HTMLElement | Element, parameters?: IParams): Promise<boolean> => {
+const setCols = (
+  Node: HTMLElement | Element,
+  parameters?: IParams
+): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     const params = parameters || getParameters(Node);
     if (!params.hasOwnProperty('cols')) {
@@ -21,7 +24,7 @@ const setCols = (Node: HTMLElement | Element, parameters?: IParams): Promise<boo
     Node.removeAttribute('cols');
 
     resolve(true);
-  })
+  });
 };
 
 export default setCols;

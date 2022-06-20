@@ -1,8 +1,11 @@
-import { IParams } from "./getParameters";
-import setAttr from "./setAttr";
+import { IParams } from './getParameters';
+import setAttr from './setAttr';
 
-const setMarTop = (Node: HTMLElement | Element, parameters?: IParams): Promise<boolean> => {
+const setMarTop = (
+  Node: HTMLElement | Element,
+  parameters?: IParams
+): Promise<boolean> => {
   return setAttr(Node, 'mart', parameters);
 };
 
-export default setMarTop
+export default setMarTop;

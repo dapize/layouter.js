@@ -1,6 +1,9 @@
-import buildAttr from "../helpers/buildAttr";
+import buildAttr from '../helpers/buildAttr';
 
-const buildPadBottom = (valPadBottom: string | string[], insertStyles: boolean = false) => {
+const buildPadBottom = (
+  valPadBottom: string | string[],
+  insertStyles: boolean = false
+) => {
   return buildAttr(valPadBottom, 'padb', insertStyles);
 };
 

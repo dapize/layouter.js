@@ -1,9 +1,12 @@
-import addClasses from "../helpers/addClasses";
-import regError from "../helpers/regError";
-import buildFlex from "./buildFlex";
-import getParameters, { IParams } from "./getParameters";
+import addClasses from '../helpers/addClasses';
+import regError from '../helpers/regError';
+import buildFlex from './buildFlex';
+import getParameters, { IParams } from './getParameters';
 
-const setFlex = (Node: HTMLElement | Element, parameters?: IParams): Promise<boolean> => {
+const setFlex = (
+  Node: HTMLElement | Element,
+  parameters?: IParams
+): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     const params = parameters || getParameters(Node);
     if (!params.hasOwnProperty('flex')) {
@@ -20,8 +23,8 @@ const setFlex = (Node: HTMLElement | Element, parameters?: IParams): Promise<boo
     // removing param
     Node.removeAttribute('flex');
 
-    resolve(true)
-  })
+    resolve(true);
+  });
 };
 
-export default setFlex
+export default setFlex;

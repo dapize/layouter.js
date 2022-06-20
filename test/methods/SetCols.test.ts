@@ -3,16 +3,16 @@ import layouter from '../../src';
 describe('Setting cols', () => {
   it('simple', async () => {
     const myDiv = document.createElement('div');
-    myDiv.className = 'test'
+    myDiv.className = 'test';
     myDiv.setAttribute('cols', '3/13');
     await layouter.setCols(myDiv);
     expect(myDiv.classList.contains('cols-3/13')).toBeTruthy();
   });
 
-  it('Without Cols property',  () => {
+  it('Without Cols property', () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('padt', '3/13');
-    layouter.setCols(myDiv).catch(( response ) => {
+    layouter.setCols(myDiv).catch(response => {
       expect(response).toBeFalsy();
     });
   });
