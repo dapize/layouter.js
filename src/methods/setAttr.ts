@@ -8,15 +8,16 @@ const setAttr = (
   Node: HTMLElement | Element,
   type: IPropNode,
   parameters?: IParams
-): Promise<boolean> => {
+): Promise<void> => {
   return new Promise((resolve, reject) => {
     const params = parameters || getParameters(Node);
     if (!params.hasOwnProperty(type)) {
       regError(
         'Parameter Missing',
-        "Don't exists the param '" + type + "' determined"
+        "Don't exists the param '" + type + "' determined",
+        Node
       );
-      reject(false);
+      reject();
     }
 
     // Creating, inserting, and adding classNames of rules in Node.
@@ -28,7 +29,7 @@ const setAttr = (
     // removing param
     Node.removeAttribute(type);
 
-    resolve(true);
+    resolve();
   });
 };
 

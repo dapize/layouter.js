@@ -4,7 +4,7 @@ import setAttr from './setAttr';
 const setHeight = (
   Node: HTMLElement | Element,
   parameters?: IParams
-): Promise<boolean> => {
+): Promise<void> => {
   return setAttr(Node, 'hgt', parameters);
 };
 

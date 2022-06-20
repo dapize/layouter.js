@@ -45,6 +45,7 @@ import insertRules from './methods/insertRules';
 
 import { IStyles } from './helpers/createStyles';
 import { IBuild, IBuildResult } from './methods/build';
+import { processors } from './config/processors';
 
 export interface ILayouter extends IConfig {
   getParameters: (Node: HTMLElement | Element) => IParams;
@@ -128,83 +129,83 @@ export interface ILayouter extends IConfig {
     insertStyles?: boolean
   ) => IStyles | boolean;
 
-  set: (Node: HTMLElement | Element, parameters?: IParams) => Promise<boolean>;
+  set: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
   setCols: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setFlex: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
 
   setMars: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setMarTop: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setMarRight: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setMarBottom: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setMarLeft: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
 
   setPads: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setPadTop: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setPadRight: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setPadBottom: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setPadLeft: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
 
   setWidth: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setMinWidth: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setMaxWidth: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
 
   setHeight: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setMinHeight: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
   setMaxHeight: (
     Node: HTMLElement | Element,
     parameters?: IParams
-  ) => Promise<boolean>;
+  ) => Promise<void>;
 
   insertRules: (objStyles: IStyles) => void;
 }
@@ -266,17 +267,21 @@ declare global {
 
 if (window) {
   window.layouter = layouter;
-  // const props = Object.keys(processors).map( prop => `[${prop}]`).join(', ');
-  // console.time('todos');
-  // document.querySelectorAll(props);
-  // console.timeEnd('todos');
 
-  // console.time('colsNodes');
-  // const colsNodes = document.querySelectorAll('[cols]');
-  // const nodes = Array.prototype.map.call(colsNodes, node => layouter.setCols(node))
-  // Promise.all(nodes).then(() => {
-  //   console.timeEnd('colsNodes')
-  // })
+  // Auto init process
+  const props = Object.keys(processors).map( prop => `[${prop}]`).join(', ');
+  const nodes = document.querySelectorAll(props);
+  const setNodes = new Set();
+  Array.prototype.forEach.call(nodes, itemNode => {
+    setNodes.add(itemNode);
+  });
+  const promises: Promise<void>[] = [];
+  setNodes.forEach( node => {
+    promises.push(layouter.set( node as Element | HTMLElement ))
+  })
+  Promise.all(promises).then( () => {
+    if (layouter.ready) layouter.ready( layouter );
+  })
 }
 
 export default layouter;

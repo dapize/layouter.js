@@ -1,10 +1,9 @@
 (function () {
-  // window.layouterConfig = {
-  //   prefix: 'dpz',
-  //   bridge: false
-  // }
-
-  setTimeout(() => {
-    console.log(window.layouter);
-  }, 2000)
+  console.time('layouter');
+  window.layouterConfig = {
+    ready: () => {
+      console.timeEnd('layouter');
+      console.log(window.layouter);
+    }
+  }
 }());

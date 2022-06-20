@@ -20,7 +20,7 @@ const buildAttr = (
     // processing number values
     propValue = numbersPures
       .split('-')
-      .map(function(n) {
+      .map( n => {
         return processedNumber(n);
       })
       .join(' ');

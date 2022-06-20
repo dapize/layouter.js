@@ -6,12 +6,12 @@ import getParameters, { IParams } from './getParameters';
 const setFlex = (
   Node: HTMLElement | Element,
   parameters?: IParams
-): Promise<boolean> => {
+): Promise<void> => {
   return new Promise((resolve, reject) => {
     const params = parameters || getParameters(Node);
     if (!params.hasOwnProperty('flex')) {
-      regError('Parameter Missing', "Don't exists 'flex' determinated.");
-      reject(false);
+      regError('Parameter Missing', "Don't exists 'flex' determinated.", Node);
+      reject();
     }
 
     // Creating, inserting, and adding classNames of rules in Node.
@@ -23,7 +23,7 @@ const setFlex = (
     // removing param
     Node.removeAttribute('flex');
 
-    resolve(true);
+    resolve();
   });
 };
 

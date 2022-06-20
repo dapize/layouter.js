@@ -1,3 +1,4 @@
+import { ILayouter } from './../index';
 import breakpointsNums, { IBreakpoints } from '../helpers/breakpointsNums';
 import { IScopes, scopesStylesBuilder } from '../helpers/scopesStylesBuilder';
 
@@ -9,6 +10,7 @@ export interface IConfigUser {
   prefix: string;
   breakpoints: IBreakpoints;
   bridge: boolean;
+  ready?: ( instance: ILayouter ) => void
 }
 
 interface IConfigNums {
@@ -21,7 +23,6 @@ export interface IConfig extends IConfigUser, IConfigNums {
   styles: {
     [className: string]: string;
   };
-  ready?: () => void;
 }
 
 declare global {
