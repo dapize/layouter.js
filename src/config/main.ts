@@ -10,7 +10,7 @@ export interface IConfigUser {
   prefix: string;
   breakpoints: IBreakpoints;
   bridge: boolean;
-  ready?: ( instance: ILayouter ) => void
+  ready?: (instance: ILayouter) => void;
 }
 
 interface IConfigNums {

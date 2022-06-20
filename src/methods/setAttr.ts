@@ -1,7 +1,8 @@
-import addClasses from '../helpers/addClasses';
+import addClasses from '../utils/addClasses';
 import buildAttr from '../helpers/buildAttr';
 import { IPropNode } from '../helpers/buildCss';
 import regError from '../helpers/regError';
+import removeAttr from '../utils/removeAttr';
 import getParameters, { IParams } from './getParameters';
 
 const setAttr = (
@@ -22,14 +23,12 @@ const setAttr = (
 
     // Creating, inserting, and adding classNames of rules in Node.
     const objStyles = buildAttr(params[type], type, true);
+    const classesToAdd = Object.keys(objStyles);
 
-    // adding the classes names to the Node
-    addClasses(Object.keys(objStyles), Node);
-
-    // removing param
-    Node.removeAttribute(type);
-
-    resolve();
+    // removing prop of Node and adding the corresponding classes
+    removeAttr(Node, type)
+      .then(() => addClasses(classesToAdd, Node))
+      .then(resolve);
   });
 };
 

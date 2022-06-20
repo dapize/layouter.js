@@ -45,7 +45,8 @@ import insertRules from './methods/insertRules';
 
 import { IStyles } from './helpers/createStyles';
 import { IBuild, IBuildResult } from './methods/build';
-import { processors } from './config/processors';
+import initAutoProcessor from './helpers/initAutoProcessor';
+import observer from './helpers/observer';
 
 export interface ILayouter extends IConfig {
   getParameters: (Node: HTMLElement | Element) => IParams;
@@ -130,19 +131,10 @@ export interface ILayouter extends IConfig {
   ) => IStyles | boolean;
 
   set: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
-  setCols: (
-    Node: HTMLElement | Element,
-    parameters?: IParams
-  ) => Promise<void>;
-  setFlex: (
-    Node: HTMLElement | Element,
-    parameters?: IParams
-  ) => Promise<void>;
+  setCols: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
+  setFlex: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
 
-  setMars: (
-    Node: HTMLElement | Element,
-    parameters?: IParams
-  ) => Promise<void>;
+  setMars: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
   setMarTop: (
     Node: HTMLElement | Element,
     parameters?: IParams
@@ -160,10 +152,7 @@ export interface ILayouter extends IConfig {
     parameters?: IParams
   ) => Promise<void>;
 
-  setPads: (
-    Node: HTMLElement | Element,
-    parameters?: IParams
-  ) => Promise<void>;
+  setPads: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
   setPadTop: (
     Node: HTMLElement | Element,
     parameters?: IParams
@@ -269,18 +258,9 @@ if (window) {
   window.layouter = layouter;
 
   // Auto init process
-  const props = Object.keys(processors).map( prop => `[${prop}]`).join(', ');
-  const nodes = document.querySelectorAll(props);
-  const setNodes = new Set();
-  Array.prototype.forEach.call(nodes, itemNode => {
-    setNodes.add(itemNode);
-  });
-  const promises: Promise<void>[] = [];
-  setNodes.forEach( node => {
-    promises.push(layouter.set( node as Element | HTMLElement ))
-  })
-  Promise.all(promises).then( () => {
-    if (layouter.ready) layouter.ready( layouter );
+  initAutoProcessor(layouter).then(() => {
+    if (layouter.ready) layouter.ready(layouter);
+    observer( layouter );
   })
 }
 

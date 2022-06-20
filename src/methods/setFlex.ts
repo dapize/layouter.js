@@ -1,7 +1,8 @@
-import addClasses from '../helpers/addClasses';
+import addClasses from '../utils/addClasses';
 import regError from '../helpers/regError';
 import buildFlex from './buildFlex';
 import getParameters, { IParams } from './getParameters';
+import removeAttr from '../utils/removeAttr';
 
 const setFlex = (
   Node: HTMLElement | Element,
@@ -16,14 +17,12 @@ const setFlex = (
 
     // Creating, inserting, and adding classNames of rules in Node.
     const objStyles = buildFlex(params.flex, true);
+    const classesToAdd = Object.keys(objStyles);
 
-    // adding the classes names to the Node
-    addClasses(Object.keys(objStyles), Node);
-
-    // removing param
-    Node.removeAttribute('flex');
-
-    resolve();
+    // removing prop of Node and adding the corresponding classes
+    removeAttr(Node, 'flex')
+      .then(() => addClasses(classesToAdd, Node))
+      .then(resolve);
   });
 };
 
