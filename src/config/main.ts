@@ -10,6 +10,7 @@ export interface IConfigUser {
   prefix: string;
   breakpoints: IBreakpoints;
   bridge: boolean;
+  debug?: boolean;
   ready?: (instance: ILayouter) => void;
 }
 
@@ -37,19 +38,28 @@ const breakpointsInit: IBreakpoints = {
     cols: 15,
   },
   sm: {
-    width: 768,
-    cols: 31,
+    width: 600,
+    cols: 25
   },
   md: {
-    width: 1024,
-    cols: 31,
+    width: 900,
+    cols: 31
   },
+  lg: {
+    width: 1200,
+    cols: 41
+  },
+  xlg: {
+    width: 1536,
+    cols: 51
+  }
 };
 
 export let baseConfig: IConfigUser = {
   prefix: '',
   breakpoints: breakpointsInit,
   bridge: true,
+  debug: true,
 };
 
 let config: IConfig;

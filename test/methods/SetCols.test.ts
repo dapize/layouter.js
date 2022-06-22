@@ -1,3 +1,6 @@
+window.layouterConfig = {
+  debug: false
+};
 import layouter from '../../src';
 
 describe('Setting cols', () => {

@@ -42,6 +42,7 @@ import setWidth from './methods/setWidth';
 import setMaxHeight from './methods/setMaxHeight';
 
 import insertRules from './methods/insertRules';
+import reset from './methods/reset';
 
 import { IStyles } from './helpers/createStyles';
 import { IBuild, IBuildResult } from './methods/build';
@@ -197,6 +198,10 @@ export interface ILayouter extends IConfig {
   ) => Promise<void>;
 
   insertRules: (objStyles: IStyles) => void;
+
+  reset: (
+    Node: HTMLElement | Element
+  ) => Promise<string[]>;
 }
 
 const layouter = ((userConfig: Partial<IConfigUser> = {}): ILayouter => {
@@ -245,6 +250,7 @@ const layouter = ((userConfig: Partial<IConfigUser> = {}): ILayouter => {
     setHeight,
     setMinHeight,
     setMaxHeight,
+    reset,
   };
 })();
 
