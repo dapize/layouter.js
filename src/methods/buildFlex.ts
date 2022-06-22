@@ -5,27 +5,27 @@ import prepareParam from '../helpers/prepareParam';
 import regError from '../helpers/regError';
 
 const buildFlex = (
-  valFlex: string | string[],
+  valFlex: string,
   insertStyles: boolean = false
 ) => {
-  const { breakpoints } = config();
+  const intConfig = config();
+  const breakpoints = intConfig.breakpoints;
   let bpNames;
   let bpCals: IBpCals = {};
 
   // Getting numbers
-  let selectorName, paramPrepared, flexSplited, propVal, nameProp, valProp;
-  if (!Array.isArray(valFlex)) valFlex = valFlex.split(' ');
   const bpsObj = breakpoints;
-  valFlex.forEach(param => {
-    selectorName = param;
+  valFlex.split(' ').forEach(param => {
+    let propVal;
+    let selectorName = param;
 
-    paramPrepared = prepareParam(param, bpsObj);
+    const paramPrepared = prepareParam(param, bpsObj);
     bpNames = paramPrepared.breakPoints;
     param = paramPrepared.numbers;
 
-    flexSplited = param.split(':');
-    nameProp = flexSplited[0];
-    valProp = flexSplited[1];
+    const flexSplited = param.split(':');
+    const nameProp = flexSplited[0];
+    const valProp = flexSplited[1];
     if (!flexAttrsSelf.includes(nameProp)) {
       // ignoring the flex attrs selfs
       if (flexProsAndVals.hasOwnProperty(nameProp)) {

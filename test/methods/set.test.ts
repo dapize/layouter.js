@@ -1,4 +1,3 @@
-import layouter from '../../src';
 window.layouterConfig = {
   breakpoints: {
     xs: {
@@ -14,7 +13,9 @@ window.layouterConfig = {
       cols: 31,
     },
   },
+  debug: false
 };
+import layouter from '../../src';
 
 describe('Building all', () => {
   it('All Together', async () => {
@@ -87,4 +88,19 @@ describe('Building all', () => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
     });
   });
+
+  it('Without any directive valid', () => {
+    const myDiv = document.createElement('div');
+    layouter.set(myDiv).catch(e => {
+      expect(e).toBeInstanceOf(Error)
+    });
+  })
+
+  it('With a invalid value declarated ', () => {
+    const myDiv = document.createElement('div');
+    myDiv.setAttribute('cols', '20@sm-md');
+    layouter.set(myDiv).catch(e => {
+      expect(e).toBeInstanceOf(Error)
+    })
+  })
 });

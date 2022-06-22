@@ -101,6 +101,10 @@ export const setConfig = (customCfg: Partial<IConfigUser> = {}): IConfig => {
   return config;
 };
 
+export const setStyles = ( className: string, value: string ) => {
+  config.styles[ className ] = value;
+}
+
 const getConfig = (reset: boolean = false): IConfig => {
   return reset ? setConfig() : config;
 };

@@ -33,9 +33,9 @@ describe('Buildings Paddings', () => {
     expect(layouter.buildPads('10-1/15 20.5-3/31@sm 30-2/31@md')).toEqual({
       'pad-10-1/15': '.pad-10-1\\/15{padding:10px 6.667%}',
       'pad-20_5-3/31@sm':
-        '@media screen and (min-width: 768px){.pad-20_5-3\\/31\\@sm{padding:20.5px 9.677%}}',
+        '@media screen and (min-width: 600px){.pad-20_5-3\\/31\\@sm{padding:20.5px 9.677%}}',
       'pad-30-2/31@md':
-        '@media screen and (min-width: 1024px){.pad-30-2\\/31\\@md{padding:30px 6.452%}}',
+        '@media screen and (min-width: 900px){.pad-30-2\\/31\\@md{padding:30px 6.452%}}',
     });
   });
 
@@ -43,9 +43,9 @@ describe('Buildings Paddings', () => {
     expect(layouter.buildPads('10-1/15! 20.5-3/31@sm! 30-2/31@md')).toEqual({
       'pad-10-1/15!': '.pad-10-1\\/15\\!{padding:10px 6.667% !important}',
       'pad-20_5-3/31@sm!':
-        '@media screen and (min-width: 768px){.pad-20_5-3\\/31\\@sm\\!{padding:20.5px 9.677% !important}}',
+        '@media screen and (min-width: 600px){.pad-20_5-3\\/31\\@sm\\!{padding:20.5px 9.677% !important}}',
       'pad-30-2/31@md':
-        '@media screen and (min-width: 1024px){.pad-30-2\\/31\\@md{padding:30px 6.452%}}',
+        '@media screen and (min-width: 900px){.pad-30-2\\/31\\@md{padding:30px 6.452%}}',
     });
   });
 });

@@ -39,9 +39,9 @@ describe('Buildings Min-width', () => {
     expect(layouter.buildMinWidth('100! 200@sm 300@md!')).toEqual({
       'miw-100!': '.miw-100\\!{min-width:100px !important}',
       'miw-200@sm':
-        '@media screen and (min-width: 768px){.miw-200\\@sm{min-width:200px}}',
+        '@media screen and (min-width: 600px){.miw-200\\@sm{min-width:200px}}',
       'miw-300@md!':
-        '@media screen and (min-width: 1024px){.miw-300\\@md\\!{min-width:300px !important}}',
+        '@media screen and (min-width: 900px){.miw-300\\@md\\!{min-width:300px !important}}',
     });
   });
 });

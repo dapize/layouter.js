@@ -39,9 +39,9 @@ describe('Buildings Margins', () => {
     expect(layouter.buildMars('10-1/15 20.5-3/31@sm 30-2/31@md')).toEqual({
       'mar-10-1/15': '.mar-10-1\\/15{margin:10px 6.667%}',
       'mar-20_5-3/31@sm':
-        '@media screen and (min-width: 768px){.mar-20_5-3\\/31\\@sm{margin:20.5px 9.677%}}',
+        '@media screen and (min-width: 600px){.mar-20_5-3\\/31\\@sm{margin:20.5px 9.677%}}',
       'mar-30-2/31@md':
-        '@media screen and (min-width: 1024px){.mar-30-2\\/31\\@md{margin:30px 6.452%}}',
+        '@media screen and (min-width: 900px){.mar-30-2\\/31\\@md{margin:30px 6.452%}}',
     });
   });
 
@@ -49,9 +49,9 @@ describe('Buildings Margins', () => {
     expect(layouter.buildMars('10-1/15! 20.5-3/31@sm 30-2/31@md!')).toEqual({
       'mar-10-1/15!': '.mar-10-1\\/15\\!{margin:10px 6.667% !important}',
       'mar-20_5-3/31@sm':
-        '@media screen and (min-width: 768px){.mar-20_5-3\\/31\\@sm{margin:20.5px 9.677%}}',
+        '@media screen and (min-width: 600px){.mar-20_5-3\\/31\\@sm{margin:20.5px 9.677%}}',
       'mar-30-2/31@md!':
-        '@media screen and (min-width: 1024px){.mar-30-2\\/31\\@md\\!{margin:30px 6.452% !important}}',
+        '@media screen and (min-width: 900px){.mar-30-2\\/31\\@md\\!{margin:30px 6.452% !important}}',
     });
   });
 });

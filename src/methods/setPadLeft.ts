@@ -1,11 +1,10 @@
-import { IParams } from './getParameters';
 import setAttr from './setAttr';
 
 const setPadLeft = (
   Node: HTMLElement | Element,
-  parameters?: IParams
+  values?: string
 ): Promise<void> => {
-  return setAttr(Node, 'padl', parameters);
+  return setAttr(Node, 'padl', values);
 };
 
 export default setPadLeft;

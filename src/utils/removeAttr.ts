@@ -3,6 +3,10 @@ export const removeProp = (
   propName: string
 ): Promise<void> => {
   return new Promise(resolve => {
+    if (!Node.hasAttribute(propName)) {
+      resolve();
+      return;
+    }
     const obsNode = new MutationObserver(() => {
       obsNode.disconnect();
       resolve();

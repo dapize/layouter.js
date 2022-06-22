@@ -1,4 +1,3 @@
-import layouter from '../../src';
 window.layouterConfig = {
   breakpoints: {
     xs: {
@@ -14,7 +13,9 @@ window.layouterConfig = {
       cols: 31,
     },
   },
+  debug: false,
 };
+import layouter from '../../src';
 
 describe('Setting padding bottom', () => {
   it('simple', async () => {

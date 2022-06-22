@@ -1,33 +1,26 @@
 import { flexAttrsSelf } from '../config/flex';
 import config from '../config/main';
-import { processors } from '../config/processors';
-import { IBpCals, IPropNode } from './buildCss';
+import { processors, TDirectiveName } from '../config/processors';
+import { IBpCals } from './buildCss';
 import percentageConverter from './percentageConverter';
 
 export interface IStyles {
   [name: string]: string;
 }
 
-const createStyles = (type: IPropNode, bps: IBpCals): IStyles => {
-  const { sizes, prefix } = config();
-  const prop = processors[type].ruleCss;
+const createStyles = (directive: TDirectiveName, bps: IBpCals): IStyles => {
+  const intConfig = config();
+  const sizes = intConfig.sizes;
+  const prefix = intConfig.prefix;
+  const prop = processors[directive].ruleCss;
   const styles: IStyles = {};
-  let rule,
-    bpSplited,
-    bp1,
-    bp2,
-    direct = false,
-    nameClass,
-    propAndVal,
-    attrsFlexSelfs;
-  let shortNameClass: string = '';
 
   Object.keys(bps).forEach(bp => {
     // preparing the className
-    shortNameClass = bps[bp].name;
+    const shortNameClass = bps[bp].name;
 
     // just if have a percentage
-    nameClass = shortNameClass;
+    let nameClass = shortNameClass;
     if (shortNameClass.includes('%'))
       nameClass = shortNameClass.replace(
         shortNameClass,
@@ -36,7 +29,7 @@ const createStyles = (type: IPropNode, bps: IBpCals): IStyles => {
     const finalPrefix = prefix ? prefix + '-' : '';
     nameClass =
       finalPrefix +
-      type +
+      directive +
       '-' +
       nameClass
         .replace(/\//g, '\\/')
@@ -46,14 +39,15 @@ const createStyles = (type: IPropNode, bps: IBpCals): IStyles => {
         .join('_');
 
     // Property and value
-    if (type === 'flex') {
+    let propAndVal;
+    if (directive === 'flex') {
       propAndVal = bps[bp].value;
       const flexImportant = shortNameClass.includes('!')
         ? ';display:flex !important;'
         : ';display:flex;';
 
       // Searching a flex self inside. ['as' for 'align-self']
-      attrsFlexSelfs = ['as']
+      const attrsFlexSelfs = ['as']
         .concat(flexAttrsSelf)
         .filter(nameAttrFlex => shortNameClass.includes(nameAttrFlex + ':'));
       if (attrsFlexSelfs.length) {
@@ -68,7 +62,8 @@ const createStyles = (type: IPropNode, bps: IBpCals): IStyles => {
       propAndVal = prop + ':' + bps[bp].value;
     }
 
-    rule = '@media screen and ';
+    let rule = '@media screen and ';
+    let direct = false;
     if (!bp.includes('-')) {
       // no tiene until
       if (sizes[bp]) {
@@ -78,16 +73,16 @@ const createStyles = (type: IPropNode, bps: IBpCals): IStyles => {
         direct = true;
       }
     } else {
-      bpSplited = bp.split('-');
-      bp1 = bpSplited[0];
+      const bpSplited = bp.split('-');
+      const bp1 = bpSplited[0];
       if (bp1) rule += '(min-width: ' + sizes[bp1] + 'px) and ';
-      bp2 = bpSplited[1];
+      const bp2 = bpSplited[1];
       rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
     }
 
-    if (!direct)
+    if (!direct) {
       rule += '{.' + nameClass.replace(/!/g, '\\!') + '{' + propAndVal + '}}';
-    direct = false;
+    }
     styles[nameClass] = rule;
   });
 

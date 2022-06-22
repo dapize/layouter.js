@@ -1,28 +1,25 @@
 import config from '../config/main';
-import buildCss, { IBpCals, IPropNode } from './buildCss';
+import { TDirectiveName } from '../config/processors';
+import buildCss, { IBpCals } from './buildCss';
 import prepareParam from './prepareParam';
 import processedNumber from './processedNumber';
 
 const buildAttr = (
-  value: string | string[],
-  prop: IPropNode,
+  values: string,
+  prop: TDirectiveName,
   insertStyles: boolean = false
 ) => {
-  const { breakpoints } = config();
+  const intConfig = config();
   let bpCals: IBpCals = {};
-  let paramProcessed, numbersPures, propValue, bps;
-  if (!Array.isArray(value)) value = value.split(' ');
-  value.forEach(param => {
-    paramProcessed = prepareParam(param, breakpoints);
-    numbersPures = paramProcessed.numbers;
-    bps = paramProcessed.breakPoints;
+
+  values.split(' ').forEach(param => {
+    const paramProcessed = prepareParam(param, intConfig.breakpoints);
+    const bps = paramProcessed.breakPoints;
 
     // processing number values
-    propValue = numbersPures
+    let propValue = paramProcessed.numbers
       .split('-')
-      .map(n => {
-        return processedNumber(n);
-      })
+      .map(n => processedNumber(n))
       .join(' ');
     if (paramProcessed.important) propValue += ' !important';
     if (bpCals.hasOwnProperty(bps)) {

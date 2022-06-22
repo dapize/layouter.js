@@ -4,15 +4,16 @@ const regError = (
   name: string,
   message: string,
   Node?: Element | HTMLElement
-): void => {
-  const { debug } = config();
+): Error => {
   const err = new Error();
   err.name = name;
   err.message = message;
-  if ( debug ) {
+  const intConfig = config();
+  if ( intConfig.debug ) {
     console.error(err);
     if (Node) console.log(Node);
   }
+  return err;
 };
 
 export default regError;

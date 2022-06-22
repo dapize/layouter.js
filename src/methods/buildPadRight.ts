@@ -1,7 +1,7 @@
 import buildAttr from '../helpers/buildAttr';
 
 const buildPadRight = (
-  valPadRight: string | string[],
+  valPadRight: string,
   insertStyles: boolean = false
 ) => {
   return buildAttr(valPadRight, 'padr', insertStyles);

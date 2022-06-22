@@ -1,7 +1,7 @@
 import { ILayouter } from './../index';
 import { processors } from '../config/processors';
 
-const observer = (layouter: ILayouter) => {
+const mainObserver = (layouter: ILayouter) => {
   const props = Object.keys(processors);
   const obsBody = new MutationObserver(mutations => {
     for (let mutation of mutations) {
@@ -38,4 +38,4 @@ const observer = (layouter: ILayouter) => {
   obsBody.observe(document.body, observerOptions);
 };
 
-export default observer;
+export default mainObserver;

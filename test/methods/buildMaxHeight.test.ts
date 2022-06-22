@@ -39,9 +39,9 @@ describe('Buildings Max-height', () => {
     expect(layouter.buildMaxHeight('100! 200@sm 300@md!')).toEqual({
       'mxh-100!': '.mxh-100\\!{max-height:100px !important}',
       'mxh-200@sm':
-        '@media screen and (min-width: 768px){.mxh-200\\@sm{max-height:200px}}',
+        '@media screen and (min-width: 600px){.mxh-200\\@sm{max-height:200px}}',
       'mxh-300@md!':
-        '@media screen and (min-width: 1024px){.mxh-300\\@md\\!{max-height:300px !important}}',
+        '@media screen and (min-width: 900px){.mxh-300\\@md\\!{max-height:300px !important}}',
     });
   });
 });

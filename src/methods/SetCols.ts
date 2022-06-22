@@ -1,28 +1,32 @@
 import addClasses from '../utils/addClasses';
 import regError from '../helpers/regError';
 import buildCols from './buildCols';
-import getParameters, { IParams } from './getParameters';
 import removeAttr from '../utils/removeAttr';
 
 const setCols = (
   Node: HTMLElement | Element,
-  parameters?: IParams
+  columns?: string
 ): Promise<void> => {
   return new Promise((resolve, reject) => {
-    const params = parameters || getParameters(Node);
-    if (!params.hasOwnProperty('cols')) {
-      regError('Parameter Missing', "Don't exists 'cols' determined", Node);
-      reject();
+    let values = columns || Node.getAttribute('cols');
+    if (!values) {
+      const err = regError(
+        'Empty',
+        "The value of the directive 'cols' is empty",
+        Node
+      );
+      reject(err);
+      return;
     }
 
     // Creating, inserting, and adding classNames of rules in Node.
-    const objStyles = buildCols(params.cols, true);
+    const objStyles = buildCols(values, true);
     if (!objStyles) reject();
-    const classesToAdd = Object.keys(objStyles);
+    const classesToAdd = Object.keys(objStyles).join(' ');
 
     // removing prop of Node and adding the corresponding classes
     removeAttr(Node, 'cols')
-      .then(() => addClasses(classesToAdd, Node))
+      .then(() => addClasses(Node, classesToAdd))
       .then(resolve);
   });
 };

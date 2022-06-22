@@ -1,11 +1,10 @@
-import { IParams } from './getParameters';
 import setAttr from './setAttr';
 
 const setMaxHeight = (
   Node: HTMLElement | Element,
-  parameters?: IParams
+  values?: string
 ): Promise<void> => {
-  return setAttr(Node, 'mxh', parameters);
+  return setAttr(Node, 'mxh', values);
 };
 
 export default setMaxHeight;

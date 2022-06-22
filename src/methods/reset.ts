@@ -2,19 +2,19 @@ import { processors } from "../config/processors";
 import addClasses from "../utils/addClasses";
 import removeAttr from "../utils/removeAttr";
 
-const reset = (Node: HTMLElement | Element ): Promise<string[]> => {
+const reset = (Node: HTMLElement | Element ): Promise<void> => {
   return new Promise(resolve => {
-    let nPrex, prex;
     const layouterClasses = Object.keys(processors);
     const restClass: string[] = [];
-    const classList = Node.className.split(' ')
+    Node.className
+      .split(' ')
       .filter( name => {
         if (name.length < 4) {
           restClass.push(name);
           return false;
         }
-        nPrex = name.length >= 5 ? 5 : 4;
-        prex = name.substring(0, nPrex);
+        const nPrex = name.length >= 5 ? 5 : 4;
+        let prex = name.substring(0, nPrex);
         let lineIndex = prex.split('').indexOf('-');
         if (lineIndex === -1) {
           restClass.push(name);
@@ -29,12 +29,13 @@ const reset = (Node: HTMLElement | Element ): Promise<string[]> => {
         }
       });
     if (restClass.length) {
-      addClasses(restClass, Node).then(() => {
-        resolve(classList);
+      const classesName = restClass.join(' ');
+      addClasses(Node, classesName, true).then(() => {
+        resolve();
       })
     } else {
       removeAttr(Node, 'class').then(() => {
-        resolve(classList);
+        resolve();
       })
     }
   })

@@ -1,7 +1,7 @@
 import buildAttr from '../helpers/buildAttr';
 
 const buildMarTop = (
-  valMarTop: string | string[],
+  valMarTop: string,
   insertStyles: boolean = false
 ) => {
   return buildAttr(valMarTop, 'mart', insertStyles);

@@ -28,7 +28,7 @@ describe('Setting Flex', () => {
   it('simple without "flex" prop', () => {
     const myDiv = document.createElement('div');
     layouter.setFlex(myDiv).catch(response => {
-      expect(response).toBeFalsy();
+      expect(response).toBeInstanceOf(Error)
     });
   });
 

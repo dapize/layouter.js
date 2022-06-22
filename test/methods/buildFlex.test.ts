@@ -34,9 +34,9 @@ describe('Building Flex', () => {
     expect(layouter.buildFlex('jc:ce ai:ce fw:w@sm jc:sb@sm fd:co@md')).toEqual(
       {
         'flex-fd:co@md':
-          '@media screen and (min-width: 1024px){.flex-fd\\:co\\@md{flex-direction:column;display:flex;}}',
+          '@media screen and (min-width: 900px){.flex-fd\\:co\\@md{flex-direction:column;display:flex;}}',
         'flex-fw:w-jc:sb@sm':
-          '@media screen and (min-width: 768px){.flex-fw\\:w-jc\\:sb\\@sm{flex-wrap:wrap;justify-content:space-between;display:flex;}}',
+          '@media screen and (min-width: 600px){.flex-fw\\:w-jc\\:sb\\@sm{flex-wrap:wrap;justify-content:space-between;display:flex;}}',
         'flex-jc:ce-ai:ce@xs':
           '.flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display:flex;}',
       }
@@ -48,9 +48,9 @@ describe('Building Flex', () => {
       layouter.buildFlex('jc:ce! ai:ce fw:w@sm! jc:sb@sm fd:co@md!')
     ).toEqual({
       'flex-fd:co@md!':
-        '@media screen and (min-width: 1024px){.flex-fd\\:co\\@md\\!{flex-direction:column !important;display:flex !important;}}',
+        '@media screen and (min-width: 900px){.flex-fd\\:co\\@md\\!{flex-direction:column !important;display:flex !important;}}',
       'flex-fw:w-jc:sb@sm':
-        '@media screen and (min-width: 768px){.flex-fw\\:w-jc\\:sb\\@sm{flex-wrap:wrap !important;justify-content:space-between;display:flex;}}',
+        '@media screen and (min-width: 600px){.flex-fw\\:w-jc\\:sb\\@sm{flex-wrap:wrap !important;justify-content:space-between;display:flex;}}',
       'flex-jc:ce!-ai:ce@xs':
         '.flex-jc\\:ce\\!-ai\\:ce\\@xs{justify-content:center !important;align-items:center;display:flex !important;}',
     });

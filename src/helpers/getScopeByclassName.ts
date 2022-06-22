@@ -5,7 +5,10 @@ import createScopeStyles from './createScopeStyles';
 const getScopeByclassName = (className: string) => {
   const nameClass = className.replace(/!/g, '');
   const atIndex = nameClass.indexOf('@');
-  const { breakpoints, scope, bridge } = config();
+  const intConfig = config();
+  const breakpoints = intConfig.breakpoints;
+  const scope = intConfig.scope;
+  const bridge = intConfig.bridge;
 
   // Haven´t a BP designed
   if (atIndex === -1) {

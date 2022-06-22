@@ -1,4 +1,3 @@
-import layouter from '../../src';
 window.layouterConfig = {
   breakpoints: {
     xs: {
@@ -14,7 +13,9 @@ window.layouterConfig = {
       cols: 31,
     },
   },
+  debug: false,
 };
+import layouter from '../../src';
 
 describe('Setting Height', () => {
   it('simple', async () => {
@@ -22,6 +23,15 @@ describe('Setting Height', () => {
     myDiv.setAttribute('hgt', '100');
     await layouter.setHeight(myDiv);
     expect(myDiv.classList.contains('hgt-100')).toBeTruthy();
+  });
+
+  it('simple without directive', async () => {
+    try {
+      const myDiv = document.createElement('div');
+      await layouter.setHeight(myDiv);
+    } catch (e) {
+      expect(e).toBeInstanceOf(Error);
+    }
   });
 
   it('With breakpoints', async () => {

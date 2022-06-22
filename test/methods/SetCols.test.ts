@@ -16,7 +16,7 @@ describe('Setting cols', () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('padt', '3/13');
     layouter.setCols(myDiv).catch(response => {
-      expect(response).toBeFalsy();
+      expect(response).toBeInstanceOf(Error)
     });
   });
 

@@ -11,13 +11,13 @@ const replaceList = [
 
 const nameCleaner = (objStyles: IStyles) => {
   const obj: IStyles = {};
-  Object.keys(objStyles).forEach((name: string) => {
+  for (const name in objStyles) {
     let newName = name;
     replaceList.forEach(reItem => {
       newName = newName.split(reItem[0]).join(reItem[1]);
     });
     obj[newName] = objStyles[name];
-  });
+  }
   return obj;
 };
 

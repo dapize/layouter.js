@@ -1,17 +1,25 @@
 const addClasses = (
-  classesNames: string[],
-  Node: HTMLElement | Element
+  Node: HTMLElement | Element,
+  classesNames: string,
+  overwrite?: boolean
 ): Promise<void> => {
   return new Promise(resolve => {
-    const classesToAdd = classesNames.filter(
-      name => !Node.classList.contains(name)
-    );
-    if (!classesToAdd.length) resolve();
+    const names = classesNames.split(' ');
+    let classesToAdd: string[] = names;
+    if ( !overwrite ) {
+      classesToAdd = names.filter(
+        name => !Node.classList.contains(name)
+      );
+      if (!classesToAdd.length) {
+        resolve();
+        return;
+      }
+    }
 
     const obsNode = new MutationObserver(mutations => {
       const target = mutations[0].target;
       const currentClasses = (target as Element).className.split(' ');
-      const containsAll = classesNames.every(element =>
+      const containsAll = names.every(element =>
         currentClasses.includes(element)
       );
       if (containsAll) {
@@ -27,8 +35,12 @@ const addClasses = (
       characterData: false,
     });
 
-    const space = Node.hasAttribute('class') ? ' ' : '';
-    Node.className += space + classesToAdd.join(' ');
+    if ( overwrite ) {
+      Node.className = classesNames;
+    } else {
+      const space = Node.hasAttribute('class') ? ' ' : '';
+      Node.className += space + classesToAdd.join(' ');
+    }
   });
 };
 

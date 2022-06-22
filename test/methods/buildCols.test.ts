@@ -25,13 +25,8 @@ describe('Build Cols params ', () => {
     const styles = layouter.buildCols('3@sm');
     expect(styles).toEqual({
       'cols-3@sm':
-        '@media screen and (min-width: 768px){.cols-3\\@sm{width:9.677%}}',
+        '@media screen and (min-width: 600px){.cols-3\\@sm{width:12%}}',
     });
-  });
-
-  it('Simple with implicit columns and until', () => {
-    const styles = layouter.buildCols('3@sm-md');
-    expect(styles).toBeFalsy();
   });
 
   it('Simple with implicit columns and withouth breakpoint', () => {
@@ -45,9 +40,9 @@ describe('Build Cols params ', () => {
     const styles = layouter.buildCols('3/13 21/21@sm 27/27@md');
     expect(styles).toEqual({
       'cols-21/21@sm':
-        '@media screen and (min-width: 768px){.cols-21\\/21\\@sm{width:100%}}',
+        '@media screen and (min-width: 600px){.cols-21\\/21\\@sm{width:100%}}',
       'cols-27/27@md':
-        '@media screen and (min-width: 1024px){.cols-27\\/27\\@md{width:100%}}',
+        '@media screen and (min-width: 900px){.cols-27\\/27\\@md{width:100%}}',
       'cols-3/13': '.cols-3\\/13{width:23.077%}',
     });
     expect(document.querySelector('#layouter-xs')?.outerHTML).toEqual(

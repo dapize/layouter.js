@@ -8,9 +8,9 @@ import { IStyles } from '../helpers/createStyles';
 import breakpointsOrdered from '../helpers/breakpointsOrdered';
 
 const buildCols = (
-  valCols: string | string[],
+  values: string,
   insertStyles: boolean = false
-): IStyles | boolean => {
+): IStyles | Error => {
   let cols: number[];
   let bp;
   let bpCals: IBpCals = {};
@@ -19,13 +19,13 @@ const buildCols = (
   // Getting numbers
   let selectorName, propValue, paramPrepared;
   const bpsObj = config.breakpoints;
-  if (!Array.isArray(valCols)) valCols = valCols.split(' ');
+  const colsValues = values.split(' ');
 
-  let builded: boolean = true;
+  let err: boolean | Error = false;
   const arrBps = breakpointsOrdered(bpsObj);
 
-  for (const item in valCols) {
-    let param = valCols[item];
+  for (const item in colsValues) {
+    let param = colsValues[item];
     selectorName = param;
     paramPrepared = prepareParam(param, bpsObj);
     bp = paramPrepared.breakPoints;
@@ -37,11 +37,10 @@ const buildCols = (
     } else {
       if (paramPrepared.widthBp) {
         if (bp.includes('-')) {
-          regError(
+          err = regError(
             'SyntaxError',
-            "You can't determine a 'until breakpoint' when use the explicit columns max"
+            "You can't determine a 'until breakpoint' when use the explicit columns max: " + values
           );
-          builded = false;
           break;
         } else {
           cols = [Number(param), config.cols[bp] as number];
@@ -60,7 +59,7 @@ const buildCols = (
     };
   }
 
-  if (!builded) return builded;
+  if (err) return err;
 
   // Building the classNames and the styles to use.
   return buildCss({

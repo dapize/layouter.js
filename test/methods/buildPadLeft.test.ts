@@ -33,9 +33,9 @@ describe('Buildings Padding-bottom', () => {
     expect(layouter.buildPadLeft('10 20.5@sm 30@md')).toEqual({
       'padl-10': '.padl-10{padding-left:10px}',
       'padl-20_5@sm':
-        '@media screen and (min-width: 768px){.padl-20_5\\@sm{padding-left:20.5px}}',
+        '@media screen and (min-width: 600px){.padl-20_5\\@sm{padding-left:20.5px}}',
       'padl-30@md':
-        '@media screen and (min-width: 1024px){.padl-30\\@md{padding-left:30px}}',
+        '@media screen and (min-width: 900px){.padl-30\\@md{padding-left:30px}}',
     });
   });
 
@@ -43,9 +43,9 @@ describe('Buildings Padding-bottom', () => {
     expect(layouter.buildPadLeft('10! 20.5@sm 30@md!')).toEqual({
       'padl-10!': '.padl-10\\!{padding-left:10px !important}',
       'padl-20_5@sm':
-        '@media screen and (min-width: 768px){.padl-20_5\\@sm{padding-left:20.5px}}',
+        '@media screen and (min-width: 600px){.padl-20_5\\@sm{padding-left:20.5px}}',
       'padl-30@md!':
-        '@media screen and (min-width: 1024px){.padl-30\\@md\\!{padding-left:30px !important}}',
+        '@media screen and (min-width: 900px){.padl-30\\@md\\!{padding-left:30px !important}}',
     });
   });
 });

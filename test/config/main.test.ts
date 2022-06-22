@@ -31,4 +31,20 @@ describe('Config', () => {
     expect(defaultConfig.breakpoints).toEqual(myConfig.breakpoints);
     expect(defaultConfig.bridge).toEqual(myConfig.bridge);
   });
+
+  it('Updating breakpoints', () => {
+    const bps = {
+      xs: {
+        width: 600,
+        cols: 21
+      },
+      md: {
+        width: 1200,
+        cols: 31
+      }
+    }
+    layouter.updateConfig({  breakpoints: bps })
+    const { breakpoints } = config();
+    expect(breakpoints).toEqual(bps)
+  })
 });

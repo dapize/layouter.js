@@ -1,5 +1,5 @@
 import { IConfig, IConfigUser, setConfig, updateConfig } from './config/main';
-import getParameters, { IParams } from './methods/getParameters';
+import getParameters from './methods/getParameters';
 
 import build from './methods/build';
 import buildCols from './methods/buildCols';
@@ -45,156 +45,157 @@ import insertRules from './methods/insertRules';
 import reset from './methods/reset';
 
 import { IStyles } from './helpers/createStyles';
-import { IBuild, IBuildResult } from './methods/build';
+import { IBuildResult } from './methods/build';
 import initAutoProcessor from './helpers/initAutoProcessor';
-import observer from './helpers/observer';
+import mainObserver from './helpers/mainObserver';
+import { TDirectiveName } from './config/processors';
 
 export interface ILayouter extends IConfig {
-  getParameters: (Node: HTMLElement | Element) => IParams;
+  getParameters: (Node: HTMLElement | Element) => Partial<Record<TDirectiveName, string>>;
   updateConfig: (userConfig: Partial<Omit<IConfigUser, 'bridge'>>) => IConfig;
 
   build: (
-    obj: Partial<IBuild>,
+    obj: Partial<Record<TDirectiveName, string>>,
     insertStyles?: boolean
   ) => Partial<IBuildResult> | boolean;
   buildCols: (
-    valCols: string | string[],
+    valCols: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildFlex: (
-    valFlex: string | string[],
+    valFlex: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
 
   buildPads: (
-    valPads: string | string[],
+    valPads: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildPadTop: (
-    valPadTop: string | string[],
+    valPadTop: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildPadRight: (
-    valPadRight: string | string[],
+    valPadRight: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildPadBottom: (
-    valPadBottom: string | string[],
+    valPadBottom: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildPadLeft: (
-    valPadLeft: string | string[],
+    valPadLeft: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildMars: (
-    valMars: string | string[],
+    valMars: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildMarTop: (
-    valMarTop: string | string[],
+    valMarTop: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildMarRight: (
-    valMarRight: string | string[],
+    valMarRight: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildMarBottom: (
-    valMarBottom: string | string[],
+    valMarBottom: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildMarLeft: (
-    valMarLeft: string | string[],
+    valMarLeft: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildMaxWidth: (
-    valMaxWidth: string | string[],
+    valMaxWidth: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildMaxHeight: (
-    valMaxHeight: string | string[],
+    valMaxHeight: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildMinWidth: (
-    valMinWidth: string | string[],
+    valMinWidth: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildMinHeight: (
-    valMinHeight: string | string[],
+    valMinHeight: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildHeight: (
-    valHeight: string | string[],
+    valHeight: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
   buildWidth: (
-    valWidth: string | string[],
+    valWidth: string,
     insertStyles?: boolean
   ) => IStyles | boolean;
 
-  set: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
-  setCols: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
-  setFlex: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
+  set: (Node: HTMLElement | Element, parameters?: Partial<Record<TDirectiveName, string>>) => Promise<void>;
+  setCols: (Node: HTMLElement | Element, values?: string) => Promise<void>;
+  setFlex: (Node: HTMLElement | Element, values?: string) => Promise<void>;
 
-  setMars: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
+  setMars: (Node: HTMLElement | Element, values?: string) => Promise<void>;
   setMarTop: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
   setMarRight: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
   setMarBottom: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
   setMarLeft: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
 
-  setPads: (Node: HTMLElement | Element, parameters?: IParams) => Promise<void>;
+  setPads: (Node: HTMLElement | Element, values?: string) => Promise<void>;
   setPadTop: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
   setPadRight: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
   setPadBottom: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
   setPadLeft: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
 
   setWidth: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
   setMinWidth: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
   setMaxWidth: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
 
   setHeight: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
   setMinHeight: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
   setMaxHeight: (
     Node: HTMLElement | Element,
-    parameters?: IParams
+    values?: string
   ) => Promise<void>;
 
   insertRules: (objStyles: IStyles) => void;
@@ -266,7 +267,7 @@ if (window) {
   // Auto init process
   initAutoProcessor(layouter).then(() => {
     if (layouter.ready) layouter.ready(layouter);
-    observer(layouter);
+    mainObserver(layouter);
   });
 }
 

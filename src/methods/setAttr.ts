@@ -1,33 +1,33 @@
 import addClasses from '../utils/addClasses';
 import buildAttr from '../helpers/buildAttr';
-import { IPropNode } from '../helpers/buildCss';
 import regError from '../helpers/regError';
 import removeAttr from '../utils/removeAttr';
-import getParameters, { IParams } from './getParameters';
+import { TDirectiveName } from '../config/processors';
 
 const setAttr = (
   Node: HTMLElement | Element,
-  type: IPropNode,
-  parameters?: IParams
+  directive: TDirectiveName,
+  values?: string
 ): Promise<void> => {
   return new Promise((resolve, reject) => {
-    const params = parameters || getParameters(Node);
-    if (!params.hasOwnProperty(type)) {
-      regError(
-        'Parameter Missing',
-        "Don't exists the param '" + type + "' determined",
+    let directiveValues = values || Node.getAttribute(directive);
+    if (!directiveValues) {
+      const err = regError(
+        'Empty',
+        'The value of the directive "' + directive + '" is empty',
         Node
       );
-      reject();
+      reject(err);
+      return;
     }
 
     // Creating, inserting, and adding classNames of rules in Node.
-    const objStyles = buildAttr(params[type], type, true);
-    const classesToAdd = Object.keys(objStyles);
+    const objStyles = buildAttr(directiveValues, directive, true);
+    const classesToAdd = Object.keys(objStyles).join(' ');
 
     // removing prop of Node and adding the corresponding classes
-    removeAttr(Node, type)
-      .then(() => addClasses(classesToAdd, Node))
+    removeAttr(Node, directive)
+      .then(() => addClasses(Node, classesToAdd))
       .then(resolve);
   });
 };

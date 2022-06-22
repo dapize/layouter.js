@@ -1,11 +1,10 @@
-import { IParams } from './getParameters';
 import setAttr from './setAttr';
 
 const setMarBottom = (
   Node: HTMLElement | Element,
-  parameters?: IParams
+  values?: string
 ): Promise<void> => {
-  return setAttr(Node, 'marb', parameters);
+  return setAttr(Node, 'marb', values);
 };
 
 export default setMarBottom;

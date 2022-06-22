@@ -39,9 +39,9 @@ describe('Buildings margin-top', () => {
     expect(layouter.buildMarTop('10 20.5@sm 30@md')).toEqual({
       'mart-10': '.mart-10{margin-top:10px}',
       'mart-20_5@sm':
-        '@media screen and (min-width: 768px){.mart-20_5\\@sm{margin-top:20.5px}}',
+        '@media screen and (min-width: 600px){.mart-20_5\\@sm{margin-top:20.5px}}',
       'mart-30@md':
-        '@media screen and (min-width: 1024px){.mart-30\\@md{margin-top:30px}}',
+        '@media screen and (min-width: 900px){.mart-30\\@md{margin-top:30px}}',
     });
   });
 
@@ -49,9 +49,9 @@ describe('Buildings margin-top', () => {
     expect(layouter.buildMarTop('10! 20.5@sm! 30@md!')).toEqual({
       'mart-10!': '.mart-10\\!{margin-top:10px !important}',
       'mart-20_5@sm!':
-        '@media screen and (min-width: 768px){.mart-20_5\\@sm\\!{margin-top:20.5px !important}}',
+        '@media screen and (min-width: 600px){.mart-20_5\\@sm\\!{margin-top:20.5px !important}}',
       'mart-30@md!':
-        '@media screen and (min-width: 1024px){.mart-30\\@md\\!{margin-top:30px !important}}',
+        '@media screen and (min-width: 900px){.mart-30\\@md\\!{margin-top:30px !important}}',
     });
   });
 });

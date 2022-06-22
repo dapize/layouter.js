@@ -1,4 +1,4 @@
-import { processors } from '../config/processors';
+import { processors, TDirectiveName } from '../config/processors';
 import buildCols from './buildCols';
 import buildFlex from './buildFlex';
 import buildPads from './buildPads';
@@ -44,27 +44,27 @@ export interface IBuildResult {
   [prop: string]: IStyles | boolean;
 }
 
-export interface IBuild {
-  [prop: string]: string;
-}
-
 const build = (
-  obj: Partial<IBuild>,
+  obj: Partial<Record<TDirectiveName, string>>,
   insertStyles: boolean = false
-): Partial<IBuildResult> | boolean => {
+): Partial<IBuildResult> | Error => {
   const rObj: Partial<IBuildResult> = {};
-  let propData;
-  Object.keys(obj).forEach(prop => {
-    propData = processors[prop];
-    if (propData) {
-      rObj[prop] = builders[propData.build as keyof typeof builders](
-        obj[prop] as string,
-        insertStyles
-      );
+  let err: Error | boolean = false;
+  for (const prop in obj) {
+    const propData = processors[prop as TDirectiveName];
+    const objStyles: IStyles | Error = builders[propData.build as keyof typeof builders](
+      obj[prop as TDirectiveName] as string,
+      insertStyles
+    );
+    if ( objStyles instanceof Error ) {
+      err = objStyles;
+      break;
+    } else {
+      rObj[prop] = objStyles;
     }
-  });
-
-  return Object.keys(rObj).length ? rObj : false;
+  }
+  if ( err ) return err;
+  return rObj
 };
 
 export default build;

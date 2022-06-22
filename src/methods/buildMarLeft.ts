@@ -1,7 +1,7 @@
 import buildAttr from '../helpers/buildAttr';
 
 const buildMarLeft = (
-  valMarLeft: string | string[],
+  valMarLeft: string,
   insertStyles: boolean = false
 ) => {
   return buildAttr(valMarLeft, 'marl', insertStyles);

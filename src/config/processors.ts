@@ -1,12 +1,12 @@
-export interface IProcessors {
-  [proName: string]: {
-    set: string;
-    build: string;
-    ruleCss: string;
-  };
+export type TDirectiveName = 'cols' | 'pad' | 'padt' | 'padr' | 'padb' | 'padl' | 'mar' | 'mart' | 'marr' | 'marb' | 'marl' | 'flex' | 'mxw' | 'mxh' | 'miw' | 'mih' | 'wdh' | 'hgt';
+
+export interface IProcessor {
+  set: string;
+  build: string;
+  ruleCss: string;
 }
 
-export const processors: IProcessors = {
+export const processors: Record<TDirectiveName, IProcessor> = {
   cols: {
     set: 'setCols',
     build: 'buildCols',

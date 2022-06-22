@@ -39,9 +39,9 @@ describe('Buildings Max-width', () => {
     expect(layouter.buildMaxWidth('100! 200@sm 300@md!')).toEqual({
       'mxw-100!': '.mxw-100\\!{max-width:100px !important}',
       'mxw-200@sm':
-        '@media screen and (min-width: 768px){.mxw-200\\@sm{max-width:200px}}',
+        '@media screen and (min-width: 600px){.mxw-200\\@sm{max-width:200px}}',
       'mxw-300@md!':
-        '@media screen and (min-width: 1024px){.mxw-300\\@md\\!{max-width:300px !important}}',
+        '@media screen and (min-width: 900px){.mxw-300\\@md\\!{max-width:300px !important}}',
     });
   });
 });

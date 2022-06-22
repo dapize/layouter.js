@@ -1,27 +1,31 @@
 import addClasses from '../utils/addClasses';
 import regError from '../helpers/regError';
 import buildFlex from './buildFlex';
-import getParameters, { IParams } from './getParameters';
 import removeAttr from '../utils/removeAttr';
 
 const setFlex = (
   Node: HTMLElement | Element,
-  parameters?: IParams
+  flexValues?: string
 ): Promise<void> => {
   return new Promise((resolve, reject) => {
-    const params = parameters || getParameters(Node);
-    if (!params.hasOwnProperty('flex')) {
-      regError('Parameter Missing', "Don't exists 'flex' determinated.", Node);
-      reject();
+    let values = flexValues || Node.getAttribute('flex');
+    if (!values) {
+      const err = regError(
+        'Empty',
+        'The value of the directive "flex" is empty',
+        Node
+      );
+      reject(err);
+      return;
     }
 
     // Creating, inserting, and adding classNames of rules in Node.
-    const objStyles = buildFlex(params.flex, true);
-    const classesToAdd = Object.keys(objStyles);
+    const objStyles = buildFlex(values, true);
+    const classesToAdd = Object.keys(objStyles).join(' ');
 
     // removing prop of Node and adding the corresponding classes
     removeAttr(Node, 'flex')
-      .then(() => addClasses(classesToAdd, Node))
+      .then(() => addClasses(Node, classesToAdd))
       .then(resolve);
   });
 };

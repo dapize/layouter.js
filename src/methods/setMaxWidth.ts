@@ -1,11 +1,10 @@
-import { IParams } from './getParameters';
 import setAttr from './setAttr';
 
 const setMaxWidth = (
   Node: HTMLElement | Element,
-  parameters?: IParams
+  values?: string
 ): Promise<void> => {
-  return setAttr(Node, 'mxw', parameters);
+  return setAttr(Node, 'mxw', values);
 };
 
 export default setMaxWidth;

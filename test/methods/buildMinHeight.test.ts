@@ -39,9 +39,9 @@ describe('Buildings Min-height', () => {
     expect(layouter.buildMinHeight('100! 200@sm 300@md!')).toEqual({
       'mih-100!': '.mih-100\\!{min-height:100px !important}',
       'mih-200@sm':
-        '@media screen and (min-width: 768px){.mih-200\\@sm{min-height:200px}}',
+        '@media screen and (min-width: 600px){.mih-200\\@sm{min-height:200px}}',
       'mih-300@md!':
-        '@media screen and (min-width: 1024px){.mih-300\\@md\\!{min-height:300px !important}}',
+        '@media screen and (min-width: 900px){.mih-300\\@md\\!{min-height:300px !important}}',
     });
   });
 });
