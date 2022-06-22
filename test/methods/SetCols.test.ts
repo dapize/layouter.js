@@ -29,4 +29,12 @@ describe('Setting cols', () => {
     });
     expect(myDiv.classList.contains('cols-1/1')).toBeFalsy();
   });
+
+  it('Simple with implicit columns and until breakpoint', () => {
+    const myDiv = document.createElement('div');
+    myDiv.setAttribute('cols', '3@-md');
+    layouter.setCols(myDiv).catch(e => {
+      expect(e).toBeInstanceOf(Error);
+    });
+  });
 });

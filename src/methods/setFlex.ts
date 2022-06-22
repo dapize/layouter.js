@@ -6,7 +6,7 @@ import removeAttr from '../utils/removeAttr';
 const setFlex = (
   Node: HTMLElement | Element,
   flexValues?: string
-): Promise<void> => {
+): Promise<void | Error> => {
   return new Promise((resolve, reject) => {
     let values = flexValues || Node.getAttribute('flex');
     if (!values) {
@@ -21,6 +21,11 @@ const setFlex = (
 
     // Creating, inserting, and adding classNames of rules in Node.
     const objStyles = buildFlex(values, true);
+    if (objStyles instanceof Error) {
+      reject(objStyles);
+      return;
+    }
+
     const classesToAdd = Object.keys(objStyles).join(' ');
 
     // removing prop of Node and adding the corresponding classes

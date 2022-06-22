@@ -6,7 +6,7 @@ import removeAttr from '../utils/removeAttr';
 const setCols = (
   Node: HTMLElement | Element,
   columns?: string
-): Promise<void> => {
+): Promise<void | Error> => {
   return new Promise((resolve, reject) => {
     let values = columns || Node.getAttribute('cols');
     if (!values) {
@@ -21,7 +21,10 @@ const setCols = (
 
     // Creating, inserting, and adding classNames of rules in Node.
     const objStyles = buildCols(values, true);
-    if (!objStyles) reject();
+    if (objStyles instanceof Error) {
+      reject(objStyles);
+      return;
+    }
     const classesToAdd = Object.keys(objStyles).join(' ');
 
     // removing prop of Node and adding the corresponding classes

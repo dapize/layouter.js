@@ -36,11 +36,8 @@ describe('Setting Flex', () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('flex', 'jc:ce ai:ce fw:w@sm jc:sb@sm fd:co@md');
     await layouter.setFlex(myDiv);
-    ['flex-jc:ce-ai:ce@xs', 'flex-fw:w-jc:sb@sm', 'flex-fd:co@md'].forEach(
-      item => {
-        expect(myDiv.classList.contains(item)).toBeTruthy();
-      }
-    );
+
+    expect(myDiv.className).toEqual('flex-jc:ce-ai:ce flex-fw:w-jc:sb@sm flex-fd:co@md');
   });
 
   it('Attributes for Flex Items', async () => {
@@ -48,7 +45,24 @@ describe('Setting Flex', () => {
     myDiv.setAttribute('flex', 'fg:1 fh:1 as:ce or:1');
     await layouter.setFlex(myDiv);
     expect(
-      myDiv.classList.contains('flex-fg:1-fh:1-as:ce-or:1@xs')
+      myDiv.classList.contains('flex-fg:1-fh:1-as:ce-or:1')
     ).toBeTruthy();
   });
+
+  it('Attributes for Flex Items only', async () => {
+    const myDiv = document.createElement('div');
+    myDiv.setAttribute('flex', 'as:ce jc:ce');
+    await layouter.setFlex(myDiv);
+    expect(
+      myDiv.classList.contains('flex-as:ce-jc:ce')
+    ).toBeTruthy();
+  });
+
+  it('With a invalid alias', async () => {
+    const myDiv = document.createElement('div');
+    myDiv.setAttribute('flex', 'as:tt');
+    layouter.setFlex(myDiv).catch( e => {
+      expect(e).toBeInstanceOf(Error);
+    })
+  })
 });

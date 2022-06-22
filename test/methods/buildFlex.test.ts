@@ -37,8 +37,8 @@ describe('Building Flex', () => {
           '@media screen and (min-width: 900px){.flex-fd\\:co\\@md{flex-direction:column;display:flex;}}',
         'flex-fw:w-jc:sb@sm':
           '@media screen and (min-width: 600px){.flex-fw\\:w-jc\\:sb\\@sm{flex-wrap:wrap;justify-content:space-between;display:flex;}}',
-        'flex-jc:ce-ai:ce@xs':
-          '.flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display:flex;}',
+        'flex-jc:ce-ai:ce':
+          '.flex-jc\\:ce-ai\\:ce{justify-content:center;align-items:center;display:flex;}',
       }
     );
   });
@@ -51,8 +51,12 @@ describe('Building Flex', () => {
         '@media screen and (min-width: 900px){.flex-fd\\:co\\@md\\!{flex-direction:column !important;display:flex !important;}}',
       'flex-fw:w-jc:sb@sm':
         '@media screen and (min-width: 600px){.flex-fw\\:w-jc\\:sb\\@sm{flex-wrap:wrap !important;justify-content:space-between;display:flex;}}',
-      'flex-jc:ce!-ai:ce@xs':
-        '.flex-jc\\:ce\\!-ai\\:ce\\@xs{justify-content:center !important;align-items:center;display:flex !important;}',
+      'flex-jc:ce!-ai:ce':
+        '.flex-jc\\:ce\\!-ai\\:ce{justify-content:center !important;align-items:center;display:flex !important;}',
     });
   });
+
+  it('With a invalid alias', async () => {
+    expect(layouter.buildFlex('aa:bb')).toBeInstanceOf(Error);
+  })
 });

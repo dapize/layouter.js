@@ -1,5 +1,4 @@
 import { IBreakpoints } from './breakpointsNums';
-import breakpointsOrdered from './breakpointsOrdered';
 import createScopeStyles, { IRCreateScopeStyles } from './createScopeStyles';
 
 export interface IScopes {
@@ -11,9 +10,8 @@ export const scopesStylesBuilder = (
   bridge: boolean,
   scope?: IScopes
 ): IScopes => {
-  const arrBps = breakpointsOrdered(breakpoints);
   const scopes: IScopes = scope || {};
-  arrBps.forEach((bp: string) => {
+  Object.keys(breakpoints).forEach((bp: string) => {
     if (!scopes.hasOwnProperty(bp)) {
       scopes[bp] = createScopeStyles({
         bridge,

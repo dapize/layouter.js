@@ -27,8 +27,8 @@ describe('Building all', () => {
     });
     const builded = buildResponse as Partial<IBuildResult>;
     expect(builded.flex).toEqual({
-      'flex-jc:ce-ai:ce@xs':
-        '.flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display:flex;}',
+      'flex-jc:ce-ai:ce':
+        '.flex-jc\\:ce-ai\\:ce{justify-content:center;align-items:center;display:flex;}',
     });
     expect(builded.cols).toEqual({
       'cols-21/21@sm':
@@ -52,8 +52,8 @@ describe('Building all', () => {
   it('Separated', () => {
     expect(layouter.build({ flex: 'jc:ce ai:ce' })).toEqual({
       flex: {
-        'flex-jc:ce-ai:ce@xs':
-          '.flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display:flex;}',
+        'flex-jc:ce-ai:ce':
+          '.flex-jc\\:ce-ai\\:ce{justify-content:center;align-items:center;display:flex;}',
       },
     });
     expect(layouter.build({ cols: '3/13 21/21@sm 27/27@md' })).toEqual({

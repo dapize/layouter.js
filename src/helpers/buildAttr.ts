@@ -1,4 +1,3 @@
-import config from '../config/main';
 import { TDirectiveName } from '../config/processors';
 import buildCss, { IBpCals } from './buildCss';
 import prepareParam from './prepareParam';
@@ -9,12 +8,11 @@ const buildAttr = (
   prop: TDirectiveName,
   insertStyles: boolean = false
 ) => {
-  const intConfig = config();
   let bpCals: IBpCals = {};
 
   values.split(' ').forEach(param => {
-    const paramProcessed = prepareParam(param, intConfig.breakpoints);
-    const bps = paramProcessed.breakPoints;
+    const paramProcessed = prepareParam(param);
+    const bpNames = paramProcessed.breakPoints;
 
     // processing number values
     let propValue = paramProcessed.numbers
@@ -22,14 +20,10 @@ const buildAttr = (
       .map(n => processedNumber(n))
       .join(' ');
     if (paramProcessed.important) propValue += ' !important';
-    if (bpCals.hasOwnProperty(bps)) {
-      bpCals[bps].value += ';' + propValue;
-    } else {
-      bpCals[bps] = {
-        name: param,
-        value: propValue,
-      };
-    }
+    bpCals[bpNames] = {
+      name: param,
+      value: propValue,
+    };
   });
 
   // Building the classNames and the styles to use.

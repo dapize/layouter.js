@@ -9,7 +9,6 @@ export interface IBreakpoints {
   [alias: string]: {
     width: number;
     cols: number;
-    direct?: boolean;
   };
 }
 

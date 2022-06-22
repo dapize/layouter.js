@@ -1,13 +1,13 @@
-import { IBreakpoints } from './breakpointsNums';
+import getConfig from '../config/main';
 
-export interface IPrepareParam {
+export interface IPrepareParamObj {
   widthBp: boolean;
   numbers: string;
   breakPoints: string;
   important: boolean;
 }
 
-const prepareParam = (param: string, objBps: IBreakpoints): IPrepareParam => {
+const prepareParam = (param: string): IPrepareParamObj => {
   let bp: string;
   let argParam = param;
   let important = false;
@@ -17,7 +17,8 @@ const prepareParam = (param: string, objBps: IBreakpoints): IPrepareParam => {
     argParam = bpSplited[0];
     bp = bpSplited[1];
   } else {
-    bp = Object.keys(objBps)[0];
+    const config = getConfig();
+    bp = Object.keys(config.breakpoints)[0];
   }
 
   if (param.includes('!')) {

@@ -1,6 +1,7 @@
 import { ILayouter } from './../index';
 import breakpointsNums, { IBreakpoints } from '../helpers/breakpointsNums';
 import { IScopes, scopesStylesBuilder } from '../helpers/scopesStylesBuilder';
+import breakpointsOrdered from '../helpers/breakpointsOrdered';
 
 export interface ICols {
   [colAlias: string]: number;
@@ -18,9 +19,10 @@ interface IConfigNums {
   scope: IScopes;
   cols: ICols;
   sizes: ICols;
+  breakpoints: IBreakpoints;
 }
 
-export interface IConfig extends IConfigUser, IConfigNums {
+export interface IConfig extends Omit<IConfigUser, 'breakpoints'>, IConfigNums {
   styles: {
     [className: string]: string;
   };
@@ -69,10 +71,13 @@ const configNums = (
   bridge: boolean,
   scope?: IScopes
 ): IConfigNums => {
+  const sizes = breakpointsNums(bps, 'width');
+  const finalBps = breakpointsOrdered(bps, sizes);
   return {
-    sizes: breakpointsNums(bps, 'width'),
+    sizes,
     cols: breakpointsNums(bps, 'cols'),
-    scope: scopesStylesBuilder(bps, bridge, scope),
+    scope: scopesStylesBuilder(finalBps, bridge, scope),
+    breakpoints: finalBps,
   };
 };
 

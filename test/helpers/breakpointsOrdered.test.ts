@@ -1,3 +1,4 @@
+import breakpointsNums from '../../src/helpers/breakpointsNums';
 import breakpointsOrdered from '../../src/helpers/breakpointsOrdered';
 
 const bpsUnordered = {
@@ -21,6 +22,24 @@ const bpsUnordered = {
 
 describe('Ordering the breakpoints object', () => {
   it('Widths', () => {
-    expect(breakpointsOrdered(bpsUnordered)).toEqual(['xs', 'sm', 'md', 'lg']);
+    const sizes = breakpointsNums(bpsUnordered, 'width');
+    expect(breakpointsOrdered(bpsUnordered, sizes)).toEqual({
+      xs: {
+        width: 360,
+        cols: 15,
+      },
+      sm: {
+        width: 768,
+        cols: 25,
+      },
+      md: {
+        width: 1024,
+        cols: 31,
+      },
+      lg: {
+        width: 1280,
+        cols: 40,
+      }
+    });
   });
 });

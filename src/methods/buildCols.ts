@@ -5,7 +5,6 @@ import calPercentage from '../helpers/calPercentage';
 import buildCss, { IBpCals } from '../helpers/buildCss';
 import getConfig from '../config/main';
 import { IStyles } from '../helpers/createStyles';
-import breakpointsOrdered from '../helpers/breakpointsOrdered';
 
 const buildCols = (
   values: string,
@@ -18,16 +17,14 @@ const buildCols = (
 
   // Getting numbers
   let selectorName, propValue, paramPrepared;
-  const bpsObj = config.breakpoints;
-  const colsValues = values.split(' ');
+  const directBp = Object.keys(config.breakpoints)[0];
 
   let err: boolean | Error = false;
-  const arrBps = breakpointsOrdered(bpsObj);
 
-  for (const item in colsValues) {
-    let param = colsValues[item];
+  for (const item of values.split(' ')) {
+    let param = item;
     selectorName = param;
-    paramPrepared = prepareParam(param, bpsObj);
+    paramPrepared = prepareParam(param);
     bp = paramPrepared.breakPoints;
     param = paramPrepared.numbers;
 
@@ -46,7 +43,7 @@ const buildCols = (
           cols = [Number(param), config.cols[bp] as number];
         }
       } else {
-        cols = [Number(param), config.cols[arrBps[0]] as number];
+        cols = [Number(param), config.cols[directBp] as number];
       }
     }
 

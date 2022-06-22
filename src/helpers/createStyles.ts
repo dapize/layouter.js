@@ -21,22 +21,12 @@ const createStyles = (directive: TDirectiveName, bps: IBpCals): IStyles => {
 
     // just if have a percentage
     let nameClass = shortNameClass;
-    if (shortNameClass.includes('%'))
-      nameClass = shortNameClass.replace(
-        shortNameClass,
-        percentageConverter(shortNameClass)
-      );
+    if (shortNameClass.includes('%')) {
+      nameClass = shortNameClass.replace(shortNameClass, percentageConverter(shortNameClass));
+    }
+
     const finalPrefix = prefix ? prefix + '-' : '';
-    nameClass =
-      finalPrefix +
-      directive +
-      '-' +
-      nameClass
-        .replace(/\//g, '\\/')
-        .replace(/:/g, '\\:')
-        .replace('@', '\\@')
-        .split('.')
-        .join('_');
+    nameClass = finalPrefix + directive + '-' + nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
 
     // Property and value
     let propAndVal;
@@ -51,8 +41,8 @@ const createStyles = (directive: TDirectiveName, bps: IBpCals): IStyles => {
         .concat(flexAttrsSelf)
         .filter(nameAttrFlex => shortNameClass.includes(nameAttrFlex + ':'));
       if (attrsFlexSelfs.length) {
-        // if the items number of flex selft (+1) is diferrent so exists other flex attribute
-        if (attrsFlexSelfs.length + 1 !== shortNameClass.split(':').length) {
+        // if the items number of flex selft (+1) is diferrent so exists other flex attribute. Example: as:ce jc:ce
+        if ((attrsFlexSelfs.length + 1) !== shortNameClass.split(':').length) {
           propAndVal += flexImportant;
         }
       } else {

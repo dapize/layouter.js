@@ -57,15 +57,15 @@ export interface ILayouter extends IConfig {
   build: (
     obj: Partial<Record<TDirectiveName, string>>,
     insertStyles?: boolean
-  ) => Partial<IBuildResult> | boolean;
+  ) => Partial<IBuildResult> | Error;
   buildCols: (
     valCols: string,
     insertStyles?: boolean
-  ) => IStyles | boolean;
+  ) => IStyles | Error;
   buildFlex: (
     valFlex: string,
     insertStyles?: boolean
-  ) => IStyles | boolean;
+  ) => IStyles | Error;
 
   buildPads: (
     valPads: string,
@@ -133,8 +133,8 @@ export interface ILayouter extends IConfig {
   ) => IStyles | boolean;
 
   set: (Node: HTMLElement | Element, parameters?: Partial<Record<TDirectiveName, string>>) => Promise<void>;
-  setCols: (Node: HTMLElement | Element, values?: string) => Promise<void>;
-  setFlex: (Node: HTMLElement | Element, values?: string) => Promise<void>;
+  setCols: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
+  setFlex: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
 
   setMars: (Node: HTMLElement | Element, values?: string) => Promise<void>;
   setMarTop: (
@@ -202,7 +202,7 @@ export interface ILayouter extends IConfig {
 
   reset: (
     Node: HTMLElement | Element
-  ) => Promise<string[]>;
+  ) => Promise<void>;
 }
 
 const layouter = ((userConfig: Partial<IConfigUser> = {}): ILayouter => {

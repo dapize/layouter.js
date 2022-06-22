@@ -1,20 +1,4 @@
 import layouter from '../../src';
-window.layouterConfig = {
-  breakpoints: {
-    xs: {
-      width: 320,
-      cols: 15,
-    },
-    sm: {
-      width: 768,
-      cols: 31,
-    },
-    md: {
-      width: 1024,
-      cols: 31,
-    },
-  },
-};
 
 describe('Building all', () => {
   it('Simple', async () => {
@@ -37,5 +21,12 @@ describe('Building all', () => {
     await layouter.setFlex(myDiv);
     await layouter.reset(myDiv);
     expect(myDiv.className).toEqual('');
+  })
+
+  it('With a class name that following the syntax of one created by the system', async () => {
+    const myDiv = document.createElement('div');
+    myDiv.className = 'cols-3/13 dpz-'
+    await layouter.reset(myDiv);
+    expect(myDiv.className).toEqual('dpz-');
   })
 })

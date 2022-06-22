@@ -1,20 +1,11 @@
-import breakpointsNums, { IBreakpoints } from './breakpointsNums';
+import { ICols } from '../config/main';
+import { IBreakpoints } from './breakpointsNums';
 
-const breakpointsOrdered = (bps: IBreakpoints): string[] => {
-  const objBps = breakpointsNums(bps, 'width');
-  const arrBps = Object.keys(bps);
-  return arrBps
-    .map(bp => {
-      return objBps[bp];
-    })
-    .sort((a, b) => {
-      return a - b;
-    })
-    .map(width => {
-      return arrBps.filter(iBp => {
-        return objBps[iBp] === width;
-      })[0];
-    });
-};
+const breakpointsOrdered = ( bps: IBreakpoints, sizes: ICols ) => {
+  const bpsOrdered: IBreakpoints = {};
+  Object.keys(sizes).forEach( bpName => bpsOrdered[bpName] = bps[bpName]);
+  return bpsOrdered;
+}
 
 export default breakpointsOrdered;
+

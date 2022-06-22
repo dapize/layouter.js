@@ -26,7 +26,7 @@ describe('Building all', () => {
     myDiv.setAttribute('pad', '20-0@sm');
     await layouter.set(myDiv);
     [
-      'flex-jc:ce-ai:ce@xs',
+      'flex-jc:ce-ai:ce',
       'cols-3/13',
       'cols-21/21@sm',
       'cols-27/27@md',
@@ -56,7 +56,7 @@ describe('Building all', () => {
     await layouter.set(myDiv);
 
     [
-      'flex-jc:ce-ai:ce@xs',
+      'flex-jc:ce-ai:ce',
       'cols-3/13',
       'cols-21/21@sm',
       'cols-27/27@md',
