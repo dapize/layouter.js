@@ -75,7 +75,6 @@ const createStyles = (directive: TDirectiveName, bps: IBpCals): IStyles => {
     }
     styles[nameClass] = rule;
   });
-
   return styles;
 };
 

@@ -24,6 +24,13 @@ describe('Setting Margin Right', () => {
     expect(myDiv.classList.contains('marr-40')).toBeTruthy();
   });
 
+  it('simple with auto', async () => {
+    const myDiv = document.createElement('div');
+    myDiv.setAttribute('marr', 'auto');
+    await layouter.setMarRight(myDiv);
+    expect(myDiv.classList.contains('marr-auto')).toBeTruthy();
+  });
+
   it('With breakpoints', async () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('marr', '10 20.5@sm 30@md');

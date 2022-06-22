@@ -19,7 +19,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "test:full": "tsdx test --ci --coverage --maxWorkers=2",
+    "test:full": "tsdx test --ci --coverage --maxWorkers=2 --silent",
     "lint": "tsdx lint",
     "lint:fix": "tsdx lint --fix",
     "prepare": "tsdx build",

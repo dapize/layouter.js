@@ -3,13 +3,13 @@ import insertRules from '../methods/insertRules';
 import createStyles, { IStyles } from './createStyles';
 import nameCleaner from './nameCleaner';
 
-export interface IRBuildCols {
+export interface IRBuildStyles {
   name: string;
   value: string;
 }
 
 export interface IBpCals {
-  [bpName: string]: IRBuildCols;
+  [bpName: string]: IRBuildStyles;
 }
 
 export interface IBuildCss {

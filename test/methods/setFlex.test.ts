@@ -40,6 +40,28 @@ describe('Setting Flex', () => {
     expect(myDiv.className).toEqual('flex-jc:ce-ai:ce flex-fw:w-jc:sb@sm flex-fd:co@md');
   });
 
+  it('With equal breakpoints compound created separately', async () => {
+    const myDiv = document.createElement('div');
+    myDiv.setAttribute('flex', 'jc:ce@sm-md');
+    await layouter.setFlex(myDiv);
+    expect(myDiv.className).toEqual('flex-jc:ce@sm-md');
+
+    myDiv.setAttribute('flex', 'ai:ce@sm-md');
+    await layouter.setFlex(myDiv);
+    expect(myDiv.className).toEqual('flex-jc:ce@sm-md flex-ai:ce@sm-md');
+  });
+
+  it('With breakpoints compound different created separately', async () => {
+    const myDiv = document.createElement('div');
+    myDiv.setAttribute('flex', 'jc:ce@xs-md');
+    await layouter.setFlex(myDiv);
+    expect(myDiv.className).toEqual('flex-jc:ce@xs-md');
+
+    myDiv.setAttribute('flex', 'ai:ce@sm-md');
+    await layouter.setFlex(myDiv);
+    expect(myDiv.className).toEqual('flex-jc:ce@xs-md flex-ai:ce@sm-md');
+  });
+
   it('Attributes for Flex Items', async () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('flex', 'fg:1 fh:1 as:ce or:1');

@@ -1,3 +1,7 @@
+const readyCb = jest.fn();
+window.layouterConfig = {
+  ready: readyCb
+};
 import layouter from '../../src';
 import config, { baseConfig } from '../../src/config/main';
 
@@ -46,5 +50,9 @@ describe('Config', () => {
     layouter.updateConfig({  breakpoints: bps })
     const { breakpoints } = config();
     expect(breakpoints).toEqual(bps)
+  })
+
+  it('ready callback', () => {
+    expect(readyCb).toBeCalled();
   })
 });

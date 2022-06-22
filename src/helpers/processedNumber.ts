@@ -1,5 +1,4 @@
 import calPercentage from './calPercentage';
-import stringToNumber from './stringToNumber';
 
 const relativeMeasures = ['%', 'rem', 'em', 'ex', 'vw', 'vh'];
 
@@ -8,8 +7,8 @@ const processedNumber = (n: string) => {
   if (n.includes('/')) {
     nProcessed = n.split('/');
     nProcessed = calPercentage(
-      stringToNumber(nProcessed[0]),
-      stringToNumber(nProcessed[1])
+      parseFloat(nProcessed[0]),
+      parseFloat(nProcessed[1])
     );
   } else if (n === 'auto') {
     nProcessed = 'auto';

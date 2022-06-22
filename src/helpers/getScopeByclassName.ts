@@ -1,7 +1,7 @@
 import config from '../config/main';
-import createScopeStyles from './createScopeStyles';
+import createScopeStyles, { IRCreateScopeStyles } from './createScopeStyles';
 
-const getScopeByclassName = (className: string) => {
+const getScopeByclassName = (className: string): IRCreateScopeStyles => {
   const nameClass = className.replace(/!/g, '');
   const atIndex = nameClass.indexOf('@');
   const intConfig = config();
@@ -16,7 +16,7 @@ const getScopeByclassName = (className: string) => {
 
   // Have a BP designed, a normal BP.
   const bp = nameClass.substring(atIndex + 1);
-  if (!bp.includes('-')) return scope[bp]; // A simple BP, not compound (like this: 13/15@sm-md).
+  if (!bp.includes('-')) return scope[bp]; // A simple BP (13/15@lg), not compound (like this: 13/15@sm-md).
 
   // A BP until. Example 13/15@-md
   if (bp.substring(0, 1) === '-') {
@@ -31,7 +31,7 @@ const getScopeByclassName = (className: string) => {
     return scope[bp]; // returning a new scope created
   }
 
-  // A BP from and until (a BP Compount). Example: Example 13/15@sm-md
+  // A BP from and until (a BP compound). Example: Example 13/15@sm-md
   if (scope.hasOwnProperty(bp)) {
     return scope[bp]; // exists the Scope.
   }
@@ -44,7 +44,7 @@ const getScopeByclassName = (className: string) => {
     node: scope[fromBp].node,
   });
 
-  return scope[bp]; // returning a new scope compounted created
+  return scope[bp]; // returning a new scope compounded created
 };
 
 export default getScopeByclassName;
