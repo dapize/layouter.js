@@ -2,6 +2,7 @@ import { ILayouter } from './../main';
 import breakpointsNums, { IBreakpoints } from '../helpers/breakpointsNums';
 import { IScopes, scopesStylesBuilder } from '../helpers/scopesStylesBuilder';
 import breakpointsOrdered from '../helpers/breakpointsOrdered';
+import { version } from '../../package.json';
 
 export interface ICols {
   [colAlias: string]: number;
@@ -26,6 +27,7 @@ export interface IConfig extends Omit<IConfigUser, 'breakpoints'>, IConfigNums {
   styles: {
     [className: string]: string;
   };
+  version: string;
 }
 
 declare global {
@@ -101,6 +103,7 @@ export const setConfig = (customCfg: Partial<IConfigUser> = {}): IConfig => {
     ...baseConfig,
     ...configNums(baseConfig.breakpoints, baseConfig.bridge),
     styles: {},
+    version
   };
 
   return config;
@@ -110,7 +113,7 @@ export const setStyles = ( className: string, value: string ) => {
   config.styles[ className ] = value;
 }
 
-const getConfig = (reset: boolean = false): IConfig => {
+const getConfig = (reset = false): IConfig => {
   return reset ? setConfig() : config;
 };
 

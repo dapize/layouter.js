@@ -2,28 +2,27 @@
     <img src="header.png" alt="Layouter"/>
     <p></p>
     <div align="center">
-        <strong>⚡️Arma todo el layout de tu web sin CSS ⚡️</strong>
+        <strong>⚡️ Arma todo el layout de tu web sin CSS ⚡️</strong>
     </div>
-    <a href="https://www.layouter.io"><strong>www.layouter.io</strong></a>
-    <p></p>
 </div>
 
 # Layouter
+
 Es una librería que nos permite armar todo el layout **de forma rápida y sencilla**, usando directivas sobre los nodos HTML. Principalmente funciona **basándonos en el uso de una grilla**, *especialmente para la definición de columnas*.
 
 
 - 🚀 **Procesamiento super rápido y paralelo:** Procesa de forma automática todos los nodos que se encuentran al cargar la web y tambien cualquier nuevo nodo que se agregue o empiece a usar alguna directiva.
-- 🎉 **Estilos compartidos automáticamente:** Comparte los estilos yá creados de otros nodos previamente procesados.
-- ⚗️ **Pre procesamiento de nodos virtuales**: Puede pre procesar nodos virtuales antes de agregarlos al DOM.
+- 🎉 **Estilos compartidos:** Comparte los estilos yá creados de otros nodos previamente procesados.
+- ⚗️ **Pre procesamiento de nodos virtuales**: Pre procesar nodos virtuales antes de agregarlos al DOM.
 
 ## 🔧 Instalación
-Solo hay que llamar en el HTML al script **layouter.umd.js** que se encuentra dentro de la carpeta **'dist'** de este repositorio:
+Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra dentro de la carpeta **'dist'** de este repositorio:
 
 ```html
 <script src="layouter.umd.js"></script>
 ```
 
-**Y listo!**, eso es todo lo que necesitas para usar el **layouter** con su configuración base.
+**Y listo!**, eso es todo lo que necesitamos para usar el **layouter** con su configuración base.
 
 ## ✨ Ejemplo de uso
 Digamos que queremos definir el siguiente layout:
@@ -33,7 +32,7 @@ Digamos que queremos definir el siguiente layout:
   <a href="#">
     <img src="layout-responsive.png" alt="Layouter Logo"/>
     <br>
-    ⚓ Link de esta demo
+    Link de esta demo ⚓
   </a>
 </p>
 
@@ -94,7 +93,7 @@ Entonces haríamos este HTML con las siguientes directivas:
 > Cada vez que se agregue un nuevo nodo al body o alguno yá existente use una directiva de layouter, automáticamente se procesará.
 
 ## ⚙️ Configuración
-Por defecto la librería funcionará con la siguiente configuración base:
+Por defecto la librería funcionará con la siguiente **configuración base**:
 
 ```javascript
 {
@@ -153,6 +152,10 @@ Nombre | Ejemplo | Descripción
 [Mxh](DOCS.md#maxheight) | `mxh="200"` |  Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).
 [Miw](DOCS.md#minwidth) | `miw="300"` | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).
 [Mih](DOCS.md#minheight) | `mih="300"` |  Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).
+
+## 🌐 Websites que usan layouter
+- Interbank - [interbank.pe](https://interbank.pe)
+- Can I Browse - [canibrowse.net](https://canibrowse.net)
 
 ## 📚 ¿Dónde obtener ayuda?
 Hay una extensa documentación en el archivo [DOCS.md](DOCS.md).

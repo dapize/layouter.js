@@ -8,7 +8,7 @@ Para una configuración personalizada debemos **crear una variable llamada 'layo
 
 Opción | Típo | Por Defecto | Descripción
 ------ | ---- | ------- | -----------
-[**breakpoints**](#breakpoints) | object | [`...`](#breakpoints) | Objeto que contiene definido [los breakpoints](#breakpoints) que usará el sistema.
+**breakpoints** | object | `...` | Objeto que contiene definido los breakpoints que usará el sistema.
 prefix | string | '' | Define cual será el prefijo para todas las clases CSS que se agregarán a los nodos, esto con el fin de salvaguardar alguna colición con otras clases definidas.
 debug | boolean | true | Sirve para habilitar el `console.error` para cuando ocurre alguna definición inconsistente o se presenta algun error de procesamiento.
 bridge | boolean | true | Permite insertar los estilos creados por el sistema a travez del método 'insert' del tag scope, sin agregarlo como nodo de texto hijo. **OJO:** *Deshabilita esta opción si el DOM es manipulado por otra librería.*
@@ -81,7 +81,7 @@ Nombre | Ejemplo | Descripción
 [Miw](#minwidth-minheight) | `miw="200"` | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).
 [Mih](#minwidth-minheight) | `mih="100 150@sm"` |  Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).
 
-## 🧮 Métodos
+## Métodos
 
 Los siguientes métodos son internos del sistema, y **no es necesario utilizarlos** porque el sistema los usa de forma automática, pero están ahí para cualquier otro fin.
 
@@ -144,7 +144,7 @@ type TDirectiveName = 'cols' | 'pad' | 'padt' | 'padr' | 'padb' | 'padl' | 'mar'
 
 </details>
 
-## 🛠️ Utils
+## Utils
 - [Important Flag](#important-flag)
 - [Getters](#getters)
 
@@ -1056,7 +1056,7 @@ myDiv.className => 'my-div test'
 
 [&uarr; Volver Arriba](#métodos)
 
-## 📌 Important Flag
+## Important Flag
 
 Es posible, pero no recomendable, adicionar un caracter especial en la declaración de las columnas, margenes, padding, y el display, el cual agregará el "!important" comun que se usa en CSS, este caracter es el 'signo de exclamación'.
 > Siempre se debe agregar al final de la sentencia declarada
@@ -1083,7 +1083,7 @@ El cual nos dará el siguiente CSS:
 
 [&uarr; Volver Arriba](#utils)
 
-## 🗒️ Getters
+## Getters
 Podemos acceder a los siguientes getters desde la **variable 'layouter' del objeto 'window'**:
 
 Propiedad | Type | Description

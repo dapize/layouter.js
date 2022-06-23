@@ -203,6 +203,8 @@ export interface ILayouter extends IConfig {
   reset: (
     Node: HTMLElement|Element
   ) => Promise<void>;
+
+  version: string;
 }
 
 declare global {

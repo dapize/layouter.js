@@ -6,9 +6,9 @@ import processedNumber from './processedNumber';
 const buildAttr = (
   values: string,
   prop: TDirectiveName,
-  insertStyles: boolean = false
+  insertStyles = false
 ) => {
-  let bpCals: IBpCals = {};
+  const bpCals: IBpCals = {};
 
   values.split(' ').forEach(param => {
     const paramProcessed = prepareParam(param);

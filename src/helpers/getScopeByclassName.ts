@@ -20,7 +20,7 @@ const getScopeByclassName = (className: string): IRCreateScopeStyles => {
 
   // A BP until. Example 13/15@-md
   if (bp.substring(0, 1) === '-') {
-    if (scope.hasOwnProperty(bp)) return scope[bp]; // exists the Scope.
+    if (scope[bp]) return scope[bp]; // exists the Scope.
     const bpUntil = bp.substring(1);
     scope[bp] = createScopeStyles({
       bridge: bridge,
@@ -32,7 +32,7 @@ const getScopeByclassName = (className: string): IRCreateScopeStyles => {
   }
 
   // A BP from and until (a BP compound). Example: Example 13/15@sm-md
-  if (scope.hasOwnProperty(bp)) {
+  if (scope[bp]) {
     return scope[bp]; // exists the Scope.
   }
 

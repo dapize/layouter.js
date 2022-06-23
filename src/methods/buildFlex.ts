@@ -6,10 +6,7 @@ import { IStyles } from '../helpers/createStyles';
 import prepareParam from '../helpers/prepareParam';
 import regError from '../helpers/regError';
 
-const buildFlex = (
-  valFlex: string,
-  insertStyles: boolean = false
-): IStyles | Error => {
+const buildFlex = ( valFlex: string, insertStyles: boolean = false ): IStyles | Error => {
   let bpCals: IBpCals = {};
 
   // Getting numbers
@@ -27,11 +24,11 @@ const buildFlex = (
     const valProp = flexSplited[1] as keyof typeof flexProsAndVals; // 'ce' o '1'
 
     if (!flexAttrsSelf.includes(nameProp)) {
-      if (!flexProsAndVals.hasOwnProperty(nameProp)) {
+      if (!flexProsAndVals[nameProp]) {
         err = regError('Non-existent Alias', "Don't exists the alias '" + nameProp + "' in Flex vault.");
         break;
       }
-      if (!flexProsAndVals.hasOwnProperty(valProp)) {
+      if (!flexProsAndVals[valProp]) {
         err = regError('Non-existent Alias', "Don't exists the alias '" + valProp + "' in Flex vault.");
         break;
       }
@@ -42,7 +39,7 @@ const buildFlex = (
 
     if (paramPrepared.important) propVal += ' !important';
 
-    if (!bpCals.hasOwnProperty(bpNames)) {
+    if (!bpCals[bpNames]) {
       bpCals[bpNames] = {
         name: selectorName,
         value: propVal,

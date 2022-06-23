@@ -12,7 +12,7 @@ export const scopesStylesBuilder = (
 ): IScopes => {
   const scopes: IScopes = scope || {};
   Object.keys(breakpoints).forEach((bp: string) => {
-    if (!scopes.hasOwnProperty(bp)) {
+    if (!scopes[bp]) {
       scopes[bp] = createScopeStyles({
         bridge,
         bp,
