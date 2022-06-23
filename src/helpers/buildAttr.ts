@@ -10,14 +10,14 @@ const buildAttr = (
 ) => {
   const bpCals: IBpCals = {};
 
-  values.split(' ').forEach(param => {
+  values.split(' ').forEach((param) => {
     const paramProcessed = prepareParam(param);
     const bpNames = paramProcessed.breakPoints;
 
     // processing number values
     let propValue = paramProcessed.numbers
       .split('-')
-      .map(n => processedNumber(n))
+      .map((n) => processedNumber(n))
       .join(' ');
     if (paramProcessed.important) propValue += ' !important';
     bpCals[bpNames] = {

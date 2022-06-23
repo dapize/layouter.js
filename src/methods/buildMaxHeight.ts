@@ -1,9 +1,6 @@
 import buildAttr from '../helpers/buildAttr';
 
-const buildMaxHeight = (
-  valMaxHeight: string,
-  insertStyles = false
-) => {
+const buildMaxHeight = (valMaxHeight: string, insertStyles = false) => {
   return buildAttr(valMaxHeight, 'mxh', insertStyles);
 };
 

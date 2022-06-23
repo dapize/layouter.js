@@ -37,7 +37,7 @@ const breakpointsNums = (
         sizes[bp.alias] = !index ? 0 : objBps[bp.alias][propName];
       });
   } else {
-    Object.keys(objBps).forEach(bp => {
+    Object.keys(objBps).forEach((bp) => {
       sizes[bp] = objBps[bp][propName];
     });
   }

@@ -13,7 +13,7 @@ const processedNumber = (n: string) => {
   } else if (n === 'auto') {
     nProcessed = 'auto';
   } else {
-    const relativeUnits = relativeMeasures.filter(unit => {
+    const relativeUnits = relativeMeasures.filter((unit) => {
       return n.includes(unit);
     });
     if (relativeUnits.length) {

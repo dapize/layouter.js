@@ -14,7 +14,11 @@ const set = (
     const params = parameters || getParameters(Node);
     const arrParams = Object.keys(params);
     if (!arrParams.length) {
-      const err = regError('Parameter Missing', "don't exists any parameter to process", Node);
+      const err = regError(
+        'Parameter Missing',
+        "don't exists any parameter to process",
+        Node
+      );
       reject(err);
       return;
     }

@@ -1,4 +1,4 @@
-import config from "../config/main";
+import config from '../config/main';
 
 const regError = (
   name: string,
@@ -9,7 +9,7 @@ const regError = (
   err.name = name;
   err.message = message;
   const intConfig = config();
-  if ( intConfig.debug ) {
+  if (intConfig.debug) {
     console.error(err);
     if (Node) console.log(Node);
   }

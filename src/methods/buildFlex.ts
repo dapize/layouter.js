@@ -6,7 +6,7 @@ import { IStyles } from '../helpers/createStyles';
 import prepareParam from '../helpers/prepareParam';
 import regError from '../helpers/regError';
 
-const buildFlex = ( valFlex: string, insertStyles = false ): IStyles | Error => {
+const buildFlex = (valFlex: string, insertStyles = false): IStyles | Error => {
   const bpCals: IBpCals = {};
 
   // Getting numbers
@@ -25,11 +25,17 @@ const buildFlex = ( valFlex: string, insertStyles = false ): IStyles | Error => 
 
     if (!flexAttrsSelf.includes(nameProp)) {
       if (!flexProsAndVals[nameProp]) {
-        err = regError('Non-existent Alias', "Don't exists the alias '" + nameProp + "' in Flex vault.");
+        err = regError(
+          'Non-existent Alias',
+          "Don't exists the alias '" + nameProp + "' in Flex vault."
+        );
         break;
       }
       if (!flexProsAndVals[valProp]) {
-        err = regError('Non-existent Alias', "Don't exists the alias '" + valProp + "' in Flex vault.");
+        err = regError(
+          'Non-existent Alias',
+          "Don't exists the alias '" + valProp + "' in Flex vault."
+        );
         break;
       }
       propVal = flexProsAndVals[nameProp] + ':' + flexProsAndVals[valProp];
@@ -43,11 +49,12 @@ const buildFlex = ( valFlex: string, insertStyles = false ): IStyles | Error => 
       bpCals[bpNames] = {
         name: selectorName,
         value: propVal,
-      }
+      };
     } else {
       if (selectorName.includes('@')) selectorName = selectorName.split('@')[0];
       const sufixBp = bpNames === firstBp ? '' : '@' + bpNames;
-      bpCals[bpNames].name = bpCals[bpNames].name.split('@')[0] + '-' + selectorName + sufixBp;
+      bpCals[bpNames].name =
+        bpCals[bpNames].name.split('@')[0] + '-' + selectorName + sufixBp;
       bpCals[bpNames].value += ';' + propVal;
     }
   }

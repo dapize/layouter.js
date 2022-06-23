@@ -43,20 +43,20 @@ const breakpointsInit: IBreakpoints = {
   },
   sm: {
     width: 600,
-    cols: 25
+    cols: 25,
   },
   md: {
     width: 900,
-    cols: 31
+    cols: 31,
   },
   lg: {
     width: 1200,
-    cols: 41
+    cols: 41,
   },
   xlg: {
     width: 1536,
-    cols: 51
-  }
+    cols: 51,
+  },
 };
 
 export let baseConfig: IConfigUser = {
@@ -103,15 +103,15 @@ export const setConfig = (customCfg: Partial<IConfigUser> = {}): IConfig => {
     ...baseConfig,
     ...configNums(baseConfig.breakpoints, baseConfig.bridge),
     styles: {},
-    version
+    version,
   };
 
   return config;
 };
 
-export const setStyles = ( className: string, value: string ) => {
-  config.styles[ className ] = value;
-}
+export const setStyles = (className: string, value: string) => {
+  config.styles[className] = value;
+};
 
 const getConfig = (reset = false): IConfig => {
   return reset ? setConfig() : config;

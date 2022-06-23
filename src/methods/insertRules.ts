@@ -11,7 +11,7 @@ const insertRules = (objStyles: IStyles) => {
       const valClass = objStyles[className];
       const rules = nodeScope.method.rules;
       nodeScope.method.insertRule(valClass, rules ? rules.length : 0);
-      setStyles(className, valClass) // saving in styles vault
+      setStyles(className, valClass); // saving in styles vault
     }
   }
 };

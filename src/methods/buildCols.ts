@@ -6,10 +6,7 @@ import buildCss, { IBpCals } from '../helpers/buildCss';
 import getConfig from '../config/main';
 import { IStyles } from '../helpers/createStyles';
 
-const buildCols = (
-  values: string,
-  insertStyles = false
-): IStyles | Error => {
+const buildCols = (values: string, insertStyles = false): IStyles | Error => {
   let cols: number[];
   let bp;
   const bpCals: IBpCals = {};
@@ -36,7 +33,8 @@ const buildCols = (
         if (bp.includes('-')) {
           err = regError(
             'SyntaxError',
-            "You can't determine a 'until breakpoint' when use the explicit columns max: " + values
+            "You can't determine a 'until breakpoint' when use the explicit columns max: " +
+              values
           );
           break;
         } else {
