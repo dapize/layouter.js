@@ -10,7 +10,7 @@ const setAttr = (
   values?: string
 ): Promise<void | Error> => {
   return new Promise((resolve, reject) => {
-    let directiveValues = values || Node.getAttribute(directive);
+    const directiveValues = values || Node.getAttribute(directive);
     if (!directiveValues) {
       const err = regError(
         'Empty',

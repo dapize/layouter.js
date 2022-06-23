@@ -8,11 +8,11 @@ import { IStyles } from '../helpers/createStyles';
 
 const buildCols = (
   values: string,
-  insertStyles: boolean = false
+  insertStyles = false
 ): IStyles | Error => {
   let cols: number[];
   let bp;
-  let bpCals: IBpCals = {};
+  const bpCals: IBpCals = {};
   const config = getConfig();
 
   // Getting numbers

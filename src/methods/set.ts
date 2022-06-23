@@ -20,7 +20,7 @@ const set = (
     }
 
     const toBuild: Partial<Record<TDirectiveName, string>> = {};
-    for (let prop in params) {
+    for (const prop in params) {
       toBuild[prop as TDirectiveName] = params[prop as TDirectiveName];
     }
 

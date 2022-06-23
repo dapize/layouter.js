@@ -4,7 +4,7 @@ import { processors } from '../config/processors';
 const mainObserver = (layouter: ILayouter) => {
   const props = Object.keys(processors);
   const obsBody = new MutationObserver(mutations => {
-    for (let mutation of mutations) {
+    for (const mutation of mutations) {
       if (mutation.type === 'childList') {
         if (!mutation.addedNodes.length) {
           continue;

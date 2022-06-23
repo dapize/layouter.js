@@ -2,7 +2,7 @@ import buildAttr from '../helpers/buildAttr';
 
 const buildMinHeight = (
   valMinHeight: string,
-  insertStyles: boolean = false
+  insertStyles = false
 ) => {
   return buildAttr(valMinHeight, 'mih', insertStyles);
 };

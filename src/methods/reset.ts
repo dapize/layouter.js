@@ -16,7 +16,7 @@ const reset = (Node: HTMLElement | Element): Promise<void> => {
         }
         const nPrex = name.length >= 5 ? 5 : 4;
         let prex = name.substring(0, nPrex);
-        let lineIndex = prex.split('').indexOf('-');
+        const lineIndex = prex.split('').indexOf('-');
         // if the class name haven't a line can't be a class name created by the system
         if (lineIndex === -1) {
           restClass.push(name);

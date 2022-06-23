@@ -46,7 +46,7 @@ export interface IBuildResult {
 
 const build = (
   obj: Partial<Record<TDirectiveName, string>>,
-  insertStyles: boolean = false
+  insertStyles = false
 ): Partial<IBuildResult> | Error => {
   const rObj: Partial<IBuildResult> = {};
   let err: Error | boolean = false;

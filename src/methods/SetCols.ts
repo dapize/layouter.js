@@ -8,7 +8,7 @@ const setCols = (
   columns?: string
 ): Promise<void | Error> => {
   return new Promise((resolve, reject) => {
-    let values = columns || Node.getAttribute('cols');
+    const values = columns || Node.getAttribute('cols');
     if (!values) {
       const err = regError(
         'Empty',

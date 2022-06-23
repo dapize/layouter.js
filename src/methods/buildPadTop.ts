@@ -2,7 +2,7 @@ import buildAttr from '../helpers/buildAttr';
 
 const buildPadTop = (
   valPadTop: string,
-  insertStyles: boolean = false
+  insertStyles = false
 ) => {
   return buildAttr(valPadTop, 'padt', insertStyles);
 };

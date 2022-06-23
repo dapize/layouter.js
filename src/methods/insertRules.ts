@@ -7,7 +7,7 @@ const insertRules = (objStyles: IStyles) => {
 
   for (const className in objStyles) {
     if (!intConfig.styles[className]) {
-      let nodeScope = getScopeByclassName(className);
+      const nodeScope = getScopeByclassName(className);
       const valClass = objStyles[className];
       const rules = nodeScope.method.rules;
       nodeScope.method.insertRule(valClass, rules ? rules.length : 0);

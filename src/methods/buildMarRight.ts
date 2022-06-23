@@ -2,7 +2,7 @@ import buildAttr from '../helpers/buildAttr';
 
 const buildMarRight = (
   valMarRight: string,
-  insertStyles: boolean = false
+  insertStyles = false
 ) => {
   return buildAttr(valMarRight, 'marr', insertStyles);
 };

@@ -2,7 +2,7 @@ import buildAttr from '../helpers/buildAttr';
 
 const buildMarBottom = (
   valMarBottom: string,
-  insertStyles: boolean = false
+  insertStyles = false
 ) => {
   return buildAttr(valMarBottom, 'marb', insertStyles);
 };

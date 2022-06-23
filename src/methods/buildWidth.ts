@@ -2,7 +2,7 @@ import buildAttr from '../helpers/buildAttr';
 
 const buildWidth = (
   valWidth: string,
-  insertStyles: boolean = false
+  insertStyles = false
 ) => {
   return buildAttr(valWidth, 'wdh', insertStyles);
 };

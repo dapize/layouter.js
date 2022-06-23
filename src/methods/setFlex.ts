@@ -8,7 +8,7 @@ const setFlex = (
   flexValues?: string
 ): Promise<void | Error> => {
   return new Promise((resolve, reject) => {
-    let values = flexValues || Node.getAttribute('flex');
+    const values = flexValues || Node.getAttribute('flex');
     if (!values) {
       const err = regError(
         'Empty',

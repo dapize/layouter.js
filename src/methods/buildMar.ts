@@ -2,7 +2,7 @@ import buildAttr from '../helpers/buildAttr';
 
 const buildMar = (
   valMars: string,
-  insertStyles: boolean = false
+  insertStyles = false
 ) => {
   return buildAttr(valMars, 'mar', insertStyles);
 };

@@ -6,8 +6,8 @@ import { IStyles } from '../helpers/createStyles';
 import prepareParam from '../helpers/prepareParam';
 import regError from '../helpers/regError';
 
-const buildFlex = ( valFlex: string, insertStyles: boolean = false ): IStyles | Error => {
-  let bpCals: IBpCals = {};
+const buildFlex = ( valFlex: string, insertStyles = false ): IStyles | Error => {
+  const bpCals: IBpCals = {};
 
   // Getting numbers
   let err: boolean | Error = false;
@@ -46,7 +46,7 @@ const buildFlex = ( valFlex: string, insertStyles: boolean = false ): IStyles | 
       }
     } else {
       if (selectorName.includes('@')) selectorName = selectorName.split('@')[0];
-      let sufixBp = bpNames === firstBp ? '' : '@' + bpNames;
+      const sufixBp = bpNames === firstBp ? '' : '@' + bpNames;
       bpCals[bpNames].name = bpCals[bpNames].name.split('@')[0] + '-' + selectorName + sufixBp;
       bpCals[bpNames].value += ';' + propVal;
     }
