@@ -1,10 +1,10 @@
 import buildAttr from '../helpers/buildAttr';
 
-const buildPads = (
+const buildPad = (
   valPads: string,
   insertStyles: boolean = false
 ) => {
   return buildAttr(valPads, 'pad', insertStyles);
 };
 
-export default buildPads;
+export default buildPad;

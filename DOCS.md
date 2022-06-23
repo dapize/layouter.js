@@ -1,21 +1,23 @@
-# Documentación
+# 📚 Documentación Layouter
 
-Los estilos creados por el layouter se crean al vuelo **(on the fly)**, *[cuando el navegador termina de cargar la web]*. Podemos definir las columnas, los paddings, los margenes, el ancho y alto de un elemento y hasta si tendrá display 'flex'.
+Los estilos creados por el layouter se crean al vuelo **(on the fly)**, *[cuando el navegador termina de cargar la web]*. Podemos definir las columnas, los paddings, los margenes, el ancho y alto de un elemento y hasta determinar si el nodo tendrá display **'flex'** y sus derivados.
 
-## Configuración
+## ⚙️ Configuración
+
+Para una configuración personalizada debemos **crear una variable llamada 'layouterConfig'** en el objeto global 'window', la cual contendrá un objeto con las siguientes propiedades:
 
 Opción | Típo | Por Defecto | Descripción
 ------ | ---- | ------- | -----------
 [**breakpoints**](#breakpoints) | object | [`...`](#breakpoints) | Objeto que contiene definido [los breakpoints](#breakpoints) que usará el sistema.
 prefix | string | '' | Define cual será el prefijo para todas las clases CSS que se agregarán a los nodos, esto con el fin de salvaguardar alguna colición con otras clases definidas.
-debug | boolean | true | Sirve para habilitar el `console.error` para cuando ocurre alguna configuración inconsistente o se presenta un error.
+debug | boolean | true | Sirve para habilitar el `console.error` para cuando ocurre alguna definición inconsistente o se presenta algun error de procesamiento.
 bridge | boolean | true | Permite insertar los estilos creados por el sistema a travez del método 'insert' del tag scope, sin agregarlo como nodo de texto hijo. **OJO:** *Deshabilita esta opción si el DOM es manipulado por otra librería.*
 **ready** | function | null | Sirve como callback para indicar que el procesamiento inicial a finalizado. Se puede usar para quitar el loading overlay de la web (si es que se tiene, claro)
 
 
-## Breakpoints
+### 📐 Breakpoints
 
-Cada breakpoint es un objeto que deve tener como nombre de propiedad un **'alias'** y dentro de ese objeto debe tener las siguientes propiedades:
+Cada breakpoint es un objeto que debe tener como nombre de propiedad un **'alias'** y dentro de ese objeto debe tener las siguientes propiedades:
 
 Propiedad | Type | Description
 ------ | ---- | ------- 
@@ -48,18 +50,19 @@ cols | number | Número de columnas
 }
 ```
 
-Ese alias definidos se usará para determinar el breakpoint en cada valor.
+Ese alias definidos se usará para determinar el breakpoint en cada valor de las directivas.
 
-### A tomar en cuenta:
+
+### 💡 A tomar en cuenta:
 - Se pueden definir cuantos breakpoints se requiera, no hay límite.
 - Devido a que normalmente se maqueta en 'mobile first' **el breakpoint 'xs' no necesita un 'media query' (osea: @media).**
-- Si no se define ninguna unidad de medida en el valor de cualquier directiva (que no sea naturalmente porcentual), se tomará en pixeles [me refiero a esto 📌](#unidades-de-medida-definidas)
+- Si no se define ninguna unidad de medida en el valor de cualquier directiva (que no sea naturalmente porcentual), se tomará en pixeles [me refiero a esto 🔗](#unidades-de-medida-definidas)
 
-## Directivas
+## ⚡ Directivas
 
 Nombre | Ejemplo | Descripción
 ------ | ------- | -------
-[Cols](#cols) | `cols="13/15"` | Determinará las columnas, osea el 'width' de manera porcentual.
+[Cols](#cols) | `cols="13/15"` | Determinará las columnas, osea **el width** (de manera porcentual).
 [Mart](#mart) | `mart="10"` | Determina el **margen** superior de un nodo.
 [Marr](#marr-marb-marl) | `marr="2/15"` | Determinar el **margen** derecho de un nodo.
 [Marb](#marr-marb-marl) | `marb="30"` | Determinar el **margen** inferior de un nodo.
@@ -75,65 +78,77 @@ Nombre | Ejemplo | Descripción
 [Hgt](#height) | `hgt="100"` | Determina el **alto** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).
 [Mxw](#maxwidth) | `mxw="200"` | Determina el **máximo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).
 [Mxh](#maxheight) | `mxh="100 150@sm"` |  Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).
-[Miw](#minwidth) | `miw="200"` | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).
-[Mih](#minheight) | `mih="100 150@sm"` |  Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).
+[Miw](#minwidth-minheight) | `miw="200"` | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).
+[Mih](#minwidth-minheight) | `mih="100 150@sm"` |  Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).
 
-## Métodos
+## 🧮 Métodos
+
+Los siguientes métodos son internos del sistema, y **no es necesario utilizarlos** porque el sistema los usa de forma automática, pero están ahí para cualquier otro fin.
+
+Estos métodos están expuesto en la **variable global 'layouter'**, la cual está en el objeto **window**.
 
 Nombre | Argumentos | Devuelve | Descripción
 ------ | ------- | ------- | -------
-[setCols](#SetCols) | `Node: HTMLElement \| Element, parameters?: IParams` | `Promise<void>` | Procesa la directiva **'cols'**
-[set](#Set) | `Promise<void>` | Procesa un nodo con cualquier directiva.
+[**Set**](#set) | `Node: HTMLElement\|Element, parameters?: Partial<Record<TDirectiveName, string>>` | `Promise<void\|Error>` | **Shorthand** para los métodos de **tipo 'set'**.
+[**setCols**](#setcols) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'cols'**
+[setPadTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'padt'**
+[setPadRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'padr'**
+[setPadBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'padb'**
+[setPadLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'padl'**
+[**setPad**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'pad'**
+[setMarTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'mart'**
+[setMarRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'marr'**
+[setMarBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'marb'**
+[setMarLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'marl'**
+[**setMar**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'mar'**
+[setFlex](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'flex'**
+[setWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'wdh'**
+[setMinWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'miw'**
+[setMaxWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'mxw'**
+[setHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'hgt'**
+[setMaxHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'mxh'**
+[setMinHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex) | `Node: HTMLElement\|Element, values?: string` | `Promise<void\|Error>` | Procesa la directiva **'mih'**
+[**buildCols**](#buildcols) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'cols'**
+[buildMarTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'mart'**
+[buildMarRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'marr'**
+[buildMarBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'marb'**
+[buildMarLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'marl'**
+[**buildMar**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'mar'**
+[buildPadTop](#buildpadtop) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'padt'**
+[buildPadRight](#buildpadright) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'padr'**
+[buildPadBottom](#buildpadbottom) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'padb'**
+[buildPadLeft](#buildpadleft) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'padl'**
+[**buildPad**](#buildpad) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'pad'**
+[**buildFlex**](#buildflex) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'flex'**
+[buildWidth](#buildwidth) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'wdh'**
+[buildMinWidth](#buildminwidth) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'miw'**
+[buildMaxWidth](#buildMaxwidth) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'mxw'**
+[buildHeight](#buildheight) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'hgt'**
+[buildMaxHeight](#buildmaxheight) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'mih'**
+[buildHeight](#buildheight) | `values: string, insertStyles?: boolean` | `IStyles\|Error` | Procesa valores de la directiva **'mxh'**
+[**build**](#build) | `obj: Partial<Record<TDirectiveName, string>>, insertStyles?: boolean` | `Partial<IBuildResult> \| Error` | Shorthand para métodos **'build'**
+[getParameters](#getparameters) | `Node: HTMLElement\|Element` | `Partial<Record<TDirectiveName, string>>` | Extrae las directivas y valores de un Nodo
+[reset](#reset) | `Node: HTMLElement\|Element` | `Promise<void>` | Elimina de un Nodo las clases generadas por el sistema.
 
-- [set](#Set)
-  - [setCols](#SetCols)
-  - [setPads](#SetPads)
-    - [setPadTop](#SetPadTop)
-    - [setPadRight](#SetPadRight)
-    - [setPadBottom](#SetPadBottom)
-    - [setPadLeft](#SetPadLeft)
-  - [setMars](#SetMars)
-    - [setMarTop](#SetMarTop)
-    - [setMarRight](#SetMarRight)
-    - [setMarBottom](#SetMarBottom)
-    - [setMarLeft](#SetMarLeft)
-  - [setFlex](#setFlex)
-  - [setWidth](#setWidth)
-  - [setHeight](#setHeight)
-  - [setMaxWidth](#setMaxWidth)
-  - [setMaxHeight](#setMaxHeight)
-  - [setMinWidth](#setMinWidth)
-  - [setMinHeight](#setMinHeight)
+<details>
+<summary><b>Tipos e Interfaces de guía</b></summary>
 
-- [build](#Build)
-  - [buildCols](#BuildCols)
+```typescript
+interface IStyles {
+  [name: string]: string;
+}
 
-  - [buildMars](#BuildMars)
-    - [buildMarTop](#BuildMarTop)
-    - [buildMarRight](#BuildMarRight)
-    - [buildMarBottom](#BuildMarBottom)
-    - [buildMarLeft](#BuildMarLeft)
-    
-  - [buildPads](#BuildPads)
-    - [buildPadTop](#BuildPadTop)
-    - [buildPadRight](#BuildPadRight)
-    - [buildPadBottom](#BuildPadBottom)
-    - [buildPadLeft](#BuildPadLeft)
+type TDirectiveName = 'cols' | 'pad' | 'padt' | 'padr' | 'padb' | 'padl' | 'mar' | 'mart' | 'marr' | 'marb' | 'marl' | 'flex' | 'mxw' | 'mxh' | 'miw' | 'mih' | 'wdh' | 'hgt';
 
-  - [buildFlex](#BuildFlex)
+```
 
-  - [buildWidth](#BuildWidth)
-  - [buildHeight](#BuildHeight)
+</details>
 
-  - [buildMaxWidth](#BuildMaxWidth)
-  - [buildMaxHeight](#BuildMaxHeight)
-  - [buildMinWidth](#BuildMinWidth)
-  - [buildMinHeight](#BuildMinHeight)
-  
-- [getParameters](#getParameters)
-- [reset](#reset)
+## 🛠️ Utils
+- [Important Flag](#important-flag)
+- [Getters](#getters)
 
-## Ejemplos
+## ✨ Ejemplos
 
 ### Cols
 
@@ -143,8 +158,6 @@ Tenemos un 'DIV' al cual queremos designarle 13 de 15 columnas en mobile, 10 col
 <div cols="13/15 10/31@sm 15/27@md">...</div>
 ```
 > El sufijo arroba significa que esas columnas aplicarán a partir del breakpoint determinado
-
-**Explicación:**
 
 Para el DIV del ejemplo de arriba se determinó que:
 
@@ -173,7 +186,7 @@ Pero como se determinó en un breakpoint, los estilos estarían regidos por él
   }
 }
 ```
-- Para el breakpoint 'md' (osea 'desktop') se determinó que se tendrá 15 columnas de 27, y luego de auto procesarce obtendríamos este resultado:
+- Para el breakpoint **'md' (osea 'desktop')** se determinó que se tendrá 15 columnas de 27, y luego de auto procesarce obtendríamos este resultado:
 ```html
 <div class="cols-15/27@md">...</div>
 ```
@@ -184,7 +197,7 @@ Pero como se determinó en un breakpoint, los estilos estarían regidos por él
   }
 }
 ```
-**Finalmente** si procesamos el valor completo del parametro 'cols' (13/15 10/31@sm 15/27@md) obtendríamos este resultado:
+**Finalmente** si procesamos el valor completo del parametro **'cols'** `(13/15 10/31@sm 15/27@md)` obtendríamos este resultado:
 ```html
 <div class="cols-13/15 cols-10/31@sm cols-15/27@md">...</div>
 ```
@@ -702,7 +715,7 @@ y pues, estos estilos:
 
 
 ### Height
-Es lo mismo que el 'Width' pero para determinar el alto, y tambien acepta determinar con unidades de medidas relativas.
+Es lo mismo que el 'Width' pero para determinar el alto, y tambien acepta determinar con [unidades de medidas](#unidades-de-medida-definidas) relativas.
 
 #### Ejemplo 1:
 ```html
@@ -828,10 +841,10 @@ y pues, estos estilos:
 
 [&uarr; Volver Arriba](#directivas)
 
-## Métodos:
+## Detalles de Métodos:
 
 ### Set
-Sirve para procesar todas las directivas aceptados por el sistema, normalmente no se necesitaría usar este método ni los demás métodos de tipo 'set', pero se pueden usar **para procesar nodos virtuales [aquellos que no esstán en el DOM todabía]**
+Sirve para procesar todas las directivas aceptadas por el sistema.
 
 #### Ejemplo:
 Imaginemos que tenemos un DIV en donde hemos designado darle columnas, margenes, paddings y flex todo de un tiron:
@@ -925,18 +938,125 @@ Con los siguientes estilos
 
 > Los estilos creados por el método **'set'** se auto insertan en el sistema para poder ser usado por los nodos virtuales cuando se agreguen al DOM.
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Volver Arriba](#métodos)
 
 ### SetCols
 Es exactamente igual que el método 'set' pero procesa solamente las columnas, de echo...
 
-### SetPads, SetPadTop, SetPadRight, SetPadBottom, SetPadLeft, SetMars, SetMarTop, SetMarRight, SetMarBottom, SetMarLeft, setMaxWidth, setMaxHeight, setMinWidth, setMinHeight, setFlex
+### SetPad, SetPadTop, SetPadRight, SetPadBottom, SetPadLeft, SetMar, SetMarTop, SetMarRight, SetMarBottom, SetMarLeft, setMaxWidth, setMaxHeight, setMinWidth, setMinHeight, setFlex
 
 Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom, left, el max/min width y height respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... la directiva 'flex' XD.
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Volver Arriba](#métodos)
 
-## Important Flag
+De echo, los métodos builds son lo mismo, pero para esto no es necesario pasarle como parametro el Nodo, sino el valor a procesar, veamos:
+
+### Build
+Sirve para procesar todos los valores de todos los atributos aceptados por el sistema:
+
+#### Sintaxis
+```javascript
+layouter.build(Object);
+
+// Object Syntax
+{
+  nameDirective: valueDirective
+}
+```
+
+#### Ejemplo:
+```javascript
+layouter.build({
+  flex: 'jc:ce ai:ce',
+  cols: '3/13 21/21@sm 27/27@md',
+  mar: '0-2/13-0-0@-sm 0-0-20-0@sm',
+  pad: '20-0@sm'
+});
+```
+
+Y nos devuelve un objeto con los nombres de las clases creadas junto con los estilos:
+
+```javascript
+{
+  flex: {
+    "flex-jc:ce-ai:ce@xs": ".flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display: flex;}"
+  },
+  cols: {
+    "cols-21/21@sm": "@media screen and (min-width: 768px){.cols-21\\/21\\@sm{width:100%}}",
+    "cols-27/27@md": "@media screen and (min-width: 1024px){.cols-27\\/27\\@md{width:100%}}",
+    "cols-3/13": ".cols-3\\/13{width:23.076923076923077%}"
+  },
+  mar: {
+    "mar-0-0-20-0@sm": "@media screen and (min-width: 768px){.mar-0-0-20-0\\@sm{margin:0 0 20px 0}}",
+    "mar-0-2/13-0-0@-sm": "@media screen and (max-width: 767px){.mar-0-2\\/13-0-0\\@-sm{margin:0 15.384615384615385% 0 0}}"
+  },
+  pad: {
+    "pad-20-0@sm": "@media screen and (min-width: 768px){.pad-20-0\\@sm{padding:20px 0}}"
+  }
+}
+```
+[&uarr; Volver Arriba](#métodos)
+
+### BuildCols
+Sirve para procesar solamente las columnas:
+
+#### Sintaxis
+```javascript
+layouter.buildCols(String);
+```
+#### Ejemplo:
+```javascript
+layouter.buildCols('3/13 21/21@sm 27/27@md')
+```
+
+...y nos devuelve este objeto:
+```javascript
+{
+  "cols-21/21@sm": "@media screen and (min-width: 768px){.cols-21\\/21\\@sm{width:100%}}",
+  "cols-27/27@md": "@media screen and (min-width: 1024px){.cols-27\\/27\\@md{width:100%}}",
+  "cols-3/13": ".cols-3\\/13{width:23.076923076923077%}"
+}
+```
+
+[&uarr; Volver Arriba](#métodos)
+
+### BuildMar, BuildMarTop, BuildMarRight, BuildMarBottom, BuildMarLeft, BuildPad, BuildPadTop, BuildPadRight, BuildPadBottom, BuildPadLeft, BuildWidth, BuildHeight, BuildMaxWidth, BuildMaxHeight, BuildMinWidth, BuildMinHeight, BuildFlex
+Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, máximo ancho & alto y flex tmb.
+
+### GetParameters
+Tambien es posible obtener los parametros definidos en un elemento, digamos, tenemos un DIV, y queremos saber si tiene cols, mar, flex o los que tengan, pues tiramos del método, 'getParameters'
+
+```javascript
+const myDiv = document.querySelector('div');
+layouter.getParameters(myDiv);
+
+// Obtendremos un objeto así...
+
+{
+  cols: [ "13/15", "10/31@sm-md", "15/27@md" ],
+  mar: [ "20-2/15", "40-3/31@sm", "60-2/31@md" ],
+  pad: [ "20-1/15", "40-3/31@sm", "60-2/31@md" ],
+  flex: [ "jc:c", "jc:fs@sm", "jc:fe@md", 'ai:fs@sm' ]
+}
+```
+[&uarr; Volver Arriba](#métodos)
+
+### Reset
+Si por algún motivo necesitamos remover todas las clases tipo layouter sobre un nodo, podemos usar el método 'reset'.
+> Las clases se removerán del nodo pero seguirán disponibles para el uso en cualquier otro nodo.
+
+```javascript
+const myDiv = document.querySelector('div');
+myDiv.className = 'my-div pad-10-1/15 pad-20-3/31@sm test pad-30-2/31@md mar-0-0-40'
+layouter.reset(myDiv);
+
+// el nodo se quedará solo con dos clases
+myDiv.className => 'my-div test'
+```
+
+[&uarr; Volver Arriba](#métodos)
+
+## 📌 Important Flag
 
 Es posible, pero no recomendable, adicionar un caracter especial en la declaración de las columnas, margenes, padding, y el display, el cual agregará el "!important" comun que se usa en CSS, este caracter es el 'signo de exclamación'.
 > Siempre se debe agregar al final de la sentencia declarada
@@ -961,7 +1081,9 @@ El cual nos dará el siguiente CSS:
 }
 ```
 
-## Getters
+[&uarr; Volver Arriba](#utils)
+
+## 🗒️ Getters
 Podemos acceder a los siguientes getters desde la **variable 'layouter' del objeto 'window'**:
 
 Propiedad | Type | Description
@@ -986,4 +1108,5 @@ layouter.styles = {
 }
 layouter.version = '1.2'
 ```
-[&uarr; Volver Arriba](#documentación)
+
+[&uarr; Volver Arriba](#utils)

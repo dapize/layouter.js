@@ -3,7 +3,7 @@ import setAttr from './setAttr';
 const setMaxWidth = (
   Node: HTMLElement | Element,
   values?: string
-): Promise<void> => {
+): Promise<void | Error> => {
   return setAttr(Node, 'mxw', values);
 };
 

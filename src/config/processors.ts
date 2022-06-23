@@ -15,8 +15,8 @@ export const processors: Record<TDirectiveName, IProcessor> = {
 
   // Paddings
   pad: {
-    set: 'setPads',
-    build: 'buildPads',
+    set: 'setPad',
+    build: 'buildPad',
     ruleCss: 'padding',
   },
   padt: {
@@ -42,8 +42,8 @@ export const processors: Record<TDirectiveName, IProcessor> = {
 
   // Margin
   mar: {
-    set: 'setMars',
-    build: 'buildMars',
+    set: 'setMar',
+    build: 'buildMar',
     ruleCss: 'margin',
   },
   mart: {

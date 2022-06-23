@@ -1,10 +1,10 @@
 import setAttr from './setAttr';
 
-const setMars = (
+const setMar = (
   Node: HTMLElement | Element,
   values?: string
-): Promise<void> => {
+): Promise<void | Error> => {
   return setAttr(Node, 'mar', values);
 };
 
-export default setMars;
+export default setMar;

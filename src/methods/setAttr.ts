@@ -8,7 +8,7 @@ const setAttr = (
   Node: HTMLElement | Element,
   directive: TDirectiveName,
   values?: string
-): Promise<void> => {
+): Promise<void | Error> => {
   return new Promise((resolve, reject) => {
     let directiveValues = values || Node.getAttribute(directive);
     if (!directiveValues) {

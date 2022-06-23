@@ -1,12 +1,12 @@
 import { processors, TDirectiveName } from '../config/processors';
 import buildCols from './buildCols';
 import buildFlex from './buildFlex';
-import buildPads from './buildPads';
+import buildPad from './buildPad';
 import buildPadTop from './buildPadTop';
 import buildPadRight from './buildPadRight';
 import buildPadBottom from './buildPadBottom';
 import buildPadLeft from './buildPadLeft';
-import buildMars from './buildMars';
+import buildMar from './buildMar';
 import buildMarTop from './buildMarTop';
 import buildMarRight from './buildMarRight';
 import buildMarBottom from './buildMarBottom';
@@ -22,12 +22,12 @@ import { IStyles } from '../helpers/createStyles';
 const builders = {
   buildCols,
   buildFlex,
-  buildPads,
+  buildPad,
   buildPadTop,
   buildPadRight,
   buildPadBottom,
   buildPadLeft,
-  buildMars,
+  buildMar,
   buildMarTop,
   buildMarRight,
   buildMarBottom,

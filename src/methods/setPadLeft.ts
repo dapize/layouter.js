@@ -3,7 +3,7 @@ import setAttr from './setAttr';
 const setPadLeft = (
   Node: HTMLElement | Element,
   values?: string
-): Promise<void> => {
+): Promise<void | Error> => {
   return setAttr(Node, 'padl', values);
 };
 

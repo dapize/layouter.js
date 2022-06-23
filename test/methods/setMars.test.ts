@@ -1,5 +1,5 @@
 import { setConfig } from '../../src/config/main';
-import setMars from '../../src/methods/setMars';
+import setMars from '../../src/methods/setMar';
 
 describe('Setting Mars', () => {
   setConfig();

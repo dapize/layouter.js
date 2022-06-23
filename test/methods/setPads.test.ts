@@ -1,5 +1,5 @@
 import { setConfig } from '../../src/config/main';
-import setPads from '../../src/methods/setPads';
+import setPads from '../../src/methods/setPad';
 
 describe('Setting pads', () => {
   setConfig();

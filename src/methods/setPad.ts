@@ -1,10 +1,10 @@
 import setAttr from './setAttr';
 
-const setPads = (
+const setPad = (
   Node: HTMLElement | Element,
   values?: string
-): Promise<void> => {
+): Promise<void | Error> => {
   return setAttr(Node, 'pad', values);
 };
 
-export default setPads;
+export default setPad;

@@ -9,7 +9,7 @@ import { TDirectiveName } from '../config/processors';
 const set = (
   Node: HTMLElement | Element,
   parameters?: Partial<Record<TDirectiveName, string>>
-): Promise<void> => {
+): Promise<void | Error> => {
   return new Promise((resolve, reject) => {
     const params = parameters || getParameters(Node);
     const arrParams = Object.keys(params);

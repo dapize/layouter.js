@@ -57,6 +57,7 @@ Entonces haríamos este HTML con las siguientes directivas:
 
 </main>
 ```
+
 <details>
 <summary>Veamos que a pasado</summary>
 
@@ -89,6 +90,8 @@ Entonces haríamos este HTML con las siguientes directivas:
     - Para sus **divs** hijos se determinó una altura de 200 píxeles y un ancho de 7 columnas de 23 columnas para el breakpoint de **sm**, seguido de 9 columnas de 29 columnas para el breakpoint de **md** y finalmente 12.33 columnas de 39 columnas para el breakpoint de **lg**
 
 </details>
+
+> Cada vez que se agregue un nuevo nodo al body o alguno yá existente use una directiva de layouter, automáticamente se procesará.
 
 ## ⚙️ Configuración
 Por defecto la librería funcionará con la siguiente configuración base:
@@ -143,7 +146,7 @@ Nombre | Ejemplo | Descripción
 [Padb](DOCS.md#padr-padb-padl) | `padb="30"` | Determinar el **padding** inferior de un nodo.
 [Padl](DOCS.md#padr-padb-padl) | `padl="3/15"` | Determinar el **padding** izquierdo de un nodo.
 [Pad](DOCS.md#pad) | `pad="20-2/15-30-3/15"` | Es un shorthand de las directivas: [padt, padr, padb, y padl](DOCS.md#mart,-marr,-marb,-marl).
-[Flex](DOCS.md#flex) | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo, y sus derivados.
+[Flex](DOCS.md#flex) | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo y sus derivados.
 [Wdh](DOCS.md#width) | `wdh="100"` | Determina el **ancho** del nodo en pixeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).
 [Hgt](DOCS.md#height) | `hgt="100"` | Determina el **alto** del nodo en pixeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).
 [Mxw](DOCS.md#maxwidth) | `mxw="200"` | Determina el **máximo ancho** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).

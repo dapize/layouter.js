@@ -3,7 +3,7 @@ import setAttr from './setAttr';
 const setMarRight = (
   Node: HTMLElement | Element,
   values?: string
-): Promise<void> => {
+): Promise<void | Error> => {
   return setAttr(Node, 'marr', values);
 };
 

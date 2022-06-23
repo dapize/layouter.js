@@ -10,7 +10,7 @@ const initAutoProcessor = (layouter: ILayouter) => {
     Array.prototype.forEach.call(nodes, itemNode => {
       setNodes.add(itemNode);
     });
-    const promises: Promise<void>[] = [];
+    const promises: Promise<void|Error>[] = [];
     setNodes.forEach(node => {
       promises.push(layouter.set(node as Element | HTMLElement));
     });

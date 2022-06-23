@@ -2,7 +2,7 @@ import { processors } from "../config/processors";
 import addClasses from "../utils/addClasses";
 import removeAttr from "../utils/removeAttr";
 
-const reset = (Node: HTMLElement | Element ): Promise<void> => {
+const reset = (Node: HTMLElement | Element): Promise<void> => {
   return new Promise(resolve => {
     const layouterClasses = Object.keys(processors);
     const restClass: string[] = [];
