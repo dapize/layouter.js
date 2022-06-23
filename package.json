@@ -17,8 +17,8 @@
     "preview": "vite preview",
     "test": "jest",
     "test:full": "jest --ci --coverage --maxWorkers=2 --silent",
-    "lint": "npx eslint ./src/**",
-    "lint:fix": "npx eslint --fix ./src/**"
+    "lint": "npx eslint src",
+    "lint:fix": "npx eslint --fix src"
   },
   "repository": {
     "type": "git",
