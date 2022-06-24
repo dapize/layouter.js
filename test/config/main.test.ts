@@ -1,5 +1,5 @@
 import config, { baseConfig } from '../../src/config/main';
-import lib from '../../src/main';
+import lib from '../../src/layouter';
 
 const readyCb = jest.fn();
 window.layouterConfig = {

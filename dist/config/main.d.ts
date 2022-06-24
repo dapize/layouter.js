@@ -1,4 +1,4 @@
-import { ILayouter } from './../main';
+import { ILayouter } from './../layouter';
 import { IBreakpoints } from '../helpers/breakpointsNums';
 import { IScopes } from '../helpers/scopesStylesBuilder';
 export interface ICols {

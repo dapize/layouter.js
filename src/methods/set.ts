@@ -45,7 +45,11 @@ const set = (
     // removing unnecessary props
     removeAttr(Node, arrParams)
       .then(() => addClasses(Node, classesNames))
-      .then(resolve);
+      .then(() => {
+        resolve();
+        const event = new CustomEvent('layout:ready');
+        Node.dispatchEvent(event);
+      });
   });
 };
 

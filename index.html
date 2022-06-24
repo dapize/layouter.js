@@ -20,7 +20,7 @@
       <footer flex="jc:sb@sm">
         <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg"></div>
         <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg" mar="24-0@-sm"></div>
-        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg"></div>
+        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg" id="square"></div>
       </footer>
 
     </main>
@@ -61,7 +61,10 @@
           console.timeEnd('layouter')
         }
       }
+      document.getElementById('square').addEventListener('layout:ready', () => {
+        console.log('Square layout ready!');
+      })
     </script>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/layouter.ts"></script>
   </body>
 </html>

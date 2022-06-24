@@ -5,7 +5,7 @@ import dts from 'vite-plugin-dts'
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/main.ts'),
+      entry: resolve(__dirname, 'src/layouter.ts'),
       name: 'Layouter',
       fileName: (format) => `layouter.${format}.js`
     },

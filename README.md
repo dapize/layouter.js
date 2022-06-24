@@ -31,11 +31,7 @@ Digamos que queremos definir el siguiente layout:
 > _teniendo en cuenta que necesitamos definir margenes, altura, ancho por columnas, etc, y cada uno en sus respectivos breakpoints_
 
 <p align="center">
-  <a href="#">
     <img src="layout-responsive.png" alt="Layouter Logo"/>
-    <br>
-    Link de esta demo ⚓
-  </a>
 </p>
 
 Entonces haríamos este HTML con las siguientes directivas:
@@ -144,7 +140,7 @@ Uno puede escribir su propia configuración creando una variable llamada **'layo
 | [Padr](DOCS.md#padr-padb-padl) | `padr="2/15"`              | Determinar el **padding** derecho de un nodo.                                                                      |
 | [Padb](DOCS.md#padr-padb-padl) | `padb="30"`                | Determinar el **padding** inferior de un nodo.                                                                     |
 | [Padl](DOCS.md#padr-padb-padl) | `padl="3/15"`              | Determinar el **padding** izquierdo de un nodo.                                                                    |
-| [Pad](DOCS.md#pad)             | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt, padr, padb, y padl](DOCS.md#mart,-marr,-marb,-marl).                     |
+| [Pad](DOCS.md#pad)             | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt, padr, padb, y padl](DOCS.md#mart-marr-marb-marl).                     |
 | [Flex](DOCS.md#flex)           | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo y sus derivados.                                                            |
 | [Wdh](DOCS.md#width)           | `wdh="100"`                | Determina el **ancho** del nodo en pixeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).        |
 | [Hgt](DOCS.md#height)          | `hgt="100"`                | Determina el **alto** del nodo en pixeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).         |

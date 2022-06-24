@@ -1,4 +1,4 @@
-import { ILayouter } from './../main';
+import { ILayouter } from './../layouter';
 import { processors } from '../config/processors';
 
 const initAutoProcessor = (layouter: ILayouter) => {

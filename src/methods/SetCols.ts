@@ -30,7 +30,11 @@ const setCols = (
     // removing prop of Node and adding the corresponding classes
     removeAttr(Node, 'cols')
       .then(() => addClasses(Node, classesToAdd))
-      .then(resolve);
+      .then(() => {
+        resolve();
+        const event = new CustomEvent('layout:ready');
+        Node.dispatchEvent(event);
+      });
   });
 };
 

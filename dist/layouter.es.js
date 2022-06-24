@@ -774,7 +774,11 @@ const set = (Node, parameters) => {
     }
     const classes = classesObj;
     const classesNames = Object.keys(classes).map((name) => Object.keys(classes[name])).flat().join(" ");
-    removeAttr(Node, arrParams).then(() => addClasses(Node, classesNames)).then(resolve);
+    removeAttr(Node, arrParams).then(() => addClasses(Node, classesNames)).then(() => {
+      resolve();
+      const event = new CustomEvent("layout:ready");
+      Node.dispatchEvent(event);
+    });
   });
 };
 const setFlex = (Node, flexValues) => {
@@ -791,7 +795,11 @@ const setFlex = (Node, flexValues) => {
       return;
     }
     const classesToAdd = Object.keys(objStyles).join(" ");
-    removeAttr(Node, "flex").then(() => addClasses(Node, classesToAdd)).then(resolve);
+    removeAttr(Node, "flex").then(() => addClasses(Node, classesToAdd)).then(() => {
+      resolve();
+      const event = new CustomEvent("layout:ready");
+      Node.dispatchEvent(event);
+    });
   });
 };
 const setCols = (Node, columns) => {
@@ -808,7 +816,11 @@ const setCols = (Node, columns) => {
       return;
     }
     const classesToAdd = Object.keys(objStyles).join(" ");
-    removeAttr(Node, "cols").then(() => addClasses(Node, classesToAdd)).then(resolve);
+    removeAttr(Node, "cols").then(() => addClasses(Node, classesToAdd)).then(() => {
+      resolve();
+      const event = new CustomEvent("layout:ready");
+      Node.dispatchEvent(event);
+    });
   });
 };
 const setAttr = (Node, directive, values) => {
@@ -821,7 +833,11 @@ const setAttr = (Node, directive, values) => {
     }
     const objStyles = buildAttr(directiveValues, directive, true);
     const classesToAdd = Object.keys(objStyles).join(" ");
-    removeAttr(Node, directive).then(() => addClasses(Node, classesToAdd)).then(resolve);
+    removeAttr(Node, directive).then(() => addClasses(Node, classesToAdd)).then(() => {
+      resolve();
+      const event = new CustomEvent("layout:ready");
+      Node.dispatchEvent(event);
+    });
   });
 };
 const setHeight = (Node, values) => {

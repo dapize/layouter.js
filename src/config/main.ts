@@ -1,4 +1,4 @@
-import { ILayouter } from './../main';
+import { ILayouter } from './../layouter';
 import breakpointsNums, { IBreakpoints } from '../helpers/breakpointsNums';
 import { IScopes, scopesStylesBuilder } from '../helpers/scopesStylesBuilder';
 import breakpointsOrdered from '../helpers/breakpointsOrdered';

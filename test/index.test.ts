@@ -1,6 +1,6 @@
 import { waitFor, screen } from '@testing-library/dom'
 import '@testing-library/jest-dom'
-import layouter from '../src/main';
+import layouter from '../src/layouter';
 
 describe('Init', () => {
   it('With Nodes already in the DOM', async () => {
