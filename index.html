@@ -1,92 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="container" mxw="1272" mar="0-auto">
-    
-    <h3 flex="jc:ce" mar="40-0-0-0">SIMPLE BOX</h3>
-    <div class="my-div" pad="10-1/15 20-3/31@sm 30-2/31@md" mar="0-0-40" hgt="200">
-      <div class="text-box" wdh="100%" hgt="80" flex="jc:ce ai:ce">PADDING AND MARGIN</div>
-    </div>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layouter DEMO</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+  </head>
+  <body>
+    <main pad="24-1/15 24-1/25@sm 30-1/31@md 29.26-1/41@lg" mxw="1280" mar="0-auto">
 
-    <h3 flex="jc:ce">GROUP ITEMS: FlEX</h3>
-    <ul class="box-list" cols="13 21@sm 27@md" mar="40-1/15 40-auto-80@sm" flex="jc:ce ai:ce fw:w@sm jc:sb@sm fd:co@md">
-      <li cols="3/13 21/21@sm 27/27@md" mar="0-2/13-0-0@-sm 0-0-20-0@sm" flex="jc:ce ai:ce" pad="20-0@sm">Item 1</li>
-      <li cols="3/13 10/21@sm-md 27/27@md" mar="0-2/13-0-0@-sm 0-0-20-0@md" flex="jc:ce ai:ce" pad="30-0@md">Item 2</li>
-      <li cols="3/13 10/21@sm-md 27/27@md" flex="jc:ce ai:ce" pad="40-0@md" rows="50%">Item 3</li>
-    </ul>
-    <p style="text-align:center">Redimensiona la ventana para que veas como se han determinado estilos gracias al layouter</p>
-    <p></p>
+      <header flex="jc:sb@md" marb="24 30@md">
+        <div hgt="100" cols="11.1/29@md" marb="24@-md"></div>
+        <div hgt="100" cols="16.9/29@md"></div>
+      </header>
 
-    <button>SHOW / HIDE GRIDS</button>
-    <div id="grids">
-      <div class="mobile">
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-      </div>
-      <div class="tablet-desktop">
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-        <div class="grid"></div>
-      </div>
-    </div>
-  </div>
+      <section hgt="320" marb="24 25@sm 30@md"></section>
 
-  <link rel="stylesheet" href="main.css">
-  <script src="dist/layouter.js"></script>
-  <script src="main.js"></script>
-  <script>
-    document.querySelector('button').addEventListener('click', function () {
-      const grid = document.getElementById('grids');
-      grid.classList.toggle('show');
-    });
-  </script>
-</body>
+      <footer flex="jc:sb@sm">
+        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg"></div>
+        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg" mar="24-0@-sm"></div>
+        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg" id="square"></div>
+      </footer>
+
+    </main>
+
+    <style>
+      body {
+        background-color: #004B85;
+        margin: 0;
+        padding: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      header > div:first-child {
+        background-color: #00A0FF;
+      }
+
+      header > div:last-child {
+        background-color: white;
+      }
+
+      section {
+        background-color: #575757;
+      }
+
+      footer div {
+        background-color: #BCBCBC;
+      }
+    </style>
+
+    <script>
+      console.time('layouter');
+      window.layouterConfig = {
+        ready: ( data ) => {
+          console.log( data );
+          console.timeEnd('layouter')
+        }
+      }
+      document.getElementById('square').addEventListener('layout:ready', () => {
+        console.log('Square layout ready!');
+      })
+    </script>
+    <script type="module" src="/src/layouter.ts"></script>
+  </body>
 </html>
