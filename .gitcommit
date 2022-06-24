@@ -1,0 +1,15 @@
+# If this commit is applied, It will...
+# <type>(<scope>): <subject>
+():
+
+# <body>
+# Detalle de la incidencia (¿Qué? ¿Por qué?)
+
+
+# <footer>
+# Trello Card, Bitbucket Issues y/o Jira Issues que se solucionaron
+# Ejemplo:
+# Trello Card: https://trello.com/c/lBTPuBo8
+# Jira Issue: HALT-761, HALT-762
+# Closes #34, #23, #32
+Closes #

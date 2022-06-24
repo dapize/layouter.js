@@ -1,0 +1,28 @@
+export declare const flexProsAndVals: {
+    jc: string;
+    ai: string;
+    ce: string;
+    fs: string;
+    fe: string;
+    sb: string;
+    sa: string;
+    fw: string;
+    nw: string;
+    w: string;
+    wr: string;
+    fd: string;
+    r: string;
+    rr: string;
+    co: string;
+    cor: string;
+    fg: string;
+    fh: string;
+    as: string;
+    or: string;
+    au: string;
+    st: string;
+    bl: string;
+    in: string;
+    ih: string;
+};
+export declare const flexAttrsSelf: string[];
