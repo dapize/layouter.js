@@ -66,12 +66,12 @@ Ese alias definidos se usará para determinar el breakpoint en cada valor de las
 | [Marr](#marr-marb-marl)    | `marr="2/15"`              | Determinar el **margen** derecho de un nodo.                                                                |
 | [Marb](#marr-marb-marl)    | `marb="30"`                | Determinar el **margen** inferior de un nodo.                                                               |
 | [Marl](#marr-marb-marl)    | `marl="3/15"`              | Determinar el **margen** izquierdo de un nodo.                                                              |
-| [Mar](#mar)                | `mar="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [mart, marr, marb, y marl](#mart-marr-marb-marl).                        |
+| [Mar](#mar)                | `mar="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [mart](DOCS.md#mart), [marr, marb, y marl](DOCS.md#marr-marb-marl).      |
 | [Padt](#padt)              | `padt="10"`                | Determina el **padding** superior de un nodo.                                                               |
 | [Padr](#padr-padb-padl)    | `padr="2/15"`              | Determinar el **padding** derecho de un nodo.                                                               |
 | [Padb](#padr-padb-padl)    | `padb="30"`                | Determinar el **padding** inferior de un nodo.                                                              |
 | [Padl](#padr-padb-padl)    | `padl="3/15"`              | Determinar el **padding** izquierdo de un nodo.                                                             |
-| [Pad](#pad)                | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt, padr, padb, y padl](#mart,-marr,-marb,-marl).                     |
+| [Pad](#pad)                | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).      |
 | [Flex](#flex)              | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo, y sus derivados.                                                    |
 | [Wdh](#width)              | `wdh="100"`                | Determina el **ancho** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).        |
 | [Hgt](#height)             | `hgt="100"`                | Determina el **alto** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).         |

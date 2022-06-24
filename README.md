@@ -1,9 +1,8 @@
 <div align="center">
-    <img src="header.png" alt="Layouter"/>
-    <p></p>
-    <div align="center">
-        <strong>⚡️ Arma todo el layout de tu web sin CSS ⚡️</strong>
-    </div>
+    <p>
+        <img src="header.png" alt="Layouter"/>
+    </p>
+    <strong>⚡️ Arma todo el layout de tu web sin CSS ⚡️</strong>
 </div>
 
 # Layouter
@@ -135,12 +134,12 @@ Uno puede escribir su propia configuración creando una variable llamada **'layo
 | [Marr](DOCS.md#marr-marb-marl) | `marr="2/15"`              | Determinar el **margen** derecho de un nodo.                                                                       |
 | [Marb](DOCS.md#marr-marb-marl) | `marb="30"`                | Determinar el **margen** inferior de un nodo.                                                                      |
 | [Marl](DOCS.md#marr-marb-marl) | `marl="3/15"`              | Determinar el **margen** izquierdo de un nodo.                                                                     |
-| [Mar](DOCS.md#mar)             | `mar="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [mart, marr, marb, y marl](DOCS.md#mart-marr-marb-marl).                        |
+| [Mar](DOCS.md#mar)             | `mar="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [mart](DOCS.md#mart), [marr, marb, y marl](DOCS.md#marr-marb-marl).             |
 | [Padt](DOCS.md#padt)           | `padt="10"`                | Determina el **padding** superior de un nodo.                                                                      |
 | [Padr](DOCS.md#padr-padb-padl) | `padr="2/15"`              | Determinar el **padding** derecho de un nodo.                                                                      |
 | [Padb](DOCS.md#padr-padb-padl) | `padb="30"`                | Determinar el **padding** inferior de un nodo.                                                                     |
 | [Padl](DOCS.md#padr-padb-padl) | `padl="3/15"`              | Determinar el **padding** izquierdo de un nodo.                                                                    |
-| [Pad](DOCS.md#pad)             | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt, padr, padb, y padl](DOCS.md#mart-marr-marb-marl).                     |
+| [Pad](DOCS.md#pad)             | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).             |
 | [Flex](DOCS.md#flex)           | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo y sus derivados.                                                            |
 | [Wdh](DOCS.md#width)           | `wdh="100"`                | Determina el **ancho** del nodo en pixeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).        |
 | [Hgt](DOCS.md#height)          | `hgt="100"`                | Determina el **alto** del nodo en pixeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).         |
