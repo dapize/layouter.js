@@ -1,6 +1,6 @@
 {
   "name": "layouter.js",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Layout builder without CSS, What???!!!",
   "homepage": "https://layouter.io",
   "main": "dist/layouter.umd.js",

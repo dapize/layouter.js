@@ -252,7 +252,7 @@ const layouter = (userConfig: Partial<IConfigUser> = {}): ILayouter => {
   return instance;
 };
 
-if (window && typeof exports === 'undefined') {
+if (typeof window !== 'undefined' && typeof exports === 'undefined') {
   window.layouter = layouter();
 }
 

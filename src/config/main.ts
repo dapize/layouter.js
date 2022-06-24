@@ -84,7 +84,7 @@ const configNums = (
 };
 
 export const setConfig = (customCfg: Partial<IConfigUser> = {}): IConfig => {
-  if (window && window.layouterConfig) {
+  if (typeof window !== "undefined") {
     baseConfig = {
       ...baseConfig,
       ...window.layouterConfig,

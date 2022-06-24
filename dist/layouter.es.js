@@ -78,7 +78,7 @@ const breakpointsOrdered = (bps, sizes) => {
   Object.keys(sizes).forEach((bpName) => bpsOrdered[bpName] = bps[bpName]);
   return bpsOrdered;
 };
-const version = "1.2.0";
+const version = "1.2.1";
 const breakpointsInit = {
   xs: {
     width: 360,
@@ -119,7 +119,7 @@ const configNums = (bps, bridge, scope) => {
   };
 };
 const setConfig = (customCfg = {}) => {
-  if (window && window.layouterConfig) {
+  if (typeof window !== "undefined") {
     baseConfig = {
       ...baseConfig,
       ...window.layouterConfig,
@@ -1030,7 +1030,7 @@ const layouter = (userConfig = {}) => {
   });
   return instance;
 };
-if (window && typeof exports === "undefined") {
+if (typeof window !== "undefined" && typeof exports === "undefined") {
   window.layouter = layouter();
 }
 export { layouter as default };

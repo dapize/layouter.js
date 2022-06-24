@@ -7,6 +7,13 @@
 
 # Layouter
 
+[![CI](https://github.com/dapize/layouter.js/workflows/CI/badge.svg)](https://github.com/dapize/layouter.js/actions?query=workflow:"CI")
+[![Made with TypeScript](https://img.shields.io/badge/TypeScript-4-blue?logo=typescript&logoColor=white)](https://typescriptlang.org "Go to TypeScript homepage")
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![GitHub tag](https://img.shields.io/github/v/release/dapize/layouter.js?display_name=tag)](https://github.com/dapize/layouter.js/releases/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+
+
 Es una librería que nos permite armar todo el layout **de forma rápida y sencilla**, usando directivas sobre los nodos HTML. Principalmente funciona **basándonos en el uso de una grilla**, _especialmente para la definición de columnas_.
 
 -   🚀 **Procesamiento super rápido y paralelo:** Procesa de forma automática todos los nodos que se encuentran al cargar la web y tambien cualquier nuevo nodo que se agregue o empiece a usar alguna directiva.
@@ -19,6 +26,12 @@ Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra 
 
 ```html
 <script src="layouter.umd.js"></script>
+```
+
+**o tambien** puedes usar **uno** de estos CDNs:
+```html
+<script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
+<script src="https://unpkg.com/layouter.js/dist/layouter.umd.js" defer></script>
 ```
 
 **Y listo!**, eso es todo lo que necesitamos para usar el **layouter** con su configuración base.
