@@ -16,7 +16,7 @@
 
 Es una librería que nos permite armar todo el layout **de forma rápida y sencilla**, usando directivas sobre los nodos HTML. Principalmente funciona **basándonos en el uso de una grilla**, _especialmente para la definición de columnas_.
 
--   🚀 **Procesamiento super rápido y paralelo:** Procesa de forma automática todos los nodos que se encuentran al cargar la web y tambien cualquier nuevo nodo que se agregue o empiece a usar alguna directiva.
+-   🚀 **Procesamiento super rápido y paralelo:** Procesa de forma automática todos los nodos que se encuentran al cargar la web y también cualquier nuevo nodo que se agregue o empiece a usar alguna directiva.
 -   🎉 **Estilos compartidos:** Comparte los estilos yá creados de otros nodos previamente procesados.
 -   ⚗️ **Pre procesamiento de nodos virtuales**: Pre procesar nodos virtuales antes de agregarlos al DOM.
 
@@ -28,7 +28,7 @@ Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra 
 <script src="layouter.umd.js"></script>
 ```
 
-**o tambien** puedes usar **uno** de estos CDNs:
+**o también** puedes usar **uno** de estos CDNs:
 ```html
 <script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
 <script src="https://unpkg.com/layouter.js/dist/layouter.umd.js" defer></script>
@@ -40,7 +40,7 @@ Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra 
 
 Digamos que queremos definir el siguiente layout:
 
-> _teniendo en cuenta que necesitamos definir margenes, altura, ancho por columnas, etc, y cada uno en sus respectivos breakpoints_
+> _teniendo en cuenta que necesitamos definir márgenes, altura, ancho por columnas, etc, y cada uno en sus respectivos breakpoints_
 
 <p align="center">
     <img src="layout-responsive.png" alt="Layouter Logo"/>
@@ -70,25 +70,25 @@ Entonces haríamos este HTML con las siguientes directivas:
 
 -   para la etiqueta **`<main>`** se determinó el siguiente layout:
 
-    -   Un padding superior e inferior de 24 pixeles en su breakpoint inicial (es decir en mobile), tambien un padding derecho e izquierdo de 1 columna, relativa a las 15 columnas definidas para ese breakpoint.
+    -   Un padding superior e inferior de 24 píxeles en su breakpoint inicial (es decir en mobile), también un padding derecho e izquierdo de 1 columna, relativa a las 15 columnas definidas para ese breakpoint.
     -   Al llegar al breakpoint de **sm** se mantendrá el padding superior e inferior de 24 píxeles pero se determina que se requiere 1 columna de 25 columnas para ese breakpoint.
     -   Luego, para el breakpoint de **md** se cambia el padding superior e inferior a 30 píxeles y luego se determina que el padding derecho e izquierdo será de 1 columna de 31 columnas para ese breakpoint.
     -   Finalmente para el breakpoint de **lg** se determinó que el padding superior e inferior sería de 29.26 píxeles y para el padding derecho e izquierdo se tomará 1 columna de 41 columnas de ese breakpoint.
-    -   Por otra parte tambien se determinó que su ancho máximo sería de 1280 píxeles.
-    -   Así como tambien tendrá un margen superior e inferior de 0 y derecho e izquierdo en 'auto'.
+    -   Por otra parte también se determinó que su ancho máximo sería de 1280 píxeles.
+    -   Así como también tendrá un margen superior e inferior de 0 y derecho e izquierdo en 'auto'.
 
 -   para la etiqueta **`<header>`** se determinadó el siguiente layout:
 
     -   Display **'flex'** con 'justify-content' en 'space-between' a partir del breakpoint de **md** es decir a tablet en landscape.
-    -   Margen inferior de 24 pixeles en el breakpoint inicial y 30 píxeles a partir del breakpoint de **md**.
+    -   Margen inferior de 24 píxeles en el breakpoint inicial y 30 píxeles a partir del breakpoint de **md**.
     -   Para sus dos **divs** hijos se determinó una altura de 100 píxeles.
     -   Para el primero **div** 11.1 columnas de 29 columnas a partir del breakpoint **md** y solo 24 píxeles de margen inferior hasta el breakpoint de **md**.
     -   Para el segundo **div** hijo se determinó 16.9 columnas de 29 columnas a partir del breakpoint **md**.
 
 -   para la etiqueta **`<section>`** se determinó el siguiente layout:
 
-    -   Una altura de 320 pixeles.
-    -   Un margen inferior de 24 pixeles para su breakpoint inicial, 25 pixeles para el breakpoint de **sm** y finalmente 30 pixeles para el breakpoint de **md**.
+    -   Una altura de 320 píxeles.
+    -   Un margen inferior de 24 píxeles para su breakpoint inicial, 25 píxeles para el breakpoint de **sm** y finalmente 30 píxeles para el breakpoint de **md**.
 
 -   para la etiqueta **`<footer>`** se determinó el siguiente layout:
 
@@ -154,8 +154,8 @@ Uno puede escribir su propia configuración creando una variable llamada **'layo
 | [Padl](DOCS.md#padr-padb-padl) | `padl="3/15"`              | Determinar el **padding** izquierdo de un nodo.                                                                    |
 | [Pad](DOCS.md#pad)             | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).             |
 | [Flex](DOCS.md#flex)           | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo y sus derivados.                                                            |
-| [Wdh](DOCS.md#width)           | `wdh="100"`                | Determina el **ancho** del nodo en pixeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).        |
-| [Hgt](DOCS.md#height)          | `hgt="100"`                | Determina el **alto** del nodo en pixeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).         |
+| [Wdh](DOCS.md#width)           | `wdh="100"`                | Determina el **ancho** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).        |
+| [Hgt](DOCS.md#height)          | `hgt="100"`                | Determina el **alto** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).         |
 | [Mxw](DOCS.md#maxwidth)        | `mxw="200"`                | Determina el **máximo ancho** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas). |
 | [Mxh](DOCS.md#maxheight)       | `mxh="200"`                | Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
 | [Miw](DOCS.md#minwidth)        | `miw="300"`                | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas). |
