@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import regError from '../../src/helpers/regError';
 
 describe('regError', () => {
-  setConfig();
+  setConfig(window);
 
   it('width Node', () => {
     const myDiv = document.createElement('div');

@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildCols from '../../src/methods/buildCols';
 
 describe('Build Cols params ', () => {
-  setConfig({
+  setConfig(window, {
     debug: false
   });
 

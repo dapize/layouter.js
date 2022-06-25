@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildPadRight from '../../src/methods/buildPadRight';
 
 describe('Buildings Padding-right', () => {
-  setConfig({
+  setConfig(window, {
     breakpoints: {
       xs: {
         width: 320,

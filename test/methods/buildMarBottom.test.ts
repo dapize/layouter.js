@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildMarBottom from '../../src/methods/buildMarBottom';
 
 describe('Buildings margin-bottom', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildMarBottom('40')).toEqual({

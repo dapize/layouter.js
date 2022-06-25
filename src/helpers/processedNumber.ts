@@ -1,6 +1,6 @@
 import calPercentage from './calPercentage';
 
-const relativeMeasures = ['%', 'rem', 'em', 'ex', 'vw', 'vh'];
+const relativeMeasures = ['%', 'rem', 'em', 'ex', 'vw', 'vh', 'pt', 'cm', 'pc'];
 
 const processedNumber = (n: string) => {
   let nProcessed;

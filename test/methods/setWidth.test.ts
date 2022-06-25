@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setWidth from '../../src/methods/setWidth';
 
 describe('Setting Width', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', async () => {
     const myDiv = document.createElement('div');

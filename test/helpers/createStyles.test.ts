@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import createStyles from '../../src/helpers/createStyles';
 
 describe('createStyles', () => {
-  setConfig({
+  setConfig(window, {
     prefix: 'dpz'
   });
 

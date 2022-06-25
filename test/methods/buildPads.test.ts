@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildPad from '../../src/methods/buildPad';
 
 describe('Buildings Paddings', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildPad('40-0')).toEqual({

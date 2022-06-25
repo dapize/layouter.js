@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildHeight from '../../src/methods/buildHeight';
 
 describe('Buildings width', () => {
-  setConfig({
+  setConfig(window, {
     breakpoints: {
       xs: {
         width: 320,

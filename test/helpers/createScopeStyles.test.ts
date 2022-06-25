@@ -11,6 +11,7 @@ describe('Create Scope Styles', () => {
       bp: 'xs',
       insertionType: 'before',
       node: div,
+      context: window
     });
     const styleNode = myBody.querySelector('#layouter-xs');
     expect(styleNode).toBeTruthy();
@@ -22,6 +23,7 @@ describe('Create Scope Styles', () => {
       bp: 'sm',
       insertionType: 'after',
       node: div,
+      context: window
     });
     const styleNode = myBody.querySelector('#layouter-sm');
     expect(styleNode).toBeTruthy();
@@ -33,6 +35,7 @@ describe('Create Scope Styles', () => {
       bp: 'lg',
       insertionType: 'append',
       node: div,
+      context: window
     });
     bridge.method.insertRule('hello');
 

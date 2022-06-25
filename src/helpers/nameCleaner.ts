@@ -9,7 +9,7 @@ const replaceList = [
   ['/@', '@'],
 ];
 
-const nameCleaner = (objStyles: IStyles) => {
+const nameCleaner = (objStyles: IStyles): IStyles => {
   const obj: IStyles = {};
   for (const name in objStyles) {
     let newName = name;

@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setMaxHeight from '../../src/methods/setMaxHeight';
 
 describe('Setting max height', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', async () => {
     const myDiv = document.createElement('div');

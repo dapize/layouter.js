@@ -1,9 +1,11 @@
 import { ILayouter } from './../layouter';
 import { processors } from '../config/processors';
+import getConfig from '../config/main';
 
 const mainObserver = (layouter: ILayouter) => {
+  const config = getConfig();
   const props = Object.keys(processors);
-  const obsBody = new MutationObserver((mutations) => {
+  const obsBody = new layouter.context.MutationObserver((mutations) => {
     for (const mutation of mutations) {
       if (mutation.type === 'childList') {
         if (!mutation.addedNodes.length) {
@@ -35,7 +37,7 @@ const mainObserver = (layouter: ILayouter) => {
     attributeFilter: props,
     characterData: false,
   };
-  obsBody.observe(document.body, observerOptions);
+  obsBody.observe(config.context.document.body, observerOptions);
 };
 
 export default mainObserver;

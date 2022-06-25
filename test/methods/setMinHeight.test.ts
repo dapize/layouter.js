@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setMinHeight from '../../src/methods/setMinHeight';
 
 describe('Setting mix height', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', async () => {
     const myDiv = document.createElement('div');

@@ -3,4 +3,10 @@ import { IRCreateScopeStyles } from './createScopeStyles';
 export interface IScopes {
     [name: string]: IRCreateScopeStyles;
 }
-export declare const scopesStylesBuilder: (breakpoints: IBreakpoints, bridge: boolean, scope?: IScopes | undefined) => IScopes;
+export interface IScopesStylesBuilder {
+    breakpoints: IBreakpoints;
+    bridge: boolean;
+    scope?: IScopes;
+    context: Window & typeof globalThis;
+}
+export declare const scopesStylesBuilder: ({ breakpoints, bridge, scope, context, }: IScopesStylesBuilder) => IScopes;

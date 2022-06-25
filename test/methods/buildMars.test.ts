@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildMar from '../../src/methods/buildMar';
 
 describe('Buildings Margins', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildMar('40-0')).toEqual({

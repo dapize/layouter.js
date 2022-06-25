@@ -7,6 +7,7 @@ const getScopeByclassName = (className: string): IRCreateScopeStyles => {
   const intConfig = config();
   const scope = intConfig.scope;
   const bridge = intConfig.bridge;
+  const context = intConfig.context;
 
   // Haven´t a BP designed
   if (atIndex === -1) {
@@ -27,6 +28,7 @@ const getScopeByclassName = (className: string): IRCreateScopeStyles => {
       bp,
       insertionType: 'before',
       node: scope[bpUntil].node,
+      context,
     });
     return scope[bp]; // returning a new scope created
   }
@@ -42,6 +44,7 @@ const getScopeByclassName = (className: string): IRCreateScopeStyles => {
     bp,
     insertionType: 'after',
     node: scope[fromBp].node,
+    context,
   });
 
   return scope[bp]; // returning a new scope compounded created

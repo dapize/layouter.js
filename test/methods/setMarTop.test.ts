@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setMarTop from '../../src/methods/setMarTop';
 
 describe('Setting Margin Top', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', async () => {
     const myDiv = document.createElement('div');

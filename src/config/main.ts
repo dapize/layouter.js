@@ -16,14 +16,24 @@ export interface IConfigUser {
   ready?: (instance: ILayouter) => void;
 }
 
-interface IConfigNums {
+interface IConfigNumsIn {
+  bps: IBreakpoints;
+  bridge: boolean;
+  scope?: IScopes;
+  context: Window & typeof globalThis;
+}
+
+interface IConfigNumsOut {
   scope: IScopes;
   cols: ICols;
   sizes: ICols;
   breakpoints: IBreakpoints;
 }
 
-export interface IConfig extends Omit<IConfigUser, 'breakpoints'>, IConfigNums {
+export interface IConfig
+  extends Omit<IConfigUser, 'breakpoints'>,
+    IConfigNumsOut {
+  context: Window & typeof globalThis;
   styles: {
     [className: string]: string;
   };
@@ -68,40 +78,47 @@ export let baseConfig: IConfigUser = {
 
 let config: IConfig;
 
-const configNums = (
-  bps: IBreakpoints,
-  bridge: boolean,
-  scope?: IScopes
-): IConfigNums => {
+const configNums = ({
+  bps,
+  bridge,
+  scope,
+  context,
+}: IConfigNumsIn): IConfigNumsOut => {
   const sizes = breakpointsNums(bps, 'width');
   const finalBps = breakpointsOrdered(bps, sizes);
   return {
     sizes,
     cols: breakpointsNums(bps, 'cols'),
-    scope: scopesStylesBuilder(finalBps, bridge, scope),
+    scope: scopesStylesBuilder({
+      breakpoints: finalBps,
+      bridge,
+      scope: scope,
+      context,
+    }),
     breakpoints: finalBps,
   };
 };
 
-export const setConfig = (customCfg: Partial<IConfigUser> = {}): IConfig => {
-  if (typeof window !== 'undefined') {
-    baseConfig = {
-      ...baseConfig,
-      ...window.layouterConfig,
-      ...customCfg,
-    };
-  } else {
-    if (customCfg) {
-      baseConfig = {
-        ...baseConfig,
-        ...customCfg,
-      };
-    }
-  }
+export const setConfig = (
+  context: Window & typeof globalThis,
+  customCfg: Partial<IConfigUser> = {}
+): IConfig => {
+  const contextConfig = context.layouterConfig || {};
+
+  baseConfig = {
+    ...baseConfig,
+    ...customCfg,
+    ...contextConfig,
+  };
 
   config = {
+    context,
     ...baseConfig,
-    ...configNums(baseConfig.breakpoints, baseConfig.bridge),
+    ...configNums({
+      bps: baseConfig.breakpoints,
+      bridge: baseConfig.bridge,
+      context,
+    }),
     styles: {},
     version,
   };
@@ -109,12 +126,12 @@ export const setConfig = (customCfg: Partial<IConfigUser> = {}): IConfig => {
   return config;
 };
 
-export const setStyles = (className: string, value: string) => {
-  config.styles[className] = value;
+const getConfig = (): IConfig => {
+  return config;
 };
 
-const getConfig = (reset = false): IConfig => {
-  return reset ? setConfig() : config;
+export const setStyles = (className: string, value: string) => {
+  config.styles[className] = value;
 };
 
 export const updateConfig = (userConfig: Partial<IConfigUser>): IConfig => {
@@ -126,7 +143,12 @@ export const updateConfig = (userConfig: Partial<IConfigUser>): IConfig => {
   if (userConfig.breakpoints) {
     config = {
       ...config,
-      ...configNums(config.breakpoints, config.bridge, config.scope),
+      ...configNums({
+        bps: config.breakpoints,
+        bridge: config.bridge,
+        scope: config.scope,
+        context: config.context,
+      }),
     };
   }
 

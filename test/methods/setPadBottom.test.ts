@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setPadBottom from '../../src/methods/setPadBottom';
 
 describe('Setting padding bottom', () => {
-  setConfig({
+  setConfig(window,{
     debug: false,
   });
 

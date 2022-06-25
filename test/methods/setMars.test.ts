@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setMars from '../../src/methods/setMar';
 
 describe('Setting Mars', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', async () => {
     const myDiv = document.createElement('div');

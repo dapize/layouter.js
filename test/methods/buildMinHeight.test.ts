@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildMinHeight from '../../src/methods/buildMinHeight';
 
 describe('Buildings Min-height', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildMinHeight('100')).toEqual({

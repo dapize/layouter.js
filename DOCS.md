@@ -59,26 +59,31 @@ Ese alias definidos se usará para determinar el breakpoint en cada valor de las
 
 ## ⚡ Directivas
 
-| Nombre                     | Ejemplo                    | Descripción                                                                                                 |
-| -------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| [Cols](#cols)              | `cols="13/15"`             | Determinará las columnas, osea **el width** (de manera porcentual).                                         |
-| [Mart](#mart)              | `mart="10"`                | Determina el **margen** superior de un nodo.                                                                |
-| [Marr](#marr-marb-marl)    | `marr="2/15"`              | Determinar el **margen** derecho de un nodo.                                                                |
-| [Marb](#marr-marb-marl)    | `marb="30"`                | Determinar el **margen** inferior de un nodo.                                                               |
-| [Marl](#marr-marb-marl)    | `marl="3/15"`              | Determinar el **margen** izquierdo de un nodo.                                                              |
-| [Mar](#mar)                | `mar="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [mart](DOCS.md#mart), [marr, marb, y marl](DOCS.md#marr-marb-marl).      |
-| [Padt](#padt)              | `padt="10"`                | Determina el **padding** superior de un nodo.                                                               |
-| [Padr](#padr-padb-padl)    | `padr="2/15"`              | Determinar el **padding** derecho de un nodo.                                                               |
-| [Padb](#padr-padb-padl)    | `padb="30"`                | Determinar el **padding** inferior de un nodo.                                                              |
-| [Padl](#padr-padb-padl)    | `padl="3/15"`              | Determinar el **padding** izquierdo de un nodo.                                                             |
-| [Pad](#pad)                | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).      |
-| [Flex](#flex)              | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo, y sus derivados.                                                    |
-| [Wdh](#width)              | `wdh="100"`                | Determina el **ancho** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).        |
-| [Hgt](#height)             | `hgt="100"`                | Determina el **alto** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).         |
-| [Mxw](#maxwidth)           | `mxw="200"`                | Determina el **máximo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas). |
-| [Mxh](#maxheight)          | `mxh="100 150@sm"`         | Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
-| [Miw](#minwidth-minheight) | `miw="200"`                | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas). |
-| [Mih](#minwidth-minheight) | `mih="100 150@sm"`         | Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
+| Nombre                     | Ejemplo                    | Descripción                                                                                                  |
+| -------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| [Cols](#cols)              | `cols="13/15"`             | Determinará las columnas, osea **el width** (de manera porcentual).                                          |
+| [Mart](#mart)              | `mart="10"`                | Determina el **margen** superior de un nodo.                                                                 |
+| [Marr](#marr-marb-marl)    | `marr="2/15"`              | Determinar el **margen** derecho de un nodo.                                                                 |
+| [Marb](#marr-marb-marl)    | `marb="30"`                | Determinar el **margen** inferior de un nodo.                                                                |
+| [Marl](#marr-marb-marl)    | `marl="3/15"`              | Determinar el **margen** izquierdo de un nodo.                                                               |
+| [Mar](#mar)                | `mar="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [mart](DOCS.md#mart), [marr, marb, y marl](DOCS.md#marr-marb-marl).       |
+| [Padt](#padt)              | `padt="10"`                | Determina el **padding** superior de un nodo.                                                                |
+| [Padr](#padr-padb-padl)    | `padr="2/15"`              | Determinar el **padding** derecho de un nodo.                                                                |
+| [Padb](#padr-padb-padl)    | `padb="30"`                | Determinar el **padding** inferior de un nodo.                                                               |
+| [Padl](#padr-padb-padl)    | `padl="3/15"`              | Determinar el **padding** izquierdo de un nodo.                                                              |
+| [Pad](#pad)                | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).       |
+| [Flex](#flex)              | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo, y sus derivados.                                                     |
+| [Wdh](#width)              | `wdh="100"`                | Determina el **ancho** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).         |
+| [Hgt](#height)             | `hgt="100"`                | Determina el **alto** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).          |
+| [Mxw](#maxwidth)           | `mxw="200"`                | Determina el **máximo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
+| [Mxh](#maxheight)          | `mxh="100 150@sm"`         | Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).   |
+| [Miw](#minwidth-minheight) | `miw="200"`                | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
+| [Mih](#minwidth-minheight) | `mih="100 150@sm"`         | Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).   |
+| [Pos](DOCS.md#position)    | `pos="re"`                 | Determina la **posición** del nodo.                                                                          |
+| [T](DOCS.md#top)           | `t="10"`                   | Determina el **top** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).    |
+| [R](DOCS.md#right)         | `r="10"`                   | Determina el **right** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
+| [B](DOCS.md#bottom)        | `b="10"`                   | Determina el **bottom** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas). |
+| [L](DOCS.md#left)          | `l="10"`                   | Determina el **left** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).   |
 
 ## Métodos
 
@@ -86,48 +91,58 @@ Los siguientes métodos son internos del sistema, y **no es necesario utilizarlo
 
 Estos métodos están expuesto en la **variable global 'layouter'**, la cual está en el objeto **window**.
 
-| Nombre                                                                                                                                                                                                                                      | Argumentos                                                                         | Devuelve                                  | Descripción                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------------- |
-| [**Set**](#set)                                                                                                                                                                                                                             | `Node: HTMLElement\|Element, parameters?: Partial<Record<TDirectiveName, string>>` | `Promise<void\|Error>`                    | **Shorthand** para los métodos de **tipo 'set'**.       |
-| [**setCols**](#setcols)                                                                                                                                                                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'cols'**                         |
-| [setPadTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                           | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padt'**                         |
-| [setPadRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padr'**                         |
-| [setPadBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                        | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padb'**                         |
-| [setPadLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                          | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padl'**                         |
-| [**setPad**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                          | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'pad'**                          |
-| [setMarTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                           | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mart'**                         |
-| [setMarRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marr'**                         |
-| [setMarBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                        | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marb'**                         |
-| [setMarLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                          | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marl'**                         |
-| [**setMar**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                          | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mar'**                          |
-| [setFlex](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                             | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'flex'**                         |
-| [setWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                            | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'wdh'**                          |
-| [setMinWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'miw'**                          |
-| [setMaxWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mxw'**                          |
-| [setHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                           | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'hgt'**                          |
-| [setMaxHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                        | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mxh'**                          |
-| [setMinHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex)                                                        | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mih'**                          |
-| [**buildCols**](#buildcols)                                                                                                                                                                                                                 | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'cols'**              |
-| [buildMarTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mart'**              |
-| [buildMarRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'marr'**              |
-| [buildMarBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'marb'**              |
-| [buildMarLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'marl'**              |
-| [**buildMar**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mar'**               |
-| [buildPadTop](#buildpadtop)                                                                                                                                                                                                                 | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padt'**              |
-| [buildPadRight](#buildpadright)                                                                                                                                                                                                             | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padr'**              |
-| [buildPadBottom](#buildpadbottom)                                                                                                                                                                                                           | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padb'**              |
-| [buildPadLeft](#buildpadleft)                                                                                                                                                                                                               | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padl'**              |
-| [**buildPad**](#buildpad)                                                                                                                                                                                                                   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'pad'**               |
-| [**buildFlex**](#buildflex)                                                                                                                                                                                                                 | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'flex'**              |
-| [buildWidth](#buildwidth)                                                                                                                                                                                                                   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'wdh'**               |
-| [buildMinWidth](#buildminwidth)                                                                                                                                                                                                             | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'miw'**               |
-| [buildMaxWidth](#buildMaxwidth)                                                                                                                                                                                                             | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mxw'**               |
-| [buildHeight](#buildheight)                                                                                                                                                                                                                 | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'hgt'**               |
-| [buildMaxHeight](#buildmaxheight)                                                                                                                                                                                                           | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mih'**               |
-| [buildHeight](#buildheight)                                                                                                                                                                                                                 | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mxh'**               |
-| [**build**](#build)                                                                                                                                                                                                                         | `obj: Partial<Record<TDirectiveName, string>>, insertStyles?: boolean`             | `Partial<IBuildResult> \| Error`          | Shorthand para métodos **'build'**                      |
-| [getParameters](#getparameters)                                                                                                                                                                                                             | `Node: HTMLElement\|Element`                                                       | `Partial<Record<TDirectiveName, string>>` | Extrae las directivas y valores de un Nodo              |
-| [reset](#reset)                                                                                                                                                                                                                             | `Node: HTMLElement\|Element`                                                       | `Promise<void>`                           | Elimina de un Nodo las clases generadas por el sistema. |
+| Nombre                                                                                                                                                                                                                                                                                              | Argumentos                                                                         | Devuelve                                  | Descripción                                             |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------------- |
+| [**Set**](#set)                                                                                                                                                                                                                                                                                     | `Node: HTMLElement\|Element, parameters?: Partial<Record<TDirectiveName, string>>` | `Promise<void\|Error>`                    | **Shorthand** para los métodos de **tipo 'set'**.       |
+| [**setCols**](#setcols)                                                                                                                                                                                                                                                                             | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'cols'**                         |
+| [setPadTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padt'**                         |
+| [setPadRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padr'**                         |
+| [setPadBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padb'**                         |
+| [setPadLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padl'**                         |
+| [**setPad**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'pad'**                          |
+| [setMarTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mart'**                         |
+| [setMarRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marr'**                         |
+| [setMarBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marb'**                         |
+| [setMarLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marl'**                         |
+| [**setMar**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mar'**                          |
+| [setFlex](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                       | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'flex'**                         |
+| [setWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                      | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'wdh'**                          |
+| [setMinWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'miw'**                          |
+| [setMaxWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mxw'**                          |
+| [setHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'hgt'**                          |
+| [setMaxHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mxh'**                          |
+| [setMinHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mih'**                          |
+| [setPosition](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'pos'**                          |
+| [setTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                        | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'t'**                            |
+| [setRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                      | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'r'**                            |
+| [setBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'b'**                            |
+| [setLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                       | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'l'**                            |
+| [**buildCols**](#buildcols)                                                                                                                                                                                                                                                                         | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'cols'**              |
+| [buildMarTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mart'**              |
+| [buildMarRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'marr'**              |
+| [buildMarBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'marb'**              |
+| [buildMarLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'marl'**              |
+| [**buildMar**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mar'**               |
+| [buildPadTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padt'**              |
+| [buildPadRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padr'**              |
+| [buildPadBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padb'**              |
+| [buildPadLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padl'**              |
+| [**buildPad**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'pad'**               |
+| [**buildFlex**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'flex'**              |
+| [buildWidth](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)     | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'wdh'**               |
+| [buildMinWidth](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'miw'**               |
+| [buildMaxWidth](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mxw'**               |
+| [buildHeight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'hgt'**               |
+| [buildMaxHeight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mih'**               |
+| [buildHeight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mxh'**               |
+| [buildPosition](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'pos'**               |
+| [buildTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)       | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'t'**                 |
+| [buildRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)     | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'r'**                 |
+| [buildBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'b'**                 |
+| [buildLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)      | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'l'**                 |
+| [**build**](#build)                                                                                                                                                                                                                                                                                 | `obj: Partial<Record<TDirectiveName, string>>, insertStyles?: boolean`             | `Partial<IBuildResult> \| Error`          | Shorthand para métodos **'build'**                      |
+| [getParameters](#getparameters)                                                                                                                                                                                                                                                                     | `Node: HTMLElement\|Element`                                                       | `Partial<Record<TDirectiveName, string>>` | Extrae las directivas y valores de un Nodo              |
+| [reset](#reset)                                                                                                                                                                                                                                                                                     | `Node: HTMLElement\|Element`                                                       | `Promise<void>`                           | Elimina de un Nodo las clases generadas por el sistema. |
 
 <details>
 <summary><b>Tipos e Interfaces de guía</b></summary>
@@ -538,17 +553,18 @@ Tiene exactamente la misma sintaxis que 'mar'
 }
 
 @media screen and (min-width: 768px) {
-    .pad-40-3\/31\@sm {
-        padding: 40px 9.67742%;
-    }
+.pad-40-3\/31\@sm {
+padding: 40px 9.67742%;
+}
 }
 
 @media screen and (min-width: 1024px) {
-    .pad-60-2\/31\@md {
-        padding: 60px 6.45161%;
-    }
+.pad-60-2\/31\@md {
+padding: 60px 6.45161%;
 }
-```
+}
+
+````
 </details>
 
 [&uarr; Volver Arriba](#directivas)
@@ -595,8 +611,8 @@ Sirve para determinar los paddings superiores de un elemento.
     }
 }
 ```
-</details>
 
+</details>
 
 [&uarr; Volver Arriba](#directivas)
 
@@ -660,6 +676,7 @@ Sirven para determinar los paddings derechos, inferiores e izquierdos respectiva
     }
 }
 ```
+
 </details>
 
 [&uarr; Volver Arriba](#directivas)
@@ -733,8 +750,8 @@ Esta es la directiva más interesante, porque es el que determina el **'display'
     }
 }
 ```
-</details>
 
+</details>
 
 > Nota: cuando determinamos más de un estilo para un mismo breakpoint, el nombre de las clases generadas son concatenadas, solo para ahorrar espacio.
 
@@ -770,6 +787,7 @@ Sirve para determinar el ancho de un nodo en pixeles, siempre y cuando no se def
     }
 }
 ```
+
 </details>
 
 Es posible determinar las únidades relativas: **%, rem, em, ex, vw y vh.**
@@ -800,6 +818,7 @@ Es posible determinar las únidades relativas: **%, rem, em, ex, vw y vh.**
     }
 }
 ```
+
 </details>
 
 [&uarr; Volver Arriba](#directivas)
@@ -852,8 +871,8 @@ Sirve para determinar el máximo ancho que tendrá un nodo en pixeles, siempre y
     }
 }
 ```
-</details>
 
+</details>
 
 [&uarr; Volver Arriba](#directivas)
 
@@ -887,6 +906,7 @@ Sirve para determinar el máximo alto que tendrá un nodo en pixeles.
     }
 }
 ```
+
 </details>
 
 [&uarr; Volver Arriba](#directivas)
@@ -945,8 +965,8 @@ Sirven para determinar el mínimo ancho y mínimo alto en pixeles respectivament
     }
 }
 ```
-</details>
 
+</details>
 
 [&uarr; Volver Arriba](#directivas)
 
@@ -1048,8 +1068,8 @@ Lo cual nos dará un resultado así:
     }
 }
 ```
-</details>
 
+</details>
 
 > OJO: El método **'set'** también procesa las directivas de los margenes y paddings por separado, osea **'mart, marr, padb, padl, etc'**
 
@@ -1061,9 +1081,9 @@ Lo cual nos dará un resultado así:
 
 Es exactamente igual que el método 'set' pero procesa solamente las columnas, de echo...
 
-### SetPad, SetPadTop, SetPadRight, SetPadBottom, SetPadLeft, SetMar, SetMarTop, SetMarRight, SetMarBottom, SetMarLeft, setMaxWidth, setMaxHeight, setMinWidth, setMinHeight, setFlex
+### SetPad, SetPadTop, SetPadRight, SetPadBottom, SetPadLeft, SetMar, SetMarTop, SetMarRight, SetMarBottom, SetMarLeft, SetMaxWidth, SetMaxHeight, SetMinWidth, SetMinHeight, SetFlex, SetPosition, SetTop, SetRight, SetBottom, SetLeft
 
-Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom left, los margenes, el margen Top, right, bottom, left, el max/min width y height respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... la directiva 'flex' XD.
+Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom, left, los margenes, el margen Top, right, bottom, left, el max/min width y height, el Position, el Top, Right, Bottom y Left respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... la directiva 'flex' XD.
 
 [&uarr; Volver Arriba](#métodos)
 
@@ -1147,7 +1167,7 @@ layouter.buildCols('3/13 21/21@sm 27/27@md');
 
 [&uarr; Volver Arriba](#métodos)
 
-### BuildMar, BuildMarTop, BuildMarRight, BuildMarBottom, BuildMarLeft, BuildPad, BuildPadTop, BuildPadRight, BuildPadBottom, BuildPadLeft, BuildWidth, BuildHeight, BuildMaxWidth, BuildMaxHeight, BuildMinWidth, BuildMinHeight, BuildFlex
+### BuildMar, BuildMarTop, BuildMarRight, BuildMarBottom, BuildMarLeft, BuildPad, BuildPadTop, BuildPadRight, BuildPadBottom, BuildPadLeft, BuildWidth, BuildHeight, BuildMaxWidth, BuildMaxHeight, BuildMinWidth, BuildMinHeight, BuildFlex, BuildPosition, BuildTop, BuildRight, BuildBottom, BuildLeft
 
 Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, máximo ancho & alto y flex tmb.
 

@@ -20,6 +20,11 @@ import buildMinWidth from './methods/buildMinWidth';
 import buildMinHeight from './methods/buildMinHeight';
 import buildHeight from './methods/buildHeight';
 import buildWidth from './methods/buildWidth';
+import buildPosition from './methods/buildPosition';
+import buildTop from './methods/buildTop';
+import buildRight from './methods/buildRight';
+import buildBottom from './methods/buildBottom';
+import buildLeft from './methods/buildLeft';
 
 import set from './methods/set';
 import setFlex from './methods/setFlex';
@@ -40,6 +45,11 @@ import setPad from './methods/setPad';
 import setPadTop from './methods/setPadTop';
 import setWidth from './methods/setWidth';
 import setMaxHeight from './methods/setMaxHeight';
+import setPosition from './methods/setPosition';
+import setTop from './methods/setTop';
+import setRight from './methods/setRight';
+import setBottom from './methods/setBottom';
+import setLeft from './methods/setLeft';
 
 import insertRules from './methods/insertRules';
 import reset from './methods/reset';
@@ -61,52 +71,31 @@ export interface ILayouter extends IConfig {
   ) => Partial<IBuildResult> | Error;
   buildCols: (valCols: string, insertStyles?: boolean) => IStyles | Error;
   buildFlex: (valFlex: string, insertStyles?: boolean) => IStyles | Error;
-  buildPad: (valPads: string, insertStyles?: boolean) => IStyles | boolean;
-  buildPadTop: (valPadTop: string, insertStyles?: boolean) => IStyles | boolean;
-  buildPadRight: (
-    valPadRight: string,
+  buildPad: (valPads: string, insertStyles?: boolean) => IStyles;
+  buildPadTop: (valPadTop: string, insertStyles?: boolean) => IStyles;
+  buildPadRight: (valPadRight: string, insertStyles?: boolean) => IStyles;
+  buildPadBottom: (valPadBottom: string, insertStyles?: boolean) => IStyles;
+  buildPadLeft: (valPadLeft: string, insertStyles?: boolean) => IStyles;
+  buildMar: (valMars: string, insertStyles?: boolean) => IStyles;
+  buildMarTop: (valMarTop: string, insertStyles?: boolean) => IStyles;
+  buildMarRight: (valMarRight: string, insertStyles?: boolean) => IStyles;
+  buildMarBottom: (valMarBottom: string, insertStyles?: boolean) => IStyles;
+  buildMarLeft: (valMarLeft: string, insertStyles?: boolean) => IStyles;
+  buildMaxWidth: (valMaxWidth: string, insertStyles?: boolean) => IStyles;
+  buildMaxHeight: (valMaxHeight: string, insertStyles?: boolean) => IStyles;
+  buildMinWidth: (valMinWidth: string, insertStyles?: boolean) => IStyles;
+  buildMinHeight: (valMinHeight: string, insertStyles?: boolean) => IStyles;
+  buildHeight: (valHeight: string, insertStyles?: boolean) => IStyles;
+  buildWidth: (valWidth: string, insertStyles?: boolean) => IStyles;
+  buildPosition: (
+    valPosition: string,
     insertStyles?: boolean
-  ) => IStyles | boolean;
-  buildPadBottom: (
-    valPadBottom: string,
-    insertStyles?: boolean
-  ) => IStyles | boolean;
-  buildPadLeft: (
-    valPadLeft: string,
-    insertStyles?: boolean
-  ) => IStyles | boolean;
-  buildMar: (valMars: string, insertStyles?: boolean) => IStyles | boolean;
-  buildMarTop: (valMarTop: string, insertStyles?: boolean) => IStyles | boolean;
-  buildMarRight: (
-    valMarRight: string,
-    insertStyles?: boolean
-  ) => IStyles | boolean;
-  buildMarBottom: (
-    valMarBottom: string,
-    insertStyles?: boolean
-  ) => IStyles | boolean;
-  buildMarLeft: (
-    valMarLeft: string,
-    insertStyles?: boolean
-  ) => IStyles | boolean;
-  buildMaxWidth: (
-    valMaxWidth: string,
-    insertStyles?: boolean
-  ) => IStyles | boolean;
-  buildMaxHeight: (
-    valMaxHeight: string,
-    insertStyles?: boolean
-  ) => IStyles | boolean;
-  buildMinWidth: (
-    valMinWidth: string,
-    insertStyles?: boolean
-  ) => IStyles | boolean;
-  buildMinHeight: (
-    valMinHeight: string,
-    insertStyles?: boolean
-  ) => IStyles | boolean;
-  buildHeight: (valHeight: string, insertStyles?: boolean) => IStyles | boolean;
-  buildWidth: (valWidth: string, insertStyles?: boolean) => IStyles | boolean;
+  ) => IStyles | Error;
+  buildTop: (valTop: string, insertStyles?: boolean) => IStyles | Error;
+  buildRight: (valRight: string, insertStyles?: boolean) => IStyles | Error;
+  buildBottom: (valBottom: string, insertStyles?: boolean) => IStyles | Error;
+  buildLeft: (valLeft: string, insertStyles?: boolean) => IStyles | Error;
+
   set: (
     Node: HTMLElement | Element,
     parameters?: Partial<Record<TDirectiveName, string>>
@@ -183,6 +172,28 @@ export interface ILayouter extends IConfig {
     Node: HTMLElement | Element,
     values?: string
   ) => Promise<void | Error>;
+  setPosition: (
+    Node: HTMLElement | Element,
+    values?: string
+  ) => Promise<void | Error>;
+
+  setTop: (
+    Node: HTMLElement | Element,
+    values?: string
+  ) => Promise<void | Error>;
+  setRight: (
+    Node: HTMLElement | Element,
+    values?: string
+  ) => Promise<void | Error>;
+  setBottom: (
+    Node: HTMLElement | Element,
+    values?: string
+  ) => Promise<void | Error>;
+  setLeft: (
+    Node: HTMLElement | Element,
+    values?: string
+  ) => Promise<void | Error>;
+
   insertRules: (objStyles: IStyles) => void;
   reset: (Node: HTMLElement | Element) => Promise<void>;
   version: string;
@@ -194,8 +205,11 @@ declare global {
   }
 }
 
-const layouter = (userConfig: Partial<IConfigUser> = {}): ILayouter => {
-  const config = setConfig(userConfig);
+const layouter = (
+  context: Window & typeof globalThis,
+  userConfig: Partial<IConfigUser> = {}
+): ILayouter => {
+  const config = setConfig(context, userConfig);
 
   const instance = {
     ...config,
@@ -241,6 +255,16 @@ const layouter = (userConfig: Partial<IConfigUser> = {}): ILayouter => {
     setMinHeight,
     setMaxHeight,
     reset,
+    buildPosition,
+    buildTop,
+    buildRight,
+    buildBottom,
+    buildLeft,
+    setPosition,
+    setTop,
+    setRight,
+    setBottom,
+    setLeft,
   };
 
   // Auto init process
@@ -253,7 +277,7 @@ const layouter = (userConfig: Partial<IConfigUser> = {}): ILayouter => {
 };
 
 if (typeof window !== 'undefined' && typeof exports === 'undefined') {
-  window.layouter = layouter();
+  window.layouter = layouter(window);
 }
 
 export default layouter;

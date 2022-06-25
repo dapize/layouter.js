@@ -4,7 +4,7 @@ import set from '../../src/methods/set';
 import setFlex from '../../src/methods/setFlex';
 
 describe('Building all', () => {
-  setConfig();
+  setConfig(window);
 
   it('Simple', async () => {
     const myDiv = document.createElement('div');

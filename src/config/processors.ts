@@ -1,3 +1,29 @@
+import buildCols from '../methods/buildCols';
+import buildFlex from '../methods/buildFlex';
+import buildPad from '../methods/buildPad';
+import buildPadTop from '../methods/buildPadTop';
+import buildPadRight from '../methods/buildPadRight';
+import buildPadBottom from '../methods/buildPadBottom';
+import buildPadLeft from '../methods/buildPadLeft';
+import buildMar from '../methods/buildMar';
+import buildMarTop from '../methods/buildMarTop';
+import buildMarRight from '../methods/buildMarRight';
+import buildMarBottom from '../methods/buildMarBottom';
+import buildMarLeft from '../methods/buildMarLeft';
+import buildMaxWidth from '../methods/buildMaxWidth';
+import buildMaxHeight from '../methods/buildMaxHeight';
+import buildMinWidth from '../methods/buildMinWidth';
+import buildMinHeight from '../methods/buildMinHeight';
+import buildHeight from '../methods/buildHeight';
+import buildWidth from '../methods/buildWidth';
+import buildPosition from '../methods/buildPosition';
+
+import { IStyles } from '../helpers/createStyles';
+import buildTop from '../methods/buildTop';
+import buildRight from '../methods/buildRight';
+import buildBottom from '../methods/buildBottom';
+import buildLeft from '../methods/buildLeft';
+
 export type TDirectiveName =
   | 'cols'
   | 'pad'
@@ -16,117 +42,125 @@ export type TDirectiveName =
   | 'miw'
   | 'mih'
   | 'wdh'
-  | 'hgt';
+  | 'hgt'
+  | 'pos'
+  | 't'
+  | 'r'
+  | 'b'
+  | 'l';
 
 export interface IProcessor {
-  set: string;
-  build: string;
+  build: (values: string, insertStyles: boolean) => IStyles | Error;
   ruleCss: string;
 }
 
 export const processors: Record<TDirectiveName, IProcessor> = {
   cols: {
-    set: 'setCols',
-    build: 'buildCols',
+    build: buildCols,
     ruleCss: 'width',
   },
 
   // Paddings
   pad: {
-    set: 'setPad',
-    build: 'buildPad',
+    build: buildPad,
     ruleCss: 'padding',
   },
   padt: {
-    set: 'setPadTop',
-    build: 'buildPadTop',
+    build: buildPadTop,
     ruleCss: 'padding-top',
   },
   padr: {
-    set: 'setPadRight',
-    build: 'buildPadRight',
+    build: buildPadRight,
     ruleCss: 'padding-right',
   },
   padb: {
-    set: 'setPadBottom',
-    build: 'buildPadBottom',
+    build: buildPadBottom,
     ruleCss: 'padding-bottom',
   },
   padl: {
-    set: 'setPadLeft',
-    build: 'buildPadLeft',
+    build: buildPadLeft,
     ruleCss: 'padding-left',
   },
 
   // Margin
   mar: {
-    set: 'setMar',
-    build: 'buildMar',
+    build: buildMar,
     ruleCss: 'margin',
   },
   mart: {
-    set: 'setMarTop',
-    build: 'buildMarTop',
+    build: buildMarTop,
     ruleCss: 'margin-top',
   },
   marr: {
-    set: 'setMarRight',
-    build: 'buildMarRight',
+    build: buildMarRight,
     ruleCss: 'margin-right',
   },
   marb: {
-    set: 'setMarBottom',
-    build: 'buildMarBottom',
+    build: buildMarBottom,
     ruleCss: 'margin-bottom',
   },
   marl: {
-    set: 'setMarLeft',
-    build: 'buildMarLeft',
+    build: buildMarLeft,
     ruleCss: 'margin-left',
   },
 
   // Flex Box
   flex: {
-    set: 'setFlex',
-    build: 'buildFlex',
+    build: buildFlex,
     ruleCss: 'display: flex',
   },
 
   // Max & Min Width & Height
   mxw: {
-    set: 'setMaxWidth',
-    build: 'buildMaxWidth',
+    build: buildMaxWidth,
     ruleCss: 'max-width',
   },
 
   mxh: {
-    set: 'setMaxHeight',
-    build: 'buildMaxHeight',
+    build: buildMaxHeight,
     ruleCss: 'max-height',
   },
 
   miw: {
-    set: 'setMinWidth',
-    build: 'buildMinWidth',
+    build: buildMinWidth,
     ruleCss: 'min-width',
   },
 
   mih: {
-    set: 'setMinHeight',
-    build: 'buildMinHeight',
+    build: buildMinHeight,
     ruleCss: 'min-height',
   },
 
   // Width & Height
   wdh: {
-    set: 'setWidth',
-    build: 'buildWidth',
+    build: buildWidth,
     ruleCss: 'width',
   },
 
   hgt: {
-    set: 'setHeight',
-    build: 'buildHeight',
+    build: buildHeight,
     ruleCss: 'height',
+  },
+
+  // Position
+  pos: {
+    build: buildPosition,
+    ruleCss: 'position',
+  },
+  t: {
+    build: buildTop,
+    ruleCss: 'top',
+  },
+  r: {
+    build: buildRight,
+    ruleCss: 'right',
+  },
+  b: {
+    build: buildBottom,
+    ruleCss: 'bottom',
+  },
+  l: {
+    build: buildLeft,
+    ruleCss: 'left',
   },
 };

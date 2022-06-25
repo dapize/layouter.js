@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setHeight from '../../src/methods/setHeight';
 
 describe('Setting Height', () => {
-  setConfig({
+  setConfig(window,{
     debug: false,
   });
 

@@ -8,11 +8,10 @@
 # Layouter
 
 [![CI](https://github.com/dapize/layouter.js/workflows/CI/badge.svg)](https://github.com/dapize/layouter.js/actions?query=workflow:"CI")
-[![Made with TypeScript](https://img.shields.io/badge/TypeScript-4-blue?logo=typescript&logoColor=white)](https://typescriptlang.org "Go to TypeScript homepage")
+[![Made with TypeScript](https://img.shields.io/badge/TypeScript-4-blue?logo=typescript&logoColor=white)](https://typescriptlang.org 'Go to TypeScript homepage')
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![GitHub tag](https://img.shields.io/github/v/release/dapize/layouter.js?display_name=tag)](https://github.com/dapize/layouter.js/releases/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
-
 
 Es una librería que nos permite armar todo el layout **de forma rápida y sencilla**, usando directivas sobre los nodos HTML. Principalmente funciona **basándonos en el uso de una grilla**, _especialmente para la definición de columnas_.
 
@@ -29,8 +28,12 @@ Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra 
 ```
 
 **o también** puedes usar **uno** de estos CDNs:
+
 ```html
-<script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js"
+    defer
+></script>
 <script src="https://unpkg.com/layouter.js/dist/layouter.umd.js" defer></script>
 ```
 
@@ -160,6 +163,11 @@ Uno puede escribir su propia configuración creando una variable llamada **'layo
 | [Mxh](DOCS.md#maxheight)       | `mxh="200"`                | Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
 | [Miw](DOCS.md#minwidth)        | `miw="300"`                | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas). |
 | [Mih](DOCS.md#minheight)       | `mih="300"`                | Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
+| [Pos](DOCS.md#position)        | `pos="re"`                 | Determina la **posición** del nodo.                                                                                |
+| [T](DOCS.md#top)               | `t="10"`                   | Determina el **top** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).          |
+| [R](DOCS.md#right)             | `r="10"`                   | Determina el **right** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).        |
+| [B](DOCS.md#bottom)            | `b="10"`                   | Determina el **bottom** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).       |
+| [L](DOCS.md#left)              | `l="10"`                   | Determina el **left** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).         |
 
 ## 🌐 Websites que usan layouter
 

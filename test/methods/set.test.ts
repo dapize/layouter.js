@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import set from '../../src/methods/set';
 
 describe('Building all', () => {
-  setConfig({
+  setConfig(window, {
     debug: false
   });
 

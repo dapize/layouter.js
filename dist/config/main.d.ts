@@ -11,13 +11,14 @@ export interface IConfigUser {
     debug?: boolean;
     ready?: (instance: ILayouter) => void;
 }
-interface IConfigNums {
+interface IConfigNumsOut {
     scope: IScopes;
     cols: ICols;
     sizes: ICols;
     breakpoints: IBreakpoints;
 }
-export interface IConfig extends Omit<IConfigUser, 'breakpoints'>, IConfigNums {
+export interface IConfig extends Omit<IConfigUser, 'breakpoints'>, IConfigNumsOut {
+    context: Window & typeof globalThis;
     styles: {
         [className: string]: string;
     };
@@ -29,8 +30,8 @@ declare global {
     }
 }
 export declare let baseConfig: IConfigUser;
-export declare const setConfig: (customCfg?: Partial<IConfigUser>) => IConfig;
+export declare const setConfig: (context: Window & typeof globalThis, customCfg?: Partial<IConfigUser>) => IConfig;
+declare const getConfig: () => IConfig;
 export declare const setStyles: (className: string, value: string) => void;
-declare const getConfig: (reset?: boolean) => IConfig;
 export declare const updateConfig: (userConfig: Partial<IConfigUser>) => IConfig;
 export default getConfig;

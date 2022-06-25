@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setPads from '../../src/methods/setPad';
 
 describe('Setting pads', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', async () => {
     const myDiv = document.createElement('div');

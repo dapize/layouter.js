@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildMaxHeight from '../../src/methods/buildMaxHeight';
 
 describe('Buildings Max-height', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildMaxHeight('100')).toEqual({

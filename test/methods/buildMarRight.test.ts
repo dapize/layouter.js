@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildMarRight from '../../src/methods/buildMarRight';
 
 describe('Buildings Margin-right', () => {
-  setConfig({
+  setConfig(window, {
     breakpoints: {
       xs: {
         width: 320,

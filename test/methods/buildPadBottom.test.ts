@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildPadBottom from '../../src/methods/buildPadBottom';
 
 describe('Buildings Padding-bottom', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildPadBottom('40')).toEqual({

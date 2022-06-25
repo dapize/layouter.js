@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setPadLeft from '../../src/methods/setPadLeft';
 
 describe('Setting padding left', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', async () => {
     const myDiv = document.createElement('div');

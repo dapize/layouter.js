@@ -5,6 +5,7 @@ export interface ICreateScopeStyles {
   bp: string;
   insertionType: TInsertion;
   node: HTMLElement;
+  context: Window & typeof globalThis;
 }
 
 export interface IRCreateScopeStyles {
@@ -22,11 +23,12 @@ const createScopeStyles = ({
   bp,
   insertionType,
   node,
+  context,
 }: ICreateScopeStyles): IRCreateScopeStyles => {
-  let stylesScope = document.getElementById('layouter-' + bp);
+  let stylesScope = context.document.getElementById('layouter-' + bp);
   if (!stylesScope) {
-    stylesScope = document.createElement('style');
-    stylesScope.appendChild(document.createTextNode('')); // WebKit hack :(
+    stylesScope = context.document.createElement('style');
+    stylesScope.appendChild(context.document.createTextNode('')); // WebKit hack :(
     const nodeParent = node.parentNode as HTMLDivElement;
     switch (insertionType) {
       case 'before':
@@ -55,7 +57,7 @@ const createScopeStyles = ({
       method: {
         insertRule: (ruleCss: string) => {
           (stylesScope as HTMLDivElement).appendChild(
-            document.createTextNode(ruleCss)
+            context.document.createTextNode(ruleCss)
           );
         },
         rules: [],

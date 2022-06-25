@@ -1,9 +1,12 @@
+import getConfig from '../config/main';
+
 const addClasses = (
   Node: HTMLElement | Element,
   classesNames: string,
   overwrite?: boolean
 ): Promise<void> => {
   return new Promise((resolve) => {
+    const config = getConfig();
     const names = classesNames.split(' ');
     let classesToAdd: string[] = names;
     if (!overwrite) {
@@ -14,7 +17,7 @@ const addClasses = (
       }
     }
 
-    const obsNode = new MutationObserver((mutations) => {
+    const obsNode = new config.context.MutationObserver((mutations) => {
       const target = mutations[0].target;
       const currentClasses = (target as Element).className.split(' ');
       const containsAll = names.every((element) =>

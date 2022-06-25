@@ -1,8 +1,7 @@
-import addClasses from '../utils/addClasses';
 import buildAttr from '../helpers/buildAttr';
 import regError from '../helpers/regError';
-import removeAttr from '../utils/removeAttr';
 import { TDirectiveName } from '../config/processors';
+import eventReady from '../helpers/eventReady';
 
 const setAttr = (
   Node: HTMLElement | Element,
@@ -26,13 +25,12 @@ const setAttr = (
     const classesToAdd = Object.keys(objStyles).join(' ');
 
     // removing prop of Node and adding the corresponding classes
-    removeAttr(Node, directive)
-      .then(() => addClasses(Node, classesToAdd))
-      .then(() => {
-        resolve();
-        const event = new CustomEvent('layout:ready');
-        Node.dispatchEvent(event);
-      });
+    eventReady({
+      node: Node,
+      directive,
+      classes: classesToAdd,
+      resolve,
+    });
   });
 };
 

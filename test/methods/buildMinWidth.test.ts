@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildMinWidth from '../../src/methods/buildMinWidth';
 
 describe('Buildings Min-width', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildMinWidth('100')).toEqual({

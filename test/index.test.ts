@@ -8,7 +8,7 @@ describe('Init', () => {
     myDiv.setAttribute('mart', '40');
     myDiv.textContent = 'Simple'
     document.body.appendChild(myDiv);
-    layouter();
+    layouter(window);
     await waitFor(() => {
       expect(screen.getByText('Simple')).toHaveClass('mart-40')
     })

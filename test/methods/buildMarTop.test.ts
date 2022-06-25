@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildMarTop from '../../src/methods/buildMarTop';
 
 describe('Buildings margin-top', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildMarTop('40')).toEqual({

@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildMaxWidth from '../../src/methods/buildMaxWidth';
 
 describe('Buildings Max-width', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildMaxWidth('100')).toEqual({

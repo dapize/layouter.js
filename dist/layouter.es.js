@@ -20,12 +20,13 @@ const createScopeStyles = ({
   bridge: withBridge,
   bp,
   insertionType,
-  node
+  node,
+  context
 }) => {
-  let stylesScope = document.getElementById("layouter-" + bp);
+  let stylesScope = context.document.getElementById("layouter-" + bp);
   if (!stylesScope) {
-    stylesScope = document.createElement("style");
-    stylesScope.appendChild(document.createTextNode(""));
+    stylesScope = context.document.createElement("style");
+    stylesScope.appendChild(context.document.createTextNode(""));
     const nodeParent = node.parentNode;
     switch (insertionType) {
       case "before":
@@ -50,7 +51,7 @@ const createScopeStyles = ({
     bridge = {
       method: {
         insertRule: (ruleCss) => {
-          stylesScope.appendChild(document.createTextNode(ruleCss));
+          stylesScope.appendChild(context.document.createTextNode(ruleCss));
         },
         rules: []
       },
@@ -59,7 +60,12 @@ const createScopeStyles = ({
   }
   return bridge;
 };
-const scopesStylesBuilder = (breakpoints, bridge, scope) => {
+const scopesStylesBuilder = ({
+  breakpoints,
+  bridge,
+  scope,
+  context
+}) => {
   const scopes = scope || {};
   Object.keys(breakpoints).forEach((bp) => {
     if (!scopes[bp]) {
@@ -67,7 +73,8 @@ const scopesStylesBuilder = (breakpoints, bridge, scope) => {
         bridge,
         bp,
         insertionType: "append",
-        node: document.body
+        node: context.document.body,
+        context
       });
     }
   });
@@ -78,7 +85,7 @@ const breakpointsOrdered = (bps, sizes) => {
   Object.keys(sizes).forEach((bpName) => bpsOrdered[bpName] = bps[bpName]);
   return bpsOrdered;
 };
-const version = "1.2.1";
+const version = "1.3";
 const breakpointsInit = {
   xs: {
     width: 360,
@@ -108,44 +115,51 @@ let baseConfig = {
   debug: true
 };
 let config;
-const configNums = (bps, bridge, scope) => {
+const configNums = ({
+  bps,
+  bridge,
+  scope,
+  context
+}) => {
   const sizes = breakpointsNums(bps, "width");
   const finalBps = breakpointsOrdered(bps, sizes);
   return {
     sizes,
     cols: breakpointsNums(bps, "cols"),
-    scope: scopesStylesBuilder(finalBps, bridge, scope),
+    scope: scopesStylesBuilder({
+      breakpoints: finalBps,
+      bridge,
+      scope,
+      context
+    }),
     breakpoints: finalBps
   };
 };
-const setConfig = (customCfg = {}) => {
-  if (typeof window !== "undefined") {
-    baseConfig = {
-      ...baseConfig,
-      ...window.layouterConfig,
-      ...customCfg
-    };
-  } else {
-    if (customCfg) {
-      baseConfig = {
-        ...baseConfig,
-        ...customCfg
-      };
-    }
-  }
-  config = {
+const setConfig = (context, customCfg = {}) => {
+  const contextConfig = context.layouterConfig || {};
+  baseConfig = {
     ...baseConfig,
-    ...configNums(baseConfig.breakpoints, baseConfig.bridge),
+    ...customCfg,
+    ...contextConfig
+  };
+  config = {
+    context,
+    ...baseConfig,
+    ...configNums({
+      bps: baseConfig.breakpoints,
+      bridge: baseConfig.bridge,
+      context
+    }),
     styles: {},
     version
   };
   return config;
 };
+const getConfig = () => {
+  return config;
+};
 const setStyles = (className, value) => {
   config.styles[className] = value;
-};
-const getConfig = (reset2 = false) => {
-  return reset2 ? setConfig() : config;
 };
 const updateConfig = (userConfig) => {
   config = {
@@ -155,114 +169,15 @@ const updateConfig = (userConfig) => {
   if (userConfig.breakpoints) {
     config = {
       ...config,
-      ...configNums(config.breakpoints, config.bridge, config.scope)
+      ...configNums({
+        bps: config.breakpoints,
+        bridge: config.bridge,
+        scope: config.scope,
+        context: config.context
+      })
     };
   }
   return config;
-};
-const processors = {
-  cols: {
-    set: "setCols",
-    build: "buildCols",
-    ruleCss: "width"
-  },
-  pad: {
-    set: "setPad",
-    build: "buildPad",
-    ruleCss: "padding"
-  },
-  padt: {
-    set: "setPadTop",
-    build: "buildPadTop",
-    ruleCss: "padding-top"
-  },
-  padr: {
-    set: "setPadRight",
-    build: "buildPadRight",
-    ruleCss: "padding-right"
-  },
-  padb: {
-    set: "setPadBottom",
-    build: "buildPadBottom",
-    ruleCss: "padding-bottom"
-  },
-  padl: {
-    set: "setPadLeft",
-    build: "buildPadLeft",
-    ruleCss: "padding-left"
-  },
-  mar: {
-    set: "setMar",
-    build: "buildMar",
-    ruleCss: "margin"
-  },
-  mart: {
-    set: "setMarTop",
-    build: "buildMarTop",
-    ruleCss: "margin-top"
-  },
-  marr: {
-    set: "setMarRight",
-    build: "buildMarRight",
-    ruleCss: "margin-right"
-  },
-  marb: {
-    set: "setMarBottom",
-    build: "buildMarBottom",
-    ruleCss: "margin-bottom"
-  },
-  marl: {
-    set: "setMarLeft",
-    build: "buildMarLeft",
-    ruleCss: "margin-left"
-  },
-  flex: {
-    set: "setFlex",
-    build: "buildFlex",
-    ruleCss: "display: flex"
-  },
-  mxw: {
-    set: "setMaxWidth",
-    build: "buildMaxWidth",
-    ruleCss: "max-width"
-  },
-  mxh: {
-    set: "setMaxHeight",
-    build: "buildMaxHeight",
-    ruleCss: "max-height"
-  },
-  miw: {
-    set: "setMinWidth",
-    build: "buildMinWidth",
-    ruleCss: "min-width"
-  },
-  mih: {
-    set: "setMinHeight",
-    build: "buildMinHeight",
-    ruleCss: "min-height"
-  },
-  wdh: {
-    set: "setWidth",
-    build: "buildWidth",
-    ruleCss: "width"
-  },
-  hgt: {
-    set: "setHeight",
-    build: "buildHeight",
-    ruleCss: "height"
-  }
-};
-const getParameters = (Node) => {
-  const params = {};
-  const attrs = Node.attributes;
-  const paramNames = Object.keys(processors);
-  Array.prototype.forEach.call(attrs, (attr) => {
-    if (paramNames.includes(attr.name)) {
-      if (attr.value !== "")
-        params[attr.name] = attr.value.trim().split(" ").filter((item) => item).join(" ");
-    }
-  });
-  return params;
 };
 const prepareParam = (param) => {
   let bp;
@@ -313,6 +228,7 @@ const getScopeByclassName = (className) => {
   const intConfig = getConfig();
   const scope = intConfig.scope;
   const bridge = intConfig.bridge;
+  const context = intConfig.context;
   if (atIndex === -1) {
     const firstBp = Object.keys(intConfig.breakpoints)[0];
     return scope[firstBp];
@@ -328,7 +244,8 @@ const getScopeByclassName = (className) => {
       bridge,
       bp,
       insertionType: "before",
-      node: scope[bpUntil].node
+      node: scope[bpUntil].node,
+      context
     });
     return scope[bp];
   }
@@ -340,7 +257,8 @@ const getScopeByclassName = (className) => {
     bridge,
     bp,
     insertionType: "after",
-    node: scope[fromBp].node
+    node: scope[fromBp].node,
+    context
   });
   return scope[bp];
 };
@@ -560,7 +478,7 @@ const buildFlex = (valFlex, insertStyles = false) => {
     deep: insertStyles
   });
 };
-const relativeMeasures = ["%", "rem", "em", "ex", "vw", "vh"];
+const relativeMeasures = ["%", "rem", "em", "ex", "vw", "vh", "pt", "cm", "pc"];
 const processedNumber = (n) => {
   let nProcessed;
   if (n.includes("/")) {
@@ -580,7 +498,7 @@ const processedNumber = (n) => {
   }
   return nProcessed;
 };
-const buildAttr = (values, prop, insertStyles = false) => {
+const buildAttr = (values, directive, insertStyles = false) => {
   const bpCals = {};
   values.split(" ").forEach((param) => {
     const paramProcessed = prepareParam(param);
@@ -594,7 +512,7 @@ const buildAttr = (values, prop, insertStyles = false) => {
     };
   });
   return buildCss({
-    type: prop,
+    type: directive,
     bps: bpCals,
     deep: insertStyles
   });
@@ -647,32 +565,168 @@ const buildHeight = (valHeight, insertStyles = false) => {
 const buildWidth = (valWidth, insertStyles = false) => {
   return buildAttr(valWidth, "wdh", insertStyles);
 };
-const builders = {
-  buildCols,
-  buildFlex,
-  buildPad,
-  buildPadTop,
-  buildPadRight,
-  buildPadBottom,
-  buildPadLeft,
-  buildMar,
-  buildMarTop,
-  buildMarRight,
-  buildMarBottom,
-  buildMarLeft,
-  buildMaxWidth,
-  buildMaxHeight,
-  buildMinWidth,
-  buildMinHeight,
-  buildHeight,
-  buildWidth
+const positionProsAndVals = {
+  st: "static",
+  ab: "absolute",
+  fi: "fixed",
+  re: "relative",
+  si: "sticky",
+  in: "initial",
+  ih: "inherit"
+};
+const buildPosition = (valPos, insertStyles = false) => {
+  const bpCals = {};
+  let err = false;
+  for (const param of valPos.split(" ")) {
+    let propVal;
+    const selectorName = param;
+    const paramPrepared = prepareParam(param);
+    const bpNames = paramPrepared.breakPoints;
+    const nameProp = paramPrepared.numbers;
+    if (!positionProsAndVals[nameProp]) {
+      err = regError("Non-existent Alias", "Don't exists the alias '" + nameProp + "' in Position vault.");
+      break;
+    }
+    propVal = positionProsAndVals[nameProp];
+    if (paramPrepared.important)
+      propVal += " !important";
+    bpCals[bpNames] = {
+      name: selectorName,
+      value: propVal
+    };
+  }
+  if (err)
+    return err;
+  return buildCss({
+    type: "pos",
+    bps: bpCals,
+    deep: insertStyles
+  });
+};
+const buildTop = (val, insertStyles = false) => {
+  return buildAttr(val, "t", insertStyles);
+};
+const buildRight = (val, insertStyles = false) => {
+  return buildAttr(val, "r", insertStyles);
+};
+const buildBottom = (val, insertStyles = false) => {
+  return buildAttr(val, "b", insertStyles);
+};
+const buildLeft = (val, insertStyles = false) => {
+  return buildAttr(val, "l", insertStyles);
+};
+const processors = {
+  cols: {
+    build: buildCols,
+    ruleCss: "width"
+  },
+  pad: {
+    build: buildPad,
+    ruleCss: "padding"
+  },
+  padt: {
+    build: buildPadTop,
+    ruleCss: "padding-top"
+  },
+  padr: {
+    build: buildPadRight,
+    ruleCss: "padding-right"
+  },
+  padb: {
+    build: buildPadBottom,
+    ruleCss: "padding-bottom"
+  },
+  padl: {
+    build: buildPadLeft,
+    ruleCss: "padding-left"
+  },
+  mar: {
+    build: buildMar,
+    ruleCss: "margin"
+  },
+  mart: {
+    build: buildMarTop,
+    ruleCss: "margin-top"
+  },
+  marr: {
+    build: buildMarRight,
+    ruleCss: "margin-right"
+  },
+  marb: {
+    build: buildMarBottom,
+    ruleCss: "margin-bottom"
+  },
+  marl: {
+    build: buildMarLeft,
+    ruleCss: "margin-left"
+  },
+  flex: {
+    build: buildFlex,
+    ruleCss: "display: flex"
+  },
+  mxw: {
+    build: buildMaxWidth,
+    ruleCss: "max-width"
+  },
+  mxh: {
+    build: buildMaxHeight,
+    ruleCss: "max-height"
+  },
+  miw: {
+    build: buildMinWidth,
+    ruleCss: "min-width"
+  },
+  mih: {
+    build: buildMinHeight,
+    ruleCss: "min-height"
+  },
+  wdh: {
+    build: buildWidth,
+    ruleCss: "width"
+  },
+  hgt: {
+    build: buildHeight,
+    ruleCss: "height"
+  },
+  pos: {
+    build: buildPosition,
+    ruleCss: "position"
+  },
+  t: {
+    build: buildTop,
+    ruleCss: "top"
+  },
+  r: {
+    build: buildRight,
+    ruleCss: "right"
+  },
+  b: {
+    build: buildBottom,
+    ruleCss: "bottom"
+  },
+  l: {
+    build: buildLeft,
+    ruleCss: "left"
+  }
+};
+const getParameters = (Node) => {
+  const params = {};
+  const attrs = Node.attributes;
+  const paramNames = Object.keys(processors);
+  Array.prototype.forEach.call(attrs, (attr) => {
+    if (paramNames.includes(attr.name)) {
+      if (attr.value !== "")
+        params[attr.name] = attr.value.trim().split(" ").filter((item) => item).join(" ");
+    }
+  });
+  return params;
 };
 const build = (obj, insertStyles = false) => {
   const rObj = {};
   let err = false;
   for (const prop in obj) {
     const propData = processors[prop];
-    const objStyles = builders[propData.build](obj[prop], insertStyles);
+    const objStyles = propData.build(obj[prop], insertStyles);
     if (objStyles instanceof Error) {
       err = objStyles;
       break;
@@ -686,6 +740,7 @@ const build = (obj, insertStyles = false) => {
 };
 const addClasses = (Node, classesNames, overwrite) => {
   return new Promise((resolve) => {
+    const config2 = getConfig();
     const names = classesNames.split(" ");
     let classesToAdd = names;
     if (!overwrite) {
@@ -695,7 +750,7 @@ const addClasses = (Node, classesNames, overwrite) => {
         return;
       }
     }
-    const obsNode = new MutationObserver((mutations) => {
+    const obsNode = new config2.context.MutationObserver((mutations) => {
       const target = mutations[0].target;
       const currentClasses = target.className.split(" ");
       const containsAll = names.every((element) => currentClasses.includes(element));
@@ -719,13 +774,13 @@ const addClasses = (Node, classesNames, overwrite) => {
     }
   });
 };
-const removeProp = (Node, propName) => {
+const removeProp = (Node, propName, context) => {
   return new Promise((resolve) => {
     if (!Node.hasAttribute(propName)) {
       resolve();
       return;
     }
-    const obsNode = new MutationObserver(() => {
+    const obsNode = new context.MutationObserver(() => {
       obsNode.disconnect();
       resolve();
     });
@@ -739,19 +794,28 @@ const removeProp = (Node, propName) => {
     Node.removeAttribute(propName);
   });
 };
-const removeProps = (Node, propNames) => {
+const removeProps = (Node, propNames, context) => {
   return new Promise((resolve) => {
-    const promises = propNames.map((name) => removeProp(Node, name));
+    const promises = propNames.map((name) => removeProp(Node, name, context));
     Promise.all(promises).then(() => resolve());
   });
 };
 const removeAttr = (Node, propNames) => {
   return new Promise((resolve) => {
+    const config2 = getConfig();
     if (Array.isArray(propNames)) {
-      removeProps(Node, propNames).then(resolve);
+      removeProps(Node, propNames, config2.context).then(resolve);
     } else {
-      removeProp(Node, propNames).then(resolve);
+      removeProp(Node, propNames, config2.context).then(resolve);
     }
+  });
+};
+const eventReady = ({ node, directive, classes, resolve }) => {
+  const config2 = getConfig();
+  removeAttr(node, directive).then(() => addClasses(node, classes)).then(() => {
+    resolve();
+    const event = new config2.context.CustomEvent("layout:ready");
+    node.dispatchEvent(event);
   });
 };
 const set = (Node, parameters) => {
@@ -774,10 +838,11 @@ const set = (Node, parameters) => {
     }
     const classes = classesObj;
     const classesNames = Object.keys(classes).map((name) => Object.keys(classes[name])).flat().join(" ");
-    removeAttr(Node, arrParams).then(() => addClasses(Node, classesNames)).then(() => {
-      resolve();
-      const event = new CustomEvent("layout:ready");
-      Node.dispatchEvent(event);
+    eventReady({
+      node: Node,
+      directive: arrParams,
+      classes: classesNames,
+      resolve
     });
   });
 };
@@ -795,10 +860,11 @@ const setFlex = (Node, flexValues) => {
       return;
     }
     const classesToAdd = Object.keys(objStyles).join(" ");
-    removeAttr(Node, "flex").then(() => addClasses(Node, classesToAdd)).then(() => {
-      resolve();
-      const event = new CustomEvent("layout:ready");
-      Node.dispatchEvent(event);
+    eventReady({
+      node: Node,
+      directive: "flex",
+      classes: classesToAdd,
+      resolve
     });
   });
 };
@@ -816,10 +882,11 @@ const setCols = (Node, columns) => {
       return;
     }
     const classesToAdd = Object.keys(objStyles).join(" ");
-    removeAttr(Node, "cols").then(() => addClasses(Node, classesToAdd)).then(() => {
-      resolve();
-      const event = new CustomEvent("layout:ready");
-      Node.dispatchEvent(event);
+    eventReady({
+      node: Node,
+      directive: "cols",
+      classes: classesToAdd,
+      resolve
     });
   });
 };
@@ -833,10 +900,11 @@ const setAttr = (Node, directive, values) => {
     }
     const objStyles = buildAttr(directiveValues, directive, true);
     const classesToAdd = Object.keys(objStyles).join(" ");
-    removeAttr(Node, directive).then(() => addClasses(Node, classesToAdd)).then(() => {
-      resolve();
-      const event = new CustomEvent("layout:ready");
-      Node.dispatchEvent(event);
+    eventReady({
+      node: Node,
+      directive,
+      classes: classesToAdd,
+      resolve
     });
   });
 };
@@ -888,6 +956,21 @@ const setWidth = (Node, values) => {
 const setMaxHeight = (Node, values) => {
   return setAttr(Node, "mxh", values);
 };
+const setPosition = (Node, values) => {
+  return setAttr(Node, "pos", values);
+};
+const setTop = (Node, values) => {
+  return setAttr(Node, "t", values);
+};
+const setRight = (Node, values) => {
+  return setAttr(Node, "r", values);
+};
+const setBottom = (Node, values) => {
+  return setAttr(Node, "b", values);
+};
+const setLeft = (Node, values) => {
+  return setAttr(Node, "l", values);
+};
 const reset = (Node) => {
   return new Promise((resolve) => {
     const layouterClasses = Object.keys(processors);
@@ -926,9 +1009,14 @@ const reset = (Node) => {
 };
 const initAutoProcessor = (layouter2) => {
   return new Promise((resolve) => {
+    const config2 = getConfig();
     const props = Object.keys(processors);
     const attrs = props.map((prop) => `[${prop}]`).join(", ");
-    const nodes = document.querySelectorAll(attrs);
+    const nodes = config2.context.document.querySelectorAll(attrs);
+    if (!nodes.length) {
+      resolve(layouter2);
+      return;
+    }
     const setNodes = /* @__PURE__ */ new Set();
     Array.prototype.forEach.call(nodes, (itemNode) => {
       setNodes.add(itemNode);
@@ -941,8 +1029,9 @@ const initAutoProcessor = (layouter2) => {
   });
 };
 const mainObserver = (layouter2) => {
+  const config2 = getConfig();
   const props = Object.keys(processors);
-  const obsBody = new MutationObserver((mutations) => {
+  const obsBody = new layouter2.context.MutationObserver((mutations) => {
     for (const mutation of mutations) {
       if (mutation.type === "childList") {
         if (!mutation.addedNodes.length) {
@@ -974,10 +1063,10 @@ const mainObserver = (layouter2) => {
     attributeFilter: props,
     characterData: false
   };
-  obsBody.observe(document.body, observerOptions);
+  obsBody.observe(config2.context.document.body, observerOptions);
 };
-const layouter = (userConfig = {}) => {
-  const config2 = setConfig(userConfig);
+const layouter = (context, userConfig = {}) => {
+  const config2 = setConfig(context, userConfig);
   const instance = {
     ...config2,
     getParameters,
@@ -1021,7 +1110,17 @@ const layouter = (userConfig = {}) => {
     setHeight,
     setMinHeight,
     setMaxHeight,
-    reset
+    reset,
+    buildPosition,
+    buildTop,
+    buildRight,
+    buildBottom,
+    buildLeft,
+    setPosition,
+    setTop,
+    setRight,
+    setBottom,
+    setLeft
   };
   initAutoProcessor(instance).then(() => {
     if (instance.ready)
@@ -1031,7 +1130,7 @@ const layouter = (userConfig = {}) => {
   return instance;
 };
 if (typeof window !== "undefined" && typeof exports === "undefined") {
-  window.layouter = layouter();
+  window.layouter = layouter(window);
 }
 export { layouter as default };
 //# sourceMappingURL=layouter.es.js.map

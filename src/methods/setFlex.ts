@@ -1,7 +1,6 @@
-import addClasses from '../utils/addClasses';
 import regError from '../helpers/regError';
 import buildFlex from './buildFlex';
-import removeAttr from '../utils/removeAttr';
+import eventReady from '../helpers/eventReady';
 
 const setFlex = (
   Node: HTMLElement | Element,
@@ -29,13 +28,12 @@ const setFlex = (
     const classesToAdd = Object.keys(objStyles).join(' ');
 
     // removing prop of Node and adding the corresponding classes
-    removeAttr(Node, 'flex')
-      .then(() => addClasses(Node, classesToAdd))
-      .then(() => {
-        resolve();
-        const event = new CustomEvent('layout:ready');
-        Node.dispatchEvent(event);
-      });
+    eventReady({
+      node: Node,
+      directive: 'flex',
+      classes: classesToAdd,
+      resolve,
+    });
   });
 };
 

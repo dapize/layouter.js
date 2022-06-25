@@ -4,6 +4,7 @@ export interface ICreateScopeStyles {
     bp: string;
     insertionType: TInsertion;
     node: HTMLElement;
+    context: Window & typeof globalThis;
 }
 export interface IRCreateScopeStyles {
     method: CSSStyleSheet | {
@@ -12,5 +13,5 @@ export interface IRCreateScopeStyles {
     };
     node: HTMLElement;
 }
-declare const createScopeStyles: ({ bridge: withBridge, bp, insertionType, node, }: ICreateScopeStyles) => IRCreateScopeStyles;
+declare const createScopeStyles: ({ bridge: withBridge, bp, insertionType, node, context, }: ICreateScopeStyles) => IRCreateScopeStyles;
 export default createScopeStyles;

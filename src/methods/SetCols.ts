@@ -1,7 +1,6 @@
-import addClasses from '../utils/addClasses';
 import regError from '../helpers/regError';
 import buildCols from './buildCols';
-import removeAttr from '../utils/removeAttr';
+import eventReady from '../helpers/eventReady';
 
 const setCols = (
   Node: HTMLElement | Element,
@@ -28,13 +27,12 @@ const setCols = (
     const classesToAdd = Object.keys(objStyles).join(' ');
 
     // removing prop of Node and adding the corresponding classes
-    removeAttr(Node, 'cols')
-      .then(() => addClasses(Node, classesToAdd))
-      .then(() => {
-        resolve();
-        const event = new CustomEvent('layout:ready');
-        Node.dispatchEvent(event);
-      });
+    eventReady({
+      node: Node,
+      directive: 'cols',
+      classes: classesToAdd,
+      resolve,
+    });
   });
 };
 

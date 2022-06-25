@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildMarLeft from '../../src/methods/buildMarLeft';
 
 describe('Buildings Margin Left', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildMarLeft('40')).toEqual({

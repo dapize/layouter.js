@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import buildFlex from '../../src/methods/buildFlex';
 
 describe('Building Flex', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', () => {
     expect(buildFlex('jc:ce')).toEqual({

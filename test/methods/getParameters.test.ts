@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import getParameters from '../../src/methods/getParameters';
 
 describe('Get Parameters on a Node', () => {
-  setConfig();
+  setConfig(window);
 
   it('One prop', () => {
     const myDiv = document.createElement('div');

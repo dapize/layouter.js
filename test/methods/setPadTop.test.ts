@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setPadTop from '../../src/methods/setPadTop';
 
 describe('Setting padding top', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', async () => {
     const myDiv = document.createElement('div');

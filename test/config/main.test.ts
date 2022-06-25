@@ -1,15 +1,10 @@
+import { waitFor } from '@testing-library/dom';
 import config, { baseConfig } from '../../src/config/main';
 import lib from '../../src/layouter';
 
-const readyCb = jest.fn();
-window.layouterConfig = {
-  ready: readyCb
-};
-
 describe('Config', () => {
-  const layouter = lib();
-
   it('Default config', () => {
+    const layouter = lib(window);
     expect(layouter).toMatchObject({
       ...baseConfig,
     });
@@ -33,13 +28,15 @@ describe('Config', () => {
       bridge: false,
     };
     window.layouterConfig = myConfig;
-    const defaultConfig = config(true);
+    lib(window);
+    const defaultConfig = config();
     expect(defaultConfig.prefix).toEqual(myConfig.prefix);
     expect(defaultConfig.breakpoints).toEqual(myConfig.breakpoints);
     expect(defaultConfig.bridge).toEqual(myConfig.bridge);
   });
 
   it('Updating breakpoints', () => {
+    const layouter = lib(window);
     const bps = {
       xs: {
         width: 600,
@@ -56,6 +53,13 @@ describe('Config', () => {
   })
 
   it('ready callback', () => {
-    expect(readyCb).toBeCalled();
+    const readyCb = jest.fn();
+    window.layouterConfig = {
+      ready: readyCb
+    };
+    lib(window);
+    waitFor(() => {
+      expect(readyCb).toBeCalled();
+    })
   })
 });

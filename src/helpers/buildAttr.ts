@@ -1,13 +1,14 @@
 import { TDirectiveName } from '../config/processors';
 import buildCss, { IBpCals } from './buildCss';
+import { IStyles } from './createStyles';
 import prepareParam from './prepareParam';
 import processedNumber from './processedNumber';
 
 const buildAttr = (
   values: string,
-  prop: TDirectiveName,
+  directive: TDirectiveName,
   insertStyles = false
-) => {
+): IStyles => {
   const bpCals: IBpCals = {};
 
   values.split(' ').forEach((param) => {
@@ -28,7 +29,7 @@ const buildAttr = (
 
   // Building the classNames and the styles to use.
   return buildCss({
-    type: prop,
+    type: directive,
     bps: bpCals,
     deep: insertStyles,
   });

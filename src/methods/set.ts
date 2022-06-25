@@ -1,10 +1,9 @@
-import addClasses from '../utils/addClasses';
 import { IStyles } from '../helpers/createStyles';
 import regError from '../helpers/regError';
 import build, { IBuildResult } from './build';
 import getParameters from './getParameters';
-import removeAttr from '../utils/removeAttr';
 import { TDirectiveName } from '../config/processors';
+import eventReady from '../helpers/eventReady';
 
 const set = (
   Node: HTMLElement | Element,
@@ -43,13 +42,12 @@ const set = (
       .join(' ');
 
     // removing unnecessary props
-    removeAttr(Node, arrParams)
-      .then(() => addClasses(Node, classesNames))
-      .then(() => {
-        resolve();
-        const event = new CustomEvent('layout:ready');
-        Node.dispatchEvent(event);
-      });
+    eventReady({
+      node: Node,
+      directive: arrParams,
+      classes: classesNames,
+      resolve,
+    });
   });
 };
 

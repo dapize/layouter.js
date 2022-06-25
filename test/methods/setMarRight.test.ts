@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setMarRight from '../../src/methods/setMarRight';
 
 describe('Setting Margin Right', () => {
-  setConfig();
+  setConfig(window);
 
   it('simple', async () => {
     const myDiv = document.createElement('div');

@@ -2,7 +2,7 @@ import config, { setConfig } from '../../src/config/main';
 import buildAttr from '../../src/helpers/buildAttr';
 
 describe('buildAttr', () => {
-  setConfig();
+  setConfig(window);
   const { styles } = config()
 
   it('simple without insert the styles', () => {

@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import build, { IBuildResult } from '../../src/methods/build';
 
 describe('Building all', () => {
-  setConfig();
+  setConfig(window);
 
   it('All Together', () => {
     const buildResponse = build({

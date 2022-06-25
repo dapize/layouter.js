@@ -3,7 +3,7 @@ import getScopeByclassName from '../../src/helpers/getScopeByclassName';
 import setMarTop from '../../src/methods/setMarTop';
 
 describe('getScopeByclassName', () => {
-  setConfig();
+  setConfig(window);
 
   it('Processing two nodes with the same "until" breakpoint', async () => {
     const myDiv = document.createElement('div');

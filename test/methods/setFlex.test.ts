@@ -2,7 +2,7 @@ import { setConfig } from '../../src/config/main';
 import setFlex from '../../src/methods/setFlex';
 
 describe('Setting Flex', () => {
-  setConfig({
+  setConfig(window, {
     debug: false
   });
 

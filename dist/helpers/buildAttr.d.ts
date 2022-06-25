@@ -1,3 +1,4 @@
 import { TDirectiveName } from '../config/processors';
-declare const buildAttr: (values: string, prop: TDirectiveName, insertStyles?: boolean) => import("./createStyles").IStyles;
+import { IStyles } from './createStyles';
+declare const buildAttr: (values: string, directive: TDirectiveName, insertStyles?: boolean) => IStyles;
 export default buildAttr;
