@@ -30,10 +30,7 @@ Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra 
 **o también** puedes usar **uno** de estos CDNs:
 
 ```html
-<script
-    src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js"
-    defer
-></script>
+<script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
 <script src="https://unpkg.com/layouter.js/dist/layouter.umd.js" defer></script>
 ```
 
