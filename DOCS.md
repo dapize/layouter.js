@@ -30,21 +30,25 @@ Cada breakpoint es un objeto que debe tener como nombre de propiedad un **'alias
     ...,
     breakpoints: {
         xs: {
-            width: 320,
+            width: 360,
             cols: 15
         },
         sm: {
-            width: 768,
-            cols: 21
+            width: 600,
+            cols: 25
         },
         md: {
-            width: 1024,
+            width: 900,
             cols: 31
+        },
+        lg: {
+            width: 1200,
+            cols: 41
         },
         xlg: {
             width: 1536,
             cols: 51
-        }
+        },
     }
 }
 ```
@@ -57,33 +61,33 @@ Ese alias definidos se usará para determinar el breakpoint en cada valor de las
 -   Devido a que normalmente se maqueta en 'mobile first' **el breakpoint 'xs' no necesita un 'media query' (osea: @media).**
 -   Si no se define ninguna unidad de medida en el valor de cualquier directiva (que no sea naturalmente porcentual), se tomará en pixeles [me refiero a esto 🔗](#unidades-de-medida-definidas)
 
-## ⚡ Directivas
+## Directivas
 
-| Nombre                     | Ejemplo                    | Descripción                                                                                                  |
-| -------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| [Cols](#cols)              | `cols="13/15"`             | Determinará las columnas, osea **el width** (de manera porcentual).                                          |
-| [Mart](#mart)              | `mart="10"`                | Determina el **margen** superior de un nodo.                                                                 |
-| [Marr](#marr-marb-marl)    | `marr="2/15"`              | Determinar el **margen** derecho de un nodo.                                                                 |
-| [Marb](#marr-marb-marl)    | `marb="30"`                | Determinar el **margen** inferior de un nodo.                                                                |
-| [Marl](#marr-marb-marl)    | `marl="3/15"`              | Determinar el **margen** izquierdo de un nodo.                                                               |
-| [Mar](#mar)                | `mar="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [mart](DOCS.md#mart), [marr, marb, y marl](DOCS.md#marr-marb-marl).       |
-| [Padt](#padt)              | `padt="10"`                | Determina el **padding** superior de un nodo.                                                                |
-| [Padr](#padr-padb-padl)    | `padr="2/15"`              | Determinar el **padding** derecho de un nodo.                                                                |
-| [Padb](#padr-padb-padl)    | `padb="30"`                | Determinar el **padding** inferior de un nodo.                                                               |
-| [Padl](#padr-padb-padl)    | `padl="3/15"`              | Determinar el **padding** izquierdo de un nodo.                                                              |
-| [Pad](#pad)                | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).       |
-| [Flex](#flex)              | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo, y sus derivados.                                                     |
-| [Wdh](#width)              | `wdh="100"`                | Determina el **ancho** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).         |
-| [Hgt](#height)             | `hgt="100"`                | Determina el **alto** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).          |
-| [Mxw](#maxwidth)           | `mxw="200"`                | Determina el **máximo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
-| [Mxh](#maxheight)          | `mxh="100 150@sm"`         | Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).   |
-| [Miw](#minwidth-minheight) | `miw="200"`                | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
-| [Mih](#minwidth-minheight) | `mih="100 150@sm"`         | Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).   |
-| [Pos](DOCS.md#position)    | `pos="re"`                 | Determina la **posición** del nodo.                                                                          |
-| [T](DOCS.md#top)           | `t="10"`                   | Determina el **top** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).    |
-| [R](DOCS.md#right)         | `r="10"`                   | Determina el **right** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
-| [B](DOCS.md#bottom)        | `b="10"`                   | Determina el **bottom** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas). |
-| [L](DOCS.md#left)          | `l="10"`                   | Determina el **left** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).   |
+| Nombre                             | Ejemplo                    | Descripción                                                                                                  |
+| ---------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| [Cols](#cols)                      | `cols="13/15"`             | Determinará las columnas, osea **el width** (de manera porcentual).                                          |
+| [Mart](#mart)                      | `mart="10"`                | Determina el **margen** superior de un nodo.                                                                 |
+| [Marr](#marr-marb-marl)            | `marr="2/15"`              | Determinar el **margen** derecho de un nodo.                                                                 |
+| [Marb](#marr-marb-marl)            | `marb="30"`                | Determinar el **margen** inferior de un nodo.                                                                |
+| [Marl](#marr-marb-marl)            | `marl="3/15"`              | Determinar el **margen** izquierdo de un nodo.                                                               |
+| [Mar](#mar)                        | `mar="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [mart](DOCS.md#mart), [marr, marb, y marl](DOCS.md#marr-marb-marl).       |
+| [Padt](#padt)                      | `padt="10"`                | Determina el **padding** superior de un nodo.                                                                |
+| [Padr](#padr-padb-padl)            | `padr="2/15"`              | Determinar el **padding** derecho de un nodo.                                                                |
+| [Padb](#padr-padb-padl)            | `padb="30"`                | Determinar el **padding** inferior de un nodo.                                                               |
+| [Padl](#padr-padb-padl)            | `padl="3/15"`              | Determinar el **padding** izquierdo de un nodo.                                                              |
+| [Pad](#pad)                        | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).       |
+| [Flex](#flex)                      | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo, y sus derivados.                                                     |
+| [Wdh](#width)                      | `wdh="100"`                | Determina el **ancho** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).         |
+| [Hgt](#height)                     | `hgt="100"`                | Determina el **alto** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).          |
+| [Mxw](#maxwidth)                   | `mxw="200"`                | Determina el **máximo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
+| [Mxh](#maxheight)                  | `mxh="100 150@sm"`         | Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).   |
+| [Miw](#minwidth-minheight)         | `miw="200"`                | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
+| [Mih](#minwidth-minheight)         | `mih="100 150@sm"`         | Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).   |
+| [Pos](DOCS.md#position)            | `pos="re"`                 | Determina la **posición** del nodo.                                                                          |
+| [T](DOCS.md#top-right-bottom-left) | `t="10"`                   | Determina el **top** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).    |
+| [R](DOCS.md#top-right-bottom-left) | `r="10"`                   | Determina el **right** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
+| [B](DOCS.md#top-right-bottom-left) | `b="10"`                   | Determina el **bottom** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas). |
+| [L](DOCS.md#top-right-bottom-left) | `l="10"`                   | Determina el **left** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).   |
 
 ## Métodos
 
@@ -970,6 +974,139 @@ Sirven para determinar el mínimo ancho y mínimo alto en pixeles respectivament
 
 [&uarr; Volver Arriba](#directivas)
 
+### Position
+
+Sirve para determinar el posicionamiento de un elemento.
+
+#### Equivalencias a sus valores
+
+-   **st**: static
+-   **ab**: absolute
+-   **fi**: fixed
+-   **re**: relative
+-   **si**: sticky
+-   **in**: initial
+-   **ih**: inherit
+
+#### Ejemplo:
+
+```html
+<div pos="re ab@sm fi@md st@lg">...</div>
+```
+
+...luego de auto procesarce obtendríamos este resultado:
+
+```html
+<div class="pos-re pos-ab@sm pos-fi@md pos-st@lg">...</div>
+```
+
+<details>
+<summary>y estos estilos:</summary>
+
+```css
+.pos-re {
+    position: relative;
+}
+
+@media screen and (min-width: 600px) {
+    .pos-ab\@sm {
+        position: absolute;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .pos-fi\@md {
+        position: fixed;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .pos-st\@lg {
+        position: static;
+    }
+}
+```
+
+</details>
+
+[&uarr; Volver Arriba](#directivas)
+
+### Top, Right, Bottom, Left
+
+Sirven para determinar el **top**, **right**, **bottom** y **left** de un elemento
+
+#### Ejemplo:
+
+```html
+<div t="10 20@sm 30@md">...</div>
+<div r="40 50@sm 60@md">...</div>
+<div b="70 80@sm 90@md">...</div>
+<div l="100 200@sm 300@md">...</div>
+```
+
+...luego de auto procesarce obtendríamos este resultado:
+
+```html
+<div class="t-10 t-20@sm t-30@md">...</div>
+<div class="r-40 r-50@sm r-60@md">...</div>
+<div class="b-70 b-80@sm b-90@md">...</div>
+<div class="l-100 l-200@sm l-300@md">...</div>
+```
+
+<details>
+<summary>y estos estilos:</summary>
+
+```css
+.t-10 {
+    top: 10px;
+}
+.r-40 {
+    right: 40px;
+}
+.b-70 {
+    bottom: 70px;
+}
+.l-100 {
+    left: 100px;
+}
+
+@media screen and (min-width: 600px) {
+    .t-20\@sm {
+        top: 20px;
+    }
+    .r-50\@sm {
+        right: 50px;
+    }
+    .r-50\@sm {
+        right: 50px;
+    }
+    .b-80\@sm {
+        bottom: 80px;
+    }
+    .l-200\@sm {
+        left: 200px;
+    }
+}
+@media screen and (min-width: 900px) {
+    .t-30\@md {
+        top: 30px;
+    }
+    .r-60\@md {
+        right: 60px;
+    }
+    .b-90\@md {
+        bottom: 90px;
+    }
+    .l-300\@md {
+        left: 300px;
+    }
+}
+```
+
+</details>
+
+[&uarr; Volver Arriba](#directivas)
+
 ## Detalles de Métodos:
 
 ### Set
@@ -996,7 +1133,7 @@ const myDiv = document.createElement('div');
 myDiv.setAttribute('cols', '13/15 10/31@sm-md 15/27@md');
 myDiv.setAttribute('pad', '20-1/15 40-3/31@sm 60-2/31@md');
 myDiv.setAttribute('mar', '20-2/15 40-3/31@sm 60-2/31@md');
-myDiv.setAttribute('flex', 'jc:c jc:fs@sm jc:fe@md ai:fs@sm');
+myDiv.setAttribute('flex', 'jc:ce jc:fs@sm jc:fe@md ai:fs@sm');
 layouter.set(myDiv);
 ```
 
@@ -1004,67 +1141,66 @@ Lo cual nos dará un resultado así:
 
 ```html
 <div
-    class="cols-13/15 cols-10/31@sm-md cols-15/27@md pad-20-1/15 pad-40-3/31@sm pad-60-2/31@md mar-20-2/15 mar-40-3/31@sm mar-60-2/31@md flex-flex flex-jc:c flex-jc:fs-ai:fs@sm flex-jc:fe@md"
-></div>
+    class="cols-13/15 cols-10/31@sm-md cols-15/27@md pad-20-1/15 pad-40-3/31@sm pad-60-2/31@md mar-20-2/15 mar-40-3/31@sm mar-60-2/31@md flex-jc:ce flex-jc:fs-ai:fs@sm flex-jc:fe@md"
+>
+    ...
+</div>
 ```
 
 <details>
 <summary>Con los siguientes estilos</summary>
 
 ```css
-.flex-jc\:c {
-    display: flex;
-    justify-content: center;
-}
-
 .cols-13\/15 {
-    width: 86.6667%;
+    width: 86.667%;
 }
 
 .pad-20-1\/15 {
-    padding: 20px 6.66667%;
+    padding: 20px 6.667%;
 }
 
 .mar-20-2\/15 {
-    margin: 20px 13.3333%;
+    margin: 20px 13.333%;
 }
 
-@media screen and (min-width: 768px) {
-    .cols-10\/31\@sm-md {
-        width: 32.2581%;
-    }
+.flex-jc\:ce {
+    justify-content: center;
+    display: flex;
+}
 
+@media screen and (min-width: 600px) {
     .pad-40-3\/31\@sm {
-        padding: 40px 9.67742%;
+        padding: 40px 9.677%;
     }
-
     .mar-40-3\/31\@sm {
-        margin: 40px 9.67742%;
+        margin: 40px 9.677%;
     }
-
     .flex-jc\:fs-ai\:fs\@sm {
-        display: flex;
         justify-content: flex-start;
         align-items: flex-start;
+        display: flex;
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 600px) and (max-width: 899px) {
+    .cols-10\/31\@sm-md {
+        width: 32.258%;
+    }
     .cols-15\/27\@md {
-        width: 55.5556%;
+        width: 55.556%;
     }
-
     .pad-60-2\/31\@md {
-        padding: 60px 6.45161%;
+        padding: 60px 6.452%;
     }
-
     .mar-60-2\/31\@md {
-        margin: 60px 6.45161%;
+        margin: 60px 6.452%;
     }
+}
 
+@media screen and (min-width: 900px) {
     .flex-jc\:fe\@md {
-        display: flex;
         justify-content: flex-end;
+        display: flex;
     }
 }
 ```
