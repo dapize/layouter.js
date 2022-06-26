@@ -1,14 +1,11 @@
 import { ILayouter } from './../layouter';
 import { processors } from '../config/processors';
-import getConfig from '../config/main';
 
-const initAutoProcessor = (layouter: ILayouter) => {
+const searchAndProcess = (layouter: ILayouter, context: Document | HTMLElement | Element) => {
   return new Promise((resolve) => {
-    const config = getConfig();
     const props = Object.keys(processors);
     const attrs = props.map((prop) => `[${prop}]`).join(', ');
-    const nodes = config.context.document.querySelectorAll(attrs);
-
+    const nodes = context.querySelectorAll(attrs);
     if (!nodes.length) {
       resolve(layouter);
       return;
@@ -26,4 +23,4 @@ const initAutoProcessor = (layouter: ILayouter) => {
   });
 };
 
-export default initAutoProcessor;
+export default searchAndProcess;

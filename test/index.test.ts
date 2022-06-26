@@ -34,6 +34,15 @@ describe('Init', () => {
     })
   })
 
+  it('Adding a paragraph with child node', async () => {
+    const paragraph = document.createElement('div');
+    paragraph.innerHTML = '<span wdh="10">Spaneado</span>';
+    document.body.appendChild(paragraph);
+    await waitFor(() => {
+      expect(screen.getByText('Spaneado')).toHaveClass('wdh-10')
+    })
+  })
+
   it('Removing a Node from the DOM', async () => {
     const myDiv = document.createElement('div');
     myDiv.textContent = 'Content'
@@ -43,9 +52,4 @@ describe('Init', () => {
       expect(myDiv).not.toBeInTheDocument();
     })
   })
-
-  // it('Cheking if Layouter is attached in Window', () => {
-  //   console.log('window layouter: ', window.layouter);
-  //   expect(window).toHaveProperty('layouter');
-  // })
 })

@@ -56,7 +56,7 @@ import reset from './methods/reset';
 
 import { IStyles } from './helpers/createStyles';
 import { IBuildResult } from './methods/build';
-import initAutoProcessor from './helpers/initAutoProcessor';
+import searchAndProcess from './helpers/searchAndProcess';
 import mainObserver from './helpers/mainObserver';
 import { TDirectiveName } from './config/processors';
 
@@ -268,7 +268,7 @@ const layouter = (
   };
 
   // Auto init process
-  initAutoProcessor(instance).then(() => {
+  searchAndProcess(instance, context.document).then(() => {
     if (instance.ready) instance.ready(instance);
     mainObserver(instance);
   });

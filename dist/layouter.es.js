@@ -85,7 +85,7 @@ const breakpointsOrdered = (bps, sizes) => {
   Object.keys(sizes).forEach((bpName) => bpsOrdered[bpName] = bps[bpName]);
   return bpsOrdered;
 };
-const version = "1.3";
+const version = "1.3.1";
 const breakpointsInit = {
   xs: {
     width: 360,
@@ -1007,12 +1007,11 @@ const reset = (Node) => {
     }
   });
 };
-const initAutoProcessor = (layouter2) => {
+const searchAndProcess = (layouter2, context) => {
   return new Promise((resolve) => {
-    const config2 = getConfig();
     const props = Object.keys(processors);
     const attrs = props.map((prop) => `[${prop}]`).join(", ");
-    const nodes = config2.context.document.querySelectorAll(attrs);
+    const nodes = context.querySelectorAll(attrs);
     if (!nodes.length) {
       resolve(layouter2);
       return;
@@ -1043,6 +1042,7 @@ const mainObserver = (layouter2) => {
             if (Object.keys(props2).length) {
               layouter2.set(node, props2);
             }
+            searchAndProcess(layouter2, node);
           }
         });
       } else if (mutation.type === "attributes") {
@@ -1122,7 +1122,7 @@ const layouter = (context, userConfig = {}) => {
     setBottom,
     setLeft
   };
-  initAutoProcessor(instance).then(() => {
+  searchAndProcess(instance, context.document).then(() => {
     if (instance.ready)
       instance.ready(instance);
     mainObserver(instance);

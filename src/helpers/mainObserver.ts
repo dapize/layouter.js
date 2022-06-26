@@ -1,6 +1,7 @@
 import { ILayouter } from './../layouter';
 import { processors } from '../config/processors';
 import getConfig from '../config/main';
+import searchAndProcess from './searchAndProcess';
 
 const mainObserver = (layouter: ILayouter) => {
   const config = getConfig();
@@ -17,6 +18,7 @@ const mainObserver = (layouter: ILayouter) => {
             if (Object.keys(props).length) {
               layouter.set(node, props);
             }
+            searchAndProcess(layouter, node)
           }
         });
       } else if (mutation.type === 'attributes') {
