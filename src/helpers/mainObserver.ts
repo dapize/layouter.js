@@ -18,7 +18,7 @@ const mainObserver = (layouter: ILayouter) => {
             if (Object.keys(props).length) {
               layouter.set(node, props);
             }
-            searchAndProcess(layouter, node)
+            searchAndProcess(layouter, node);
           }
         });
       } else if (mutation.type === 'attributes') {

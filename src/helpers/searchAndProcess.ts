@@ -1,7 +1,10 @@
 import { ILayouter } from './../layouter';
 import { processors } from '../config/processors';
 
-const searchAndProcess = (layouter: ILayouter, context: Document | HTMLElement | Element) => {
+const searchAndProcess = (
+  layouter: ILayouter,
+  context: Document | HTMLElement | Element
+) => {
   return new Promise((resolve) => {
     const props = Object.keys(processors);
     const attrs = props.map((prop) => `[${prop}]`).join(', ');
