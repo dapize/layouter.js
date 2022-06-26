@@ -227,7 +227,7 @@ Y como estilos tendríamos disponible una clase llamada 'cols-13/15' la cual nos
 Pero como se determinó en un breakpoint, los estilos estarían regidos por él
 
 ```css
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .cols-10\/31\@sm {
         width: 32.258%;
     }
@@ -241,8 +241,8 @@ Pero como se determinó en un breakpoint, los estilos estarían regidos por él
 ```
 
 ```css
-@media screen and (min-width: 1024px) {
-    .cols-15\/27\@sm {
+@media screen and (min-width: 900px) {
+    .cols-15\/27\@md {
         width: 55.5556%;
     }
 }
@@ -261,14 +261,14 @@ y pues, estos estilos:
     width: 86.666%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .cols-10\/31\@sm {
         width: 32.258%;
     }
 }
 
-@media screen and (min-width: 1024px) {
-    .cols-15\/27\@sm {
+@media screen and (min-width: 900px) {
+    .cols-15\/27\@md {
         width: 55.5556%;
     }
 }
@@ -288,11 +288,11 @@ El guión (-) indica 'desde / hasta' donde se quiere determinar las columnas. En
 
 ```css
 .cols-13\/15 {
-    width: 86.666%;
+    width: 86.667%;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-    .cols-20\/27\@sm {
+@media screen and (min-width: 600px) and (max-width: 899px) {
+    .cols-20\/27\@sm-md {
         width: 74.074%;
     }
 }
@@ -309,7 +309,7 @@ El guión (-) indica 'desde / hasta' donde se quiere determinar las columnas. En
 y en estilos obtendremos esto:
 
 ```css
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 899px) {
     .cols-20\/27\@sm {
         width: 74.074%;
     }
@@ -374,13 +374,13 @@ y pues, estos estilos:
     margin: 20px 13.3333%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .mar-40-3\/31-20\@sm {
         margin: 40px 9.67742% 20px;
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 900px) {
     .mar-60-2\/31\@md {
         margin: 60px 6.45161%;
     }
@@ -424,13 +424,13 @@ y pues, estos estilos:
     margin-top: 10px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .mart-20_5\@sm {
         margin-top: 20.5px;
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 900px) {
     .mart-30\@md {
         margin-top: 30px;
     }
@@ -475,7 +475,7 @@ Sirven para determinar los margenes derechos, inferiores e izquierdos respectiva
     margin-left: 30px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .marr-20_5\@sm {
         margin-right: 20.5px;
     }
@@ -487,7 +487,7 @@ Sirven para determinar los margenes derechos, inferiores e izquierdos respectiva
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 900px) {
     .marr-30\@md {
         margin-right: 30px;
     }
@@ -556,13 +556,13 @@ Tiene exactamente la misma sintaxis que 'mar'
     padding: 20px 6.66667%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
 .pad-40-3\/31\@sm {
 padding: 40px 9.67742%;
 }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 900px) {
 .pad-60-2\/31\@md {
 padding: 60px 6.45161%;
 }
@@ -603,13 +603,13 @@ Sirve para determinar los paddings superiores de un elemento.
     padding-top: 10px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .padt-20_5\@sm {
         padding-top: 20.5px;
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 900px) {
     .padt-30\@md {
         padding-top: 30px;
     }
@@ -656,7 +656,7 @@ Sirven para determinar los paddings derechos, inferiores e izquierdos respectiva
     padding-left: 30px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .padr-20_5\@sm {
         padding-right: 20.5px;
     }
@@ -668,7 +668,7 @@ Sirven para determinar los paddings derechos, inferiores e izquierdos respectiva
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 900px) {
     .padr-30\@md {
         padding-right: 30px;
     }
@@ -739,7 +739,7 @@ Esta es la directiva más interesante, porque es el que determina el **'display'
     justify-content: center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .flex-jc\\:fs-ai\\:fs\@sm {
         display: flex;
         justify-content: flex-start;
@@ -747,7 +747,7 @@ Esta es la directiva más interesante, porque es el que determina el **'display'
     }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 900px) {
     .flex-jc\\:fe\@md {
         display: flex;
         justify-content: flex-end;
@@ -785,7 +785,7 @@ Sirve para determinar el ancho de un nodo en pixeles, siempre y cuando no se def
     width: 100px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .wdh-150\@sm {
         width: 150px;
     }
@@ -816,7 +816,7 @@ Es posible determinar las únidades relativas: **%, rem, em, ex, vw y vh.**
     width: 100%;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .wdh-0¯150\@sm {
         width: 150%;
     }
@@ -869,7 +869,7 @@ Sirve para determinar el máximo ancho que tendrá un nodo en pixeles, siempre y
     max-width: 100px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .mxw-150\@sm {
         max-width: 150px;
     }
@@ -904,7 +904,7 @@ Sirve para determinar el máximo alto que tendrá un nodo en pixeles.
     max-height: 100px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .mxh-150\@sm {
         max-height: 150px;
     }
@@ -941,14 +941,14 @@ Sirven para determinar el mínimo ancho y mínimo alto en pixeles respectivament
     min-width: 100px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .miw-150\@sm {
         min-width: 150px;
     }
 }
 
-@media screen and (min-width: 1024px) {
-    .miw-200\@sm {
+@media screen and (min-width: 900px) {
+    .miw-200\@md {
         min-width: 200px;
     }
 }
@@ -957,14 +957,14 @@ Sirven para determinar el mínimo ancho y mínimo alto en pixeles respectivament
     min-height: 300px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .mih-350\@sm {
         min-height: 350px;
     }
 }
 
-@media screen and (min-width: 1024px) {
-    .mih-400\@sm {
+@media screen and (min-width: 900px) {
+    .mih-400\@md {
         min-height: 400px;
     }
 }
@@ -1186,6 +1186,13 @@ Lo cual nos dará un resultado así:
     .cols-10\/31\@sm-md {
         width: 32.258%;
     }
+}
+
+@media screen and (min-width: 900px) {
+    .flex-jc\:fe\@md {
+        justify-content: flex-end;
+        display: flex;
+    }
     .cols-15\/27\@md {
         width: 55.556%;
     }
@@ -1194,13 +1201,6 @@ Lo cual nos dará un resultado así:
     }
     .mar-60-2\/31\@md {
         margin: 60px 6.452%;
-    }
-}
-
-@media screen and (min-width: 900px) {
-    .flex-jc\:fe\@md {
-        justify-content: flex-end;
-        display: flex;
     }
 }
 ```
@@ -1259,16 +1259,16 @@ Y nos devuelve un objeto con los nombres de las clases creadas junto con los est
     "flex-jc:ce-ai:ce@xs": ".flex-jc\\:ce-ai\\:ce\\@xs{justify-content:center;align-items:center;display: flex;}"
   },
   cols: {
-    "cols-21/21@sm": "@media screen and (min-width: 768px){.cols-21\\/21\\@sm{width:100%}}",
-    "cols-27/27@md": "@media screen and (min-width: 1024px){.cols-27\\/27\\@md{width:100%}}",
+    "cols-21/21@sm": "@media screen and (min-width: 600px){.cols-21\\/21\\@sm{width:100%}}",
+    "cols-27/27@md": "@media screen and (min-width: 900px){.cols-27\\/27\\@md{width:100%}}",
     "cols-3/13": ".cols-3\\/13{width:23.076923076923077%}"
   },
   mar: {
-    "mar-0-0-20-0@sm": "@media screen and (min-width: 768px){.mar-0-0-20-0\\@sm{margin:0 0 20px 0}}",
+    "mar-0-0-20-0@sm": "@media screen and (min-width: 600px){.mar-0-0-20-0\\@sm{margin:0 0 20px 0}}",
     "mar-0-2/13-0-0@-sm": "@media screen and (max-width: 767px){.mar-0-2\\/13-0-0\\@-sm{margin:0 15.384615384615385% 0 0}}"
   },
   pad: {
-    "pad-20-0@sm": "@media screen and (min-width: 768px){.pad-20-0\\@sm{padding:20px 0}}"
+    "pad-20-0@sm": "@media screen and (min-width: 600px){.pad-20-0\\@sm{padding:20px 0}}"
   }
 }
 ```
@@ -1295,8 +1295,8 @@ layouter.buildCols('3/13 21/21@sm 27/27@md');
 
 ```javascript
 {
-  "cols-21/21@sm": "@media screen and (min-width: 768px){.cols-21\\/21\\@sm{width:100%}}",
-  "cols-27/27@md": "@media screen and (min-width: 1024px){.cols-27\\/27\\@md{width:100%}}",
+  "cols-21/21@sm": "@media screen and (min-width: 600px){.cols-21\\/21\\@sm{width:100%}}",
+  "cols-27/27@md": "@media screen and (min-width: 900px){.cols-27\\/27\\@md{width:100%}}",
   "cols-3/13": ".cols-3\\/13{width:23.076923076923077%}"
 }
 ```
@@ -1363,8 +1363,8 @@ El cual nos dará el siguiente CSS:
     width: 86.667% !important;
 }
 
-@media screen and (min-width: 768px) {
-    .cols-20\/27\@sm-md {
+@media screen and (min-width: 600px) {
+    .cols-20\/27\@sm {
         width: 74.074% !important;
     }
 }
@@ -1391,12 +1391,12 @@ layouter.breakpoints = [ "xs", "sm", "md" ]
 layouter.sizes = { xs: 0, sm: 768, md: 1024, }
 layouter.cols = { xs: 15, sm: 11, md: 31 }
 layouter.styles = {
-  "cols-10\\/31@sm-md": "@media screen and (min-width: 768px) and (max-width: 1023px){.cols-10\\/31\\@sm-md{width:32.258%}}"
+  "cols-10\\/31@sm-md": "@media screen and (min-width: 600px) and (max-width: 899px){.cols-10\\/31\\@sm-md{width:32.258%}}"
   "cols-13\\/15": ".cols-13\\/15{width:86.667%}"
-  "cols-15\\/27@md": "@media screen and (min-width: 1024px){.cols-15\\/27\\@md{width:55.556%}}"
+  "cols-15\\/27@md": "@media screen and (min-width: 900px){.cols-15\\/27\\@md{width:55.556%}}"
   "flex-jc\\:c": ".flex-jc\\:c{justify-content:center;display: flex}",
 }
-layouter.version = '1.2'
+layouter.version = '1.3.0'
 ```
 
 [&uarr; Volver Arriba](#utils)
