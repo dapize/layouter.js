@@ -177,7 +177,7 @@ Hay una extensa documentación en el archivo [DOCS.md](DOCS.md).
 
 ## 📝 Trabajo planeado
 
-1. Adicionar una directiva para el posicionamiento. **En progreso...** 🏗️
+1. ~~Adicionar una directiva para el posicionamiento.~~ ✅ Listo!
 2. Adicionar alias más semánticos para las directivas. (Ejm: de **'mar'** a **'margin'** o solo **'m'**)
 3. Crear componente para [React JS](https://reactjs.org)
 4. Crear componente para [Vue JS](https://vuejs.org)
