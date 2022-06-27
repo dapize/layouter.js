@@ -23,6 +23,7 @@ import buildBottom from '../methods/buildBottom';
 import buildLeft from '../methods/buildLeft';
 
 import { IStyles } from '../helpers/createStyles';
+import buildDisplay from '../methods/buildDisplay';
 
 type TDirectiveNameBase =
   | 'cols'
@@ -47,7 +48,8 @@ type TDirectiveNameBase =
   | 't'
   | 'r'
   | 'b'
-  | 'l';
+  | 'l'
+  | 'd';
 
 type TDirectiveNameExtended =
   | 'c'
@@ -84,7 +86,8 @@ type TDirectiveNameExtended =
   | 'top'
   | 'right'
   | 'bottom'
-  | 'left';
+  | 'left'
+  | 'display';
 
 export type TDirectiveName = TDirectiveNameBase | TDirectiveNameExtended;
 
@@ -226,6 +229,11 @@ const processorsBase: Record<TDirectiveNameBase, IProcessor> = {
     ruleCss: 'left',
     classPrefix: 'l',
   },
+  d: {
+    build: buildDisplay,
+    ruleCss: 'display',
+    classPrefix: 'd',
+  },
 };
 
 export const processors: Record<TDirectiveName, IProcessor> = {
@@ -265,4 +273,5 @@ export const processors: Record<TDirectiveName, IProcessor> = {
   right: processorsBase.r,
   bottom: processorsBase.b,
   left: processorsBase.l,
+  display: processorsBase.d,
 };

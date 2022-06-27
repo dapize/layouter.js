@@ -85,7 +85,7 @@ const breakpointsOrdered = (bps, sizes) => {
   Object.keys(sizes).forEach((bpName) => bpsOrdered[bpName] = bps[bpName]);
   return bpsOrdered;
 };
-const version = "1.4.0";
+const version = "1.5.0";
 const breakpointsInit = {
   xs: {
     width: 360,
@@ -741,7 +741,7 @@ const buildPosition = (valPos, insertStyles = false) => {
       break;
     }
     propVal = positionProsAndVals[nameProp].ruleCss;
-    let className = positionProsAndVals[nameProp].classPrefix;
+    const className = positionProsAndVals[nameProp].classPrefix;
     let sufixBp = bpNames === firstBp ? "" : "@" + bpNames;
     if (paramPrepared.important) {
       propVal += " !important";
@@ -771,6 +771,85 @@ const buildBottom = (val, insertStyles = false) => {
 };
 const buildLeft = (val, insertStyles = false) => {
   return buildAttr(val, "l", insertStyles);
+};
+const displayProsAndValsBase = {
+  bl: {
+    ruleCss: "block",
+    classPrefix: "bl"
+  },
+  il: {
+    ruleCss: "inline",
+    classPrefix: "il"
+  },
+  ib: {
+    ruleCss: "inline-block",
+    classPrefix: "ib"
+  },
+  fx: {
+    ruleCss: "flex",
+    classPrefix: "fx"
+  },
+  if: {
+    ruleCss: "inline-flex",
+    classPrefix: "if"
+  },
+  no: {
+    ruleCss: "none",
+    classPrefix: "no"
+  },
+  in: {
+    ruleCss: "initial",
+    classPrefix: "in"
+  },
+  ih: {
+    ruleCss: "inherit",
+    classPrefix: "ih"
+  }
+};
+const displayProsAndVals = {
+  ...displayProsAndValsBase,
+  block: displayProsAndValsBase.bl,
+  inline: displayProsAndValsBase.il,
+  "inline-block": displayProsAndValsBase.ib,
+  flex: displayProsAndValsBase.fx,
+  "inline-flex": displayProsAndValsBase.if,
+  none: displayProsAndValsBase.no,
+  initial: displayProsAndValsBase.in,
+  inherit: displayProsAndValsBase.ih
+};
+const buildDisplay = (valDisplay, insertStyles = false) => {
+  const bpCals = {};
+  let err = false;
+  const config2 = getConfig();
+  const firstBp = Object.keys(config2.breakpoints)[0];
+  for (const param of valDisplay.split(" ")) {
+    let propVal;
+    const paramPrepared = prepareParam(param);
+    const bpNames = paramPrepared.breakPoints;
+    const nameProp = paramPrepared.numbers;
+    if (!displayProsAndVals[nameProp]) {
+      err = regError("Non-existent Alias", "Don't exists the alias '" + nameProp + "' in display vault.");
+      break;
+    }
+    propVal = displayProsAndVals[nameProp].ruleCss;
+    const className = displayProsAndVals[nameProp].classPrefix;
+    let sufixBp = bpNames === firstBp ? "" : "@" + bpNames;
+    if (paramPrepared.important) {
+      propVal += " !important";
+      sufixBp += "!";
+    }
+    bpCals[bpNames] = {
+      name: className + sufixBp,
+      value: propVal
+    };
+  }
+  if (err)
+    return err;
+  return buildCss({
+    type: "d",
+    bps: bpCals,
+    deep: insertStyles
+  });
 };
 const processorsBase = {
   cols: {
@@ -887,6 +966,11 @@ const processorsBase = {
     build: buildLeft,
     ruleCss: "left",
     classPrefix: "l"
+  },
+  d: {
+    build: buildDisplay,
+    ruleCss: "display",
+    classPrefix: "d"
   }
 };
 const processors = {
@@ -925,7 +1009,8 @@ const processors = {
   top: processorsBase.t,
   right: processorsBase.r,
   bottom: processorsBase.b,
-  left: processorsBase.l
+  left: processorsBase.l,
+  display: processorsBase.d
 };
 const getParameters = (Node) => {
   const params = {};
