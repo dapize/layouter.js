@@ -18,6 +18,7 @@ Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra 
 ```
 
 o puedes instalarlo en tu proyecto con:
+
 ```properties
 npm install layouter.js
 // o
@@ -25,6 +26,7 @@ yarn add layouter.js
 ```
 
 Si se requiere usarlo **en SSR debes pasar el objeto windows de 'jsdom'** y tu configuración, así:
+
 ```javascript
 const { JSDOM } = require('jsdom');
 const { window } = new JSDOM();
@@ -33,7 +35,6 @@ require('layouter.js')(window, {
     // tu configuración aquí
 });
 ```
-
 
 ## ⚙️ Configuración
 
@@ -96,31 +97,31 @@ Ese alias definidos se usará para determinar el breakpoint en cada valor de las
 
 ## Directivas
 
-| Nombre                             | Ejemplo                    | Descripción                                                                                                  |
-| ---------------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| [Cols](#cols)                      | `cols="13/15"`             | Determinará las columnas, osea **el width** (de manera porcentual).                                          |
-| [Mart](#mart)                      | `mart="10"`                | Determina el **margen** superior de un nodo.                                                                 |
-| [Marr](#marr-marb-marl)            | `marr="2/15"`              | Determinar el **margen** derecho de un nodo.                                                                 |
-| [Marb](#marr-marb-marl)            | `marb="30"`                | Determinar el **margen** inferior de un nodo.                                                                |
-| [Marl](#marr-marb-marl)            | `marl="3/15"`              | Determinar el **margen** izquierdo de un nodo.                                                               |
-| [Mar](#mar)                        | `mar="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [mart](DOCS.md#mart), [marr, marb, y marl](DOCS.md#marr-marb-marl).       |
-| [Padt](#padt)                      | `padt="10"`                | Determina el **padding** superior de un nodo.                                                                |
-| [Padr](#padr-padb-padl)            | `padr="2/15"`              | Determinar el **padding** derecho de un nodo.                                                                |
-| [Padb](#padr-padb-padl)            | `padb="30"`                | Determinar el **padding** inferior de un nodo.                                                               |
-| [Padl](#padr-padb-padl)            | `padl="3/15"`              | Determinar el **padding** izquierdo de un nodo.                                                              |
-| [Pad](#pad)                        | `pad="20-2/15-30-3/15"`    | Es un shorthand de las directivas: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).       |
-| [Flex](#flex)                      | `flex="jc:ce ai:fs fd:co"` | Determina el **display flex** del nodo, y sus derivados.                                                     |
-| [Wdh](#width)                      | `wdh="100"`                | Determina el **ancho** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).         |
-| [Hgt](#height)                     | `hgt="100"`                | Determina el **alto** del nodo en pixeles u otra [unidad de medida](#unidades-de-medida-definidas).          |
-| [Mxw](#maxwidth)                   | `mxw="200"`                | Determina el **máximo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
-| [Mxh](#maxheight)                  | `mxh="100 150@sm"`         | Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).   |
-| [Miw](#minwidth-minheight)         | `miw="200"`                | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
-| [Mih](#minwidth-minheight)         | `mih="100 150@sm"`         | Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).   |
-| [Pos](DOCS.md#position)            | `pos="re"`                 | Determina la **posición** del nodo.                                                                          |
-| [T](DOCS.md#top-right-bottom-left) | `t="10"`                   | Determina el **top** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).    |
-| [R](DOCS.md#top-right-bottom-left) | `r="10"`                   | Determina el **right** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
-| [B](DOCS.md#top-right-bottom-left) | `b="10"`                   | Determina el **bottom** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas). |
-| [L](DOCS.md#top-right-bottom-left) | `l="10"`                   | Determina el **left** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).   |
+| Nombre                         | Alias                  | Ejemplos                                                                                  | Descripción                                                                                                        |
+| ------------------------------ | ---------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| [Cols](DOCS.md#cols)           | `c`                    | `cols="13/15"`                                                                            | Determinará las columnas, osea el 'width' de manera porcentual.                                                    |
+| [Mart](DOCS.md#mart)           | `mt`, `margin-top`     | `mart="10"`, `mt="20"`, `margin-top="12"`                                                 | Determina el **margen** superior de un nodo.                                                                       |
+| [Marr](DOCS.md#marr-marb-marl) | `mr`, `margin-right`   | `marr="2/15"`, `mr="5/10"`, `margin-right="3/5"`                                          | Determinar el **margen** derecho de un nodo.                                                                       |
+| [Marb](DOCS.md#marr-marb-marl) | `mb`, `margin-bottom`  | `marb="30"`, `mb="50"`, `margin-bottom="25"`                                              | Determinar el **margen** inferior de un nodo.                                                                      |
+| [Marl](DOCS.md#marr-marb-marl) | `ml`, `margin-left`    | `marl="3/15"`, `ml="5/10"`, `margin-left="3/5"`                                           | Determinar el **margen** izquierdo de un nodo.                                                                     |
+| [Mar](DOCS.md#mar)             | `m`, `margin`          | `mar="20-2/15-30-3/15"`, `m="20-2/15-30-3/15"`, `margin="20-2/15-30-3/15"`                | Es un shorthand de las directivas: [mart](DOCS.md#mart), [marr, marb, y marl](DOCS.md#marr-marb-marl).             |
+| [Padt](DOCS.md#padt)           | `pt`, `padding-top`    | `padt="10"`, `pt="20"`, `padding-top="30"`                                                | Determina el **padding** superior de un nodo.                                                                      |
+| [Padr](DOCS.md#padr-padb-padl) | `pr`, `padding-right`  | `padr="2/15"`, `pr="3/16"`, `padding-right="4/17"`                                        | Determinar el **padding** derecho de un nodo.                                                                      |
+| [Padb](DOCS.md#padr-padb-padl) | `pb`, `padding-bottom` | `padb="30"`, `pb="40"`, `padding-bottom="50"`                                             | Determinar el **padding** inferior de un nodo.                                                                     |
+| [Padl](DOCS.md#padr-padb-padl) | `pl`, `padding-left`   | `padl="3/15"`, `pl="4/16"`, `padding-left="5/17"`                                         | Determinar el **padding** izquierdo de un nodo.                                                                    |
+| [Pad](DOCS.md#pad)             | `p`, `padding`         | `pad="20-2/15-30-3/15"`, `p="20-2/15-30-3/15"`, `padding="20-2/15-30-3/15"`               | Es un shorthand de las directivas: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).             |
+| [Flex](DOCS.md#flex)           | `fx`                   | `flex="jc:ce ai:fs fd:co"`, `flex="jc:fe ai:fs`, `fx="align-items:center flex-wrap:wrap"` | Determina el **display flex** del nodo y sus derivados.                                                            |
+| [Wdh](DOCS.md#width)           | `w`, `width`           | `wdh="100"`, `w="200"`, `width="300"`                                                     | Determina el **ancho** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).        |
+| [Hgt](DOCS.md#height)          | `h`, `height`          | `hgt="100"`, `h="200"`, `height="300"`                                                    | Determina el **alto** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).         |
+| [Mxw](DOCS.md#maxwidth)        | `max-width`            | `mxw="200"`, `max-width="300"`                                                            | Determina el **máximo ancho** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas). |
+| [Mxh](DOCS.md#maxheight)       | `max-height`           | `mxh="200"`, `max-height="300"`                                                           | Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
+| [Miw](DOCS.md#minwidth)        | `min-width`            | `miw="300"`, `min-width="400"`                                                            | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas). |
+| [Mih](DOCS.md#minheight)       | `min-height`           | `mih="300"`, `min-height="400"`                                                           | Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
+| [Pos](DOCS.md#position)        | `position`             | `pos="re"`, `position="relative"`                                                         | Determina la **posición** del nodo.                                                                                |
+| [T](DOCS.md#top)               | `top`                  | `t="10"`, `top="20"`                                                                      | Determina el **top** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).          |
+| [R](DOCS.md#right)             | `right`                | `r="10"`, `right="20"`                                                                    | Determina el **right** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).        |
+| [B](DOCS.md#bottom)            | `bottom`               | `b="10"`, `bottom="20"`                                                                   | Determina el **bottom** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).       |
+| [L](DOCS.md#left)              | `left`                 | `l="10"`, `left="20"`                                                                     | Determina el **left** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).         |
 
 ## Métodos
 
@@ -720,9 +721,9 @@ Sirven para determinar los paddings derechos, inferiores e izquierdos respectiva
 
 ### Flex
 
-Esta es la directiva más interesante, porque es el que determina el **'display'** del elemento. El valor de la directiva **'flex'** se separa entre dos puntos, y no convencionalmente con guión como se hace en **'cols', 'mar' y 'pad'.**
+Esta es la directiva más interesante, porque es el que determina el **'display:flex'** al elemento de forma automática. El valor de la directiva **'flex'** se separa entre dos puntos, y no convencionalmente con guión como se hace en **'cols', 'mar' y 'pad'.**
 
-#### Equivalencias de abreviaciones:
+#### Abreviaciones de valores:
 
 -   **jc:** justify-content
 -   **ai:** align-items
@@ -754,6 +755,14 @@ Esta es la directiva más interesante, porque es el que determina el **'display'
 
 ```html
 <div flex="jc:ce jc:fs@sm ai:fs@sm jc:fe@md">...</div>
+```
+
+o de forma más semántica
+
+```html
+<div flex="justify-content:center justify-content:flex-start@sm align-items:flex-start@sm justify-content:flex-end@md">
+    ...
+</div>
 ```
 
 > **OJO**: Es posible determinar más de un estilo en el mismo breakpoint, en el caso del ejemplo de arriba, se determinó el `justify-content: flex-start y align-items: flex-start` para el breakpoint 'sm' osea (tablet)
@@ -1011,7 +1020,7 @@ Sirven para determinar el mínimo ancho y mínimo alto en pixeles respectivament
 
 Sirve para determinar el posicionamiento de un elemento.
 
-#### Equivalencias a sus valores
+#### Abreviaciones de valores
 
 -   **st**: static
 -   **ab**: absolute
@@ -1025,6 +1034,12 @@ Sirve para determinar el posicionamiento de un elemento.
 
 ```html
 <div pos="re ab@sm fi@md st@lg">...</div>
+```
+
+o de forma más semántica
+
+```html
+<div position="relative absolute@sm fixed@md static@lg">...</div>
 ```
 
 ...luego de auto procesarce obtendríamos este resultado:
@@ -1075,6 +1090,15 @@ Sirven para determinar el **top**, **right**, **bottom** y **left** de un elemen
 <div r="40 50@sm 60@md">...</div>
 <div b="70 80@sm 90@md">...</div>
 <div l="100 200@sm 300@md">...</div>
+```
+
+o de forma más semántica
+
+```html
+<div top="10 20@sm 30@md">...</div>
+<div right="40 50@sm 60@md">...</div>
+<div bottom="70 80@sm 90@md">...</div>
+<div left="100 200@sm 300@md">...</div>
 ```
 
 ...luego de auto procesarce obtendríamos este resultado:
@@ -1429,7 +1453,7 @@ layouter.styles = {
   "cols-15\\/27@md": "@media screen and (min-width: 900px){.cols-15\\/27\\@md{width:55.556%}}"
   "flex-jc\\:c": ".flex-jc\\:c{justify-content:center;display: flex}",
 }
-layouter.version = '1.3.0'
+layouter.version = '1.4.0'
 ```
 
 [&uarr; Volver Arriba](#utils)
