@@ -27,8 +27,7 @@ const positionProsAndValsBase = {
     ruleCss: 'inherit',
     classPrefix: 'ih',
   },
-}
-
+};
 
 export const positionProsAndVals = {
   ...positionProsAndValsBase,

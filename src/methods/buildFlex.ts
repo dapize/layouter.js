@@ -38,21 +38,24 @@ const buildFlex = (valFlex: string, insertStyles = false): IStyles | Error => {
         );
         break;
       }
-      propVal = flexProsAndVals[nameProp].ruleCss + ':' + flexProsAndVals[valProp].ruleCss;
+      propVal =
+        flexProsAndVals[nameProp].ruleCss +
+        ':' +
+        flexProsAndVals[valProp].ruleCss;
       valAlias = flexProsAndVals[valProp].classPrefix;
     } else {
       propVal = flexProsAndVals[nameProp].ruleCss + ':' + valProp;
       valAlias = valProp;
     }
 
-
     let sufixBp = bpNames === firstBp ? '' : '@' + bpNames;
     if (paramPrepared.important) {
       propVal += ' !important';
-      sufixBp += '!'
+      sufixBp += '!';
     }
 
-    let selectorName = flexProsAndVals[nameProp].classPrefix + ':' + valAlias + sufixBp;
+    let selectorName =
+      flexProsAndVals[nameProp].classPrefix + ':' + valAlias + sufixBp;
 
     if (!bpCals[bpNames]) {
       bpCals[bpNames] = {
@@ -62,13 +65,13 @@ const buildFlex = (valFlex: string, insertStyles = false): IStyles | Error => {
     } else {
       if (selectorName.includes('@')) selectorName = selectorName.split('@')[0]; // just here because will be contact with the other className
       let prevName = bpCals[bpNames].name.split('@')[0];
-      if (bpCals[bpNames].name.includes('!') && !prevName.includes('!')) prevName += '!';
+      if (bpCals[bpNames].name.includes('!') && !prevName.includes('!'))
+        prevName += '!';
 
       bpCals[bpNames].name = prevName + '-' + selectorName + sufixBp;
       bpCals[bpNames].value += ';' + propVal;
     }
   }
-
 
   if (err) return err;
 

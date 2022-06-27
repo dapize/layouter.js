@@ -32,13 +32,13 @@ const buildPosition = (
     }
 
     propVal = positionProsAndVals[nameProp].ruleCss;
-    let className = positionProsAndVals[nameProp].classPrefix;
+    const className = positionProsAndVals[nameProp].classPrefix;
 
     let sufixBp = bpNames === firstBp ? '' : '@' + bpNames;
 
     if (paramPrepared.important) {
       propVal += ' !important';
-      sufixBp += '!'
+      sufixBp += '!';
     }
 
     bpCals[bpNames] = {

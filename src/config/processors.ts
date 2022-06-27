@@ -98,134 +98,134 @@ const processorsBase: Record<TDirectiveNameBase, IProcessor> = {
   cols: {
     build: buildCols,
     ruleCss: 'width',
-    classPrefix: 'c'
+    classPrefix: 'c',
   },
 
   // Paddings
   pad: {
     build: buildPad,
     ruleCss: 'padding',
-    classPrefix: 'p'
+    classPrefix: 'p',
   },
   padt: {
     build: buildPadTop,
     ruleCss: 'padding-top',
-    classPrefix: 'pt'
+    classPrefix: 'pt',
   },
   padr: {
     build: buildPadRight,
     ruleCss: 'padding-right',
-    classPrefix: 'pr'
+    classPrefix: 'pr',
   },
   padb: {
     build: buildPadBottom,
     ruleCss: 'padding-bottom',
-    classPrefix: 'pb'
+    classPrefix: 'pb',
   },
   padl: {
     build: buildPadLeft,
     ruleCss: 'padding-left',
-    classPrefix: 'pl'
+    classPrefix: 'pl',
   },
 
   // Margin
   mar: {
     build: buildMar,
     ruleCss: 'margin',
-    classPrefix: 'm'
+    classPrefix: 'm',
   },
   mart: {
     build: buildMarTop,
     ruleCss: 'margin-top',
-    classPrefix: 'mt'
+    classPrefix: 'mt',
   },
   marr: {
     build: buildMarRight,
     ruleCss: 'margin-right',
-    classPrefix: 'mr'
+    classPrefix: 'mr',
   },
   marb: {
     build: buildMarBottom,
     ruleCss: 'margin-bottom',
-    classPrefix: 'mb'
+    classPrefix: 'mb',
   },
   marl: {
     build: buildMarLeft,
     ruleCss: 'margin-left',
-    classPrefix: 'ml'
+    classPrefix: 'ml',
   },
 
   // Flex Box
   flex: {
     build: buildFlex,
     ruleCss: 'display: flex',
-    classPrefix: 'fx'
+    classPrefix: 'fx',
   },
 
   // Max & Min Width & Height
   mxw: {
     build: buildMaxWidth,
     ruleCss: 'max-width',
-    classPrefix: 'mxw'
+    classPrefix: 'mxw',
   },
 
   mxh: {
     build: buildMaxHeight,
     ruleCss: 'max-height',
-    classPrefix: 'mxh'
+    classPrefix: 'mxh',
   },
 
   miw: {
     build: buildMinWidth,
     ruleCss: 'min-width',
-    classPrefix: 'miw'
+    classPrefix: 'miw',
   },
 
   mih: {
     build: buildMinHeight,
     ruleCss: 'min-height',
-    classPrefix: 'mih'
+    classPrefix: 'mih',
   },
 
   // Width & Height
   wdh: {
     build: buildWidth,
     ruleCss: 'width',
-    classPrefix: 'w'
+    classPrefix: 'w',
   },
 
   hgt: {
     build: buildHeight,
     ruleCss: 'height',
-    classPrefix: 'h'
+    classPrefix: 'h',
   },
 
   // Position
   pos: {
     build: buildPosition,
     ruleCss: 'position',
-    classPrefix: 'pos'
+    classPrefix: 'pos',
   },
   t: {
     build: buildTop,
     ruleCss: 'top',
-    classPrefix: 't'
+    classPrefix: 't',
   },
   r: {
     build: buildRight,
     ruleCss: 'right',
-    classPrefix: 'r'
+    classPrefix: 'r',
   },
   b: {
     build: buildBottom,
     ruleCss: 'bottom',
-    classPrefix: 'b'
+    classPrefix: 'b',
   },
   l: {
     build: buildLeft,
     ruleCss: 'left',
-    classPrefix: 'l'
-  }
+    classPrefix: 'l',
+  },
 };
 
 export const processors: Record<TDirectiveName, IProcessor> = {

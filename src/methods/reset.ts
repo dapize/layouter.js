@@ -5,18 +5,22 @@ import removeAttr from '../utils/removeAttr';
 
 const reset = (Node: HTMLElement | Element): Promise<void> => {
   return new Promise((resolve) => {
-    const classPrefixes = new Set(Object.keys(processors).map( item => processors[item as TDirectiveName].classPrefix));
-    const layouterClasses = [ ...classPrefixes];
+    const classPrefixes = new Set(
+      Object.keys(processors).map(
+        (item) => processors[item as TDirectiveName].classPrefix
+      )
+    );
+    const layouterClasses = [...classPrefixes];
     const restClass = Node.className.split(' ').filter((name) => {
-      if ( !name.includes('-')) {
+      if (!name.includes('-')) {
         return true;
       } else {
-        const findClass = layouterClasses.find( item => {
+        const findClass = layouterClasses.find((item) => {
           const nLength = item.length;
           const namePrefix = name.substring(0, nLength + 1);
-          return namePrefix === item + '-'
-        })
-        return !findClass
+          return namePrefix === item + '-';
+        });
+        return !findClass;
       }
     });
 
@@ -30,7 +34,6 @@ const reset = (Node: HTMLElement | Element): Promise<void> => {
         resolve();
       });
     }
-
   });
 };
 

@@ -22,21 +22,37 @@ const createStyles = (directive: TDirectiveName, bps: IBpCals): IStyles => {
     // just if have a percentage
     let nameClass = shortNameClass;
     if (shortNameClass.includes('%')) {
-      nameClass = shortNameClass.replace( shortNameClass, percentageConverter(shortNameClass));
+      nameClass = shortNameClass.replace(
+        shortNameClass,
+        percentageConverter(shortNameClass)
+      );
     }
 
     const finalPrefix = prefix ? prefix + '-' : '';
-    nameClass = finalPrefix + processors[directive].classPrefix + '-' + nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
+    nameClass =
+      finalPrefix +
+      processors[directive].classPrefix +
+      '-' +
+      nameClass
+        .replace(/\//g, '\\/')
+        .replace(/:/g, '\\:')
+        .replace('@', '\\@')
+        .split('.')
+        .join('_');
 
     if (!intConfig.styles[nameClass]) {
       // Property and value
       let propAndVal;
       if (directive === 'flex') {
         propAndVal = bps[bp].value;
-        const flexImportant = shortNameClass.includes('!') ? ';display:flex !important;' : ';display:flex;';
+        const flexImportant = shortNameClass.includes('!')
+          ? ';display:flex !important;'
+          : ';display:flex;';
 
         // Searching a flex self inside. ['as' for 'align-self']
-        const attrsFlexSelfs = flexAttrsSelf.filter((nameAttrFlex) => shortNameClass.includes(nameAttrFlex + ':'));
+        const attrsFlexSelfs = flexAttrsSelf.filter((nameAttrFlex) =>
+          shortNameClass.includes(nameAttrFlex + ':')
+        );
         if (attrsFlexSelfs.length) {
           // if the items number of flex selft (+1) is diferrent so exists other flex attribute. Example: as:ce jc:ce
           if (attrsFlexSelfs.length + 1 !== shortNameClass.split(':').length) {
@@ -73,7 +89,7 @@ const createStyles = (directive: TDirectiveName, bps: IBpCals): IStyles => {
 
       styles[nameClass] = rule;
     } else {
-      styles[nameClass] = intConfig.styles[nameClass]
+      styles[nameClass] = intConfig.styles[nameClass];
     }
   });
   return styles;

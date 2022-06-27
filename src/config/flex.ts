@@ -1,108 +1,108 @@
 const flexProsAndValsBase = {
   jc: {
     ruleCss: 'justify-content',
-    classPrefix: 'jc'
+    classPrefix: 'jc',
   },
   ai: {
     ruleCss: 'align-items',
-    classPrefix: 'ai'
+    classPrefix: 'ai',
   },
   ce: {
     ruleCss: 'center',
-    classPrefix: 'ce'
+    classPrefix: 'ce',
   },
   fs: {
     ruleCss: 'flex-start',
-    classPrefix: 'fs'
+    classPrefix: 'fs',
   },
   fe: {
     ruleCss: 'flex-end',
-    classPrefix: 'fe'
+    classPrefix: 'fe',
   },
   sb: {
     ruleCss: 'space-between',
-    classPrefix: 'sb'
+    classPrefix: 'sb',
   },
   sa: {
     ruleCss: 'space-around',
-    classPrefix: 'sa'
+    classPrefix: 'sa',
   },
   fw: {
     ruleCss: 'flex-wrap',
-    classPrefix: 'fw'
+    classPrefix: 'fw',
   },
   nw: {
     ruleCss: 'nowrap',
-    classPrefix: 'nw'
+    classPrefix: 'nw',
   },
   w: {
     ruleCss: 'wrap',
-    classPrefix: 'w'
+    classPrefix: 'w',
   },
   wr: {
     ruleCss: 'wrap-reverse',
-    classPrefix: 'wr'
+    classPrefix: 'wr',
   },
   fd: {
     ruleCss: 'flex-direction',
-    classPrefix: 'fd'
+    classPrefix: 'fd',
   },
   r: {
     ruleCss: 'row',
-    classPrefix: 'r'
+    classPrefix: 'r',
   },
   rr: {
     ruleCss: 'row-reverse',
-    classPrefix: 'rr'
+    classPrefix: 'rr',
   },
   co: {
     ruleCss: 'column',
-    classPrefix: 'co'
+    classPrefix: 'co',
   },
   cor: {
     ruleCss: 'column-reverse',
-    classPrefix: 'co'
+    classPrefix: 'co',
   },
   au: {
     ruleCss: 'auto',
-    classPrefix: 'au'
+    classPrefix: 'au',
   },
   st: {
     ruleCss: 'stretch',
-    classPrefix: 'st'
+    classPrefix: 'st',
   },
   bl: {
     ruleCss: 'baseline',
-    classPrefix: 'bl'
+    classPrefix: 'bl',
   },
   in: {
     ruleCss: 'initial',
-    classPrefix: 'in'
+    classPrefix: 'in',
   },
   ih: {
     ruleCss: 'inherit',
-    classPrefix: 'ih'
+    classPrefix: 'ih',
   },
-}
+};
 
 const flexPropsAndValsSelfBase = {
   fg: {
     ruleCss: 'flex-grow',
-    classPrefix: 'fg'
+    classPrefix: 'fg',
   },
   fh: {
     ruleCss: 'flex-shrink',
-    classPrefix: 'fh'
+    classPrefix: 'fh',
   },
   as: {
     ruleCss: 'align-self',
-    classPrefix: 'as'
+    classPrefix: 'as',
   },
   or: {
     ruleCss: 'order',
-    classPrefix: 'or'
+    classPrefix: 'or',
   },
-}
+};
 
 const flexPropsAndValsSelf = {
   ...flexPropsAndValsSelfBase,
@@ -110,7 +110,7 @@ const flexPropsAndValsSelf = {
   'flex-shrink': flexPropsAndValsSelfBase.fh,
   'align-self': flexPropsAndValsSelfBase.as,
   order: flexPropsAndValsSelfBase.or,
-}
+};
 
 export const flexProsAndVals = {
   ...flexProsAndValsBase,
