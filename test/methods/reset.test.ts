@@ -30,7 +30,7 @@ describe('Building all', () => {
 
   it('With a class name that following the syntax of one created by the system', async () => {
     const myDiv = document.createElement('div');
-    myDiv.className = 'cols-3/13 dpz-'
+    myDiv.className = 'c-3/13 dpz-'
     await reset(myDiv);
     expect(myDiv.className).toEqual('dpz-');
   })

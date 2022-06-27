@@ -22,33 +22,33 @@ describe('Buildings Margin-right', () => {
 
   it('simple', () => {
     expect(buildMarRight('40')).toEqual({
-      'marr-40': '.marr-40{margin-right:40px}',
+      'mr-40': '.mr-40{margin-right:40px}',
     });
   });
 
   it('simple with flag important', () => {
     expect(buildMarRight('40!')).toEqual({
-      'marr-40!': '.marr-40\\!{margin-right:40px !important}',
+      'mr-40!': '.mr-40\\!{margin-right:40px !important}',
     });
   });
 
   it('With breakpoints', () => {
     expect(buildMarRight('10 20.5@sm 30@md')).toEqual({
-      'marr-10': '.marr-10{margin-right:10px}',
-      'marr-20_5@sm':
-        '@media screen and (min-width: 768px){.marr-20_5\\@sm{margin-right:20.5px}}',
-      'marr-30@md':
-        '@media screen and (min-width: 1024px){.marr-30\\@md{margin-right:30px}}',
+      'mr-10': '.mr-10{margin-right:10px}',
+      'mr-20_5@sm':
+        '@media screen and (min-width: 768px){.mr-20_5\\@sm{margin-right:20.5px}}',
+      'mr-30@md':
+        '@media screen and (min-width: 1024px){.mr-30\\@md{margin-right:30px}}',
     });
   });
 
   it('With breakpoints and important flag', () => {
     expect(buildMarRight('10! 20.5@sm 30@md!')).toEqual({
-      'marr-10!': '.marr-10\\!{margin-right:10px !important}',
-      'marr-20_5@sm':
-        '@media screen and (min-width: 768px){.marr-20_5\\@sm{margin-right:20.5px}}',
-      'marr-30@md!':
-        '@media screen and (min-width: 1024px){.marr-30\\@md\\!{margin-right:30px !important}}',
+      'mr-10!': '.mr-10\\!{margin-right:10px !important}',
+      'mr-20_5@sm':
+        '@media screen and (min-width: 768px){.mr-20_5\\@sm{margin-right:20.5px}}',
+      'mr-30@md!':
+        '@media screen and (min-width: 1024px){.mr-30\\@md\\!{margin-right:30px !important}}',
     });
   });
 });

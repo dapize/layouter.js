@@ -85,7 +85,7 @@ const breakpointsOrdered = (bps, sizes) => {
   Object.keys(sizes).forEach((bpName) => bpsOrdered[bpName] = bps[bpName]);
   return bpsOrdered;
 };
-const version = "1.3.1";
+const version = "1.4.0";
 const breakpointsInit = {
   xs: {
     width: 360,
@@ -274,34 +274,143 @@ const insertRules = (objStyles) => {
     }
   }
 };
-const flexProsAndVals = {
-  jc: "justify-content",
-  ai: "align-items",
-  ce: "center",
-  fs: "flex-start",
-  fe: "flex-end",
-  sb: "space-between",
-  sa: "space-around",
-  fw: "flex-wrap",
-  nw: "nowrap",
-  w: "wrap",
-  wr: "wrap-reverse",
-  fd: "flex-direction",
-  r: "row",
-  rr: "row-reverse",
-  co: "column",
-  cor: "column-reverse",
-  fg: "flex-grow",
-  fh: "flex-shrink",
-  as: "align-self",
-  or: "order",
-  au: "auto",
-  st: "stretch",
-  bl: "baseline",
-  in: "initial",
-  ih: "inherit"
+const flexProsAndValsBase = {
+  jc: {
+    ruleCss: "justify-content",
+    classPrefix: "jc"
+  },
+  ai: {
+    ruleCss: "align-items",
+    classPrefix: "ai"
+  },
+  ce: {
+    ruleCss: "center",
+    classPrefix: "ce"
+  },
+  fs: {
+    ruleCss: "flex-start",
+    classPrefix: "fs"
+  },
+  fe: {
+    ruleCss: "flex-end",
+    classPrefix: "fe"
+  },
+  sb: {
+    ruleCss: "space-between",
+    classPrefix: "sb"
+  },
+  sa: {
+    ruleCss: "space-around",
+    classPrefix: "sa"
+  },
+  fw: {
+    ruleCss: "flex-wrap",
+    classPrefix: "fw"
+  },
+  nw: {
+    ruleCss: "nowrap",
+    classPrefix: "nw"
+  },
+  w: {
+    ruleCss: "wrap",
+    classPrefix: "w"
+  },
+  wr: {
+    ruleCss: "wrap-reverse",
+    classPrefix: "wr"
+  },
+  fd: {
+    ruleCss: "flex-direction",
+    classPrefix: "fd"
+  },
+  r: {
+    ruleCss: "row",
+    classPrefix: "r"
+  },
+  rr: {
+    ruleCss: "row-reverse",
+    classPrefix: "rr"
+  },
+  co: {
+    ruleCss: "column",
+    classPrefix: "co"
+  },
+  cor: {
+    ruleCss: "column-reverse",
+    classPrefix: "co"
+  },
+  au: {
+    ruleCss: "auto",
+    classPrefix: "au"
+  },
+  st: {
+    ruleCss: "stretch",
+    classPrefix: "st"
+  },
+  bl: {
+    ruleCss: "baseline",
+    classPrefix: "bl"
+  },
+  in: {
+    ruleCss: "initial",
+    classPrefix: "in"
+  },
+  ih: {
+    ruleCss: "inherit",
+    classPrefix: "ih"
+  }
 };
-const flexAttrsSelf = ["fg", "fh", "or"];
+const flexPropsAndValsSelfBase = {
+  fg: {
+    ruleCss: "flex-grow",
+    classPrefix: "fg"
+  },
+  fh: {
+    ruleCss: "flex-shrink",
+    classPrefix: "fh"
+  },
+  as: {
+    ruleCss: "align-self",
+    classPrefix: "as"
+  },
+  or: {
+    ruleCss: "order",
+    classPrefix: "or"
+  }
+};
+const flexPropsAndValsSelf = {
+  ...flexPropsAndValsSelfBase,
+  "flex-grow": flexPropsAndValsSelfBase.fg,
+  "flex-shrink": flexPropsAndValsSelfBase.fh,
+  "align-self": flexPropsAndValsSelfBase.as,
+  order: flexPropsAndValsSelfBase.or
+};
+const flexProsAndVals = {
+  ...flexProsAndValsBase,
+  ...flexPropsAndValsSelf,
+  "justify-content": flexProsAndValsBase.jc,
+  "align-items": flexProsAndValsBase.ai,
+  center: flexProsAndValsBase.ce,
+  "flex-start": flexProsAndValsBase.fs,
+  "flex-end": flexProsAndValsBase.fe,
+  "space-between": flexProsAndValsBase.sb,
+  "space-around": flexProsAndValsBase.fs,
+  "flex-wrap": flexProsAndValsBase.fw,
+  nowrap: flexProsAndValsBase.nw,
+  w: flexProsAndValsBase.w,
+  "wrap-reverse": flexProsAndValsBase.wr,
+  "flex-direction": flexProsAndValsBase.fd,
+  row: flexProsAndValsBase.r,
+  "row-reverse": flexProsAndValsBase.rr,
+  column: flexProsAndValsBase.co,
+  "column-reverse": flexProsAndValsBase.cor,
+  auto: flexProsAndValsBase.au,
+  stretch: flexProsAndValsBase.st,
+  baseline: flexProsAndValsBase.bl,
+  initial: flexProsAndValsBase.in,
+  inherit: flexProsAndValsBase.ih
+};
+const flexAttrsSelf = Object.keys(flexPropsAndValsSelf);
 const percentageConverter = (percentage) => {
   return "0\xAF" + percentage.replace("%", "");
 };
@@ -318,43 +427,47 @@ const createStyles = (directive, bps) => {
       nameClass = shortNameClass.replace(shortNameClass, percentageConverter(shortNameClass));
     }
     const finalPrefix = prefix ? prefix + "-" : "";
-    nameClass = finalPrefix + directive + "-" + nameClass.replace(/\//g, "\\/").replace(/:/g, "\\:").replace("@", "\\@").split(".").join("_");
-    let propAndVal;
-    if (directive === "flex") {
-      propAndVal = bps[bp].value;
-      const flexImportant = shortNameClass.includes("!") ? ";display:flex !important;" : ";display:flex;";
-      const attrsFlexSelfs = ["as"].concat(flexAttrsSelf).filter((nameAttrFlex) => shortNameClass.includes(nameAttrFlex + ":"));
-      if (attrsFlexSelfs.length) {
-        if (attrsFlexSelfs.length + 1 !== shortNameClass.split(":").length) {
+    nameClass = finalPrefix + processors[directive].classPrefix + "-" + nameClass.replace(/\//g, "\\/").replace(/:/g, "\\:").replace("@", "\\@").split(".").join("_");
+    if (!intConfig.styles[nameClass]) {
+      let propAndVal;
+      if (directive === "flex") {
+        propAndVal = bps[bp].value;
+        const flexImportant = shortNameClass.includes("!") ? ";display:flex !important;" : ";display:flex;";
+        const attrsFlexSelfs = flexAttrsSelf.filter((nameAttrFlex) => shortNameClass.includes(nameAttrFlex + ":"));
+        if (attrsFlexSelfs.length) {
+          if (attrsFlexSelfs.length + 1 !== shortNameClass.split(":").length) {
+            propAndVal += flexImportant;
+          }
+        } else {
           propAndVal += flexImportant;
         }
       } else {
-        propAndVal += flexImportant;
+        propAndVal = prop + ":" + bps[bp].value;
       }
-    } else {
-      propAndVal = prop + ":" + bps[bp].value;
-    }
-    let rule = "@media screen and ";
-    let direct = false;
-    if (!bp.includes("-")) {
-      if (sizes[bp]) {
-        rule += "(min-width: " + sizes[bp] + "px)";
+      let rule = "@media screen and ";
+      let direct = false;
+      if (!bp.includes("-")) {
+        if (sizes[bp]) {
+          rule += "(min-width: " + sizes[bp] + "px)";
+        } else {
+          rule = "." + nameClass.replace(/!/g, "\\!") + "{" + propAndVal + "}";
+          direct = true;
+        }
       } else {
-        rule = "." + nameClass.replace(/!/g, "\\!") + "{" + propAndVal + "}";
-        direct = true;
+        const bpSplited = bp.split("-");
+        const bp1 = bpSplited[0];
+        if (bp1)
+          rule += "(min-width: " + sizes[bp1] + "px) and ";
+        const bp2 = bpSplited[1];
+        rule += "(max-width: " + (sizes[bp2] - 1) + "px)";
       }
+      if (!direct) {
+        rule += "{." + nameClass.replace(/!/g, "\\!") + "{" + propAndVal + "}}";
+      }
+      styles[nameClass] = rule;
     } else {
-      const bpSplited = bp.split("-");
-      const bp1 = bpSplited[0];
-      if (bp1)
-        rule += "(min-width: " + sizes[bp1] + "px) and ";
-      const bp2 = bpSplited[1];
-      rule += "(max-width: " + (sizes[bp2] - 1) + "px)";
+      styles[nameClass] = intConfig.styles[nameClass];
     }
-    if (!direct) {
-      rule += "{." + nameClass.replace(/!/g, "\\!") + "{" + propAndVal + "}}";
-    }
-    styles[nameClass] = rule;
   });
   return styles;
 };
@@ -436,12 +549,12 @@ const buildFlex = (valFlex, insertStyles = false) => {
   const firstBp = Object.keys(config2.breakpoints)[0];
   for (const param of valFlex.split(" ")) {
     let propVal;
-    let selectorName = param;
     const paramPrepared = prepareParam(param);
     const bpNames = paramPrepared.breakPoints;
     const flexSplited = paramPrepared.numbers.split(":");
     const nameProp = flexSplited[0];
     const valProp = flexSplited[1];
+    let valAlias;
     if (!flexAttrsSelf.includes(nameProp)) {
       if (!flexProsAndVals[nameProp]) {
         err = regError("Non-existent Alias", "Don't exists the alias '" + nameProp + "' in Flex vault.");
@@ -451,12 +564,18 @@ const buildFlex = (valFlex, insertStyles = false) => {
         err = regError("Non-existent Alias", "Don't exists the alias '" + valProp + "' in Flex vault.");
         break;
       }
-      propVal = flexProsAndVals[nameProp] + ":" + flexProsAndVals[valProp];
+      propVal = flexProsAndVals[nameProp].ruleCss + ":" + flexProsAndVals[valProp].ruleCss;
+      valAlias = flexProsAndVals[valProp].classPrefix;
     } else {
-      propVal = flexProsAndVals[nameProp] + ":" + valProp;
+      propVal = flexProsAndVals[nameProp].ruleCss + ":" + valProp;
+      valAlias = valProp;
     }
-    if (paramPrepared.important)
+    let sufixBp = bpNames === firstBp ? "" : "@" + bpNames;
+    if (paramPrepared.important) {
       propVal += " !important";
+      sufixBp += "!";
+    }
+    let selectorName = flexProsAndVals[nameProp].classPrefix + ":" + valAlias + sufixBp;
     if (!bpCals[bpNames]) {
       bpCals[bpNames] = {
         name: selectorName,
@@ -465,8 +584,10 @@ const buildFlex = (valFlex, insertStyles = false) => {
     } else {
       if (selectorName.includes("@"))
         selectorName = selectorName.split("@")[0];
-      const sufixBp = bpNames === firstBp ? "" : "@" + bpNames;
-      bpCals[bpNames].name = bpCals[bpNames].name.split("@")[0] + "-" + selectorName + sufixBp;
+      let prevName = bpCals[bpNames].name.split("@")[0];
+      if (bpCals[bpNames].name.includes("!") && !prevName.includes("!"))
+        prevName += "!";
+      bpCals[bpNames].name = prevName + "-" + selectorName + sufixBp;
       bpCals[bpNames].value += ";" + propVal;
     }
   }
@@ -565,21 +686,53 @@ const buildHeight = (valHeight, insertStyles = false) => {
 const buildWidth = (valWidth, insertStyles = false) => {
   return buildAttr(valWidth, "wdh", insertStyles);
 };
+const positionProsAndValsBase = {
+  st: {
+    ruleCss: "static",
+    classPrefix: "st"
+  },
+  ab: {
+    ruleCss: "absolute",
+    classPrefix: "ab"
+  },
+  fi: {
+    ruleCss: "fixed",
+    classPrefix: "fi"
+  },
+  re: {
+    ruleCss: "relative",
+    classPrefix: "re"
+  },
+  si: {
+    ruleCss: "sticky",
+    classPrefix: "si"
+  },
+  in: {
+    ruleCss: "initial",
+    classPrefix: "in"
+  },
+  ih: {
+    ruleCss: "inherit",
+    classPrefix: "ih"
+  }
+};
 const positionProsAndVals = {
-  st: "static",
-  ab: "absolute",
-  fi: "fixed",
-  re: "relative",
-  si: "sticky",
-  in: "initial",
-  ih: "inherit"
+  ...positionProsAndValsBase,
+  static: positionProsAndValsBase.st,
+  absolute: positionProsAndValsBase.ab,
+  fixed: positionProsAndValsBase.fi,
+  relative: positionProsAndValsBase.re,
+  sticky: positionProsAndValsBase.si,
+  initial: positionProsAndValsBase.in,
+  inherit: positionProsAndValsBase.ih
 };
 const buildPosition = (valPos, insertStyles = false) => {
   const bpCals = {};
   let err = false;
+  const config2 = getConfig();
+  const firstBp = Object.keys(config2.breakpoints)[0];
   for (const param of valPos.split(" ")) {
     let propVal;
-    const selectorName = param;
     const paramPrepared = prepareParam(param);
     const bpNames = paramPrepared.breakPoints;
     const nameProp = paramPrepared.numbers;
@@ -587,11 +740,15 @@ const buildPosition = (valPos, insertStyles = false) => {
       err = regError("Non-existent Alias", "Don't exists the alias '" + nameProp + "' in Position vault.");
       break;
     }
-    propVal = positionProsAndVals[nameProp];
-    if (paramPrepared.important)
+    propVal = positionProsAndVals[nameProp].ruleCss;
+    let className = positionProsAndVals[nameProp].classPrefix;
+    let sufixBp = bpNames === firstBp ? "" : "@" + bpNames;
+    if (paramPrepared.important) {
       propVal += " !important";
+      sufixBp += "!";
+    }
     bpCals[bpNames] = {
-      name: selectorName,
+      name: className + sufixBp,
       value: propVal
     };
   }
@@ -615,99 +772,160 @@ const buildBottom = (val, insertStyles = false) => {
 const buildLeft = (val, insertStyles = false) => {
   return buildAttr(val, "l", insertStyles);
 };
-const processors = {
+const processorsBase = {
   cols: {
     build: buildCols,
-    ruleCss: "width"
+    ruleCss: "width",
+    classPrefix: "c"
   },
   pad: {
     build: buildPad,
-    ruleCss: "padding"
+    ruleCss: "padding",
+    classPrefix: "p"
   },
   padt: {
     build: buildPadTop,
-    ruleCss: "padding-top"
+    ruleCss: "padding-top",
+    classPrefix: "pt"
   },
   padr: {
     build: buildPadRight,
-    ruleCss: "padding-right"
+    ruleCss: "padding-right",
+    classPrefix: "pr"
   },
   padb: {
     build: buildPadBottom,
-    ruleCss: "padding-bottom"
+    ruleCss: "padding-bottom",
+    classPrefix: "pb"
   },
   padl: {
     build: buildPadLeft,
-    ruleCss: "padding-left"
+    ruleCss: "padding-left",
+    classPrefix: "pl"
   },
   mar: {
     build: buildMar,
-    ruleCss: "margin"
+    ruleCss: "margin",
+    classPrefix: "m"
   },
   mart: {
     build: buildMarTop,
-    ruleCss: "margin-top"
+    ruleCss: "margin-top",
+    classPrefix: "mt"
   },
   marr: {
     build: buildMarRight,
-    ruleCss: "margin-right"
+    ruleCss: "margin-right",
+    classPrefix: "mr"
   },
   marb: {
     build: buildMarBottom,
-    ruleCss: "margin-bottom"
+    ruleCss: "margin-bottom",
+    classPrefix: "mb"
   },
   marl: {
     build: buildMarLeft,
-    ruleCss: "margin-left"
+    ruleCss: "margin-left",
+    classPrefix: "ml"
   },
   flex: {
     build: buildFlex,
-    ruleCss: "display: flex"
+    ruleCss: "display: flex",
+    classPrefix: "fx"
   },
   mxw: {
     build: buildMaxWidth,
-    ruleCss: "max-width"
+    ruleCss: "max-width",
+    classPrefix: "mxw"
   },
   mxh: {
     build: buildMaxHeight,
-    ruleCss: "max-height"
+    ruleCss: "max-height",
+    classPrefix: "mxh"
   },
   miw: {
     build: buildMinWidth,
-    ruleCss: "min-width"
+    ruleCss: "min-width",
+    classPrefix: "miw"
   },
   mih: {
     build: buildMinHeight,
-    ruleCss: "min-height"
+    ruleCss: "min-height",
+    classPrefix: "mih"
   },
   wdh: {
     build: buildWidth,
-    ruleCss: "width"
+    ruleCss: "width",
+    classPrefix: "w"
   },
   hgt: {
     build: buildHeight,
-    ruleCss: "height"
+    ruleCss: "height",
+    classPrefix: "h"
   },
   pos: {
     build: buildPosition,
-    ruleCss: "position"
+    ruleCss: "position",
+    classPrefix: "pos"
   },
   t: {
     build: buildTop,
-    ruleCss: "top"
+    ruleCss: "top",
+    classPrefix: "t"
   },
   r: {
     build: buildRight,
-    ruleCss: "right"
+    ruleCss: "right",
+    classPrefix: "r"
   },
   b: {
     build: buildBottom,
-    ruleCss: "bottom"
+    ruleCss: "bottom",
+    classPrefix: "b"
   },
   l: {
     build: buildLeft,
-    ruleCss: "left"
+    ruleCss: "left",
+    classPrefix: "l"
   }
+};
+const processors = {
+  ...processorsBase,
+  c: processorsBase.cols,
+  fx: processorsBase.flex,
+  p: processorsBase.pad,
+  padding: processorsBase.pad,
+  pt: processorsBase.padt,
+  "padding-top": processorsBase.padt,
+  pr: processorsBase.padr,
+  "padding-right": processorsBase.padr,
+  pb: processorsBase.padb,
+  "padding-bottom": processorsBase.padb,
+  pl: processorsBase.padl,
+  "padding-left": processorsBase.padl,
+  m: processorsBase.mar,
+  margin: processorsBase.mar,
+  mt: processorsBase.mart,
+  "margin-top": processorsBase.mart,
+  mr: processorsBase.marr,
+  "margin-right": processorsBase.marr,
+  mb: processorsBase.marb,
+  "margin-bottom": processorsBase.marb,
+  ml: processorsBase.marl,
+  "margin-left": processorsBase.marl,
+  w: processorsBase.wdh,
+  width: processorsBase.wdh,
+  h: processorsBase.hgt,
+  height: processorsBase.hgt,
+  "max-width": processorsBase.mxw,
+  "max-height": processorsBase.mxh,
+  "min-width": processorsBase.miw,
+  "min-height": processorsBase.mih,
+  position: processorsBase.pos,
+  top: processorsBase.t,
+  right: processorsBase.r,
+  bottom: processorsBase.b,
+  left: processorsBase.l
 };
 const getParameters = (Node) => {
   const params = {};
@@ -973,26 +1191,18 @@ const setLeft = (Node, values) => {
 };
 const reset = (Node) => {
   return new Promise((resolve) => {
-    const layouterClasses = Object.keys(processors);
-    const restClass = [];
-    Node.className.split(" ").filter((name) => {
-      if (name.length < 4) {
-        restClass.push(name);
-        return false;
-      }
-      const nPrex = name.length >= 5 ? 5 : 4;
-      let prex = name.substring(0, nPrex);
-      const lineIndex = prex.split("").indexOf("-");
-      if (lineIndex === -1) {
-        restClass.push(name);
-        return false;
-      }
-      prex = prex.substring(0, lineIndex);
-      if (layouterClasses.includes(prex)) {
+    const classPrefixes = new Set(Object.keys(processors).map((item) => processors[item].classPrefix));
+    const layouterClasses = [...classPrefixes];
+    const restClass = Node.className.split(" ").filter((name) => {
+      if (!name.includes("-")) {
         return true;
       } else {
-        restClass.push(name);
-        return false;
+        const findClass = layouterClasses.find((item) => {
+          const nLength = item.length;
+          const namePrefix = name.substring(0, nLength + 1);
+          return namePrefix === item + "-";
+        });
+        return !findClass;
       }
     });
     if (restClass.length) {

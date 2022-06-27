@@ -10,7 +10,7 @@ describe('Setting Height', () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('hgt', '100');
     await setHeight(myDiv);
-    expect(myDiv.classList.contains('hgt-100')).toBeTruthy();
+    expect(myDiv.classList.contains('h-100')).toBeTruthy();
   });
 
   it('simple without directive', async () => {
@@ -26,7 +26,7 @@ describe('Setting Height', () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('hgt', '100 200@sm 300@md');
     await setHeight(myDiv);
-    ['hgt-100', 'hgt-200@sm', 'hgt-300@md'].forEach(item => {
+    ['h-100', 'h-200@sm', 'h-300@md'].forEach(item => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
     });
   });

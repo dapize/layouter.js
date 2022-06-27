@@ -61,4 +61,5 @@ describe('Buildings Position', () => {
         '@media screen and (min-width: 900px){.pos-st\\@md\\!{position:static !important}}',
     });
   });
+
 });

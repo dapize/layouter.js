@@ -1,7 +1,11 @@
 import { IStyles } from '../helpers/createStyles';
-export declare type TDirectiveName = 'cols' | 'pad' | 'padt' | 'padr' | 'padb' | 'padl' | 'mar' | 'mart' | 'marr' | 'marb' | 'marl' | 'flex' | 'mxw' | 'mxh' | 'miw' | 'mih' | 'wdh' | 'hgt' | 'pos' | 't' | 'r' | 'b' | 'l';
+declare type TDirectiveNameBase = 'cols' | 'pad' | 'padt' | 'padr' | 'padb' | 'padl' | 'mar' | 'mart' | 'marr' | 'marb' | 'marl' | 'flex' | 'mxw' | 'mxh' | 'miw' | 'mih' | 'wdh' | 'hgt' | 'pos' | 't' | 'r' | 'b' | 'l';
+declare type TDirectiveNameExtended = 'c' | 'fx' | 'p' | 'padding' | 'pt' | 'padding-top' | 'pr' | 'padding-right' | 'pb' | 'padding-bottom' | 'pl' | 'padding-left' | 'm' | 'margin' | 'mt' | 'margin-top' | 'mr' | 'margin-right' | 'mb' | 'margin-bottom' | 'ml' | 'margin-left' | 'w' | 'width' | 'h' | 'height' | 'max-width' | 'max-height' | 'min-width' | 'min-height' | 'position' | 'top' | 'right' | 'bottom' | 'left';
+export declare type TDirectiveName = TDirectiveNameBase | TDirectiveNameExtended;
 export interface IProcessor {
     build: (values: string, insertStyles: boolean) => IStyles | Error;
     ruleCss: string;
+    classPrefix: string;
 }
 export declare const processors: Record<TDirectiveName, IProcessor>;
+export {};

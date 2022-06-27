@@ -13,6 +13,6 @@ describe('createStyles', () => {
         value: '500px'
       }
     })
-    expect(styles).toEqual( { 'dpz-mart-500': '.dpz-mart-500{margin-top:500px}' })
+    expect(styles).toEqual( { 'dpz-mt-500': '.dpz-mt-500{margin-top:500px}' })
   })
 })
