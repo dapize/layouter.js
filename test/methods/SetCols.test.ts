@@ -11,7 +11,7 @@ describe('Setting cols', () => {
     myDiv.className = 'test';
     myDiv.setAttribute('cols', '3/13');
     await setCols(myDiv);
-    expect(myDiv.classList.contains('cols-3/13')).toBeTruthy();
+    expect(myDiv.classList.contains('c-3/13')).toBeTruthy();
   });
 
   it('Without Cols property', () => {
@@ -26,10 +26,10 @@ describe('Setting cols', () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('cols', '3/15 8/31@sm 20.5/31@md');
     await setCols(myDiv);
-    ['cols-3/15', 'cols-8/31@sm', 'cols-20_5/31@md'].forEach(item => {
+    ['c-3/15', 'c-8/31@sm', 'c-20_5/31@md'].forEach(item => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
     });
-    expect(myDiv.classList.contains('cols-1/1')).toBeFalsy();
+    expect(myDiv.classList.contains('c-1/1')).toBeFalsy();
   });
 
   it('Simple with implicit columns and until breakpoint', () => {

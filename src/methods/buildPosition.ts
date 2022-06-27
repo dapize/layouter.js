@@ -1,3 +1,4 @@
+import getConfig from '../config/main';
 import { positionProsAndVals } from '../config/position';
 
 import buildCss, { IBpCals } from '../helpers/buildCss';
@@ -13,10 +14,11 @@ const buildPosition = (
 
   // Getting numbers
   let err: boolean | Error = false;
+  const config = getConfig();
+  const firstBp = Object.keys(config.breakpoints)[0];
 
   for (const param of valPos.split(' ')) {
     let propVal;
-    const selectorName = param;
     const paramPrepared = prepareParam(param);
     const bpNames = paramPrepared.breakPoints;
     const nameProp = paramPrepared.numbers as keyof typeof positionProsAndVals;
@@ -29,11 +31,18 @@ const buildPosition = (
       break;
     }
 
-    propVal = positionProsAndVals[nameProp];
-    if (paramPrepared.important) propVal += ' !important';
+    propVal = positionProsAndVals[nameProp].ruleCss;
+    let className = positionProsAndVals[nameProp].classPrefix;
+
+    let sufixBp = bpNames === firstBp ? '' : '@' + bpNames;
+
+    if (paramPrepared.important) {
+      propVal += ' !important';
+      sufixBp += '!'
+    }
 
     bpCals[bpNames] = {
-      name: selectorName,
+      name: className + sufixBp,
       value: propVal,
     };
   }

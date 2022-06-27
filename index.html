@@ -5,29 +5,27 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Layouter DEMO</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png" />
   </head>
   <body>
-    <main pad="24-1/15 24-1/25@sm 30-1/31@md 29.26-1/41@lg" mxw="1280" mar="0-auto">
-
-      <header flex="jc:sb@md" marb="24 30@md">
-        <div hgt="100" cols="11.1/29@md" marb="24@-md"></div>
-        <div hgt="100" cols="16.9/29@md"></div>
+    <main p="24-1/15 24-1/25@sm 30-1/31@md 29.26-1/41@lg" mxw="1280" m="0-auto">
+      <header flex="justify-content:space-between@md" mb="24 30@md">
+        <div h="100" c="11.1/29@md" mb="24@-md"></div>
+        <div h="100" c="16.9/29@md"></div>
       </header>
 
-      <section hgt="320" marb="24 25@sm 30@md"></section>
+      <section h="320" mb="24 25@sm 30@md"></section>
 
-      <footer flex="jc:sb@sm">
-        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg"></div>
-        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg" mar="24-0@-sm"></div>
-        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg" id="square"></div>
+      <footer fx="jc:sb@sm">
+        <div h="200" c="7/23@sm 9/29@md 12.33/39@lg"></div>
+        <div h="200" c="7/23@sm 9/29@md 12.33/39@lg" m="24-0@-sm"></div>
+        <div h="200" c="7/23@sm 9/29@md 12.33/39@lg" id="square"></div>
       </footer>
-
     </main>
 
     <style>
       body {
-        background-color: #004B85;
+        background-color: #004b85;
         margin: 0;
         padding: 0;
       }
@@ -37,7 +35,7 @@
       }
 
       header > div:first-child {
-        background-color: #00A0FF;
+        background-color: #00a0ff;
       }
 
       header > div:last-child {
@@ -49,21 +47,21 @@
       }
 
       footer div {
-        background-color: #BCBCBC;
+        background-color: #bcbcbc;
       }
     </style>
 
     <script>
       console.time('layouter');
       window.layouterConfig = {
-        ready: ( data ) => {
-          console.log( data );
-          console.timeEnd('layouter')
-        }
-      }
+        ready: (data) => {
+          console.log(data);
+          console.timeEnd('layouter');
+        },
+      };
       document.getElementById('square').addEventListener('layout:ready', () => {
         console.log('Square layout ready!');
-      })
+      });
     </script>
     <script type="module" src="/src/layouter.ts"></script>
   </body>

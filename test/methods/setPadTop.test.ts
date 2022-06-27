@@ -8,14 +8,14 @@ describe('Setting padding top', () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('padt', '40');
     await setPadTop(myDiv);
-    expect(myDiv.classList.contains('padt-40')).toBeTruthy();
+    expect(myDiv.classList.contains('pt-40')).toBeTruthy();
   });
 
   it('With breakpoints', async () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('padt', '10 20.5@sm 30@md');
     await setPadTop(myDiv);
-    ['padt-10', 'padt-20_5@sm', 'padt-30@md'].forEach(item => {
+    ['pt-10', 'pt-20_5@sm', 'pt-30@md'].forEach(item => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
     });
   });

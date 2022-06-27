@@ -2,6 +2,39 @@
 
 Los estilos creados por layouter se crean al vuelo **(on the fly)**, _[cuando el navegador termina de cargar la web]_. Podemos definir las columnas, los paddings, los margenes, el ancho y alto de un elemento y hasta determinar si el nodo tendrá display **'flex'** y sus derivados.
 
+## 🔧 Instalación
+
+Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra dentro de la carpeta **'dist'** de este repositorio:
+
+```html
+<script src="layouter.umd.js"></script>
+```
+
+**también** puedes usar **uno** de estos CDNs:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
+<script src="https://unpkg.com/layouter.js/dist/layouter.umd.js" defer></script>
+```
+
+o puedes instalarlo en tu proyecto con:
+```properties
+npm install layouter.js
+// o
+yarn add layouter.js
+```
+
+Si se requiere usarlo **en SSR debes pasar el objeto windows de 'jsdom'** y tu configuración, así:
+```javascript
+const { JSDOM } = require('jsdom');
+const { window } = new JSDOM();
+
+require('layouter.js')(window, {
+    // tu configuración aquí
+});
+```
+
+
 ## ⚙️ Configuración
 
 Para una configuración personalizada debemos **crear una variable llamada 'layouterConfig'** en el objeto global 'window', la cual contendrá un objeto con las siguientes propiedades:

@@ -10,14 +10,14 @@ describe('Setting padding bottom', () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('padb', '40');
     await setPadBottom(myDiv);
-    expect(myDiv.classList.contains('padb-40')).toBeTruthy();
+    expect(myDiv.classList.contains('pb-40')).toBeTruthy();
   });
 
   it('With breakpoints', async () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('padb', '10 20.5@sm 30@md');
     await setPadBottom(myDiv);
-    ['padb-10', 'padb-20_5@sm', 'padb-30@md'].forEach(item => {
+    ['pb-10', 'pb-20_5@sm', 'pb-30@md'].forEach(item => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
     });
   });

@@ -27,7 +27,7 @@ Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra 
 <script src="layouter.umd.js"></script>
 ```
 
-**o también** puedes usar **uno** de estos CDNs:
+**también** puedes usar **uno** de estos CDNs:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
@@ -49,18 +49,18 @@ Digamos que queremos definir el siguiente layout:
 Entonces haríamos este HTML con las siguientes directivas:
 
 ```html
-<main pad="24-1/15 24-1/25@sm 30-1/31@md 29.26-1/41@lg" mxw="1280" mar="0-auto">
-    <header flex="jc:sb@md" marb="24 30@md">
-        <div hgt="100" cols="11.1/29@md" marb="24@-md"></div>
-        <div hgt="100" cols="16.9/29@md"></div>
+<main p="24-1/15 24-1/25@sm 30-1/31@md 29.26-1/41@lg" mxw="1280" m="0-auto">
+    <header fx="jc:sb@md" mb="24 30@md">
+        <div h="100" c="11.1/29@md" mb="24@-md"></div>
+        <div h="100" c="16.9/29@md"></div>
     </header>
 
-    <section hgt="320" marb="24 25@sm 30@md"></section>
+    <section h="320" mb="24 25@sm 30@md"></section>
 
-    <footer flex="jc:sb@sm">
-        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg"></div>
-        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg" mar="24-0@-sm"></div>
-        <div hgt="200" cols="7/23@sm 9/29@md 12.33/39@lg"></div>
+    <footer fx="jc:sb@sm">
+        <div h="200" c="7/23@sm 9/29@md 12.33/39@lg"></div>
+        <div h="200" c="7/23@sm 9/29@md 12.33/39@lg" m="24-0@-sm"></div>
+        <div h="200" c="7/23@sm 9/29@md 12.33/39@lg"></div>
     </footer>
 </main>
 ```
@@ -178,10 +178,11 @@ Hay una extensa documentación en el archivo [DOCS.md](DOCS.md).
 ## 📝 Trabajo planeado
 
 1. ~~Adicionar una directiva para el posicionamiento.~~ ✅ Listo!
-2. Adicionar alias más semánticos para las directivas. (Ejm: de **'mar'** a **'margin'** o solo **'m'**)
-3. Crear componente para [React JS](https://reactjs.org)
-4. Crear componente para [Vue JS](https://vuejs.org)
-5. Crear componente para [Svelte JS](https://svelte.dev)
+2. ~~Adicionar alias más semánticos para las directivas. (Ejm: de **'mar'** a **'margin'** o solo **'m'**)~~ ✅ Listo!
+3. Agregar directivas para declaración de margenes y paddings superiores e inferiores al mismo tiempo. 🏗️ En progreso...
+4. Crear componente para [React JS](https://reactjs.org)
+5. Crear componente para [Vue JS](https://vuejs.org)
+6. Crear componente para [Svelte JS](https://svelte.dev)
 
 ## 🧾 Licencia
 

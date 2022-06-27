@@ -7,11 +7,11 @@ describe('buildAttr', () => {
 
   it('simple without insert the styles', () => {
     buildAttr('500', 'hgt');
-    expect(styles).not.toHaveProperty('hgt-500');
+    expect(styles).not.toHaveProperty('h-500');
   })
 
   it('simple and inserting the styles', () => {
     buildAttr('300', 'hgt', true);
-    expect(styles).toHaveProperty('hgt-300');
+    expect(styles).toHaveProperty('h-300');
   })
 })

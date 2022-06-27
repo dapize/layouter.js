@@ -10,7 +10,7 @@ describe('Init', () => {
     document.body.appendChild(myDiv);
     layouter(window);
     await waitFor(() => {
-      expect(screen.getByText('Simple')).toHaveClass('mart-40')
+      expect(screen.getByText('Simple')).toHaveClass('mt-40')
     })
   })
 
@@ -20,7 +20,7 @@ describe('Init', () => {
     paragraph.textContent = 'Parrafo'
     document.body.appendChild(paragraph);
     await waitFor(() => {
-      expect(screen.getByText('Parrafo')).toHaveClass('marb-50')
+      expect(screen.getByText('Parrafo')).toHaveClass('mb-50')
     })
   })
 
@@ -30,7 +30,7 @@ describe('Init', () => {
     document.body.appendChild(myDiv);
     await waitFor(() => {
       myDiv.setAttribute('marb', '60')
-      expect(screen.getByText('Content')).toHaveClass('marb-60')
+      expect(screen.getByText('Content')).toHaveClass('mb-60')
     })
   })
 
@@ -39,7 +39,7 @@ describe('Init', () => {
     paragraph.innerHTML = '<span wdh="10">Spaneado</span>';
     document.body.appendChild(paragraph);
     await waitFor(() => {
-      expect(screen.getByText('Spaneado')).toHaveClass('wdh-10')
+      expect(screen.getByText('Spaneado')).toHaveClass('w-10')
     })
   })
 

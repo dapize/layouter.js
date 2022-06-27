@@ -22,70 +22,59 @@ const createStyles = (directive: TDirectiveName, bps: IBpCals): IStyles => {
     // just if have a percentage
     let nameClass = shortNameClass;
     if (shortNameClass.includes('%')) {
-      nameClass = shortNameClass.replace(
-        shortNameClass,
-        percentageConverter(shortNameClass)
-      );
+      nameClass = shortNameClass.replace( shortNameClass, percentageConverter(shortNameClass));
     }
 
     const finalPrefix = prefix ? prefix + '-' : '';
-    nameClass =
-      finalPrefix +
-      directive +
-      '-' +
-      nameClass
-        .replace(/\//g, '\\/')
-        .replace(/:/g, '\\:')
-        .replace('@', '\\@')
-        .split('.')
-        .join('_');
+    nameClass = finalPrefix + processors[directive].classPrefix + '-' + nameClass.replace(/\//g, '\\/').replace(/:/g, '\\:').replace('@', '\\@').split('.').join('_');
 
-    // Property and value
-    let propAndVal;
-    if (directive === 'flex') {
-      propAndVal = bps[bp].value;
-      const flexImportant = shortNameClass.includes('!')
-        ? ';display:flex !important;'
-        : ';display:flex;';
+    if (!intConfig.styles[nameClass]) {
+      // Property and value
+      let propAndVal;
+      if (directive === 'flex') {
+        propAndVal = bps[bp].value;
+        const flexImportant = shortNameClass.includes('!') ? ';display:flex !important;' : ';display:flex;';
 
-      // Searching a flex self inside. ['as' for 'align-self']
-      const attrsFlexSelfs = ['as']
-        .concat(flexAttrsSelf)
-        .filter((nameAttrFlex) => shortNameClass.includes(nameAttrFlex + ':'));
-      if (attrsFlexSelfs.length) {
-        // if the items number of flex selft (+1) is diferrent so exists other flex attribute. Example: as:ce jc:ce
-        if (attrsFlexSelfs.length + 1 !== shortNameClass.split(':').length) {
+        // Searching a flex self inside. ['as' for 'align-self']
+        const attrsFlexSelfs = flexAttrsSelf.filter((nameAttrFlex) => shortNameClass.includes(nameAttrFlex + ':'));
+        if (attrsFlexSelfs.length) {
+          // if the items number of flex selft (+1) is diferrent so exists other flex attribute. Example: as:ce jc:ce
+          if (attrsFlexSelfs.length + 1 !== shortNameClass.split(':').length) {
+            propAndVal += flexImportant;
+          }
+        } else {
           propAndVal += flexImportant;
         }
       } else {
-        propAndVal += flexImportant;
+        propAndVal = prop + ':' + bps[bp].value;
       }
-    } else {
-      propAndVal = prop + ':' + bps[bp].value;
-    }
 
-    let rule = '@media screen and ';
-    let direct = false;
-    if (!bp.includes('-')) {
-      // no tiene until
-      if (sizes[bp]) {
-        rule += '(min-width: ' + sizes[bp] + 'px)';
+      let rule = '@media screen and ';
+      let direct = false;
+      if (!bp.includes('-')) {
+        // no tiene until
+        if (sizes[bp]) {
+          rule += '(min-width: ' + sizes[bp] + 'px)';
+        } else {
+          rule = '.' + nameClass.replace(/!/g, '\\!') + '{' + propAndVal + '}';
+          direct = true;
+        }
       } else {
-        rule = '.' + nameClass.replace(/!/g, '\\!') + '{' + propAndVal + '}';
-        direct = true;
+        const bpSplited = bp.split('-');
+        const bp1 = bpSplited[0];
+        if (bp1) rule += '(min-width: ' + sizes[bp1] + 'px) and ';
+        const bp2 = bpSplited[1];
+        rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
       }
-    } else {
-      const bpSplited = bp.split('-');
-      const bp1 = bpSplited[0];
-      if (bp1) rule += '(min-width: ' + sizes[bp1] + 'px) and ';
-      const bp2 = bpSplited[1];
-      rule += '(max-width: ' + (sizes[bp2] - 1) + 'px)';
-    }
 
-    if (!direct) {
-      rule += '{.' + nameClass.replace(/!/g, '\\!') + '{' + propAndVal + '}}';
+      if (!direct) {
+        rule += '{.' + nameClass.replace(/!/g, '\\!') + '{' + propAndVal + '}}';
+      }
+
+      styles[nameClass] = rule;
+    } else {
+      styles[nameClass] = intConfig.styles[nameClass]
     }
-    styles[nameClass] = rule;
   });
   return styles;
 };

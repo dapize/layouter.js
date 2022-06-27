@@ -8,14 +8,14 @@ describe('Setting Margin Right', () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('marl', '40');
     await setMarLeft(myDiv);
-    expect(myDiv.classList.contains('marl-40')).toBeTruthy();
+    expect(myDiv.classList.contains('ml-40')).toBeTruthy();
   });
 
   it('With breakpoints', async () => {
     const myDiv = document.createElement('div');
     myDiv.setAttribute('marl', '10 20.5@sm 30@md');
     await setMarLeft(myDiv);
-    ['marl-10', 'marl-20_5@sm', 'marl-30@md'].forEach(item => {
+    ['ml-10', 'ml-20_5@sm', 'ml-30@md'].forEach(item => {
       expect(myDiv.classList.contains(item)).toBeTruthy();
     });
   });
