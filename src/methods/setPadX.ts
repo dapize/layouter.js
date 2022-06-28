@@ -7,7 +7,7 @@ const setPadX = (
 ): Promise<void | Error> => {
   return setterPadsXY({
     Node,
-    directives: ['padx', 'px'],
+    directives: ['padx', 'px', 'padding-x'],
     builder: buildPadX,
     vals
   })

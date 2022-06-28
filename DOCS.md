@@ -13,7 +13,10 @@ Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra 
 **también** puedes usar **uno** de estos CDNs:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js"
+    defer
+></script>
 <script src="https://unpkg.com/layouter.js/dist/layouter.umd.js" defer></script>
 ```
 
@@ -110,6 +113,8 @@ Ese alias definidos se usará para determinar el breakpoint en cada valor de las
 | [Padr](#padr-padb-padl)     | `pr`, `padding-right`  | `padr="2/15"`, `pr="3/16"`, `padding-right="4/17"`                                        | Determinar el **padding** derecho de un nodo.                                                               |
 | [Padb](#padr-padb-padl)     | `pb`, `padding-bottom` | `padb="30"`, `pb="40"`, `padding-bottom="50"`                                             | Determinar el **padding** inferior de un nodo.                                                              |
 | [Padl](#padr-padb-padl)     | `pl`, `padding-left`   | `padl="3/15"`, `pl="4/16"`, `padding-left="5/17"`                                         | Determinar el **padding** izquierdo de un nodo.                                                             |
+| [Pady](#pady-padx)          | `py`                   | `pady="10"`, `py="20"`                                                                    | Determina el **padding superior e inferior al mismo tiempo** de un nodo.                                    |
+| [Padx](#pady-padx)          | `px`                   | `padx="10"`, `px="20"`                                                                    | Determina el **padding derecho e izquierdo al mismo tiempo** de un nodo.                                    |
 | [Pad](#pad)                 | `p`, `padding`         | `pad="20-2/15-30-3/15"`, `p="20-2/15-30-3/15"`, `padding="20-2/15-30-3/15"`               | Es un shorthand de las directivas: [padt](#padt), [padr, padb, y padl](#padr-padb-padl).                    |
 | [Flex](#flex)               | `fx`                   | `flex="jc:ce ai:fs fd:co"`, `flex="jc:fe ai:fs`, `fx="align-items:center flex-wrap:wrap"` | Determina el **display flex** del nodo y sus derivados.                                                     |
 | [Wdh](#width)               | `w`, `width`           | `wdh="100"`, `w="200"`, `width="300"`                                                     | Determina el **ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).        |
@@ -753,6 +758,94 @@ Sirven para determinar los paddings derechos, inferiores e izquierdos respectiva
 </details>
 
 [&uarr; Volver Arriba](#directivas)
+
+### PadY, PadX
+
+Estas directivas son plus, ya que son un shorthand de 2 directivas, veamoslas:
+
+-   **'pady'** o solamente **'py'**: Determinará el padding superior e inferior al mismo tiempo de un nodo:
+
+#### Ejemplo:
+
+```html
+<div pady="10 20@sm 30@md">...</div>
+```
+
+o de forma super abreviada podemos usar solo `<div py="10 20@sm 30@md">...</div>`.
+
+<details>
+<summary>nos crea estos estilos:</summary>
+
+```css
+.pb-10 {
+    padding-bottom: 10px;
+}
+.pt-10 {
+    padding-top: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .pb-20\@sm {
+        padding-bottom: 20px;
+    }
+    .pt-20\@sm {
+        padding-top: 20px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .pb-30\@md {
+        padding-bottom: 30px;
+    }
+    .pt-30\@md {
+        padding-top: 30px;
+    }
+}
+```
+
+</details>
+
+-   **'padx'** o solamente **'px'**: Determinará el padding derecho e izquierdo al mismo tiempo de un nodo:
+
+#### Ejemplo:
+
+```html
+<div padx="10 20@sm 30@md">...</div>
+```
+
+o de forma super abreviada podemos usar solo `<div px="10 20@sm 30@md">...</div>`.
+
+<details>
+<summary>y nos crea estos estilos:</summary>
+
+```css
+.pl-10 {
+    padding-left: 10px;
+}
+.pr-10 {
+    padding-right: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .pl-20\@sm {
+        padding-left: 20px;
+    }
+    .pr-20\@sm {
+        padding-right: 20px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .pl-30\@md {
+        padding-left: 30px;
+    }
+    .pr-30\@md {
+        padding-right: 30px;
+    }
+}
+```
+
+</details>
 
 ### Flex
 

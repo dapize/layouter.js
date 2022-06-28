@@ -69,7 +69,9 @@ type TDirectiveNameExtended =
   | 'pl'
   | 'padding-left'
   | 'py'
+  | 'padding-y'
   | 'px'
+  | 'padding-x'
   | 'm'
   | 'margin'
   | 'mt'
@@ -266,7 +268,9 @@ export const processors: Record<TDirectiveName, IProcessor> = {
   'padding-bottom': processorsBase.padb,
   pl: processorsBase.padl,
   py: processorsBase.pady,
+  'padding-y': processorsBase.pady,
   px: processorsBase.padx,
+  'padding-x': processorsBase.padx,
   'padding-left': processorsBase.padl,
   m: processorsBase.mar,
   margin: processorsBase.mar,
