@@ -13,10 +13,7 @@ Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra 
 **también** puedes usar **uno** de estos CDNs:
 
 ```html
-<script
-    src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js"
-    defer
-></script>
+<script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
 <script src="https://unpkg.com/layouter.js/dist/layouter.umd.js" defer></script>
 ```
 
@@ -102,20 +99,22 @@ Ese alias definidos se usará para determinar el breakpoint en cada valor de las
 
 | Nombre                      | Alias                  | Ejemplos                                                                                  | Descripción                                                                                                 |
 | --------------------------- | ---------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| [Cols](#cols)               | `c`                    | `cols="13/15"`, `c="5/10"`                                                                | Determinará las columnas, osea el 'width' de manera porcentual.                                             |
+| [Cols](#cols)               | `c`                    | `cols="13/15"`, `c="5/10"`                                                                | Determina las columnas, osea el 'width' de manera porcentual.                                               |
 | [d](#display)               | `display`              | `d="bl"`, `display="inline"`                                                              | Determina el **display** que tendrá el nodo.                                                                |
-| [Mart](#mart)               | `mt`, `margin-top`     | `mart="10"`, `mt="20"`, `margin-top="12"`                                                 | Determina el **margen** superior de un nodo.                                                                |
-| [Marr](#marr-marb-marl)     | `mr`, `margin-right`   | `marr="2/15"`, `mr="5/10"`, `margin-right="3/5"`                                          | Determinar el **margen** derecho de un nodo.                                                                |
-| [Marb](#marr-marb-marl)     | `mb`, `margin-bottom`  | `marb="30"`, `mb="50"`, `margin-bottom="25"`                                              | Determinar el **margen** inferior de un nodo.                                                               |
-| [Marl](#marr-marb-marl)     | `ml`, `margin-left`    | `marl="3/15"`, `ml="5/10"`, `margin-left="3/5"`                                           | Determinar el **margen** izquierdo de un nodo.                                                              |
+| [Mart](#mart)               | `mt`, `margin-top`     | `mart="10"`, `mt="20"`, `margin-top="12"`                                                 | Determina el **margen superior** de un nodo.                                                                |
+| [Marr](#marr-marb-marl)     | `mr`, `margin-right`   | `marr="2/15"`, `mr="5/10"`, `margin-right="3/5"`                                          | Determinar el **margen derecho** de un nodo.                                                                |
+| [Marb](#marr-marb-marl)     | `mb`, `margin-bottom`  | `marb="30"`, `mb="50"`, `margin-bottom="25"`                                              | Determinar el **margen inferior** de un nodo.                                                               |
+| [Marl](#marr-marb-marl)     | `ml`, `margin-left`    | `marl="3/15"`, `ml="5/10"`, `margin-left="3/5"`                                           | Determinar el **margen izquierdo** de un nodo.                                                              |
 | [Mar](#mar)                 | `m`, `margin`          | `mar="20-2/15-30-3/15"`, `m="20-2/15-30-3/15"`, `margin="20-2/15-30-3/15"`                | Es un shorthand de las directivas: [mart](#mart), [marr, marb, y marl](#marr-marb-marl).                    |
-| [Padt](#padt)               | `pt`, `padding-top`    | `padt="10"`, `pt="20"`, `padding-top="30"`                                                | Determina el **padding** superior de un nodo.                                                               |
-| [Padr](#padr-padb-padl)     | `pr`, `padding-right`  | `padr="2/15"`, `pr="3/16"`, `padding-right="4/17"`                                        | Determinar el **padding** derecho de un nodo.                                                               |
-| [Padb](#padr-padb-padl)     | `pb`, `padding-bottom` | `padb="30"`, `pb="40"`, `padding-bottom="50"`                                             | Determinar el **padding** inferior de un nodo.                                                              |
-| [Padl](#padr-padb-padl)     | `pl`, `padding-left`   | `padl="3/15"`, `pl="4/16"`, `padding-left="5/17"`                                         | Determinar el **padding** izquierdo de un nodo.                                                             |
-| [Pady](#pady-padx)          | `py`                   | `pady="10"`, `py="20"`                                                                    | Determina el **padding superior e inferior al mismo tiempo** de un nodo.                                    |
-| [Padx](#pady-padx)          | `px`                   | `padx="10"`, `px="20"`                                                                    | Determina el **padding derecho e izquierdo al mismo tiempo** de un nodo.                                    |
+| [Mary](#mary-marx)          | `my`, `margin-y`       | `mary="10"`, `my="20"`                                                                    | Determina el **margen superior e inferior al mismo tiempo** de un nodo.                                     |
+| [Marx](#mary-marx)          | `mx`, `maring-x`       | `marx="10"`, `mx="20"`                                                                    | Determina el **margen derecho e izquierdo al mismo tiempo** de un nodo.                                     |
+| [Padt](#padt)               | `pt`, `padding-top`    | `padt="10"`, `pt="20"`, `padding-top="30"`                                                | Determina el **padding superior** de un nodo.                                                               |
+| [Padr](#padr-padb-padl)     | `pr`, `padding-right`  | `padr="2/15"`, `pr="3/16"`, `padding-right="4/17"`                                        | Determina el **padding derecho** de un nodo.                                                                |
+| [Padb](#padr-padb-padl)     | `pb`, `padding-bottom` | `padb="30"`, `pb="40"`, `padding-bottom="50"`                                             | Determina el **padding inferior** de un nodo.                                                               |
+| [Padl](#padr-padb-padl)     | `pl`, `padding-left`   | `padl="3/15"`, `pl="4/16"`, `padding-left="5/17"`                                         | Determina el **padding izquierdo** de un nodo.                                                              |
 | [Pad](#pad)                 | `p`, `padding`         | `pad="20-2/15-30-3/15"`, `p="20-2/15-30-3/15"`, `padding="20-2/15-30-3/15"`               | Es un shorthand de las directivas: [padt](#padt), [padr, padb, y padl](#padr-padb-padl).                    |
+| [Pady](#pady-padx)          | `py`, `padding-y`      | `pady="10"`, `py="20"`                                                                    | Determina el **padding superior e inferior al mismo tiempo** de un nodo.                                    |
+| [Padx](#pady-padx)          | `px`, `padding-x`      | `padx="10"`, `px="20"`                                                                    | Determina el **padding derecho e izquierdo al mismo tiempo** de un nodo.                                    |
 | [Flex](#flex)               | `fx`                   | `flex="jc:ce ai:fs fd:co"`, `flex="jc:fe ai:fs`, `fx="align-items:center flex-wrap:wrap"` | Determina el **display flex** del nodo y sus derivados.                                                     |
 | [Wdh](#width)               | `w`, `width`           | `wdh="100"`, `w="200"`, `width="300"`                                                     | Determina el **ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).        |
 | [Hgt](#height)              | `h`, `height`          | `hgt="100"`, `h="200"`, `height="300"`                                                    | Determina el **alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).         |
@@ -127,7 +126,7 @@ Ese alias definidos se usará para determinar el breakpoint en cada valor de las
 | [T](#top-right-bottom-left) | `top`                  | `t="10"`, `top="20"`                                                                      | Determina el **top** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).          |
 | [R](#top-right-bottom-left) | `right`                | `r="10"`, `right="20"`                                                                    | Determina el **right** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).        |
 | [B](#top-right-bottom-left) | `bottom`               | `b="10"`, `bottom="20"`                                                                   | Determina el **bottom** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).       |
-| [L](#top-right-bottom-left) | `left`                 | `l="10"`, `left="20"`                                                                     | Determina el **left** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).         |
+| [L](#top-right-bottom-left) | `left`                 | `l="10"`, `left="20"`                                                                     | Determina el **left** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
 
 ## Métodos
 
@@ -846,6 +845,98 @@ o de forma super abreviada podemos usar solo `<div px="10 20@sm 30@md">...</div>
 ```
 
 </details>
+
+[&uarr; Volver Arriba](#directivas)
+
+### MarY, MarX
+
+Estas directivas son plus, ya que son un shorthand de 2 directivas, veamoslas:
+
+-   **'mary'** o solamente **'my'**: Determinará el margen superior e inferior al mismo tiempo de un nodo:
+
+#### Ejemplo:
+
+```html
+<div mary="10 20@sm 30@md">...</div>
+```
+
+o de forma super abreviada podemos usar solo `<div my="10 20@sm 30@md">...</div>`.
+
+<details>
+<summary>nos crea estos estilos:</summary>
+
+```css
+.mb-10 {
+    margin-bottom: 10px;
+}
+.mt-10 {
+    margin-top: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .mb-20\@sm {
+        margin-bottom: 20px;
+    }
+    .mt-20\@sm {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .mb-30\@md {
+        margin-bottom: 30px;
+    }
+    .mt-30\@md {
+        margin-top: 30px;
+    }
+}
+```
+
+</details>
+
+-   **'marx'** o solamente **'mx'**: Determinará el margen derecho e izquierdo al mismo tiempo de un nodo:
+
+#### Ejemplo:
+
+```html
+<div marx="10 20@sm 30@md">...</div>
+```
+
+o de forma super abreviada podemos usar solo `<div mx="10 20@sm 30@md">...</div>`.
+
+<details>
+<summary>y nos crea estos estilos:</summary>
+
+```css
+.ml-10 {
+    margin-left: 10px;
+}
+.mr-10 {
+    margin-right: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .ml-20\@sm {
+        margin-left: 20px;
+    }
+    .mr-20\@sm {
+        margin-right: 20px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .ml-30\@md {
+        margin-left: 30px;
+    }
+    .mr-30\@md {
+        margin-right: 30px;
+    }
+}
+```
+
+</details>
+
+[&uarr; Volver Arriba](#directivas)
 
 ### Flex
 
@@ -1575,15 +1666,16 @@ Podemos acceder a los siguientes getters desde la **variable 'layouter' del obje
 
 ```javascript
 layouter.breakpoints = [ "xs", "sm", "md" ]
-layouter.sizes = { xs: 0, sm: 768, md: 1024, }
-layouter.cols = { xs: 15, sm: 11, md: 31 }
+layouter.sizes = { xs: 0, sm: 600, md: 900, lg: 1200, xlg: 1536 }
+layouter.cols = { xs: 15, sm: 25, md: 31, lg: 41, xlg: s51 }
 layouter.styles = {
   "cols-10\\/31@sm-md": "@media screen and (min-width: 600px) and (max-width: 899px){.cols-10\\/31\\@sm-md{width:32.258%}}"
   "cols-13\\/15": ".cols-13\\/15{width:86.667%}"
   "cols-15\\/27@md": "@media screen and (min-width: 900px){.cols-15\\/27\\@md{width:55.556%}}"
   "flex-jc\\:c": ".flex-jc\\:c{justify-content:center;display: flex}",
+  ...
 }
-layouter.version = '1.5.0'
+layouter.version = '1.6.0'
 ```
 
 [&uarr; Volver Arriba](#utils)
