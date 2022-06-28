@@ -26,6 +26,8 @@ import { IStyles } from '../helpers/createStyles';
 import buildDisplay from '../methods/buildDisplay';
 import buildPadX from '../methods/buildPadX';
 import buildPadY from '../methods/buildPadY';
+import buildMarX from '../methods/buildMarX';
+import buildMarY from '../methods/buildMarY';
 
 type TDirectiveNameBase =
   | 'cols'
@@ -41,6 +43,8 @@ type TDirectiveNameBase =
   | 'marr'
   | 'marb'
   | 'marl'
+  | 'marx'
+  | 'mary'
   | 'flex'
   | 'mxw'
   | 'mxh'
@@ -72,6 +76,10 @@ type TDirectiveNameExtended =
   | 'padding-y'
   | 'px'
   | 'padding-x'
+  | 'my'
+  | 'margin-y'
+  | 'mx'
+  | 'margin-x'
   | 'm'
   | 'margin'
   | 'mt'
@@ -175,6 +183,16 @@ const processorsBase: Record<TDirectiveNameBase, IProcessor> = {
     ruleCss: 'margin-left',
     classPrefix: 'ml',
   },
+  marx: {
+    build: buildMarX,
+    ruleCss: ['margin-left', 'margin-right'],
+    classPrefix: 'px',
+  },
+  mary: {
+    build: buildMarY,
+    ruleCss: ['margin-top', 'margin-bottom'],
+    classPrefix: 'py',
+  },
 
   // Flex Box
   flex: {
@@ -267,11 +285,11 @@ export const processors: Record<TDirectiveName, IProcessor> = {
   pb: processorsBase.padb,
   'padding-bottom': processorsBase.padb,
   pl: processorsBase.padl,
+  'padding-left': processorsBase.padl,
   py: processorsBase.pady,
   'padding-y': processorsBase.pady,
   px: processorsBase.padx,
   'padding-x': processorsBase.padx,
-  'padding-left': processorsBase.padl,
   m: processorsBase.mar,
   margin: processorsBase.mar,
   mt: processorsBase.mart,
@@ -282,6 +300,10 @@ export const processors: Record<TDirectiveName, IProcessor> = {
   'margin-bottom': processorsBase.marb,
   ml: processorsBase.marl,
   'margin-left': processorsBase.marl,
+  my: processorsBase.mary,
+  'margin-y': processorsBase.mary,
+  mx: processorsBase.marx,
+  'margin-x': processorsBase.marx,
   w: processorsBase.wdh,
   width: processorsBase.wdh,
   h: processorsBase.hgt,

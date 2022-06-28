@@ -1,16 +1,16 @@
 import buildPadY from './buildPadY';
-import setterPadsXY from '../helpers/setterPadsXY';
+import setterXY from '../helpers/setterXY';
 
 const setPadY = (
   Node: HTMLElement | Element,
   vals?: string
 ): Promise<void | Error> => {
-  return setterPadsXY({
+  return setterXY({
     Node,
     directives: ['pady', 'py', 'padding-y'],
     builder: buildPadY,
-    vals
-  })
+    vals,
+  });
 };
 
 export default setPadY;

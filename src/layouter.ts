@@ -27,6 +27,8 @@ import buildBottom from './methods/buildBottom';
 import buildLeft from './methods/buildLeft';
 import buildPadX from './methods/buildPadX';
 import buildPadY from './methods/buildPadY';
+import buildMarX from './methods/buildMarX';
+import buildMarY from './methods/buildMarY';
 
 import set from './methods/set';
 import setFlex from './methods/setFlex';
@@ -54,6 +56,8 @@ import setBottom from './methods/setBottom';
 import setLeft from './methods/setLeft';
 import setPadX from './methods/setPadX';
 import setPadY from './methods/setPadY';
+import setMarX from './methods/setMarX';
+import setMarY from './methods/setMarY';
 
 import insertRules from './methods/insertRules';
 import reset from './methods/reset';
@@ -81,11 +85,14 @@ export interface ILayouter extends IConfig {
   buildPadBottom: (valPadBottom: string, insertStyles?: boolean) => IStyles;
   buildPadLeft: (valPadLeft: string, insertStyles?: boolean) => IStyles;
   buildPadX: (valPadX: string, insertStyles?: boolean) => IStyles;
+  buildPadY: (valPadX: string, insertStyles?: boolean) => IStyles;
   buildMar: (valMars: string, insertStyles?: boolean) => IStyles;
   buildMarTop: (valMarTop: string, insertStyles?: boolean) => IStyles;
   buildMarRight: (valMarRight: string, insertStyles?: boolean) => IStyles;
   buildMarBottom: (valMarBottom: string, insertStyles?: boolean) => IStyles;
   buildMarLeft: (valMarLeft: string, insertStyles?: boolean) => IStyles;
+  buildMarX: (valPadX: string, insertStyles?: boolean) => IStyles;
+  buildMarY: (valPadX: string, insertStyles?: boolean) => IStyles;
   buildMaxWidth: (valMaxWidth: string, insertStyles?: boolean) => IStyles;
   buildMaxHeight: (valMaxHeight: string, insertStyles?: boolean) => IStyles;
   buildMinWidth: (valMinWidth: string, insertStyles?: boolean) => IStyles;
@@ -133,6 +140,14 @@ export interface ILayouter extends IConfig {
     Node: HTMLElement | Element,
     values?: string
   ) => Promise<void | Error>;
+  setMarX: (
+    Node: HTMLElement | Element,
+    values?: string
+  ) => Promise<void | Error>;
+  setMarY: (
+    Node: HTMLElement | Element,
+    values?: string
+  ) => Promise<void | Error>;
   setPad: (
     Node: HTMLElement | Element,
     values?: string
@@ -161,7 +176,6 @@ export interface ILayouter extends IConfig {
     Node: HTMLElement | Element,
     values?: string
   ) => Promise<void | Error>;
-
 
   setWidth: (
     Node: HTMLElement | Element,
@@ -246,6 +260,8 @@ const layouter = (
     buildMarRight,
     buildMarBottom,
     buildMarLeft,
+    buildMarX,
+    buildMarY,
     buildMaxWidth,
     buildMaxHeight,
     buildMinWidth,
@@ -260,6 +276,8 @@ const layouter = (
     setMarRight,
     setMarBottom,
     setMarLeft,
+    setMarX,
+    setMarY,
     setPad,
     setPadTop,
     setPadRight,

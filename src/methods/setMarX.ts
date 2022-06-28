@@ -1,16 +1,16 @@
-import buildPadX from './buildPadX';
+import buildMarX from './buildMarX';
 import setterXY from '../helpers/setterXY';
 
-const setPadX = (
+const setMarX = (
   Node: HTMLElement | Element,
   vals?: string
 ): Promise<void | Error> => {
   return setterXY({
     Node,
-    directives: ['padx', 'px', 'padding-x'],
-    builder: buildPadX,
+    directives: ['marx', 'px', 'margin-x'],
+    builder: buildMarX,
     vals,
   });
 };
 
-export default setPadX;
+export default setMarX;

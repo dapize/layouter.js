@@ -1,18 +1,18 @@
-import { IStyles } from "./createStyles";
-import directiveValues from "./directiveValues";
-import eventReady from "./eventReady";
+import { IStyles } from './createStyles';
+import directiveValues from './directiveValues';
+import eventReady from './eventReady';
 
-export interface ISetterPadsXY {
+export interface ISetterXY {
   Node: HTMLElement | Element;
   directives: string[];
   builder: (valPadX: string, insertStyles: boolean) => IStyles;
   vals?: string;
 }
 
-const setterPadsXY = (data: ISetterPadsXY): Promise<void | Error> => {
+const setterXY = (data: ISetterXY): Promise<void | Error> => {
   return new Promise((resolve, reject) => {
     const values = data.vals || directiveValues(data.Node, data.directives);
-    if ( !values ) return reject(values)
+    if (!values) return reject(values);
 
     // Creating, inserting, and adding classNames of rules in Node.
     const objStyles = data.builder(values as string, true);
@@ -26,6 +26,6 @@ const setterPadsXY = (data: ISetterPadsXY): Promise<void | Error> => {
       resolve,
     });
   });
-}
+};
 
-export default setterPadsXY;
+export default setterXY;

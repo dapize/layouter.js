@@ -85,7 +85,7 @@ const breakpointsOrdered = (bps, sizes) => {
   Object.keys(sizes).forEach((bpName) => bpsOrdered[bpName] = bps[bpName]);
   return bpsOrdered;
 };
-const version = "1.5.0";
+const version = "1.6.0";
 const breakpointsInit = {
   xs: {
     width: 360,
@@ -851,20 +851,20 @@ const buildDisplay = (valDisplay, insertStyles = false) => {
     deep: insertStyles
   });
 };
-const buildPadXY = (data) => {
-  const padRight = data.builderA(data.values, data.insertStyles);
-  const padLeft = data.builderB(data.values, data.insertStyles);
-  const styles = {};
-  for (const style in padRight) {
-    styles[style] = padRight[style];
+const buildXY = (data) => {
+  const stylesA = data.builderA(data.values, data.insertStyles);
+  const stylesB = data.builderB(data.values, data.insertStyles);
+  const allStyles = {};
+  for (const style in stylesA) {
+    allStyles[style] = stylesA[style];
   }
-  for (const style in padLeft) {
-    styles[style] = padLeft[style];
+  for (const style in stylesB) {
+    allStyles[style] = stylesB[style];
   }
-  return styles;
+  return allStyles;
 };
 const buildPadX = (valPadX, insertStyles = false) => {
-  return buildPadXY({
+  return buildXY({
     values: valPadX,
     builderA: buildPadRight,
     builderB: buildPadLeft,
@@ -872,10 +872,26 @@ const buildPadX = (valPadX, insertStyles = false) => {
   });
 };
 const buildPadY = (valPadX, insertStyles = false) => {
-  return buildPadXY({
+  return buildXY({
     values: valPadX,
     builderA: buildPadTop,
     builderB: buildPadBottom,
+    insertStyles
+  });
+};
+const buildMarX = (valMarX, insertStyles = false) => {
+  return buildXY({
+    values: valMarX,
+    builderA: buildMarRight,
+    builderB: buildMarLeft,
+    insertStyles
+  });
+};
+const buildMarY = (valMarY, insertStyles = false) => {
+  return buildXY({
+    values: valMarY,
+    builderA: buildMarTop,
+    builderB: buildMarBottom,
     insertStyles
   });
 };
@@ -944,6 +960,16 @@ const processorsBase = {
     build: buildMarLeft,
     ruleCss: "margin-left",
     classPrefix: "ml"
+  },
+  marx: {
+    build: buildMarX,
+    ruleCss: ["margin-left", "margin-right"],
+    classPrefix: "px"
+  },
+  mary: {
+    build: buildMarY,
+    ruleCss: ["margin-top", "margin-bottom"],
+    classPrefix: "py"
   },
   flex: {
     build: buildFlex,
@@ -1024,9 +1050,11 @@ const processors = {
   pb: processorsBase.padb,
   "padding-bottom": processorsBase.padb,
   pl: processorsBase.padl,
-  py: processorsBase.pady,
-  px: processorsBase.padx,
   "padding-left": processorsBase.padl,
+  py: processorsBase.pady,
+  "padding-y": processorsBase.pady,
+  px: processorsBase.padx,
+  "padding-x": processorsBase.padx,
   m: processorsBase.mar,
   margin: processorsBase.mar,
   mt: processorsBase.mart,
@@ -1037,6 +1065,10 @@ const processors = {
   "margin-bottom": processorsBase.marb,
   ml: processorsBase.marl,
   "margin-left": processorsBase.marl,
+  my: processorsBase.mary,
+  "margin-y": processorsBase.mary,
+  mx: processorsBase.marx,
+  "margin-x": processorsBase.marx,
   w: processorsBase.wdh,
   width: processorsBase.wdh,
   h: processorsBase.hgt,
@@ -1318,7 +1350,7 @@ const directiveValues = (Node, directives) => {
   const directiveValues2 = directives.map((item) => Node.getAttribute(item)).filter((item) => item).join(" ");
   return !directiveValues2 ? regError("Empty", 'The value of the directives "' + directives.join(", ") + '" are empty', Node) : directiveValues2;
 };
-const setterPadsXY = (data) => {
+const setterXY = (data) => {
   return new Promise((resolve, reject) => {
     const values = data.vals || directiveValues(data.Node, data.directives);
     if (!values)
@@ -1334,18 +1366,34 @@ const setterPadsXY = (data) => {
   });
 };
 const setPadX = (Node, vals) => {
-  return setterPadsXY({
+  return setterXY({
     Node,
-    directives: ["padx", "px"],
+    directives: ["padx", "px", "padding-x"],
     builder: buildPadX,
     vals
   });
 };
 const setPadY = (Node, vals) => {
-  return setterPadsXY({
+  return setterXY({
     Node,
-    directives: ["pady", "py"],
+    directives: ["pady", "py", "padding-y"],
     builder: buildPadY,
+    vals
+  });
+};
+const setMarX = (Node, vals) => {
+  return setterXY({
+    Node,
+    directives: ["marx", "px", "margin-x"],
+    builder: buildMarX,
+    vals
+  });
+};
+const setMarY = (Node, vals) => {
+  return setterXY({
+    Node,
+    directives: ["mary", "py", "margin-y"],
+    builder: buildMarY,
     vals
   });
 };
@@ -1457,6 +1505,8 @@ const layouter = (context, userConfig = {}) => {
     buildMarRight,
     buildMarBottom,
     buildMarLeft,
+    buildMarX,
+    buildMarY,
     buildMaxWidth,
     buildMaxHeight,
     buildMinWidth,
@@ -1471,6 +1521,8 @@ const layouter = (context, userConfig = {}) => {
     setMarRight,
     setMarBottom,
     setMarLeft,
+    setMarX,
+    setMarY,
     setPad,
     setPadTop,
     setPadRight,

@@ -14,11 +14,14 @@ export interface ILayouter extends IConfig {
     buildPadBottom: (valPadBottom: string, insertStyles?: boolean) => IStyles;
     buildPadLeft: (valPadLeft: string, insertStyles?: boolean) => IStyles;
     buildPadX: (valPadX: string, insertStyles?: boolean) => IStyles;
+    buildPadY: (valPadX: string, insertStyles?: boolean) => IStyles;
     buildMar: (valMars: string, insertStyles?: boolean) => IStyles;
     buildMarTop: (valMarTop: string, insertStyles?: boolean) => IStyles;
     buildMarRight: (valMarRight: string, insertStyles?: boolean) => IStyles;
     buildMarBottom: (valMarBottom: string, insertStyles?: boolean) => IStyles;
     buildMarLeft: (valMarLeft: string, insertStyles?: boolean) => IStyles;
+    buildMarX: (valPadX: string, insertStyles?: boolean) => IStyles;
+    buildMarY: (valPadX: string, insertStyles?: boolean) => IStyles;
     buildMaxWidth: (valMaxWidth: string, insertStyles?: boolean) => IStyles;
     buildMaxHeight: (valMaxHeight: string, insertStyles?: boolean) => IStyles;
     buildMinWidth: (valMinWidth: string, insertStyles?: boolean) => IStyles;
@@ -38,6 +41,8 @@ export interface ILayouter extends IConfig {
     setMarRight: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setMarBottom: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setMarLeft: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
+    setMarX: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
+    setMarY: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setPad: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setPadTop: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setPadRight: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
