@@ -25,6 +25,8 @@ import buildTop from './methods/buildTop';
 import buildRight from './methods/buildRight';
 import buildBottom from './methods/buildBottom';
 import buildLeft from './methods/buildLeft';
+import buildPadX from './methods/buildPadX';
+import buildPadY from './methods/buildPadY';
 
 import set from './methods/set';
 import setFlex from './methods/setFlex';
@@ -50,6 +52,8 @@ import setTop from './methods/setTop';
 import setRight from './methods/setRight';
 import setBottom from './methods/setBottom';
 import setLeft from './methods/setLeft';
+import setPadX from './methods/setPadX';
+import setPadY from './methods/setPadY';
 
 import insertRules from './methods/insertRules';
 import reset from './methods/reset';
@@ -76,6 +80,7 @@ export interface ILayouter extends IConfig {
   buildPadRight: (valPadRight: string, insertStyles?: boolean) => IStyles;
   buildPadBottom: (valPadBottom: string, insertStyles?: boolean) => IStyles;
   buildPadLeft: (valPadLeft: string, insertStyles?: boolean) => IStyles;
+  buildPadX: (valPadX: string, insertStyles?: boolean) => IStyles;
   buildMar: (valMars: string, insertStyles?: boolean) => IStyles;
   buildMarTop: (valMarTop: string, insertStyles?: boolean) => IStyles;
   buildMarRight: (valMarRight: string, insertStyles?: boolean) => IStyles;
@@ -148,6 +153,16 @@ export interface ILayouter extends IConfig {
     Node: HTMLElement | Element,
     values?: string
   ) => Promise<void | Error>;
+  setPadX: (
+    Node: HTMLElement | Element,
+    values?: string
+  ) => Promise<void | Error>;
+  setPadY: (
+    Node: HTMLElement | Element,
+    values?: string
+  ) => Promise<void | Error>;
+
+
   setWidth: (
     Node: HTMLElement | Element,
     values?: string
@@ -224,6 +239,8 @@ const layouter = (
     buildPadRight,
     buildPadBottom,
     buildPadLeft,
+    buildPadX,
+    buildPadY,
     buildMar,
     buildMarTop,
     buildMarRight,
@@ -248,6 +265,8 @@ const layouter = (
     setPadRight,
     setPadBottom,
     setPadLeft,
+    setPadX,
+    setPadY,
     setWidth,
     setMinWidth,
     setMaxWidth,

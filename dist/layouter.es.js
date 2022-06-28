@@ -851,6 +851,34 @@ const buildDisplay = (valDisplay, insertStyles = false) => {
     deep: insertStyles
   });
 };
+const buildPadXY = (data) => {
+  const padRight = data.builderA(data.values, data.insertStyles);
+  const padLeft = data.builderB(data.values, data.insertStyles);
+  const styles = {};
+  for (const style in padRight) {
+    styles[style] = padRight[style];
+  }
+  for (const style in padLeft) {
+    styles[style] = padLeft[style];
+  }
+  return styles;
+};
+const buildPadX = (valPadX, insertStyles = false) => {
+  return buildPadXY({
+    values: valPadX,
+    builderA: buildPadRight,
+    builderB: buildPadLeft,
+    insertStyles
+  });
+};
+const buildPadY = (valPadX, insertStyles = false) => {
+  return buildPadXY({
+    values: valPadX,
+    builderA: buildPadTop,
+    builderB: buildPadBottom,
+    insertStyles
+  });
+};
 const processorsBase = {
   cols: {
     build: buildCols,
@@ -881,6 +909,16 @@ const processorsBase = {
     build: buildPadLeft,
     ruleCss: "padding-left",
     classPrefix: "pl"
+  },
+  padx: {
+    build: buildPadX,
+    ruleCss: ["padding-left", "padding-right"],
+    classPrefix: "px"
+  },
+  pady: {
+    build: buildPadY,
+    ruleCss: ["padding-top", "padding-bottom"],
+    classPrefix: "py"
   },
   mar: {
     build: buildMar,
@@ -986,6 +1024,8 @@ const processors = {
   pb: processorsBase.padb,
   "padding-bottom": processorsBase.padb,
   pl: processorsBase.padl,
+  py: processorsBase.pady,
+  px: processorsBase.padx,
   "padding-left": processorsBase.padl,
   m: processorsBase.mar,
   margin: processorsBase.mar,
@@ -1195,13 +1235,13 @@ const setCols = (Node, columns) => {
 };
 const setAttr = (Node, directive, values) => {
   return new Promise((resolve, reject) => {
-    const directiveValues = values || Node.getAttribute(directive);
-    if (!directiveValues) {
+    const directiveValues2 = values || Node.getAttribute(directive);
+    if (!directiveValues2) {
       const err = regError("Empty", 'The value of the directive "' + directive + '" is empty', Node);
       reject(err);
       return;
     }
-    const objStyles = buildAttr(directiveValues, directive, true);
+    const objStyles = buildAttr(directiveValues2, directive, true);
     const classesToAdd = Object.keys(objStyles).join(" ");
     eventReady({
       node: Node,
@@ -1273,6 +1313,41 @@ const setBottom = (Node, values) => {
 };
 const setLeft = (Node, values) => {
   return setAttr(Node, "l", values);
+};
+const directiveValues = (Node, directives) => {
+  const directiveValues2 = directives.map((item) => Node.getAttribute(item)).filter((item) => item).join(" ");
+  return !directiveValues2 ? regError("Empty", 'The value of the directives "' + directives.join(", ") + '" are empty', Node) : directiveValues2;
+};
+const setterPadsXY = (data) => {
+  return new Promise((resolve, reject) => {
+    const values = data.vals || directiveValues(data.Node, data.directives);
+    if (!values)
+      return reject(values);
+    const objStyles = data.builder(values, true);
+    const classesToAdd = Object.keys(objStyles).join(" ");
+    eventReady({
+      node: data.Node,
+      directive: data.directives,
+      classes: classesToAdd,
+      resolve
+    });
+  });
+};
+const setPadX = (Node, vals) => {
+  return setterPadsXY({
+    Node,
+    directives: ["padx", "px"],
+    builder: buildPadX,
+    vals
+  });
+};
+const setPadY = (Node, vals) => {
+  return setterPadsXY({
+    Node,
+    directives: ["pady", "py"],
+    builder: buildPadY,
+    vals
+  });
 };
 const reset = (Node) => {
   return new Promise((resolve) => {
@@ -1375,6 +1450,8 @@ const layouter = (context, userConfig = {}) => {
     buildPadRight,
     buildPadBottom,
     buildPadLeft,
+    buildPadX,
+    buildPadY,
     buildMar,
     buildMarTop,
     buildMarRight,
@@ -1399,6 +1476,8 @@ const layouter = (context, userConfig = {}) => {
     setPadRight,
     setPadBottom,
     setPadLeft,
+    setPadX,
+    setPadY,
     setWidth,
     setMinWidth,
     setMaxWidth,

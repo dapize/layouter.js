@@ -24,6 +24,8 @@ import buildLeft from '../methods/buildLeft';
 
 import { IStyles } from '../helpers/createStyles';
 import buildDisplay from '../methods/buildDisplay';
+import buildPadX from '../methods/buildPadX';
+import buildPadY from '../methods/buildPadY';
 
 type TDirectiveNameBase =
   | 'cols'
@@ -32,6 +34,8 @@ type TDirectiveNameBase =
   | 'padr'
   | 'padb'
   | 'padl'
+  | 'padx'
+  | 'pady'
   | 'mar'
   | 'mart'
   | 'marr'
@@ -64,6 +68,8 @@ type TDirectiveNameExtended =
   | 'padding-bottom'
   | 'pl'
   | 'padding-left'
+  | 'py'
+  | 'px'
   | 'm'
   | 'margin'
   | 'mt'
@@ -93,7 +99,7 @@ export type TDirectiveName = TDirectiveNameBase | TDirectiveNameExtended;
 
 export interface IProcessor {
   build: (values: string, insertStyles: boolean) => IStyles | Error;
-  ruleCss: string;
+  ruleCss: string | string[];
   classPrefix: string;
 }
 
@@ -129,6 +135,16 @@ const processorsBase: Record<TDirectiveNameBase, IProcessor> = {
     build: buildPadLeft,
     ruleCss: 'padding-left',
     classPrefix: 'pl',
+  },
+  padx: {
+    build: buildPadX,
+    ruleCss: ['padding-left', 'padding-right'],
+    classPrefix: 'px',
+  },
+  pady: {
+    build: buildPadY,
+    ruleCss: ['padding-top', 'padding-bottom'],
+    classPrefix: 'py',
   },
 
   // Margin
@@ -249,6 +265,8 @@ export const processors: Record<TDirectiveName, IProcessor> = {
   pb: processorsBase.padb,
   'padding-bottom': processorsBase.padb,
   pl: processorsBase.padl,
+  py: processorsBase.pady,
+  px: processorsBase.padx,
   'padding-left': processorsBase.padl,
   m: processorsBase.mar,
   margin: processorsBase.mar,

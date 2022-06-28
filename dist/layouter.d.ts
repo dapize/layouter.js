@@ -13,6 +13,7 @@ export interface ILayouter extends IConfig {
     buildPadRight: (valPadRight: string, insertStyles?: boolean) => IStyles;
     buildPadBottom: (valPadBottom: string, insertStyles?: boolean) => IStyles;
     buildPadLeft: (valPadLeft: string, insertStyles?: boolean) => IStyles;
+    buildPadX: (valPadX: string, insertStyles?: boolean) => IStyles;
     buildMar: (valMars: string, insertStyles?: boolean) => IStyles;
     buildMarTop: (valMarTop: string, insertStyles?: boolean) => IStyles;
     buildMarRight: (valMarRight: string, insertStyles?: boolean) => IStyles;
@@ -42,6 +43,8 @@ export interface ILayouter extends IConfig {
     setPadRight: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setPadBottom: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setPadLeft: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
+    setPadX: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
+    setPadY: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setWidth: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setMinWidth: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setMaxWidth: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
