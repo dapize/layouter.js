@@ -1221,36 +1221,33 @@ const set = (Node, parameters) => {
     });
   });
 };
+const directiveValues = (Node, directives) => {
+  const directiveValues2 = directives.map((item) => Node.getAttribute(item)).filter((item) => item).join(" ");
+  return !directiveValues2 ? regError("Empty", 'The value of the directives "' + directives.join(", ") + '" are empty', Node) : directiveValues2;
+};
 const setFlex = (Node, flexValues) => {
   return new Promise((resolve, reject) => {
-    const values = flexValues || Node.getAttribute("flex");
-    if (!values) {
-      const err = regError("Empty", 'The value of the directive "flex" is empty', Node);
-      reject(err);
-      return;
-    }
+    const values = flexValues || directiveValues(Node, ["flex", "fx"]);
+    if (!values)
+      return reject(values);
     const objStyles = buildFlex(values, true);
     if (objStyles instanceof Error) {
       reject(objStyles);
       return;
     }
-    const classesToAdd = Object.keys(objStyles).join(" ");
     eventReady({
       node: Node,
       directive: "flex",
-      classes: classesToAdd,
+      classes: Object.keys(objStyles).join(" "),
       resolve
     });
   });
 };
 const setCols = (Node, columns) => {
   return new Promise((resolve, reject) => {
-    const values = columns || Node.getAttribute("cols");
-    if (!values) {
-      const err = regError("Empty", "The value of the directive 'cols' is empty", Node);
-      reject(err);
-      return;
-    }
+    const values = columns || directiveValues(Node, ["c", "cols"]);
+    if (!values)
+      return reject(values);
     const objStyles = buildCols(values, true);
     if (objStyles instanceof Error) {
       reject(objStyles);
@@ -1265,15 +1262,13 @@ const setCols = (Node, columns) => {
     });
   });
 };
-const setAttr = (Node, directive, values) => {
+const setAttr = (Node, directives, vals) => {
   return new Promise((resolve, reject) => {
-    const directiveValues2 = values || Node.getAttribute(directive);
-    if (!directiveValues2) {
-      const err = regError("Empty", 'The value of the directive "' + directive + '" is empty', Node);
-      reject(err);
-      return;
-    }
-    const objStyles = buildAttr(directiveValues2, directive, true);
+    const values = vals || directiveValues(Node, directives);
+    if (!values)
+      return reject(values);
+    const directive = directives[0];
+    const objStyles = buildAttr(values, directive, true);
     const classesToAdd = Object.keys(objStyles).join(" ");
     eventReady({
       node: Node,
@@ -1284,71 +1279,67 @@ const setAttr = (Node, directive, values) => {
   });
 };
 const setHeight = (Node, values) => {
-  return setAttr(Node, "hgt", values);
+  return setAttr(Node, ["hgt", "h"], values);
 };
 const setMarBottom = (Node, values) => {
-  return setAttr(Node, "marb", values);
+  return setAttr(Node, ["marb", "mb", "margin-bottom"], values);
 };
 const setMarLeft = (Node, values) => {
-  return setAttr(Node, "marl", values);
+  return setAttr(Node, ["marl", "ml", "margin-left"], values);
 };
 const setMarRight = (Node, values) => {
-  return setAttr(Node, "marr", values);
+  return setAttr(Node, ["marr", "mr", "margin-right"], values);
 };
 const setMar = (Node, values) => {
-  return setAttr(Node, "mar", values);
+  return setAttr(Node, ["mar", "m", "margin"], values);
 };
 const setMarTop = (Node, values) => {
-  return setAttr(Node, "mart", values);
+  return setAttr(Node, ["mart", "mt", "margin-top"], values);
 };
 const setMaxWidth = (Node, values) => {
-  return setAttr(Node, "mxw", values);
+  return setAttr(Node, ["mxw", "max-width"], values);
 };
 const setMinHeight = (Node, values) => {
-  return setAttr(Node, "mih", values);
+  return setAttr(Node, ["mih", "min-height"], values);
 };
 const setMinWidth = (Node, values) => {
-  return setAttr(Node, "miw", values);
+  return setAttr(Node, ["miw", "min-width"], values);
 };
 const setPadBottom = (Node, values) => {
-  return setAttr(Node, "padb", values);
+  return setAttr(Node, ["padb", "pb", "padding-bottom"], values);
 };
 const setPadLeft = (Node, values) => {
-  return setAttr(Node, "padl", values);
+  return setAttr(Node, ["padl", "pl", "padding-left"], values);
 };
 const setPadRight = (Node, values) => {
-  return setAttr(Node, "padr", values);
+  return setAttr(Node, ["padr", "pr", "padding-right"], values);
 };
 const setPad = (Node, values) => {
-  return setAttr(Node, "pad", values);
+  return setAttr(Node, ["pad", "p", "padding"], values);
 };
 const setPadTop = (Node, values) => {
-  return setAttr(Node, "padt", values);
+  return setAttr(Node, ["padt", "pt", "padding-top"], values);
 };
 const setWidth = (Node, values) => {
-  return setAttr(Node, "wdh", values);
+  return setAttr(Node, ["wdh", "width"], values);
 };
 const setMaxHeight = (Node, values) => {
-  return setAttr(Node, "mxh", values);
+  return setAttr(Node, ["mxh", "max-height"], values);
 };
 const setPosition = (Node, values) => {
-  return setAttr(Node, "pos", values);
+  return setAttr(Node, ["pos", "position"], values);
 };
 const setTop = (Node, values) => {
-  return setAttr(Node, "t", values);
+  return setAttr(Node, ["t", "top"], values);
 };
 const setRight = (Node, values) => {
-  return setAttr(Node, "r", values);
+  return setAttr(Node, ["r", "right"], values);
 };
 const setBottom = (Node, values) => {
-  return setAttr(Node, "b", values);
+  return setAttr(Node, ["b", "bottom"], values);
 };
 const setLeft = (Node, values) => {
-  return setAttr(Node, "l", values);
-};
-const directiveValues = (Node, directives) => {
-  const directiveValues2 = directives.map((item) => Node.getAttribute(item)).filter((item) => item).join(" ");
-  return !directiveValues2 ? regError("Empty", 'The value of the directives "' + directives.join(", ") + '" are empty', Node) : directiveValues2;
+  return setAttr(Node, ["l", "left"], values);
 };
 const setterXY = (data) => {
   return new Promise((resolve, reject) => {

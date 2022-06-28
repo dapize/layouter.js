@@ -1,25 +1,17 @@
-import regError from '../helpers/regError';
 import buildCols from './buildCols';
 import eventReady from '../helpers/eventReady';
+import directiveValues from '../helpers/directiveValues';
 
 const setCols = (
   Node: HTMLElement | Element,
   columns?: string
 ): Promise<void | Error> => {
   return new Promise((resolve, reject) => {
-    const values = columns || Node.getAttribute('cols');
-    if (!values) {
-      const err = regError(
-        'Empty',
-        "The value of the directive 'cols' is empty",
-        Node
-      );
-      reject(err);
-      return;
-    }
+    const values = columns || directiveValues(Node, ['c', 'cols']);
+    if (!values) return reject(values);
 
     // Creating, inserting, and adding classNames of rules in Node.
-    const objStyles = buildCols(values, true);
+    const objStyles = buildCols(values as string, true);
     if (objStyles instanceof Error) {
       reject(objStyles);
       return;
