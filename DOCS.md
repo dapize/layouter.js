@@ -106,15 +106,15 @@ Ese alias definidos se usará para determinar el breakpoint en cada valor de las
 | [Marb](#marr-marb-marl)     | `mb`, `margin-bottom`  | `marb="30"`, `mb="50"`, `margin-bottom="25"`                                              | Determinar el **margen inferior** de un nodo.                                                               |
 | [Marl](#marr-marb-marl)     | `ml`, `margin-left`    | `marl="3/15"`, `ml="5/10"`, `margin-left="3/5"`                                           | Determinar el **margen izquierdo** de un nodo.                                                              |
 | [Mar](#mar)                 | `m`, `margin`          | `mar="20-2/15-30-3/15"`, `m="20-2/15-30-3/15"`, `margin="20-2/15-30-3/15"`                | Es un shorthand de las directivas: [mart](#mart), [marr, marb, y marl](#marr-marb-marl).                    |
-| [Mary](#mary-marx)          | `my`, `margin-y`       | `mary="10"`, `my="20"`                                                                    | Determina el **margen superior e inferior al mismo tiempo** de un nodo.                                     |
-| [Marx](#mary-marx)          | `mx`, `maring-x`       | `marx="10"`, `mx="20"`                                                                    | Determina el **margen derecho e izquierdo al mismo tiempo** de un nodo.                                     |
+| [Mary](#mary-marx)          | `my`, `margin-y`       | `mary="10"`, `my="20"`, `margin-y="30"`                                                   | Determina el **margen superior e inferior al mismo tiempo** de un nodo.                                     |
+| [Marx](#mary-marx)          | `mx`, `maring-x`       | `marx="10"`, `mx="20"`, `margin-x="30"`                                                   | Determina el **margen derecho e izquierdo al mismo tiempo** de un nodo.                                     |
 | [Padt](#padt)               | `pt`, `padding-top`    | `padt="10"`, `pt="20"`, `padding-top="30"`                                                | Determina el **padding superior** de un nodo.                                                               |
 | [Padr](#padr-padb-padl)     | `pr`, `padding-right`  | `padr="2/15"`, `pr="3/16"`, `padding-right="4/17"`                                        | Determina el **padding derecho** de un nodo.                                                                |
 | [Padb](#padr-padb-padl)     | `pb`, `padding-bottom` | `padb="30"`, `pb="40"`, `padding-bottom="50"`                                             | Determina el **padding inferior** de un nodo.                                                               |
 | [Padl](#padr-padb-padl)     | `pl`, `padding-left`   | `padl="3/15"`, `pl="4/16"`, `padding-left="5/17"`                                         | Determina el **padding izquierdo** de un nodo.                                                              |
 | [Pad](#pad)                 | `p`, `padding`         | `pad="20-2/15-30-3/15"`, `p="20-2/15-30-3/15"`, `padding="20-2/15-30-3/15"`               | Es un shorthand de las directivas: [padt](#padt), [padr, padb, y padl](#padr-padb-padl).                    |
-| [Pady](#pady-padx)          | `py`, `padding-y`      | `pady="10"`, `py="20"`                                                                    | Determina el **padding superior e inferior al mismo tiempo** de un nodo.                                    |
-| [Padx](#pady-padx)          | `px`, `padding-x`      | `padx="10"`, `px="20"`                                                                    | Determina el **padding derecho e izquierdo al mismo tiempo** de un nodo.                                    |
+| [Pady](#pady-padx)          | `py`, `padding-y`      | `pady="10"`, `py="20"`, `padding-y="30"`                                                  | Determina el **padding superior e inferior al mismo tiempo** de un nodo.                                    |
+| [Padx](#pady-padx)          | `px`, `padding-x`      | `padx="10"`, `px="20"`, `padding-x="30`                                                   | Determina el **padding derecho e izquierdo al mismo tiempo** de un nodo.                                    |
 | [Flex](#flex)               | `fx`                   | `flex="jc:ce ai:fs fd:co"`, `flex="jc:fe ai:fs`, `fx="align-items:center flex-wrap:wrap"` | Determina el **display flex** del nodo y sus derivados.                                                     |
 | [Wdh](#width)               | `w`, `width`           | `wdh="100"`, `w="200"`, `width="300"`                                                     | Determina el **ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).        |
 | [Hgt](#height)              | `h`, `height`          | `hgt="100"`, `h="200"`, `height="300"`                                                    | Determina el **alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).         |
@@ -143,11 +143,15 @@ Estos métodos están expuesto en la **variable global 'layouter'**, la cual est
 | [setPadBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padb'**                         |
 | [setPadLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padl'**                         |
 | [**setPad**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'pad'**                          |
+| [setPadX](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padx'**                         |
+| [setPadY](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'pady'**                         |
 | [setMarTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mart'**                         |
 | [setMarRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marr'**                         |
 | [setMarBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marb'**                         |
 | [setMarLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marl'**                         |
 | [**setMar**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mar'**                          |
+| [setMarX](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marx'**                         |
+| [setMarY](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mary'**                         |
 | [setFlex](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                       | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'flex'**                         |
 | [setWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                      | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'wdh'**                          |
 | [setMinWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'miw'**                          |
@@ -170,6 +174,8 @@ Estos métodos están expuesto en la **variable global 'layouter'**, la cual est
 | [buildPadRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padr'**              |
 | [buildPadBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padb'**              |
 | [buildPadLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padl'**              |
+| [buildPadX](#buildpadx-buildpady-buildmarx-buildmary)                                                                                                                                                                                                                                               | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padx'**              |
+| [buildPadY](#buildpadx-buildpady-buildmarx-buildmary)                                                                                                                                                                                                                                               | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padx'**              |
 | [**buildPad**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'pad'**               |
 | [**buildFlex**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'flex'**              |
 | [buildWidth](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)     | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'wdh'**               |
@@ -374,7 +380,7 @@ Se obvia el número de columnas de donde se sacarán las columnas designadas, y�
 <div cols="20@sm-md">...</div>
 ```
 
-Este método de columnas explicitas solo es para ahorrarnos un poco de tiempo al designar las columnas que queremos en la directiva 'cols'. Sin embargo podría ser provechoso determinar así por si en algún momento las columnas designadas para un breakpoint en específico cambian, digamos que en el breakpoint 'sm' (tablet), yá no son 31 columnas sino 32, pues con la designación de columna explicitas nos ahorraríamos tener que cambiar en cada elemento donde determinamos `cols="20/31@sm"`
+Este método de columnas explicitas solo es para ahorrarnos un poco de tiempo al designar las columnas que queremos en la directiva 'cols'. Sin embargo podría ser provechoso determinar así por si en algún momento las columnas designadas para un breakpoint en específico cambian, digamos que en el breakpoint 'sm' (tablet), yá no son 31 columnas sino 32, pues con la designación de columna explicitas nos ahorraríamos tener que cambiar en cada elemento dondeterminamos `cols="20/31@sm"`
 
 [&uarr; Volver Arriba](#directivas)
 
@@ -422,7 +428,7 @@ Es una abreviación del shorthand 'margin' **(y a su vez es un shorthand de las 
 <div mar="20-2/15 40-3/31-20@sm 60-2/31@md">...</div>
 ```
 
-> Usa la misma sintaxis del margin combencional, osea: margin-top, margin-right, margin-bottom, margin-left. Pero solo para el margin left y right se puede declarar 'auto', si es que se requiere claro. Mini Ejemplo: mar="20-auto"
+> Usa la misma sintaxis del margin combencional, osea: margin-top, margin-right, margin-bottom, margin-left. Pero solo para el margin left y right se puedeclarar 'auto', si es que se requiere claro. Mini Ejemplo: mar="20-auto"
 
 **Solo los margenes superiores e inferiores son procesados como pixeles**, los derechos e izquierdos son procesados porcentualmente.
 
@@ -1065,7 +1071,7 @@ Es posible determinar las únidades relativas: **%, rem, em, ex, vw y vh.**
 <div wdh="100% 150%@sm">...</div>
 ```
 
-...luego de de autoprocesarce obtendríamos este resultado:
+...luego de autoprocesarce obtendríamos este resultado:
 
 ```html
 <div class="wdh-0¯100 wdh-0¯150@sm">...</div>
@@ -1539,17 +1545,127 @@ Y nos devuelve un objeto con los nombres de las clases creadas junto con los est
   cols: {
     "cols-21/21@sm": "@media screen and (min-width: 600px){.cols-21\\/21\\@sm{width:100%}}",
     "cols-27/27@md": "@media screen and (min-width: 900px){.cols-27\\/27\\@md{width:100%}}",
-    "cols-3/13": ".cols-3\\/13{width:23.076923076923077%}"
+    "cols-3/13": ".cols-3\\/13{width:23.077%}"
   },
   mar: {
     "mar-0-0-20-0@sm": "@media screen and (min-width: 600px){.mar-0-0-20-0\\@sm{margin:0 0 20px 0}}",
-    "mar-0-2/13-0-0@-sm": "@media screen and (max-width: 767px){.mar-0-2\\/13-0-0\\@-sm{margin:0 15.384615384615385% 0 0}}"
+    "mar-0-2/13-0-0@-sm": "@media screen and (max-width: 767px){.mar-0-2\\/13-0-0\\@-sm{margin:0 15.385% 0 0}}"
   },
   pad: {
     "pad-20-0@sm": "@media screen and (min-width: 600px){.pad-20-0\\@sm{padding:20px 0}}"
   }
 }
 ```
+
+[&uarr; Volver Arriba](#métodos)
+
+### SetPadX, SetPadY, SetMarX, SetMarY
+
+Sirven para procesar las directivas **'padx' y 'pady'** respectivamente de un nodo.
+
+> Tambien podemos usar la forma reducida de la directiva `<div px="10">...</div>` o `<div py="20">...</div>`
+
+#### Ejemplo 1:
+
+```html
+<div padx="10 20@sm 30@md">...</div>
+```
+
+```javascript
+// teniendo en cuenta el Div declarado arriba ...
+const myDiv = document.querySelector('div');
+layouter.setPadX(myDiv);
+```
+
+...luego de autoprocesarce obtendríamos este resultado:
+
+```html
+<div class="pr-10 pr-20@sm pr-30@md pl-10 pl-20@sm pl-30@md">...</div>
+```
+
+<details>
+<summary>y pues, estos estilos:</summary>
+
+```css
+.pl-10 {
+    padding-left: 10px;
+}
+.pr-10 {
+    padding-right: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .pl-20\@sm {
+        padding-left: 20px;
+    }
+    .pr-20\@sm {
+        padding-right: 20px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .pl-30\@md {
+        padding-left: 30px;
+    }
+    .pr-30\@md {
+        padding-right: 30px;
+    }
+}
+```
+
+</details>
+
+#### Ejemplo 2:
+
+Lo mismo para el **'marx'** o para su versión reducida **'mx'**.
+
+```html
+<div marx="10 20@sm 30@md">...</div>
+```
+
+```javascript
+// teniendo en cuenta el Div declarado arriba ...
+const myDiv = document.querySelector('div');
+layouter.setMarX(myDiv);
+```
+
+...luego de autoprocesarce obtendríamos este resultado:
+
+```html
+<div class="mr-10 mr-20@sm mr-30@md ml-10 ml-20@sm ml-30@md">...</div>
+```
+
+<details>
+<summary>y pues, estos estilos:</summary>
+
+```css
+.ml-10 {
+    margin-left: 10px;
+}
+.mr-10 {
+    margin-right: 10px;
+}
+
+@media screen and (min-width: 600px) {
+    .ml-20\@sm {
+        margin-left: 20px;
+    }
+    .mr-20\@sm {
+        margin-right: 20px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .ml-30\@md {
+        margin-left: 30px;
+    }
+    .mr-30\@md {
+        margin-right: 30px;
+    }
+}
+```
+
+</details>
 
 [&uarr; Volver Arriba](#métodos)
 
@@ -1575,7 +1691,7 @@ layouter.buildCols('3/13 21/21@sm 27/27@md');
 {
   "cols-21/21@sm": "@media screen and (min-width: 600px){.cols-21\\/21\\@sm{width:100%}}",
   "cols-27/27@md": "@media screen and (min-width: 900px){.cols-27\\/27\\@md{width:100%}}",
-  "cols-3/13": ".cols-3\\/13{width:23.076923076923077%}"
+  "cols-3/13": ".cols-3\\/13{width:23.077%}"
 }
 ```
 
@@ -1584,6 +1700,50 @@ layouter.buildCols('3/13 21/21@sm 27/27@md');
 ### BuildMar, BuildMarTop, BuildMarRight, BuildMarBottom, BuildMarLeft, BuildPad, BuildPadTop, BuildPadRight, BuildPadBottom, BuildPadLeft, BuildWidth, BuildHeight, BuildMaxWidth, BuildMaxHeight, BuildMinWidth, BuildMinHeight, BuildFlex, BuildPosition, BuildTop, BuildRight, BuildBottom, BuildLeft
 
 Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, máximo ancho & alto y flex tmb.
+
+### BuildPadX, BuildPadY, BuildMarX, BuildMarY
+
+Sirve para procesar los valores de las directivas **'padx', 'pady', 'marx' y 'mary'** respectivamente.
+
+#### Ejemplo 1:
+
+```javascript
+layouter.buildPadX('10 20@sm 30@md');
+```
+
+...y nos devuelve este objeto:
+
+```javascript
+{
+    "pl-10": ".pl-10{padding-left:10px}",
+    "pl-20@sm": "@media screen and (min-width: 600px){.pl-20\\@sm{padding-left:20px}}",
+    "pl-30@md": "@media screen and (min-width: 900px){.pl-30\\@md{padding-left:30px}}",
+    "pr-10": ".pr-10{padding-right:10px}",
+    "pr-20@sm": "@media screen and (min-width: 600px){.pr-20\\@sm{padding-right:20px}}",
+    "pr-30@md": "@media screen and (min-width: 900px){.pr-30\\@md{padding-right:30px}}"
+}
+```
+
+#### Ejemplo 2:
+
+```javascript
+layouter.buildMarY('10 20@sm 30@md');
+```
+
+...y nos devuelve este objeto:
+
+```javascript
+{
+    "mb-10": ".mb-10{margin-bottom:10px}",
+    "mb-20@sm": "@media screen and (min-width: 600px){.mb-20\\@sm{margin-bottom:20px}}",
+    "mb-30@md": "@media screen and (min-width: 900px){.mb-30\\@md{margin-bottom:30px}}",
+    "mt-10": ".mt-10{margin-top:10px}",
+    "mt-20@sm": "@media screen and (min-width: 600px){.mt-20\\@sm{margin-top:20px}}",
+    "mt-30@md": "@media screen and (min-width: 900px){.mt-30\\@md{margin-top:30px}}"
+}
+```
+
+[&uarr; Volver Arriba](#métodos)
 
 ### GetParameters
 
@@ -1665,7 +1825,7 @@ Podemos acceder a los siguientes getters desde la **variable 'layouter' del obje
 > Tomando en cuenta el ejemplo de breakpoints de más arriba, los getters nos devolverán lo siguiente:
 
 ```javascript
-layouter.breakpoints = [ "xs", "sm", "md" ]
+layouter.breakpoints = [ "xs", "sm", "md", "lg", "xlg" ]
 layouter.sizes = { xs: 0, sm: 600, md: 900, lg: 1200, xlg: 1536 }
 layouter.cols = { xs: 15, sm: 25, md: 31, lg: 41, xlg: s51 }
 layouter.styles = {
