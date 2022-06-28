@@ -6,12 +6,12 @@
 </div>
 
 # Layouter
-
+[![npm version](https://img.shields.io/npm/v/layouter.js.svg?style=flat-square)](https://www.npmjs.org/package/layouter.js)
 [![CI](https://github.com/dapize/layouter.js/workflows/CI/badge.svg)](https://github.com/dapize/layouter.js/actions?query=workflow:"CI")
 [![Made with TypeScript](https://img.shields.io/badge/TypeScript-4-blue?logo=typescript&logoColor=white)](https://typescriptlang.org 'Go to TypeScript homepage')
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![GitHub tag](https://img.shields.io/github/v/release/dapize/layouter.js?display_name=tag)](https://github.com/dapize/layouter.js/releases/)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+[![install size](https://packagephobia.now.sh/badge?p=layouter.js)](https://packagephobia.now.sh/result?p=layouter.js)
 
 Es una librería que nos permite armar todo el layout **de forma rápida y sencilla**, usando directivas sobre los nodos HTML. Principalmente funciona **basándonos en el uso de una grilla**, _especialmente para la definición de columnas_.
 
