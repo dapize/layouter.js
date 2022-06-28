@@ -11,6 +11,7 @@
 [![Made with TypeScript](https://img.shields.io/badge/TypeScript-4-blue?logo=typescript&logoColor=white)](https://typescriptlang.org 'Go to TypeScript homepage')
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+[![Coverage Status](https://coveralls.io/repos/github/dapize/layouter.js/badge.svg?branch=master)](https://coveralls.io/github/dapize/layouter.js?branch=master)
 [![install size](https://packagephobia.now.sh/badge?p=layouter.js)](https://packagephobia.now.sh/result?p=layouter.js)
 
 Es una librería que nos permite armar todo el layout **de forma rápida y sencilla**, usando directivas sobre los nodos HTML. Principalmente funciona **basándonos en el uso de una grilla**, _especialmente para la definición de columnas_.
