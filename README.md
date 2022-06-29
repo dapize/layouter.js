@@ -6,19 +6,19 @@
 </div>
 
 # Layouter
-[![npm version](https://img.shields.io/npm/v/layouter.js.svg?style=flat-square)](https://www.npmjs.org/package/layouter.js)
 [![CI](https://github.com/dapize/layouter.js/workflows/CI/badge.svg)](https://github.com/dapize/layouter.js/actions?query=workflow:"CI")
-[![Made with TypeScript](https://img.shields.io/badge/TypeScript-4-blue?logo=typescript&logoColor=white)](https://typescriptlang.org 'Go to TypeScript homepage')
+[![npm version](https://img.shields.io/npm/v/layouter.js.svg)](https://www.npmjs.org/package/layouter.js)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 [![Coverage Status](https://coveralls.io/repos/github/dapize/layouter.js/badge.svg?branch=master)](https://coveralls.io/github/dapize/layouter.js?branch=master)
-[![install size](https://packagephobia.now.sh/badge?p=layouter.js)](https://packagephobia.now.sh/result?p=layouter.js)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/layouter.js)
+![types included](https://badgen.net/npm/types/layouter.js)
+[![Known Vulnerabilities](https://snyk.io/test/npm/layouter.js/badge.svg)](https://snyk.io/test/npm/layouter.js)
 
 Es una librería que nos permite armar todo el layout **de forma rápida y sencilla**, usando directivas sobre los nodos HTML. Principalmente funciona **basándonos en el uso de una grilla**, _especialmente para la definición de columnas_.
 
--   🚀 **Procesamiento super rápido y paralelo:** Procesa de forma automática todos los nodos que se encuentran al cargar la web y también cualquier nuevo nodo que se agregue o empiece a usar alguna directiva.
--   🎉 **Estilos compartidos:** Comparte los estilos yá creados de otros nodos previamente procesados.
--   ⚗️ **Pre procesamiento de nodos virtuales**: Pre procesar nodos virtuales antes de agregarlos al DOM.
+- 🚀 **Super rápido y paralelo:** Procesa de forma automática todos los nodos que se encuentran al cargar la web y también cualquier nuevo nodo que se agregue o empiece a usar alguna directiva.
+- 🎉 **Estilos compartidos:** Comparte los estilos yá creados de otros nodos previamente procesados.
+- ⚗️ **Pre procesamiento de nodos virtuales**: Pre procesa nodos virtuales antes de agregarlos al DOM.
 
 ## 🔧 Instalación
 
@@ -60,7 +60,7 @@ Entonces haríamos este HTML con las siguientes directivas:
 
     <footer fx="jc:sb@sm">
         <div h="200" c="7/23@sm 9/29@md 12.33/39@lg"></div>
-        <div h="200" c="7/23@sm 9/29@md 12.33/39@lg" m="24-0@-sm"></div>
+        <div h="200" c="7/23@sm 9/29@md 12.33/39@lg" my="24@-sm"></div>
         <div h="200" c="7/23@sm 9/29@md 12.33/39@lg"></div>
     </footer>
 </main>
