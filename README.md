@@ -6,6 +6,7 @@
 </div>
 
 # Layouter
+
 [![CI](https://github.com/dapize/layouter.js/workflows/CI/badge.svg)](https://github.com/dapize/layouter.js/actions?query=workflow:"CI")
 [![npm version](https://img.shields.io/npm/v/layouter.js.svg)](https://www.npmjs.org/package/layouter.js)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
@@ -16,9 +17,9 @@
 
 Es una librería que nos permite armar todo el layout **de forma rápida y sencilla**, usando directivas sobre los nodos HTML. Principalmente funciona **basándonos en el uso de una grilla**, _especialmente para la definición de columnas_.
 
-- 🚀 **Super rápido y paralelo:** Procesa de forma automática todos los nodos que se encuentran al cargar la web y también cualquier nuevo nodo que se agregue o empiece a usar alguna directiva.
-- 🎉 **Estilos compartidos:** Comparte los estilos yá creados de otros nodos previamente procesados.
-- ⚗️ **Pre procesamiento de nodos virtuales**: Pre procesa nodos virtuales antes de agregarlos al DOM.
+-   🚀 **Super rápido y paralelo:** Procesa de forma automática todos los nodos que se encuentran al cargar la web y también cualquier nuevo nodo que se agregue o empiece a usar alguna directiva.
+-   🎉 **Estilos compartidos:** Comparte los estilos yá creados de otros nodos previamente procesados.
+-   ⚗️ **Pre procesamiento de nodos virtuales**: Pre procesa nodos virtuales antes de agregarlos al DOM.
 
 ## 🔧 Instalación
 
@@ -45,6 +46,8 @@ Digamos que queremos definir el siguiente layout:
 
 <p align="center">
     <img src="layout-responsive.png" alt="Layouter Logo"/>
+    <br>
+    <b><a href="https://dapize.github.io/layouter.js/">⚓ LINK DEMO ⚓</a></b>
 </p>
 
 Entonces haríamos este HTML con las siguientes directivas:
@@ -186,8 +189,8 @@ Hay una extensa documentación en el archivo [DOCS.md](DOCS.md).
 1. ~~Adicionar una directiva para el posicionamiento.~~ ✅ Listo!
 2. ~~Adicionar alias más semánticos para las directivas. (Ejm: de **'mar'** a **'margin'** o solo **'m'**)~~ ✅ Listo!
 3. ~~Agregar directivas para declaración de margenes y paddings superiores e inferiores al mismo tiempo.~~ ✅ Listo!
-4. Crear componente para [React JS](https://reactjs.org) 🏗️ En progreso...
-5. Crear componente para [Vue JS](https://vuejs.org)
+4. ~~Crear [componente](https://github.com/dapize/react-layouter) para [React JS](https://reactjs.org)~~ ✅ Listo!
+5. Crear componente para [Vue JS](https://vuejs.org) 🏗️ En progreso...
 6. Crear componente para [Svelte JS](https://svelte.dev)
 
 ## 🧾 Licencia

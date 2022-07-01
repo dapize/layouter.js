@@ -71,4 +71,6 @@ declare global {
     }
 }
 declare const layouter: (context: Window & typeof globalThis, userConfig?: Partial<IConfigUser>) => ILayouter;
+export type { TDirectiveName, IProcessor } from './config/processors';
+export type { IConfigUser } from './config/main';
 export default layouter;

@@ -317,4 +317,6 @@ if (typeof window !== 'undefined' && typeof exports === 'undefined') {
   window.layouter = layouter(window);
 }
 
+export type { TDirectiveName, IProcessor } from './config/processors';
+export type { IConfigUser } from './config/main';
 export default layouter;

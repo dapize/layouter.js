@@ -21,13 +21,13 @@ import buildTop from '../methods/buildTop';
 import buildRight from '../methods/buildRight';
 import buildBottom from '../methods/buildBottom';
 import buildLeft from '../methods/buildLeft';
-
-import { IStyles } from '../helpers/createStyles';
 import buildDisplay from '../methods/buildDisplay';
 import buildPadX from '../methods/buildPadX';
 import buildPadY from '../methods/buildPadY';
 import buildMarX from '../methods/buildMarX';
 import buildMarY from '../methods/buildMarY';
+
+import { IStyles } from '../helpers/createStyles';
 
 type TDirectiveNameBase =
   | 'cols'
