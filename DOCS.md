@@ -1,23 +1,35 @@
-# 📚 Documentación Layouter
+<div align="center">
+    <p>
+        <img src="header.png" alt="Layouter"/>
+    </p>
+    <p>
+        <strong>⚡️ Build the entire layout of your website without CSS ⚡️</strong>
+    </p>
+    <p>
+        <a href="/dapize/layouter.js/blob/master/DOCS.md"><img src="en_US.png" alt="English Language"/> English</a> — <a href="/dapize/layouter.js/blob/master/DOCS-es_ES.md"><img src="es_ES.png" alt="English Language"/> Spanish</a>
+    </p>
+</div>
 
-Los estilos creados por layouter se crean al vuelo **(on the fly)**, _[cuando el navegador termina de cargar la web]_. Podemos definir las columnas, los paddings, los margenes, el ancho y alto de un elemento y hasta determinar si el nodo tendrá display **'flex'** y sus derivados.
+# 📚 Documentación
 
-## 🔧 Instalación
+The styles created by Layouter are **created on the flight**, _[when the browser finishes loading the website]_. We can define the columns, the paddings, the margins, the width and high of an element and even determine if the node will have Display **'flex'** and its derivatives.
 
-Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra dentro de la carpeta **'dist'** de este repositorio:
+## 🔧 Installation
+
+You just have to call, in the html, the script ** layouter.umd.js ** that is inside the folder ** 'dist' ** of this repository:
 
 ```html
 <script src="layouter.umd.js"></script>
 ```
 
-**también** puedes usar **uno** de estos CDNs:
+**Also** You can use **one** of these CDNS:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
 <script src="https://unpkg.com/layouter.js/dist/layouter.umd.js" defer></script>
 ```
 
-o puedes instalarlo en tu proyecto con:
+Or you can install it on your project with:
 
 ```properties
 npm install layouter.js
@@ -25,37 +37,37 @@ npm install layouter.js
 yarn add layouter.js
 ```
 
-Si se requiere usarlo **en SSR debes pasar el objeto windows de 'jsdom'** y tu configuración, así:
+If it is required to use it **in SSR you must pass the Windows object of 'JSDOM'** and your configuration, like this:
 
 ```javascript
 const { JSDOM } = require('jsdom');
 const { window } = new JSDOM();
 
 require('layouter.js')(window, {
-    // tu configuración aquí
+    // Your configuration here
 });
 ```
 
-## ⚙️ Configuración
+## ⚙️ Configuration
 
-Para una configuración personalizada debemos **crear una variable llamada 'layouterConfig'** en el objeto global 'window', la cual contendrá un objeto con las siguientes propiedades:
+For a personalized configuration we must **create a variable called 'layouterconfig'** in the global object 'Window', which will contain an object with the following properties:
 
-| Opción          | Típo     | Por Defecto | Descripción                                                                                                                                                                                                          |
-| --------------- | -------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **breakpoints** | object   | `...`       | Objeto que contiene definido los breakpoints que usará el sistema.                                                                                                                                                   |
-| prefix          | string   | ''          | Define cual será el prefijo para todas las clases CSS que se agregarán a los nodos, esto con el fin de salvaguardar alguna colición con otras clases definidas.                                                      |
-| debug           | boolean  | true        | Sirve para habilitar el `console.error` para cuando ocurre alguna definición inconsistente o se presenta algun error de procesamiento.                                                                               |
-| bridge          | boolean  | true        | Permite insertar los estilos creados por el sistema a travez del método 'insert' del tag scope, sin agregarlo como nodo de texto hijo. **OJO:** _Deshabilita esta opción si el DOM es manipulado por otra librería._ |
-| **ready**       | function | null        | Sirve como callback para indicar que el procesamiento inicial a finalizado. Se puede usar para quitar el loading overlay de la web (si es que se tiene, claro)                                                       |
+| Option          | Type     | Default | Description                                                                                                                                                                                                                 |
+| --------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **breakpoints** | object   | `...`   | Object that contains the breakpoints that the system will use.                                                                                                                                                              |
+| prefix          | string   | ''      | Define what the prefix will be for all CSS classes that will be added to the nodes, this in order to safeguard some collision with other defined classes.                                                                   |
+| debug           | boolean  | true    | It serves to enable the `console.eror` for when an inconsistent definition occurs or some processing error is presented.                                                                                                    |
+| bridge          | boolean  | true    | It allows to insert the styles created by the system through the 'insert' method of the Tag Scope, without adding it as a child text node. **Eye:** _Shabilite this option if the dom is manipulated by another bookstore._ |
+| **ready**       | function | null    | It serves as callback to indicate that the initial processing at the end. It can be used to remove the Web's Loading Overlay (if you have, of course)                                                                       |
 
 ### 📐 Breakpoints
 
-Cada breakpoint es un objeto que debe tener como nombre de propiedad un **'alias'** y dentro de ese objeto debe tener las siguientes propiedades:
+Each Breakpoint is an object that must have as a property name a **'alias'** and within that object it must have the following properties:
 
-| Propiedad | Type   | Description        |
-| --------- | ------ | ------------------ |
-| width     | number | Ancho máximo       |
-| cols      | number | Número de columnas |
+| Property | Type   | Descripción       |
+| -------- | ------ | ----------------- |
+| width    | number | Maximum width     |
+| cols     | number | Number of columns |
 
 **Ejemplo**:
 
@@ -87,114 +99,114 @@ Cada breakpoint es un objeto que debe tener como nombre de propiedad un **'alias
 }
 ```
 
-Ese alias definidos se usará para determinar el breakpoint en cada valor de las directivas.
+That defined alias will be used to determine the Breakpoint in each value of the directives.
 
-### 💡 A tomar en cuenta:
+### 💡 To take in mind:
 
--   Se pueden definir cuantos breakpoints se requiera, no hay límite.
--   Devido a que normalmente se maqueta en 'mobile first' **el breakpoint 'xs' no necesita un 'media query' (osea: @media).**
--   Si no se define ninguna unidad de medida en el valor de cualquier directiva (que no sea naturalmente porcentual), se tomará en pixeles [me refiero a esto 🔗](#unidades-de-medida-definidas)
+-   How many breakpoints can be defined, there is no limit.
+-   Devido to normally model in 'Mobile First' ** The Breakpoint 'XS' does not need a 'average query' (bone: @media). **
+-   If no unit of measure is defined in the value of any directive (which is not naturally percentage), it will be taken in pixels [I mean this 🔗](#defined-units-of-measure)
 
-## Directivas
+## Directives
 
-| Nombre                      | Alias                  | Ejemplos                                                                                  | Descripción                                                                                                 |
-| --------------------------- | ---------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| [Cols](#cols)               | `c`                    | `cols="13/15"`, `c="5/10"`                                                                | Determina las columnas, osea el 'width' de manera porcentual.                                               |
-| [d](#display)               | `display`              | `d="bl"`, `display="inline"`                                                              | Determina el **display** que tendrá el nodo.                                                                |
-| [Mart](#mart)               | `mt`, `margin-top`     | `mart="10"`, `mt="20"`, `margin-top="12"`                                                 | Determina el **margen superior** de un nodo.                                                                |
-| [Marr](#marr-marb-marl)     | `mr`, `margin-right`   | `marr="2/15"`, `mr="5/10"`, `margin-right="3/5"`                                          | Determinar el **margen derecho** de un nodo.                                                                |
-| [Marb](#marr-marb-marl)     | `mb`, `margin-bottom`  | `marb="30"`, `mb="50"`, `margin-bottom="25"`                                              | Determinar el **margen inferior** de un nodo.                                                               |
-| [Marl](#marr-marb-marl)     | `ml`, `margin-left`    | `marl="3/15"`, `ml="5/10"`, `margin-left="3/5"`                                           | Determinar el **margen izquierdo** de un nodo.                                                              |
-| [Mar](#mar)                 | `m`, `margin`          | `mar="20-2/15-30-3/15"`, `m="20-2/15-30-3/15"`, `margin="20-2/15-30-3/15"`                | Es un shorthand de las directivas: [mart](#mart), [marr, marb, y marl](#marr-marb-marl).                    |
-| [Mary](#mary-marx)          | `my`, `margin-y`       | `mary="10"`, `my="20"`, `margin-y="30"`                                                   | Determina el **margen superior e inferior al mismo tiempo** de un nodo.                                     |
-| [Marx](#mary-marx)          | `mx`, `maring-x`       | `marx="10"`, `mx="20"`, `margin-x="30"`                                                   | Determina el **margen derecho e izquierdo al mismo tiempo** de un nodo.                                     |
-| [Padt](#padt)               | `pt`, `padding-top`    | `padt="10"`, `pt="20"`, `padding-top="30"`                                                | Determina el **padding superior** de un nodo.                                                               |
-| [Padr](#padr-padb-padl)     | `pr`, `padding-right`  | `padr="2/15"`, `pr="3/16"`, `padding-right="4/17"`                                        | Determina el **padding derecho** de un nodo.                                                                |
-| [Padb](#padr-padb-padl)     | `pb`, `padding-bottom` | `padb="30"`, `pb="40"`, `padding-bottom="50"`                                             | Determina el **padding inferior** de un nodo.                                                               |
-| [Padl](#padr-padb-padl)     | `pl`, `padding-left`   | `padl="3/15"`, `pl="4/16"`, `padding-left="5/17"`                                         | Determina el **padding izquierdo** de un nodo.                                                              |
-| [Pad](#pad)                 | `p`, `padding`         | `pad="20-2/15-30-3/15"`, `p="20-2/15-30-3/15"`, `padding="20-2/15-30-3/15"`               | Es un shorthand de las directivas: [padt](#padt), [padr, padb, y padl](#padr-padb-padl).                    |
-| [Pady](#pady-padx)          | `py`, `padding-y`      | `pady="10"`, `py="20"`, `padding-y="30"`                                                  | Determina el **padding superior e inferior al mismo tiempo** de un nodo.                                    |
-| [Padx](#pady-padx)          | `px`, `padding-x`      | `padx="10"`, `px="20"`, `padding-x="30`                                                   | Determina el **padding derecho e izquierdo al mismo tiempo** de un nodo.                                    |
-| [Flex](#flex)               | `fx`                   | `flex="jc:ce ai:fs fd:co"`, `flex="jc:fe ai:fs`, `fx="align-items:center flex-wrap:wrap"` | Determina el **display flex** del nodo y sus derivados.                                                     |
-| [Wdh](#width)               | `w`, `width`           | `wdh="100"`, `w="200"`, `width="300"`                                                     | Determina el **ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).        |
-| [Hgt](#height)              | `h`, `height`          | `hgt="100"`, `h="200"`, `height="300"`                                                    | Determina el **alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).         |
-| [Mxw](#maxwidth)            | `max-width`            | `mxw="200"`, `max-width="300"`                                                            | Determina el **máximo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas). |
-| [Mxh](#maxheight)           | `max-height`           | `mxh="200"`, `max-height="300"`                                                           | Determina el **máximo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
-| [Miw](#minwidth)            | `min-width`            | `miw="300"`, `min-width="400"`                                                            | Determina el **mínimo ancho** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas). |
-| [Mih](#minheight)           | `min-height`           | `mih="300"`, `min-height="400"`                                                           | Determina el **mínimo alto** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).  |
-| [Pos](#position)            | `position`             | `pos="re"`, `position="relative"`                                                         | Determina la **posición** del nodo.                                                                         |
-| [T](#top-right-bottom-left) | `top`                  | `t="10"`, `top="20"`                                                                      | Determina el **top** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).          |
-| [R](#top-right-bottom-left) | `right`                | `r="10"`, `right="20"`                                                                    | Determina el **right** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).        |
-| [B](#top-right-bottom-left) | `bottom`               | `b="10"`, `bottom="20"`                                                                   | Determina el **bottom** del nodo en píxeles u otra [unidad de medida](#unidades-de-medida-definidas).       |
-| [L](#top-right-bottom-left) | `left`                 | `l="10"`, `left="20"`                                                                     | Determina el **left** del nodo en píxeles u otra [unidad de medida](DOCS.md#unidades-de-medida-definidas).  |
+| Name                               | Alias                  | Examples                                                                                  | Description                                                                                                 |
+| ---------------------------------- | ---------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| [Cols](DOCS.md#cols)               | `c`                    | `cols="13/15"`, `c="5/10"`                                                                | Determines the columns, that is, the 'width' as a percentage.                                               |
+| [d](DOCS.md#display)               | `display`              | `d="bl"`, `display="inline"`                                                              | Determines the **display** that the node will have.                                                         |
+| [Mart](DOCS.md#mart)               | `mt`, `margin-top`     | `mart="10"`, `mt="20"`, `margin-top="12"`                                                 | Determines the **top margin** of a node.                                                                    |
+| [Marr](DOCS.md#marr-marb-marl)     | `mr`, `margin-right`   | `marr="2/15"`, `mr="5/10"`, `margin-right="3/5"`                                          | Determine the **right margin** of a node.                                                                   |
+| [Marb](DOCS.md#marr-marb-marl)     | `mb`, `margin-bottom`  | `marb="30"`, `mb="50"`, `margin-bottom="25"`                                              | Determine the **bottom margin** of a node.                                                                  |
+| [Marl](DOCS.md#marr-marb-marl)     | `ml`, `margin-left`    | `marl="3/15"`, `ml="5/10"`, `margin-left="3/5"`                                           | Determine the **left margin** of a node.                                                                    |
+| [Mar](DOCS.md#mar)                 | `m`, `margin`          | `mar="20-2/15-30-3/15"`, `m="20-2/15-30-3/15"`, `margin="20-2/15-30-3/15"`                | It is a shorthand of the directives: [mart](DOCS.md#mart), [marr, marb, y marl](DOCS.md#marr-marb-marl).    |
+| [Mary](DOCS.md#mary-marx)          | `my`, `margin-y`       | `mary="10"`, `my="20"`, `margin-y="30"`                                                   | Determine the **top and bottom margin** of a node.                                                          |
+| [Marx](DOCS.md#mary-marx)          | `mx`, `maring-x`       | `marx="10"`, `mx="20"`, `margin-x="30"`                                                   | Determine the **right and left margin at the same time** of a node.                                         |
+| [Padt](DOCS.md#padt)               | `pt`, `padding-top`    | `padt="10"`, `pt="20"`, `padding-top="30"`                                                | Determine the **top padding** of a node.                                                                    |
+| [Padr](DOCS.md#padr-padb-padl)     | `pr`, `padding-right`  | `padr="2/15"`, `pr="3/16"`, `padding-right="4/17"`                                        | Determine the **padding right** of a node.                                                                  |
+| [Padb](DOCS.md#padr-padb-padl)     | `pb`, `padding-bottom` | `padb="30"`, `pb="40"`, `padding-bottom="50"`                                             | Determine the **bottom padding** of a node.                                                                 |
+| [Padl](DOCS.md#padr-padb-padl)     | `pl`, `padding-left`   | `padl="3/15"`, `pl="4/16"`, `padding-left="5/17"`                                         | Determine the **left padding** of a node.                                                                   |
+| [Pad](DOCS.md#pad)                 | `p`, `padding`         | `pad="20-2/15-30-3/15"`, `p="20-2/15-30-3/15"`, `padding="20-2/15-30-3/15"`               | It is a shorthand of the directives: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).    |
+| [Pady](DOCS.md#pady-padx)          | `py`, `padding-y`      | `pady="10"`, `py="20"`, `padding-y="30"`                                                  | Determine the **padding top and bottom than the same time** of a node.                                      |
+| [Padx](DOCS.md#pady-padx)          | `px`, `padding-x`      | `padx="10"`, `px="20"`, `padding-x="30`                                                   | Determine the **right and left padding** at the same time of a node.                                        |
+| [Flex](DOCS.md#flex)               | `fx`                   | `flex="jc:ce ai:fs fd:co"`, `flex="jc:fe ai:fs`, `fx="align-items:center flex-wrap:wrap"` | Determine the **display Flex** of the node and its derivatives.                                             |
+| [Wdh](DOCS.md#width)               | `w`, `width`           | `wdh="100"`, `w="200"`, `width="300"`                                                     | Determine the **width** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).          |
+| [Hgt](DOCS.md#height)              | `h`, `height`          | `hgt="100"`, `h="200"`, `height="300"`                                                    | Determine the **height** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).         |
+| [Mxw](DOCS.md#maxwidth)            | `max-width`            | `mxw="200"`, `max-width="300"`                                                            | Determine the **maximum width** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).  |
+| [Mxh](DOCS.md#maxheight)           | `max-height`           | `mxh="200"`, `max-height="300"`                                                           | Determine the **maximum height** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure). |
+| [Miw](DOCS.md#minwidth)            | `min-width`            | `miw="300"`, `min-width="400"`                                                            | Determine the **minimum width** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).  |
+| [Mih](DOCS.md#minheight)           | `min-height`           | `mih="300"`, `min-height="400"`                                                           | Determine the **high height** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).    |
+| [Pos](DOCS.md#position)            | `position`             | `pos="re"`, `position="relative"`                                                         | Determine the **position** of node.                                                                         |
+| [T](DOCS.md#top-right-bottom-left) | `top`                  | `t="10"`, `top="20"`                                                                      | Determine the **top** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).            |
+| [R](DOCS.md#top-right-bottom-left) | `right`                | `r="10"`, `right="20"`                                                                    | Determine the **right** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).          |
+| [B](DOCS.md#top-right-bottom-left) | `bottom`               | `b="10"`, `bottom="20"`                                                                   | Determine the **bottom** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).         |
+| [L](DOCS.md#top-right-bottom-left) | `left`                 | `l="10"`, `left="20"`                                                                     | Determine the **left** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).           |
 
-## Métodos
+## Methods
 
-Los siguientes métodos son internos del sistema, y **no es necesario utilizarlos** porque el sistema los usa de forma automática, pero están ahí para cualquier otro fin.
+The following methods are internal of the system, and **It is not necessary to use them** because the system uses them automatically, but they are there for any other purpose.
 
-Estos métodos están expuesto en la **variable global 'layouter'**, la cual está en el objeto **window**.
+These methods are exposed in the **Global Variable 'Layouter'**, which is on the object **Window**.
 
-| Nombre                                                                                                                                                                                                                                                                                              | Argumentos                                                                         | Devuelve                                  | Descripción                                             |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------------- |
-| [**Set**](#set)                                                                                                                                                                                                                                                                                     | `Node: HTMLElement\|Element, parameters?: Partial<Record<TDirectiveName, string>>` | `Promise<void\|Error>`                    | **Shorthand** para los métodos de **tipo 'set'**.       |
-| [**setCols**](#setcols)                                                                                                                                                                                                                                                                             | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'cols'**                         |
-| [setPadTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padt'**                         |
-| [setPadRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padr'**                         |
-| [setPadBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padb'**                         |
-| [setPadLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padl'**                         |
-| [**setPad**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'pad'**                          |
-| [setPadX](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'padx'**                         |
-| [setPadY](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'pady'**                         |
-| [setMarTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mart'**                         |
-| [setMarRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marr'**                         |
-| [setMarBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marb'**                         |
-| [setMarLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marl'**                         |
-| [**setMar**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mar'**                          |
-| [setMarX](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'marx'**                         |
-| [setMarY](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mary'**                         |
-| [setFlex](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                       | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'flex'**                         |
-| [setWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                      | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'wdh'**                          |
-| [setMinWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'miw'**                          |
-| [setMaxWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mxw'**                          |
-| [setHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'hgt'**                          |
-| [setMaxHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mxh'**                          |
-| [setMinHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'mih'**                          |
-| [setPosition](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'pos'**                          |
-| [setTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                        | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'t'**                            |
-| [setRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                      | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'r'**                            |
-| [setBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'b'**                            |
-| [setLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                       | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Procesa la directiva **'l'**                            |
-| [**buildCols**](#buildcols)                                                                                                                                                                                                                                                                         | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'cols'**              |
-| [buildMarTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mart'**              |
-| [buildMarRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'marr'**              |
-| [buildMarBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'marb'**              |
-| [buildMarLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'marl'**              |
-| [**buildMar**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mar'**               |
-| [buildPadTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padt'**              |
-| [buildPadRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padr'**              |
-| [buildPadBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padb'**              |
-| [buildPadLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padl'**              |
-| [buildPadX](#buildpadx-buildpady-buildmarx-buildmary)                                                                                                                                                                                                                                               | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padx'**              |
-| [buildPadY](#buildpadx-buildpady-buildmarx-buildmary)                                                                                                                                                                                                                                               | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'padx'**              |
-| [**buildPad**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'pad'**               |
-| [**buildFlex**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'flex'**              |
-| [buildWidth](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)     | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'wdh'**               |
-| [buildMinWidth](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'miw'**               |
-| [buildMaxWidth](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mxw'**               |
-| [buildHeight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'hgt'**               |
-| [buildMaxHeight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mih'**               |
-| [buildHeight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'mxh'**               |
-| [buildPosition](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'pos'**               |
-| [buildTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)       | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'t'**                 |
-| [buildRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)     | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'r'**                 |
-| [buildBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'b'**                 |
-| [buildLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)      | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Procesa valores de la directiva **'l'**                 |
-| [**build**](#build)                                                                                                                                                                                                                                                                                 | `obj: Partial<Record<TDirectiveName, string>>, insertStyles?: boolean`             | `Partial<IBuildResult> \| Error`          | Shorthand para métodos **'build'**                      |
-| [getParameters](#getparameters)                                                                                                                                                                                                                                                                     | `Node: HTMLElement\|Element`                                                       | `Partial<Record<TDirectiveName, string>>` | Extrae las directivas y valores de un Nodo              |
-| [reset](#reset)                                                                                                                                                                                                                                                                                     | `Node: HTMLElement\|Element`                                                       | `Promise<void>`                           | Elimina de un Nodo las clases generadas por el sistema. |
+| Nombre                                                                                                                                                                                                                                                                                              | Argumentos                                                                         | Devuelve                                  | Descripción                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------------------- |
+| [**Set**](#set)                                                                                                                                                                                                                                                                                     | `Node: HTMLElement\|Element, parameters?: Partial<Record<TDirectiveName, string>>` | `Promise<void\|Error>`                    | **Shorthand** for methods of **type 'set'**.                |
+| [**setCols**](#setcols)                                                                                                                                                                                                                                                                             | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'cols'**                            |
+| [setPadTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'padt'**                            |
+| [setPadRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'padr'**                            |
+| [setPadBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'padb'**                            |
+| [setPadLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'padl'**                            |
+| [**setPad**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'pad'**                             |
+| [setPadX](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'padx'**                            |
+| [setPadY](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'pady'**                            |
+| [setMarTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'mart'**                            |
+| [setMarRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'marr'**                            |
+| [setMarBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'marb'**                            |
+| [setMarLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'marl'**                            |
+| [**setMar**](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                    | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'mar'**                             |
+| [setMarX](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'marx'**                            |
+| [setMarY](#setpadx-setpady-setmarx-setmary)                                                                                                                                                                                                                                                         | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'mary'**                            |
+| [setFlex](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                       | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'flex'**                            |
+| [setWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                      | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'wdh'**                             |
+| [setMinWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'miw'**                             |
+| [setMaxWidth](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'mxw'**                             |
+| [setHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'hgt'**                             |
+| [setMaxHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'mxh'**                             |
+| [setMinHeight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                  | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'mih'**                             |
+| [setPosition](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                   | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'pos'**                             |
+| [setTop](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                        | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'t'**                               |
+| [setRight](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                      | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'r'**                               |
+| [setBottom](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                     | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'b'**                               |
+| [setLeft](#setpad-setpadtop-setpadright-setpadbottom-setpadleft-setmar-setmartop-setmarright-setmarbottom-setmarleft-setmaxwidth-setmaxheight-setminwidth-setminheight-setflex-setposition-settop-setright-setbottom-setleft)                                                                       | `Node: HTMLElement\|Element, values?: string`                                      | `Promise<void\|Error>`                    | Process the Directive **'l'**                               |
+| [**buildCols**](#buildcols)                                                                                                                                                                                                                                                                         | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'cols'**                       |
+| [buildMarTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'mart'**                       |
+| [buildMarRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'marr'**                       |
+| [buildMarBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'marb'**                       |
+| [buildMarLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'marl'**                       |
+| [**buildMar**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'mar'**                        |
+| [buildPadTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'padt'**                       |
+| [buildPadRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'padr'**                       |
+| [buildPadBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'padb'**                       |
+| [buildPadLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'padl'**                       |
+| [buildPadX](#buildpadx-buildpady-buildmarx-buildmary)                                                                                                                                                                                                                                               | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'padx'**                       |
+| [buildPadY](#buildpadx-buildpady-buildmarx-buildmary)                                                                                                                                                                                                                                               | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'padx'**                       |
+| [**buildPad**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)   | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'pad'**                        |
+| [**buildFlex**](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'flex'**                       |
+| [buildWidth](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)     | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'wdh'**                        |
+| [buildMinWidth](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'miw'**                        |
+| [buildMaxWidth](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'mxw'**                        |
+| [buildHeight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'hgt'**                        |
+| [buildMaxHeight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft) | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'mih'**                        |
+| [buildHeight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'mxh'**                        |
+| [buildPosition](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)  | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'pos'**                        |
+| [buildTop](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)       | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'t'**                          |
+| [buildRight](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)     | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'r'**                          |
+| [buildBottom](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)    | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'b'**                          |
+| [buildLeft](#buildmar-buildmartop-buildmarright-buildmarbottom-buildmarleft-buildpad-buildpadtop-buildpadright-buildpadbottom-buildpadleft-buildwidth-buildheight-buildmaxwidth-buildmaxheight-buildminwidth-buildminheight-buildflex-buildposition-buildtop-buildright-buildbottom-buildleft)      | `values: string, insertStyles?: boolean`                                           | `IStyles\|Error`                          | Processes directive values **'l'**                          |
+| [**build**](#build)                                                                                                                                                                                                                                                                                 | `obj: Partial<Record<TDirectiveName, string>>, insertStyles?: boolean`             | `Partial<IBuildResult> \| Error`          | Shorthand for the methods **'build'**                       |
+| [getParameters](#getparameters)                                                                                                                                                                                                                                                                     | `Node: HTMLElement\|Element`                                                       | `Partial<Record<TDirectiveName, string>>` | Extract the directives and values of a node                 |
+| [reset](#reset)                                                                                                                                                                                                                                                                                     | `Node: HTMLElement\|Element`                                                       | `Promise<void>`                           | Eliminates from a node the classes generated by the system. |
 
 <details>
-<summary><b>Tipos e Interfaces de guía</b></summary>
+<summary><b>Types and guide interfaces</b></summary>
 
 ```typescript
 interface IStyles {
@@ -229,31 +241,31 @@ type TDirectiveName =
 -   [Important Flag](#important-flag)
 -   [Getters](#getters)
 
-## ✨ Ejemplos
+## ✨ Examples
 
 ### Cols
 
-#### Ejemplo 1: Con breakpoints simples (min-width)
+#### Example 1: With simple breakpoints (Min-Width)
 
-Tenemos un 'DIV' al cual queremos designarle 13 de 15 columnas en mobile, 10 columnas de 31 en tablet y 15 columnas de 27 en desktop, así que creamos **la directiva llamada 'cols'** con el siguiente valor:
+We have a 'div' to which we want to designate 13 of 15 columns in Mobile, 10 columns of 31 on tablet and 15 columns of 27 in Desktop, so we create **the directive called 'colts'** with the following value:
 
 ```html
 <div cols="13/15 10/31@sm 15/27@md">...</div>
 ```
 
-> El sufijo arroba significa que esas columnas aplicarán a partir del breakpoint determinado
+> The arroba suffix means that these columns will apply from the determined breakpoint
 
-Para el DIV del ejemplo de arriba se determinó que:
+For the div of the example above it was determined that:
 
--   Tendrá 13 columnas de 15, y como no tiene como sufijo el signo arroba, significa que las tendrá en el 'breakpoint con width más bajo osea el **'xs'**. Si el **DIV** solo tendría esa directiva definida, luego de su auto procesamiento obtendríamos este resultado:
+-   It will have 13 columns of 15, and as the Arroba sign does not have as its suffix, it means that it will have them in the 'breakpoint with width lower the **'xs'**. If the **div** would only have that defined directive, after its self -process we would obtain this result:
 
 ```html
 <div class="cols-13/15">...</div>
 ```
 
-> Vemos que la directiva 'cols' desapareció del elemento, esto es porque ya no lo necesita una vez procesado
+> We see that the directive 'cols' disappeared from the element, this is because it no longer needs it once processed
 
-Y como estilos tendríamos disponible una clase llamada 'cols-13/15' la cual nos daría estos estilos:
+And as styles we would have a class called 'cols-13/15' which would give us these styles:
 
 ```css
 .cols-13\/15 {
@@ -263,13 +275,13 @@ Y como estilos tendríamos disponible una clase llamada 'cols-13/15' la cual nos
 
 **Seguimos**...
 
--   Para el breakpoint 'sm' (osea 'tablet') se determinó que se tendrá 10 columnas de 31, luego de procesarlo obtendríamos este resultado:
+-   For the breakpoint 'sm' (I mean 'Tablet') it was determined that it will have 10 columns of 31, after processing it we would get this result:
 
 ```html
 <div class="cols-10/31@sm">...</div>
 ```
 
-Pero como se determinó en un breakpoint, los estilos estarían regidos por él
+But as determined in a breakpoint, the styles would be governed by him
 
 ```css
 @media screen and (min-width: 600px) {
@@ -279,7 +291,7 @@ Pero como se determinó en un breakpoint, los estilos estarían regidos por él
 }
 ```
 
--   Para el breakpoint **'md' (osea 'desktop')** se determinó que se tendrá 15 columnas de 27, y luego de auto procesarce obtendríamos este resultado:
+-   For the breakpoint **'md' (I mean 'desktop')** it was determined that 15 columns of 27 will be will have, and after self -process we would get this result:
 
 ```html
 <div class="cols-15/27@md">...</div>
@@ -293,13 +305,13 @@ Pero como se determinó en un breakpoint, los estilos estarían regidos por él
 }
 ```
 
-**Finalmente** si procesamos el valor completo del parametro **'cols'** `(13/15 10/31@sm 15/27@md)` obtendríamos este resultado:
+**Finally** If we process the full value of the parameter **'cols'** `(13/15 10/31@sm 15/27@md)` We would get this result:
 
 ```html
 <div class="cols-13/15 cols-10/31@sm cols-15/27@md">...</div>
 ```
 
-y pues, estos estilos:
+And then, these styles:
 
 ```css
 .cols-13\/15 {
@@ -319,17 +331,17 @@ y pues, estos estilos:
 }
 ```
 
-> **OJO**: Estas clases estarán disponibles para todos los elementos que necesiten de ellas, son generales.
+> **Eye**: These classes will be available for all the elements that need them, they are general.
 
-#### Ejemplo 2: Con breakpoint min-width y max-width
+#### Example 2: With Breakpoint Min-Width and Max-Width
 
-Tenemos un DIV que a parte de tener 13 columnas de 15 en mobile (el breakpoint 'xs') queremos designarle 20 columnas de 27 desde tablet hasta desktop (desde 'sm' hasta 'md') y a partir de 'lg', osea monitores más grandes, que continue con las 13 columnas de 15 que se le puso en mobile. Entonces...
+We have a div that apart from having 13 columns of 15 in Mobile (the breakpoint larger, to continue with the 13 columns of 15 that was put in Mobile. Then...
 
 ```html
 <div cols="13/15 20/27@sm-md"></div>
 ```
 
-El guión (-) indica 'desde / hasta' donde se quiere determinar las columnas. En estilos tendríamos esto:
+The dash (-) indicates 'from / to' where you want to determine the columns. In styles we would have this:
 
 ```css
 .cols-13\/15 {
@@ -343,15 +355,15 @@ El guión (-) indica 'desde / hasta' donde se quiere determinar las columnas. En
 }
 ```
 
-...aunque tambien se puede usar solo el 'hasta', así:
+...although only the 'even' can be used, like this:
 
 ```html
 <div cols="20/27@-md"></div>
 ```
 
-> Esto le dará 20 columnas de 27 hasta 'desktop' (en el breakpoint 'md')
+> This will give 20 columns from 27 to 'desktop' (at the Breakpoint 'md')
 
-y en estilos obtendremos esto:
+And in styles we will get this:
 
 ```css
 @media screen and (max-width: 899px) {
@@ -361,34 +373,34 @@ y en estilos obtendremos esto:
 }
 ```
 
-#### Ejemplo 3: Columnas explicitas por breakpoint.
+#### Example 3: Explicit columns by Breakpoint.
 
-Cuando queremos determinar un número de columnas en un breakpoint específico pero sin designarle el número de columnas de donde sacarlas (o máximas), podemos hacerlo así:
+When we want to determine a number of columns in a specific breakpoint but without designating the number of columns where to get them (or maximum), we can do so:
 
 ```html
 <div cols="13 20@sm">...</div>
 ```
 
-Eso es lo mismo que poner esto: `<div cols="13/15 20/31@sm">...</div>`
+That is the same as putting this: `<div cols="13/15 20/31@sm">...</div>`
 
-Se obvia el número de columnas de donde se sacarán las columnas designadas, yá que el breakpoint tomará el número de columnas designadas para ese breakpoint, osea: el sistema reconocerá que son 13 columnas de 15 xq no se determinó breakpoint, y 15 son las columnas máximas que tiene el breakpoint 'xs' (mobile), y tambien reconocerá que son 20 columnas de 31, xq se determinó 20 columnas en el breakpoint 'sm' (tablet) y las columnas máximas disponibles en tablet son 31.
+The number of columns where the designated columns will be taken, and that the Breakpoint will take the number of columns designated for that breakpoint, will be obvious: the system will recognize that there are 13 columns of 15 xq not determined Breakpoint, and 15 are the columns Maximum that Breakpoint 'XS' (Mobile) has, and will also recognize that there are 20 columns of 31, because 20 columns were determined in the breakpoint 'SM' (tablet) and the maximum columns available on tablet are 31.
 
-> **OJO**: **NO se puede** determinar columnas explicitas en breakpoints compuestos, osea en el 'desde / hasta', solo en breakpoints 'desde', osea estos '@sm', si no tirará un mensaje de error y no procesará.
+> **NOTE**: **You can not** determine explicit columns in compound breakpoints, I mean in the 'from / to', only in breakpoints 'from', I mean these '@sm', if you will not throw an error message and will not process.
 
 ```html
-<!-- ESTO NO ES VÁLIDO-->
+<!-- This is not valid-->
 <div cols="20@sm-md">...</div>
 ```
 
-Este método de columnas explicitas solo es para ahorrarnos un poco de tiempo al designar las columnas que queremos en la directiva 'cols'. Sin embargo podría ser provechoso determinar así por si en algún momento las columnas designadas para un breakpoint en específico cambian, digamos que en el breakpoint 'sm' (tablet), yá no son 31 columnas sino 32, pues con la designación de columna explicitas nos ahorraríamos tener que cambiar en cada elemento dondeterminamos `cols="20/31@sm"`
+This method of explicit columns is only to save us a little time when designating the columns we want in the 'cols' directive. However, it could be helpful to determine thus at any time the designated columns for a specific breakpoint change, let's say that in the breakpoint 'sm' (Tablet), and there are not 31 columns but 32, because with the designation of explicit column we We would save having to change in each element where we try `cols="20/31@sm"`.
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### Display
 
-Sirve para determinar el **display** que tendrá el nodo.
+It is used to determine the **display** what will the node have.
 
-### Valores disponibles
+### Available values
 
 -   **bl**: display
 -   **il**: inline
@@ -399,54 +411,54 @@ Sirve para determinar el **display** que tendrá el nodo.
 -   **in**: in
 -   **ih**: inherit
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div d="re">...</div>
 ```
 
-o en modo más semántico
+or in more semantic mode
 
 ```html
 <div display="block inline@sm none@md">...</div>
 ```
 
-No hay mucho que explicar acá, utiliza las mismas reglas que las demás directivas, solo que está enfocado a la definición del display.
+There is not much to explain here, use the same rules as the other directives, only is focused on the definition of the display.
 
--   En el primer ejemplo se define `display: relative` para el breakpoint **'xs'** (mobile)
--   En el segundo ejemplo, un poco más extenso, se definió que en el breakpoint **'xs'** el display será **'block'**, luego para el breakpoint **'sm'** será **'inline'** y finalmente para el breakpoint **'md'** el display será **'none'**
+-   In the first example `display: relative` for the breakpoint **'xs'** (Mobile)
+-   In the second example, a little more extensive, it was defined that in the breakpoint **'xs'** the display will be **'block'**, then for the breakpoint **'sm'** it will be **'inline'** And finally for the breakpoint **'md'** the display will be **'none'**.
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### Mar
 
-Es una abreviación del shorthand 'margin' **(y a su vez es un shorthand de las directivas: mart, marr, marb, y marl)** y sirve para determinar los margenes superiores, derechos, inferiores e izquierdos de un elemento.
+It is an abbreviation of the Shorthand 'margin' **(and in turn is a shorthand of the directives: Mart, Marr, Marb, and Marl)** and serves to determine the superior margins, rights, lower and lower of an element.
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div mar="20-2/15 40-3/31-20@sm 60-2/31@md">...</div>
 ```
 
-> Usa la misma sintaxis del margin combencional, osea: margin-top, margin-right, margin-bottom, margin-left. Pero solo para el margin left y right se puedeclarar 'auto', si es que se requiere claro. Mini Ejemplo: mar="20-auto"
+> Use the same combination margin syntax, I mean: margin-Top, margin-Right, margin-Bottom, margin-Left. But only for the margin Left and Right, 'auto' can be found, if it is required clear. Mini Example: `mar="20-Auto"`
 
-**Solo los margenes superiores e inferiores son procesados como pixeles**, los derechos e izquierdos son procesados porcentualmente.
+**Only higher and lower margins are processed as pixels**, the rights and left are processed percentage.
 
-**Explicación:** En el ejemplo de arriba se está determinando que el DIV :
+**Explanation:** In the example above it is being determined that the div:
 
--   Tendrá 20 pixeles de margen superior (margin-top) e inferior, tambien 2 columnas de 15, en mobile.
--   Tendrá 40 pixeles de margen superior, 3 columnas de 31 de margin derecho e izquierdo y 20 pixeles de margen inferior en tablet.
--   y en desktop, tendrá 60 pixeles de margin superior e inferior y 2 columnas de 31 de margin derecho e izquierdo.
+-   It will have 20 upper margin pixels (Margin-Top) and lower, also 2 columns of 15, in Mobile.
+-   It will have 40 upper margin pixels, 3 columns of 31 right and left margin and 20 lower margin pixels on tablet.
+-   And in Desktop, it will have 60 Pixels of upper and lower margin and 2 columns of 31 of the right and left margin.
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="mar-20-2/15 mar-40-3/31-20@sm mar-60-2/31@md">...</div>
 ```
 
-> Vemos que la directiva **'mar'** desapareció del elemento, esto es porque yá no lo necesita una vez procesado.
+> We see that the directive **'mar'** disappeared from the element, this is because does not need it once processed.
 
-y pues, estos estilos:
+And then, these styles:
 
 ```css
 .mar-20-2\/15 {
@@ -466,37 +478,37 @@ y pues, estos estilos:
 }
 ```
 
-> Aquí aplica lo mismo de 'cols', con los breakpoints compuestos, (desde / hasta)
+> Here applies the same of 'cols', with compound breakpoints, (from / to)
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
-> Si se desea determinar los margenes de formar separada es decir solo el margen: superior, derecho, inferior o izquierdo entonces usamos mart, marr, marb, y marl respectivamente, veamoslos a continuación:
+> If you want to determine the margins of forming separate, that is, only the margin: upper, right, lower or left then we use mart, marb, marb, and marl respectively, let's see them below:
 
 ### Mart
 
-Sirve para determinar los margenes superiores de un elemento.
+Is used to determine the top margins of an element.
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div mart="10 20.5@sm 30@md">...</div>
 ```
 
-**Explicación:** En el ejemplo de arriba se está determinando que el margen superior del DIV sea:
+**Explanation:** In the example above it is being determined that the upper margin of the distinguish:
 
--   10 pixeles en mobile.
--   20.5 pixeles en tablet.
--   y 30 pixeles en desktop.
+-   10 pixels in Mobile.
+-   20.5 pixels in tablet.
+-   And 30 pixels in Desktop.
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="mart-10 mart-20_5@sm mart-30@md">...</div>
 ```
 
-> Vemos que la directiva **'mart'** desapareció del elemento, esto es porque yá no lo necesita una vez procesado
+> We see that the directive **'mart'** disappeared from the element, this is because Yá does not need it once processed
 
-y pues, estos estilos:
+Y luego, estos estilos:
 
 ```css
 .mart-10 {
@@ -516,13 +528,13 @@ y pues, estos estilos:
 }
 ```
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### Marr, Marb, Marl
 
-Sirven para determinar los margenes derechos, inferiores e izquierdos respectivamente a un nodo. Es lo mismo que 'mart'
+They serve to determine the rights, lower and left respectively to a node. It's the same as 'mart'
 
-#### Un simple ejemplo:
+#### A simple example:
 
 ```html
 <div marr="10 20.5@sm 30@md">...</div>
@@ -530,7 +542,7 @@ Sirven para determinar los margenes derechos, inferiores e izquierdos respectiva
 <div marl="30 40.5@sm 50@md">...</div>
 ```
 
-...luego de auto procesarce obtendríamos este resultado:
+...after self -process we would get this result:
 
 ```html
 <div class="marr-10 marr-20_5@sm marr-30@md">...</div>
@@ -539,7 +551,7 @@ Sirven para determinar los margenes derechos, inferiores e izquierdos respectiva
 ```
 
 <details>
-<summary>los estilos generados sería estos:</summary>
+<summary>The generated styles would be these:</summary>
 
 ```css
 .marr-10 {
@@ -581,25 +593,25 @@ Sirven para determinar los margenes derechos, inferiores e izquierdos respectiva
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
-### Unidades de medida definidas
+### Defined units of measure
 
-Para las definiciones de la mayoría de directivas que se auto definen como pixeles, como el 'mart', 'marb', y cualquier otra más, es posible definirle una unidad de medida relativa, las cuales pueden ser: **%, rem, em, ex, vw y vh**,
+For the definitions of the majority of directives that are self -defined as pixels, such as the 'Mart', 'Marb', and any other, it is possible to define a unit of relative measure, which can be: **%, rem, em, ex, vw y vh**,
 
-**Por ejemplo:**
+**For example:**
 
 ```html
 <div mart="20%">...</div>
 ```
 
-... luego de auto procesarce obtendríamos este resultado:
+... After self -process we would get this result:
 
 ```html
 <div class="mart-0¯20">...</div>
 ```
 
-y pues, estos estilo:
+And then, these style:
 
 ```css
 .mart-0¯20 {
@@ -607,28 +619,28 @@ y pues, estos estilo:
 }
 ```
 
-**OJO**: Esto aplica para cualquier otro valor que se auto define como pixeles: **mih, mxw, padt, padb, etc.**
+**NOTE**:This applies to any other value that is self -defined as pixels: **mih, mxw, padt, padb, etc.**
 
 ### Pad
 
-Sirve para determinar los paddings que se le dará. Al igual que la directiva **'mar'**, solo el padding top y bottom se tomarán como pixeles y el left y right como porcentual.
+Is used to determine the paddings that will be given. Like the directive **'mar'**, only the Padding Top and Bottom will be taken as Pixels and the Left and Right as percentage.
 
-Tiene exactamente la misma sintaxis que 'mar'
+It has exactly the same syntax as 'mar'
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div pad="20-1/15 40-3/31@sm 60-2/31@md">...</div>
 ```
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="pad-20-1/15 pad-40-3/31@sm pad-60-2/31@md">...</div>
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
     
 ```css
 .pad-20-1\/15 {
@@ -636,46 +648,47 @@ Tiene exactamente la misma sintaxis que 'mar'
 }
 
 @media screen and (min-width: 600px) {
-.pad-40-3\/31\@sm {
-padding: 40px 9.67742%;
-}
+    .pad-40-3\/31\@sm {
+        padding: 40px 9.67742%;
+    }
 }
 
 @media screen and (min-width: 900px) {
-.pad-60-2\/31\@md {
-padding: 60px 6.45161%;
-}
+    .pad-60-2\/31\@md {
+        padding: 60px 6.45161%;
+    }
 }
 
-````
+```
+
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### Padt
 
-Sirve para determinar los paddings superiores de un elemento.
+It is used to determine the top paddings of an element.
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div padt="10 20.5@sm 30@md">...</div>
 ````
 
-**Explicación:** En el ejemplo de arriba se está determinando que el padding superior del DIV sea:
+**Explanation:** In the top example, it is being determined that the superior padding of the distinguished:
 
--   10 pixeles en mobile.
--   20.5 pixeles en tablet.
--   y 30 pixeles en desktop.
+-   10 pixels in Mobile.
+-   20.5 pixels in tablet.
+-   And 30 pixels in Desktop.
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="padt-10 padt-20_5@sm padt-30@md">...</div>
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
 
 ```css
 .padt-10 {
@@ -697,13 +710,13 @@ Sirve para determinar los paddings superiores de un elemento.
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### Padr, Padb, Padl
 
-Sirven para determinar los paddings derechos, inferiores e izquierdos respectivamente en un elemento. Es lo mismo que 'padt'
+It is used to determine the rights, lower and left paddings respectively in an element. It's the same as 'padt'
 
-#### Un simple ejemplo:
+#### A simple example:
 
 ```html
 <div padr="10 20.5@sm 30@md">...</div>
@@ -711,7 +724,7 @@ Sirven para determinar los paddings derechos, inferiores e izquierdos respectiva
 <div padl="30 40.5@sm 50@md">...</div>
 ```
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="padr-10 padr-20_5@sm padr-30@md">...</div>
@@ -720,7 +733,7 @@ Sirven para determinar los paddings derechos, inferiores e izquierdos respectiva
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
 
 ```css
 .padr-10 {
@@ -762,24 +775,24 @@ Sirven para determinar los paddings derechos, inferiores e izquierdos respectiva
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### PadY, PadX
 
-Estas directivas son plus, ya que son un shorthand de 2 directivas, veamoslas:
+These directives are Plus, since they are a 2 directive shorthand, let's look at them:
 
--   **'pady'** o solamente **'py'**: Determinará el padding superior e inferior al mismo tiempo de un nodo:
+-   **'pady'** or only **'py'**: Will determine the superior and lower padding as a node:
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div pady="10 20@sm 30@md">...</div>
 ```
 
-o de forma super abreviada podemos usar solo `<div py="10 20@sm 30@md">...</div>`.
+or super short way we can use `<div py="10 20@sm 30@md">...</div>`.
 
 <details>
-<summary>nos crea estos estilos:</summary>
+<summary>creates these styles:</summary>
 
 ```css
 .pb-10 {
@@ -810,18 +823,18 @@ o de forma super abreviada podemos usar solo `<div py="10 20@sm 30@md">...</div>
 
 </details>
 
--   **'padx'** o solamente **'px'**: Determinará el padding derecho e izquierdo al mismo tiempo de un nodo:
+-   **'padx'** or only **'px'**: Will determine the right and left padding at the same time of a node:
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div padx="10 20@sm 30@md">...</div>
 ```
 
-o de forma super abreviada podemos usar solo `<div px="10 20@sm 30@md">...</div>`.
+or super short way we can use `<div px="10 20@sm 30@md">...</div>`.
 
 <details>
-<summary>y nos crea estos estilos:</summary>
+<summary>And create these styles:</summary>
 
 ```css
 .pl-10 {
@@ -852,21 +865,21 @@ o de forma super abreviada podemos usar solo `<div px="10 20@sm 30@md">...</div>
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### MarY, MarX
 
-Estas directivas son plus, ya que son un shorthand de 2 directivas, veamoslas:
+These directives are Plus, since they are a 2 directive shorthand, let's look at them:
 
--   **'mary'** o solamente **'my'**: Determinará el margen superior e inferior al mismo tiempo de un nodo:
+-   **'mary'** or just **'my'**: Will determine the upper and lower margin of a node:
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div mary="10 20@sm 30@md">...</div>
 ```
 
-o de forma super abreviada podemos usar solo `<div my="10 20@sm 30@md">...</div>`.
+or in super short way we can use `<div my="10 20@sm 30@md">...</div>`.
 
 <details>
 <summary>nos crea estos estilos:</summary>
@@ -900,18 +913,18 @@ o de forma super abreviada podemos usar solo `<div my="10 20@sm 30@md">...</div>
 
 </details>
 
--   **'marx'** o solamente **'mx'**: Determinará el margen derecho e izquierdo al mismo tiempo de un nodo:
+-   **'marx'** or just **'mx'**: Will determine the right and left margin at the same time of a node:
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div marx="10 20@sm 30@md">...</div>
 ```
 
-o de forma super abreviada podemos usar solo `<div mx="10 20@sm 30@md">...</div>`.
+or in super short way we can use `<div mx="10 20@sm 30@md">...</div>`.
 
 <details>
-<summary>y nos crea estos estilos:</summary>
+<summary>And create these styles:</summary>
 
 ```css
 .ml-10 {
@@ -942,13 +955,13 @@ o de forma super abreviada podemos usar solo `<div mx="10 20@sm 30@md">...</div>
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### Flex
 
-Esta es la directiva más interesante, porque es el que determina el **'display:flex'** al elemento de forma automática. El valor de la directiva **'flex'** se separa entre dos puntos, y no convencionalmente con guión como se hace en **'cols', 'mar' y 'pad'.**
+This is the most interesting directive, because it is the one that determines the **'display: Flex'** to the element automatically. The value of the directive **'flex'** is separated between two points, and not conventionally with a script as is done in **'cols', 'mar' y 'pad'.**
 
-#### Abreviaciones de valores:
+#### Abbreviations of values:
 
 -   **jc:** justify-content
 -   **ai:** align-items
@@ -976,32 +989,28 @@ Esta es la directiva más interesante, porque es el que determina el **'display:
 -   **in:** initial
 -   **ih:** inheri
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div flex="jc:ce jc:fs@sm ai:fs@sm jc:fe@md">...</div>
 ```
 
-o de forma más semántica
+or more semantically
 
 ```html
-<div
-    flex="justify-content:center justify-content:flex-start@sm align-items:flex-start@sm justify-content:flex-end@md"
->
-    ...
-</div>
+<div flex="justify-content:center justify-content:flex-start@sm align-items:flex-start@sm justify-content:flex-end@md">...</div>
 ```
 
-> **OJO**: Es posible determinar más de un estilo en el mismo breakpoint, en el caso del ejemplo de arriba, se determinó el `justify-content: flex-start y align-items: flex-start` para el breakpoint 'sm' osea (tablet)
+> **NOTE**: It is possible to determine more than one style in the same breakpoint, in the case of the example above, the `justify-content: flex-start y align-items: flex-start` for the Breakpoint 'sm' (I mean Tablet)
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="flex-jc:c flex-jc:fs-ai:fs@sm flex-jc:fe@md">...</div>
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
 
 ```css
 .flex-jc\\:c {
@@ -1026,28 +1035,28 @@ o de forma más semántica
 
 </details>
 
-> Nota: cuando determinamos más de un estilo para un mismo breakpoint, el nombre de las clases generadas son concatenadas, solo para ahorrar espacio.
+> Note: When we determine more than one style for the same breakpoint, the name of the classes generated are concatenated, only to save space.
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### Width
 
-Sirve para determinar el ancho de un nodo en pixeles, siempre y cuando no se defina una unidad de medida.
+It is used to determine the width of a node in pixels, as long as a unit of measure is not defined.
 
-#### Ejemplo 1:
+#### Example 1:
 
 ```html
 <div wdh="100 150@sm">...</div>
 ```
 
-...luego de auto procesarce .obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="wdh-100 wdh-150@sm">...</div>
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
 
 ```css
 .wdh-100 {
@@ -1063,22 +1072,22 @@ Sirve para determinar el ancho de un nodo en pixeles, siempre y cuando no se def
 
 </details>
 
-Es posible determinar las únidades relativas: **%, rem, em, ex, vw y vh.**
+It is possible to determine the relative uniques: **%, rem, em, ex, vw y vh.**
 
-#### Ejemplo 2:
+#### Example 2:
 
 ```html
 <div wdh="100% 150%@sm">...</div>
 ```
 
-...luego de autoprocesarce obtendríamos este resultado:
+...After self -procesar we would get this result:
 
 ```html
 <div class="wdh-0¯100 wdh-0¯150@sm">...</div>
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
 
 ```css
 .wdh-0¯100 {
@@ -1094,44 +1103,44 @@ Es posible determinar las únidades relativas: **%, rem, em, ex, vw y vh.**
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### Height
 
-Es lo mismo que el 'Width' pero para determinar el alto, y tambien acepta determinar con [unidades de medidas](#unidades-de-medida-definidas) relativas.
+It is the same as the 'width' but to determine the high, and also accepts to determine with [Unidades de medidas](#units-of-measure-defined) relatives.
 
-#### Ejemplo 1:
+#### Example 1:
 
 ```html
 <div hgt="100 150@sm">...</div>
 ```
 
-#### Ejemplo 2:
+#### Example 2:
 
 ```html
 <div hgt="100vh 150vh@sm">...</div>
 ```
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### MaxWidth
 
-Sirve para determinar el máximo ancho que tendrá un nodo en pixeles, siempre y cuando no se defina
+It is used to determine the maximum width that a node will have in pixels, as long as it is not defined
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div mxw="100 150@sm">...</div>
 ```
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="mxw-100 mxw-150@sm">...</div>
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
 
 ```css
 .mxw-100 {
@@ -1147,26 +1156,26 @@ Sirve para determinar el máximo ancho que tendrá un nodo en pixeles, siempre y
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### MaxHeight
 
-Sirve para determinar el máximo alto que tendrá un nodo en pixeles.
+It serves to determine the maximum high that will have a node in pixels.
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div mxh="100 150@sm">...</div>
 ```
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="mxh-100 mxh-150@sm">...</div>
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
 
 ```css
 .mxh-100 {
@@ -1182,20 +1191,20 @@ Sirve para determinar el máximo alto que tendrá un nodo en pixeles.
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### MinWidth, MinHeight
 
-Sirven para determinar el mínimo ancho y mínimo alto en pixeles respectivamente, es lo mismo que el max-width y max-height nombrados más arriba.
+It is used to determine the minimum high and minimum high in Pixels respectively, it is the same as the Max-Width and Max-Height named above.
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div miw="100 150@sm 200@md">...</div>
 <div mih="300 350@sm 400@md">...</div>
 ```
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="miw-100 miw-150@sm miw-200@md">...</div>
@@ -1203,7 +1212,7 @@ Sirven para determinar el mínimo ancho y mínimo alto en pixeles respectivament
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
 
 ```css
 .miw-100 {
@@ -1241,13 +1250,13 @@ Sirven para determinar el mínimo ancho y mínimo alto en pixeles respectivament
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### Position
 
-Sirve para determinar el posicionamiento de un elemento.
+It is used to determine the positioning of an element.
 
-#### Abreviaciones de valores
+#### Value Abbreviations
 
 -   **st**: static
 -   **ab**: absolute
@@ -1257,26 +1266,26 @@ Sirve para determinar el posicionamiento de un elemento.
 -   **in**: initial
 -   **ih**: inherit
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div pos="re ab@sm fi@md st@lg">...</div>
 ```
 
-o de forma más semántica
+or more semantically
 
 ```html
 <div position="relative absolute@sm fixed@md static@lg">...</div>
 ```
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="pos-re pos-ab@sm pos-fi@md pos-st@lg">...</div>
 ```
 
 <details>
-<summary>y estos estilos:</summary>
+<summary>And these styles:</summary>
 
 ```css
 .pos-re {
@@ -1304,13 +1313,13 @@ o de forma más semántica
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
 ### Top, Right, Bottom, Left
 
-Sirven para determinar el **top**, **right**, **bottom** y **left** de un elemento
+It is used to determine the **top**, **right**, **bottom** and **left** of a element.
 
-#### Ejemplo:
+#### Example:
 
 ```html
 <div t="10 20@sm 30@md">...</div>
@@ -1319,7 +1328,7 @@ Sirven para determinar el **top**, **right**, **bottom** y **left** de un elemen
 <div l="100 200@sm 300@md">...</div>
 ```
 
-o de forma más semántica
+or more semantically
 
 ```html
 <div top="10 20@sm 30@md">...</div>
@@ -1328,7 +1337,7 @@ o de forma más semántica
 <div left="100 200@sm 300@md">...</div>
 ```
 
-...luego de auto procesarce obtendríamos este resultado:
+...After self -process we would get this result:
 
 ```html
 <div class="t-10 t-20@sm t-30@md">...</div>
@@ -1338,7 +1347,7 @@ o de forma más semántica
 ```
 
 <details>
-<summary>y estos estilos:</summary>
+<summary>And these styles:</summary>
 
 ```css
 .t-10 {
@@ -1389,17 +1398,17 @@ o de forma más semántica
 
 </details>
 
-[&uarr; Volver Arriba](#directivas)
+[&uarr; Go back up](#directives)
 
-## Detalles de Métodos:
+## Method details:
 
 ### Set
 
-Sirve para procesar todas las directivas aceptadas por el sistema.
+It is used to process all the directives accepted by the system.
 
-#### Ejemplo:
+#### Example:
 
-Imaginemos que tenemos un DIV en donde hemos designado darle columnas, margenes, paddings y flex todo de un tiron:
+Imagine that we have a div where we have designated to give it columns, margins, paddings and flex all of a pull:
 
 ```html
 <div
@@ -1410,7 +1419,7 @@ Imaginemos que tenemos un DIV en donde hemos designado darle columnas, margenes,
 ></div>
 ```
 
-No sería recomendable aplicar los métodos separados de **'setCols', 'setPads', 'setMars' y 'setFlex'** para procesar la directiva, en ese caso procesamos con el método 'set', y éste procesará todos los demás mencionados:
+It would not be advisable to apply separate methods of **'setCols', 'setPads', 'setMars' y 'setFlex'** To process the directive, in that case we process with the 'set' method, and this will process all the others mentioned:
 
 ```javascript
 const myDiv = document.createElement('div');
@@ -1421,7 +1430,7 @@ myDiv.setAttribute('flex', 'jc:ce jc:fs@sm jc:fe@md ai:fs@sm');
 layouter.set(myDiv);
 ```
 
-Lo cual nos dará un resultado así:
+Which will give us a result like this:
 
 ```html
 <div
@@ -1432,7 +1441,7 @@ Lo cual nos dará un resultado así:
 ```
 
 <details>
-<summary>Con los siguientes estilos</summary>
+<summary>With the following styles</summary>
 
 ```css
 .cols-13\/15 {
@@ -1491,27 +1500,27 @@ Lo cual nos dará un resultado así:
 
 </details>
 
-> OJO: El método **'set'** también procesa las directivas de los margenes y paddings por separado, osea **'mart, marr, padb, padl, etc'**
+> NOTE: The method **'set'** also processes the directives of the margins and paddings separately, I mean **'mart, marr, padb, padl, etc'**
 
-> Los estilos creados por el método **'set'** se auto insertan en el sistema para poder ser usado por los nodos virtuales cuando se agreguen al DOM.
+> The styles created by the **'Set'** method are inserted into the system to be used by virtual nodes when adding to the DOM.
 
-[&uarr; Volver Arriba](#métodos)
+[&uarr; Go back up](#methods)
 
 ### SetCols
 
-Es exactamente igual que el método 'set' pero procesa solamente las columnas, de echo...
+It is exactly like the 'set' method but processes only the columns, and ...
 
 ### SetPad, SetPadTop, SetPadRight, SetPadBottom, SetPadLeft, SetMar, SetMarTop, SetMarRight, SetMarBottom, SetMarLeft, SetMaxWidth, SetMaxHeight, SetMinWidth, SetMinHeight, SetFlex, SetPosition, SetTop, SetRight, SetBottom, SetLeft
 
-Son iguales a SetCols pero referencian a procesar los paddings, el padding Top, right, bottom, left, los margenes, el margen Top, right, bottom, left, el max/min width y height, el Position, el Top, Right, Bottom y Left respectivamente, ah! y casí me olvido el 'setFlex' procesa lo que es pues... la directiva 'flex' XD.
+They are equal to Setcols but reference to processing the paddings, the padding top, right, bottom, left, the margins, the top margin, right, bottom, left, the max/min width and height, the position, the top, right, Bottom and Left respectively, Ah! And Casí I forget the 'setflex' process what it is ... the directive 'Flex' XD.
 
-[&uarr; Volver Arriba](#métodos)
+[&uarr; Go back up](#methods)
 
-De echo, los métodos builds son lo mismo, pero para esto no es necesario pasarle como parametro el Nodo, sino el valor a procesar, veamos:
+In fact, the Builds methods are the same, but for this it is not necessary to pass the node as a parameter, but the value to process, let's see:
 
 ### Build
 
-Sirve para procesar todos los valores de todos los atributos aceptados por el sistema:
+It is used to process all the values of all the attributes accepted by the system:
 
 #### Sintaxis
 
@@ -1524,7 +1533,7 @@ layouter.build(Object);
 }
 ```
 
-#### Ejemplo:
+#### Example:
 
 ```javascript
 layouter.build({
@@ -1535,7 +1544,7 @@ layouter.build({
 });
 ```
 
-Y nos devuelve un objeto con los nombres de las clases creadas junto con los estilos:
+And it returns an object with the names of the classes created together with the styles:
 
 ```javascript
 {
@@ -1557,34 +1566,34 @@ Y nos devuelve un objeto con los nombres de las clases creadas junto con los est
 }
 ```
 
-[&uarr; Volver Arriba](#métodos)
+[&uarr; Go back up](#methods)
 
 ### SetPadX, SetPadY, SetMarX, SetMarY
 
-Sirven para procesar las directivas **'padx' y 'pady'** respectivamente de un nodo.
+They serve to process the directives **'padx' y 'pady'** respectively of a node.
 
-> Tambien podemos usar la forma reducida de la directiva `<div px="10">...</div>` o `<div py="20">...</div>`
+> We can also use the reduced form of the directive `<div px="10">...</div>` o `<div py="20">...</div>`
 
-#### Ejemplo 1:
+#### Example 1:
 
 ```html
 <div padx="10 20@sm 30@md">...</div>
 ```
 
 ```javascript
-// teniendo en cuenta el Div declarado arriba ...
+// Taking into account the DIV declared above ...
 const myDiv = document.querySelector('div');
 layouter.setPadX(myDiv);
 ```
 
-...luego de autoprocesarce obtendríamos este resultado:
+...After self -procesar we would get this result:
 
 ```html
 <div class="pr-10 pr-20@sm pr-30@md pl-10 pl-20@sm pl-30@md">...</div>
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
 
 ```css
 .pl-10 {
@@ -1615,28 +1624,28 @@ layouter.setPadX(myDiv);
 
 </details>
 
-#### Ejemplo 2:
+#### Example 2:
 
-Lo mismo para el **'marx'** o para su versión reducida **'mx'**.
+The same for the **'marx'** or for its reduced version **'mx'**.
 
 ```html
 <div marx="10 20@sm 30@md">...</div>
 ```
 
 ```javascript
-// teniendo en cuenta el Div declarado arriba ...
+// Taking in mind the DIV declared above ...
 const myDiv = document.querySelector('div');
 layouter.setMarX(myDiv);
 ```
 
-...luego de autoprocesarce obtendríamos este resultado:
+...After self -procesar we would get this result:
 
 ```html
 <div class="mr-10 mr-20@sm mr-30@md ml-10 ml-20@sm ml-30@md">...</div>
 ```
 
 <details>
-<summary>y pues, estos estilos:</summary>
+<summary>And then, these styles:</summary>
 
 ```css
 .ml-10 {
@@ -1667,25 +1676,25 @@ layouter.setMarX(myDiv);
 
 </details>
 
-[&uarr; Volver Arriba](#métodos)
+[&uarr; Go back up](#methods)
 
 ### BuildCols
 
-Sirve para procesar solamente las columnas:
+It is used to process only the columns
 
-#### Sintaxis
+#### Syntax
 
 ```javascript
 layouter.buildCols(String);
 ```
 
-#### Ejemplo:
+#### Example:
 
 ```javascript
 layouter.buildCols('3/13 21/21@sm 27/27@md');
 ```
 
-...y nos devuelve este objeto:
+...And this object returns us:
 
 ```javascript
 {
@@ -1695,23 +1704,23 @@ layouter.buildCols('3/13 21/21@sm 27/27@md');
 }
 ```
 
-[&uarr; Volver Arriba](#métodos)
+[&uarr; Go back up](#methods)
 
 ### BuildMar, BuildMarTop, BuildMarRight, BuildMarBottom, BuildMarLeft, BuildPad, BuildPadTop, BuildPadRight, BuildPadBottom, BuildPadLeft, BuildWidth, BuildHeight, BuildMaxWidth, BuildMaxHeight, BuildMinWidth, BuildMinHeight, BuildFlex, BuildPosition, BuildTop, BuildRight, BuildBottom, BuildLeft
 
-Son exactamente lo mismo de 'buildCols', pero para procesar los margenes (top, right, bottom, y left), paddings, máximo ancho & alto y flex tmb.
+They are exactly the same as 'buildcols', but to process the margins (top, right, bottom, and left), Paddings, Maximum Width & High and Flex too.
 
 ### BuildPadX, BuildPadY, BuildMarX, BuildMarY
 
-Sirve para procesar los valores de las directivas **'padx', 'pady', 'marx' y 'mary'** respectivamente.
+It is used to process the values of the directives **'Padx', 'Pady', 'Marx' and 'Mary'** respectively.
 
-#### Ejemplo 1:
+#### Example 1:
 
 ```javascript
 layouter.buildPadX('10 20@sm 30@md');
 ```
 
-...y nos devuelve este objeto:
+...And this object returns us:
 
 ```javascript
 {
@@ -1724,13 +1733,13 @@ layouter.buildPadX('10 20@sm 30@md');
 }
 ```
 
-#### Ejemplo 2:
+#### Example 2:
 
 ```javascript
 layouter.buildMarY('10 20@sm 30@md');
 ```
 
-...y nos devuelve este objeto:
+...And this object returns us:
 
 ```javascript
 {
@@ -1743,17 +1752,17 @@ layouter.buildMarY('10 20@sm 30@md');
 }
 ```
 
-[&uarr; Volver Arriba](#métodos)
+[&uarr; Go back up](#methods)
 
 ### GetParameters
 
-Tambien es posible obtener los parametros definidos en un elemento, digamos, tenemos un DIV, y queremos saber si tiene cols, mar, flex o los que tengan, pues tiramos del método, 'getParameters'
+It is also possible to obtain the parameters defined in an element, say, we have a div, and we want to know if you have cols, sea, flex or those that we have, because we pull the method, **'getparameters'**
 
 ```javascript
 const myDiv = document.querySelector('div');
 layouter.getParameters(myDiv);
 
-// Obtendremos un objeto así...
+// We will obtain such an object...
 
 {
   cols: [ "13/15", "10/31@sm-md", "15/27@md" ],
@@ -1763,38 +1772,38 @@ layouter.getParameters(myDiv);
 }
 ```
 
-[&uarr; Volver Arriba](#métodos)
+[&uarr; Go back up](#methods)
 
 ### Reset
 
-Si por algún motivo necesitamos remover todas las clases tipo layouter sobre un nodo, podemos usar el método 'reset'.
+If for any reason we need to remove all Layouter kinds on a node, we can use the 'Reset' method.
 
-> Las clases se removerán del nodo pero seguirán disponibles para el uso en cualquier otro nodo.
+> Classes will remove from the node but will remain available for use in any other node.
 
 ```javascript
 const myDiv = document.querySelector('div');
 myDiv.className = 'my-div pad-10-1/15 pad-20-3/31@sm test pad-30-2/31@md mar-0-0-40'
 layouter.reset(myDiv);
 
-// el nodo se quedará solo con dos clases
+// The node will stay alone with two classes
 myDiv.className => 'my-div test'
 ```
 
-[&uarr; Volver Arriba](#métodos)
+[&uarr; Go back up](#methods)
 
 ## Important Flag
 
-Es posible, pero no recomendable, adicionar un caracter especial en la declaración de las columnas, margenes, padding, y el display, el cual agregará el "!important" comun que se usa en CSS, este caracter es el 'signo de exclamación'.
+It is possible, but not recommended, to add a special character in the declaration of the columns, margins, padding, and the display, which will add the `"important!"` common that is used in CSS, this character is the 'sign of exclamation' .
 
-> Siempre se debe agregar al final de la sentencia declarada
+> It must always be added at the end of the declared sentence
 
-**Ejemplo:**
+**Example:**
 
 ```html
 <div cols="13/15! 20/27@sm!"></div>
 ```
 
-El cual nos dará el siguiente CSS:
+Which will give us the following CSS:
 
 ```css
 .cols-13\/15\! {
@@ -1808,21 +1817,21 @@ El cual nos dará el siguiente CSS:
 }
 ```
 
-[&uarr; Volver Arriba](#utils)
+[&uarr; Go back up](#utils)
 
 ## Getters
 
-Podemos acceder a los siguientes getters desde la **variable 'layouter' del objeto 'window'**:
+We can access the following getters from the **variable 'layouter' of the object 'window'**:
 
-| Propiedad   | Type                          | Description                                                                                                                                                     |
-| ----------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| breakpoints | string[]                      | Devuelve un array con los breakpoints definidos en la configuración.                                                                                            |
-| sizes       | { [alias: string]: number }   | Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades los pixeles de ancho designados para esos breakpoints.  |
-| cols        | { [ alias: string ]: number } | Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades el número de columnas designadas para esos breakpoints. |
-| styles      | { [ alias: string ]: number } | Este getter es interesante, porque devuelve un objeto con todos los estilos creados de forma general.                                                           |
-| version     | string                        | Nos devolverá la versión actual de la librería.                                                                                                                 |
+| Property    | Type                          | Description                                                                                                                                                  |
+| ----------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| breakpoints | string[]                      | Returns an array with the breakpoints defined in the configuration.                                                                                          |
+| sizes       | { [alias: string]: number }   | Returns an object where each property is the name of the Breakpoint and as value of these properties the wide pixels designated for those breakpoints.       |
+| cols        | { [ alias: string ]: number } | Returns an object where each property is the name of the Breakpoint and as value of these properties the number of columns designated for those breakpoints. |
+| styles      | { [ alias: string ]: number } | This getter is interesting, because it returns an object with all the styles created in general.                                                             |
+| version     | string                        | The current version of the bookstore will return us.                                                                                                         |
 
-> Tomando en cuenta el ejemplo de breakpoints de más arriba, los getters nos devolverán lo siguiente:
+> Taking into account the Breakpoints Example above, the getters will return the following:
 
 ```javascript
 layouter.breakpoints = [ "xs", "sm", "md", "lg", "xlg" ]
@@ -1835,7 +1844,7 @@ layouter.styles = {
   "flex-jc\\:c": ".flex-jc\\:c{justify-content:center;display: flex}",
   ...
 }
-layouter.version = '1.6.0'
+layouter.version = '1.7.0'
 ```
 
-[&uarr; Volver Arriba](#utils)
+[&uarr; Go back up](#utils)
