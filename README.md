@@ -6,7 +6,7 @@
         <strong>⚡️ Build the entire layout of your website without CSS ⚡️</strong>
     </p>
     <p>
-        <a href="/dapize/layouter.js/blob/master/README.md"><img src="en_US.png" alt="English Language"/> English</a> — <a href="/dapize/layouter.js/blob/master/README-es_ES.md"><img src="es_ES.png" alt="English Language"/> Spanish</a>
+        <a href="README.md"><img src="en_US.png" alt="English Language"/> English</a> — <a href="README-es_ES.md"><img src="es_ES.png" alt="English Language"/> Spanish</a>
     </p>
 </div>
 
