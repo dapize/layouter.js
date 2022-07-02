@@ -187,7 +187,7 @@ Uno puede escribir su propia configuración creando una variable llamada **'layo
 
 ## 📚 ¿Dónde obtener ayuda?
 
-Hay una extensa documentación en el archivo [DOCS.md](DOCS.md).
+Hay una extensa documentación en el archivo [DOCS-es_ES.md](DOCS-es_ES.md).
 
 ## 📝 Trabajo planeado
 
