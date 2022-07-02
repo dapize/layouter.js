@@ -145,7 +145,7 @@ Por defecto la librería funcionará con la siguiente **configuración base**:
 }
 ```
 
-Uno puede escribir su propia configuración creando una variable llamada **'layouterConfig' en el objeto 'window'.** Ésta tiene que estar antes de la llamada a la librería. Para saber más revisa la [tabla de opciones de configuración](DOCS.md)
+Uno puede escribir su propia configuración creando una variable llamada **'layouterConfig' en el objeto 'window'.** Ésta tiene que estar antes de la llamada a la librería. Para saber más revisa la [tabla de opciones de configuración](DOCS-es_ES.md)
 
 ## ⚡ Directivas
 

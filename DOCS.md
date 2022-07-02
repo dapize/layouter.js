@@ -1,11 +1,5 @@
 <div align="center">
     <p>
-        <img src="header.png" alt="Layouter"/>
-    </p>
-    <p>
-        <strong>⚡️ Build the entire layout of your website without CSS ⚡️</strong>
-    </p>
-    <p>
         <a href="DOCS.md"><img src="en_US.png" alt="English Language"/> English</a> — <a href="DOCS-es_ES.md"><img src="es_ES.png" alt="English Language"/> Spanish</a>
     </p>
 </div>
@@ -16,7 +10,7 @@ The styles created by Layouter are **created on the flight**, _[when the browser
 
 ## 🔧 Installation
 
-You just have to call, in the html, the script ** layouter.umd.js ** that is inside the folder ** 'dist' ** of this repository:
+You just have to call, in the html, the script **layouter.umd.js** that is inside the folder **'dist'** of this repository:
 
 ```html
 <script src="layouter.umd.js"></script>
@@ -104,41 +98,41 @@ That defined alias will be used to determine the Breakpoint in each value of the
 ### 💡 To take in mind:
 
 -   How many breakpoints can be defined, there is no limit.
--   Devido to normally model in 'Mobile First' ** The Breakpoint 'XS' does not need a 'average query' (bone: @media). **
+-   Due to normally model in 'Mobile First' **The Breakpoint 'xs' does not need a 'average query' (bone: @media).**
 -   If no unit of measure is defined in the value of any directive (which is not naturally percentage), it will be taken in pixels [I mean this 🔗](#defined-units-of-measure)
 
 ## Directives
 
-| Name                               | Alias                  | Examples                                                                                  | Description                                                                                                 |
-| ---------------------------------- | ---------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| [Cols](DOCS.md#cols)               | `c`                    | `cols="13/15"`, `c="5/10"`                                                                | Determines the columns, that is, the 'width' as a percentage.                                               |
-| [d](DOCS.md#display)               | `display`              | `d="bl"`, `display="inline"`                                                              | Determines the **display** that the node will have.                                                         |
-| [Mart](DOCS.md#mart)               | `mt`, `margin-top`     | `mart="10"`, `mt="20"`, `margin-top="12"`                                                 | Determines the **top margin** of a node.                                                                    |
-| [Marr](DOCS.md#marr-marb-marl)     | `mr`, `margin-right`   | `marr="2/15"`, `mr="5/10"`, `margin-right="3/5"`                                          | Determine the **right margin** of a node.                                                                   |
-| [Marb](DOCS.md#marr-marb-marl)     | `mb`, `margin-bottom`  | `marb="30"`, `mb="50"`, `margin-bottom="25"`                                              | Determine the **bottom margin** of a node.                                                                  |
-| [Marl](DOCS.md#marr-marb-marl)     | `ml`, `margin-left`    | `marl="3/15"`, `ml="5/10"`, `margin-left="3/5"`                                           | Determine the **left margin** of a node.                                                                    |
-| [Mar](DOCS.md#mar)                 | `m`, `margin`          | `mar="20-2/15-30-3/15"`, `m="20-2/15-30-3/15"`, `margin="20-2/15-30-3/15"`                | It is a shorthand of the directives: [mart](DOCS.md#mart), [marr, marb, y marl](DOCS.md#marr-marb-marl).    |
-| [Mary](DOCS.md#mary-marx)          | `my`, `margin-y`       | `mary="10"`, `my="20"`, `margin-y="30"`                                                   | Determine the **top and bottom margin** of a node.                                                          |
-| [Marx](DOCS.md#mary-marx)          | `mx`, `maring-x`       | `marx="10"`, `mx="20"`, `margin-x="30"`                                                   | Determine the **right and left margin at the same time** of a node.                                         |
-| [Padt](DOCS.md#padt)               | `pt`, `padding-top`    | `padt="10"`, `pt="20"`, `padding-top="30"`                                                | Determine the **top padding** of a node.                                                                    |
-| [Padr](DOCS.md#padr-padb-padl)     | `pr`, `padding-right`  | `padr="2/15"`, `pr="3/16"`, `padding-right="4/17"`                                        | Determine the **padding right** of a node.                                                                  |
-| [Padb](DOCS.md#padr-padb-padl)     | `pb`, `padding-bottom` | `padb="30"`, `pb="40"`, `padding-bottom="50"`                                             | Determine the **bottom padding** of a node.                                                                 |
-| [Padl](DOCS.md#padr-padb-padl)     | `pl`, `padding-left`   | `padl="3/15"`, `pl="4/16"`, `padding-left="5/17"`                                         | Determine the **left padding** of a node.                                                                   |
-| [Pad](DOCS.md#pad)                 | `p`, `padding`         | `pad="20-2/15-30-3/15"`, `p="20-2/15-30-3/15"`, `padding="20-2/15-30-3/15"`               | It is a shorthand of the directives: [padt](DOCS.md#padt), [padr, padb, y padl](DOCS.md#padr-padb-padl).    |
-| [Pady](DOCS.md#pady-padx)          | `py`, `padding-y`      | `pady="10"`, `py="20"`, `padding-y="30"`                                                  | Determine the **padding top and bottom than the same time** of a node.                                      |
-| [Padx](DOCS.md#pady-padx)          | `px`, `padding-x`      | `padx="10"`, `px="20"`, `padding-x="30`                                                   | Determine the **right and left padding** at the same time of a node.                                        |
-| [Flex](DOCS.md#flex)               | `fx`                   | `flex="jc:ce ai:fs fd:co"`, `flex="jc:fe ai:fs`, `fx="align-items:center flex-wrap:wrap"` | Determine the **display Flex** of the node and its derivatives.                                             |
-| [Wdh](DOCS.md#width)               | `w`, `width`           | `wdh="100"`, `w="200"`, `width="300"`                                                     | Determine the **width** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).          |
-| [Hgt](DOCS.md#height)              | `h`, `height`          | `hgt="100"`, `h="200"`, `height="300"`                                                    | Determine the **height** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).         |
-| [Mxw](DOCS.md#maxwidth)            | `max-width`            | `mxw="200"`, `max-width="300"`                                                            | Determine the **maximum width** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).  |
-| [Mxh](DOCS.md#maxheight)           | `max-height`           | `mxh="200"`, `max-height="300"`                                                           | Determine the **maximum height** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure). |
-| [Miw](DOCS.md#minwidth)            | `min-width`            | `miw="300"`, `min-width="400"`                                                            | Determine the **minimum width** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).  |
-| [Mih](DOCS.md#minheight)           | `min-height`           | `mih="300"`, `min-height="400"`                                                           | Determine the **high height** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).    |
-| [Pos](DOCS.md#position)            | `position`             | `pos="re"`, `position="relative"`                                                         | Determine the **position** of node.                                                                         |
-| [T](DOCS.md#top-right-bottom-left) | `top`                  | `t="10"`, `top="20"`                                                                      | Determine the **top** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).            |
-| [R](DOCS.md#top-right-bottom-left) | `right`                | `r="10"`, `right="20"`                                                                    | Determine the **right** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).          |
-| [B](DOCS.md#top-right-bottom-left) | `bottom`               | `b="10"`, `bottom="20"`                                                                   | Determine the **bottom** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).         |
-| [L](DOCS.md#top-right-bottom-left) | `left`                 | `l="10"`, `left="20"`                                                                     | Determine the **left** of the node in pixels or other [unit of measure](DOCS.md#unit-of-measure).           |
+| Name                        | Alias                  | Examples                                                                                  | Description                                                                                                   |
+| --------------------------- | ---------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| [Cols](#cols)               | `c`                    | `cols="13/15"`, `c="5/10"`                                                                | Determines the columns, that is, the 'width' as a percentage.                                                 |
+| [d](#display)               | `display`              | `d="bl"`, `display="inline"`                                                              | Determines the **display** that the node will have.                                                           |
+| [Mart](#mart)               | `mt`, `margin-top`     | `mart="10"`, `mt="20"`, `margin-top="12"`                                                 | Determines the **top margin** of a node.                                                                      |
+| [Marr](#marr-marb-marl)     | `mr`, `margin-right`   | `marr="2/15"`, `mr="5/10"`, `margin-right="3/5"`                                          | Determine the **right margin** of a node.                                                                     |
+| [Marb](#marr-marb-marl)     | `mb`, `margin-bottom`  | `marb="30"`, `mb="50"`, `margin-bottom="25"`                                              | Determine the **bottom margin** of a node.                                                                    |
+| [Marl](#marr-marb-marl)     | `ml`, `margin-left`    | `marl="3/15"`, `ml="5/10"`, `margin-left="3/5"`                                           | Determine the **left margin** of a node.                                                                      |
+| [Mar](#mar)                 | `m`, `margin`          | `mar="20-2/15-30-3/15"`, `m="20-2/15-30-3/15"`, `margin="20-2/15-30-3/15"`                | It is a shorthand of the directives: [mart](#mart), [marr, marb, y marl](#marr-marb-marl).                    |
+| [Mary](#mary-marx)          | `my`, `margin-y`       | `mary="10"`, `my="20"`, `margin-y="30"`                                                   | Determine the **top and bottom margin** of a node.                                                            |
+| [Marx](#mary-marx)          | `mx`, `maring-x`       | `marx="10"`, `mx="20"`, `margin-x="30"`                                                   | Determine the **right and left margin at the same time** of a node.                                           |
+| [Padt](#padt)               | `pt`, `padding-top`    | `padt="10"`, `pt="20"`, `padding-top="30"`                                                | Determine the **top padding** of a node.                                                                      |
+| [Padr](#padr-padb-padl)     | `pr`, `padding-right`  | `padr="2/15"`, `pr="3/16"`, `padding-right="4/17"`                                        | Determine the **padding right** of a node.                                                                    |
+| [Padb](#padr-padb-padl)     | `pb`, `padding-bottom` | `padb="30"`, `pb="40"`, `padding-bottom="50"`                                             | Determine the **bottom padding** of a node.                                                                   |
+| [Padl](#padr-padb-padl)     | `pl`, `padding-left`   | `padl="3/15"`, `pl="4/16"`, `padding-left="5/17"`                                         | Determine the **left padding** of a node.                                                                     |
+| [Pad](#pad)                 | `p`, `padding`         | `pad="20-2/15-30-3/15"`, `p="20-2/15-30-3/15"`, `padding="20-2/15-30-3/15"`               | It is a shorthand of the directives: [padt](#padt), [padr, padb, y padl](#padr-padb-padl).                    |
+| [Pady](#pady-padx)          | `py`, `padding-y`      | `pady="10"`, `py="20"`, `padding-y="30"`                                                  | Determine the **padding top and bottom than the same time** of a node.                                        |
+| [Padx](#pady-padx)          | `px`, `padding-x`      | `padx="10"`, `px="20"`, `padding-x="30`                                                   | Determine the **right and left padding** at the same time of a node.                                          |
+| [Flex](#flex)               | `fx`                   | `flex="jc:ce ai:fs fd:co"`, `flex="jc:fe ai:fs`, `fx="align-items:center flex-wrap:wrap"` | Determine the **display Flex** of the node and its derivatives.                                               |
+| [Wdh](#width)               | `w`, `width`           | `wdh="100"`, `w="200"`, `width="300"`                                                     | Determine the **width** of the node in pixels or other [unit of measure](#defined-units-of-measure).          |
+| [Hgt](#height)              | `h`, `height`          | `hgt="100"`, `h="200"`, `height="300"`                                                    | Determine the **height** of the node in pixels or other [unit of measure](#defined-units-of-measure).         |
+| [Mxw](#maxwidth)            | `max-width`            | `mxw="200"`, `max-width="300"`                                                            | Determine the **maximum width** of the node in pixels or other [unit of measure](#defined-units-of-measure).  |
+| [Mxh](#maxheight)           | `max-height`           | `mxh="200"`, `max-height="300"`                                                           | Determine the **maximum height** of the node in pixels or other [unit of measure](#defined-units-of-measure). |
+| [Miw](#minwidth)            | `min-width`            | `miw="300"`, `min-width="400"`                                                            | Determine the **minimum width** of the node in pixels or other [unit of measure](#defined-units-of-measure).  |
+| [Mih](#minheight)           | `min-height`           | `mih="300"`, `min-height="400"`                                                           | Determine the **high height** of the node in pixels or other [unit of measure](#defined-units-of-measure).    |
+| [Pos](#position)            | `position`             | `pos="re"`, `position="relative"`                                                         | Determine the **position** of node.                                                                           |
+| [T](#top-right-bottom-left) | `top`                  | `t="10"`, `top="20"`                                                                      | Determine the **top** of the node in pixels or other [unit of measure](#defined-units-of-measure).            |
+| [R](#top-right-bottom-left) | `right`                | `r="10"`, `right="20"`                                                                    | Determine the **right** of the node in pixels or other [unit of measure](#defined-units-of-measure).          |
+| [B](#top-right-bottom-left) | `bottom`               | `b="10"`, `bottom="20"`                                                                   | Determine the **bottom** of the node in pixels or other [unit of measure](#defined-units-of-measure).         |
+| [L](#top-right-bottom-left) | `left`                 | `l="10"`, `left="20"`                                                                     | Determine the **left** of the node in pixels or other [unit of measure](#defined-units-of-measure).           |
 
 ## Methods
 
@@ -648,18 +642,18 @@ It has exactly the same syntax as 'mar'
 }
 
 @media screen and (min-width: 600px) {
-    .pad-40-3\/31\@sm {
-        padding: 40px 9.67742%;
-    }
+.pad-40-3\/31\@sm {
+padding: 40px 9.67742%;
+}
 }
 
 @media screen and (min-width: 900px) {
-    .pad-60-2\/31\@md {
-        padding: 60px 6.45161%;
-    }
+.pad-60-2\/31\@md {
+padding: 60px 6.45161%;
+}
 }
 
-```
+````
 
 </details>
 
@@ -998,7 +992,11 @@ This is the most interesting directive, because it is the one that determines th
 or more semantically
 
 ```html
-<div flex="justify-content:center justify-content:flex-start@sm align-items:flex-start@sm justify-content:flex-end@md">...</div>
+<div
+    flex="justify-content:center justify-content:flex-start@sm align-items:flex-start@sm justify-content:flex-end@md"
+>
+    ...
+</div>
 ```
 
 > **NOTE**: It is possible to determine more than one style in the same breakpoint, in the case of the example above, the `justify-content: flex-start y align-items: flex-start` for the Breakpoint 'sm' (I mean Tablet)

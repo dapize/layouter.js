@@ -1,11 +1,5 @@
 <div align="center">
     <p>
-        <img src="header.png" alt="Layouter"/>
-    </p>
-    <p>
-        <strong>⚡️ Arma todo el layout de tu web sin CSS ⚡️</strong>
-    </p>
-    <p>
         <a href="DOCS.md"><img src="en_US.png" alt="English Language"/> English</a> — <a href="DOCS-es_ES.md"><img src="es_ES.png" alt="English Language"/> Spanish</a>
     </p>
 </div>
