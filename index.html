@@ -18,7 +18,7 @@
       <footer fx="jc:sb@sm">
         <div h="200" c="7/23@sm 9/29@md 12.33/39@lg"></div>
         <div h="200" c="7/23@sm 9/29@md 12.33/39@lg" my="24@-sm"></div>
-        <div h="200" c="7/23@sm 9/29@md 12.33/39@lg" id="square"></div>
+        <div h="200" c="7/23@sm 9/29@md 12.33/39@lg"></div>
       </footer>
     </main>
 
@@ -58,7 +58,7 @@
           console.timeEnd('layouter');
         },
       };
-      document.getElementById('square').addEventListener('layout:ready', () => {
+      document.querySelector('footer div:nth-child(3)').addEventListener('layout:ready', () => {
         console.log('Square layout ready!');
       });
     </script>

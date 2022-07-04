@@ -10,6 +10,8 @@ export interface IConfigUser {
     bridge: boolean;
     debug?: boolean;
     ready?: (instance: ILayouter) => void;
+    searchOnInit: boolean;
+    observer: boolean;
 }
 interface IConfigNumsOut {
     scope: IScopes;

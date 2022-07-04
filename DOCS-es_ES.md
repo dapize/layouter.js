@@ -52,6 +52,8 @@ Para una configuración personalizada debemos **crear una variable llamada 'layo
 | prefix          | string   | ''          | Define cual será el prefijo para todas las clases CSS que se agregarán a los nodos, esto con el fin de salvaguardar alguna colición con otras clases definidas.                                                      |
 | debug           | boolean  | true        | Sirve para habilitar el `console.error` para cuando ocurre alguna definición inconsistente o se presenta algun error de procesamiento.                                                                               |
 | bridge          | boolean  | true        | Permite insertar los estilos creados por el sistema a travez del método 'insert' del tag scope, sin agregarlo como nodo de texto hijo. **OJO:** _Deshabilita esta opción si el DOM es manipulado por otra librería._ |
+| searchOnInit    | boolean  | true        | Define si se buscará en el DOM todos los Nodos con cualquier directiva permitida cuando se cargue la biblioteca                                                                                                      |
+| observer        | boolean  | true        | Define si el observador verificará cuando se agregue un nuevo nodo al DOM o si algún nodo existente agregó alguna **directiva de layouter** para procesarlo                                                          |
 | **ready**       | function | null        | Sirve como callback para indicar que el procesamiento inicial a finalizado. Se puede usar para quitar el loading overlay de la web (si es que se tiene, claro)                                                       |
 
 ### 📐 Breakpoints
@@ -1841,7 +1843,7 @@ layouter.styles = {
   "flex-jc\\:c": ".flex-jc\\:c{justify-content:center;display: flex}",
   ...
 }
-layouter.version = '1.6.0'
+layouter.version = '1.8.0'
 ```
 
 [&uarr; Volver Arriba](#utils)

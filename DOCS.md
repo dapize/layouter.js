@@ -52,6 +52,8 @@ For a personalized configuration we must **create a variable called 'layoutercon
 | prefix          | string   | ''      | Define what the prefix will be for all CSS classes that will be added to the nodes, this in order to safeguard some collision with other defined classes.                                                                   |
 | debug           | boolean  | true    | It serves to enable the `console.eror` for when an inconsistent definition occurs or some processing error is presented.                                                                                                    |
 | bridge          | boolean  | true    | It allows to insert the styles created by the system through the 'insert' method of the Tag Scope, without adding it as a child text node. **Eye:** _Shabilite this option if the dom is manipulated by another bookstore._ |
+| searchOnInit    | boolean  | true    | Defines if will be search in the DOM all the Nodes with any directive allowed when the library loaded                                                                                                                       |
+| observer        | boolean  | true    | Defines if the observer will be checking when a new node is added to the DOM or some existed node added some **layouter directive** to process him                                                                          |
 | **ready**       | function | null    | It serves as callback to indicate that the initial processing at the end. It can be used to remove the Web's Loading Overlay (if you have, of course)                                                                       |
 
 ### 📐 Breakpoints
@@ -1842,7 +1844,7 @@ layouter.styles = {
   "flex-jc\\:c": ".flex-jc\\:c{justify-content:center;display: flex}",
   ...
 }
-layouter.version = '1.7.0'
+layouter.version = '1.8.0'
 ```
 
 [&uarr; Go back up](#utils)

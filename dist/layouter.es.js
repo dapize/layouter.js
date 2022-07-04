@@ -85,7 +85,7 @@ const breakpointsOrdered = (bps, sizes) => {
   Object.keys(sizes).forEach((bpName) => bpsOrdered[bpName] = bps[bpName]);
   return bpsOrdered;
 };
-const version = "1.7.0";
+const version = "1.8.0";
 const breakpointsInit = {
   xs: {
     width: 360,
@@ -112,7 +112,9 @@ let baseConfig = {
   prefix: "",
   breakpoints: breakpointsInit,
   bridge: true,
-  debug: true
+  debug: true,
+  searchOnInit: true,
+  observer: true
 };
 let config;
 const configNums = ({
@@ -1603,11 +1605,19 @@ const layouter = (context, userConfig = {}) => {
     setBottom,
     setLeft
   };
-  searchAndProcess(instance, context.document).then(() => {
+  if (config2.searchOnInit) {
+    searchAndProcess(instance, context.document).then(() => {
+      if (instance.ready)
+        instance.ready(instance);
+      if (config2.observer)
+        mainObserver(instance);
+    });
+  } else {
+    if (config2.observer)
+      mainObserver(instance);
     if (instance.ready)
       instance.ready(instance);
-    mainObserver(instance);
-  });
+  }
   return instance;
 };
 if (typeof window !== "undefined" && typeof exports === "undefined") {

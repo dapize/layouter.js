@@ -14,6 +14,8 @@ export interface IConfigUser {
   bridge: boolean;
   debug?: boolean;
   ready?: (instance: ILayouter) => void;
+  searchOnInit: boolean;
+  observer: boolean;
 }
 
 interface IConfigNumsIn {
@@ -74,6 +76,8 @@ export let baseConfig: IConfigUser = {
   breakpoints: breakpointsInit,
   bridge: true,
   debug: true,
+  searchOnInit: true,
+  observer: true,
 };
 
 let config: IConfig;

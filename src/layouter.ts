@@ -305,10 +305,15 @@ const layouter = (
   };
 
   // Auto init process
-  searchAndProcess(instance, context.document).then(() => {
+  if (config.searchOnInit) {
+    searchAndProcess(instance, context.document).then(() => {
+      if (instance.ready) instance.ready(instance);
+      if (config.observer) mainObserver(instance);
+    });
+  } else {
+    if (config.observer) mainObserver(instance);
     if (instance.ready) instance.ready(instance);
-    mainObserver(instance);
-  });
+  }
 
   return instance;
 };
