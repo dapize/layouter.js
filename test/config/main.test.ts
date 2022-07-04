@@ -61,5 +61,19 @@ describe('Config', () => {
     waitFor(() => {
       expect(readyCb).toBeCalled();
     })
-  })
+  });
+
+  it('Without Search on Init', () => {
+    const myDiv = window.document.createElement('div');
+    myDiv.setAttribute('h', '100');
+    myDiv.setAttribute('w', '100');
+    window.document.body.appendChild(myDiv);
+    lib(window, {
+      searchOnInit: false,
+      ready: () => {
+        expect(myDiv.hasAttribute('h')).toBeTruthy();
+        expect(myDiv.hasAttribute('w')).toBeTruthy();
+      }
+    });
+  });
 });
