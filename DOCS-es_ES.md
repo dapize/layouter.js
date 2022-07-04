@@ -1,6 +1,6 @@
 <div align="center">
     <p>
-        <a href="DOCS.md"><img src="en_US.png" alt="English Language"/> English</a> — <a href="DOCS-es_ES.md"><img src="es_ES.png" alt="English Language"/> Spanish</a>
+        <a href="DOCS.md"><img src="en_US.png" alt="English Language"/> English</a> — <a href="DOCS-es_ES.md"><img src="es_ES.png" alt="Idioma Español"/> Español</a>
     </p>
 </div>
 
@@ -46,15 +46,15 @@ require('layouter.js')(window, {
 
 Para una configuración personalizada debemos **crear una variable llamada 'layouterConfig'** en el objeto global 'window', la cual contendrá un objeto con las siguientes propiedades:
 
-| Opción          | Típo     | Por Defecto | Descripción                                                                                                                                                                                                          |
-| --------------- | -------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **breakpoints** | object   | `...`       | Objeto que contiene definido los breakpoints que usará el sistema.                                                                                                                                                   |
-| prefix          | string   | ''          | Define cual será el prefijo para todas las clases CSS que se agregarán a los nodos, esto con el fin de salvaguardar alguna colición con otras clases definidas.                                                      |
-| debug           | boolean  | true        | Sirve para habilitar el `console.error` para cuando ocurre alguna definición inconsistente o se presenta algun error de procesamiento.                                                                               |
-| bridge          | boolean  | true        | Permite insertar los estilos creados por el sistema a travez del método 'insert' del tag scope, sin agregarlo como nodo de texto hijo. **OJO:** _Deshabilita esta opción si el DOM es manipulado por otra librería._ |
-| searchOnInit    | boolean  | true        | Define si se buscará en el DOM todos los Nodos con cualquier directiva permitida cuando se cargue la biblioteca                                                                                                      |
-| observer        | boolean  | true        | Define si el observador verificará cuando se agregue un nuevo nodo al DOM o si algún nodo existente agregó alguna **directiva de layouter** para procesarlo                                                          |
-| **ready**       | function | null        | Sirve como callback para indicar que el procesamiento inicial a finalizado. Se puede usar para quitar el loading overlay de la web (si es que se tiene, claro)                                                       |
+| Opción          | Típo                          | Por Defecto | Descripción                                                                                                                                                                                                          |
+| --------------- | ----------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **breakpoints** | object                        | `...`       | Objeto que contiene definido los breakpoints que usará el sistema.                                                                                                                                                   |
+| prefix          | string                        | ''          | Define cual será el prefijo para todas las clases CSS que se agregarán a los nodos, esto con el fin de salvaguardar alguna colición con otras clases definidas.                                                      |
+| debug           | boolean                       | true        | Sirve para habilitar el `console.error` para cuando ocurre alguna definición inconsistente o se presenta algun error de procesamiento.                                                                               |
+| bridge          | boolean                       | true        | Permite insertar los estilos creados por el sistema a travez del método 'insert' del tag scope, sin agregarlo como nodo de texto hijo. **OJO:** _Deshabilita esta opción si el DOM es manipulado por otra librería._ |
+| searchOnInit    | boolean                       | true        | Define si se buscará en el DOM todos los Nodos con cualquier directiva permitida cuando se cargue la biblioteca                                                                                                      |
+| observer        | boolean                       | true        | Define si el observador verificará cuando se agregue un nuevo nodo al DOM o si algún nodo existente agregó alguna **directiva de layouter** para procesarlo                                                          |
+| **ready**       | (instance: ILayouter) => void | null        | Sirve como callback para indicar que el procesamiento inicial a finalizado. Se puede usar para quitar el loading overlay de la web (si es que se tiene, claro)                                                       |
 
 ### 📐 Breakpoints
 
@@ -228,6 +228,193 @@ type TDirectiveName =
     | 'mih'
     | 'wdh'
     | 'hgt';
+
+interface IConfigUser {
+    prefix: string;
+    breakpoints: IBreakpoints;
+    bridge: boolean;
+    debug?: boolean;
+    ready?: (instance: ILayouter) => void;
+    searchOnInit: boolean;
+    observer: boolean;
+}
+
+interface IConfig extends Omit<IConfigUser, 'breakpoints'>, IConfigNumsOut {
+    context: Window & typeof globalThis;
+    styles: {
+        [className: string]: string;
+    };
+    version: string;
+}
+
+interface ILayouter extends IConfig {
+    getParameters: (
+        Node: HTMLElement | Element
+    ) => Partial<Record<TDirectiveName, string>>;
+    updateConfig: (userConfig: Partial<Omit<IConfigUser, 'bridge'>>) => IConfig;
+    build: (
+        obj: Partial<Record<TDirectiveName, string>>,
+        insertStyles?: boolean
+    ) => Partial<IBuildResult> | Error;
+    buildCols: (valCols: string, insertStyles?: boolean) => IStyles | Error;
+    buildFlex: (valFlex: string, insertStyles?: boolean) => IStyles | Error;
+    buildPad: (valPads: string, insertStyles?: boolean) => IStyles;
+    buildPadTop: (valPadTop: string, insertStyles?: boolean) => IStyles;
+    buildPadRight: (valPadRight: string, insertStyles?: boolean) => IStyles;
+    buildPadBottom: (valPadBottom: string, insertStyles?: boolean) => IStyles;
+    buildPadLeft: (valPadLeft: string, insertStyles?: boolean) => IStyles;
+    buildPadX: (valPadX: string, insertStyles?: boolean) => IStyles;
+    buildPadY: (valPadX: string, insertStyles?: boolean) => IStyles;
+    buildMar: (valMars: string, insertStyles?: boolean) => IStyles;
+    buildMarTop: (valMarTop: string, insertStyles?: boolean) => IStyles;
+    buildMarRight: (valMarRight: string, insertStyles?: boolean) => IStyles;
+    buildMarBottom: (valMarBottom: string, insertStyles?: boolean) => IStyles;
+    buildMarLeft: (valMarLeft: string, insertStyles?: boolean) => IStyles;
+    buildMarX: (valPadX: string, insertStyles?: boolean) => IStyles;
+    buildMarY: (valPadX: string, insertStyles?: boolean) => IStyles;
+    buildMaxWidth: (valMaxWidth: string, insertStyles?: boolean) => IStyles;
+    buildMaxHeight: (valMaxHeight: string, insertStyles?: boolean) => IStyles;
+    buildMinWidth: (valMinWidth: string, insertStyles?: boolean) => IStyles;
+    buildMinHeight: (valMinHeight: string, insertStyles?: boolean) => IStyles;
+    buildHeight: (valHeight: string, insertStyles?: boolean) => IStyles;
+    buildWidth: (valWidth: string, insertStyles?: boolean) => IStyles;
+    buildPosition: (
+        valPosition: string,
+        insertStyles?: boolean
+    ) => IStyles | Error;
+    buildTop: (valTop: string, insertStyles?: boolean) => IStyles | Error;
+    buildRight: (valRight: string, insertStyles?: boolean) => IStyles | Error;
+    buildBottom: (valBottom: string, insertStyles?: boolean) => IStyles | Error;
+    buildLeft: (valLeft: string, insertStyles?: boolean) => IStyles | Error;
+
+    set: (
+        Node: HTMLElement | Element,
+        parameters?: Partial<Record<TDirectiveName, string>>
+    ) => Promise<void | Error>;
+    setCols: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setFlex: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMar: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarTop: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarRight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarBottom: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarLeft: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarX: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarY: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPad: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadTop: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadRight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadBottom: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadLeft: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadX: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadY: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+
+    setWidth: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMinWidth: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMaxWidth: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setHeight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMinHeight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMaxHeight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPosition: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+
+    setTop: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setRight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setBottom: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setLeft: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+
+    processors: Record<TDirectiveName, IProcessor>;
+
+    insertRules: (objStyles: IStyles) => void;
+    reset: (Node: HTMLElement | Element) => Promise<void>;
+    version: string;
+}
+
+interface IProcessor {
+  build: (values: string, insertStyles: boolean) => IStyles | Error;
+  ruleCss: string | string[];
+  classPrefix: string;
+}
+
 ```
 
 </details>
@@ -1822,13 +2009,14 @@ El cual nos dará el siguiente CSS:
 
 Podemos acceder a los siguientes getters desde la **variable 'layouter' del objeto 'window'**:
 
-| Propiedad   | Type                          | Description                                                                                                                                                     |
-| ----------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| breakpoints | string[]                      | Devuelve un array con los breakpoints definidos en la configuración.                                                                                            |
-| sizes       | { [alias: string]: number }   | Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades los pixeles de ancho designados para esos breakpoints.  |
-| cols        | { [ alias: string ]: number } | Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades el número de columnas designadas para esos breakpoints. |
-| styles      | { [ alias: string ]: number } | Este getter es interesante, porque devuelve un objeto con todos los estilos creados de forma general.                                                           |
-| version     | string                        | Nos devolverá la versión actual de la librería.                                                                                                                 |
+| Propiedad   | Type                               | Description                                                                                                                                                     |
+| ----------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| breakpoints | string[]                           | Devuelve un array con los breakpoints definidos en la configuración.                                                                                            |
+| sizes       | { [alias: string]: number }        | Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades los pixeles de ancho designados para esos breakpoints.  |
+| cols        | { [ alias: string ]: number }      | Devuelve un objeto en donde cada propiedad es el nombre del breakpoint y como valor de esas propiedades el número de columnas designadas para esos breakpoints. |
+| styles      | { [ alias: string ]: number }      | Este getter es interesante, porque devuelve un objeto con todos los estilos creados de forma general.                                                           |
+| version     | string                             | Nos devolverá la versión actual de la librería.                                                                                                                 |
+| processors  | Record<TDirectiveName, IProcessor> | Un objecto con todos los procesadores disponibles.                                                                                                              |
 
 > Tomando en cuenta el ejemplo de breakpoints de más arriba, los getters nos devolverán lo siguiente:
 

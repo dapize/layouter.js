@@ -1,6 +1,6 @@
 <div align="center">
     <p>
-        <a href="DOCS.md"><img src="en_US.png" alt="English Language"/> English</a> — <a href="DOCS-es_ES.md"><img src="es_ES.png" alt="English Language"/> Spanish</a>
+        <a href="DOCS.md"><img src="en_US.png" alt="English Language"/> English</a> — <a href="DOCS-es_ES.md"><img src="es_ES.png" alt="Idioma Español"/> Español</a>
     </p>
 </div>
 
@@ -46,15 +46,15 @@ require('layouter.js')(window, {
 
 For a personalized configuration we must **create a variable called 'layouterconfig'** in the global object 'Window', which will contain an object with the following properties:
 
-| Option          | Type     | Default | Description                                                                                                                                                                                                                 |
-| --------------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **breakpoints** | object   | `...`   | Object that contains the breakpoints that the system will use.                                                                                                                                                              |
-| prefix          | string   | ''      | Define what the prefix will be for all CSS classes that will be added to the nodes, this in order to safeguard some collision with other defined classes.                                                                   |
-| debug           | boolean  | true    | It serves to enable the `console.eror` for when an inconsistent definition occurs or some processing error is presented.                                                                                                    |
-| bridge          | boolean  | true    | It allows to insert the styles created by the system through the 'insert' method of the Tag Scope, without adding it as a child text node. **Eye:** _Shabilite this option if the dom is manipulated by another bookstore._ |
-| searchOnInit    | boolean  | true    | Defines if will be search in the DOM all the Nodes with any directive allowed when the library loaded                                                                                                                       |
-| observer        | boolean  | true    | Defines if the observer will be checking when a new node is added to the DOM or some existed node added some **layouter directive** to process him                                                                          |
-| **ready**       | function | null    | It serves as callback to indicate that the initial processing at the end. It can be used to remove the Web's Loading Overlay (if you have, of course)                                                                       |
+| Option          | Type                          | Default | Description                                                                                                                                                                                                                 |
+| --------------- | ----------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **breakpoints** | object                        | `...`   | Object that contains the breakpoints that the system will use.                                                                                                                                                              |
+| prefix          | string                        | ''      | Define what the prefix will be for all CSS classes that will be added to the nodes, this in order to safeguard some collision with other defined classes.                                                                   |
+| debug           | boolean                       | true    | It serves to enable the `console.eror` for when an inconsistent definition occurs or some processing error is presented.                                                                                                    |
+| bridge          | boolean                       | true    | It allows to insert the styles created by the system through the 'insert' method of the Tag Scope, without adding it as a child text node. **Eye:** _Shabilite this option if the dom is manipulated by another bookstore._ |
+| searchOnInit    | boolean                       | true    | Defines if will be search in the DOM all the Nodes with any directive allowed when the library loaded                                                                                                                       |
+| observer        | boolean                       | true    | Defines if the observer will be checking when a new node is added to the DOM or some existed node added some **layouter directive** to process him                                                                          |
+| **ready**       | (instance: ILayouter) => void | null    | It serves as callback to indicate that the initial processing at the end. It can be used to remove the Web's Loading Overlay (if you have, of course)                                                                       |
 
 ### 📐 Breakpoints
 
@@ -228,6 +228,193 @@ type TDirectiveName =
     | 'mih'
     | 'wdh'
     | 'hgt';
+
+interface IConfigUser {
+    prefix: string;
+    breakpoints: IBreakpoints;
+    bridge: boolean;
+    debug?: boolean;
+    ready?: (instance: ILayouter) => void;
+    searchOnInit: boolean;
+    observer: boolean;
+}
+
+interface IConfig extends Omit<IConfigUser, 'breakpoints'>, IConfigNumsOut {
+    context: Window & typeof globalThis;
+    styles: {
+        [className: string]: string;
+    };
+    version: string;
+}
+
+interface ILayouter extends IConfig {
+    getParameters: (
+        Node: HTMLElement | Element
+    ) => Partial<Record<TDirectiveName, string>>;
+    updateConfig: (userConfig: Partial<Omit<IConfigUser, 'bridge'>>) => IConfig;
+    build: (
+        obj: Partial<Record<TDirectiveName, string>>,
+        insertStyles?: boolean
+    ) => Partial<IBuildResult> | Error;
+    buildCols: (valCols: string, insertStyles?: boolean) => IStyles | Error;
+    buildFlex: (valFlex: string, insertStyles?: boolean) => IStyles | Error;
+    buildPad: (valPads: string, insertStyles?: boolean) => IStyles;
+    buildPadTop: (valPadTop: string, insertStyles?: boolean) => IStyles;
+    buildPadRight: (valPadRight: string, insertStyles?: boolean) => IStyles;
+    buildPadBottom: (valPadBottom: string, insertStyles?: boolean) => IStyles;
+    buildPadLeft: (valPadLeft: string, insertStyles?: boolean) => IStyles;
+    buildPadX: (valPadX: string, insertStyles?: boolean) => IStyles;
+    buildPadY: (valPadX: string, insertStyles?: boolean) => IStyles;
+    buildMar: (valMars: string, insertStyles?: boolean) => IStyles;
+    buildMarTop: (valMarTop: string, insertStyles?: boolean) => IStyles;
+    buildMarRight: (valMarRight: string, insertStyles?: boolean) => IStyles;
+    buildMarBottom: (valMarBottom: string, insertStyles?: boolean) => IStyles;
+    buildMarLeft: (valMarLeft: string, insertStyles?: boolean) => IStyles;
+    buildMarX: (valPadX: string, insertStyles?: boolean) => IStyles;
+    buildMarY: (valPadX: string, insertStyles?: boolean) => IStyles;
+    buildMaxWidth: (valMaxWidth: string, insertStyles?: boolean) => IStyles;
+    buildMaxHeight: (valMaxHeight: string, insertStyles?: boolean) => IStyles;
+    buildMinWidth: (valMinWidth: string, insertStyles?: boolean) => IStyles;
+    buildMinHeight: (valMinHeight: string, insertStyles?: boolean) => IStyles;
+    buildHeight: (valHeight: string, insertStyles?: boolean) => IStyles;
+    buildWidth: (valWidth: string, insertStyles?: boolean) => IStyles;
+    buildPosition: (
+        valPosition: string,
+        insertStyles?: boolean
+    ) => IStyles | Error;
+    buildTop: (valTop: string, insertStyles?: boolean) => IStyles | Error;
+    buildRight: (valRight: string, insertStyles?: boolean) => IStyles | Error;
+    buildBottom: (valBottom: string, insertStyles?: boolean) => IStyles | Error;
+    buildLeft: (valLeft: string, insertStyles?: boolean) => IStyles | Error;
+
+    set: (
+        Node: HTMLElement | Element,
+        parameters?: Partial<Record<TDirectiveName, string>>
+    ) => Promise<void | Error>;
+    setCols: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setFlex: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMar: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarTop: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarRight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarBottom: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarLeft: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarX: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMarY: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPad: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadTop: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadRight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadBottom: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadLeft: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadX: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPadY: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+
+    setWidth: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMinWidth: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMaxWidth: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setHeight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMinHeight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setMaxHeight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setPosition: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+
+    setTop: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setRight: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setBottom: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+    setLeft: (
+        Node: HTMLElement | Element,
+        values?: string
+    ) => Promise<void | Error>;
+
+    processors: Record<TDirectiveName, IProcessor>;
+
+    insertRules: (objStyles: IStyles) => void;
+    reset: (Node: HTMLElement | Element) => Promise<void>;
+    version: string;
+}
+
+interface IProcessor {
+  build: (values: string, insertStyles: boolean) => IStyles | Error;
+  ruleCss: string | string[];
+  classPrefix: string;
+}
+
 ```
 
 </details>
@@ -1823,13 +2010,14 @@ Which will give us the following CSS:
 
 We can access the following getters from the **variable 'layouter' of the object 'window'**:
 
-| Property    | Type                          | Description                                                                                                                                                  |
-| ----------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| breakpoints | string[]                      | Returns an array with the breakpoints defined in the configuration.                                                                                          |
-| sizes       | { [alias: string]: number }   | Returns an object where each property is the name of the Breakpoint and as value of these properties the wide pixels designated for those breakpoints.       |
-| cols        | { [ alias: string ]: number } | Returns an object where each property is the name of the Breakpoint and as value of these properties the number of columns designated for those breakpoints. |
-| styles      | { [ alias: string ]: number } | This getter is interesting, because it returns an object with all the styles created in general.                                                             |
-| version     | string                        | The current version of the bookstore will return us.                                                                                                         |
+| Property    | Type                               | Description                                                                                                                                                  |
+| ----------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| breakpoints | string[]                           | Returns an array with the breakpoints defined in the configuration.                                                                                          |
+| sizes       | { [alias: string]: number }        | Returns an object where each property is the name of the Breakpoint and as value of these properties the wide pixels designated for those breakpoints.       |
+| cols        | { [ alias: string ]: number }      | Returns an object where each property is the name of the Breakpoint and as value of these properties the number of columns designated for those breakpoints. |
+| styles      | { [ alias: string ]: number }      | This getter is interesting, because it returns an object with all the styles created in general.                                                             |
+| version     | string                             | The current version of the bookstore will return us.                                                                                                         |
+| processors  | Record<TDirectiveName, IProcessor> | A Object with all the processors available.                                                                                                                  |
 
 > Taking into account the Breakpoints Example above, the getters will return the following:
 

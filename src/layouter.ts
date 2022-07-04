@@ -66,7 +66,7 @@ import { IStyles } from './helpers/createStyles';
 import { IBuildResult } from './methods/build';
 import searchAndProcess from './helpers/searchAndProcess';
 import mainObserver from './helpers/mainObserver';
-import { TDirectiveName } from './config/processors';
+import { TDirectiveName, processors, IProcessor } from './config/processors';
 
 export interface ILayouter extends IConfig {
   getParameters: (
@@ -223,6 +223,8 @@ export interface ILayouter extends IConfig {
     values?: string
   ) => Promise<void | Error>;
 
+  processors: Record<TDirectiveName, IProcessor>;
+
   insertRules: (objStyles: IStyles) => void;
   reset: (Node: HTMLElement | Element) => Promise<void>;
   version: string;
@@ -291,7 +293,6 @@ const layouter = (
     setHeight,
     setMinHeight,
     setMaxHeight,
-    reset,
     buildPosition,
     buildTop,
     buildRight,
@@ -302,6 +303,8 @@ const layouter = (
     setRight,
     setBottom,
     setLeft,
+    reset,
+    processors,
   };
 
   // Auto init process

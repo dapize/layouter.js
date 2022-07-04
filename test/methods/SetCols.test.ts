@@ -16,7 +16,7 @@ describe('Setting cols', () => {
 
   it('Without Cols property', () => {
     const myDiv = document.createElement('div');
-    myDiv.setAttribute('padt', '3/13');
+    myDiv.setAttribute('cols', '');
     setCols(myDiv).catch(response => {
       expect(response).toBeInstanceOf(Error)
     });

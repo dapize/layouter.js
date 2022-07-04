@@ -1,7 +1,7 @@
 import { IConfig, IConfigUser } from './config/main';
 import { IStyles } from './helpers/createStyles';
 import { IBuildResult } from './methods/build';
-import { TDirectiveName } from './config/processors';
+import { TDirectiveName, IProcessor } from './config/processors';
 export interface ILayouter extends IConfig {
     getParameters: (Node: HTMLElement | Element) => Partial<Record<TDirectiveName, string>>;
     updateConfig: (userConfig: Partial<Omit<IConfigUser, 'bridge'>>) => IConfig;
@@ -61,6 +61,7 @@ export interface ILayouter extends IConfig {
     setRight: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setBottom: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
     setLeft: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
+    processors: Record<TDirectiveName, IProcessor>;
     insertRules: (objStyles: IStyles) => void;
     reset: (Node: HTMLElement | Element) => Promise<void>;
     version: string;

@@ -85,7 +85,7 @@ const breakpointsOrdered = (bps, sizes) => {
   Object.keys(sizes).forEach((bpName) => bpsOrdered[bpName] = bps[bpName]);
   return bpsOrdered;
 };
-const version = "1.8.0";
+const version = "1.9.0";
 const breakpointsInit = {
   xs: {
     width: 360,
@@ -1593,7 +1593,6 @@ const layouter = (context, userConfig = {}) => {
     setHeight,
     setMinHeight,
     setMaxHeight,
-    reset,
     buildPosition,
     buildTop,
     buildRight,
@@ -1603,7 +1602,9 @@ const layouter = (context, userConfig = {}) => {
     setTop,
     setRight,
     setBottom,
-    setLeft
+    setLeft,
+    reset,
+    processors
   };
   if (config2.searchOnInit) {
     searchAndProcess(instance, context.document).then(() => {
