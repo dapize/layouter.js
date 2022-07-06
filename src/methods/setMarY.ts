@@ -7,7 +7,7 @@ const setMarY = (
 ): Promise<void | Error> => {
   return setterXY({
     Node,
-    directives: ['mary', 'py', 'margin-y'],
+    directives: ['mary', 'my', 'margin-y'],
     builder: buildMarY,
     vals,
   });

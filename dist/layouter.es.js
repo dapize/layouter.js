@@ -85,7 +85,7 @@ const breakpointsOrdered = (bps, sizes) => {
   Object.keys(sizes).forEach((bpName) => bpsOrdered[bpName] = bps[bpName]);
   return bpsOrdered;
 };
-const version = "1.9.0";
+const version = "1.9.1";
 const breakpointsInit = {
   xs: {
     width: 360,
@@ -1377,7 +1377,7 @@ const setPadY = (Node, vals) => {
 const setMarX = (Node, vals) => {
   return setterXY({
     Node,
-    directives: ["marx", "px", "margin-x"],
+    directives: ["marx", "mx", "margin-x"],
     builder: buildMarX,
     vals
   });
@@ -1385,7 +1385,7 @@ const setMarX = (Node, vals) => {
 const setMarY = (Node, vals) => {
   return setterXY({
     Node,
-    directives: ["mary", "py", "margin-y"],
+    directives: ["mary", "my", "margin-y"],
     builder: buildMarY,
     vals
   });

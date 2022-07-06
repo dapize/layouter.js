@@ -7,7 +7,7 @@ const setMarX = (
 ): Promise<void | Error> => {
   return setterXY({
     Node,
-    directives: ['marx', 'px', 'margin-x'],
+    directives: ['marx', 'mx', 'margin-x'],
     builder: buildMarX,
     vals,
   });
