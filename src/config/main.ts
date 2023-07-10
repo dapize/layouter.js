@@ -123,7 +123,7 @@ export const setConfig = (
       context,
     }),
     styles: {},
-    version: "1.9.1",
+    version: '1.9.1',
   };
 
   return config;
