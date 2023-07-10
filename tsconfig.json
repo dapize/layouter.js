@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types", "@testing-library/jest-dom"],
+  "include": ["src", "@testing-library/jest-dom"],
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -16,6 +16,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "outDir": "dist"
+  },
+  "exclude": ["node_modules"]
 }

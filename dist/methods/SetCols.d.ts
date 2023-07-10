@@ -1,2 +1,2 @@
-declare const setCols: (Node: HTMLElement | Element, columns?: string | undefined) => Promise<void | Error>;
+declare const setCols: (Node: HTMLElement | Element, columns?: string) => Promise<void | Error>;
 export default setCols;

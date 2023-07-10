@@ -1,4 +1,4 @@
-export declare type TNumProp = 'width' | 'cols';
+export type TNumProp = 'width' | 'cols';
 export interface IBreakpoint {
     alias: string;
     width: number;

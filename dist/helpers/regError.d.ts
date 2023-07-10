@@ -1,2 +1,2 @@
-declare const regError: (name: string, message: string, Node?: HTMLElement | Element | undefined) => Error;
+declare const regError: (name: string, message: string, Node?: Element | HTMLElement) => Error;
 export default regError;

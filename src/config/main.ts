@@ -2,7 +2,6 @@ import { ILayouter } from './../layouter';
 import breakpointsNums, { IBreakpoints } from '../helpers/breakpointsNums';
 import { IScopes, scopesStylesBuilder } from '../helpers/scopesStylesBuilder';
 import breakpointsOrdered from '../helpers/breakpointsOrdered';
-import { version } from '../../package.json';
 
 export interface ICols {
   [colAlias: string]: number;
@@ -124,7 +123,7 @@ export const setConfig = (
       context,
     }),
     styles: {},
-    version,
+    version: "1.9.1",
   };
 
   return config;

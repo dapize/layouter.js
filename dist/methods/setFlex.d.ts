@@ -1,2 +1,2 @@
-declare const setFlex: (Node: HTMLElement | Element, flexValues?: string | undefined) => Promise<void | Error>;
+declare const setFlex: (Node: HTMLElement | Element, flexValues?: string) => Promise<void | Error>;
 export default setFlex;

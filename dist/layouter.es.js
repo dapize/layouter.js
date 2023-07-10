@@ -1,92 +1,74 @@
-const breakpointsNums = (objBps, propName) => {
-  const sizes = {};
-  if (propName === "width") {
-    Object.keys(objBps).map((bp) => {
-      return {
-        alias: bp,
-        width: objBps[bp].width
-      };
-    }).sort((a, b) => a.width > b.width ? 1 : b.width > a.width ? -1 : 0).forEach((bp, index) => {
-      sizes[bp.alias] = !index ? 0 : objBps[bp.alias][propName];
-    });
-  } else {
-    Object.keys(objBps).forEach((bp) => {
-      sizes[bp] = objBps[bp][propName];
-    });
-  }
-  return sizes;
-};
-const createScopeStyles = ({
-  bridge: withBridge,
-  bp,
-  insertionType,
-  node,
-  context
+const Z = (e, s) => {
+  const r = {};
+  return s === "width" ? Object.keys(e).map((t) => ({
+    alias: t,
+    width: e[t].width
+  })).sort(
+    (t, i) => t.width > i.width ? 1 : i.width > t.width ? -1 : 0
+  ).forEach((t, i) => {
+    r[t.alias] = i ? e[t.alias][s] : 0;
+  }) : Object.keys(e).forEach((t) => {
+    r[t] = e[t][s];
+  }), r;
+}, R = ({
+  bridge: e,
+  bp: s,
+  insertionType: r,
+  node: t,
+  context: i
 }) => {
-  let stylesScope = context.document.getElementById("layouter-" + bp);
-  if (!stylesScope) {
-    stylesScope = context.document.createElement("style");
-    stylesScope.appendChild(context.document.createTextNode(""));
-    const nodeParent = node.parentNode;
-    switch (insertionType) {
+  let n = i.document.getElementById("layouter-" + s);
+  if (!n) {
+    n = i.document.createElement("style"), n.appendChild(i.document.createTextNode(""));
+    const l = t.parentNode;
+    switch (r) {
       case "before":
-        nodeParent.insertBefore(stylesScope, node);
+        l.insertBefore(n, t);
         break;
       case "after":
-        node.nextSibling ? nodeParent.insertBefore(stylesScope, node.nextSibling) : nodeParent.appendChild(stylesScope);
+        t.nextSibling ? l.insertBefore(n, t.nextSibling) : l.appendChild(n);
         break;
       case "append":
-        node.appendChild(stylesScope);
+        t.appendChild(n);
         break;
     }
-    stylesScope.id = "layouter-" + bp;
+    n.id = "layouter-" + s;
   }
-  let bridge;
-  if (withBridge) {
-    bridge = {
-      method: stylesScope.sheet,
-      node: stylesScope
-    };
-  } else {
-    bridge = {
-      method: {
-        insertRule: (ruleCss) => {
-          stylesScope.appendChild(context.document.createTextNode(ruleCss));
-        },
-        rules: []
+  let o;
+  return e ? o = {
+    method: n.sheet,
+    node: n
+  } : o = {
+    method: {
+      insertRule: (l) => {
+        n.appendChild(
+          i.document.createTextNode(l)
+        );
       },
-      node: stylesScope
-    };
-  }
-  return bridge;
-};
-const scopesStylesBuilder = ({
-  breakpoints,
-  bridge,
-  scope,
-  context
+      rules: []
+    },
+    node: n
+  }, o;
+}, je = ({
+  breakpoints: e,
+  bridge: s,
+  scope: r,
+  context: t
 }) => {
-  const scopes = scope || {};
-  Object.keys(breakpoints).forEach((bp) => {
-    if (!scopes[bp]) {
-      scopes[bp] = createScopeStyles({
-        bridge,
-        bp,
-        insertionType: "append",
-        node: context.document.body,
-        context
-      });
-    }
-  });
-  return scopes;
-};
-const breakpointsOrdered = (bps, sizes) => {
-  const bpsOrdered = {};
-  Object.keys(sizes).forEach((bpName) => bpsOrdered[bpName] = bps[bpName]);
-  return bpsOrdered;
-};
-const version = "1.9.1";
-const breakpointsInit = {
+  const i = r || {};
+  return Object.keys(e).forEach((n) => {
+    i[n] || (i[n] = R({
+      bridge: s,
+      bp: n,
+      insertionType: "append",
+      node: t.document.body,
+      context: t
+    }));
+  }), i;
+}, Ae = (e, s) => {
+  const r = {};
+  return Object.keys(s).forEach((t) => r[t] = e[t]), r;
+}, Oe = {
   xs: {
     width: 360,
     cols: 15
@@ -108,175 +90,123 @@ const breakpointsInit = {
     cols: 51
   }
 };
-let baseConfig = {
+let M = {
   prefix: "",
-  breakpoints: breakpointsInit,
-  bridge: true,
-  debug: true,
-  searchOnInit: true,
-  observer: true
-};
-let config;
-const configNums = ({
-  bps,
-  bridge,
-  scope,
-  context
+  breakpoints: Oe,
+  bridge: !0,
+  debug: !0,
+  searchOnInit: !0,
+  observer: !0
+}, x;
+const se = ({
+  bps: e,
+  bridge: s,
+  scope: r,
+  context: t
 }) => {
-  const sizes = breakpointsNums(bps, "width");
-  const finalBps = breakpointsOrdered(bps, sizes);
+  const i = Z(e, "width"), n = Ae(e, i);
   return {
-    sizes,
-    cols: breakpointsNums(bps, "cols"),
-    scope: scopesStylesBuilder({
-      breakpoints: finalBps,
-      bridge,
-      scope,
-      context
+    sizes: i,
+    cols: Z(e, "cols"),
+    scope: je({
+      breakpoints: n,
+      bridge: s,
+      scope: r,
+      context: t
     }),
-    breakpoints: finalBps
+    breakpoints: n
   };
-};
-const setConfig = (context, customCfg = {}) => {
-  const contextConfig = context.layouterConfig || {};
-  baseConfig = {
-    ...baseConfig,
-    ...customCfg,
-    ...contextConfig
-  };
-  config = {
-    context,
-    ...baseConfig,
-    ...configNums({
-      bps: baseConfig.breakpoints,
-      bridge: baseConfig.bridge,
-      context
+}, Me = (e, s = {}) => {
+  const r = e.layouterConfig || {};
+  return M = {
+    ...M,
+    ...s,
+    ...r
+  }, x = {
+    context: e,
+    ...M,
+    ...se({
+      bps: M.breakpoints,
+      bridge: M.bridge,
+      context: e
     }),
     styles: {},
-    version
-  };
-  return config;
-};
-const getConfig = () => {
-  return config;
-};
-const setStyles = (className, value) => {
-  config.styles[className] = value;
-};
-const updateConfig = (userConfig) => {
-  config = {
-    ...config,
-    ...userConfig
-  };
-  if (userConfig.breakpoints) {
-    config = {
-      ...config,
-      ...configNums({
-        bps: config.breakpoints,
-        bridge: config.bridge,
-        scope: config.scope,
-        context: config.context
-      })
-    };
-  }
-  return config;
-};
-const prepareParam = (param) => {
-  let bp;
-  let argParam = param;
-  let important = false;
-  const haveBp = argParam.includes("@");
-  if (haveBp) {
-    const bpSplited = argParam.split("@");
-    argParam = bpSplited[0];
-    bp = bpSplited[1];
+    version: "1.9.1"
+  }, x;
+}, g = () => x, Be = (e, s) => {
+  x.styles[e] = s;
+}, Se = (e) => (x = {
+  ...x,
+  ...e
+}, e.breakpoints && (x = {
+  ...x,
+  ...se({
+    bps: x.breakpoints,
+    bridge: x.bridge,
+    scope: x.scope,
+    context: x.context
+  })
+}), x), S = (e) => {
+  let s, r = e, t = !1;
+  const i = r.includes("@");
+  if (i) {
+    const n = r.split("@");
+    r = n[0], s = n[1];
   } else {
-    const config2 = getConfig();
-    bp = Object.keys(config2.breakpoints)[0];
+    const n = g();
+    s = Object.keys(n.breakpoints)[0];
   }
-  if (param.includes("!")) {
-    important = true;
-    bp = bp.replace(/!/g, "");
-    argParam = argParam.replace(/!/g, "");
-  }
-  return {
-    widthBp: haveBp,
-    numbers: argParam,
-    breakPoints: bp,
-    important
+  return e.includes("!") && (t = !0, s = s.replace(/!/g, ""), r = r.replace(/!/g, "")), {
+    widthBp: i,
+    numbers: r,
+    breakPoints: s,
+    important: t
   };
-};
-const regError = (name, message, Node) => {
-  const err = new Error();
-  err.name = name;
-  err.message = message;
-  const intConfig = getConfig();
-  if (intConfig.debug) {
-    console.error(err);
-    if (Node)
-      console.log(Node);
+}, O = (e, s, r) => {
+  const t = new Error();
+  return t.name = e, t.message = s, g().debug && (console.error(t), r && console.log(r)), t;
+}, te = (e, s) => {
+  const r = e * 100 / s;
+  return (r - Math.floor(r) !== 0 ? r.toFixed(3) : r) + "%";
+}, Ee = (e) => {
+  const s = e.replace(/!/g, ""), r = s.indexOf("@"), t = g(), i = t.scope, n = t.bridge, o = t.context;
+  if (r === -1) {
+    const u = Object.keys(t.breakpoints)[0];
+    return i[u];
   }
-  return err;
-};
-const calPercentage = (n1, n2) => {
-  const cal = n1 * 100 / n2;
-  const haveDecimal = cal - Math.floor(cal) !== 0;
-  const result = haveDecimal ? cal.toFixed(3) : cal;
-  return result + "%";
-};
-const getScopeByclassName = (className) => {
-  const nameClass = className.replace(/!/g, "");
-  const atIndex = nameClass.indexOf("@");
-  const intConfig = getConfig();
-  const scope = intConfig.scope;
-  const bridge = intConfig.bridge;
-  const context = intConfig.context;
-  if (atIndex === -1) {
-    const firstBp = Object.keys(intConfig.breakpoints)[0];
-    return scope[firstBp];
-  }
-  const bp = nameClass.substring(atIndex + 1);
-  if (!bp.includes("-"))
-    return scope[bp];
-  if (bp.substring(0, 1) === "-") {
-    if (scope[bp])
-      return scope[bp];
-    const bpUntil = bp.substring(1);
-    scope[bp] = createScopeStyles({
-      bridge,
-      bp,
+  const l = s.substring(r + 1);
+  if (!l.includes("-"))
+    return i[l];
+  if (l.substring(0, 1) === "-") {
+    if (i[l])
+      return i[l];
+    const u = l.substring(1);
+    return i[l] = R({
+      bridge: n,
+      bp: l,
       insertionType: "before",
-      node: scope[bpUntil].node,
-      context
-    });
-    return scope[bp];
+      node: i[u].node,
+      context: o
+    }), i[l];
   }
-  if (scope[bp]) {
-    return scope[bp];
-  }
-  const fromBp = bp.split("-")[0];
-  scope[bp] = createScopeStyles({
-    bridge,
-    bp,
+  if (i[l])
+    return i[l];
+  const a = l.split("-")[0];
+  return i[l] = R({
+    bridge: n,
+    bp: l,
     insertionType: "after",
-    node: scope[fromBp].node,
-    context
-  });
-  return scope[bp];
-};
-const insertRules = (objStyles) => {
-  const intConfig = getConfig();
-  for (const className in objStyles) {
-    if (!intConfig.styles[className]) {
-      const nodeScope = getScopeByclassName(className);
-      const valClass = objStyles[className];
-      const rules = nodeScope.method.rules;
-      nodeScope.method.insertRule(valClass, rules ? rules.length : 0);
-      setStyles(className, valClass);
+    node: i[a].node,
+    context: o
+  }), i[l];
+}, re = (e) => {
+  const s = g();
+  for (const r in e)
+    if (!s.styles[r]) {
+      const t = Ee(r), i = e[r], n = t.method.rules;
+      t.method.insertRule(i, n ? n.length : 0), Be(r, i);
     }
-  }
-};
-const flexProsAndValsBase = {
+}, p = {
   jc: {
     ruleCss: "justify-content",
     classPrefix: "jc"
@@ -361,8 +291,7 @@ const flexProsAndValsBase = {
     ruleCss: "inherit",
     classPrefix: "ih"
   }
-};
-const flexPropsAndValsSelfBase = {
+}, B = {
   fg: {
     ruleCss: "flex-grow",
     classPrefix: "fg"
@@ -379,316 +308,186 @@ const flexPropsAndValsSelfBase = {
     ruleCss: "order",
     classPrefix: "or"
   }
-};
-const flexPropsAndValsSelf = {
-  ...flexPropsAndValsSelfBase,
-  "flex-grow": flexPropsAndValsSelfBase.fg,
-  "flex-shrink": flexPropsAndValsSelfBase.fh,
-  "align-self": flexPropsAndValsSelfBase.as,
-  order: flexPropsAndValsSelfBase.or
-};
-const flexProsAndVals = {
-  ...flexProsAndValsBase,
-  ...flexPropsAndValsSelf,
-  "justify-content": flexProsAndValsBase.jc,
-  "align-items": flexProsAndValsBase.ai,
-  center: flexProsAndValsBase.ce,
-  "flex-start": flexProsAndValsBase.fs,
-  "flex-end": flexProsAndValsBase.fe,
-  "space-between": flexProsAndValsBase.sb,
-  "space-around": flexProsAndValsBase.fs,
-  "flex-wrap": flexProsAndValsBase.fw,
-  nowrap: flexProsAndValsBase.nw,
-  w: flexProsAndValsBase.w,
-  "wrap-reverse": flexProsAndValsBase.wr,
-  "flex-direction": flexProsAndValsBase.fd,
-  row: flexProsAndValsBase.r,
-  "row-reverse": flexProsAndValsBase.rr,
-  column: flexProsAndValsBase.co,
-  "column-reverse": flexProsAndValsBase.cor,
-  auto: flexProsAndValsBase.au,
-  stretch: flexProsAndValsBase.st,
-  baseline: flexProsAndValsBase.bl,
-  initial: flexProsAndValsBase.in,
-  inherit: flexProsAndValsBase.ih
-};
-const flexAttrsSelf = Object.keys(flexPropsAndValsSelf);
-const percentageConverter = (percentage) => {
-  return "0\xAF" + percentage.replace("%", "");
-};
-const createStyles = (directive, bps) => {
-  const intConfig = getConfig();
-  const sizes = intConfig.sizes;
-  const prefix = intConfig.prefix;
-  const prop = processors[directive].ruleCss;
-  const styles = {};
-  Object.keys(bps).forEach((bp) => {
-    const shortNameClass = bps[bp].name;
-    let nameClass = shortNameClass;
-    if (shortNameClass.includes("%")) {
-      nameClass = shortNameClass.replace(shortNameClass, percentageConverter(shortNameClass));
+}, ie = {
+  ...B,
+  "flex-grow": B.fg,
+  "flex-shrink": B.fh,
+  "align-self": B.as,
+  order: B.or
+}, A = {
+  ...p,
+  ...ie,
+  "justify-content": p.jc,
+  "align-items": p.ai,
+  center: p.ce,
+  "flex-start": p.fs,
+  "flex-end": p.fe,
+  "space-between": p.sb,
+  "space-around": p.fs,
+  "flex-wrap": p.fw,
+  nowrap: p.nw,
+  w: p.w,
+  "wrap-reverse": p.wr,
+  "flex-direction": p.fd,
+  row: p.r,
+  "row-reverse": p.rr,
+  column: p.co,
+  "column-reverse": p.cor,
+  auto: p.au,
+  stretch: p.st,
+  baseline: p.bl,
+  initial: p.in,
+  inherit: p.ih
+}, ne = Object.keys(ie), Te = (e) => "0¯" + e.replace("%", ""), Le = (e, s) => {
+  const r = g(), t = r.sizes, i = r.prefix, n = v[e].ruleCss, o = {};
+  return Object.keys(s).forEach((l) => {
+    const a = s[l].name;
+    let u = a;
+    if (a.includes("%") && (u = a.replace(
+      a,
+      Te(a)
+    )), u = (i ? i + "-" : "") + v[e].classPrefix + "-" + u.replace(/\//g, "\\/").replace(/:/g, "\\:").replace("@", "\\@").split(".").join("_"), r.styles[u])
+      o[u] = r.styles[u];
+    else {
+      let h;
+      if (e === "flex") {
+        h = s[l].value;
+        const C = a.includes("!") ? ";display:flex !important;" : ";display:flex;", P = ne.filter(
+          (j) => a.includes(j + ":")
+        );
+        P.length ? P.length + 1 !== a.split(":").length && (h += C) : h += C;
+      } else
+        h = n + ":" + s[l].value;
+      let f = "@media screen and ", y = !1;
+      if (!l.includes("-"))
+        t[l] ? f += "(min-width: " + t[l] + "px)" : (f = "." + u.replace(/!/g, "\\!") + "{" + h + "}", y = !0);
+      else {
+        const C = l.split("-"), P = C[0];
+        P && (f += "(min-width: " + t[P] + "px) and ");
+        const j = C[1];
+        f += "(max-width: " + (t[j] - 1) + "px)";
+      }
+      y || (f += "{." + u.replace(/!/g, "\\!") + "{" + h + "}}"), o[u] = f;
     }
-    const finalPrefix = prefix ? prefix + "-" : "";
-    nameClass = finalPrefix + processors[directive].classPrefix + "-" + nameClass.replace(/\//g, "\\/").replace(/:/g, "\\:").replace("@", "\\@").split(".").join("_");
-    if (!intConfig.styles[nameClass]) {
-      let propAndVal;
-      if (directive === "flex") {
-        propAndVal = bps[bp].value;
-        const flexImportant = shortNameClass.includes("!") ? ";display:flex !important;" : ";display:flex;";
-        const attrsFlexSelfs = flexAttrsSelf.filter((nameAttrFlex) => shortNameClass.includes(nameAttrFlex + ":"));
-        if (attrsFlexSelfs.length) {
-          if (attrsFlexSelfs.length + 1 !== shortNameClass.split(":").length) {
-            propAndVal += flexImportant;
-          }
-        } else {
-          propAndVal += flexImportant;
-        }
-      } else {
-        propAndVal = prop + ":" + bps[bp].value;
-      }
-      let rule = "@media screen and ";
-      let direct = false;
-      if (!bp.includes("-")) {
-        if (sizes[bp]) {
-          rule += "(min-width: " + sizes[bp] + "px)";
-        } else {
-          rule = "." + nameClass.replace(/!/g, "\\!") + "{" + propAndVal + "}";
-          direct = true;
-        }
-      } else {
-        const bpSplited = bp.split("-");
-        const bp1 = bpSplited[0];
-        if (bp1)
-          rule += "(min-width: " + sizes[bp1] + "px) and ";
-        const bp2 = bpSplited[1];
-        rule += "(max-width: " + (sizes[bp2] - 1) + "px)";
-      }
-      if (!direct) {
-        rule += "{." + nameClass.replace(/!/g, "\\!") + "{" + propAndVal + "}}";
-      }
-      styles[nameClass] = rule;
-    } else {
-      styles[nameClass] = intConfig.styles[nameClass];
-    }
-  });
-  return styles;
-};
-const replaceList = [
+  }), o;
+}, Ne = [
   ["/", ""],
   ["\\", "/"],
   ["/:", ":"],
   ["\\:", ":"],
   ["\\@", "@"],
   ["/@", "@"]
-];
-const nameCleaner = (objStyles) => {
-  const obj = {};
-  for (const name in objStyles) {
-    let newName = name;
-    replaceList.forEach((reItem) => {
-      newName = newName.split(reItem[0]).join(reItem[1]);
-    });
-    obj[newName] = objStyles[name];
+], De = (e) => {
+  const s = {};
+  for (const r in e) {
+    let t = r;
+    Ne.forEach((i) => {
+      t = t.split(i[0]).join(i[1]);
+    }), s[t] = e[r];
   }
-  return obj;
-};
-const buildCss = (data) => {
-  const objStyles = createStyles(data.type, data.bps);
-  if (data.deep) {
-    insertRules(objStyles);
-  }
-  return nameCleaner(objStyles);
-};
-const buildCols = (values, insertStyles = false) => {
-  let cols;
-  let bp;
-  const bpCals = {};
-  const config2 = getConfig();
-  let selectorName, propValue, paramPrepared;
-  const directBp = Object.keys(config2.breakpoints)[0];
-  let err = false;
-  for (const item of values.split(" ")) {
-    let param = item;
-    selectorName = param;
-    paramPrepared = prepareParam(param);
-    bp = paramPrepared.breakPoints;
-    param = paramPrepared.numbers;
-    if (param.includes("/")) {
-      const paramSplited = param.split("/");
-      cols = [Number(paramSplited[0]), Number(paramSplited[1])];
-    } else {
-      if (paramPrepared.widthBp) {
-        if (bp.includes("-")) {
-          err = regError("SyntaxError", "You can't determine a 'until breakpoint' when use the explicit columns max: " + values);
-          break;
-        } else {
-          cols = [Number(param), config2.cols[bp]];
-        }
-      } else {
-        cols = [Number(param), config2.cols[directBp]];
-      }
-    }
-    propValue = calPercentage(cols[0], cols[1]);
-    if (paramPrepared.important)
-      propValue += " !important";
-    bpCals[bp] = {
-      name: selectorName,
-      value: propValue
+  return s;
+}, E = (e) => {
+  const s = Le(e.type, e.bps);
+  return e.deep && re(s), De(s);
+}, H = (e, s = !1) => {
+  let r, t;
+  const i = {}, n = g();
+  let o, l, a;
+  const u = Object.keys(n.breakpoints)[0];
+  let d = !1;
+  for (const h of e.split(" ")) {
+    let f = h;
+    if (o = f, a = S(f), t = a.breakPoints, f = a.numbers, f.includes("/")) {
+      const y = f.split("/");
+      r = [Number(y[0]), Number(y[1])];
+    } else if (a.widthBp)
+      if (t.includes("-")) {
+        d = O(
+          "SyntaxError",
+          "You can't determine a 'until breakpoint' when use the explicit columns max: " + e
+        );
+        break;
+      } else
+        r = [Number(f), n.cols[t]];
+    else
+      r = [Number(f), n.cols[u]];
+    l = te(r[0], r[1]), a.important && (l += " !important"), i[t] = {
+      name: o,
+      value: l
     };
   }
-  if (err)
-    return err;
-  return buildCss({
+  return d || E({
     type: "cols",
-    bps: bpCals,
-    deep: insertStyles
+    bps: i,
+    deep: s
   });
-};
-const buildFlex = (valFlex, insertStyles = false) => {
-  const bpCals = {};
-  let err = false;
-  const config2 = getConfig();
-  const firstBp = Object.keys(config2.breakpoints)[0];
-  for (const param of valFlex.split(" ")) {
-    let propVal;
-    const paramPrepared = prepareParam(param);
-    const bpNames = paramPrepared.breakPoints;
-    const flexSplited = paramPrepared.numbers.split(":");
-    const nameProp = flexSplited[0];
-    const valProp = flexSplited[1];
-    let valAlias;
-    if (!flexAttrsSelf.includes(nameProp)) {
-      if (!flexProsAndVals[nameProp]) {
-        err = regError("Non-existent Alias", "Don't exists the alias '" + nameProp + "' in Flex vault.");
+}, Y = (e, s = !1) => {
+  const r = {};
+  let t = !1;
+  const i = g(), n = Object.keys(i.breakpoints)[0];
+  for (const o of e.split(" ")) {
+    let l;
+    const a = S(o), u = a.breakPoints, d = a.numbers.split(":"), h = d[0], f = d[1];
+    let y;
+    if (ne.includes(h))
+      l = A[h].ruleCss + ":" + f, y = f;
+    else {
+      if (!A[h]) {
+        t = O(
+          "Non-existent Alias",
+          "Don't exists the alias '" + h + "' in Flex vault."
+        );
         break;
       }
-      if (!flexProsAndVals[valProp]) {
-        err = regError("Non-existent Alias", "Don't exists the alias '" + valProp + "' in Flex vault.");
+      if (!A[f]) {
+        t = O(
+          "Non-existent Alias",
+          "Don't exists the alias '" + f + "' in Flex vault."
+        );
         break;
       }
-      propVal = flexProsAndVals[nameProp].ruleCss + ":" + flexProsAndVals[valProp].ruleCss;
-      valAlias = flexProsAndVals[valProp].classPrefix;
-    } else {
-      propVal = flexProsAndVals[nameProp].ruleCss + ":" + valProp;
-      valAlias = valProp;
+      l = A[h].ruleCss + ":" + A[f].ruleCss, y = A[f].classPrefix;
     }
-    let sufixBp = bpNames === firstBp ? "" : "@" + bpNames;
-    if (paramPrepared.important) {
-      propVal += " !important";
-      sufixBp += "!";
-    }
-    let selectorName = flexProsAndVals[nameProp].classPrefix + ":" + valAlias + sufixBp;
-    if (!bpCals[bpNames]) {
-      bpCals[bpNames] = {
-        name: selectorName,
-        value: propVal
+    let C = u === n ? "" : "@" + u;
+    a.important && (l += " !important", C += "!");
+    let P = A[h].classPrefix + ":" + y + C;
+    if (!r[u])
+      r[u] = {
+        name: P,
+        value: l
       };
-    } else {
-      if (selectorName.includes("@"))
-        selectorName = selectorName.split("@")[0];
-      let prevName = bpCals[bpNames].name.split("@")[0];
-      if (bpCals[bpNames].name.includes("!") && !prevName.includes("!"))
-        prevName += "!";
-      bpCals[bpNames].name = prevName + "-" + selectorName + sufixBp;
-      bpCals[bpNames].value += ";" + propVal;
+    else {
+      P.includes("@") && (P = P.split("@")[0]);
+      let j = r[u].name.split("@")[0];
+      r[u].name.includes("!") && !j.includes("!") && (j += "!"), r[u].name = j + "-" + P + C, r[u].value += ";" + l;
     }
   }
-  if (err)
-    return err;
-  return buildCss({
+  return t || E({
     type: "flex",
-    bps: bpCals,
-    deep: insertStyles
+    bps: r,
+    deep: s
   });
-};
-const relativeMeasures = ["%", "rem", "em", "ex", "vw", "vh", "pt", "cm", "pc"];
-const processedNumber = (n) => {
-  let nProcessed;
-  if (n.includes("/")) {
-    nProcessed = n.split("/");
-    nProcessed = calPercentage(parseFloat(nProcessed[0]), parseFloat(nProcessed[1]));
-  } else if (n === "auto") {
-    nProcessed = "auto";
-  } else {
-    const relativeUnits = relativeMeasures.filter((unit) => {
-      return n.includes(unit);
-    });
-    if (relativeUnits.length) {
-      nProcessed = n;
-    } else {
-      nProcessed = n === "0" ? n : n + "px";
-    }
-  }
-  return nProcessed;
-};
-const buildAttr = (values, directive, insertStyles = false) => {
-  const bpCals = {};
-  values.split(" ").forEach((param) => {
-    const paramProcessed = prepareParam(param);
-    const bpNames = paramProcessed.breakPoints;
-    let propValue = paramProcessed.numbers.split("-").map((n) => processedNumber(n)).join(" ");
-    if (paramProcessed.important)
-      propValue += " !important";
-    bpCals[bpNames] = {
-      name: param,
-      value: propValue
+}, Fe = ["%", "rem", "em", "ex", "vw", "vh", "pt", "cm", "pc"], Ve = (e) => {
+  let s;
+  return e.includes("/") ? (s = e.split("/"), s = te(
+    parseFloat(s[0]),
+    parseFloat(s[1])
+  )) : e === "auto" ? s = "auto" : Fe.filter((t) => e.includes(t)).length ? s = e : s = e === "0" ? e : e + "px", s;
+}, m = (e, s, r = !1) => {
+  const t = {};
+  return e.split(" ").forEach((i) => {
+    const n = S(i), o = n.breakPoints;
+    let l = n.numbers.split("-").map((a) => Ve(a)).join(" ");
+    n.important && (l += " !important"), t[o] = {
+      name: i,
+      value: l
     };
+  }), E({
+    type: s,
+    bps: t,
+    deep: r
   });
-  return buildCss({
-    type: directive,
-    bps: bpCals,
-    deep: insertStyles
-  });
-};
-const buildPad = (valPads, insertStyles = false) => {
-  return buildAttr(valPads, "pad", insertStyles);
-};
-const buildPadTop = (valPadTop, insertStyles = false) => {
-  return buildAttr(valPadTop, "padt", insertStyles);
-};
-const buildPadRight = (valPadRight, insertStyles = false) => {
-  return buildAttr(valPadRight, "padr", insertStyles);
-};
-const buildPadBottom = (valPadBottom, insertStyles = false) => {
-  return buildAttr(valPadBottom, "padb", insertStyles);
-};
-const buildPadLeft = (valPadLeft, insertStyles = false) => {
-  return buildAttr(valPadLeft, "padl", insertStyles);
-};
-const buildMar = (valMars, insertStyles = false) => {
-  return buildAttr(valMars, "mar", insertStyles);
-};
-const buildMarTop = (valMarTop, insertStyles = false) => {
-  return buildAttr(valMarTop, "mart", insertStyles);
-};
-const buildMarRight = (valMarRight, insertStyles = false) => {
-  return buildAttr(valMarRight, "marr", insertStyles);
-};
-const buildMarBottom = (valMarBottom, insertStyles = false) => {
-  return buildAttr(valMarBottom, "marb", insertStyles);
-};
-const buildMarLeft = (valMarLeft, insertStyles = false) => {
-  return buildAttr(valMarLeft, "marl", insertStyles);
-};
-const buildMaxWidth = (valMaxWidth, insertStyles = false) => {
-  return buildAttr(valMaxWidth, "mxw", insertStyles);
-};
-const buildMaxHeight = (valMaxHeight, insertStyles = false) => {
-  return buildAttr(valMaxHeight, "mxh", insertStyles);
-};
-const buildMinWidth = (valMinWidth, insertStyles = false) => {
-  return buildAttr(valMinWidth, "miw", insertStyles);
-};
-const buildMinHeight = (valMinHeight, insertStyles = false) => {
-  return buildAttr(valMinHeight, "mih", insertStyles);
-};
-const buildHeight = (valHeight, insertStyles = false) => {
-  return buildAttr(valHeight, "hgt", insertStyles);
-};
-const buildWidth = (valWidth, insertStyles = false) => {
-  return buildAttr(valWidth, "wdh", insertStyles);
-};
-const positionProsAndValsBase = {
+}, le = (e, s = !1) => m(e, "pad", s), I = (e, s = !1) => m(e, "padt", s), W = (e, s = !1) => m(e, "padr", s), X = (e, s = !1) => m(e, "padb", s), z = (e, s = !1) => m(e, "padl", s), ae = (e, s = !1) => m(e, "mar", s), G = (e, s = !1) => m(e, "mart", s), U = (e, s = !1) => m(e, "marr", s), q = (e, s = !1) => m(e, "marb", s), _ = (e, s = !1) => m(e, "marl", s), oe = (e, s = !1) => m(e, "mxw", s), ce = (e, s = !1) => m(e, "mxh", s), ue = (e, s = !1) => m(e, "miw", s), fe = (e, s = !1) => m(e, "mih", s), de = (e, s = !1) => m(e, "hgt", s), pe = (e, s = !1) => m(e, "wdh", s), k = {
   st: {
     ruleCss: "static",
     classPrefix: "st"
@@ -717,64 +516,43 @@ const positionProsAndValsBase = {
     ruleCss: "inherit",
     classPrefix: "ih"
   }
-};
-const positionProsAndVals = {
-  ...positionProsAndValsBase,
-  static: positionProsAndValsBase.st,
-  absolute: positionProsAndValsBase.ab,
-  fixed: positionProsAndValsBase.fi,
-  relative: positionProsAndValsBase.re,
-  sticky: positionProsAndValsBase.si,
-  initial: positionProsAndValsBase.in,
-  inherit: positionProsAndValsBase.ih
-};
-const buildPosition = (valPos, insertStyles = false) => {
-  const bpCals = {};
-  let err = false;
-  const config2 = getConfig();
-  const firstBp = Object.keys(config2.breakpoints)[0];
-  for (const param of valPos.split(" ")) {
-    let propVal;
-    const paramPrepared = prepareParam(param);
-    const bpNames = paramPrepared.breakPoints;
-    const nameProp = paramPrepared.numbers;
-    if (!positionProsAndVals[nameProp]) {
-      err = regError("Non-existent Alias", "Don't exists the alias '" + nameProp + "' in Position vault.");
+}, F = {
+  ...k,
+  static: k.st,
+  absolute: k.ab,
+  fixed: k.fi,
+  relative: k.re,
+  sticky: k.si,
+  initial: k.in,
+  inherit: k.ih
+}, me = (e, s = !1) => {
+  const r = {};
+  let t = !1;
+  const i = g(), n = Object.keys(i.breakpoints)[0];
+  for (const o of e.split(" ")) {
+    let l;
+    const a = S(o), u = a.breakPoints, d = a.numbers;
+    if (!F[d]) {
+      t = O(
+        "Non-existent Alias",
+        "Don't exists the alias '" + d + "' in Position vault."
+      );
       break;
     }
-    propVal = positionProsAndVals[nameProp].ruleCss;
-    const className = positionProsAndVals[nameProp].classPrefix;
-    let sufixBp = bpNames === firstBp ? "" : "@" + bpNames;
-    if (paramPrepared.important) {
-      propVal += " !important";
-      sufixBp += "!";
-    }
-    bpCals[bpNames] = {
-      name: className + sufixBp,
-      value: propVal
+    l = F[d].ruleCss;
+    const h = F[d].classPrefix;
+    let f = u === n ? "" : "@" + u;
+    a.important && (l += " !important", f += "!"), r[u] = {
+      name: h + f,
+      value: l
     };
   }
-  if (err)
-    return err;
-  return buildCss({
+  return t || E({
     type: "pos",
-    bps: bpCals,
-    deep: insertStyles
+    bps: r,
+    deep: s
   });
-};
-const buildTop = (val, insertStyles = false) => {
-  return buildAttr(val, "t", insertStyles);
-};
-const buildRight = (val, insertStyles = false) => {
-  return buildAttr(val, "r", insertStyles);
-};
-const buildBottom = (val, insertStyles = false) => {
-  return buildAttr(val, "b", insertStyles);
-};
-const buildLeft = (val, insertStyles = false) => {
-  return buildAttr(val, "l", insertStyles);
-};
-const displayProsAndValsBase = {
+}, be = (e, s = !1) => m(e, "t", s), he = (e, s = !1) => m(e, "r", s), xe = (e, s = !1) => m(e, "b", s), ge = (e, s = !1) => m(e, "l", s), w = {
   bl: {
     ruleCss: "block",
     classPrefix: "bl"
@@ -807,618 +585,461 @@ const displayProsAndValsBase = {
     ruleCss: "inherit",
     classPrefix: "ih"
   }
-};
-const displayProsAndVals = {
-  ...displayProsAndValsBase,
-  block: displayProsAndValsBase.bl,
-  inline: displayProsAndValsBase.il,
-  "inline-block": displayProsAndValsBase.ib,
-  flex: displayProsAndValsBase.fx,
-  "inline-flex": displayProsAndValsBase.if,
-  none: displayProsAndValsBase.no,
-  initial: displayProsAndValsBase.in,
-  inherit: displayProsAndValsBase.ih
-};
-const buildDisplay = (valDisplay, insertStyles = false) => {
-  const bpCals = {};
-  let err = false;
-  const config2 = getConfig();
-  const firstBp = Object.keys(config2.breakpoints)[0];
-  for (const param of valDisplay.split(" ")) {
-    let propVal;
-    const paramPrepared = prepareParam(param);
-    const bpNames = paramPrepared.breakPoints;
-    const nameProp = paramPrepared.numbers;
-    if (!displayProsAndVals[nameProp]) {
-      err = regError("Non-existent Alias", "Don't exists the alias '" + nameProp + "' in display vault.");
+}, V = {
+  ...w,
+  block: w.bl,
+  inline: w.il,
+  "inline-block": w.ib,
+  flex: w.fx,
+  "inline-flex": w.if,
+  none: w.no,
+  initial: w.in,
+  inherit: w.ih
+}, Re = (e, s = !1) => {
+  const r = {};
+  let t = !1;
+  const i = g(), n = Object.keys(i.breakpoints)[0];
+  for (const o of e.split(" ")) {
+    let l;
+    const a = S(o), u = a.breakPoints, d = a.numbers;
+    if (!V[d]) {
+      t = O(
+        "Non-existent Alias",
+        "Don't exists the alias '" + d + "' in display vault."
+      );
       break;
     }
-    propVal = displayProsAndVals[nameProp].ruleCss;
-    const className = displayProsAndVals[nameProp].classPrefix;
-    let sufixBp = bpNames === firstBp ? "" : "@" + bpNames;
-    if (paramPrepared.important) {
-      propVal += " !important";
-      sufixBp += "!";
-    }
-    bpCals[bpNames] = {
-      name: className + sufixBp,
-      value: propVal
+    l = V[d].ruleCss;
+    const h = V[d].classPrefix;
+    let f = u === n ? "" : "@" + u;
+    a.important && (l += " !important", f += "!"), r[u] = {
+      name: h + f,
+      value: l
     };
   }
-  if (err)
-    return err;
-  return buildCss({
+  return t || E({
     type: "d",
-    bps: bpCals,
-    deep: insertStyles
+    bps: r,
+    deep: s
   });
-};
-const buildXY = (data) => {
-  const stylesA = data.builderA(data.values, data.insertStyles);
-  const stylesB = data.builderB(data.values, data.insertStyles);
-  const allStyles = {};
-  for (const style in stylesA) {
-    allStyles[style] = stylesA[style];
-  }
-  for (const style in stylesB) {
-    allStyles[style] = stylesB[style];
-  }
-  return allStyles;
-};
-const buildPadX = (valPadX, insertStyles = false) => {
-  return buildXY({
-    values: valPadX,
-    builderA: buildPadRight,
-    builderB: buildPadLeft,
-    insertStyles
-  });
-};
-const buildPadY = (valPadX, insertStyles = false) => {
-  return buildXY({
-    values: valPadX,
-    builderA: buildPadTop,
-    builderB: buildPadBottom,
-    insertStyles
-  });
-};
-const buildMarX = (valMarX, insertStyles = false) => {
-  return buildXY({
-    values: valMarX,
-    builderA: buildMarRight,
-    builderB: buildMarLeft,
-    insertStyles
-  });
-};
-const buildMarY = (valMarY, insertStyles = false) => {
-  return buildXY({
-    values: valMarY,
-    builderA: buildMarTop,
-    builderB: buildMarBottom,
-    insertStyles
-  });
-};
-const processorsBase = {
+}, L = (e) => {
+  const s = e.builderA(e.values, e.insertStyles), r = e.builderB(e.values, e.insertStyles), t = {};
+  for (const i in s)
+    t[i] = s[i];
+  for (const i in r)
+    t[i] = r[i];
+  return t;
+}, $ = (e, s = !1) => L({
+  values: e,
+  builderA: W,
+  builderB: z,
+  insertStyles: s
+}), J = (e, s = !1) => L({
+  values: e,
+  builderA: I,
+  builderB: X,
+  insertStyles: s
+}), K = (e, s = !1) => L({
+  values: e,
+  builderA: U,
+  builderB: _,
+  insertStyles: s
+}), Q = (e, s = !1) => L({
+  values: e,
+  builderA: G,
+  builderB: q,
+  insertStyles: s
+}), c = {
   cols: {
-    build: buildCols,
+    build: H,
     ruleCss: "width",
     classPrefix: "c"
   },
+  // Paddings
   pad: {
-    build: buildPad,
+    build: le,
     ruleCss: "padding",
     classPrefix: "p"
   },
   padt: {
-    build: buildPadTop,
+    build: I,
     ruleCss: "padding-top",
     classPrefix: "pt"
   },
   padr: {
-    build: buildPadRight,
+    build: W,
     ruleCss: "padding-right",
     classPrefix: "pr"
   },
   padb: {
-    build: buildPadBottom,
+    build: X,
     ruleCss: "padding-bottom",
     classPrefix: "pb"
   },
   padl: {
-    build: buildPadLeft,
+    build: z,
     ruleCss: "padding-left",
     classPrefix: "pl"
   },
   padx: {
-    build: buildPadX,
+    build: $,
     ruleCss: ["padding-left", "padding-right"],
     classPrefix: "px"
   },
   pady: {
-    build: buildPadY,
+    build: J,
     ruleCss: ["padding-top", "padding-bottom"],
     classPrefix: "py"
   },
+  // Margin
   mar: {
-    build: buildMar,
+    build: ae,
     ruleCss: "margin",
     classPrefix: "m"
   },
   mart: {
-    build: buildMarTop,
+    build: G,
     ruleCss: "margin-top",
     classPrefix: "mt"
   },
   marr: {
-    build: buildMarRight,
+    build: U,
     ruleCss: "margin-right",
     classPrefix: "mr"
   },
   marb: {
-    build: buildMarBottom,
+    build: q,
     ruleCss: "margin-bottom",
     classPrefix: "mb"
   },
   marl: {
-    build: buildMarLeft,
+    build: _,
     ruleCss: "margin-left",
     classPrefix: "ml"
   },
   marx: {
-    build: buildMarX,
+    build: K,
     ruleCss: ["margin-left", "margin-right"],
     classPrefix: "px"
   },
   mary: {
-    build: buildMarY,
+    build: Q,
     ruleCss: ["margin-top", "margin-bottom"],
     classPrefix: "py"
   },
+  // Flex Box
   flex: {
-    build: buildFlex,
+    build: Y,
     ruleCss: "display: flex",
     classPrefix: "fx"
   },
+  // Max & Min Width & Height
   mxw: {
-    build: buildMaxWidth,
+    build: oe,
     ruleCss: "max-width",
     classPrefix: "mxw"
   },
   mxh: {
-    build: buildMaxHeight,
+    build: ce,
     ruleCss: "max-height",
     classPrefix: "mxh"
   },
   miw: {
-    build: buildMinWidth,
+    build: ue,
     ruleCss: "min-width",
     classPrefix: "miw"
   },
   mih: {
-    build: buildMinHeight,
+    build: fe,
     ruleCss: "min-height",
     classPrefix: "mih"
   },
+  // Width & Height
   wdh: {
-    build: buildWidth,
+    build: pe,
     ruleCss: "width",
     classPrefix: "w"
   },
   hgt: {
-    build: buildHeight,
+    build: de,
     ruleCss: "height",
     classPrefix: "h"
   },
+  // Position
   pos: {
-    build: buildPosition,
+    build: me,
     ruleCss: "position",
     classPrefix: "pos"
   },
   t: {
-    build: buildTop,
+    build: be,
     ruleCss: "top",
     classPrefix: "t"
   },
   r: {
-    build: buildRight,
+    build: he,
     ruleCss: "right",
     classPrefix: "r"
   },
   b: {
-    build: buildBottom,
+    build: xe,
     ruleCss: "bottom",
     classPrefix: "b"
   },
   l: {
-    build: buildLeft,
+    build: ge,
     ruleCss: "left",
     classPrefix: "l"
   },
   d: {
-    build: buildDisplay,
+    build: Re,
     ruleCss: "display",
     classPrefix: "d"
   }
-};
-const processors = {
-  ...processorsBase,
-  c: processorsBase.cols,
-  fx: processorsBase.flex,
-  p: processorsBase.pad,
-  padding: processorsBase.pad,
-  pt: processorsBase.padt,
-  "padding-top": processorsBase.padt,
-  pr: processorsBase.padr,
-  "padding-right": processorsBase.padr,
-  pb: processorsBase.padb,
-  "padding-bottom": processorsBase.padb,
-  pl: processorsBase.padl,
-  "padding-left": processorsBase.padl,
-  py: processorsBase.pady,
-  "padding-y": processorsBase.pady,
-  px: processorsBase.padx,
-  "padding-x": processorsBase.padx,
-  m: processorsBase.mar,
-  margin: processorsBase.mar,
-  mt: processorsBase.mart,
-  "margin-top": processorsBase.mart,
-  mr: processorsBase.marr,
-  "margin-right": processorsBase.marr,
-  mb: processorsBase.marb,
-  "margin-bottom": processorsBase.marb,
-  ml: processorsBase.marl,
-  "margin-left": processorsBase.marl,
-  my: processorsBase.mary,
-  "margin-y": processorsBase.mary,
-  mx: processorsBase.marx,
-  "margin-x": processorsBase.marx,
-  w: processorsBase.wdh,
-  width: processorsBase.wdh,
-  h: processorsBase.hgt,
-  height: processorsBase.hgt,
-  "max-width": processorsBase.mxw,
-  "max-height": processorsBase.mxh,
-  "min-width": processorsBase.miw,
-  "min-height": processorsBase.mih,
-  position: processorsBase.pos,
-  top: processorsBase.t,
-  right: processorsBase.r,
-  bottom: processorsBase.b,
-  left: processorsBase.l,
-  display: processorsBase.d
-};
-const getParameters = (Node) => {
-  const params = {};
-  const attrs = Node.attributes;
-  const paramNames = Object.keys(processors);
-  Array.prototype.forEach.call(attrs, (attr) => {
-    if (paramNames.includes(attr.name)) {
-      if (attr.value !== "")
-        params[attr.name] = attr.value.trim().split(" ").filter((item) => item).join(" ");
-    }
-  });
-  return params;
-};
-const build = (obj, insertStyles = false) => {
-  const rObj = {};
-  let err = false;
-  for (const prop in obj) {
-    const propData = processors[prop];
-    const objStyles = propData.build(obj[prop], insertStyles);
-    if (objStyles instanceof Error) {
-      err = objStyles;
+}, v = {
+  ...c,
+  c: c.cols,
+  fx: c.flex,
+  p: c.pad,
+  padding: c.pad,
+  pt: c.padt,
+  "padding-top": c.padt,
+  pr: c.padr,
+  "padding-right": c.padr,
+  pb: c.padb,
+  "padding-bottom": c.padb,
+  pl: c.padl,
+  "padding-left": c.padl,
+  py: c.pady,
+  "padding-y": c.pady,
+  px: c.padx,
+  "padding-x": c.padx,
+  m: c.mar,
+  margin: c.mar,
+  mt: c.mart,
+  "margin-top": c.mart,
+  mr: c.marr,
+  "margin-right": c.marr,
+  mb: c.marb,
+  "margin-bottom": c.marb,
+  ml: c.marl,
+  "margin-left": c.marl,
+  my: c.mary,
+  "margin-y": c.mary,
+  mx: c.marx,
+  "margin-x": c.marx,
+  w: c.wdh,
+  width: c.wdh,
+  h: c.hgt,
+  height: c.hgt,
+  "max-width": c.mxw,
+  "max-height": c.mxh,
+  "min-width": c.miw,
+  "min-height": c.mih,
+  position: c.pos,
+  top: c.t,
+  right: c.r,
+  bottom: c.b,
+  left: c.l,
+  display: c.d
+}, Pe = (e) => {
+  const s = {}, r = e.attributes, t = Object.keys(v);
+  return Array.prototype.forEach.call(r, (i) => {
+    t.includes(i.name) && i.value !== "" && (s[i.name] = i.value.trim().split(" ").filter((n) => n).join(" "));
+  }), s;
+}, ye = (e, s = !1) => {
+  const r = {};
+  let t = !1;
+  for (const i in e) {
+    const o = v[i].build(
+      e[i],
+      s
+    );
+    if (o instanceof Error) {
+      t = o;
       break;
-    } else {
-      rObj[prop] = objStyles;
-    }
+    } else
+      r[i] = o;
   }
-  if (err)
-    return err;
-  return rObj;
-};
-const addClasses = (Node, classesNames, overwrite) => {
-  return new Promise((resolve) => {
-    const config2 = getConfig();
-    const names = classesNames.split(" ");
-    let classesToAdd = names;
-    if (!overwrite) {
-      classesToAdd = names.filter((name) => !Node.classList.contains(name));
-      if (!classesToAdd.length) {
-        resolve();
-        return;
-      }
-    }
-    const obsNode = new config2.context.MutationObserver((mutations) => {
-      const target = mutations[0].target;
-      const currentClasses = target.className.split(" ");
-      const containsAll = names.every((element) => currentClasses.includes(element));
-      if (containsAll) {
-        obsNode.disconnect();
-        resolve();
-      }
+  return t || r;
+}, Ce = (e, s, r) => new Promise((t) => {
+  const i = g(), n = s.split(" ");
+  let o = n;
+  if (!r && (o = n.filter((a) => !e.classList.contains(a)), !o.length)) {
+    t();
+    return;
+  }
+  const l = new i.context.MutationObserver((a) => {
+    const d = a[0].target.className.split(" ");
+    n.every(
+      (f) => d.includes(f)
+    ) && (l.disconnect(), t());
+  });
+  if (l.observe(e, {
+    childList: !1,
+    subtree: !1,
+    attributes: !0,
+    attributeFilter: ["class"],
+    characterData: !1
+  }), r)
+    e.className = s;
+  else {
+    const a = e.hasAttribute("class") ? " " : "";
+    e.className += a + o.join(" ");
+  }
+}), we = (e, s, r) => new Promise((t) => {
+  if (!e.hasAttribute(s)) {
+    t();
+    return;
+  }
+  const i = new r.MutationObserver(() => {
+    i.disconnect(), t();
+  });
+  i.observe(e, {
+    childList: !1,
+    subtree: !1,
+    attributes: !0,
+    attributeFilter: [s],
+    characterData: !1
+  }), e.removeAttribute(s);
+}), He = (e, s, r) => new Promise((t) => {
+  const i = s.map((n) => we(e, n, r));
+  Promise.all(i).then(() => t());
+}), ve = (e, s) => new Promise((r) => {
+  const t = g();
+  Array.isArray(s) ? He(e, s, t.context).then(r) : we(e, s, t.context).then(r);
+}), T = ({ node: e, directive: s, classes: r, resolve: t }) => {
+  const i = g();
+  ve(e, s).then(() => Ce(e, r)).then(() => {
+    t();
+    const n = new i.context.CustomEvent("layout:ready");
+    e.dispatchEvent(n);
+  });
+}, Ye = (e, s) => new Promise((r, t) => {
+  const i = s || Pe(e), n = Object.keys(i);
+  if (!n.length) {
+    const d = O(
+      "Parameter Missing",
+      "don't exists any parameter to process",
+      e
+    );
+    t(d);
+    return;
+  }
+  const o = {};
+  for (const d in i)
+    o[d] = i[d];
+  const l = ye(o, !0);
+  if (l instanceof Error) {
+    t(l);
+    return;
+  }
+  const a = l, u = Object.keys(a).map((d) => Object.keys(a[d])).flat().join(" ");
+  T({
+    node: e,
+    directive: n,
+    classes: u,
+    resolve: r
+  });
+}), N = (e, s) => {
+  const r = s.map((t) => e.getAttribute(t)).filter((t) => t).join(" ");
+  return r || O(
+    "Empty",
+    'The value of the directives "' + s.join(", ") + '" are empty',
+    e
+  );
+}, Ie = (e, s) => new Promise((r, t) => {
+  const i = s || N(e, ["flex", "fx"]);
+  if (!i)
+    return t(i);
+  const n = Y(i, !0);
+  if (n instanceof Error) {
+    t(n);
+    return;
+  }
+  T({
+    node: e,
+    directive: "flex",
+    classes: Object.keys(n).join(" "),
+    resolve: r
+  });
+}), We = (e, s) => new Promise((r, t) => {
+  const i = s || N(e, ["c", "cols"]);
+  if (!i)
+    return t(i);
+  const n = H(i, !0);
+  if (n instanceof Error) {
+    t(n);
+    return;
+  }
+  const o = Object.keys(n).join(" ");
+  T({
+    node: e,
+    directive: "cols",
+    classes: o,
+    resolve: r
+  });
+}), b = (e, s, r) => new Promise((t, i) => {
+  const n = r || N(e, s);
+  if (!n)
+    return i(n);
+  const o = s[0], l = m(n, o, !0), a = Object.keys(l).join(" ");
+  T({
+    node: e,
+    directive: o,
+    classes: a,
+    resolve: t
+  });
+}), Xe = (e, s) => b(e, ["hgt", "h"], s), ze = (e, s) => b(e, ["marb", "mb", "margin-bottom"], s), Ge = (e, s) => b(e, ["marl", "ml", "margin-left"], s), Ue = (e, s) => b(e, ["marr", "mr", "margin-right"], s), qe = (e, s) => b(e, ["mar", "m", "margin"], s), _e = (e, s) => b(e, ["mart", "mt", "margin-top"], s), $e = (e, s) => b(e, ["mxw", "max-width"], s), Je = (e, s) => b(e, ["mih", "min-height"], s), Ke = (e, s) => b(e, ["miw", "min-width"], s), Qe = (e, s) => b(e, ["padb", "pb", "padding-bottom"], s), Ze = (e, s) => b(e, ["padl", "pl", "padding-left"], s), es = (e, s) => b(e, ["padr", "pr", "padding-right"], s), ss = (e, s) => b(e, ["pad", "p", "padding"], s), ts = (e, s) => b(e, ["padt", "pt", "padding-top"], s), rs = (e, s) => b(e, ["wdh", "width"], s), is = (e, s) => b(e, ["mxh", "max-height"], s), ns = (e, s) => b(e, ["pos", "position"], s), ls = (e, s) => b(e, ["t", "top"], s), as = (e, s) => b(e, ["r", "right"], s), os = (e, s) => b(e, ["b", "bottom"], s), cs = (e, s) => b(e, ["l", "left"], s), D = (e) => new Promise((s, r) => {
+  const t = e.vals || N(e.Node, e.directives);
+  if (!t)
+    return r(t);
+  const i = e.builder(t, !0), n = Object.keys(i).join(" ");
+  T({
+    node: e.Node,
+    directive: e.directives,
+    classes: n,
+    resolve: s
+  });
+}), us = (e, s) => D({
+  Node: e,
+  directives: ["padx", "px", "padding-x"],
+  builder: $,
+  vals: s
+}), fs = (e, s) => D({
+  Node: e,
+  directives: ["pady", "py", "padding-y"],
+  builder: J,
+  vals: s
+}), ds = (e, s) => D({
+  Node: e,
+  directives: ["marx", "mx", "margin-x"],
+  builder: K,
+  vals: s
+}), ps = (e, s) => D({
+  Node: e,
+  directives: ["mary", "my", "margin-y"],
+  builder: Q,
+  vals: s
+}), ms = (e) => new Promise((s) => {
+  const t = [...new Set(
+    Object.keys(v).map(
+      (n) => v[n].classPrefix
+    )
+  )], i = e.className.split(" ").filter((n) => n.includes("-") ? !t.find((l) => {
+    const a = l.length;
+    return n.substring(0, a + 1) === l + "-";
+  }) : !0);
+  if (i.length) {
+    const n = i.join(" ");
+    Ce(e, n, !0).then(() => {
+      s();
     });
-    obsNode.observe(Node, {
-      childList: false,
-      subtree: false,
-      attributes: true,
-      attributeFilter: ["class"],
-      characterData: false
+  } else
+    ve(e, "class").then(() => {
+      s();
     });
-    if (overwrite) {
-      Node.className = classesNames;
-    } else {
-      const space = Node.hasAttribute("class") ? " " : "";
-      Node.className += space + classesToAdd.join(" ");
-    }
-  });
-};
-const removeProp = (Node, propName, context) => {
-  return new Promise((resolve) => {
-    if (!Node.hasAttribute(propName)) {
-      resolve();
-      return;
-    }
-    const obsNode = new context.MutationObserver(() => {
-      obsNode.disconnect();
-      resolve();
-    });
-    obsNode.observe(Node, {
-      childList: false,
-      subtree: false,
-      attributes: true,
-      attributeFilter: [propName],
-      characterData: false
-    });
-    Node.removeAttribute(propName);
-  });
-};
-const removeProps = (Node, propNames, context) => {
-  return new Promise((resolve) => {
-    const promises = propNames.map((name) => removeProp(Node, name, context));
-    Promise.all(promises).then(() => resolve());
-  });
-};
-const removeAttr = (Node, propNames) => {
-  return new Promise((resolve) => {
-    const config2 = getConfig();
-    if (Array.isArray(propNames)) {
-      removeProps(Node, propNames, config2.context).then(resolve);
-    } else {
-      removeProp(Node, propNames, config2.context).then(resolve);
-    }
-  });
-};
-const eventReady = ({ node, directive, classes, resolve }) => {
-  const config2 = getConfig();
-  removeAttr(node, directive).then(() => addClasses(node, classes)).then(() => {
-    resolve();
-    const event = new config2.context.CustomEvent("layout:ready");
-    node.dispatchEvent(event);
-  });
-};
-const set = (Node, parameters) => {
-  return new Promise((resolve, reject) => {
-    const params = parameters || getParameters(Node);
-    const arrParams = Object.keys(params);
-    if (!arrParams.length) {
-      const err = regError("Parameter Missing", "don't exists any parameter to process", Node);
-      reject(err);
-      return;
-    }
-    const toBuild = {};
-    for (const prop in params) {
-      toBuild[prop] = params[prop];
-    }
-    const classesObj = build(toBuild, true);
-    if (classesObj instanceof Error) {
-      reject(classesObj);
-      return;
-    }
-    const classes = classesObj;
-    const classesNames = Object.keys(classes).map((name) => Object.keys(classes[name])).flat().join(" ");
-    eventReady({
-      node: Node,
-      directive: arrParams,
-      classes: classesNames,
-      resolve
-    });
-  });
-};
-const directiveValues = (Node, directives) => {
-  const directiveValues2 = directives.map((item) => Node.getAttribute(item)).filter((item) => item).join(" ");
-  return !directiveValues2 ? regError("Empty", 'The value of the directives "' + directives.join(", ") + '" are empty', Node) : directiveValues2;
-};
-const setFlex = (Node, flexValues) => {
-  return new Promise((resolve, reject) => {
-    const values = flexValues || directiveValues(Node, ["flex", "fx"]);
-    if (!values)
-      return reject(values);
-    const objStyles = buildFlex(values, true);
-    if (objStyles instanceof Error) {
-      reject(objStyles);
-      return;
-    }
-    eventReady({
-      node: Node,
-      directive: "flex",
-      classes: Object.keys(objStyles).join(" "),
-      resolve
-    });
-  });
-};
-const setCols = (Node, columns) => {
-  return new Promise((resolve, reject) => {
-    const values = columns || directiveValues(Node, ["c", "cols"]);
-    if (!values)
-      return reject(values);
-    const objStyles = buildCols(values, true);
-    if (objStyles instanceof Error) {
-      reject(objStyles);
-      return;
-    }
-    const classesToAdd = Object.keys(objStyles).join(" ");
-    eventReady({
-      node: Node,
-      directive: "cols",
-      classes: classesToAdd,
-      resolve
-    });
-  });
-};
-const setAttr = (Node, directives, vals) => {
-  return new Promise((resolve, reject) => {
-    const values = vals || directiveValues(Node, directives);
-    if (!values)
-      return reject(values);
-    const directive = directives[0];
-    const objStyles = buildAttr(values, directive, true);
-    const classesToAdd = Object.keys(objStyles).join(" ");
-    eventReady({
-      node: Node,
-      directive,
-      classes: classesToAdd,
-      resolve
-    });
-  });
-};
-const setHeight = (Node, values) => {
-  return setAttr(Node, ["hgt", "h"], values);
-};
-const setMarBottom = (Node, values) => {
-  return setAttr(Node, ["marb", "mb", "margin-bottom"], values);
-};
-const setMarLeft = (Node, values) => {
-  return setAttr(Node, ["marl", "ml", "margin-left"], values);
-};
-const setMarRight = (Node, values) => {
-  return setAttr(Node, ["marr", "mr", "margin-right"], values);
-};
-const setMar = (Node, values) => {
-  return setAttr(Node, ["mar", "m", "margin"], values);
-};
-const setMarTop = (Node, values) => {
-  return setAttr(Node, ["mart", "mt", "margin-top"], values);
-};
-const setMaxWidth = (Node, values) => {
-  return setAttr(Node, ["mxw", "max-width"], values);
-};
-const setMinHeight = (Node, values) => {
-  return setAttr(Node, ["mih", "min-height"], values);
-};
-const setMinWidth = (Node, values) => {
-  return setAttr(Node, ["miw", "min-width"], values);
-};
-const setPadBottom = (Node, values) => {
-  return setAttr(Node, ["padb", "pb", "padding-bottom"], values);
-};
-const setPadLeft = (Node, values) => {
-  return setAttr(Node, ["padl", "pl", "padding-left"], values);
-};
-const setPadRight = (Node, values) => {
-  return setAttr(Node, ["padr", "pr", "padding-right"], values);
-};
-const setPad = (Node, values) => {
-  return setAttr(Node, ["pad", "p", "padding"], values);
-};
-const setPadTop = (Node, values) => {
-  return setAttr(Node, ["padt", "pt", "padding-top"], values);
-};
-const setWidth = (Node, values) => {
-  return setAttr(Node, ["wdh", "width"], values);
-};
-const setMaxHeight = (Node, values) => {
-  return setAttr(Node, ["mxh", "max-height"], values);
-};
-const setPosition = (Node, values) => {
-  return setAttr(Node, ["pos", "position"], values);
-};
-const setTop = (Node, values) => {
-  return setAttr(Node, ["t", "top"], values);
-};
-const setRight = (Node, values) => {
-  return setAttr(Node, ["r", "right"], values);
-};
-const setBottom = (Node, values) => {
-  return setAttr(Node, ["b", "bottom"], values);
-};
-const setLeft = (Node, values) => {
-  return setAttr(Node, ["l", "left"], values);
-};
-const setterXY = (data) => {
-  return new Promise((resolve, reject) => {
-    const values = data.vals || directiveValues(data.Node, data.directives);
-    if (!values)
-      return reject(values);
-    const objStyles = data.builder(values, true);
-    const classesToAdd = Object.keys(objStyles).join(" ");
-    eventReady({
-      node: data.Node,
-      directive: data.directives,
-      classes: classesToAdd,
-      resolve
-    });
-  });
-};
-const setPadX = (Node, vals) => {
-  return setterXY({
-    Node,
-    directives: ["padx", "px", "padding-x"],
-    builder: buildPadX,
-    vals
-  });
-};
-const setPadY = (Node, vals) => {
-  return setterXY({
-    Node,
-    directives: ["pady", "py", "padding-y"],
-    builder: buildPadY,
-    vals
-  });
-};
-const setMarX = (Node, vals) => {
-  return setterXY({
-    Node,
-    directives: ["marx", "mx", "margin-x"],
-    builder: buildMarX,
-    vals
-  });
-};
-const setMarY = (Node, vals) => {
-  return setterXY({
-    Node,
-    directives: ["mary", "my", "margin-y"],
-    builder: buildMarY,
-    vals
-  });
-};
-const reset = (Node) => {
-  return new Promise((resolve) => {
-    const classPrefixes = new Set(Object.keys(processors).map((item) => processors[item].classPrefix));
-    const layouterClasses = [...classPrefixes];
-    const restClass = Node.className.split(" ").filter((name) => {
-      if (!name.includes("-")) {
-        return true;
-      } else {
-        const findClass = layouterClasses.find((item) => {
-          const nLength = item.length;
-          const namePrefix = name.substring(0, nLength + 1);
-          return namePrefix === item + "-";
-        });
-        return !findClass;
-      }
-    });
-    if (restClass.length) {
-      const classesName = restClass.join(" ");
-      addClasses(Node, classesName, true).then(() => {
-        resolve();
-      });
-    } else {
-      removeAttr(Node, "class").then(() => {
-        resolve();
-      });
-    }
-  });
-};
-const nodesNotAccepted = [
+}), bs = [
   "animate",
   "animateMotion",
   "animateTransform",
@@ -1483,146 +1104,119 @@ const nodesNotAccepted = [
   "tspan",
   "use",
   "view"
-];
-const searchAndProcess = (layouter2, context) => {
-  return new Promise((resolve) => {
-    const props = Object.keys(processors);
-    const attrs = props.map((prop) => `[${prop}]`).join(", ");
-    const nodes = context.querySelectorAll(attrs);
-    if (!nodes.length) {
-      resolve(layouter2);
-      return;
-    }
-    const setNodes = /* @__PURE__ */ new Set();
-    Array.prototype.filter.call(nodes, (itemNode) => !nodesNotAccepted.includes(itemNode.nodeName.toLowerCase())).forEach((item) => setNodes.add(item));
-    const promises = [];
-    setNodes.forEach((node) => {
-      promises.push(layouter2.set(node));
-    });
-    Promise.all(promises).then(resolve);
-  });
-};
-const mainObserver = (layouter2) => {
-  const config2 = getConfig();
-  const props = Object.keys(processors);
-  const obsBody = new layouter2.context.MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.type === "childList") {
-        if (!mutation.addedNodes.length) {
+], ke = (e, s) => new Promise((r) => {
+  const i = Object.keys(v).map((a) => `[${a}]`).join(", "), n = s.querySelectorAll(i);
+  if (!n.length) {
+    r(e);
+    return;
+  }
+  const o = /* @__PURE__ */ new Set();
+  Array.prototype.filter.call(
+    n,
+    (a) => !bs.includes(a.nodeName.toLowerCase())
+  ).forEach((a) => o.add(a));
+  const l = [];
+  o.forEach((a) => {
+    l.push(e.set(a));
+  }), Promise.all(l).then(r);
+}), ee = (e) => {
+  const s = g(), r = Object.keys(v), t = new e.context.MutationObserver((n) => {
+    for (const o of n)
+      if (o.type === "childList") {
+        if (!o.addedNodes.length)
           continue;
-        }
-        mutation.addedNodes.forEach((node) => {
-          if (node instanceof HTMLElement) {
-            const props2 = layouter2.getParameters(node);
-            if (Object.keys(props2).length) {
-              layouter2.set(node, props2);
-            }
-            searchAndProcess(layouter2, node);
+        o.addedNodes.forEach((l) => {
+          if (l instanceof HTMLElement) {
+            const a = e.getParameters(l);
+            Object.keys(a).length && e.set(l, a), ke(e, l);
           }
         });
-      } else if (mutation.type === "attributes") {
-        const node = mutation.target;
-        if (node instanceof HTMLElement) {
-          const props2 = layouter2.getParameters(node);
-          if (Object.keys(props2).length) {
-            layouter2.set(node, props2);
-          }
+      } else if (o.type === "attributes") {
+        const l = o.target;
+        if (l instanceof HTMLElement) {
+          const a = e.getParameters(l);
+          Object.keys(a).length && e.set(l, a);
         }
       }
-    }
-  });
-  const observerOptions = {
-    childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: props,
-    characterData: false
+  }), i = {
+    childList: !0,
+    subtree: !0,
+    attributes: !0,
+    attributeFilter: r,
+    characterData: !1
   };
-  obsBody.observe(config2.context.document.body, observerOptions);
-};
-const layouter = (context, userConfig = {}) => {
-  const config2 = setConfig(context, userConfig);
-  const instance = {
-    ...config2,
-    getParameters,
-    updateConfig,
-    insertRules,
-    build,
-    buildCols,
-    buildFlex,
-    buildPad,
-    buildPadTop,
-    buildPadRight,
-    buildPadBottom,
-    buildPadLeft,
-    buildPadX,
-    buildPadY,
-    buildMar,
-    buildMarTop,
-    buildMarRight,
-    buildMarBottom,
-    buildMarLeft,
-    buildMarX,
-    buildMarY,
-    buildMaxWidth,
-    buildMaxHeight,
-    buildMinWidth,
-    buildMinHeight,
-    buildHeight,
-    buildWidth,
-    set,
-    setCols,
-    setFlex,
-    setMar,
-    setMarTop,
-    setMarRight,
-    setMarBottom,
-    setMarLeft,
-    setMarX,
-    setMarY,
-    setPad,
-    setPadTop,
-    setPadRight,
-    setPadBottom,
-    setPadLeft,
-    setPadX,
-    setPadY,
-    setWidth,
-    setMinWidth,
-    setMaxWidth,
-    setHeight,
-    setMinHeight,
-    setMaxHeight,
-    buildPosition,
-    buildTop,
-    buildRight,
-    buildBottom,
-    buildLeft,
-    setPosition,
-    setTop,
-    setRight,
-    setBottom,
-    setLeft,
-    reset,
-    processors
+  t.observe(s.context.document.body, i);
+}, hs = (e, s = {}) => {
+  const r = Me(e, s), t = {
+    ...r,
+    getParameters: Pe,
+    updateConfig: Se,
+    insertRules: re,
+    build: ye,
+    buildCols: H,
+    buildFlex: Y,
+    buildPad: le,
+    buildPadTop: I,
+    buildPadRight: W,
+    buildPadBottom: X,
+    buildPadLeft: z,
+    buildPadX: $,
+    buildPadY: J,
+    buildMar: ae,
+    buildMarTop: G,
+    buildMarRight: U,
+    buildMarBottom: q,
+    buildMarLeft: _,
+    buildMarX: K,
+    buildMarY: Q,
+    buildMaxWidth: oe,
+    buildMaxHeight: ce,
+    buildMinWidth: ue,
+    buildMinHeight: fe,
+    buildHeight: de,
+    buildWidth: pe,
+    set: Ye,
+    setCols: We,
+    setFlex: Ie,
+    setMar: qe,
+    setMarTop: _e,
+    setMarRight: Ue,
+    setMarBottom: ze,
+    setMarLeft: Ge,
+    setMarX: ds,
+    setMarY: ps,
+    setPad: ss,
+    setPadTop: ts,
+    setPadRight: es,
+    setPadBottom: Qe,
+    setPadLeft: Ze,
+    setPadX: us,
+    setPadY: fs,
+    setWidth: rs,
+    setMinWidth: Ke,
+    setMaxWidth: $e,
+    setHeight: Xe,
+    setMinHeight: Je,
+    setMaxHeight: is,
+    buildPosition: me,
+    buildTop: be,
+    buildRight: he,
+    buildBottom: xe,
+    buildLeft: ge,
+    setPosition: ns,
+    setTop: ls,
+    setRight: as,
+    setBottom: os,
+    setLeft: cs,
+    reset: ms,
+    processors: v
   };
-  if (config2.searchOnInit) {
-    searchAndProcess(instance, context.document).then(() => {
-      if (instance.ready)
-        instance.ready(instance);
-      if (config2.observer)
-        mainObserver(instance);
-    });
-  } else {
-    if (config2.observer)
-      mainObserver(instance);
-    if (instance.ready)
-      instance.ready(instance);
-  }
-  return instance;
+  return r.searchOnInit ? ke(t, e.document).then(() => {
+    t.ready && t.ready(t), r.observer && ee(t);
+  }) : (r.observer && ee(t), t.ready && t.ready(t)), t;
 };
-if (typeof window !== "undefined" && typeof exports === "undefined") {
-  window.layouter = layouter(window);
-}
-export { layouter as default };
+typeof window < "u" && typeof exports > "u" && (window.layouter = hs(window));
+export {
+  hs as default
+};
 //# sourceMappingURL=layouter.es.js.map

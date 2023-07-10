@@ -1,4 +1,4 @@
-export declare type TInsertion = 'before' | 'after' | 'append';
+export type TInsertion = 'before' | 'after' | 'append';
 export interface ICreateScopeStyles {
     bridge?: boolean;
     bp: string;

@@ -1,2 +1,2 @@
-declare const setPadX: (Node: HTMLElement | Element, vals?: string | undefined) => Promise<void | Error>;
+declare const setPadX: (Node: HTMLElement | Element, vals?: string) => Promise<void | Error>;
 export default setPadX;

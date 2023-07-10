@@ -1,2 +1,2 @@
-declare const setPosition: (Node: HTMLElement | Element, values?: string | undefined) => Promise<void | Error>;
+declare const setPosition: (Node: HTMLElement | Element, values?: string) => Promise<void | Error>;
 export default setPosition;
