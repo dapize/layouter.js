@@ -50,6 +50,6 @@
     "vite-plugin-dts": "^3.2.0"
   },
   "engines" : {
-    "node" : ">=20.3.0"
+    "node" : ">=18.16.1"
   }
 }
