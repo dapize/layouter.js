@@ -35,9 +35,11 @@ const createScopeStyles = ({
         nodeParent.insertBefore(stylesScope, node);
         break;
       case 'after':
-        node.nextSibling
-          ? nodeParent.insertBefore(stylesScope, node.nextSibling)
-          : nodeParent.appendChild(stylesScope);
+        if (node.nextSibling) {
+          nodeParent.insertBefore(stylesScope, node.nextSibling);
+        } else {
+          nodeParent.appendChild(stylesScope);
+        }
         break;
       case 'append':
         node.appendChild(stylesScope);

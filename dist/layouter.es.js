@@ -175,11 +175,9 @@ const se = ({
     return i[u];
   }
   const l = s.substring(r + 1);
-  if (!l.includes("-"))
-    return i[l];
+  if (!l.includes("-")) return i[l];
   if (l.substring(0, 1) === "-") {
-    if (i[l])
-      return i[l];
+    if (i[l]) return i[l];
     const u = l.substring(1);
     return i[l] = R({
       bridge: n,
@@ -950,8 +948,7 @@ const se = ({
   );
 }, Ie = (e, s) => new Promise((r, t) => {
   const i = s || N(e, ["flex", "fx"]);
-  if (!i)
-    return t(i);
+  if (!i) return t(i);
   const n = Y(i, !0);
   if (n instanceof Error) {
     t(n);
@@ -965,8 +962,7 @@ const se = ({
   });
 }), We = (e, s) => new Promise((r, t) => {
   const i = s || N(e, ["c", "cols"]);
-  if (!i)
-    return t(i);
+  if (!i) return t(i);
   const n = H(i, !0);
   if (n instanceof Error) {
     t(n);
@@ -981,8 +977,7 @@ const se = ({
   });
 }), b = (e, s, r) => new Promise((t, i) => {
   const n = r || N(e, s);
-  if (!n)
-    return i(n);
+  if (!n) return i(n);
   const o = s[0], l = m(n, o, !0), a = Object.keys(l).join(" ");
   T({
     node: e,
@@ -992,8 +987,7 @@ const se = ({
   });
 }), Xe = (e, s) => b(e, ["hgt", "h"], s), ze = (e, s) => b(e, ["marb", "mb", "margin-bottom"], s), Ge = (e, s) => b(e, ["marl", "ml", "margin-left"], s), Ue = (e, s) => b(e, ["marr", "mr", "margin-right"], s), qe = (e, s) => b(e, ["mar", "m", "margin"], s), _e = (e, s) => b(e, ["mart", "mt", "margin-top"], s), $e = (e, s) => b(e, ["mxw", "max-width"], s), Je = (e, s) => b(e, ["mih", "min-height"], s), Ke = (e, s) => b(e, ["miw", "min-width"], s), Qe = (e, s) => b(e, ["padb", "pb", "padding-bottom"], s), Ze = (e, s) => b(e, ["padl", "pl", "padding-left"], s), es = (e, s) => b(e, ["padr", "pr", "padding-right"], s), ss = (e, s) => b(e, ["pad", "p", "padding"], s), ts = (e, s) => b(e, ["padt", "pt", "padding-top"], s), rs = (e, s) => b(e, ["wdh", "width"], s), is = (e, s) => b(e, ["mxh", "max-height"], s), ns = (e, s) => b(e, ["pos", "position"], s), ls = (e, s) => b(e, ["t", "top"], s), as = (e, s) => b(e, ["r", "right"], s), os = (e, s) => b(e, ["b", "bottom"], s), cs = (e, s) => b(e, ["l", "left"], s), D = (e) => new Promise((s, r) => {
   const t = e.vals || N(e.Node, e.directives);
-  if (!t)
-    return r(t);
+  if (!t) return r(t);
   const i = e.builder(t, !0), n = Object.keys(i).join(" ");
   T({
     node: e.Node,
