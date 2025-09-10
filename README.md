@@ -10,7 +10,6 @@
     </p>
 </div>
 
-
 # Layouter
 
 [![CI](https://github.com/dapize/layouter.js/workflows/CI/badge.svg)](https://github.com/dapize/layouter.js/actions?query=workflow:"CI")
@@ -23,9 +22,9 @@
 
 It is a library that allows us to build the entire layout **quickly and easily**, using directives on the HTML nodes. It mainly works **based on the use of a grid**, _especially for the definition of columns_.
 
--   🚀 **Super fast and parallel:** Automatically processes all the nodes that are found when loading the web and also any new node that is added or starts using any directive.
--   🎉 **Shared styles:** Share the already created styles of other previously processed nodes.
--   ⚗️ **Pre-rendering virtual nodes:** Pre-render virtual nodes before adding them to the DOM.
+- 🚀 **Super fast and parallel:** Automatically processes all the nodes that are found when loading the web and also any new node that is added or starts using any directive.
+- 🎉 **Shared styles:** Share the already created styles of other previously processed nodes.
+- ⚗️ **Pre-rendering virtual nodes:** Pre-render virtual nodes before adding them to the DOM.
 
 ## 🔧 Installation
 
@@ -38,7 +37,10 @@ You just have to call, in the HTML, the script **layouter.umd.js** that is insid
 you can **also use one** of these CDNs:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js"
+    defer
+></script>
 <script src="https://unpkg.com/layouter.js/dist/layouter.umd.js" defer></script>
 ```
 
@@ -78,32 +80,28 @@ So we would make this HTML with the following directives:
 <details>
 <summary>Let's see what happened</summary>
 
--   For the **`<main>`** tag, the following layout was determined:
+- For the **`<main>`** tag, the following layout was determined:
+    - A top and bottom padding of 24 pixels on your initial breakpoint (ie on mobile), also a left and right padding of 1 column, relative to the 15 columns defined for that breakpoint.
+    - Upon reaching the breakpoint of **sm** the top and bottom padding of 24 pixels will be maintained but it is determined that 1 column of 25 columns is required for that breakpoint.
+    - Then for the **md** breakpoint we change the top and bottom padding to 30 pixels and then set the left and right padding to be 1 column out of 31 columns for that breakpoint.
+    - Finally, for the **lg** breakpoint, it was determined that the upper and lower padding would be 29.26 pixels, and for the right and left padding, 1 column of 41 columns would be taken from that breakpoint.
+    - On the other hand, it was also determined that its maximum width would be 1280 pixels.
+    - As well as it will have a top and bottom margin of 0 and right and left to 'auto'.
 
-    -   A top and bottom padding of 24 pixels on your initial breakpoint (ie on mobile), also a left and right padding of 1 column, relative to the 15 columns defined for that breakpoint.
-    -   Upon reaching the breakpoint of **sm** the top and bottom padding of 24 pixels will be maintained but it is determined that 1 column of 25 columns is required for that breakpoint.
-    -   Then for the **md** breakpoint we change the top and bottom padding to 30 pixels and then set the left and right padding to be 1 column out of 31 columns for that breakpoint.
-    -   Finally, for the **lg** breakpoint, it was determined that the upper and lower padding would be 29.26 pixels, and for the right and left padding, 1 column of 41 columns would be taken from that breakpoint.
-    -   On the other hand, it was also determined that its maximum width would be 1280 pixels.
-    -   As well as it will have a top and bottom margin of 0 and right and left to 'auto'.
+- For the **`<header>`** tag, the following layout was determined:
+    - Display **'flex'** with 'justify-content' in 'space-between' from the breakpoint of **md** i.e. to tablet in landscape.
+    - Bottom margin of 24 pixels at the start breakpoint and 30 pixels from the md breakpoint.
+    - For its two child **divs**, a height of 100 pixels was determined.
+    - For the first **div** 11.1 columns of 29 columns from the md breakpoint and only 24 pixels of bottom margin to the md breakpoint.
+    - For the second child **div**, 16.9 columns out of 29 columns were determined from the md breakpoint.
 
--   For the **`<header>`** tag, the following layout was determined:
+- For the **`<section>`** tag, the following layout was determined:
+    - A height of 320 pixels.
+    - A bottom margin of 24 pixels for your initial breakpoint, 25 pixels for the **sm** breakpoint, and finally 30 pixels for the **md** breakpoint.
 
-    -   Display **'flex'** with 'justify-content' in 'space-between' from the breakpoint of **md** i.e. to tablet in landscape.
-    -   Bottom margin of 24 pixels at the start breakpoint and 30 pixels from the md breakpoint.
-    -   For its two child **divs**, a height of 100 pixels was determined.
-    -   For the first **div** 11.1 columns of 29 columns from the md breakpoint and only 24 pixels of bottom margin to the md breakpoint.
-    -   For the second child **div**, 16.9 columns out of 29 columns were determined from the md breakpoint.
-
--   For the **`<section>`** tag, the following layout was determined:
-
-    -   A height of 320 pixels.
-    -   A bottom margin of 24 pixels for your initial breakpoint, 25 pixels for the **sm** breakpoint, and finally 30 pixels for the **md** breakpoint.
-
--   For the **`<footer>`** tag, the following layout was determined:
-
-    -   A **'flex'** display with 'justify-content' of 'space-between'.
-    -   For its child **divs**, a height of 200 pixels and a width of 7 columns of 23 columns were determined for the **sm** breakpoint, followed by 9 columns of 29 columns for the **md** breakpoint and finally 12.33 columns of 39 columns for the **lg** breakpoint.
+- For the **`<footer>`** tag, the following layout was determined:
+    - A **'flex'** display with 'justify-content' of 'space-between'.
+    - For its child **divs**, a height of 200 pixels and a width of 7 columns of 23 columns were determined for the **sm** breakpoint, followed by 9 columns of 29 columns for the **md** breakpoint and finally 12.33 columns of 39 columns for the **lg** breakpoint.
 
 </details>
 
@@ -183,21 +181,11 @@ One can write one's own configuration by creating a variable called **'layouterC
 
 ## 🌐 Websites that use layouter
 
--   Interbank - [interbank.pe](https://interbank.pe)
--   Can I Browse - [canibrowse.net](https://canibrowse.net)
+- Interbank - [interbank.pe](https://interbank.pe)
 
 ## 📚 Where to get help?
 
 There is extensive documentation in the archive [DOCS.md](DOCS.md).
-
-## 📝 Planned work
-
-1. ~~Add a directive for positioning.~~ ✅ ¡Ready!
-2. ~~Add more semantic aliases for directives. (Example: from **'mar'** to **'margin'** or only **'m'**)~~ ✅ ¡Ready!
-3. ~~Add directives for declaration of superior margins and paddings.~~ ✅ ¡Ready!
-4. ~~Create [component](https://github.com/dapize/react-layouter) for [React JS](https://reactjs.org)~~ ✅ ¡Ready!
-5. Create component for [Vue JS](https://vuejs.org) 🏗️ In progress...
-6. Create component for [Svelte JS](https://svelte.dev)
 
 ## 🧾 License
 

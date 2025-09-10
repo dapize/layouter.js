@@ -22,9 +22,9 @@
 
 Es una librería que nos permite armar todo el layout **de forma rápida y sencilla**, usando directivas sobre los nodos HTML. Principalmente funciona **basándonos en el uso de una grilla**, _especialmente para la definición de columnas_.
 
--   🚀 **Super rápido y paralelo:** Procesa de forma automática todos los nodos que se encuentran al cargar la web y también cualquier nuevo nodo que se agregue o empiece a usar alguna directiva.
--   🎉 **Estilos compartidos:** Comparte los estilos yá creados de otros nodos previamente procesados.
--   ⚗️ **Pre procesamiento de nodos virtuales**: Pre procesa nodos virtuales antes de agregarlos al DOM.
+- 🚀 **Super rápido y paralelo:** Procesa de forma automática todos los nodos que se encuentran al cargar la web y también cualquier nuevo nodo que se agregue o empiece a usar alguna directiva.
+- 🎉 **Estilos compartidos:** Comparte los estilos yá creados de otros nodos previamente procesados.
+- ⚗️ **Pre procesamiento de nodos virtuales**: Pre procesa nodos virtuales antes de agregarlos al DOM.
 
 ## 🔧 Instalación
 
@@ -37,7 +37,10 @@ Solo hay que llamar, en el HTML, al script **layouter.umd.js** que se encuentra 
 **también** puedes usar **uno** de estos CDNs:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js" defer></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/layouter.js/dist/layouter.umd.js"
+    defer
+></script>
 <script src="https://unpkg.com/layouter.js/dist/layouter.umd.js" defer></script>
 ```
 
@@ -77,32 +80,28 @@ Entonces haríamos este HTML con las siguientes directivas:
 <details>
 <summary>Veamos que a pasado</summary>
 
--   para la etiqueta **`<main>`** se determinó el siguiente layout:
+- para la etiqueta **`<main>`** se determinó el siguiente layout:
+    - Un padding superior e inferior de 24 píxeles en su breakpoint inicial (es decir en mobile), también un padding derecho e izquierdo de 1 columna, relativa a las 15 columnas definidas para ese breakpoint.
+    - Al llegar al breakpoint de **sm** se mantendrá el padding superior e inferior de 24 píxeles pero se determina que se requiere 1 columna de 25 columnas para ese breakpoint.
+    - Luego, para el breakpoint de **md** se cambia el padding superior e inferior a 30 píxeles y luego se determina que el padding derecho e izquierdo será de 1 columna de 31 columnas para ese breakpoint.
+    - Finalmente para el breakpoint de **lg** se determinó que el padding superior e inferior sería de 29.26 píxeles y para el padding derecho e izquierdo se tomará 1 columna de 41 columnas de ese breakpoint.
+    - Por otra parte también se determinó que su ancho máximo sería de 1280 píxeles.
+    - Así como también tendrá un margen superior e inferior de 0 y derecho e izquierdo en 'auto'.
 
-    -   Un padding superior e inferior de 24 píxeles en su breakpoint inicial (es decir en mobile), también un padding derecho e izquierdo de 1 columna, relativa a las 15 columnas definidas para ese breakpoint.
-    -   Al llegar al breakpoint de **sm** se mantendrá el padding superior e inferior de 24 píxeles pero se determina que se requiere 1 columna de 25 columnas para ese breakpoint.
-    -   Luego, para el breakpoint de **md** se cambia el padding superior e inferior a 30 píxeles y luego se determina que el padding derecho e izquierdo será de 1 columna de 31 columnas para ese breakpoint.
-    -   Finalmente para el breakpoint de **lg** se determinó que el padding superior e inferior sería de 29.26 píxeles y para el padding derecho e izquierdo se tomará 1 columna de 41 columnas de ese breakpoint.
-    -   Por otra parte también se determinó que su ancho máximo sería de 1280 píxeles.
-    -   Así como también tendrá un margen superior e inferior de 0 y derecho e izquierdo en 'auto'.
+- para la etiqueta **`<header>`** se determinadó el siguiente layout:
+    - Display **'flex'** con 'justify-content' en 'space-between' a partir del breakpoint de **md** es decir a tablet en landscape.
+    - Margen inferior de 24 píxeles en el breakpoint inicial y 30 píxeles a partir del breakpoint de **md**.
+    - Para sus dos **divs** hijos se determinó una altura de 100 píxeles.
+    - Para el primero **div** 11.1 columnas de 29 columnas a partir del breakpoint **md** y solo 24 píxeles de margen inferior hasta el breakpoint de **md**.
+    - Para el segundo **div** hijo se determinó 16.9 columnas de 29 columnas a partir del breakpoint **md**.
 
--   para la etiqueta **`<header>`** se determinadó el siguiente layout:
+- para la etiqueta **`<section>`** se determinó el siguiente layout:
+    - Una altura de 320 píxeles.
+    - Un margen inferior de 24 píxeles para su breakpoint inicial, 25 píxeles para el breakpoint de **sm** y finalmente 30 píxeles para el breakpoint de **md**.
 
-    -   Display **'flex'** con 'justify-content' en 'space-between' a partir del breakpoint de **md** es decir a tablet en landscape.
-    -   Margen inferior de 24 píxeles en el breakpoint inicial y 30 píxeles a partir del breakpoint de **md**.
-    -   Para sus dos **divs** hijos se determinó una altura de 100 píxeles.
-    -   Para el primero **div** 11.1 columnas de 29 columnas a partir del breakpoint **md** y solo 24 píxeles de margen inferior hasta el breakpoint de **md**.
-    -   Para el segundo **div** hijo se determinó 16.9 columnas de 29 columnas a partir del breakpoint **md**.
-
--   para la etiqueta **`<section>`** se determinó el siguiente layout:
-
-    -   Una altura de 320 píxeles.
-    -   Un margen inferior de 24 píxeles para su breakpoint inicial, 25 píxeles para el breakpoint de **sm** y finalmente 30 píxeles para el breakpoint de **md**.
-
--   para la etiqueta **`<footer>`** se determinó el siguiente layout:
-
-    -   Un display **'flex'** con 'justify-content' de 'space-between'.
-    -   Para sus **divs** hijos se determinó una altura de 200 píxeles y un ancho de 7 columnas de 23 columnas para el breakpoint de **sm**, seguido de 9 columnas de 29 columnas para el breakpoint de **md** y finalmente 12.33 columnas de 39 columnas para el breakpoint de **lg**
+- para la etiqueta **`<footer>`** se determinó el siguiente layout:
+    - Un display **'flex'** con 'justify-content' de 'space-between'.
+    - Para sus **divs** hijos se determinó una altura de 200 píxeles y un ancho de 7 columnas de 23 columnas para el breakpoint de **sm**, seguido de 9 columnas de 29 columnas para el breakpoint de **md** y finalmente 12.33 columnas de 39 columnas para el breakpoint de **lg**
 
 </details>
 
@@ -182,21 +181,11 @@ Uno puede escribir su propia configuración creando una variable llamada **'layo
 
 ## 🌐 Websites que usan layouter
 
--   Interbank - [interbank.pe](https://interbank.pe)
--   Can I Browse - [canibrowse.net](https://canibrowse.net)
+- Interbank - [interbank.pe](https://interbank.pe)
 
 ## 📚 ¿Dónde obtener ayuda?
 
 Hay una extensa documentación en el archivo [DOCS-es_ES.md](DOCS-es_ES.md).
-
-## 📝 Trabajo planeado
-
-1. ~~Adicionar una directiva para el posicionamiento.~~ ✅ Listo!
-2. ~~Adicionar alias más semánticos para las directivas. (Ejm: de **'mar'** a **'margin'** o solo **'m'**)~~ ✅ Listo!
-3. ~~Agregar directivas para declaración de margenes y paddings superiores e inferiores al mismo tiempo.~~ ✅ Listo!
-4. ~~Crear [componente](https://github.com/dapize/react-layouter) para [React JS](https://reactjs.org)~~ ✅ Listo!
-5. Crear componente para [Vue JS](https://vuejs.org) 🏗️ En progreso...
-6. Crear componente para [Svelte JS](https://svelte.dev)
 
 ## 🧾 Licencia
 
